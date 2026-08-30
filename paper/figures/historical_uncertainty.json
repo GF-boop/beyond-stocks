@@ -25,17 +25,17 @@
       "portfolios": {
         "80/53.33/33.33/33.33 ACO": {
           "ruin": 0.0268,
-          "equivalent_savings_rate": 0.05338814854621887,
+          "equivalent_savings_rate": 0.053186267614364624,
           "ruin_reduction_vs_aco": 0.062,
-          "saving_reduction_vs_aco": 0.046611851453781133,
+          "saving_reduction_vs_aco": 0.04681373238563538,
           "volatility": 0.17803486739788707,
           "volatility_gap_vs_aco": 0.003725312885810267
         },
         "50/50/50/50 ACO": {
           "ruin": 0.0318,
-          "equivalent_savings_rate": 0.06432095170021057,
+          "equivalent_savings_rate": 0.06404998898506165,
           "ruin_reduction_vs_aco": 0.057,
-          "saving_reduction_vs_aco": 0.035679048299789434,
+          "saving_reduction_vs_aco": 0.03595001101493836,
           "volatility": 0.1701777695912845,
           "volatility_gap_vs_aco": -0.004131784920792303
         }
@@ -58,17 +58,17 @@
       "portfolios": {
         "80/53.33/33.33/33.33 ACO": {
           "ruin": 0.0194,
-          "equivalent_savings_rate": 0.053342610597610474,
+          "equivalent_savings_rate": 0.053269773721694946,
           "ruin_reduction_vs_aco": 0.050199999999999995,
-          "saving_reduction_vs_aco": 0.04665738940238953,
+          "saving_reduction_vs_aco": 0.04673022627830506,
           "volatility": 0.17803486739788707,
           "volatility_gap_vs_aco": 0.003725312885810267
         },
         "50/50/50/50 ACO": {
           "ruin": 0.0276,
-          "equivalent_savings_rate": 0.06403282284736633,
+          "equivalent_savings_rate": 0.06392797827720642,
           "ruin_reduction_vs_aco": 0.041999999999999996,
-          "saving_reduction_vs_aco": 0.03596717715263367,
+          "saving_reduction_vs_aco": 0.036072021722793585,
           "volatility": 0.1701777695912845,
           "volatility_gap_vs_aco": -0.004131784920792303
         }
@@ -91,17 +91,17 @@
       "portfolios": {
         "80/53.33/33.33/33.33 ACO": {
           "ruin": 0.0132,
-          "equivalent_savings_rate": 0.05447390675544739,
+          "equivalent_savings_rate": 0.0544528067111969,
           "ruin_reduction_vs_aco": 0.0508,
-          "saving_reduction_vs_aco": 0.04552609324455262,
+          "saving_reduction_vs_aco": 0.045547193288803106,
           "volatility": 0.17803486739788707,
           "volatility_gap_vs_aco": 0.003725312885810267
         },
         "50/50/50/50 ACO": {
           "ruin": 0.0174,
-          "equivalent_savings_rate": 0.06569650769233704,
+          "equivalent_savings_rate": 0.06566378474235535,
           "ruin_reduction_vs_aco": 0.0466,
-          "saving_reduction_vs_aco": 0.03430349230766297,
+          "saving_reduction_vs_aco": 0.03433621525764466,
           "volatility": 0.1701777695912845,
           "volatility_gap_vs_aco": -0.004131784920792303
         }
@@ -124,17 +124,17 @@
       "portfolios": {
         "80/53.33/33.33/33.33 ACO": {
           "ruin": 0.0038,
-          "equivalent_savings_rate": 0.048899441957473755,
+          "equivalent_savings_rate": 0.04884776473045349,
           "ruin_reduction_vs_aco": 0.055,
-          "saving_reduction_vs_aco": 0.05110055804252625,
+          "saving_reduction_vs_aco": 0.051152235269546514,
           "volatility": 0.16552088809836432,
           "volatility_gap_vs_aco": -0.00034470406656150754
         },
         "50/50/50/50 ACO": {
           "ruin": 0.0062,
-          "equivalent_savings_rate": 0.05655112862586975,
+          "equivalent_savings_rate": 0.0565316379070282,
           "ruin_reduction_vs_aco": 0.0526,
-          "saving_reduction_vs_aco": 0.043448871374130255,
+          "saving_reduction_vs_aco": 0.04346836209297181,
           "volatility": 0.15826280373505236,
           "volatility_gap_vs_aco": -0.007602788429873469
         }
@@ -157,17 +157,17 @@
       "portfolios": {
         "80/53.33/33.33/33.33 ACO": {
           "ruin": 0.002,
-          "equivalent_savings_rate": 0.04156866669654846,
+          "equivalent_savings_rate": 0.04154744744300842,
           "ruin_reduction_vs_aco": 0.043199999999999995,
-          "saving_reduction_vs_aco": 0.058431333303451544,
+          "saving_reduction_vs_aco": 0.05845255255699158,
           "volatility": 0.16611183428309145,
           "volatility_gap_vs_aco": -0.006303923692423441
         },
         "50/50/50/50 ACO": {
           "ruin": 0.0022,
-          "equivalent_savings_rate": 0.04903420805931091,
+          "equivalent_savings_rate": 0.049009472131729126,
           "ruin_reduction_vs_aco": 0.043,
-          "saving_reduction_vs_aco": 0.05096579194068909,
+          "saving_reduction_vs_aco": 0.05099052786827088,
           "volatility": 0.1601218732832533,
           "volatility_gap_vs_aco": -0.012293884692261586
         }
@@ -190,17 +190,17 @@
       "portfolios": {
         "80/53.33/33.33/33.33 ACO": {
           "ruin": 0.0046,
-          "equivalent_savings_rate": 0.052960485219955444,
+          "equivalent_savings_rate": 0.052938371896743774,
           "ruin_reduction_vs_aco": 0.047,
-          "saving_reduction_vs_aco": 0.04703951478004456,
+          "saving_reduction_vs_aco": 0.04706162810325623,
           "volatility": 0.17161797425410555,
           "volatility_gap_vs_aco": 0.0026645634931277695
         },
         "50/50/50/50 ACO": {
           "ruin": 0.0072,
-          "equivalent_savings_rate": 0.06281885504722595,
+          "equivalent_savings_rate": 0.06279924511909485,
           "ruin_reduction_vs_aco": 0.0444,
-          "saving_reduction_vs_aco": 0.03718114495277405,
+          "saving_reduction_vs_aco": 0.03720075488090516,
           "volatility": 0.16310034853198982,
           "volatility_gap_vs_aco": -0.00585306222898796
         }
@@ -225,17 +225,17 @@
       "portfolios": {
         "80/53.33/33.33/33.33 ACO": {
           "ruin": 0.0216,
-          "equivalent_savings_rate": 0.05364719033241272,
+          "equivalent_savings_rate": 0.05356493592262268,
           "ruin_reduction_vs_aco": 0.05279999999999999,
-          "saving_reduction_vs_aco": 0.046352809667587286,
+          "saving_reduction_vs_aco": 0.046435064077377325,
           "volatility": 0.17917305217282664,
           "volatility_gap_vs_aco": 0.003485776500453036
         },
         "50/50/50/50 ACO": {
           "ruin": 0.0286,
-          "equivalent_savings_rate": 0.06464657187461853,
+          "equivalent_savings_rate": 0.06456181406974792,
           "ruin_reduction_vs_aco": 0.045799999999999993,
-          "saving_reduction_vs_aco": 0.035353428125381475,
+          "saving_reduction_vs_aco": 0.03543818593025208,
           "volatility": 0.17088452291253942,
           "volatility_gap_vs_aco": -0.004802752759834189
         }
@@ -258,17 +258,17 @@
       "portfolios": {
         "80/53.33/33.33/33.33 ACO": {
           "ruin": 0.016,
-          "equivalent_savings_rate": 0.05354377627372742,
+          "equivalent_savings_rate": 0.053352147340774536,
           "ruin_reduction_vs_aco": 0.0586,
-          "saving_reduction_vs_aco": 0.04645622372627259,
+          "saving_reduction_vs_aco": 0.04664785265922547,
           "volatility": 0.1765910330126688,
           "volatility_gap_vs_aco": 0.0036372593944248854
         },
         "50/50/50/50 ACO": {
           "ruin": 0.021,
-          "equivalent_savings_rate": 0.06409826874732971,
+          "equivalent_savings_rate": 0.06383857131004333,
           "ruin_reduction_vs_aco": 0.053599999999999995,
-          "saving_reduction_vs_aco": 0.035901731252670294,
+          "saving_reduction_vs_aco": 0.03616142868995667,
           "volatility": 0.16892577735748324,
           "volatility_gap_vs_aco": -0.004027996260760669
         }
@@ -291,17 +291,17 @@
       "portfolios": {
         "80/53.33/33.33/33.33 ACO": {
           "ruin": 0.0182,
-          "equivalent_savings_rate": 0.05297532677650452,
+          "equivalent_savings_rate": 0.052781492471694946,
           "ruin_reduction_vs_aco": 0.06340000000000001,
-          "saving_reduction_vs_aco": 0.04702467322349549,
+          "saving_reduction_vs_aco": 0.04721850752830506,
           "volatility": 0.1791839159469855,
           "volatility_gap_vs_aco": 0.0035834410002637818
         },
         "50/50/50/50 ACO": {
           "ruin": 0.0226,
-          "equivalent_savings_rate": 0.0633074939250946,
+          "equivalent_savings_rate": 0.06305178999900818,
           "ruin_reduction_vs_aco": 0.05900000000000001,
-          "saving_reduction_vs_aco": 0.0366925060749054,
+          "saving_reduction_vs_aco": 0.03694821000099183,
           "volatility": 0.17091568772072124,
           "volatility_gap_vs_aco": -0.004684787226000464
         }
@@ -324,17 +324,17 @@
       "portfolios": {
         "80/53.33/33.33/33.33 ACO": {
           "ruin": 0.018,
-          "equivalent_savings_rate": 0.05340489745140076,
+          "equivalent_savings_rate": 0.053216010332107544,
           "ruin_reduction_vs_aco": 0.0616,
-          "saving_reduction_vs_aco": 0.04659510254859925,
+          "saving_reduction_vs_aco": 0.04678398966789246,
           "volatility": 0.17404540774439917,
           "volatility_gap_vs_aco": 0.002962171564935445
         },
         "50/50/50/50 ACO": {
           "ruin": 0.0224,
-          "equivalent_savings_rate": 0.06336048245429993,
+          "equivalent_savings_rate": 0.06311091780662537,
           "ruin_reduction_vs_aco": 0.0572,
-          "saving_reduction_vs_aco": 0.03663951754570008,
+          "saving_reduction_vs_aco": 0.03688908219337464,
           "volatility": 0.16726921687963187,
           "volatility_gap_vs_aco": -0.0038140192998318556
         }
@@ -357,17 +357,17 @@
       "portfolios": {
         "80/53.33/33.33/33.33 ACO": {
           "ruin": 0.021,
-          "equivalent_savings_rate": 0.05473563075065613,
+          "equivalent_savings_rate": 0.05459877848625183,
           "ruin_reduction_vs_aco": 0.0494,
-          "saving_reduction_vs_aco": 0.04526436924934388,
+          "saving_reduction_vs_aco": 0.045401221513748174,
           "volatility": 0.17874539219320956,
           "volatility_gap_vs_aco": 0.00461473704972265
         },
         "50/50/50/50 ACO": {
           "ruin": 0.025,
-          "equivalent_savings_rate": 0.06561204791069031,
+          "equivalent_savings_rate": 0.06544420123100281,
           "ruin_reduction_vs_aco": 0.0454,
-          "saving_reduction_vs_aco": 0.0343879520893097,
+          "saving_reduction_vs_aco": 0.0345557987689972,
           "volatility": 0.17126167776146137,
           "volatility_gap_vs_aco": -0.002868977382025545
         }
@@ -390,17 +390,17 @@
       "portfolios": {
         "80/53.33/33.33/33.33 ACO": {
           "ruin": 0.0222,
-          "equivalent_savings_rate": 0.05432286858558655,
+          "equivalent_savings_rate": 0.05415859818458557,
           "ruin_reduction_vs_aco": 0.05160000000000001,
-          "saving_reduction_vs_aco": 0.04567713141441346,
+          "saving_reduction_vs_aco": 0.045841401815414434,
           "volatility": 0.17878463252032994,
           "volatility_gap_vs_aco": 0.004462033758209388
         },
         "50/50/50/50 ACO": {
           "ruin": 0.0288,
-          "equivalent_savings_rate": 0.06529894471168518,
+          "equivalent_savings_rate": 0.06512501835823059,
           "ruin_reduction_vs_aco": 0.045000000000000005,
-          "saving_reduction_vs_aco": 0.034701055288314825,
+          "saving_reduction_vs_aco": 0.034874981641769415,
           "volatility": 0.1713414863311509,
           "volatility_gap_vs_aco": -0.002981112430969657
         }
@@ -423,17 +423,17 @@
       "portfolios": {
         "80/53.33/33.33/33.33 ACO": {
           "ruin": 0.0196,
-          "equivalent_savings_rate": 0.05340072512626648,
+          "equivalent_savings_rate": 0.0533314049243927,
           "ruin_reduction_vs_aco": 0.0486,
-          "saving_reduction_vs_aco": 0.046599274873733526,
+          "saving_reduction_vs_aco": 0.046668595075607305,
           "volatility": 0.17763262599640794,
           "volatility_gap_vs_aco": 0.004400148462295056
         },
         "50/50/50/50 ACO": {
           "ruin": 0.0264,
-          "equivalent_savings_rate": 0.06391385197639465,
+          "equivalent_savings_rate": 0.06384727358818054,
           "ruin_reduction_vs_aco": 0.0418,
-          "saving_reduction_vs_aco": 0.03608614802360535,
+          "saving_reduction_vs_aco": 0.036152726411819464,
           "volatility": 0.1698794750743041,
           "volatility_gap_vs_aco": -0.003353002459808796
         }
@@ -456,17 +456,17 @@
       "portfolios": {
         "80/53.33/33.33/33.33 ACO": {
           "ruin": 0.0122,
-          "equivalent_savings_rate": 0.05425664782524109,
+          "equivalent_savings_rate": 0.054227858781814575,
           "ruin_reduction_vs_aco": 0.05059999999999999,
-          "saving_reduction_vs_aco": 0.04574335217475892,
+          "saving_reduction_vs_aco": 0.04577214121818543,
           "volatility": 0.1762606230248991,
           "volatility_gap_vs_aco": 0.0031421652871336248
         },
         "50/50/50/50 ACO": {
           "ruin": 0.018,
-          "equivalent_savings_rate": 0.06657227873802185,
+          "equivalent_savings_rate": 0.06650260090827942,
           "ruin_reduction_vs_aco": 0.04479999999999999,
-          "saving_reduction_vs_aco": 0.033427721261978155,
+          "saving_reduction_vs_aco": 0.03349739909172059,
           "volatility": 0.16783655542061757,
           "volatility_gap_vs_aco": -0.005281902317147896
         }
@@ -489,17 +489,17 @@
       "portfolios": {
         "80/53.33/33.33/33.33 ACO": {
           "ruin": 0.019,
-          "equivalent_savings_rate": 0.05476000905036926,
+          "equivalent_savings_rate": 0.05462351441383362,
           "ruin_reduction_vs_aco": 0.0556,
-          "saving_reduction_vs_aco": 0.04523999094963074,
+          "saving_reduction_vs_aco": 0.04537648558616639,
           "volatility": 0.1773806094922241,
           "volatility_gap_vs_aco": 0.003234423642183265
         },
         "50/50/50/50 ACO": {
           "ruin": 0.0268,
-          "equivalent_savings_rate": 0.06540647149085999,
+          "equivalent_savings_rate": 0.06522616744041443,
           "ruin_reduction_vs_aco": 0.047799999999999995,
-          "saving_reduction_vs_aco": 0.03459352850914002,
+          "saving_reduction_vs_aco": 0.03477383255958558,
           "volatility": 0.16951126084775334,
           "volatility_gap_vs_aco": -0.004634925002287488
         }
@@ -522,17 +522,17 @@
       "portfolios": {
         "80/53.33/33.33/33.33 ACO": {
           "ruin": 0.0186,
-          "equivalent_savings_rate": 0.05469343066215515,
+          "equivalent_savings_rate": 0.05453118681907654,
           "ruin_reduction_vs_aco": 0.05720000000000001,
-          "saving_reduction_vs_aco": 0.045306569337844854,
+          "saving_reduction_vs_aco": 0.04546881318092347,
           "volatility": 0.17897468021589397,
           "volatility_gap_vs_aco": 0.0031693794174347534
         },
         "50/50/50/50 ACO": {
           "ruin": 0.0274,
-          "equivalent_savings_rate": 0.06517323851585388,
+          "equivalent_savings_rate": 0.06495413184165955,
           "ruin_reduction_vs_aco": 0.048400000000000006,
-          "saving_reduction_vs_aco": 0.034826761484146124,
+          "saving_reduction_vs_aco": 0.03504586815834046,
           "volatility": 0.17034267549573948,
           "volatility_gap_vs_aco": -0.005462625302719737
         }
@@ -555,17 +555,17 @@
       "portfolios": {
         "80/53.33/33.33/33.33 ACO": {
           "ruin": 0.0178,
-          "equivalent_savings_rate": 0.055369168519973755,
+          "equivalent_savings_rate": 0.0551970899105072,
           "ruin_reduction_vs_aco": 0.0542,
-          "saving_reduction_vs_aco": 0.04463083148002625,
+          "saving_reduction_vs_aco": 0.0448029100894928,
           "volatility": 0.17852441018486362,
           "volatility_gap_vs_aco": 0.0040274723266123524
         },
         "50/50/50/50 ACO": {
           "ruin": 0.0282,
-          "equivalent_savings_rate": 0.06664970517158508,
+          "equivalent_savings_rate": 0.0664280354976654,
           "ruin_reduction_vs_aco": 0.04379999999999999,
-          "saving_reduction_vs_aco": 0.03335029482841492,
+          "saving_reduction_vs_aco": 0.0335719645023346,
           "volatility": 0.17093515449894583,
           "volatility_gap_vs_aco": -0.0035617833593054316
         }
@@ -588,17 +588,17 @@
       "portfolios": {
         "80/53.33/33.33/33.33 ACO": {
           "ruin": 0.0208,
-          "equivalent_savings_rate": 0.054148346185684204,
+          "equivalent_savings_rate": 0.05408027768135071,
           "ruin_reduction_vs_aco": 0.0596,
-          "saving_reduction_vs_aco": 0.0458516538143158,
+          "saving_reduction_vs_aco": 0.0459197223186493,
           "volatility": 0.17759634228147242,
           "volatility_gap_vs_aco": 0.0028468713479690433
         },
         "50/50/50/50 ACO": {
           "ruin": 0.0258,
-          "equivalent_savings_rate": 0.06696996092796326,
+          "equivalent_savings_rate": 0.06683686375617981,
           "ruin_reduction_vs_aco": 0.054599999999999996,
-          "saving_reduction_vs_aco": 0.03303003907203675,
+          "saving_reduction_vs_aco": 0.033163136243820196,
           "volatility": 0.16937156912610732,
           "volatility_gap_vs_aco": -0.005377901807396057
         }
@@ -621,17 +621,17 @@
       "portfolios": {
         "80/53.33/33.33/33.33 ACO": {
           "ruin": 0.0208,
-          "equivalent_savings_rate": 0.05383208394050598,
+          "equivalent_savings_rate": 0.05372098088264465,
           "ruin_reduction_vs_aco": 0.0576,
-          "saving_reduction_vs_aco": 0.046167916059494024,
+          "saving_reduction_vs_aco": 0.04627901911735535,
           "volatility": 0.17884146769117934,
           "volatility_gap_vs_aco": 0.0037447970357737947
         },
         "50/50/50/50 ACO": {
           "ruin": 0.0268,
-          "equivalent_savings_rate": 0.06427839398384094,
+          "equivalent_savings_rate": 0.06413379311561584,
           "ruin_reduction_vs_aco": 0.05159999999999999,
-          "saving_reduction_vs_aco": 0.03572160601615906,
+          "saving_reduction_vs_aco": 0.03586620688438416,
           "volatility": 0.17073975682676995,
           "volatility_gap_vs_aco": -0.004356913828635595
         }
@@ -654,17 +654,17 @@
       "portfolios": {
         "80/53.33/33.33/33.33 ACO": {
           "ruin": 0.0212,
-          "equivalent_savings_rate": 0.054464370012283325,
+          "equivalent_savings_rate": 0.054355770349502563,
           "ruin_reduction_vs_aco": 0.05120000000000001,
-          "saving_reduction_vs_aco": 0.04553562998771668,
+          "saving_reduction_vs_aco": 0.04564422965049744,
           "volatility": 0.17897358270654265,
           "volatility_gap_vs_aco": 0.004394836435780786
         },
         "50/50/50/50 ACO": {
           "ruin": 0.0278,
-          "equivalent_savings_rate": 0.06551602482795715,
+          "equivalent_savings_rate": 0.06538066267967224,
           "ruin_reduction_vs_aco": 0.04460000000000001,
-          "saving_reduction_vs_aco": 0.03448397517204285,
+          "saving_reduction_vs_aco": 0.034619337320327764,
           "volatility": 0.1716028209349331,
           "volatility_gap_vs_aco": -0.002975925335828772
         }
@@ -687,17 +687,17 @@
       "portfolios": {
         "80/53.33/33.33/33.33 ACO": {
           "ruin": 0.0214,
-          "equivalent_savings_rate": 0.05408218502998352,
+          "equivalent_savings_rate": 0.05395999550819397,
           "ruin_reduction_vs_aco": 0.0582,
-          "saving_reduction_vs_aco": 0.045917814970016485,
+          "saving_reduction_vs_aco": 0.046040004491806036,
           "volatility": 0.17919230107671075,
           "volatility_gap_vs_aco": 0.00403857803188773
         },
         "50/50/50/50 ACO": {
           "ruin": 0.0282,
-          "equivalent_savings_rate": 0.06479522585868835,
+          "equivalent_savings_rate": 0.06463780999183655,
           "ruin_reduction_vs_aco": 0.0514,
-          "saving_reduction_vs_aco": 0.03520477414131165,
+          "saving_reduction_vs_aco": 0.03536219000816346,
           "volatility": 0.17123576054118925,
           "volatility_gap_vs_aco": -0.003917962503633771
         }
@@ -720,17 +720,17 @@
       "portfolios": {
         "80/53.33/33.33/33.33 ACO": {
           "ruin": 0.0214,
-          "equivalent_savings_rate": 0.0543690025806427,
+          "equivalent_savings_rate": 0.05424508452415466,
           "ruin_reduction_vs_aco": 0.0568,
-          "saving_reduction_vs_aco": 0.045630997419357305,
+          "saving_reduction_vs_aco": 0.04575491547584534,
           "volatility": 0.17861778512906815,
           "volatility_gap_vs_aco": 0.0038424714716885633
         },
         "50/50/50/50 ACO": {
           "ruin": 0.0274,
-          "equivalent_savings_rate": 0.06538960337638855,
+          "equivalent_savings_rate": 0.06522801518440247,
           "ruin_reduction_vs_aco": 0.050800000000000005,
-          "saving_reduction_vs_aco": 0.034610396623611456,
+          "saving_reduction_vs_aco": 0.03477198481559754,
           "volatility": 0.1707642261266834,
           "volatility_gap_vs_aco": -0.004011087530696178
         }

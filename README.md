@@ -68,17 +68,17 @@ euro. The paired results and intervals are in
 
 | Strategy | Equivalent saving | Ruin |
 | --- | ---: | ---: |
-| Domestic equity | 16.75% | 14.95% |
-| ACO 33/67 at constant real exchange rate | 9.05% | 4.57% |
+| Domestic equity | 16.85% | 14.95% |
+| ACO 33/67 at constant real exchange rate | 9.03% | 4.57% |
 | **ACO 33/67** | **10.00%** | **7.36%** |
-| Domestic balanced | 18.53% | 13.81% |
-| Balanced/I | 14.79% | 9.58% |
-| 90/60 local | 9.91% | 8.52% |
+| Domestic balanced | 18.56% | 13.81% |
+| Balanced/I | 14.77% | 9.58% |
+| 90/60 local | 9.92% | 8.52% |
 | **90/60 covered world bonds** | **9.77%** | **7.81%** |
-| 60/40 ACO/covered | 14.41% | 8.90% |
-| 60/40 ACO + 33.33% managed futures | 8.70% | 3.29% |
-| 60/40 ACO + 33.33% gold | 11.00% | 4.38% |
-| 54/36/20/20 ACO | 9.76% | 3.19% |
+| 60/40 ACO/covered | 14.37% | 8.90% |
+| 60/40 ACO + 33.33% managed futures | 8.67% | 3.29% |
+| 60/40 ACO + 33.33% gold | 10.97% | 4.38% |
+| 54/36/20/20 ACO | 9.73% | 3.19% |
 | 90/60/25/25 ACO | 5.36% | 1.96% |
 
 Two fixed-leverage ladders complete these recipes: a family proportional to
@@ -86,7 +86,7 @@ Two fixed-leverage ladders complete these recipes: a family proportional to
 each at 100%, 125%, 150%, 175% and 200% gross exposure. They target no
 volatility. Within the ±1-point band around ACO's 17.43%, the 200% level of
 the 60/40/25/25 family reaches 17.80% volatility, 5.32% equivalent saving and
-1.83% ruin; the 200% equal-weight family reaches 17.02%, 6.40% and 2.51%. At
+1.83% ruin; the 200% equal-weight family reaches 17.02%, 6.39% and 2.51%. At
 a comparable risk budget, both families therefore have both higher utility
 and lower ruin than ACO's 33/67 (10.00% equivalent saving and 7.36% ruin).
 This is the central result: in the extended asset universe and under the
@@ -101,8 +101,8 @@ results.
 Before 1968, the gold price is administered. An availability variant
 reallocates the gold sleeve then in equal parts to the non-gold sleeves
 already active, without changing leverage or financing. It improves the 60/40
-with gold to 9.42% equivalent saving and 3.11% ruin, and the 54/36/20/20 to
-8.90% and 2.55%. It is reported in the appendix and in the detailed results;
+with gold to 9.39% equivalent saving and 3.11% ruin, and the 54/36/20/20 to
+8.87% and 2.55%. It is reported in the appendix and in the detailed results;
 it is not a counterfactual gold-return assumption.
 
 Equivalent saving equalises expected lifecycle utility with ACO 33/67 at a

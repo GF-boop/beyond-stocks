@@ -19,16 +19,16 @@
       "benchmark_ruin": 0.0736,
       "proportional": {
         "ruin": 0.0183,
-        "equivalent_savings_rate": 0.05324694514274597,
+        "equivalent_savings_rate": 0.05317303538322449,
         "ruin_reduction_vs_aco": 0.0553,
-        "saving_reduction_vs_aco": 0.046753054857254034,
+        "saving_reduction_vs_aco": 0.04682696461677552,
         "volatility": 0.17803486739788707
       },
       "equal_weight": {
         "ruin": 0.0251,
-        "equivalent_savings_rate": 0.06403586268424988,
+        "equivalent_savings_rate": 0.06393274664878845,
         "ruin_reduction_vs_aco": 0.0485,
-        "saving_reduction_vs_aco": 0.03596413731575013,
+        "saving_reduction_vs_aco": 0.03606725335121155,
         "volatility": 0.1701777695912845
       }
     },
@@ -42,16 +42,16 @@
       "benchmark_ruin": 0.0736,
       "proportional": {
         "ruin": 0.0172,
-        "equivalent_savings_rate": 0.05236902832984924,
+        "equivalent_savings_rate": 0.05229565501213074,
         "ruin_reduction_vs_aco": 0.0564,
-        "saving_reduction_vs_aco": 0.04763097167015076,
+        "saving_reduction_vs_aco": 0.04770434498786927,
         "volatility": 0.17988078654565315
       },
       "equal_weight": {
         "ruin": 0.0248,
-        "equivalent_savings_rate": 0.0625242292881012,
+        "equivalent_savings_rate": 0.06242087483406067,
         "ruin_reduction_vs_aco": 0.048799999999999996,
-        "saving_reduction_vs_aco": 0.03747577071189881,
+        "saving_reduction_vs_aco": 0.03757912516593934,
         "volatility": 0.17271447369133425
       }
     },
@@ -65,16 +65,16 @@
       "benchmark_ruin": 0.0736,
       "proportional": {
         "ruin": 0.02,
-        "equivalent_savings_rate": 0.055256932973861694,
+        "equivalent_savings_rate": 0.05517640709877014,
         "ruin_reduction_vs_aco": 0.053599999999999995,
-        "saving_reduction_vs_aco": 0.04474306702613831,
+        "saving_reduction_vs_aco": 0.044823592901229864,
         "volatility": 0.17747578813185386
       },
       "equal_weight": {
         "ruin": 0.0292,
-        "equivalent_savings_rate": 0.06761232018470764,
+        "equivalent_savings_rate": 0.06750896573066711,
         "ruin_reduction_vs_aco": 0.044399999999999995,
-        "saving_reduction_vs_aco": 0.032387679815292364,
+        "saving_reduction_vs_aco": 0.03249103426933289,
         "volatility": 0.16895880421801246
       }
     },
@@ -88,16 +88,16 @@
       "benchmark_ruin": 0.0736,
       "proportional": {
         "ruin": 0.0211,
-        "equivalent_savings_rate": 0.05963966250419617,
+        "equivalent_savings_rate": 0.059540122747421265,
         "ruin_reduction_vs_aco": 0.0525,
-        "saving_reduction_vs_aco": 0.04036033749580384,
+        "saving_reduction_vs_aco": 0.04045987725257874,
         "volatility": 0.1764713487199136
       },
       "equal_weight": {
         "ruin": 0.0285,
-        "equivalent_savings_rate": 0.07566288113594055,
+        "equivalent_savings_rate": 0.07550176978111267,
         "ruin_reduction_vs_aco": 0.0451,
-        "saving_reduction_vs_aco": 0.024337118864059454,
+        "saving_reduction_vs_aco": 0.024498230218887335,
         "volatility": 0.16799145303603794
       }
     },
@@ -111,16 +111,16 @@
       "benchmark_ruin": 0.0736,
       "proportional": {
         "ruin": 0.0208,
-        "equivalent_savings_rate": 0.057744771242141724,
+        "equivalent_savings_rate": 0.05766049027442932,
         "ruin_reduction_vs_aco": 0.0528,
-        "saving_reduction_vs_aco": 0.04225522875785828,
+        "saving_reduction_vs_aco": 0.042339509725570684,
         "volatility": 0.17785908163226266
       },
       "equal_weight": {
         "ruin": 0.0298,
-        "equivalent_savings_rate": 0.0724206268787384,
+        "equivalent_savings_rate": 0.07229676842689514,
         "ruin_reduction_vs_aco": 0.0438,
-        "saving_reduction_vs_aco": 0.027579373121261602,
+        "saving_reduction_vs_aco": 0.027703231573104864,
         "volatility": 0.16982099589856364
       }
     }

@@ -11,6 +11,7 @@ Regles reprises ici, telles que le texte les enonce :
 - formule progressive de 2022 sur le revenu moyen indexe (AIME), avec les
   points d'inflexion a 1 024 et 6 172 dollars mensuels et les taux de
   remplacement de 90 %, 32 % et 15 % ;
+- plafond annuel de 147 000 dollars sur les revenus retenus dans l'AIME ;
 - depart a 65 ans, donc avant l'age du taux plein : le papier chiffre une
   penalite de 13,3 % sur la pension personnelle, 16,7 % sur la pension de
   conjoint et 8,1 % sur la reversion ;
@@ -19,9 +20,9 @@ Regles reprises ici, telles que le texte les enonce :
 - SSI comme plancher, a 1 261 dollars par mois pour un couple et 841 pour une
   personne seule en 2022.
 
-Le detail complet figure dans l'Internet Appendix du papier, non publie avec le
-manuscrit : cette implementation suit ce que le texte principal decrit et reste
-donc une approximation de leur calcul exact.
+Le detail complet figure dans l'Internet Appendix du papier. Cette
+implementation en reprend les parametres publies, dans un moteur de cycle de
+vie annuel qui reste une approximation de leur calcul mensuel.
 """
 
 from __future__ import annotations
@@ -31,6 +32,7 @@ from __future__ import annotations
 FIRST_BEND = 1_024.0
 SECOND_BEND = 6_172.0
 RATES = (0.90, 0.32, 0.15)
+MAX_TAXABLE_EARNINGS = 147_000.0
 
 # Penalites de depart a 65 ans, chiffrees par le papier.
 PERSONAL_PENALTY = 0.133
@@ -62,9 +64,11 @@ def household_benefit(annual_income: float) -> tuple[float, float]:
   l'autre change le revenu du menage sans changer son capital : un couple qui
   perd un conjoint garde la meilleure des deux pensions, pas leur somme.
   """
-  monthly = annual_income / 12.0
-  high = primary_insurance_amount(monthly * EARNINGS_SPLIT[0])
-  low = primary_insurance_amount(monthly * EARNINGS_SPLIT[1])
+  earnings = max(0.0, annual_income)
+  high = primary_insurance_amount(
+    min(earnings * EARNINGS_SPLIT[0], MAX_TAXABLE_EARNINGS) / 12.0)
+  low = primary_insurance_amount(
+    min(earnings * EARNINGS_SPLIT[1], MAX_TAXABLE_EARNINGS) / 12.0)
 
   # Prestation de conjoint : la moitie de la pension du mieux remunere, si
   # elle depasse la pension propre du conjoint.
@@ -84,13 +88,18 @@ def average_indexed_monthly_earnings(
     annual_earnings: list[float], years: int = 35) -> float:
   """Approximation de l'AIME a partir d'une carriere en dollars reels.
 
-  La SSA retient les 35 meilleures annees et complete une carriere plus courte
-  par des zeros. Les revenus simules etant deja exprimes en dollars 2022, nous
+  La SSA plafonne d'abord chaque revenu annuel aux revenus taxables maximaux,
+  retient les 35 meilleures annees et complete une carriere plus courte par
+  des zeros. Les revenus simules etant deja exprimes en dollars 2022, nous
   n'appliquons pas une seconde indexation salariale nominale.
   """
   if years <= 0:
     raise ValueError("Le nombre d'annees AIME doit etre strictement positif")
-  best = sorted((max(0.0, value) for value in annual_earnings), reverse=True)
+  best = sorted(
+    (min(max(0.0, value), MAX_TAXABLE_EARNINGS)
+     for value in annual_earnings),
+    reverse=True,
+  )
   best = (best + [0.0] * years)[:years]
   return sum(best) / (years * 12.0)
 

@@ -7,6 +7,11 @@ import csv
 import json
 from pathlib import Path
 
+from social_security import (
+  MAX_TAXABLE_EARNINGS,
+  average_indexed_monthly_earnings,
+)
+
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
@@ -29,6 +34,10 @@ def require(condition: bool, message: str) -> None:
 
 
 def main() -> None:
+  capped_aime = average_indexed_monthly_earnings([200_000.0] * 35)
+  require(capped_aime == MAX_TAXABLE_EARNINGS / 12.0,
+          "le plafond des revenus taxables n'est pas applique a l'AIME")
+
   expected_rows = {
     "jst-real-returns-2025.csv": 2247,
     "international-equity.csv": 2319,

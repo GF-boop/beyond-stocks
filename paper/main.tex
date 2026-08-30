@@ -58,6 +58,15 @@ budget rather than at a common gross exposure.
 diversification, leverage, gold, managed futures, retirement ruin.
 \end{abstract}
 
+\medskip
+\noindent\textit{Declaration of generative AI and AI-assisted technologies.}
+During the preparation of this work, the author used OpenAI Codex to assist
+with code development and review, reproducibility checks, and manuscript
+editing. All research-design choices, data-source decisions, interpretations,
+and conclusions were made and verified by the author, who reviewed and edited
+the outputs and takes full responsibility for the manuscript, code, and
+results.
+
 \newpage
 
 \section{Introduction}
@@ -121,7 +130,7 @@ Database and public index and macro sources, so that both the replication and
 the extensions can be checked and re-run by anyone. The fixed 33/67 portfolio
 produces 7.36\% ruin, compared with 14.95\% for domestic stocks, 13.81\% for a
 domestic 60/40, and 9.58\% for an internationally diversified balanced
-portfolio. Domestic stocks require a 16.75\% saving rate to match the utility of
+portfolio. Domestic stocks require a 16.85\% saving rate to match the utility of
 the 33/67 benchmark saving 10\%. These levels are not an exact replication of
 ACO's monthly experiment, but the central ordering and economic magnitude are
 similar. Reproducing either the ordering or the magnitudes alone could be a coincidence
@@ -139,7 +148,7 @@ data-dependent layer.
 
 We then decompose the equity result. A 33/67 portfolio at constant real
 exchange rates produces 4.57\% ruin and matches benchmark utility with a
-9.05\% saving rate. Restoring observed real-currency movements raises those
+9.03\% saving rate. Restoring observed real-currency movements raises those
 outcomes to 7.36\% and 10.00\%. Geographic diversification creates the gross
 benefit, and historical currency exposure offsets part of it.
 
@@ -155,7 +164,7 @@ The answer in the full historical panel is affirmative. At the two 200\%
 endpoints, the diversified families have annual volatility of 17.80\% and
 17.02\%, bracketing ACO's 17.43\%, while retirement ruin is 1.83\% and 2.51\%
 against 7.36\% for ACO. Their utility-equivalent saving rates are 5.32\% and
-6.40\%, against 10\% for ACO. The central result is consequently stronger than
+6.39\%, against 10\% for ACO. The central result is consequently stronger than
 an isolated reduction in volatility. Within this extended opportunity set, the
 100\% equity rule is not the best fixed portfolio rule at a comparable risk
 budget. Diversification improves both capital preservation and lifecycle
@@ -506,9 +515,10 @@ varies widely across historical return paths \citep{Estrada2018}.
 Appendix~\ref{app:policy-sensitivity} varies the withdrawal rate from 3\% to
 5\% and the contribution rate from 5\% to 15\% and finds the diversified
 ranking unchanged. Social
-Security is calculated from each simulated earnings history using 2022 bend
-points, spouse and survivor benefits, and the early-claiming adjustments
-described by ACO. Supplemental Security Income supplies a consumption floor.
+Security is calculated from each simulated earnings history using the 2022
+\$147{,}000 annual taxable-earnings ceiling, 2022 bend points, spouse and
+survivor benefits, and the early-claiming adjustments described by ACO.
+Supplemental Security Income supplies a consumption floor.
 Ruin occurs when financial wealth cannot fund the fixed withdrawal before the
 last spouse dies. Public pension income continues after financial wealth is
 exhausted.
@@ -552,16 +562,17 @@ Risk aversion is $\gamma$ = 3.84, and the bequest motive has intensity
 $\theta$ = 2,360 with shifter $k$ = \$490,000. None of the three is our
 choice. They are the estimates of \citet{DeNardiFrenchJones2010}, fitted to
 retiree data in a lifecycle model with medical expenses, and ACO adopt them
-unchanged, so our benchmark utility is exactly theirs. The bequest term is
-additive and warm-glow: utility depends on the size of the estate left,
+unchanged. Our utility aggregator therefore uses their stated preference
+parameters, while the wealth and consumption dynamics remain an annual
+approximation of their monthly engine. The bequest term is additive and
+warm-glow: utility depends on the size of the estate left,
 $B+k$, not on the heirs' own circumstances, which is the specification that
 explains why retirees in the data run down wealth slowly. ACO evaluate monthly
 consumption and therefore multiply the annual bequest-intensity estimate by
 $12^\gamma$. If within-year consumption is uniform, dividing their
 entire monthly utility by $12^\gamma$ gives equation~\eqref{eq:utility} with
-$\theta$ = 2,360. The annual aggregation thus preserves the relative scale of
-consumption and bequest utility, and only the wealth dynamics remain an annual
-approximation.
+$\theta$ = 2,360. Under uniform within-year consumption, the annual aggregation
+thus preserves the relative scale of consumption and bequest utility.
 
 For strategy $j$, the equivalent saving rate $s_j^*$ solves
 \begin{equation}
@@ -754,9 +765,9 @@ stocks start at 14.95\%. Holding real currency movements fixed while broadening
 the equity opportunity set cuts ruin to 4.57\%, so pure geographic breadth
 removes 10.38 points. Restoring observed currency movements adds 2.79 points
 back and lands on the published 7.36\%, a net improvement of 7.59 points. The
-equivalent saving rate decomposes the same way: breadth lowers it by 7.70
-points, the currency channel adds back 0.95 point, and the net improvement is
-6.75 points. Breadth thus accounts
+equivalent saving rate decomposes the same way: breadth lowers it by 7.82
+points, the currency channel adds back 0.97 point, and the net improvement is
+6.85 points. Breadth thus accounts
 for more than the whole net improvement, and the currency channel offsets part
 of it rather than adding to it. The constant-FX row is an attribution device, not an
 implementable portfolio, and does not imply that hedging equity currency would
@@ -770,12 +781,12 @@ throughout: diversification itself pays.
 \toprule
 Portfolio & Utility-eq. saving & Ruin & Median wealth at 65 \\
 \midrule
-Domestic stocks & 16.75\% & 14.95\% & \$742,494 \\
-ACO 33/67, constant real FX & 9.05 & 4.57 & 889,583 \\
+Domestic stocks & 16.85\% & 14.95\% & \$742,494 \\
+ACO 33/67, constant real FX & 9.03 & 4.57 & 889,583 \\
 ACO 33/67 & 10.00 & 7.36 & 904,948 \\
-Stocks/I 50/50 & 10.41 & 8.06 & 883,084 \\
-Balanced domestic & 18.53 & 13.81 & 589,241 \\
-Balanced/I & 14.79 & 9.58 & 629,208 \\
+Stocks/I 50/50 & 10.42 & 8.06 & 883,084 \\
+Balanced domestic & 18.56 & 13.81 & 589,241 \\
+Balanced/I & 14.77 & 9.58 & 629,208 \\
 \bottomrule
 \end{tabular}
 \begin{minipage}{0.94\textwidth}\footnotesize
@@ -831,14 +842,14 @@ futures contribute below.
 \toprule
 Portfolio & Utility-eq. rate & Wealth at 65 & Mean consumption & Ruin & Median bequest \\
 \midrule
-ACO 33/67 & 10.00\% & \$904,948 & \$73,166 & 7.36\% & \$1,532,124 \\
-90/60 local & 9.91 & 958,531 & 77,334 & 8.52 & 1,769,958 \\
-90/60 global bonds, covered & 9.77 & 950,885 & 76,286 & 7.81 & 1,745,595 \\
-60/40 ACO/covered & 14.41 & 629,380 & 55,870 & 8.90 & 687,604 \\
-60/40 ACO $+$ 33.33 MF & 8.70 & 921,663 & 71,271 & 3.29 & 1,770,421 \\
-60/40 ACO $+$ 33.33 gold & 11.00 & 733,983 & 61,136 & 4.38 & 1,071,052 \\
-54/36/20/20 ACO & 9.76 & 807,938 & 63,758 & 3.19 & 1,347,002 \\
-90/60/25/25 ACO & 5.36 & 1,465,946 & 103,355 & 1.96 & 4,905,367 \\
+ACO 33/67 & 10.00\% & \$904,948 & \$72,305 & 7.36\% & \$1,532,124 \\
+90/60 local & 9.92 & 958,531 & 76,473 & 8.52 & 1,769,958 \\
+90/60 global bonds, covered & 9.77 & 950,885 & 75,424 & 7.81 & 1,745,595 \\
+60/40 ACO/covered & 14.37 & 629,380 & 55,009 & 8.90 & 687,604 \\
+60/40 ACO $+$ 33.33 MF & 8.67 & 921,663 & 70,409 & 3.29 & 1,770,421 \\
+60/40 ACO $+$ 33.33 gold & 10.97 & 733,983 & 60,275 & 4.38 & 1,071,052 \\
+54/36/20/20 ACO & 9.73 & 807,938 & 62,897 & 3.19 & 1,347,002 \\
+90/60/25/25 ACO & 5.36 & 1,465,946 & 102,494 & 1.96 & 4,905,367 \\
 \bottomrule
 \end{tabular}
 \begin{minipage}{0.98\textwidth}\footnotesize
@@ -859,17 +870,17 @@ All wealth, consumption, ruin, and bequest columns use 10\% saving.
 \toprule
 Family & Gross exposure & Volatility & Saving & Ruin \\
 \midrule
-60/40/25/25 proportional & 100\% & 10.00\% & 13.17\% & 4.87\% \\
- & 125\% & 11.82 & 10.25 & 3.32 \\
- & 150\% & 13.75 & 8.13 & 2.47 \\
- & 175\% & 15.75 & 6.54 & 2.06 \\
+60/40/25/25 proportional & 100\% & 10.00\% & 13.12\% & 4.87\% \\
+ & 125\% & 11.82 & 10.22 & 3.32 \\
+ & 150\% & 13.75 & 8.11 & 2.47 \\
+ & 175\% & 15.75 & 6.53 & 2.06 \\
  & 200\% & 17.80 & 5.32 & 1.83 \\
 \addlinespace
-Equal-weight four-sleeve & 100\% & 9.68 & 14.54 & 5.79 \\
- & 125\% & 11.38 & 11.57 & 4.10 \\
- & 150\% & 13.19 & 9.36 & 3.27 \\
- & 175\% & 15.08 & 7.70 & 2.64 \\
- & 200\% & 17.02 & 6.40 & 2.51 \\
+Equal-weight four-sleeve & 100\% & 9.68 & 14.49 & 5.79 \\
+ & 125\% & 11.38 & 11.53 & 4.10 \\
+ & 150\% & 13.19 & 9.34 & 3.27 \\
+ & 175\% & 15.08 & 7.68 & 2.64 \\
+ & 200\% & 17.02 & 6.39 & 2.51 \\
 \bottomrule
 \end{tabular}
 \begin{minipage}{0.95\textwidth}\footnotesize
@@ -896,9 +907,9 @@ Table~\ref{tab:main-ladders}.
 The pattern is monotone in the economically relevant direction
 (Figure~\ref{fig:ladders-main}). In the
 proportional family, raising exposure from 100\% to 200\% lowers the
-utility-equivalent saving rate from 13.17\% to 5.32\% and ruin from 4.87\% to
+utility-equivalent saving rate from 13.12\% to 5.32\% and ruin from 4.87\% to
 1.83\%. The equal-weight family independently gives the same result. At 200\%,
-it has 17.02\% volatility, 6.40\% equivalent saving, and 2.51\% ruin. That two
+it has 17.02\% volatility, 6.39\% equivalent saving, and 2.51\% ruin. That two
 distinct simple weighting rules reach the same endpoint is the main evidence
 that the result is about the composition of return sources, not a finely chosen
 allocation.
@@ -921,10 +932,10 @@ reports the pre-existing ladder rows, and does not choose their weights.
 Portfolio & Gross exposure & Volatility & Saving & Ruin \\
 \midrule
 ACO 33/67 & 100\% & 17.43\% & 10.00\% & 7.36\% \\
-90/60 local & 150 & 17.44 & 9.91 & 8.52 \\
+90/60 local & 150 & 17.44 & 9.92 & 8.52 \\
 90/60 global bonds, covered & 150 & 16.83 & 9.77 & 7.81 \\
 60/40/25/25 family, 200\% & 200 & 17.80 & 5.32 & 1.83 \\
-Equal-weight family, 200\% & 200 & 17.02 & 6.40 & 2.51 \\
+Equal-weight family, 200\% & 200 & 17.02 & 6.39 & 2.51 \\
 90/60/25/25 & 200 & 18.34 & 5.36 & 1.96 \\
 \bottomrule
 \end{tabular}
@@ -937,7 +948,7 @@ point either side of ACO. Saving is utility-equivalent saving relative to ACO
 
 At comparable annual volatility, the contrast is economically large: the two
 simple families have 1.83\% and 2.51\% ruin against 7.36\% for ACO, while
-requiring 5.32\% and 6.40\% rather than 10\% equivalent saving. The covered-bond
+requiring 5.32\% and 6.39\% rather than 10\% equivalent saving. The covered-bond
 row keeps the claim precise: it improves on the local 90/60 but is
 roughly on a par with all-equity, so the result concerns the four-sleeve
 composition as a whole. It remains conditional on historical returns, fixed
@@ -1236,7 +1247,7 @@ At comparable annual volatility, two pre-specified four-sleeve families
 outperform ACO on both reported lifecycle criteria. Their 200\% endpoints have
 17.80\% and 17.02\% annual volatility, essentially ACO's 17.43\%, but
 retirement ruin of 1.83\% and 2.51\% rather than 7.36\%, and
-utility-equivalent saving rates of 5.32\% and 6.40\% rather than 10\%. This is
+utility-equivalent saving rates of 5.32\% and 6.39\% rather than 10\%. This is
 the paper's central result. Within the extended opportunity set,
 diversification improves both capital preservation and lifecycle utility at the
 same broad risk budget.
@@ -1823,9 +1834,9 @@ financing, and all post-1967 gold returns are unchanged.
 & \multicolumn{2}{c}{Gold unavailable before 1968} \\
 Portfolio & Saving & Ruin & Saving & Ruin \\
 \midrule
-60/40 ACO $+$ 33.33 gold & 11.00\% & 4.38\% & 9.42\% & 3.11\% \\
-54/36/20/20 ACO & 9.76 & 3.19 & 8.90 & 2.55 \\
-90/60/25/25 ACO & 5.36 & 1.96 & 4.79 & 1.65 \\
+60/40 ACO $+$ 33.33 gold & 10.97\% & 4.38\% & 9.39\% & 3.11\% \\
+54/36/20/20 ACO & 9.73 & 3.19 & 8.87 & 2.55 \\
+90/60/25/25 ACO & 5.36 & 1.96 & 4.78 & 1.65 \\
 \bottomrule
 \end{tabular}
 \begin{minipage}{0.96\textwidth}\footnotesize
@@ -1880,10 +1891,10 @@ after evaluation---the weights are never chosen to hit a volatility target.
 \toprule
 Gross & Equity/Bonds/Gold/MF & Volatility & Saving & Ruin \\
 \midrule
-100\% & 40/26.67/16.67/16.67 & 10.00\% & 13.17\% & 4.87\% \\
-125\% & 50/33.33/20.83/20.83 & 11.82 & 10.25 & 3.32 \\
-150\% & 60/40/25/25 & 13.75 & 8.13 & 2.47 \\
-175\% & 70/46.67/29.17/29.17 & 15.75 & 6.54 & 2.06 \\
+100\% & 40/26.67/16.67/16.67 & 10.00\% & 13.12\% & 4.87\% \\
+125\% & 50/33.33/20.83/20.83 & 11.82 & 10.22 & 3.32 \\
+150\% & 60/40/25/25 & 13.75 & 8.11 & 2.47 \\
+175\% & 70/46.67/29.17/29.17 & 15.75 & 6.53 & 2.06 \\
 200\% & 80/53.33/33.33/33.33 & 17.80 & 5.32 & 1.83 \\
 \bottomrule
 \end{tabular}
@@ -1903,11 +1914,11 @@ computing the reported realized volatility.
 \toprule
 Gross exposure & Each sleeve & Volatility & Saving & Ruin \\
 \midrule
-100\% & 25.00\% & 9.68\% & 14.54\% & 5.79\% \\
-125\% & 31.25 & 11.38 & 11.57 & 4.10 \\
-150\% & 37.50 & 13.19 & 9.36 & 3.27 \\
-175\% & 43.75 & 15.08 & 7.70 & 2.64 \\
-200\% & 50.00 & 17.02 & 6.40 & 2.51 \\
+100\% & 25.00\% & 9.68\% & 14.49\% & 5.79\% \\
+125\% & 31.25 & 11.38 & 11.53 & 4.10 \\
+150\% & 37.50 & 13.19 & 9.34 & 3.27 \\
+175\% & 43.75 & 15.08 & 7.68 & 2.64 \\
+200\% & 50.00 & 17.02 & 6.39 & 2.51 \\
 \bottomrule
 \end{tabular}
 \begin{minipage}{0.96\textwidth}\footnotesize
@@ -2015,8 +2026,8 @@ proportional family holds at 1.83\% ruin and the equal-weight family at
 2.51\% across the whole grid, both far below ACO's 7.36\%. The
 utility-equivalent saving does respond to $\gamma$, but it never approaches
 ACO's 10\%. The diversified edge is smallest near the baseline, where the
-families need 5.32\% and 6.40\%, and widens as $\gamma$ moves away from it:
-2.57\% and 3.74\% at $\gamma=2$, and 4.82\% and 5.98\% at $\gamma=10$. The
+families need 5.32\% and 6.39\%, and widens as $\gamma$ moves away from it:
+2.57\% and 3.74\% at $\gamma=2$, and 4.81\% and 5.96\% at $\gamma=10$. The
 pattern has a simple reading. At low $\gamma$ households barely mind risk, so
 the diversified sleeve wins mostly through its higher mean return; at high
 $\gamma$ they mostly mind downside risk, so it wins through lower variance
