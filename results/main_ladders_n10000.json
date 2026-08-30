@@ -1,0 +1,426 @@
+{
+  "seed": 20260827,
+  "runs": 10000,
+  "mean_block": 10.0,
+  "spread": 0.003,
+  "fx_hedge_cost": 0.001,
+  "trend_fee": 0.0085,
+  "trend_cost": 0.00566285264726086,
+  "trend_haircut": 0.0,
+  "gold_reallocation_from_year": null,
+  "withdrawal_rate": 0.04,
+  "gamma": 3.84,
+  "year_from": null,
+  "year_to": null,
+  "excluded_countries": [],
+  "excluded_war_years": false,
+  "included_suspect_data": false,
+  "sample_mode": "full",
+  "portfolio_set": "ladders",
+  "usd_numeraire": false,
+  "usd_common_sample": false,
+  "source_observations": 1557,
+  "included_unhedged_control": false,
+  "data_quality_exclusions": [
+    {
+      "country": "Japan",
+      "year": 1945,
+      "reason": "fermeture de marche, change administre et transition annuelle incomplete"
+    }
+  ],
+  "investability_exclusions": [
+    {
+      "country": "Belgium",
+      "year": 1940,
+      "inflation": 0.48173820314582816,
+      "reason": "fermeture ou restriction de marche ACO A.III"
+    },
+    {
+      "country": "Belgium",
+      "year": 1941,
+      "inflation": 0.9354084202950699,
+      "reason": "inflation annuelle superieure ou egale a 50 %"
+    },
+    {
+      "country": "Belgium",
+      "year": 1942,
+      "inflation": 0.5089337175792508,
+      "reason": "inflation annuelle superieure ou egale a 50 %"
+    },
+    {
+      "country": "Belgium",
+      "year": 1944,
+      "inflation": -0.03972634688641852,
+      "reason": "fermeture ou restriction de marche ACO A.III"
+    },
+    {
+      "country": "Belgium",
+      "year": 1945,
+      "inflation": -0.2349956822107081,
+      "reason": "fermeture ou restriction de marche ACO A.III; deflation annuelle inferieure ou egale a -20 %"
+    },
+    {
+      "country": "Denmark",
+      "year": 1940,
+      "inflation": 0.24074085587026084,
+      "reason": "fermeture ou restriction de marche ACO A.III"
+    },
+    {
+      "country": "Finland",
+      "year": 1946,
+      "inflation": 0.5930309007232084,
+      "reason": "inflation annuelle superieure ou egale a 50 %"
+    },
+    {
+      "country": "France",
+      "year": 1939,
+      "inflation": 0.0608695652173914,
+      "reason": "fermeture ou restriction de marche ACO A.III"
+    },
+    {
+      "country": "France",
+      "year": 1940,
+      "inflation": 0.18852459016393452,
+      "reason": "fermeture ou restriction de marche ACO A.III"
+    },
+    {
+      "country": "France",
+      "year": 1941,
+      "inflation": 0.1724137931034484,
+      "reason": "fermeture ou restriction de marche ACO A.III"
+    },
+    {
+      "country": "France",
+      "year": 1948,
+      "inflation": 0.5862726406101049,
+      "reason": "inflation annuelle superieure ou egale a 50 %"
+    },
+    {
+      "country": "France",
+      "year": 1974,
+      "inflation": 0.13649317472813816,
+      "reason": "restriction de marche ACO A.III"
+    },
+    {
+      "country": "France",
+      "year": 1979,
+      "inflation": 0.10646734171666461,
+      "reason": "restriction de marche ACO A.III"
+    },
+    {
+      "country": "Germany",
+      "year": 1931,
+      "inflation": -0.08108108105529377,
+      "reason": "crise bancaire et restriction de marche ACO A.III"
+    },
+    {
+      "country": "Germany",
+      "year": 1932,
+      "inflation": -0.11029411752311291,
+      "reason": "crise bancaire et restriction de marche ACO A.III"
+    },
+    {
+      "country": "Germany",
+      "year": 1943,
+      "inflation": 0.007299269741511072,
+      "reason": "fermeture de marche et reforme monetaire ACO A.III"
+    },
+    {
+      "country": "Italy",
+      "year": 1944,
+      "inflation": 3.443941266119463,
+      "reason": "inflation annuelle superieure ou egale a 50 %"
+    },
+    {
+      "country": "Italy",
+      "year": 1945,
+      "inflation": 0.9695410295142322,
+      "reason": "inflation annuelle superieure ou egale a 50 %"
+    },
+    {
+      "country": "Italy",
+      "year": 1947,
+      "inflation": 0.6206120698960382,
+      "reason": "inflation annuelle superieure ou egale a 50 %"
+    },
+    {
+      "country": "Japan",
+      "year": 1945,
+      "inflation": 9.756406218684686,
+      "reason": "fermeture de marche ACO A.III; inflation annuelle superieure ou egale a 50 %"
+    },
+    {
+      "country": "Netherlands",
+      "year": 1940,
+      "inflation": 0.14782602464234507,
+      "reason": "fermeture ou restriction de marche ACO A.III"
+    },
+    {
+      "country": "Netherlands",
+      "year": 1944,
+      "inflation": 0.029939523676633772,
+      "reason": "fermeture ou restriction de marche ACO A.III"
+    },
+    {
+      "country": "Netherlands",
+      "year": 1945,
+      "inflation": 0.1511633382210198,
+      "reason": "fermeture ou restriction de marche ACO A.III"
+    },
+    {
+      "country": "Netherlands",
+      "year": 1946,
+      "inflation": 0.09090915614648454,
+      "reason": "fermeture ou restriction de marche ACO A.III"
+    },
+    {
+      "country": "Norway",
+      "year": 1940,
+      "inflation": 0.16688610928242342,
+      "reason": "fermeture ou restriction de marche ACO A.III"
+    },
+    {
+      "country": "Portugal",
+      "year": 1974,
+      "inflation": 0.3788190163036034,
+      "reason": "fermeture ou restriction de marche ACO A.III"
+    },
+    {
+      "country": "Portugal",
+      "year": 1975,
+      "inflation": 0.18531399046104924,
+      "reason": "fermeture ou restriction de marche ACO A.III"
+    },
+    {
+      "country": "Portugal",
+      "year": 1976,
+      "inflation": 0.20638779445049882,
+      "reason": "fermeture ou restriction de marche ACO A.III"
+    },
+    {
+      "country": "Portugal",
+      "year": 1977,
+      "inflation": 0.3297199638663053,
+      "reason": "fermeture ou restriction de marche ACO A.III"
+    },
+    {
+      "country": "Switzerland",
+      "year": 1940,
+      "inflation": 0.09420308624600748,
+      "reason": "restriction de marche ACO A.III"
+    }
+  ],
+  "observations": 1557,
+  "benchmark": "ACO 33/67",
+  "results": [
+    {
+      "strategy": "ACO 33/67",
+      "mean_return": 0.07581919715341902,
+      "volatility": 0.1743095545120768,
+      "first_percentile_return": -0.39415996485515753,
+      "worst_year": -0.8460248882878691,
+      "worst_country": "Japan",
+      "worst_calendar_year": 1945,
+      "equivalent_savings_rate": 0.09999999403953552,
+      "median_retirement_wealth": 904948.3971961855,
+      "mean_retirement_consumption": 73166.25920439238,
+      "ruin_probability": 0.0736,
+      "ruin_difference_vs_benchmark": 0.0,
+      "ruin_difference_ci95": [
+        0.0,
+        0.0
+      ],
+      "median_bequest": 1532124.3045357058
+    },
+    {
+      "strategy": "40/26.67/16.67/16.67 ACO",
+      "mean_return": 0.051331101109644554,
+      "volatility": 0.10004547256123053,
+      "first_percentile_return": -0.16081253130700215,
+      "worst_year": -0.8695550105022627,
+      "worst_country": "Japan",
+      "worst_calendar_year": 1945,
+      "equivalent_savings_rate": 0.13172844052314758,
+      "median_retirement_wealth": 620507.9573115398,
+      "mean_retirement_consumption": 53914.34369651326,
+      "ruin_probability": 0.0487,
+      "ruin_difference_vs_benchmark": -0.0249,
+      "ruin_difference_ci95": [
+        -0.02981511879792134,
+        -0.019984881202078655
+      ],
+      "median_bequest": 710165.4369555095
+    },
+    {
+      "strategy": "50/33.33/20.83/20.83 ACO",
+      "mean_return": 0.06258756778181301,
+      "volatility": 0.11821297653301445,
+      "first_percentile_return": -0.18707430891267865,
+      "worst_year": -0.8615493143916422,
+      "worst_country": "Japan",
+      "worst_calendar_year": 1945,
+      "equivalent_savings_rate": 0.10252329707145691,
+      "median_retirement_wealth": 770302.3234393466,
+      "mean_retirement_consumption": 61719.67403079991,
+      "ruin_probability": 0.0332,
+      "ruin_difference_vs_benchmark": -0.0404,
+      "ruin_difference_ci95": [
+        -0.04505364750039211,
+        -0.035746352499607885
+      ],
+      "median_bequest": 1218356.0715582424
+    },
+    {
+      "strategy": "60/40/25/25 ACO",
+      "mean_return": 0.07384403445398148,
+      "volatility": 0.13751580929463084,
+      "first_percentile_return": -0.2194274785107271,
+      "worst_year": -0.8535436182810217,
+      "worst_country": "Japan",
+      "worst_calendar_year": 1945,
+      "equivalent_savings_rate": 0.08134934306144714,
+      "median_retirement_wealth": 956325.8729416919,
+      "mean_retirement_consumption": 71767.2465408897,
+      "ruin_probability": 0.0247,
+      "ruin_difference_vs_benchmark": -0.0489,
+      "ruin_difference_ci95": [
+        -0.05349302409676188,
+        -0.044306975903238115
+      ],
+      "median_bequest": 1991780.7020647228
+    },
+    {
+      "strategy": "70/46.67/29.17/29.17 ACO",
+      "mean_return": 0.08510050112614996,
+      "volatility": 0.15753719095974344,
+      "first_percentile_return": -0.2460504974278421,
+      "worst_year": -0.8455379221704011,
+      "worst_country": "Japan",
+      "worst_calendar_year": 1945,
+      "equivalent_savings_rate": 0.065420001745224,
+      "median_retirement_wealth": 1178608.232463535,
+      "mean_retirement_consumption": 84742.1656233979,
+      "ruin_probability": 0.0206,
+      "ruin_difference_vs_benchmark": -0.053,
+      "ruin_difference_ci95": [
+        -0.05757971352134539,
+        -0.04842028647865461
+      ],
+      "median_bequest": 3186428.3492076416
+    },
+    {
+      "strategy": "80/53.33/33.33/33.33 ACO",
+      "mean_return": 0.09635696779831841,
+      "volatility": 0.17803486739788707,
+      "first_percentile_return": -0.2803340546664191,
+      "worst_year": -0.8375322260597804,
+      "worst_country": "Japan",
+      "worst_calendar_year": 1945,
+      "equivalent_savings_rate": 0.05324694514274597,
+      "median_retirement_wealth": 1448010.9083087612,
+      "mean_retirement_consumption": 101487.93107323813,
+      "ruin_probability": 0.0183,
+      "ruin_difference_vs_benchmark": -0.0553,
+      "ruin_difference_ci95": [
+        -0.05991526751283406,
+        -0.05068473248716594
+      ],
+      "median_bequest": 4969459.742483066
+    },
+    {
+      "strategy": "25/25/25/25 ACO",
+      "mean_return": 0.047513615448480435,
+      "volatility": 0.09676998468989578,
+      "first_percentile_return": -0.15348638848929802,
+      "worst_year": -0.8730799294615654,
+      "worst_country": "Japan",
+      "worst_calendar_year": 1945,
+      "equivalent_savings_rate": 0.14536568522453308,
+      "median_retirement_wealth": 570142.6844215944,
+      "mean_retirement_consumption": 51462.495372481135,
+      "ruin_probability": 0.0579,
+      "ruin_difference_vs_benchmark": -0.0157,
+      "ruin_difference_ci95": [
+        -0.021300995404082354,
+        -0.010099004595917643
+      ],
+      "median_bequest": 576221.3481904392
+    },
+    {
+      "strategy": "31.25/31.25/31.25/31.25 ACO",
+      "mean_return": 0.05781571070535788,
+      "volatility": 0.11376485442024817,
+      "first_percentile_return": -0.16785382828154088,
+      "worst_year": -0.8659554630907708,
+      "worst_country": "Japan",
+      "worst_calendar_year": 1945,
+      "equivalent_savings_rate": 0.11571970582008362,
+      "median_retirement_wealth": 695557.2760813087,
+      "mean_retirement_consumption": 57923.55321780465,
+      "ruin_probability": 0.041,
+      "ruin_difference_vs_benchmark": -0.0326,
+      "ruin_difference_ci95": [
+        -0.03783523207545648,
+        -0.027364767924543513
+      ],
+      "median_bequest": 949293.7952843071
+    },
+    {
+      "strategy": "37.5/37.5/37.5/37.5 ACO",
+      "mean_return": 0.06811780596223531,
+      "volatility": 0.13191330502928708,
+      "first_percentile_return": -0.19950195033434343,
+      "worst_year": -0.8588309967199756,
+      "worst_country": "Japan",
+      "worst_calendar_year": 1945,
+      "equivalent_savings_rate": 0.0936482846736908,
+      "median_retirement_wealth": 842497.3371199833,
+      "mean_retirement_consumption": 66138.45888032707,
+      "ruin_probability": 0.0327,
+      "ruin_difference_vs_benchmark": -0.0409,
+      "ruin_difference_ci95": [
+        -0.04594424243554717,
+        -0.03585575756445283
+      ],
+      "median_bequest": 1497603.516902588
+    },
+    {
+      "strategy": "43.75/43.75/43.75/43.75 ACO",
+      "mean_return": 0.07841990121911276,
+      "volatility": 0.15079941566316193,
+      "first_percentile_return": -0.22226171067705935,
+      "worst_year": -0.851706530349181,
+      "worst_country": "Japan",
+      "worst_calendar_year": 1945,
+      "equivalent_savings_rate": 0.07699844241142273,
+      "median_retirement_wealth": 1012738.5838403415,
+      "mean_retirement_consumption": 76606.81176242685,
+      "ruin_probability": 0.0264,
+      "ruin_difference_vs_benchmark": -0.0472,
+      "ruin_difference_ci95": [
+        -0.05214209706682718,
+        -0.04225790293317282
+      ],
+      "median_bequest": 2302258.5724514136
+    },
+    {
+      "strategy": "50/50/50/50 ACO",
+      "mean_return": 0.0887219964759902,
+      "volatility": 0.1701777695912845,
+      "first_percentile_return": -0.2583897773670018,
+      "worst_year": -0.8445820639783859,
+      "worst_country": "Japan",
+      "worst_calendar_year": 1945,
+      "equivalent_savings_rate": 0.06403586268424988,
+      "median_retirement_wealth": 1219180.6900097714,
+      "mean_retirement_consumption": 89996.52917621123,
+      "ruin_probability": 0.0251,
+      "ruin_difference_vs_benchmark": -0.0485,
+      "ruin_difference_ci95": [
+        -0.05348758290540857,
+        -0.04351241709459143
+      ],
+      "median_bequest": 3452974.984327522
+    }
+  ]
+}

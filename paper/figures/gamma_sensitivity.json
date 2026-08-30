@@ -1,0 +1,134 @@
+{
+  "runs_per_gamma": 10000,
+  "seed": 20260827,
+  "spread": 0.003,
+  "fx_hedge_cost": 0.001,
+  "trend_fee": 0.0085,
+  "trend_cost": 0.00566285264726086,
+  "gamma_base": 3.84,
+  "theta_annual_base": 2360.0,
+  "proportional_portfolio": "80/53.33/33.33/33.33 ACO",
+  "equal_weight_portfolio": "50/50/50/50 ACO",
+  "results": [
+    {
+      "gamma": 2.0,
+      "bequest_theta_annual": 228352.35544615024,
+      "benchmark_ruin": 0.0736,
+      "benchmark_equivalent_savings_rate": 0.1,
+      "portfolios": {
+        "80/53.33/33.33/33.33 ACO": {
+          "ruin": 0.0183,
+          "equivalent_savings_rate": 0.025671929121017456,
+          "ruin_reduction_vs_aco": 0.0553,
+          "saving_reduction_vs_aco": 0.07432807087898255
+        },
+        "50/50/50/50 ACO": {
+          "ruin": 0.0251,
+          "equivalent_savings_rate": 0.037352293729782104,
+          "ruin_reduction_vs_aco": 0.0485,
+          "saving_reduction_vs_aco": 0.0626477062702179
+        }
+      }
+    },
+    {
+      "gamma": 3.0,
+      "bequest_theta_annual": 19029.36295384585,
+      "benchmark_ruin": 0.0736,
+      "benchmark_equivalent_savings_rate": 0.1,
+      "portfolios": {
+        "80/53.33/33.33/33.33 ACO": {
+          "ruin": 0.0183,
+          "equivalent_savings_rate": 0.03872784972190857,
+          "ruin_reduction_vs_aco": 0.0553,
+          "saving_reduction_vs_aco": 0.061272150278091436
+        },
+        "50/50/50/50 ACO": {
+          "ruin": 0.0251,
+          "equivalent_savings_rate": 0.04984208941459656,
+          "ruin_reduction_vs_aco": 0.0485,
+          "saving_reduction_vs_aco": 0.05015791058540345
+        }
+      }
+    },
+    {
+      "gamma": 3.84,
+      "bequest_theta_annual": 2360.0,
+      "benchmark_ruin": 0.0736,
+      "benchmark_equivalent_savings_rate": 0.1,
+      "portfolios": {
+        "80/53.33/33.33/33.33 ACO": {
+          "ruin": 0.0183,
+          "equivalent_savings_rate": 0.05324694514274597,
+          "ruin_reduction_vs_aco": 0.0553,
+          "saving_reduction_vs_aco": 0.046753054857254034
+        },
+        "50/50/50/50 ACO": {
+          "ruin": 0.0251,
+          "equivalent_savings_rate": 0.06403586268424988,
+          "ruin_reduction_vs_aco": 0.0485,
+          "saving_reduction_vs_aco": 0.03596413731575013
+        }
+      }
+    },
+    {
+      "gamma": 5.0,
+      "bequest_theta_annual": 132.14835384615174,
+      "benchmark_ruin": 0.0736,
+      "benchmark_equivalent_savings_rate": 0.1,
+      "portfolios": {
+        "80/53.33/33.33/33.33 ACO": {
+          "ruin": 0.0183,
+          "equivalent_savings_rate": 0.051305145025253296,
+          "ruin_reduction_vs_aco": 0.0553,
+          "saving_reduction_vs_aco": 0.04869485497474671
+        },
+        "50/50/50/50 ACO": {
+          "ruin": 0.0251,
+          "equivalent_savings_rate": 0.06208732724189758,
+          "ruin_reduction_vs_aco": 0.0485,
+          "saving_reduction_vs_aco": 0.03791267275810242
+        }
+      }
+    },
+    {
+      "gamma": 7.5,
+      "bequest_theta_annual": 0.2649162766182001,
+      "benchmark_ruin": 0.0736,
+      "benchmark_equivalent_savings_rate": 0.1,
+      "portfolios": {
+        "80/53.33/33.33/33.33 ACO": {
+          "ruin": 0.0183,
+          "equivalent_savings_rate": 0.04903557896614075,
+          "ruin_reduction_vs_aco": 0.0553,
+          "saving_reduction_vs_aco": 0.05096442103385926
+        },
+        "50/50/50/50 ACO": {
+          "ruin": 0.0251,
+          "equivalent_savings_rate": 0.060152024030685425,
+          "ruin_reduction_vs_aco": 0.0485,
+          "saving_reduction_vs_aco": 0.03984797596931458
+        }
+      }
+    },
+    {
+      "gamma": 10.0,
+      "bequest_theta_annual": 0.000531074595896636,
+      "benchmark_ruin": 0.0736,
+      "benchmark_equivalent_savings_rate": 0.1,
+      "portfolios": {
+        "80/53.33/33.33/33.33 ACO": {
+          "ruin": 0.0183,
+          "equivalent_savings_rate": 0.048218339681625366,
+          "ruin_reduction_vs_aco": 0.0553,
+          "saving_reduction_vs_aco": 0.05178166031837464
+        },
+        "50/50/50/50 ACO": {
+          "ruin": 0.0251,
+          "equivalent_savings_rate": 0.0597778856754303,
+          "ruin_reduction_vs_aco": 0.0485,
+          "saving_reduction_vs_aco": 0.04022211432456971
+        }
+      }
+    }
+  ]
+}

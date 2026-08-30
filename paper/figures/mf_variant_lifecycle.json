@@ -1,0 +1,128 @@
+{
+  "runs": 10000,
+  "seed": 20260827,
+  "spread": 0.003,
+  "fx_hedge_cost": 0.001,
+  "trend_cost": 0.00566285264726086,
+  "trend_fee_baseline": 0.0085,
+  "reference": "1_6_12",
+  "proportional_portfolio": "80/53.33/33.33/33.33 ACO",
+  "equal_weight_portfolio": "50/50/50/50 ACO",
+  "results": [
+    {
+      "key": "1_6_12",
+      "label": "1/6/12 blend (baseline)",
+      "management_fee": 0.0085,
+      "us_real_gross_mean": 0.0856386073670014,
+      "us_real_gross_skew": 0.4036839606511143,
+      "corr_with_baseline": 1.0,
+      "benchmark_ruin": 0.0736,
+      "proportional": {
+        "ruin": 0.0183,
+        "equivalent_savings_rate": 0.05324694514274597,
+        "ruin_reduction_vs_aco": 0.0553,
+        "saving_reduction_vs_aco": 0.046753054857254034,
+        "volatility": 0.17803486739788707
+      },
+      "equal_weight": {
+        "ruin": 0.0251,
+        "equivalent_savings_rate": 0.06403586268424988,
+        "ruin_reduction_vs_aco": 0.0485,
+        "saving_reduction_vs_aco": 0.03596413731575013,
+        "volatility": 0.1701777695912845
+      }
+    },
+    {
+      "key": "1_3_12",
+      "label": "1/3/12 blend",
+      "management_fee": 0.0085,
+      "us_real_gross_mean": 0.08827974273121987,
+      "us_real_gross_skew": 0.6075732292054671,
+      "corr_with_baseline": 0.9605433253974209,
+      "benchmark_ruin": 0.0736,
+      "proportional": {
+        "ruin": 0.0172,
+        "equivalent_savings_rate": 0.05236902832984924,
+        "ruin_reduction_vs_aco": 0.0564,
+        "saving_reduction_vs_aco": 0.04763097167015076,
+        "volatility": 0.17988078654565315
+      },
+      "equal_weight": {
+        "ruin": 0.0248,
+        "equivalent_savings_rate": 0.0625242292881012,
+        "ruin_reduction_vs_aco": 0.048799999999999996,
+        "saving_reduction_vs_aco": 0.03747577071189881,
+        "volatility": 0.17271447369133425
+      }
+    },
+    {
+      "key": "12m",
+      "label": "12-month signal only",
+      "management_fee": 0.0085,
+      "us_real_gross_mean": 0.08151271508026685,
+      "us_real_gross_skew": 0.047005744386509,
+      "corr_with_baseline": 0.8316300787134002,
+      "benchmark_ruin": 0.0736,
+      "proportional": {
+        "ruin": 0.02,
+        "equivalent_savings_rate": 0.055256932973861694,
+        "ruin_reduction_vs_aco": 0.053599999999999995,
+        "saving_reduction_vs_aco": 0.04474306702613831,
+        "volatility": 0.17747578813185386
+      },
+      "equal_weight": {
+        "ruin": 0.0292,
+        "equivalent_savings_rate": 0.06761232018470764,
+        "ruin_reduction_vs_aco": 0.044399999999999995,
+        "saving_reduction_vs_aco": 0.032387679815292364,
+        "volatility": 0.16895880421801246
+      }
+    },
+    {
+      "key": "1m",
+      "label": "1-month signal only",
+      "management_fee": 0.0085,
+      "us_real_gross_mean": 0.07192657794246857,
+      "us_real_gross_skew": 0.6894977602301031,
+      "corr_with_baseline": 0.7705342890841337,
+      "benchmark_ruin": 0.0736,
+      "proportional": {
+        "ruin": 0.0211,
+        "equivalent_savings_rate": 0.05963966250419617,
+        "ruin_reduction_vs_aco": 0.0525,
+        "saving_reduction_vs_aco": 0.04036033749580384,
+        "volatility": 0.1764713487199136
+      },
+      "equal_weight": {
+        "ruin": 0.0285,
+        "equivalent_savings_rate": 0.07566288113594055,
+        "ruin_reduction_vs_aco": 0.0451,
+        "saving_reduction_vs_aco": 0.024337118864059454,
+        "volatility": 0.16799145303603794
+      }
+    },
+    {
+      "key": "1_6_12_2fee",
+      "label": "1/6/12 blend, fee doubled to 1.70\\%",
+      "management_fee": 0.017,
+      "us_real_gross_mean": 0.0856386073670014,
+      "us_real_gross_skew": 0.4036839606511143,
+      "corr_with_baseline": 1.0,
+      "benchmark_ruin": 0.0736,
+      "proportional": {
+        "ruin": 0.0208,
+        "equivalent_savings_rate": 0.057744771242141724,
+        "ruin_reduction_vs_aco": 0.0528,
+        "saving_reduction_vs_aco": 0.04225522875785828,
+        "volatility": 0.17785908163226266
+      },
+      "equal_weight": {
+        "ruin": 0.0298,
+        "equivalent_savings_rate": 0.0724206268787384,
+        "ruin_reduction_vs_aco": 0.0438,
+        "saving_reduction_vs_aco": 0.027579373121261602,
+        "volatility": 0.16982099589856364
+      }
+    }
+  ]
+}

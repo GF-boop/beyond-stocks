@@ -1,0 +1,26 @@
+# Artefacts LaTeX
+paper/*.aux
+paper/*.bbl
+paper/*.bcf
+paper/*.blg
+paper/*.log
+paper/*.out
+paper/*.run.xml
+paper/*.fls
+paper/*.fdb_latexmk
+paper/*.synctex.gz
+
+# Python
+__pycache__/
+*.pyc
+
+# Indices propriétaires SG / BarclayHedge et séries de fonds cotés (Yahoo) —
+# non redistribuables. Seuls les README (mode d'emploi de récupération) sont
+# versionnés ; aucune donnée.
+data/benchmarks-externes/**
+!data/benchmarks-externes/README.md
+!data/benchmarks-externes/funds/
+!data/benchmarks-externes/funds/README.md
+
+# PDF publiés sous droit d'auteur — citer les DOI, ne pas redistribuer
+papers/

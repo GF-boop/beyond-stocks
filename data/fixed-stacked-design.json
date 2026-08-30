@@ -1,0 +1,73 @@
+{
+  "schema_version": 2,
+  "design_frozen_on": "2026-08-28",
+  "design_name": "fixed_stacked_aco_equity_gold_managed_futures",
+  "revision_reason": "hold the ACO 33/67 resident equity sleeve fixed and evaluate two pre-specified gross-exposure ladders",
+  "max_gross_exposure": 2.0,
+  "base_financing_spread": 0.003,
+  "calibrated_from_returns": false,
+  "rebalancing": "annual",
+  "exposure_order": ["aco_33_67_equity", "world_bond", "gold", "managed_futures"],
+  "portfolios": [
+    {
+      "name": "60/40 ACO/couvert",
+      "exposures": [0.60, 0.40, 0.00, 0.00]
+    },
+    {
+      "name": "60/40 ACO + 33.33 MF",
+      "exposures": [0.60, 0.40, 0.00, 0.3333333333333333]
+    },
+    {
+      "name": "60/40 ACO + 33.33 Or",
+      "exposures": [0.60, 0.40, 0.3333333333333333, 0.00]
+    },
+    {
+      "name": "54/36/20/20 ACO",
+      "exposures": [0.54, 0.36, 0.20, 0.20]
+    },
+    {
+      "name": "40/26.67/16.67/16.67 ACO",
+      "exposures": [0.40, 0.2666666666666667, 0.1666666666666667, 0.1666666666666667]
+    },
+    {
+      "name": "50/33.33/20.83/20.83 ACO",
+      "exposures": [0.50, 0.3333333333333333, 0.2083333333333333, 0.2083333333333333]
+    },
+    {
+      "name": "60/40/25/25 ACO",
+      "exposures": [0.60, 0.40, 0.25, 0.25]
+    },
+    {
+      "name": "70/46.67/29.17/29.17 ACO",
+      "exposures": [0.70, 0.4666666666666667, 0.2916666666666667, 0.2916666666666667]
+    },
+    {
+      "name": "80/53.33/33.33/33.33 ACO",
+      "exposures": [0.80, 0.5333333333333333, 0.3333333333333333, 0.3333333333333333]
+    },
+    {
+      "name": "25/25/25/25 ACO",
+      "exposures": [0.25, 0.25, 0.25, 0.25]
+    },
+    {
+      "name": "31.25/31.25/31.25/31.25 ACO",
+      "exposures": [0.3125, 0.3125, 0.3125, 0.3125]
+    },
+    {
+      "name": "37.5/37.5/37.5/37.5 ACO",
+      "exposures": [0.375, 0.375, 0.375, 0.375]
+    },
+    {
+      "name": "43.75/43.75/43.75/43.75 ACO",
+      "exposures": [0.4375, 0.4375, 0.4375, 0.4375]
+    },
+    {
+      "name": "50/50/50/50 ACO",
+      "exposures": [0.50, 0.50, 0.50, 0.50]
+    },
+    {
+      "name": "90/60/25/25 ACO",
+      "exposures": [0.90, 0.60, 0.25, 0.25]
+    }
+  ]
+}

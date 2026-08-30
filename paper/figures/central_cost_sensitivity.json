@@ -1,0 +1,113 @@
+{
+  "runs_per_specification": 10000,
+  "seed": 20260827,
+  "financing_stress": [
+    {
+      "spread": 0.003,
+      "hedge_cost": 0.001,
+      "benchmark_ruin": 0.0736,
+      "portfolios": {
+        "80/53.33/33.33/33.33 ACO": {
+          "equivalent_savings_rate": 0.05324694514274597,
+          "ruin_probability": 0.0183
+        },
+        "50/50/50/50 ACO": {
+          "equivalent_savings_rate": 0.06403586268424988,
+          "ruin_probability": 0.0251
+        }
+      }
+    },
+    {
+      "spread": 0.01,
+      "hedge_cost": 0.001,
+      "benchmark_ruin": 0.0736,
+      "portfolios": {
+        "80/53.33/33.33/33.33 ACO": {
+          "equivalent_savings_rate": 0.06442961096763611,
+          "ruin_probability": 0.0255
+        },
+        "50/50/50/50 ACO": {
+          "equivalent_savings_rate": 0.07767614722251892,
+          "ruin_probability": 0.0328
+        }
+      }
+    },
+    {
+      "spread": 0.02,
+      "hedge_cost": 0.001,
+      "benchmark_ruin": 0.0736,
+      "portfolios": {
+        "80/53.33/33.33/33.33 ACO": {
+          "equivalent_savings_rate": 0.08549371361732483,
+          "ruin_probability": 0.0421
+        },
+        "50/50/50/50 ACO": {
+          "equivalent_savings_rate": 0.10359391570091248,
+          "ruin_probability": 0.0589
+        }
+      }
+    },
+    {
+      "spread": 0.03,
+      "hedge_cost": 0.001,
+      "benchmark_ruin": 0.0736,
+      "portfolios": {
+        "80/53.33/33.33/33.33 ACO": {
+          "equivalent_savings_rate": 0.11512598395347595,
+          "ruin_probability": 0.0709
+        },
+        "50/50/50/50 ACO": {
+          "equivalent_savings_rate": 0.1418035328388214,
+          "ruin_probability": 0.0957
+        }
+      }
+    }
+  ],
+  "hedging_stress": [
+    {
+      "spread": 0.003,
+      "hedge_cost": 0.001,
+      "benchmark_ruin": 0.0736,
+      "portfolios": {
+        "80/53.33/33.33/33.33 ACO": {
+          "equivalent_savings_rate": 0.05324694514274597,
+          "ruin_probability": 0.0183
+        },
+        "50/50/50/50 ACO": {
+          "equivalent_savings_rate": 0.06403586268424988,
+          "ruin_probability": 0.0251
+        }
+      }
+    },
+    {
+      "spread": 0.003,
+      "hedge_cost": 0.005,
+      "benchmark_ruin": 0.0736,
+      "portfolios": {
+        "80/53.33/33.33/33.33 ACO": {
+          "equivalent_savings_rate": 0.05848756432533264,
+          "ruin_probability": 0.0212
+        },
+        "50/50/50/50 ACO": {
+          "equivalent_savings_rate": 0.07148149609565735,
+          "ruin_probability": 0.0295
+        }
+      }
+    },
+    {
+      "spread": 0.003,
+      "hedge_cost": 0.01,
+      "benchmark_ruin": 0.0736,
+      "portfolios": {
+        "80/53.33/33.33/33.33 ACO": {
+          "equivalent_savings_rate": 0.0658661425113678,
+          "ruin_probability": 0.0266
+        },
+        "50/50/50/50 ACO": {
+          "equivalent_savings_rate": 0.0821361243724823,
+          "ruin_probability": 0.0373
+        }
+      }
+    }
+  ]
+}

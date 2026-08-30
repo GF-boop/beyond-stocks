@@ -1,0 +1,1389 @@
+{
+  "generated": "2026-08-30",
+  "proxy": {
+    "file": "data/managed-futures-monthly.csv",
+    "column": "mf_1_6_12_net_return",
+    "first": "1926-03",
+    "last": "2025-12"
+  },
+  "funds": {
+    "WTMF": {
+      "first": "2011-02",
+      "last": "2026-07",
+      "vol_ann_full": 0.064
+    },
+    "QMHIX": {
+      "first": "2013-08",
+      "last": "2026-07",
+      "vol_ann_full": 0.151
+    },
+    "AHLIX": {
+      "first": "2014-09",
+      "last": "2026-07",
+      "vol_ann_full": 0.096
+    },
+    "AHLT": {
+      "first": "2023-10",
+      "last": "2026-07",
+      "vol_ann_full": 0.145
+    },
+    "IMF": {
+      "first": "2025-04",
+      "last": "2026-07",
+      "vol_ann_full": 0.123
+    },
+    "ISMF": {
+      "first": "2025-04",
+      "last": "2026-07",
+      "vol_ann_full": 0.061
+    },
+    "APEX": {
+      "first": "2022-04",
+      "last": "2026-07",
+      "vol_ann_full": 0.086
+    }
+  },
+  "proxy_vs_funds_full_overlap": [
+    {
+      "fund": "WTMF",
+      "description": "0. WisdomTree Managed Futures Strategy Fund (ETF, 2011)",
+      "corr": 0.229,
+      "n_months": 179,
+      "first": "2011-02",
+      "last": "2025-12"
+    },
+    {
+      "fund": "QMHIX",
+      "description": "AQR Managed Futures Strategy HV Fund, classe I (OPCVM, 2013)",
+      "corr": 0.515,
+      "n_months": 149,
+      "first": "2013-08",
+      "last": "2025-12"
+    },
+    {
+      "fund": "AHLIX",
+      "description": "American Beacon AHL Managed Futures Fund, classe R5 (OPCVM, 2014)",
+      "corr": 0.538,
+      "n_months": 136,
+      "first": "2014-09",
+      "last": "2025-12"
+    },
+    {
+      "fund": "AHLT",
+      "description": "American Beacon AHL Trend ETF (2023)",
+      "corr": 0.648,
+      "n_months": 27,
+      "first": "2023-10",
+      "last": "2025-12"
+    },
+    {
+      "fund": "IMF",
+      "description": "Invesco Managed Futures Strategy ETF (2025)",
+      "corr": 0.635,
+      "n_months": 9,
+      "first": "2025-04",
+      "last": "2025-12"
+    },
+    {
+      "fund": "ISMF",
+      "description": "iShares Managed Futures Active ETF (2025)",
+      "corr": 0.583,
+      "n_months": 9,
+      "first": "2025-04",
+      "last": "2025-12"
+    },
+    {
+      "fund": "APEX",
+      "description": "AQR Apex UCITS Fund RA USD Acc (multi-stratégies, 2022)",
+      "corr": 0.152,
+      "n_months": 45,
+      "first": "2022-04",
+      "last": "2025-12"
+    }
+  ],
+  "fund_vs_fund_full_overlap": [
+    {
+      "a": "WTMF",
+      "b": "QMHIX",
+      "corr": 0.326,
+      "n_months": 156,
+      "first": "2013-08",
+      "last": "2026-07"
+    },
+    {
+      "a": "WTMF",
+      "b": "AHLIX",
+      "corr": 0.395,
+      "n_months": 143,
+      "first": "2014-09",
+      "last": "2026-07"
+    },
+    {
+      "a": "WTMF",
+      "b": "AHLT",
+      "corr": 0.154,
+      "n_months": 34,
+      "first": "2023-10",
+      "last": "2026-07"
+    },
+    {
+      "a": "WTMF",
+      "b": "IMF",
+      "corr": 0.263,
+      "n_months": 16,
+      "first": "2025-04",
+      "last": "2026-07"
+    },
+    {
+      "a": "WTMF",
+      "b": "ISMF",
+      "corr": 0.473,
+      "n_months": 16,
+      "first": "2025-04",
+      "last": "2026-07"
+    },
+    {
+      "a": "WTMF",
+      "b": "APEX",
+      "corr": -0.009,
+      "n_months": 52,
+      "first": "2022-04",
+      "last": "2026-07"
+    },
+    {
+      "a": "QMHIX",
+      "b": "AHLIX",
+      "corr": 0.696,
+      "n_months": 143,
+      "first": "2014-09",
+      "last": "2026-07"
+    },
+    {
+      "a": "QMHIX",
+      "b": "AHLT",
+      "corr": 0.73,
+      "n_months": 34,
+      "first": "2023-10",
+      "last": "2026-07"
+    },
+    {
+      "a": "QMHIX",
+      "b": "IMF",
+      "corr": 0.573,
+      "n_months": 16,
+      "first": "2025-04",
+      "last": "2026-07"
+    },
+    {
+      "a": "QMHIX",
+      "b": "ISMF",
+      "corr": 0.708,
+      "n_months": 16,
+      "first": "2025-04",
+      "last": "2026-07"
+    },
+    {
+      "a": "QMHIX",
+      "b": "APEX",
+      "corr": 0.382,
+      "n_months": 52,
+      "first": "2022-04",
+      "last": "2026-07"
+    },
+    {
+      "a": "AHLIX",
+      "b": "AHLT",
+      "corr": 0.866,
+      "n_months": 34,
+      "first": "2023-10",
+      "last": "2026-07"
+    },
+    {
+      "a": "AHLIX",
+      "b": "IMF",
+      "corr": 0.672,
+      "n_months": 16,
+      "first": "2025-04",
+      "last": "2026-07"
+    },
+    {
+      "a": "AHLIX",
+      "b": "ISMF",
+      "corr": 0.835,
+      "n_months": 16,
+      "first": "2025-04",
+      "last": "2026-07"
+    },
+    {
+      "a": "AHLIX",
+      "b": "APEX",
+      "corr": 0.241,
+      "n_months": 52,
+      "first": "2022-04",
+      "last": "2026-07"
+    },
+    {
+      "a": "AHLT",
+      "b": "IMF",
+      "corr": 0.666,
+      "n_months": 16,
+      "first": "2025-04",
+      "last": "2026-07"
+    },
+    {
+      "a": "AHLT",
+      "b": "ISMF",
+      "corr": 0.899,
+      "n_months": 16,
+      "first": "2025-04",
+      "last": "2026-07"
+    },
+    {
+      "a": "AHLT",
+      "b": "APEX",
+      "corr": 0.471,
+      "n_months": 34,
+      "first": "2023-10",
+      "last": "2026-07"
+    },
+    {
+      "a": "IMF",
+      "b": "ISMF",
+      "corr": 0.678,
+      "n_months": 16,
+      "first": "2025-04",
+      "last": "2026-07"
+    },
+    {
+      "a": "IMF",
+      "b": "APEX",
+      "corr": 0.181,
+      "n_months": 16,
+      "first": "2025-04",
+      "last": "2026-07"
+    },
+    {
+      "a": "ISMF",
+      "b": "APEX",
+      "corr": 0.387,
+      "n_months": 16,
+      "first": "2025-04",
+      "last": "2026-07"
+    }
+  ],
+  "matrix_full_overlap": {
+    "labels": [
+      "PROXY",
+      "WTMF",
+      "QMHIX",
+      "AHLIX",
+      "AHLT",
+      "IMF",
+      "ISMF",
+      "APEX"
+    ],
+    "pairs": [
+      {
+        "a": "PROXY",
+        "b": "WTMF",
+        "corr": 0.229,
+        "n_months": 179,
+        "first": "2011-02",
+        "last": "2025-12"
+      },
+      {
+        "a": "PROXY",
+        "b": "QMHIX",
+        "corr": 0.515,
+        "n_months": 149,
+        "first": "2013-08",
+        "last": "2025-12"
+      },
+      {
+        "a": "PROXY",
+        "b": "AHLIX",
+        "corr": 0.538,
+        "n_months": 136,
+        "first": "2014-09",
+        "last": "2025-12"
+      },
+      {
+        "a": "PROXY",
+        "b": "AHLT",
+        "corr": 0.648,
+        "n_months": 27,
+        "first": "2023-10",
+        "last": "2025-12"
+      },
+      {
+        "a": "PROXY",
+        "b": "IMF",
+        "corr": 0.635,
+        "n_months": 9,
+        "first": "2025-04",
+        "last": "2025-12"
+      },
+      {
+        "a": "PROXY",
+        "b": "ISMF",
+        "corr": 0.583,
+        "n_months": 9,
+        "first": "2025-04",
+        "last": "2025-12"
+      },
+      {
+        "a": "PROXY",
+        "b": "APEX",
+        "corr": 0.152,
+        "n_months": 45,
+        "first": "2022-04",
+        "last": "2025-12"
+      },
+      {
+        "a": "WTMF",
+        "b": "QMHIX",
+        "corr": 0.326,
+        "n_months": 156,
+        "first": "2013-08",
+        "last": "2026-07"
+      },
+      {
+        "a": "WTMF",
+        "b": "AHLIX",
+        "corr": 0.395,
+        "n_months": 143,
+        "first": "2014-09",
+        "last": "2026-07"
+      },
+      {
+        "a": "WTMF",
+        "b": "AHLT",
+        "corr": 0.154,
+        "n_months": 34,
+        "first": "2023-10",
+        "last": "2026-07"
+      },
+      {
+        "a": "WTMF",
+        "b": "IMF",
+        "corr": 0.263,
+        "n_months": 16,
+        "first": "2025-04",
+        "last": "2026-07"
+      },
+      {
+        "a": "WTMF",
+        "b": "ISMF",
+        "corr": 0.473,
+        "n_months": 16,
+        "first": "2025-04",
+        "last": "2026-07"
+      },
+      {
+        "a": "WTMF",
+        "b": "APEX",
+        "corr": -0.009,
+        "n_months": 52,
+        "first": "2022-04",
+        "last": "2026-07"
+      },
+      {
+        "a": "QMHIX",
+        "b": "AHLIX",
+        "corr": 0.696,
+        "n_months": 143,
+        "first": "2014-09",
+        "last": "2026-07"
+      },
+      {
+        "a": "QMHIX",
+        "b": "AHLT",
+        "corr": 0.73,
+        "n_months": 34,
+        "first": "2023-10",
+        "last": "2026-07"
+      },
+      {
+        "a": "QMHIX",
+        "b": "IMF",
+        "corr": 0.573,
+        "n_months": 16,
+        "first": "2025-04",
+        "last": "2026-07"
+      },
+      {
+        "a": "QMHIX",
+        "b": "ISMF",
+        "corr": 0.708,
+        "n_months": 16,
+        "first": "2025-04",
+        "last": "2026-07"
+      },
+      {
+        "a": "QMHIX",
+        "b": "APEX",
+        "corr": 0.382,
+        "n_months": 52,
+        "first": "2022-04",
+        "last": "2026-07"
+      },
+      {
+        "a": "AHLIX",
+        "b": "AHLT",
+        "corr": 0.866,
+        "n_months": 34,
+        "first": "2023-10",
+        "last": "2026-07"
+      },
+      {
+        "a": "AHLIX",
+        "b": "IMF",
+        "corr": 0.672,
+        "n_months": 16,
+        "first": "2025-04",
+        "last": "2026-07"
+      },
+      {
+        "a": "AHLIX",
+        "b": "ISMF",
+        "corr": 0.835,
+        "n_months": 16,
+        "first": "2025-04",
+        "last": "2026-07"
+      },
+      {
+        "a": "AHLIX",
+        "b": "APEX",
+        "corr": 0.241,
+        "n_months": 52,
+        "first": "2022-04",
+        "last": "2026-07"
+      },
+      {
+        "a": "AHLT",
+        "b": "IMF",
+        "corr": 0.666,
+        "n_months": 16,
+        "first": "2025-04",
+        "last": "2026-07"
+      },
+      {
+        "a": "AHLT",
+        "b": "ISMF",
+        "corr": 0.899,
+        "n_months": 16,
+        "first": "2025-04",
+        "last": "2026-07"
+      },
+      {
+        "a": "AHLT",
+        "b": "APEX",
+        "corr": 0.471,
+        "n_months": 34,
+        "first": "2023-10",
+        "last": "2026-07"
+      },
+      {
+        "a": "IMF",
+        "b": "ISMF",
+        "corr": 0.678,
+        "n_months": 16,
+        "first": "2025-04",
+        "last": "2026-07"
+      },
+      {
+        "a": "IMF",
+        "b": "APEX",
+        "corr": 0.181,
+        "n_months": 16,
+        "first": "2025-04",
+        "last": "2026-07"
+      },
+      {
+        "a": "ISMF",
+        "b": "APEX",
+        "corr": 0.387,
+        "n_months": 16,
+        "first": "2025-04",
+        "last": "2026-07"
+      }
+    ],
+    "mean_corr_vs_others": {
+      "PROXY": 0.471,
+      "WTMF": 0.262,
+      "QMHIX": 0.561,
+      "AHLIX": 0.606,
+      "AHLT": 0.633,
+      "IMF": 0.524,
+      "ISMF": 0.652,
+      "APEX": 0.258
+    }
+  },
+  "clusters_full_overlap": [
+    [
+      "PROXY",
+      "QMHIX",
+      "AHLIX",
+      "AHLT",
+      "ISMF",
+      "IMF"
+    ],
+    [
+      "WTMF"
+    ],
+    [
+      "APEX"
+    ]
+  ],
+  "windows": {
+    "2015-2025": {
+      "window": [
+        "2015-01",
+        "2025-12"
+      ],
+      "n_months": 132,
+      "proxy_vs_funds": {
+        "WTMF": {
+          "corr": 0.241,
+          "n": 132,
+          "first": "2015-01",
+          "last": "2025-12"
+        },
+        "QMHIX": {
+          "corr": 0.515,
+          "n": 132,
+          "first": "2015-01",
+          "last": "2025-12"
+        },
+        "AHLIX": {
+          "corr": 0.528,
+          "n": 132,
+          "first": "2015-01",
+          "last": "2025-12"
+        }
+      },
+      "pairwise": [
+        {
+          "a": "WTMF",
+          "b": "QMHIX",
+          "corr": 0.315
+        },
+        {
+          "a": "WTMF",
+          "b": "AHLIX",
+          "corr": 0.396
+        },
+        {
+          "a": "QMHIX",
+          "b": "AHLIX",
+          "corr": 0.688
+        }
+      ],
+      "mean_pairwise_corr": 0.466,
+      "proxy_vs_centroid": {
+        "corr": 0.556,
+        "n": 132,
+        "first": "2015-01",
+        "last": "2025-12"
+      },
+      "funds_vs_centroid": {
+        "WTMF": 0.375,
+        "QMHIX": 0.642,
+        "AHLIX": 0.712
+      },
+      "annualised_vol": {
+        "WTMF": 0.062,
+        "QMHIX": 0.154,
+        "AHLIX": 0.096,
+        "proxy": 0.111
+      },
+      "matrix": {
+        "labels": [
+          "PROXY",
+          "WTMF",
+          "QMHIX",
+          "AHLIX"
+        ],
+        "pairs": [
+          {
+            "a": "PROXY",
+            "b": "WTMF",
+            "corr": 0.241,
+            "n_months": 132,
+            "first": "2015-01",
+            "last": "2025-12"
+          },
+          {
+            "a": "PROXY",
+            "b": "QMHIX",
+            "corr": 0.515,
+            "n_months": 132,
+            "first": "2015-01",
+            "last": "2025-12"
+          },
+          {
+            "a": "PROXY",
+            "b": "AHLIX",
+            "corr": 0.528,
+            "n_months": 132,
+            "first": "2015-01",
+            "last": "2025-12"
+          },
+          {
+            "a": "WTMF",
+            "b": "QMHIX",
+            "corr": 0.315,
+            "n_months": 132,
+            "first": "2015-01",
+            "last": "2025-12"
+          },
+          {
+            "a": "WTMF",
+            "b": "AHLIX",
+            "corr": 0.396,
+            "n_months": 132,
+            "first": "2015-01",
+            "last": "2025-12"
+          },
+          {
+            "a": "QMHIX",
+            "b": "AHLIX",
+            "corr": 0.688,
+            "n_months": 132,
+            "first": "2015-01",
+            "last": "2025-12"
+          }
+        ],
+        "mean_corr_vs_others": {
+          "PROXY": 0.428,
+          "WTMF": 0.317,
+          "QMHIX": 0.506,
+          "AHLIX": 0.537
+        }
+      },
+      "clusters": [
+        [
+          "PROXY",
+          "QMHIX",
+          "AHLIX"
+        ],
+        [
+          "WTMF"
+        ]
+      ]
+    },
+    "2024-2025": {
+      "window": [
+        "2024-01",
+        "2025-12"
+      ],
+      "n_months": 24,
+      "proxy_vs_funds": {
+        "WTMF": {
+          "corr": 0.143,
+          "n": 24,
+          "first": "2024-01",
+          "last": "2025-12"
+        },
+        "QMHIX": {
+          "corr": 0.396,
+          "n": 24,
+          "first": "2024-01",
+          "last": "2025-12"
+        },
+        "AHLIX": {
+          "corr": 0.616,
+          "n": 24,
+          "first": "2024-01",
+          "last": "2025-12"
+        },
+        "APEX": {
+          "corr": 0.363,
+          "n": 24,
+          "first": "2024-01",
+          "last": "2025-12"
+        },
+        "AHLT": {
+          "corr": 0.65,
+          "n": 24,
+          "first": "2024-01",
+          "last": "2025-12"
+        }
+      },
+      "pairwise": [
+        {
+          "a": "WTMF",
+          "b": "QMHIX",
+          "corr": 0.343
+        },
+        {
+          "a": "WTMF",
+          "b": "AHLIX",
+          "corr": 0.473
+        },
+        {
+          "a": "WTMF",
+          "b": "APEX",
+          "corr": 0.163
+        },
+        {
+          "a": "WTMF",
+          "b": "AHLT",
+          "corr": 0.345
+        },
+        {
+          "a": "QMHIX",
+          "b": "AHLIX",
+          "corr": 0.689
+        },
+        {
+          "a": "QMHIX",
+          "b": "APEX",
+          "corr": 0.572
+        },
+        {
+          "a": "QMHIX",
+          "b": "AHLT",
+          "corr": 0.688
+        },
+        {
+          "a": "AHLIX",
+          "b": "APEX",
+          "corr": 0.48
+        },
+        {
+          "a": "AHLIX",
+          "b": "AHLT",
+          "corr": 0.911
+        },
+        {
+          "a": "APEX",
+          "b": "AHLT",
+          "corr": 0.518
+        }
+      ],
+      "mean_pairwise_corr": 0.518,
+      "proxy_vs_centroid": {
+        "corr": 0.573,
+        "n": 24,
+        "first": "2024-01",
+        "last": "2025-12"
+      },
+      "funds_vs_centroid": {
+        "WTMF": 0.395,
+        "QMHIX": 0.739,
+        "AHLIX": 0.864,
+        "APEX": 0.558,
+        "AHLT": 0.82
+      },
+      "annualised_vol": {
+        "WTMF": 0.064,
+        "QMHIX": 0.141,
+        "AHLIX": 0.098,
+        "APEX": 0.071,
+        "AHLT": 0.136,
+        "proxy": 0.066
+      },
+      "matrix": {
+        "labels": [
+          "PROXY",
+          "WTMF",
+          "QMHIX",
+          "AHLIX",
+          "APEX",
+          "AHLT"
+        ],
+        "pairs": [
+          {
+            "a": "PROXY",
+            "b": "WTMF",
+            "corr": 0.143,
+            "n_months": 24,
+            "first": "2024-01",
+            "last": "2025-12"
+          },
+          {
+            "a": "PROXY",
+            "b": "QMHIX",
+            "corr": 0.396,
+            "n_months": 24,
+            "first": "2024-01",
+            "last": "2025-12"
+          },
+          {
+            "a": "PROXY",
+            "b": "AHLIX",
+            "corr": 0.616,
+            "n_months": 24,
+            "first": "2024-01",
+            "last": "2025-12"
+          },
+          {
+            "a": "PROXY",
+            "b": "APEX",
+            "corr": 0.363,
+            "n_months": 24,
+            "first": "2024-01",
+            "last": "2025-12"
+          },
+          {
+            "a": "PROXY",
+            "b": "AHLT",
+            "corr": 0.65,
+            "n_months": 24,
+            "first": "2024-01",
+            "last": "2025-12"
+          },
+          {
+            "a": "WTMF",
+            "b": "QMHIX",
+            "corr": 0.343,
+            "n_months": 24,
+            "first": "2024-01",
+            "last": "2025-12"
+          },
+          {
+            "a": "WTMF",
+            "b": "AHLIX",
+            "corr": 0.473,
+            "n_months": 24,
+            "first": "2024-01",
+            "last": "2025-12"
+          },
+          {
+            "a": "WTMF",
+            "b": "APEX",
+            "corr": 0.163,
+            "n_months": 24,
+            "first": "2024-01",
+            "last": "2025-12"
+          },
+          {
+            "a": "WTMF",
+            "b": "AHLT",
+            "corr": 0.345,
+            "n_months": 24,
+            "first": "2024-01",
+            "last": "2025-12"
+          },
+          {
+            "a": "QMHIX",
+            "b": "AHLIX",
+            "corr": 0.689,
+            "n_months": 24,
+            "first": "2024-01",
+            "last": "2025-12"
+          },
+          {
+            "a": "QMHIX",
+            "b": "APEX",
+            "corr": 0.572,
+            "n_months": 24,
+            "first": "2024-01",
+            "last": "2025-12"
+          },
+          {
+            "a": "QMHIX",
+            "b": "AHLT",
+            "corr": 0.688,
+            "n_months": 24,
+            "first": "2024-01",
+            "last": "2025-12"
+          },
+          {
+            "a": "AHLIX",
+            "b": "APEX",
+            "corr": 0.48,
+            "n_months": 24,
+            "first": "2024-01",
+            "last": "2025-12"
+          },
+          {
+            "a": "AHLIX",
+            "b": "AHLT",
+            "corr": 0.911,
+            "n_months": 24,
+            "first": "2024-01",
+            "last": "2025-12"
+          },
+          {
+            "a": "APEX",
+            "b": "AHLT",
+            "corr": 0.518,
+            "n_months": 24,
+            "first": "2024-01",
+            "last": "2025-12"
+          }
+        ],
+        "mean_corr_vs_others": {
+          "PROXY": 0.434,
+          "WTMF": 0.293,
+          "QMHIX": 0.538,
+          "AHLIX": 0.634,
+          "APEX": 0.419,
+          "AHLT": 0.622
+        }
+      },
+      "clusters": [
+        [
+          "PROXY",
+          "QMHIX",
+          "AHLIX",
+          "AHLT"
+        ],
+        [
+          "WTMF"
+        ],
+        [
+          "APEX"
+        ]
+      ]
+    },
+    "2025": {
+      "window": [
+        "2025-04",
+        "2025-12"
+      ],
+      "n_months": 9,
+      "proxy_vs_funds": {
+        "WTMF": {
+          "corr": -0.156,
+          "n": 9,
+          "first": "2025-04",
+          "last": "2025-12"
+        },
+        "QMHIX": {
+          "corr": 0.343,
+          "n": 9,
+          "first": "2025-04",
+          "last": "2025-12"
+        },
+        "AHLIX": {
+          "corr": 0.512,
+          "n": 9,
+          "first": "2025-04",
+          "last": "2025-12"
+        },
+        "APEX": {
+          "corr": 0.764,
+          "n": 9,
+          "first": "2025-04",
+          "last": "2025-12"
+        },
+        "AHLT": {
+          "corr": 0.611,
+          "n": 9,
+          "first": "2025-04",
+          "last": "2025-12"
+        },
+        "IMF": {
+          "corr": 0.635,
+          "n": 9,
+          "first": "2025-04",
+          "last": "2025-12"
+        },
+        "ISMF": {
+          "corr": 0.583,
+          "n": 9,
+          "first": "2025-04",
+          "last": "2025-12"
+        }
+      },
+      "pairwise": [
+        {
+          "a": "WTMF",
+          "b": "QMHIX",
+          "corr": 0.57
+        },
+        {
+          "a": "WTMF",
+          "b": "AHLIX",
+          "corr": 0.518
+        },
+        {
+          "a": "WTMF",
+          "b": "APEX",
+          "corr": 0.083
+        },
+        {
+          "a": "WTMF",
+          "b": "AHLT",
+          "corr": 0.52
+        },
+        {
+          "a": "WTMF",
+          "b": "IMF",
+          "corr": 0.277
+        },
+        {
+          "a": "WTMF",
+          "b": "ISMF",
+          "corr": 0.42
+        },
+        {
+          "a": "QMHIX",
+          "b": "AHLIX",
+          "corr": 0.726
+        },
+        {
+          "a": "QMHIX",
+          "b": "APEX",
+          "corr": 0.578
+        },
+        {
+          "a": "QMHIX",
+          "b": "AHLT",
+          "corr": 0.761
+        },
+        {
+          "a": "QMHIX",
+          "b": "IMF",
+          "corr": 0.539
+        },
+        {
+          "a": "QMHIX",
+          "b": "ISMF",
+          "corr": 0.819
+        },
+        {
+          "a": "AHLIX",
+          "b": "APEX",
+          "corr": 0.481
+        },
+        {
+          "a": "AHLIX",
+          "b": "AHLT",
+          "corr": 0.979
+        },
+        {
+          "a": "AHLIX",
+          "b": "IMF",
+          "corr": 0.762
+        },
+        {
+          "a": "AHLIX",
+          "b": "ISMF",
+          "corr": 0.827
+        },
+        {
+          "a": "APEX",
+          "b": "AHLT",
+          "corr": 0.597
+        },
+        {
+          "a": "APEX",
+          "b": "IMF",
+          "corr": 0.403
+        },
+        {
+          "a": "APEX",
+          "b": "ISMF",
+          "corr": 0.587
+        },
+        {
+          "a": "AHLT",
+          "b": "IMF",
+          "corr": 0.82
+        },
+        {
+          "a": "AHLT",
+          "b": "ISMF",
+          "corr": 0.899
+        },
+        {
+          "a": "IMF",
+          "b": "ISMF",
+          "corr": 0.857
+        }
+      ],
+      "mean_pairwise_corr": 0.62,
+      "proxy_vs_centroid": {
+        "corr": 0.606,
+        "n": 9,
+        "first": "2025-04",
+        "last": "2025-12"
+      },
+      "funds_vs_centroid": {
+        "WTMF": 0.476,
+        "QMHIX": 0.764,
+        "AHLIX": 0.91,
+        "APEX": 0.553,
+        "AHLT": 0.966,
+        "IMF": 0.768,
+        "ISMF": 0.936
+      },
+      "annualised_vol": {
+        "WTMF": 0.035,
+        "QMHIX": 0.096,
+        "AHLIX": 0.107,
+        "APEX": 0.049,
+        "AHLT": 0.143,
+        "IMF": 0.144,
+        "ISMF": 0.062,
+        "proxy": 0.083
+      },
+      "matrix": {
+        "labels": [
+          "PROXY",
+          "WTMF",
+          "QMHIX",
+          "AHLIX",
+          "APEX",
+          "AHLT",
+          "IMF",
+          "ISMF"
+        ],
+        "pairs": [
+          {
+            "a": "PROXY",
+            "b": "WTMF",
+            "corr": -0.156,
+            "n_months": 9,
+            "first": "2025-04",
+            "last": "2025-12"
+          },
+          {
+            "a": "PROXY",
+            "b": "QMHIX",
+            "corr": 0.343,
+            "n_months": 9,
+            "first": "2025-04",
+            "last": "2025-12"
+          },
+          {
+            "a": "PROXY",
+            "b": "AHLIX",
+            "corr": 0.512,
+            "n_months": 9,
+            "first": "2025-04",
+            "last": "2025-12"
+          },
+          {
+            "a": "PROXY",
+            "b": "APEX",
+            "corr": 0.764,
+            "n_months": 9,
+            "first": "2025-04",
+            "last": "2025-12"
+          },
+          {
+            "a": "PROXY",
+            "b": "AHLT",
+            "corr": 0.611,
+            "n_months": 9,
+            "first": "2025-04",
+            "last": "2025-12"
+          },
+          {
+            "a": "PROXY",
+            "b": "IMF",
+            "corr": 0.635,
+            "n_months": 9,
+            "first": "2025-04",
+            "last": "2025-12"
+          },
+          {
+            "a": "PROXY",
+            "b": "ISMF",
+            "corr": 0.583,
+            "n_months": 9,
+            "first": "2025-04",
+            "last": "2025-12"
+          },
+          {
+            "a": "WTMF",
+            "b": "QMHIX",
+            "corr": 0.57,
+            "n_months": 9,
+            "first": "2025-04",
+            "last": "2025-12"
+          },
+          {
+            "a": "WTMF",
+            "b": "AHLIX",
+            "corr": 0.518,
+            "n_months": 9,
+            "first": "2025-04",
+            "last": "2025-12"
+          },
+          {
+            "a": "WTMF",
+            "b": "APEX",
+            "corr": 0.083,
+            "n_months": 9,
+            "first": "2025-04",
+            "last": "2025-12"
+          },
+          {
+            "a": "WTMF",
+            "b": "AHLT",
+            "corr": 0.52,
+            "n_months": 9,
+            "first": "2025-04",
+            "last": "2025-12"
+          },
+          {
+            "a": "WTMF",
+            "b": "IMF",
+            "corr": 0.277,
+            "n_months": 9,
+            "first": "2025-04",
+            "last": "2025-12"
+          },
+          {
+            "a": "WTMF",
+            "b": "ISMF",
+            "corr": 0.42,
+            "n_months": 9,
+            "first": "2025-04",
+            "last": "2025-12"
+          },
+          {
+            "a": "QMHIX",
+            "b": "AHLIX",
+            "corr": 0.726,
+            "n_months": 9,
+            "first": "2025-04",
+            "last": "2025-12"
+          },
+          {
+            "a": "QMHIX",
+            "b": "APEX",
+            "corr": 0.578,
+            "n_months": 9,
+            "first": "2025-04",
+            "last": "2025-12"
+          },
+          {
+            "a": "QMHIX",
+            "b": "AHLT",
+            "corr": 0.761,
+            "n_months": 9,
+            "first": "2025-04",
+            "last": "2025-12"
+          },
+          {
+            "a": "QMHIX",
+            "b": "IMF",
+            "corr": 0.539,
+            "n_months": 9,
+            "first": "2025-04",
+            "last": "2025-12"
+          },
+          {
+            "a": "QMHIX",
+            "b": "ISMF",
+            "corr": 0.819,
+            "n_months": 9,
+            "first": "2025-04",
+            "last": "2025-12"
+          },
+          {
+            "a": "AHLIX",
+            "b": "APEX",
+            "corr": 0.481,
+            "n_months": 9,
+            "first": "2025-04",
+            "last": "2025-12"
+          },
+          {
+            "a": "AHLIX",
+            "b": "AHLT",
+            "corr": 0.979,
+            "n_months": 9,
+            "first": "2025-04",
+            "last": "2025-12"
+          },
+          {
+            "a": "AHLIX",
+            "b": "IMF",
+            "corr": 0.762,
+            "n_months": 9,
+            "first": "2025-04",
+            "last": "2025-12"
+          },
+          {
+            "a": "AHLIX",
+            "b": "ISMF",
+            "corr": 0.827,
+            "n_months": 9,
+            "first": "2025-04",
+            "last": "2025-12"
+          },
+          {
+            "a": "APEX",
+            "b": "AHLT",
+            "corr": 0.597,
+            "n_months": 9,
+            "first": "2025-04",
+            "last": "2025-12"
+          },
+          {
+            "a": "APEX",
+            "b": "IMF",
+            "corr": 0.403,
+            "n_months": 9,
+            "first": "2025-04",
+            "last": "2025-12"
+          },
+          {
+            "a": "APEX",
+            "b": "ISMF",
+            "corr": 0.587,
+            "n_months": 9,
+            "first": "2025-04",
+            "last": "2025-12"
+          },
+          {
+            "a": "AHLT",
+            "b": "IMF",
+            "corr": 0.82,
+            "n_months": 9,
+            "first": "2025-04",
+            "last": "2025-12"
+          },
+          {
+            "a": "AHLT",
+            "b": "ISMF",
+            "corr": 0.899,
+            "n_months": 9,
+            "first": "2025-04",
+            "last": "2025-12"
+          },
+          {
+            "a": "IMF",
+            "b": "ISMF",
+            "corr": 0.857,
+            "n_months": 9,
+            "first": "2025-04",
+            "last": "2025-12"
+          }
+        ],
+        "mean_corr_vs_others": {
+          "PROXY": 0.47,
+          "WTMF": 0.319,
+          "QMHIX": 0.619,
+          "AHLIX": 0.686,
+          "APEX": 0.499,
+          "AHLT": 0.741,
+          "IMF": 0.613,
+          "ISMF": 0.713
+        }
+      },
+      "clusters": [
+        [
+          "PROXY",
+          "APEX",
+          "QMHIX",
+          "AHLIX",
+          "AHLT",
+          "ISMF",
+          "IMF"
+        ],
+        [
+          "WTMF"
+        ]
+      ]
+    }
+  }
+}

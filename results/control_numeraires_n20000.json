@@ -1,0 +1,59 @@
+{
+  "targets": [
+    "USA",
+    "Germany",
+    "Japan"
+  ],
+  "runs": 20000,
+  "seed": 20260827,
+  "mean_block": 10.0,
+  "sample_mode": "full",
+  "source_observations": 1557,
+  "common_observations": 1428,
+  "results": [
+    {
+      "numeraire": "resident",
+      "mean_return": 0.07507807998093297,
+      "volatility": 0.16879591972020655,
+      "ruin_probability": 0.07055,
+      "ruin_difference_vs_resident": 0.0,
+      "ruin_difference_ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "numeraire": "USA",
+      "mean_return": 0.08579514041956554,
+      "volatility": 0.17723062621362093,
+      "ruin_probability": 0.02195,
+      "ruin_difference_vs_resident": -0.0486,
+      "ruin_difference_ci95": [
+        -0.051815855688551724,
+        -0.04538414431144827
+      ]
+    },
+    {
+      "numeraire": "Germany",
+      "mean_return": 0.07499122627115948,
+      "volatility": 0.17111347154409928,
+      "ruin_probability": 0.07175,
+      "ruin_difference_vs_resident": 0.0012,
+      "ruin_difference_ci95": [
+        -0.0017203598802016668,
+        0.004120359880201666
+      ]
+    },
+    {
+      "numeraire": "Japan",
+      "mean_return": 0.0852974264502195,
+      "volatility": 0.1976367473478729,
+      "ruin_probability": 0.099,
+      "ruin_difference_vs_resident": 0.02845,
+      "ruin_difference_ci95": [
+        0.024553478844962395,
+        0.032346521155037604
+      ]
+    }
+  ]
+}
