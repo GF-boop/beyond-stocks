@@ -15,6 +15,7 @@ python3 ../build/historical_uncertainty.py  # historical_uncertainty*.tex + JSON
 python3 ../build/central_cost_sensitivity.py # central cost/hedging table
 python3 ../build/gamma_sensitivity.py       # gamma_sensitivity.tex + JSON audit
 python3 ../build/policy_sensitivity.py      # policy_sensitivity.tex + JSON audit
+python3 ../build/plot_ladders_main.py ../results/main_ladders_n10000.json figures/ladders_main.tex
 pdflatex -interaction=nonstopmode main.tex
 biber main
 pdflatex -interaction=nonstopmode main.tex
@@ -51,8 +52,9 @@ shows the ruin and equivalent-saving ranking, not just the correlation,
 survives every construction choice.
 
 The central fixed tables use 10,000 paths on the complete 1,557-country-year
-raw panel; leverage and spread sweeps use 5,000 paths and the multi-numeraire
-diagnostic 20,000. All use stationary-bootstrap blocks with a mean length of
+raw panel; the main leverage frontier uses 5,000 paths, the spread sweep uses
+10,000 paths per spread, and the multi-numeraire diagnostic uses 20,000. All
+use stationary-bootstrap blocks with a mean length of
 ten years, a 0.30% financing spread, and the exact fixed weights in
 `../data/fixed-stacked-design.json`. No observed return moment enters those
 weights. This removes direct volatility calibration; it is not a claim that

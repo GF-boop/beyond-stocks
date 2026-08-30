@@ -57,7 +57,7 @@ ROOT = os.path.join(HERE, "..")
 sys.path.insert(0, os.path.join(ROOT, "build"))
 
 from mf_fund_correlations import (  # noqa: E402
-    load_proxy, fund_monthly, window, correlation, regression, TICKER_FILE)
+    load_proxy, fund_monthly, window, correlation, regression)
 
 DATA = os.path.join(ROOT, "data")
 BENCHMARKS = os.path.join(DATA, "benchmarks-externes")

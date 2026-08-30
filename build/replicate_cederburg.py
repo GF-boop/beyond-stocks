@@ -23,8 +23,8 @@ Ecarts assumes de cette replication :
   sources, pas de la methode ;
 - les actions internationales sont reconstruites depuis JST (voir
   international_equity.py) plutot que mesurees directement ;
-- la mortalite suit l'INSEE (voir mortality.py), le site de la SSA refusant
-  les acces automatises ;
+- la mortalite suit une Gompertz--Makeham calee sur les moments SSA rapportes
+  par ACO (voir mortality.py), et non leur table mensuelle ;
 - pas de Social Security ni de modele de revenus stochastique : le menage
   epargne une part constante d'un revenu reel fixe. Le papier montre que ce
   choix deplace les niveaux sans changer le classement des strategies.

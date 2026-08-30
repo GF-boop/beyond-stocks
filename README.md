@@ -28,13 +28,13 @@ over the bill or collateral actually embedded is added to the resident's
 bill. Financing remains local and the base case subtracts a 0.10% friction on
 the covered notionals.
 
-The main panel contains the 1,557 raw country-years, 16 countries and each of
+The main panel contains 1,557 raw country-years, 16 countries and each of
 the 99 years 1927–2025. The investability filter drops 30 rows and is now an
 explicitly labelled sensitivity, not the central case. A consistent control
 uses only the 99 rows of the U.S. resident. The exclusion rule is the ex ante
 filter of [`build/investability.py`](build/investability.py). The bond basket
-has two issuers in 1946–1947, three in a few early observations and four in
-the large majority of the panel.
+has 12 to 16 issuers: 16 in 1,312 of the 1,557 country-years, and never fewer
+than 12 over the analysis window.
 
 The resident's numeraire is an assumption of the experiment, not a mere
 display convention. The `--usd-numeraire` control keeps the same
@@ -101,8 +101,8 @@ results.
 Before 1968, the gold price is administered. An availability variant
 reallocates the gold sleeve then in equal parts to the non-gold sleeves
 already active, without changing leverage or financing. It improves the 60/40
-with gold to 9.50% equivalent saving and 1.12% ruin, and the 54/36/20/20 to
-8.94% and 0.55%. It is reported in the appendix and in the detailed results;
+with gold to 9.42% equivalent saving and 3.11% ruin, and the 54/36/20/20 to
+8.90% and 2.55%. It is reported in the appendix and in the detailed results;
 it is not a counterfactual gold-return assumption.
 
 Equivalent saving equalises expected lifecycle utility with ACO 33/67 at a
@@ -164,19 +164,20 @@ calibrated on observed volatility.
 ## Dependencies
 
 - Python 3.10 or newer.
-- `pip install -r requirements.txt` (numpy). `pandas` is only required for
-  step 1 (reading `data/JSTdatasetR6.dta`); the reconstructed panels
+- `pip install -r requirements.txt` (numpy and pandas). `pandas` is only used
+  in step 1 (reading `data/JSTdatasetR6.dta`); the reconstructed panels
   `data/replication-panel*.csv`, `data/international-equity.csv` and
   `data/managed-futures-annual-real.csv` are versioned, so the experiment and
   the sensitivities run without `pandas`.
 - A LaTeX distribution with `biber` for the PDF.
 
 This folder is self-contained: no script reads outside `Cederburg_lifecycle/`.
-The only exception is the external validation of the managed-futures proxy
-([`paper/build_mf_benchmark_data.py`](paper/build_mf_benchmark_data.py)), which
-reads proprietary SG and BarclayHedge indexes that are not redistributed.
-Without them, that script stops cleanly and the "proxy vs indexes" figure and
-the correlation table remain those of
+The external-validation scripts
+([`paper/build_mf_benchmark_data.py`](paper/build_mf_benchmark_data.py) and
+[`paper/build_mf_pack_matrix.py`](paper/build_mf_pack_matrix.py)) additionally
+read SG, BarclayHedge, testfol and fund series that are not redistributed.
+Without them, the canonical rebuild skips those diagnostics and the external
+figure and tables remain those of
 [`paper/main.pdf`](paper/main.pdf), not publicly rebuildable. To regenerate
 them, place `official-index-returns-monthly.csv` and the `testfol/` folder
 under `data/benchmarks-externes/`.
@@ -209,18 +210,20 @@ pdflatex -interaction=nonstopmode main.tex
 
 ## Licence
 
-Code, documentation and reconstructed data in this repository are released
-under the Creative Commons Attribution 4.0 International licence
-([`LICENSE`](LICENSE)). Third-party primary sources keep their own terms; see
-[`data/SOURCES.md`](data/SOURCES.md) for the terms applicable to each file.
+Original code and documentation in this repository are released under the
+Creative Commons Attribution 4.0 International licence ([`LICENSE`](LICENSE)).
+Third-party inputs and reconstructed data derived from them retain the source
+terms identified in [`data/SOURCES.md`](data/SOURCES.md); the repository-wide
+licence does not override those terms.
 Proprietary index data (SG, BarclayHedge) and fund price files are not
 redistributed.
 
 ## Limitations
 
 The replication is annual and partial: it does not reproduce ACO's exactly
-age-optimised policy or their proprietary TDF. World bonds cover only two to
-four sovereigns. Their hedging relies on covered interest parity and a fixed
+age-optimised policy or their proprietary TDF. World bonds cover 12 to 16
+developed sovereigns, not the global investable universe. Their hedging relies
+on covered interest parity and a fixed
 friction, with no historical basis data. The constant-real-exchange-rate
 equity counterfactual is not an investable hedge. Gold includes an
 administered-price regime. The managed-futures proxy uses incomplete

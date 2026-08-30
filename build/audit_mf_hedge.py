@@ -45,7 +45,6 @@ from income_process import draw_household_income  # noqa: E402
 from mortality import table as mortality_table  # noqa: E402
 from replicate_extended import (  # noqa: E402
   MAX_AGE,
-  RETIRE_AGE,
   START_AGE,
   TREND_DRAG,
   TREND_FEE,

@@ -54,7 +54,6 @@ from compare_lifecycle_utility import (  # noqa: E402
   build_scenario,
   draw_death_age,
   equivalent_savings_rate,
-  evaluate,
   evaluate_batch,
   expected_utility,
 )
@@ -385,7 +384,7 @@ def main() -> None:
 
   rows = read_panel(args.panel)
   sample_mode = "full" if args.include_suspect_data else args.sample_mode
-  excluded_quality = [
+  quality_flags = [
     {"country": row["country"], "year": row["year"],
      "reason": exclusion_reason(row["country"], row["year"])}
     for row in rows
@@ -429,6 +428,11 @@ def main() -> None:
               if (row["country"], row["year"]) in converted_keys]
   if len(rows) < 2:
     raise ValueError("La fenetre demandee ne contient pas assez de donnees")
+  included_keys = {(row["country"], row["year"]) for row in rows}
+  quality_flags = [
+    flag for flag in quality_flags
+    if (flag["country"], flag["year"]) in included_keys
+  ]
   functions = return_functions(
     rows, args.spread, args.trend_fee, args.trend_cost, args.trend_haircut,
     args.fx_hedge_cost, args.reallocate_administered_gold_from,
@@ -625,14 +629,14 @@ def main() -> None:
       "year_to": args.year_to,
       "excluded_countries": sorted(excluded),
       "excluded_war_years": args.exclude_war_years,
-      "included_suspect_data": args.include_suspect_data,
+      "included_suspect_data": bool(quality_flags),
       "sample_mode": sample_mode,
       "portfolio_set": args.portfolio_set,
       "usd_numeraire": args.usd_numeraire,
       "usd_common_sample": args.usd_common_sample,
       "source_observations": source_observations,
       "included_unhedged_control": args.include_unhedged_control,
-      "data_quality_exclusions": excluded_quality,
+      "data_quality_flags": quality_flags,
       "investability_exclusions": investability_exclusions,
       "observations": len(rows),
       "benchmark": BENCHMARK_NAME,

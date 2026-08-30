@@ -138,7 +138,8 @@ def parse_rates(value: str) -> list[float]:
 def paired_difference(left: list[bool], right: list[bool],
                       ) -> tuple[float, float, float]:
   """P(right) - P(left), avec IC normal apparie a 95 %."""
-  differences = [float(r) - float(l) for l, r in zip(left, right)]
+  differences = [float(right_value) - float(left_value)
+                 for left_value, right_value in zip(left, right)]
   estimate = statistics.fmean(differences)
   if len(differences) < 2:
     return estimate, math.nan, math.nan
@@ -267,8 +268,10 @@ def main() -> None:
   total = paired_difference(domestic, observed)
 
   def transition(left: list[bool], right: list[bool]) -> tuple[float, float]:
-    saved = sum(l and not r for l, r in zip(left, right)) / len(left)
-    harmed = sum(not l and r for l, r in zip(left, right)) / len(left)
+    saved = sum(left_value and not right_value
+                for left_value, right_value in zip(left, right)) / len(left)
+    harmed = sum(not left_value and right_value
+                 for left_value, right_value in zip(left, right)) / len(left)
     return saved, harmed
 
   geography_saved, geography_harmed = transition(domestic, constant)

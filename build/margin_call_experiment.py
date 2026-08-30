@@ -35,7 +35,6 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from compare_fixed_stacked_utility import (  # noqa: E402
-    FIXED_EXPOSURES,
     return_functions,
 )
 from replicate_extended import (  # noqa: E402

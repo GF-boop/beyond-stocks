@@ -14,14 +14,14 @@
   "year_to": null,
   "excluded_countries": [],
   "excluded_war_years": false,
-  "included_suspect_data": false,
+  "included_suspect_data": true,
   "sample_mode": "full",
   "portfolio_set": "ladders",
   "usd_numeraire": false,
   "usd_common_sample": false,
   "source_observations": 1557,
   "included_unhedged_control": false,
-  "data_quality_exclusions": [
+  "data_quality_flags": [
     {
       "country": "Japan",
       "year": 1945,

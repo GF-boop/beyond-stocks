@@ -2,8 +2,9 @@
 
 Real dependency graph: almost every file is imported by table producers.
 **Do not move or delete anything without checking the "Libraries" section
-below.** This folder is self-contained: no import or file read leaves
-`Cederburg_lifecycle/`.
+below.** Simulation inputs stay within `Cederburg_lifecycle/`; external
+validation consumes optional, non-redistributed files under
+`data/benchmarks-externes/`.
 
 ## Libraries (imported by producers — do not move)
 
@@ -27,14 +28,15 @@ below.** This folder is self-contained: no import or file read leaves
 `policy_sensitivity.py`, `mf_variants.py`, `mf_variant_lifecycle.py`,
 `historical_uncertainty.py` (appendix E), `experiment_fixed_numeraire.py`
 (multi-numeraire), `experiment_voltarget.py` (Tables 7 and 9, stdout output),
-`plot_ladders_main.py` (Figure 1), `international_equity.py`,
+`plot_ladders_main.py` (Figures 1 and 2), `international_equity.py`,
 `build_replication_panel.py`, `panel_managed_futures.py` and
-`panel_replication_tendance.py` (data, step 1), `data_quality.py`
-(quality audit).
+`panel_replication_tendance.py` (data, step 1). `data_quality.py` is a flagging
+module imported by the main engine, not a standalone producer.
 
 Full mapping script → command → output → table:
 [`../REPRODUCIBILITY.md`](../REPRODUCIBILITY.md). Ordered rebuild:
 [`rebuild_all.sh`](rebuild_all.sh).
+Post-rebuild invariants: [`verify_repository.py`](verify_repository.py).
 
 ## One-off analyses (entry points with no dependents)
 

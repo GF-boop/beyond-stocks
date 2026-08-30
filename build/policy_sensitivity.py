@@ -2,7 +2,7 @@
 
 Le corps du papier reproche a ACO de ne rapporter la robustesse de leur
 resultat qu'au niveau de la *composition* optimale, jamais au niveau des
-*magnitudes* de bien-etre. Le sweep sur gamma (Annexe D) applique ce test au
+*magnitudes* de bien-etre. Le sweep sur gamma (Annexe F) applique ce test au
 coefficient d'aversion. Ce script fait de meme pour deux parametres de
 politique du menage qu'ACO faisait varier lui aussi (Table VII) mais sans
 publier l'effet sur les magnitudes :

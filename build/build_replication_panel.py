@@ -5,8 +5,9 @@ jusqu'a quatre classes d'actifs : actions domestiques, actions internationales,
 obligations, bills. JST ne fournit nativement que les trois premieres (sous les
 noms eq_tr, bond_tr, bill_rate) plus le CPI ; la serie d'actions internationales
 est reconstruite dans international_equity.py, selon leur propre definition
-(moyenne ponderee par PIB -- proxy de capitalisation -- des marches etrangers,
-ajustee du change, deflatee par l'inflation locale).
+(moyenne ponderee par capitalisation historique des marches etrangers lorsque
+la couverture est suffisante, PIB comparable en repli, ajustee du change et
+deflatee par l'inflation locale).
 
 Le panel conserve egalement le contrefactuel a change reel constant produit
 par ``international_equity.py``. Il permet de comparer le benefice geographique

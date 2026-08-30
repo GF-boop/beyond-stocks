@@ -67,7 +67,6 @@ from investability import exclusion_reason as investability_reason  # noqa: E402
 from mortality import table as mortality_table  # noqa: E402
 from replicate_extended import (  # noqa: E402
   MAX_AGE,
-  RETIRE_AGE,
   START_AGE,
   TREND_DRAG,
   TREND_FEE,
@@ -280,7 +279,7 @@ def frontier(rows, paths, deaths, incomes, gamma, withdrawal_rate, spread):
         f"ruine {ref_ruin:.2%}")
   print()
 
-  for name in names:
+  for index, name in enumerate(names):
     fn = excess_fns[name]
     print(f"--- {name} : frontiere levier / vol / ruine ---")
     print(f"{'levier':>8}{'vol trav.':>12}{'ruine':>10}"
@@ -298,7 +297,8 @@ def frontier(rows, paths, deaths, incomes, gamma, withdrawal_rate, spread):
       mark = "  <=" if ruin <= ref_ruin else ""
       print(f"{lev:>8.2f}{vol:>12.2%}{ruin:>10.2%}"
             f"{(ruin - ref_ruin) * 100:>+9.2f}pt{mark}")
-    print()
+    if index < len(names) - 1:
+      print()
 
 
 def main() -> None:

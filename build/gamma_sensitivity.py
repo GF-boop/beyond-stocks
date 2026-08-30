@@ -36,7 +36,6 @@ from __future__ import annotations
 import argparse
 import json
 import os
-import statistics
 import sys
 
 import numpy as np
@@ -198,7 +197,7 @@ def main() -> None:
   parser = argparse.ArgumentParser(description=__doc__)
   parser.add_argument("--panel", default=os.path.join(
       HERE, "..", "data", "replication-panel-trend.csv"))
-  parser.add_argument("--runs", type=int, default=5_000)
+  parser.add_argument("--runs", type=int, default=10_000)
   parser.add_argument("--seed", type=int, default=20260827)
   parser.add_argument("--spread", type=float, default=DEFAULT_SPREAD)
   parser.add_argument("--fx-hedge-cost", type=float,

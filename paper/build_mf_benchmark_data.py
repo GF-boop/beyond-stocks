@@ -80,7 +80,7 @@ def testfol_monthly(name: str, drop_first: bool = False) -> dict[str, float]:
     """Compose les rendements quotidiens testfol en rendements mensuels.
 
     ``drop_first`` retire le premier mois civil, incomplet pour les tickers
-    cotes (cf. README du dossier official_benchmarks).
+    cotes (cf. README du dossier ``data/benchmarks-externes``).
     """
     level = defaultdict(lambda: 1.0)
     with open(os.path.join(TESTFOL, name + ".csv"), encoding="utf-8") as handle:

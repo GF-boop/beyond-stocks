@@ -4,9 +4,9 @@ title: "Beyond the Status Quo, Beyond Stocks: Global Multi-Asset Portfolios and 
 authors:
   - family-names: Flament
     given-names: Guillaume
-    email: g.f.flament@gmail.fr
-type: dataset
-version: v1.0
+    email: guillaume.flament@cayas.fr
+type: software
+version: 1.0.0
 date-released: "2026-08-30"
 license: CC-BY-4.0
 repository-code: "https://github.com/GF-boop/beyond-stocks"
@@ -17,4 +17,4 @@ keywords:
   - trend following
   - multi-asset diversification
   - replication
-abstract: "Replication and extension of Cederburg, O'Doherty, Wang and Yan (2025). The paper rebuilds a 1926-2025 panel of international asset returns (stocks, sovereign bonds, bills, gold and a managed-futures trend-following proxy), re-estimates the levered lifecycle portfolios of the original study, and extends them to a four-sleeve design."
+abstract: "Partial replication and extension of Anarkulova, Cederburg and O'Doherty (2025). The paper rebuilds a 1927-2025 panel of international asset returns (stocks, sovereign bonds, bills, gold and a managed-futures trend-following proxy), reproduces their fixed-equity lifecycle benchmark on public data, and extends the opportunity set to fixed multi-asset portfolios with up to 200% gross exposure."

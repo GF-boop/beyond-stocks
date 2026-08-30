@@ -9,7 +9,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SRC = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "results" / "fixed_stacked_n10000_full_ladders.json"
+SRC = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "results" / "main_ladders_n10000.json"
 OUT = Path(sys.argv[2]) if len(sys.argv) > 2 else ROOT / "paper" / "figures" / "ladders_main.tex"
 VOL_MIN = float(sys.argv[3]) if len(sys.argv) > 3 else 9.0
 VOL_MAX = float(sys.argv[4]) if len(sys.argv) > 4 else 19.0
@@ -66,7 +66,11 @@ def main():
   out = []
   A = out.append
   A("% Généré par build/plot_ladders_main.py — ne pas éditer à la main.")
-  A(f"% Source : results/main_ladders_n10000.json "
+  try:
+    source = SRC.resolve().relative_to(ROOT).as_posix()
+  except ValueError:
+    source = SRC.resolve().as_posix()
+  A(f"% Source : {source} "
     f"(seed {d['seed']}, {d['runs']} traj.).")
   A("\\begin{tikzpicture}[x=1cm, y=1cm]")
 

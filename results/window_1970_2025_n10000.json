@@ -21,13 +21,7 @@
   "usd_common_sample": false,
   "source_observations": 894,
   "included_unhedged_control": false,
-  "data_quality_exclusions": [
-    {
-      "country": "Japan",
-      "year": 1945,
-      "reason": "fermeture de marche, change administre et transition annuelle incomplete"
-    }
-  ],
+  "data_quality_flags": [],
   "investability_exclusions": [
     {
       "country": "Belgium",

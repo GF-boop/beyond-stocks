@@ -1,20 +1,19 @@
 """Table de mortalite pour la simulation de cycle de vie.
 
-Le papier de reference utilise les tables de la Social Security Administration.
-Leur site refuse les acces automatises, et une table francaise conviendrait de
-toute facon mieux a un lecteur francais. On retient donc une loi de Gompertz-
-Makeham, forme standard en actuariat :
+Le moteur retient une loi de Gompertz--Makeham, forme standard en actuariat :
 
     mu(x) = A + B * exp(C * x)
 
 Le terme constant A represente la mortalite accidentelle, independante de
-l'age ; le terme exponentiel represente le vieillissement. Les parametres sont
-cales sur l'esperance de vie a 65 ans publiee par l'INSEE pour 2024, soit
-23,9 ans pour une femme et 19,7 ans pour un homme.
+l'age ; le terme exponentiel represente le vieillissement. Deux calibrages
+sont disponibles. ``insee`` vise les esperances de vie a 65 ans publiees par
+l'INSEE pour 2024. ``ssa``, utilise explicitement par les simulations du
+manuscrit, vise les moments de longevite qu'ACO rapportent a partir des tables
+de la Social Security Administration. Le code ne lit pas une copie locale de
+ces tables.
 
-La loi lisse les irregularites d'une table reelle, ce qui est sans consequence
-ici : la simulation ne s'interesse qu'a la distribution de la duree de
-retraite, pas a la mortalite d'un age particulier.
+La loi lisse les irregularites d'une table reelle ; il s'agit d'une
+approximation par moments, pas d'une reproduction ligne a ligne des tables SSA.
 """
 
 from __future__ import annotations

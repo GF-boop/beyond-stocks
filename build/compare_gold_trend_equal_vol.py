@@ -16,7 +16,6 @@ nette des frais, couts de transaction et d'un haircut prospectif optionnel.
 from __future__ import annotations
 
 import argparse
-import math
 import os
 import random
 import statistics

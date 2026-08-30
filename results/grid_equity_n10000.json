@@ -5,138 +5,138 @@
   {
    "domestic_pct": 0.0,
    "international_pct": 100.0,
-   "mean_utility": -1.5969345542011065e-12,
-   "benchmark_utility": -1.5001396818918353e-12,
-   "equivalent_saving_vs_3367_pct": 10.85,
-   "ruin_pct": 10.17
+   "mean_utility": -1.5815431114758405e-12,
+   "benchmark_utility": -1.4681779465949523e-12,
+   "equivalent_saving_vs_3367_pct": 11.01,
+   "ruin_pct": 9.65
   },
   {
    "domestic_pct": 5.0,
    "international_pct": 95.0,
-   "mean_utility": -1.5643236344161023e-12,
-   "benchmark_utility": -1.5001396818918353e-12,
-   "equivalent_saving_vs_3367_pct": 10.55,
-   "ruin_pct": 9.53
+   "mean_utility": -1.5461256379296316e-12,
+   "benchmark_utility": -1.4681779465949523e-12,
+   "equivalent_saving_vs_3367_pct": 10.68,
+   "ruin_pct": 8.99
   },
   {
    "domestic_pct": 10.0,
    "international_pct": 90.0,
-   "mean_utility": -1.5385652386013916e-12,
-   "benchmark_utility": -1.5001396818918353e-12,
-   "equivalent_saving_vs_3367_pct": 10.33,
-   "ruin_pct": 8.92
+   "mean_utility": -1.5169156974129009e-12,
+   "benchmark_utility": -1.4681779465949523e-12,
+   "equivalent_saving_vs_3367_pct": 10.42,
+   "ruin_pct": 8.45
   },
   {
    "domestic_pct": 15.0,
    "international_pct": 85.0,
-   "mean_utility": -1.5201629925618471e-12,
-   "benchmark_utility": -1.5001396818918353e-12,
-   "equivalent_saving_vs_3367_pct": 10.17,
-   "ruin_pct": 8.59
+   "mean_utility": -1.4942282548211283e-12,
+   "benchmark_utility": -1.4681779465949523e-12,
+   "equivalent_saving_vs_3367_pct": 10.22,
+   "ruin_pct": 8.06
   },
   {
    "domestic_pct": 20.0,
    "international_pct": 80.0,
-   "mean_utility": -1.5068037540164394e-12,
-   "benchmark_utility": -1.5001396818918353e-12,
-   "equivalent_saving_vs_3367_pct": 10.06,
-   "ruin_pct": 8.34
+   "mean_utility": -1.4790121038639097e-12,
+   "benchmark_utility": -1.4681779465949523e-12,
+   "equivalent_saving_vs_3367_pct": 10.09,
+   "ruin_pct": 7.71
   },
   {
    "domestic_pct": 25.0,
    "international_pct": 75.0,
-   "mean_utility": -1.4997934168780713e-12,
-   "benchmark_utility": -1.5001396818918353e-12,
-   "equivalent_saving_vs_3367_pct": 10.0,
-   "ruin_pct": 8.16
+   "mean_utility": -1.4698468389726101e-12,
+   "benchmark_utility": -1.4681779465949523e-12,
+   "equivalent_saving_vs_3367_pct": 10.01,
+   "ruin_pct": 7.45
   },
   {
    "domestic_pct": 30.0,
    "international_pct": 70.0,
-   "mean_utility": -1.4984572057884866e-12,
-   "benchmark_utility": -1.5001396818918353e-12,
+   "mean_utility": -1.4671028923746722e-12,
+   "benchmark_utility": -1.4681779465949523e-12,
    "equivalent_saving_vs_3367_pct": 9.99,
-   "ruin_pct": 8.01
+   "ruin_pct": 7.3
   },
   {
    "domestic_pct": 33.0,
    "international_pct": 67.0,
-   "mean_utility": -1.5001396818918353e-12,
-   "benchmark_utility": -1.5001396818918353e-12,
+   "mean_utility": -1.4681779465949523e-12,
+   "benchmark_utility": -1.4681779465949523e-12,
    "equivalent_saving_vs_3367_pct": 10.0,
-   "ruin_pct": 8.03
+   "ruin_pct": 7.36
   },
   {
    "domestic_pct": 35.0,
    "international_pct": 65.0,
-   "mean_utility": -1.5025533973639352e-12,
-   "benchmark_utility": -1.5001396818918353e-12,
+   "mean_utility": -1.4703344059776184e-12,
+   "benchmark_utility": -1.4681779465949523e-12,
    "equivalent_saving_vs_3367_pct": 10.02,
-   "ruin_pct": 8.07
+   "ruin_pct": 7.38
   },
   {
    "domestic_pct": 40.0,
    "international_pct": 60.0,
-   "mean_utility": -1.512938228838654e-12,
-   "benchmark_utility": -1.5001396818918353e-12,
-   "equivalent_saving_vs_3367_pct": 10.11,
-   "ruin_pct": 8.23
+   "mean_utility": -1.4795688499485111e-12,
+   "benchmark_utility": -1.4681779465949523e-12,
+   "equivalent_saving_vs_3367_pct": 10.1,
+   "ruin_pct": 7.57
   },
   {
    "domestic_pct": 50.0,
    "international_pct": 50.0,
-   "mean_utility": -1.551106593661141e-12,
-   "benchmark_utility": -1.5001396818918353e-12,
-   "equivalent_saving_vs_3367_pct": 10.43,
-   "ruin_pct": 8.63
+   "mean_utility": -1.5157339913814242e-12,
+   "benchmark_utility": -1.4681779465949523e-12,
+   "equivalent_saving_vs_3367_pct": 10.41,
+   "ruin_pct": 8.06
   },
   {
    "domestic_pct": 60.0,
    "international_pct": 40.0,
-   "mean_utility": -1.6101566081864859e-12,
-   "benchmark_utility": -1.5001396818918353e-12,
+   "mean_utility": -1.576228642648305e-12,
+   "benchmark_utility": -1.4681779465949523e-12,
    "equivalent_saving_vs_3367_pct": 10.95,
-   "ruin_pct": 9.61
+   "ruin_pct": 9.0
   },
   {
    "domestic_pct": 70.0,
    "international_pct": 30.0,
-   "mean_utility": -1.6946147955661788e-12,
-   "benchmark_utility": -1.5001396818918353e-12,
-   "equivalent_saving_vs_3367_pct": 11.76,
-   "ruin_pct": 10.75
+   "mean_utility": -1.662052538445038e-12,
+   "benchmark_utility": -1.4681779465949523e-12,
+   "equivalent_saving_vs_3367_pct": 11.8,
+   "ruin_pct": 10.11
   },
   {
    "domestic_pct": 80.0,
    "international_pct": 20.0,
-   "mean_utility": -1.8029066283478975e-12,
-   "benchmark_utility": -1.5001396818918353e-12,
-   "equivalent_saving_vs_3367_pct": 12.95,
-   "ruin_pct": 12.3
+   "mean_utility": -1.7686793086685724e-12,
+   "benchmark_utility": -1.4681779465949523e-12,
+   "equivalent_saving_vs_3367_pct": 12.99,
+   "ruin_pct": 11.43
   },
   {
    "domestic_pct": 90.0,
    "international_pct": 10.0,
-   "mean_utility": -1.9320594764028222e-12,
-   "benchmark_utility": -1.5001396818918353e-12,
-   "equivalent_saving_vs_3367_pct": 14.59,
-   "ruin_pct": 14.18
+   "mean_utility": -1.892918860983411e-12,
+   "benchmark_utility": -1.4681779465949523e-12,
+   "equivalent_saving_vs_3367_pct": 14.57,
+   "ruin_pct": 12.84
   },
   {
    "domestic_pct": 100.0,
    "international_pct": 0.0,
-   "mean_utility": -2.0807107068866877e-12,
-   "benchmark_utility": -1.5001396818918353e-12,
-   "equivalent_saving_vs_3367_pct": 16.85,
-   "ruin_pct": 16.27
+   "mean_utility": -2.038091029468052e-12,
+   "benchmark_utility": -1.4681779465949523e-12,
+   "equivalent_saving_vs_3367_pct": 16.75,
+   "ruin_pct": 14.95
   }
  ],
  "argmax": {
   "domestic_pct": 30.0,
   "international_pct": 70.0,
-  "mean_utility": -1.4984572057884866e-12,
-  "benchmark_utility": -1.5001396818918353e-12,
+  "mean_utility": -1.4671028923746722e-12,
+  "benchmark_utility": -1.4681779465949523e-12,
   "equivalent_saving_vs_3367_pct": 9.99,
-  "ruin_pct": 8.01
+  "ruin_pct": 7.3
  }
 }

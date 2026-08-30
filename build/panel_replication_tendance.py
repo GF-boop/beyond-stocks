@@ -16,9 +16,9 @@ Le carry est donc explicite et le change spot ex post n'entre pas dans le cas
 principal. Les versions non couvertes sont conservees dans des colonnes
 separees pour sensibilite.
 
-Le panier obligataire exige deux emetteurs au minimum. Cette regle conserve
-1946 et 1947, ou seuls les Etats-Unis et le Royaume-Uni sont simultanement
-disponibles, au lieu de supprimer ces annees de toutes les strategies.
+Le panier obligataire exige huit emetteurs au minimum. Sur la fenetre
+1927--2025 ce plancher ne retire aucune observation : le panier effectivement
+produit contient 12 a 16 souverains, dont 16 dans la grande majorite du panel.
 """
 
 from __future__ import annotations

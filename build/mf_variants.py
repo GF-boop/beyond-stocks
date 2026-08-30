@@ -7,7 +7,7 @@ peut demander si ce choix precis porte les conclusions. Ce script reconstruit
 la meme serie annuelle reelle pour quatre variantes de construction et rapporte
 leurs moments et leur correlation annuelle avec la version retenue.
 
-Recette annuelle, identique a ``pipeline/panel_managed_futures.py`` : pour
+Recette annuelle, identique a ``build/panel_managed_futures.py`` : pour
 chaque mois on deflate le rendement brut USD de la variante par le CPI
 americain, on compose les douze mois d'une annee civile complete, puis on
 applique les frais. Les frais de rotation sont ceux effectivement mesures pour
@@ -27,7 +27,7 @@ Variantes :
 Sorties autonomes pour main.tex :
 
 * ``figures/mf_variants.json`` : audit complet ;
-* ``figures/mf_variants.tex``  : tabular inclus par l'annexe C.
+* ``figures/mf_variants.tex``  : tabular inclus par l'annexe B.
 """
 
 from __future__ import annotations
@@ -82,7 +82,7 @@ def month_number(month: str) -> int:
 def read_cpi() -> dict[str, float]:
   """CPI mensuel americain, avec comblement d'un mois isole.
 
-  Reproduit ``fill_isolated_gaps`` de ``pipeline/panel_managed_futures.py`` :
+  Reproduit ``fill_isolated_gaps`` de ``build/panel_managed_futures.py`` :
   le BLS n'a pas publie octobre 2025, et sans ce seul mois l'annee 2025 serait
   perdue alors que ses douze rendements existent. Seul un trou d'exactement un
   mois est comble, par moyenne geometrique des voisins, jamais une borne.

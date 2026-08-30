@@ -1,0 +1,194 @@
+Panel : 1557 pays-annees (1927-2025), filtre full (0 exclus)
+Runs : 10000 trajectoires appariees, blocs 10 an(s), spread 0.00%
+Vol cible (= vol pooled du 33/67) : 17.43%
+
+======================================================================
+OPTION 4 : frontiere ruine-vol (levier fixe balaye)
+======================================================================
+Reference ACO 33/67 : vol traversee 16.27%, ruine 7.36%
+
+--- 90/60 : frontiere levier / vol / ruine ---
+  levier   vol trav.     ruine   vs 33/67
+    1.00      10.94%     8.66%    +1.30pt
+    1.15      12.36%     7.71%    +0.35pt
+    1.30      13.80%     7.25%    -0.11pt  <=
+    1.50      15.73%     7.04%    -0.32pt  <=
+    1.70      17.69%     7.28%    -0.08pt  <=
+    1.85      19.16%     7.56%    +0.20pt
+    2.00      20.64%     7.97%    +0.61pt
+
+--- 90/60 + 33 MF : frontiere levier / vol / ruine ---
+  levier   vol trav.     ruine   vs 33/67
+    1.00      11.88%     2.98%    -4.38pt  <=
+    1.15      13.45%     2.37%    -4.99pt  <=
+    1.30      15.04%     1.95%    -5.41pt  <=
+    1.50      17.18%     1.54%    -5.82pt  <=
+    1.70      19.34%     1.36%    -6.00pt  <=
+    1.85      20.97%     1.33%    -6.03pt  <=
+    2.00      22.60%     1.26%    -6.10pt  <=
+
+--- 90/60 + 33 gold : frontiere levier / vol / ruine ---
+  levier   vol trav.     ruine   vs 33/67
+    1.00      12.75%     4.13%    -3.23pt  <=
+    1.15      14.51%     3.54%    -3.82pt  <=
+    1.30      16.29%     3.24%    -4.12pt  <=
+    1.50      18.68%     2.96%    -4.40pt  <=
+    1.70      21.09%     3.11%    -4.25pt  <=
+    1.85      22.90%     3.26%    -4.10pt  <=
+    2.00      24.72%     3.59%    -3.77pt  <=
+
+Panel : 1557 pays-annees (1927-2025), filtre full (0 exclus)
+Runs : 10000 trajectoires appariees, blocs 10 an(s), spread 0.15%
+Vol cible (= vol pooled du 33/67) : 17.43%
+
+======================================================================
+OPTION 4 : frontiere ruine-vol (levier fixe balaye)
+======================================================================
+Reference ACO 33/67 : vol traversee 16.27%, ruine 7.36%
+
+--- 90/60 : frontiere levier / vol / ruine ---
+  levier   vol trav.     ruine   vs 33/67
+    1.00      10.94%     8.66%    +1.30pt
+    1.15      12.36%     7.81%    +0.45pt
+    1.30      13.80%     7.45%    +0.09pt
+    1.50      15.73%     7.36%    +0.00pt  <=
+    1.70      17.69%     7.55%    +0.19pt
+    1.85      19.16%     7.83%    +0.47pt
+    2.00      20.64%     8.24%    +0.88pt
+
+--- 90/60 + 33 MF : frontiere levier / vol / ruine ---
+  levier   vol trav.     ruine   vs 33/67
+    1.00      11.88%     2.98%    -4.38pt  <=
+    1.15      13.45%     2.40%    -4.96pt  <=
+    1.30      15.04%     1.99%    -5.37pt  <=
+    1.50      17.18%     1.57%    -5.79pt  <=
+    1.70      19.34%     1.42%    -5.94pt  <=
+    1.85      20.97%     1.39%    -5.97pt  <=
+    2.00      22.60%     1.33%    -6.03pt  <=
+
+--- 90/60 + 33 gold : frontiere levier / vol / ruine ---
+  levier   vol trav.     ruine   vs 33/67
+    1.00      12.75%     4.13%    -3.23pt  <=
+    1.15      14.51%     3.59%    -3.77pt  <=
+    1.30      16.29%     3.31%    -4.05pt  <=
+    1.50      18.68%     3.08%    -4.28pt  <=
+    1.70      21.09%     3.18%    -4.18pt  <=
+    1.85      22.90%     3.48%    -3.88pt  <=
+    2.00      24.72%     3.73%    -3.63pt  <=
+
+Panel : 1557 pays-annees (1927-2025), filtre full (0 exclus)
+Runs : 10000 trajectoires appariees, blocs 10 an(s), spread 0.30%
+Vol cible (= vol pooled du 33/67) : 17.43%
+
+======================================================================
+OPTION 4 : frontiere ruine-vol (levier fixe balaye)
+======================================================================
+Reference ACO 33/67 : vol traversee 16.27%, ruine 7.36%
+
+--- 90/60 : frontiere levier / vol / ruine ---
+  levier   vol trav.     ruine   vs 33/67
+    1.00      10.94%     8.66%    +1.30pt
+    1.15      12.36%     7.91%    +0.55pt
+    1.30      13.80%     7.60%    +0.24pt
+    1.50      15.73%     7.63%    +0.27pt
+    1.70      17.69%     7.82%    +0.46pt
+    1.85      19.16%     8.21%    +0.85pt
+    2.00      20.64%     8.65%    +1.29pt
+
+--- 90/60 + 33 MF : frontiere levier / vol / ruine ---
+  levier   vol trav.     ruine   vs 33/67
+    1.00      11.88%     2.98%    -4.38pt  <=
+    1.15      13.45%     2.43%    -4.93pt  <=
+    1.30      15.04%     2.04%    -5.32pt  <=
+    1.50      17.18%     1.62%    -5.74pt  <=
+    1.70      19.34%     1.47%    -5.89pt  <=
+    1.85      20.97%     1.47%    -5.89pt  <=
+    2.00      22.60%     1.41%    -5.95pt  <=
+
+--- 90/60 + 33 gold : frontiere levier / vol / ruine ---
+  levier   vol trav.     ruine   vs 33/67
+    1.00      12.75%     4.13%    -3.23pt  <=
+    1.15      14.51%     3.60%    -3.76pt  <=
+    1.30      16.29%     3.40%    -3.96pt  <=
+    1.50      18.68%     3.21%    -4.15pt  <=
+    1.70      21.09%     3.29%    -4.07pt  <=
+    1.85      22.90%     3.61%    -3.75pt  <=
+    2.00      24.72%     4.03%    -3.33pt  <=
+
+Panel : 1557 pays-annees (1927-2025), filtre full (0 exclus)
+Runs : 10000 trajectoires appariees, blocs 10 an(s), spread 0.60%
+Vol cible (= vol pooled du 33/67) : 17.43%
+
+======================================================================
+OPTION 4 : frontiere ruine-vol (levier fixe balaye)
+======================================================================
+Reference ACO 33/67 : vol traversee 16.27%, ruine 7.36%
+
+--- 90/60 : frontiere levier / vol / ruine ---
+  levier   vol trav.     ruine   vs 33/67
+    1.00      10.94%     8.66%    +1.30pt
+    1.15      12.36%     8.05%    +0.69pt
+    1.30      13.80%     7.89%    +0.53pt
+    1.50      15.73%     8.12%    +0.76pt
+    1.70      17.69%     8.48%    +1.12pt
+    1.85      19.16%     8.89%    +1.53pt
+    2.00      20.64%     9.56%    +2.20pt
+
+--- 90/60 + 33 MF : frontiere levier / vol / ruine ---
+  levier   vol trav.     ruine   vs 33/67
+    1.00      11.88%     2.98%    -4.38pt  <=
+    1.15      13.45%     2.47%    -4.89pt  <=
+    1.30      15.04%     2.14%    -5.22pt  <=
+    1.50      17.18%     1.72%    -5.64pt  <=
+    1.70      19.34%     1.63%    -5.73pt  <=
+    1.85      20.97%     1.62%    -5.74pt  <=
+    2.00      22.60%     1.62%    -5.74pt  <=
+
+--- 90/60 + 33 gold : frontiere levier / vol / ruine ---
+  levier   vol trav.     ruine   vs 33/67
+    1.00      12.75%     4.13%    -3.23pt  <=
+    1.15      14.51%     3.69%    -3.67pt  <=
+    1.30      16.29%     3.60%    -3.76pt  <=
+    1.50      18.68%     3.54%    -3.82pt  <=
+    1.70      21.09%     3.68%    -3.68pt  <=
+    1.85      22.90%     3.97%    -3.39pt  <=
+    2.00      24.72%     4.55%    -2.81pt  <=
+
+Panel : 1557 pays-annees (1927-2025), filtre full (0 exclus)
+Runs : 10000 trajectoires appariees, blocs 10 an(s), spread 1.00%
+Vol cible (= vol pooled du 33/67) : 17.43%
+
+======================================================================
+OPTION 4 : frontiere ruine-vol (levier fixe balaye)
+======================================================================
+Reference ACO 33/67 : vol traversee 16.27%, ruine 7.36%
+
+--- 90/60 : frontiere levier / vol / ruine ---
+  levier   vol trav.     ruine   vs 33/67
+    1.00      10.94%     8.66%    +1.30pt
+    1.15      12.36%     8.29%    +0.93pt
+    1.30      13.80%     8.38%    +1.02pt
+    1.50      15.73%     8.79%    +1.43pt
+    1.70      17.69%     9.38%    +2.02pt
+    1.85      19.16%    10.00%    +2.64pt
+    2.00      20.64%    10.74%    +3.38pt
+
+--- 90/60 + 33 MF : frontiere levier / vol / ruine ---
+  levier   vol trav.     ruine   vs 33/67
+    1.00      11.88%     2.98%    -4.38pt  <=
+    1.15      13.45%     2.52%    -4.84pt  <=
+    1.30      15.04%     2.27%    -5.09pt  <=
+    1.50      17.18%     1.95%    -5.41pt  <=
+    1.70      19.34%     1.86%    -5.50pt  <=
+    1.85      20.97%     1.86%    -5.50pt  <=
+    2.00      22.60%     1.93%    -5.43pt  <=
+
+--- 90/60 + 33 gold : frontiere levier / vol / ruine ---
+  levier   vol trav.     ruine   vs 33/67
+    1.00      12.75%     4.13%    -3.23pt  <=
+    1.15      14.51%     3.88%    -3.48pt  <=
+    1.30      16.29%     3.84%    -3.52pt  <=
+    1.50      18.68%     3.86%    -3.50pt  <=
+    1.70      21.09%     4.26%    -3.10pt  <=
+    1.85      22.90%     4.70%    -2.66pt  <=
+    2.00      24.72%     5.30%    -2.06pt  <=

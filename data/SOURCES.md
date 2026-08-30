@@ -1,8 +1,9 @@
 # Data provenance
 
-All series in `data/` come from sources freely accessible for non-commercial
-research. No data under a commercial licence is redistributed in this
-repository.
+The public package contains research inputs available under the source-specific
+terms listed below. Those terms are not uniform: several inputs are
+non-commercial/share-alike and LBMA redistribution may require permission.
+No SG, BarclayHedge, testfol or Yahoo series is redistributed.
 
 One single exception, outside the repository: the external validation of the
 managed-futures proxy (`paper/build_mf_benchmark_data.py`, matrix and
@@ -12,7 +13,7 @@ proprietary SG and Barclay BTOP50 indexes and with the testfol series
 scripts stop cleanly and the corresponding figures and tables remain those of
 the distributed PDF. See the main README. The listed-fund series of
 `data/benchmarks-externes/funds/` (`build/fetch_mf_fund_data.py`, source
-Yahoo Finance) fall under the same terms and are not redistributed; they feed
+Yahoo Finance) are also not redistributed; they feed
 the investable-fund comparison of appendix B (via
 `build/mf_fund_correlations.py`).
 
@@ -43,7 +44,7 @@ complete bond series).
 
 **Content.** JST extended by five years: `equity_real`, `bond_real`,
 `short_real`, `inflation` by country-year, a `source` column distinguishing
-JST years from added years. 2,245 observations, 1871–2025.
+JST years from added years. 2,247 observations, 1871–2025.
 
 **Sources of the extension.**
 
@@ -102,8 +103,10 @@ deflated by the FRED U.S. CPI series `CPIAUCSL`). Before 1970, the average of
 the JST markets weighted by capitalisation (World Bank, `CM.MKT.LCAP.CD`),
 then by GDP.
 
-**Use.** `build/panel_replication_tendance.py` derives from it the world
-equity and world bond sleeves converted into each resident's numeraire. Over
+**Use.** `build/panel_replication_tendance.py` derives from it the post-1970
+world-equity sleeve converted into each resident's numeraire. The current
+world-bond sleeve is rebuilt separately from all usable sovereigns in
+`replication-panel.csv`. Over
 1970–2025, the reconstruction and the index agree at 0.92 correlation, mean
 gap 0.34 point.
 

@@ -9,7 +9,7 @@ rendements dans les mauvaises sequences, pas seulement de la correlation.
 Ce script rejoue donc le modele lifecycle complet, une fois par variante, sur
 les deux familles diversifiees a 200 %. Chemin par chemin : on reconstruit la
 serie annuelle reelle brute USD du managed futures pour la variante (meme
-recette mensuelle que ``pipeline/panel_managed_futures.py``), on la couvre dans
+recette mensuelle que ``build/panel_managed_futures.py``), on la couvre dans
 la monnaie de chaque resident (meme recette que
 ``pipeline/panel_replication_tendance.py``), et on evalue les deux familles et
 le benchmark ACO 33/67 a la graine commune 20260827 sur 10 000 trajectoires
@@ -24,7 +24,7 @@ propres a chaque signal, entrent dans la table des moments de
 Sorties autonomes pour main.tex :
 
 * ``figures/mf_variant_lifecycle.json`` : audit complet ;
-* ``figures/mf_variant_lifecycle.tex``  : tabular inclus par l'annexe C.
+* ``figures/mf_variant_lifecycle.tex``  : tabular inclus par l'annexe B.
 """
 
 from __future__ import annotations
@@ -118,7 +118,7 @@ def previous_month(month: str) -> str:
 def read_cpi() -> dict[str, float]:
   """CPI mensuel americain, avec comblement du seul octobre 2025 manquant.
 
-  Reproduit ``fill_isolated_gaps`` de ``pipeline/panel_managed_futures.py`` :
+  Reproduit ``fill_isolated_gaps`` de ``build/panel_managed_futures.py`` :
   un trou d'exactement un mois est comble par moyenne geometrique des voisins,
   jamais une borne.
   """
@@ -142,7 +142,7 @@ def annual_us_real_gross(gross_col: str, cash_col: str,
   Deflation mois par mois par le CPI americain avant composition, annees
   civiles completes seulement, aucun frais ni cout de rotation applique ici :
   le modele applique ``TREND_FEE`` et ``TREND_DRAG`` en aval, comme pour la
-  serie canonique de ``pipeline/panel_managed_futures.py``.
+  serie canonique de ``build/panel_managed_futures.py``.
   """
   by_year: dict[int, list[float]] = {}
   by_year_cash: dict[int, list[float]] = {}
@@ -279,7 +279,6 @@ def main() -> None:
   # correlation annuelle de chaque serie USD brute avec la reference, sur les
   # annees communes, pour rappeler le lien avec la table des moments
   ref_years = sorted(built_us[REFERENCE_KEY][0])
-  ref_series = [built_us[REFERENCE_KEY][0][y] for y in ref_years]
 
   results = []
   print(f"Variantes MF -> lifecycle : {len(VARIANTS)} x {args.runs:,} "

@@ -25,13 +25,12 @@ Provenance, licence and consuming script of every file:
 | `jst-real-returns-2025.csv` | 2021–2025 extension of non-international-equity classes | JST + appendices |
 | `gmd-cpi-fx.csv` | recent CPI, USD exchange rate and real GDP (columns `CPI`, `USDfx`, `rGDP_USD`) | Global Macro Database, extract |
 | `equity-tr-recent.csv` | nominal equity returns 2021–2025 | listed trackers |
-| `bb-mcap-gdp.csv` | market-capitalisation / GDP ratios by country-year | World Bank |
+| `bb-mcap-gdp.csv` | market-capitalisation / GDP ratios by country-year | Big Bang Database |
 | `jst-ntsg-panel-2025.csv` | NTSG world equity index, 1880–2025 | JST reconstruction |
 | `gold-annual.csv` | real gold price, annual | public series |
 | `managed-futures-monthly.csv` | raw monthly managed-futures proxy, by sector | in-house construction (appendix B.1) |
 | `cpi-monthly.csv` | monthly U.S. CPI, MF proxy deflator | BLS |
-| `ssa_life_table.html` | mortality (Gompertz–Makeham) | SSA source, calibrated by `build/mortality.py` |
-| `fixed-stacked-design.json` | manifest of portfolio rules (frozen SHA-256) | frozen, read by `compare_fixed_stacked_utility.py` |
+| `fixed-stacked-design.json` | manifest of portfolio rules | structure and fixed-design constraints validated by `compare_fixed_stacked_utility.py` |
 
 ### Reconstructed panels (versioned, rebuildable — step 1 of `rebuild_all.sh`)
 
@@ -46,8 +45,9 @@ Provenance, licence and consuming script of every file:
 the direct input of all simulations.
 
 Data quality: `build/data_quality.py` (module `SUSPECT_PERIODS` /
-`exclusion_reason`, imported by `compare_fixed_stacked_utility.py`; Japan
-1945–1949 excluded, justifying docstring). Investability filter:
+`exclusion_reason`, imported by `compare_fixed_stacked_utility.py`) flags Japan
+1945–1949; only Japan 1945 exists in the final annual panel. The central raw
+sample retains it and records the flag in its JSON audit. Investability filter:
 `build/investability.py` (30 rows excluded, labelled sensitivity).
 
 ## 2. Paper → output → script mapping
@@ -73,12 +73,12 @@ below.
 | Table 5 | `tab:main-ladders` | Two pre-specified leverage ladders | `results/main_ladders_n10000.json` | same as Table 4 |
 | Figure 1 | `fig:ladders-main` | Ladders vs ACO benchmark | `paper/figures/ladders_main.tex` | `build/plot_ladders_main.py` (reads `main_ladders_n10000.json`) |
 | Table 6 | `tab:main-similar-volatility` | Dominance at comparable volatility | `results/main_ladders_n10000.json` | same as Table 4 |
-| Table 7 | `tab:frontier` | Ruin along a leverage sweep | *stdout, not persisted* | `build/experiment_voltarget.py --mode frontier --runs 5000` |
+| Table 7 | `tab:frontier` | Ruin along a leverage sweep | `results/frontier_n5000.txt` | `build/experiment_voltarget.py --mode frontier --runs 5000` |
 | Table 8 | `tab:usd-numeraire` | Same states, resident vs fixed-dollar numeraire | `results/control_usd_common_n10000.json` | `compare_fixed_stacked_utility.py --runs 10000 --usd-common-sample --output-json …` |
 | §5.2 window | — | 90/60 covered comment over 1970–2025 | `results/window_1970_2025_n10000.json` | `compare_fixed_stacked_utility.py --runs 10000 --year-from 1970 --portfolio-set all --output-json …` |
 | §2.1 search | — | ACO optimisation grid on the public panel (optimum ≈ 30/70) | `results/grid_equity_n10000.json` | `build/grid_search_equity.py` |
 | Figure 2 + §5.5 | `fig:ladders-usa` | Ladders on U.S. country-years only (vol-matched) | `results/control_usa_ladders_n20000.json` | `compare_fixed_stacked_utility.py --runs 20000 --sample-mode usa --portfolio-set ladders --output-json …` (figure: `build/plot_ladders_main.py results/control_usa_ladders_n20000.json paper/figures/ladders_usa.tex 8`) |
-| Table 9 | `tab:spread` | Leverage sweep across a range of spreads | *stdout, not persisted* | `build/experiment_voltarget.py --mode frontier --runs 10000 --spread {0, 0.0015, 0.003, 0.006, 0.010}` (5 runs, read off leverage 1.5) |
+| Table 9 | `tab:spread` | Leverage sweep across a range of spreads | `results/spread_frontier_n10000.txt` | `build/experiment_voltarget.py --mode frontier --runs 10000 --spread {0, 0.0015, 0.003, 0.006, 0.010}` (5 runs, read off leverage 1.5) |
 | Table 10 (§5.6) | `tab:central-cost-sensitivity` | Financing and hedging cost stress | `paper/figures/central_cost_sensitivity.{json,tex}` | `build/central_cost_sensitivity.py` |
 | Figure 3 (app. A) | `fig:cumwealth` | Cumulative real return by asset class | `paper/figures/cumulative_wealth.tex` | `paper/build_appendix_data.py` |
 | Table 11 (app. B) | `tab:mf-monthly-sources` | Monthly sources of the MF proxy | *inline in `main.tex`* | — (static table) |
@@ -111,8 +111,8 @@ Notes:
   table.
 - **Tables 7 and 9**: `experiment_voltarget.py` has its own leverage
   implementation, distinct from the main engine (see the note to Table 9 for
-  the numerical consequence). stdout output only; the audited cells are those
-  printed at run time.
+  the numerical consequence). The canonical rebuild archives stdout under
+  `results/`; the audited cells are transcribed from those files.
 - **Imported modules, not executed directly**: `replicate_extended.py`
   (shared engine), `compare_lifecycle_utility.py`, `compare_gold_trend_equal_vol.py`,
   `compare_equal_vol.py`, `income_process.py`, `mortality.py`,
@@ -124,20 +124,27 @@ Notes:
 
 ## 3. Rebuild order
 
-`build/rebuild_all.sh` chains the commands in the canonical order (data →
-main experiment → sweeps → sensitivities → figures → PDF). It is provided as
-documentation: each step is independent and can be rerun in isolation.
+`build/rebuild_all.sh` chains every mapped public command in the canonical
+order (data → main experiment → controls → sweeps → sensitivities → figures →
+PDF). External benchmark tables are regenerated only when their
+non-redistributable inputs are present; otherwise their versioned artefacts are
+retained. Each step can also be rerun in isolation.
+`build/verify_repository.py` termine la partie calcul en contrôlant les tailles
+de panels, le manifeste, les métadonnées d'échantillon, le grid search, les
+sorties archivées et la provenance des figures.
 
 ## 4. Audit rules
 
-1. Every table in the PDF must be traced back to a JSON in `results/` or a
-   `.json/.tex` in `paper/figures/` via the table in section 2.
+1. Every quantitative table in the PDF must be traced to a JSON, archived
+   console output or generated `.tex` via section 2. Table 11 is a static data
+   dictionary and has no numerical producer.
 2. ACO benchmarks must coincide across tables with a common path count and
    sample; any difference is read in the table notes (path-count effect, or
    declared sweep machinery).
 3. The manifest `data/fixed-stacked-design.json` fixes the recipes
    (`calibrated_from_returns: false`); `compare_fixed_stacked_utility.py`
    loads it with no option to re-estimate the weights.
-4. No number in the paper is typed by hand: the tables come from the JSON
-   outputs, and Figure 1 is rebuildable with
-   `python3 build/plot_ladders_main.py`.
+4. Core tables in `main.tex` are auditable transcriptions of their mapped JSON
+   or archived console output; appendix tables under `paper/figures/` are
+   generated directly. Figures 1 and 2 are rebuilt by
+   `build/plot_ladders_main.py` with explicit source files.

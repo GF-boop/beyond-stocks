@@ -7,6 +7,7 @@ trois perturbations transparentes de cette histoire :
 
 * blocs stationnaires de longueur moyenne 5, 10 et 20 ans ;
 * fenetres commencant en 1927, 1950 et 1970 ;
+* filtre ex ante d'investissabilite ;
 * leave-one-country-out sur les seize pays du panel.
 
 Les portefeuilles restent strictement les definitions figees du manifeste. En
@@ -35,7 +36,6 @@ from compare_fixed_stacked_utility import (  # noqa: E402
     BENCHMARK_NAME,
     DEFAULT_FX_HEDGE_COST,
     DEFAULT_SPREAD,
-    FIXED_EXPOSURES,
     return_functions,
 )
 from compare_gold_trend_equal_vol import (  # noqa: E402
@@ -224,7 +224,7 @@ def write_summary_tex(path: str, base: list[dict], leave_one_out: list[dict],
     handle.write("Sample & $N$ & ACO ruin & \\multicolumn{2}{c}{Proportional 200\\%} & \\multicolumn{2}{c}{Equal-weight 200\\%} \\\\\n")
     handle.write("\\cmidrule(lr){4-5}\\cmidrule(lr){6-7}\n")
     handle.write(" & & & Ruin & Equiv.\\ saving & Ruin & Equiv.\\ saving \\\\\n")
-    handle.write("\\multicolumn{7}{l}{\\emph{lower is better, ACO equivalent saving is $10\%$ throughout}} \\\\\n\\midrule\n")
+    handle.write("\\multicolumn{7}{l}{\\emph{lower is better, ACO equivalent saving is $10\\%$ throughout}} \\\\\n\\midrule\n")
     for label, observations, aco_ruin, cells in rows:
       # Seul le comptage d'observations recoit le groupement {,} ; les virgules
       # des libelles restent des virgules ordinaires.
@@ -257,7 +257,7 @@ def write_loo_tex(path: str, leave_one_out: list[dict], runs: int) -> None:
     handle.write("Omitted country & ACO ruin & \\multicolumn{2}{c}{Proportional 200\\%} & \\multicolumn{2}{c}{Equal-weight 200\\%} \\\\\n")
     handle.write("\\cmidrule(lr){3-4}\\cmidrule(lr){5-6}\n")
     handle.write(" & & Ruin & Equiv.\\ saving & Ruin & Equiv.\\ saving \\\\\n")
-    handle.write("\\multicolumn{6}{l}{\\emph{lower is better, ACO equivalent saving is $10\%$}} \\\\\n\\midrule\n")
+    handle.write("\\multicolumn{6}{l}{\\emph{lower is better, ACO equivalent saving is $10\\%$}} \\\\\n\\midrule\n")
     for result in leave_one_out:
       country = result["specification"]["omit_country"]
       cells = level_cells(result)
