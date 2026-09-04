@@ -2,6 +2,13 @@
  "seed": 20260827,
  "runs": 10000,
  "maintenance_margin": 0.25,
+ "panel_rows": 1561,
+ "hedge_mode": "fixed_notional",
+ "bootstrap_end_treatment": "aco",
+ "mean_block_years": 10,
+ "horizon": 86,
+ "spread_real": 0.003,
+ "panel_sha256": "c036ef8e6b3854b8cf11f6bf7a0481c2f6eadbfbaa47fda5061d6d5360d6512b",
  "design": "compte aux poids de la strategie, rebalance chaque annee vers l'exposition cible ; marge testee en fin d'annee ; nominaux reconstruits par actif",
  "families": {
   "proportional_200": {
@@ -9,28 +16,38 @@
    "paths_with_call": 0,
    "wipes": 0,
    "path_years": 860000,
-   "min_year_end_ratio": 0.3766729639143466,
-   "worst_asset_book_year": -0.13182775519665269,
+   "min_year_end_ratio": 0.37594143038645284,
+   "worst_asset_book_year": -0.14957627046084065,
    "gross_exposure": 2.0,
-   "single_year_loss_threshold": -0.3072
+   "single_year_loss_threshold": -0.3071
+  },
+  "equal_weight_175": {
+   "calls": 0,
+   "paths_with_call": 0,
+   "wipes": 0,
+   "path_years": 860000,
+   "min_year_end_ratio": 0.4769380967812721,
+   "worst_asset_book_year": -0.11467225041309204,
+   "gross_exposure": 1.75,
+   "single_year_loss_threshold": -0.4061
   },
   "equal_weight_200": {
    "calls": 0,
    "paths_with_call": 0,
    "wipes": 0,
    "path_years": 860000,
-   "min_year_end_ratio": 0.3902781211845477,
-   "worst_asset_book_year": -0.1284214425344925,
+   "min_year_end_ratio": 0.38976111291148413,
+   "worst_asset_book_year": -0.11467225041309204,
    "gross_exposure": 2.0,
-   "single_year_loss_threshold": -0.3072
+   "single_year_loss_threshold": -0.3071
   },
   "covered_150": {
    "calls": 0,
    "paths_with_call": 0,
    "wipes": 0,
    "path_years": 860000,
-   "min_year_end_ratio": 0.5323851479128451,
-   "worst_asset_book_year": -0.242467744349936,
+   "min_year_end_ratio": 0.5324355012628383,
+   "worst_asset_book_year": -0.2433422782790705,
    "gross_exposure": 1.5,
    "single_year_loss_threshold": -0.5381
   }

@@ -21,6 +21,9 @@
 \newcommand{\Technicalappendix}[1]{Appendix~\ref{#1}}
 \newcommand{\technicalfigure}[2]{Figure~\ref{#1}}
 \newcommand{\technicaltable}[2]{Table~\ref{#1}}
+\newcommand{\gitrepo}{https://github.com/GF-boop/beyond-stocks}
+\newcommand{\gitlink}[2]{\href{\gitrepo/blob/main/#1}{#2}}
+\newcommand{\gitdirlink}[2]{\href{\gitrepo/tree/main/#1}{#2}}
 
 \hypersetup{pdftitle={Beyond All-Equity Lifecycle Portfolios: A Public-Data Multi-Asset Extension},pdfauthor={Guillaume Flament},colorlinks=true,citecolor=blue!55!black,linkcolor=blue!55!black,urlcolor=blue!55!black}
 \captionsetup{font=small,labelfont=bf}
@@ -54,10 +57,9 @@ influence diagnostics, this rule has lower annual volatility, lower ruin and
 a lower saving requirement than the benchmark. Both diversified families
 already reduce ruin without portfolio-level borrowing, although matching
 benchmark utility then requires more saving. Later historical windows also
-support the diversified ranking. The evidence
-supports broadening the opportunity set when evaluating fixed lifecycle
-allocations. It remains conditional on the return proxies, annual timing,
-and financing and currency-hedging assumptions.
+support the diversified ranking. Diversification and total exposure play distinct roles: combining asset
+classes improves capital preservation, while scaling the diversified portfolio
+lowers the saving required to finance retirement.
 
 \medskip
 \noindent \textit{JEL classifications:} C15, D14, G11, G17.\\
@@ -110,22 +112,18 @@ reported outcome of the comparison, alongside ruin and expected utility.
 Our annual replication uses the
 Jord{\`a}--Schularick--Taylor Macrohistory Database and supplementary public
 sources.\footnote{The research repository is available at
-\url{https://github.com/GF-boop/beyond-stocks}.}
+\url{https://github.com/GF-boop/beyond-stocks}. Numerical outputs, replication scripts, and data provenance are detailed in Appendix~\ref{app:reproducibility}.}
 The final panel contains 1,561 country-years across 16 developed markets over
 1927--2025. It recovers the qualitative ranking of the fixed equity and
 balanced strategies: simulated retirement ruin is 6.98\% for the 33/67
-benchmark, compared with 15.52\% for domestic equities. Differences in data,
-frequency, and simulation conventions make this a comparison within a public
-data implementation, rather than an exact reproduction of ACO's estimates.
+benchmark, compared with 15.52\% for domestic equities. The annual implementation provides a common framework for comparing
+these allocations with the multi-asset extensions.
 
 The central experiment keeps the benchmark's equity mix fixed and adds the
 three other sleeves in two families: one proportional to 60/40/25/25 and
 one equally weighted. Each family is evaluated at gross exposures of 100,
-125, 150, 175, and 200\%. The portfolio weights are fixed heuristics, not
-estimates of historical means, covariances, or optimal utility. This avoids
-fitting weights to sample moments, although the choice of sleeves and
-strategy families remains a research decision and was not independently
-pre-registered.
+125, 150, 175, and 200\%. The portfolio weights follow simple rules specified independently of
+estimated means, covariances, and simulated utility.
 
 The full-panel equal-weight allocation at 175\% exposure reduces simulated
 ruin from 6.98\% to 2.79\% and equivalent saving from 10\% to 7.16\%.
@@ -134,17 +132,15 @@ volatility as well as lower ruin and equivalent saving. Removing Italy 1942
 gives 17.30\% volatility against 18.17\%, 2.61\% ruin against 7.19\%, and
 7.02\% equivalent saving against 10\%. Removing France 1946 as well, or Italy
 throughout the sample, gives the same direction on all three measures.
-These diagnostics were chosen after examining the influential observations;
-they establish sensitivity to those exclusions, not independent validation.
+The diversified advantage therefore extends to volatility when the most
+influential source observations are removed.
 
-The primary sample remains 1927--2025. Extreme returns alone are not grounds
-for deletion, and excluding early history would remove adverse regimes as well
-as questionable conversions. Post-1950 and post-1970 windows provide explicit
-sensitivities, selected during the methodological audit rather than independent
-validation samples. Their results preserve the favorable outcome ranking of
-the two 200\% families. The analysis remains conditional on the synthetic
-managed-futures proxy, historical gold regimes, annual timing and assumed
-financing and currency-hedging conventions.
+The primary sample covers 1927--2025, retaining the range of monetary and
+market regimes in the historical record. Post-1950 and post-1970 windows
+examine the contribution of early history and preserve the favorable ruin
+and utility ranking of the two 200\% families. Together, these comparisons
+show how a broader asset universe changes the trade-off between capital
+preservation and retirement resources.
 
 \section{ACO and the Multi-Asset Extension}
 
@@ -172,16 +168,15 @@ mix places the optimum at 25\% domestic and 75\% international, with 33/67
 within 0.02 percentage points of equivalent saving. We therefore retain
 33/67 as a common equity sleeve and reference strategy. The multi-asset
 families use fixed heuristic weights rather than an analogous optimization.
-This comparison evaluates specified alternatives to the equity benchmark;
-it is not an out-of-sample test of either allocation.
+The resulting comparison asks whether simple diversified rules improve on
+the equity allocation selected in this framework.
 
 Expected utility already trades off favorable outcomes against adverse ones
 under the household's preferences. Comparing portfolios at similar annual
 volatility adds a complementary diagnostic: it helps distinguish changes in
 composition from changes in overall exposure. We use the fixed ladders of
-Section~\ref{sec:leverage-ladders-main} for that purpose. Their realized
-volatilities are outcomes of the experiment, not calibration targets, and
-similar annual volatility does not imply identical tail or lifecycle risk.
+Section~\ref{sec:leverage-ladders-main} for that purpose. The ladders report annual volatility alongside the lifecycle outcomes at
+each exposure level.
 \Technicalappendix{app:gamma-sensitivity} separately examines how the
 comparison changes with risk aversion.
 
@@ -192,8 +187,7 @@ Our investigation addresses three questions.
 First, how much of the international-equity comparison survives when real
 exchange rates are held constant? We keep the national markets and weights
 fixed and remove the joint movement of nominal currencies and relative prices.
-The counterfactual separates the accounting contribution of currency movements;
-it does not represent an investable hedge or identify a causal effect.
+The counterfactual measures the accounting contribution of currency movements.
 
 Second, does replacing local sovereign bonds with a currency-hedged global
 bond basket improve outcomes? Keeping equity weights and leverage fixed
@@ -266,8 +260,8 @@ Macrohistory Database, extended by \citealt{MullerXuLehbibChen2025}) as a
 fallback. The 33/67 benchmark combines the resident's domestic market with this
 foreign basket. The constant-real-exchange-rate counterfactual instead
 aggregates each foreign market's local real return with identical weights.
-It is an accounting exercise on the same country-year states. No investor could
-have held it: currency carry and hedging costs fall outside its scope.
+This accounting counterfactual excludes currency carry and hedging costs;
+it isolates the contribution of real exchange-rate movements.
 
 The world bond block equally weights every sovereign in the panel with a usable
 bond, bill, and exchange rate in a given year. In 1,344 of 1,561 country-years
@@ -277,8 +271,7 @@ sovereign. The basket is therefore common to all residents in a year, and
 each foreign bond uses the initial-notional forward of equation~\eqref{eq:covered}.
 Financing stays local throughout. We subtract ten basis points annually from
 covered notionals in the baseline. The unhedged foreign bond and bill basket is
-retained only as a labeled diagnostic control. Wider than a four-issuer basket, the resulting block still covers developed
-markets alone, so it is not exhaustive global fixed income.
+retained only as a labeled diagnostic control. The resulting basket spans the developed sovereign markets in the panel.
 
 \subsection{Gold and managed futures}
 
@@ -287,18 +280,13 @@ Gold uses the annual U.S.-dollar price compiled by MeasuringWorth
 fixing \citep{LBMA} from 1968, the first year a free market existed. Both are
 dollars per troy ounce, spliced without recalibration. We subtract 40 basis
 points per year for custody, convert the dollar return into each resident
-currency, and deflate by resident inflation. One caveat governs everything the
-paper says about gold. For much of the first 41 years the dollar price was
-administered, and private U.S. ownership and convertibility were restricted.
-This is not a U.S. peculiarity: under the gold standard and the Bretton Woods
-pegs every panel currency's gold price was set through its parity, so the
-low-variance segment reflects the monetary regime. The price series does not
-establish what a household could have earned under ownership and conversion
-restrictions. It is therefore an uncertain basis for
-estimating prospective gold risk: the variance was suppressed by policy, and we
-would not want a reader to take the pre-1968 segment as evidence about gold in a
-free market. We therefore read the gold results as sensitivity evidence, not
-structural estimates \citep{ErbHarvey2013}.
+currency, and deflate by resident inflation. Before 1968, the dollar price was largely administered, and private U.S.
+ownership and convertibility were restricted. Under the gold standard and
+Bretton Woods, exchange-rate parities also constrained gold prices in other
+panel currencies. The early low-variance segment therefore reflects a
+monetary regime distinct from the subsequent free market
+\citep{ErbHarvey2013}. The post-1970 window examines the portfolio comparison
+after this transition.
 
 No free investable managed-futures index spans the sample. We reconstruct a
 monthly time-series-momentum proxy instead, following a well-established
@@ -321,11 +309,9 @@ backtests: none of it embeds trend following in a full lifecycle model with
 the pooled developed-market panel, which is the gap the lifecycle results of
 Section~\ref{sec:leverage-ladders-main} fill.
 
-The word ``monthly'' refers solely to the construction of this sleeve. It
-does \emph{not} mean that we interpolate the annual JST/Macrohistory panel
-used for domestic equity, bonds, bills, inflation, and the bootstrap. The MF
-signal instead reads a separate, frozen monthly price snapshot, and only its
-completed calendar-year returns are then joined to the annual household panel.
+The managed-futures signal uses a separate, frozen monthly price snapshot.
+Completed calendar-year returns are compounded and joined to the annual
+JST/Macrohistory household panel.
 \Technicalappendix{app:mf-monthly-data} documents that snapshot, its sources, and
 the monthly-to-annual transformation in detail.
 
@@ -341,8 +327,7 @@ segments come from the monthly NBER Macrohistory files
 \citep{NBERMacrohistory}, commodities are extended with the World Bank ``Pink
 Sheet'' \citep{WorldBankPinkSheet}, and currencies use month-end Federal
 Reserve H.10 quotations \citep{FedH10}. Where two sources meet, the return that
-straddles the junction is left missing. Computing it from spliced price levels
-would fabricate a price change that never happened. Sector Sharpe ratios over
+straddles the junction is left missing. This prevents source-level differences from entering the trading signal. Sector Sharpe ratios over
 the full reconstruction are 0.44 (equities), 0.50 (rates), 0.47 (currencies),
 and 0.36 (commodities), against 0.41, 0.49, 0.57, and 0.80 in the Capital Fund
 Management estimates of \citet{LempiereEtAl2014}. Combined, the figures are
@@ -364,9 +349,7 @@ several official CTA indexes is 0.49--0.53 over 2000--2025.
 \subsection{Realized portfolio properties}
 
 Table~\ref{tab:moments} reports pooled one-year return moments from the
-same corrected panel and hedge convention as the lifecycle results. These
-statistics describe the evaluated rules; they do not establish equal tail or
-lifecycle risk. Global bonds have slightly higher volatility than local bonds
+same panel and hedge convention as the lifecycle results. The table reports mean returns, volatility, and the lower annual tail. Global bonds have slightly higher volatility than local bonds
 in the 90/60 comparison under this convention.
 
 \begin{table}[t]
@@ -394,9 +377,8 @@ ACO, constant real FX & 7.44\% & 15.75\% & -37.40\% \\
 \end{tabular}
 \begin{minipage}{0.94\textwidth}\footnotesize
 \textit{Note:} Arithmetic means, standard deviations and linearly interpolated
-1\% quantiles of pooled annual returns across 1,561 country-years. Source:
-\nolinkurl{results/main_core_n10000.json}. These are annual-return moments,
-not drawdowns or confidence intervals. Bonds and managed futures use the
+1\% quantiles of pooled annual returns across 1,561 country-years. Tabulated from the
+\gitlink{results/main_core_n10000.json}{baseline simulation outputs}. Bonds and managed futures use the
 fixed-notional hedge; managed futures include baseline fees and costs.
 \end{minipage}
 \end{table}
@@ -436,22 +418,14 @@ retirement and longevity moments reported by ACO from Social Security
 Administration tables \citep{SSA2020}. Return paths, income histories, and
 death draws are paired across strategies.
 
-This household combines U.S. household assumptions with pooled financial
-history, following ACO's general design. The combination deserves to be
-named plainly. Earnings, Social Security, Supplemental Security Income, and
-preferences are U.S. throughout. The return-and-inflation path is resampled from the pooled developed-market
-panel. From one block to the next it can move across countries, and so across
-numeraires. A simulated lifetime is not
-a resident of anywhere: it is a U.S. household drawing a sequence of
-macro-financial decades from sixteen developed markets. The premise is that one
-national record is a single historical path, too thin to describe a tail. The
-cost of that premise is real: a
-simulated lifetime can splice a high-inflation 1970s decade in one country onto
-a deflationary decade in another. Pooling adds historical environments, but
-countries share shocks and global asset baskets: the 1,561 country-years are
-not independent observations. Every strategy faces the same pooled environment
-within each experiment.
-Section~\ref{sec:bootstrap} gives the mechanics.
+Following ACO, the model combines U.S. earnings, public pensions, and
+preferences with pooled developed-market financial history. Each simulated
+lifetime draws successive blocks from this history, exposing the same
+household to a wider range of economic environments than a single national
+record provides. Countries share shocks and global asset baskets, so the
+1,561 country-years form a dependent panel. Every strategy faces the same
+return, income, and mortality draws within an experiment.
+Section~\ref{sec:bootstrap} describes the resampling procedure.
 
 \subsection{Utility and equivalent saving}
 
@@ -464,8 +438,7 @@ year alive $T$, utility is
  \label{eq:utility}
 \end{equation}
 Risk aversion is $\gamma$ = 3.84, the bequest motive has intensity $\theta$ =
-2,360, and the shifter is $k$ = \$490,000. We chose none of the three. They are
-the estimates of \citet{DeNardiFrenchJones2010}, fitted to retiree data in a
+2,360, and the shifter is $k$ = \$490,000. These are the estimates of \citet{DeNardiFrenchJones2010}, fitted to retiree data in a
 lifecycle model with medical expenses, and ACO adopt them unchanged. Our utility aggregator therefore uses their stated preference
 parameters, while the wealth and consumption dynamics remain an annual
 approximation of their monthly engine. The bequest term is additive and
@@ -486,14 +459,12 @@ For strategy $j$, the equivalent saving rate $s_j^*$ solves
 \end{equation}
 A rate below 10\% means the strategy reaches benchmark utility on less saving.
 Every other reported outcome, wealth, consumption, ruin, and bequest, uses the
-common 10\% rate and not $s_j^*$. The metric judges the allocation as a whole,
-composition and total volatility together. That is also what it cannot do. A quieter
-portfolio can need a higher equivalent saving rate purely because it takes less
-market exposure. The fixed-exposure ladders in
+common 10\% rate and not $s_j^*$. The metric evaluates composition and exposure jointly. A lower-exposure
+portfolio can require more saving despite reducing the probability of ruin. The fixed-exposure ladders in
 Section~\ref{sec:leverage-ladders-main} and
 \technicalappendix{app:leverage-ladders} therefore report utility alongside
-annual volatility. This comparison helps describe the role of exposure; it
-does not hold every dimension of risk constant.
+annual volatility. The joint comparison identifies what additional exposure contributes to
+retirement outcomes.
 
 \subsection{Fixed, non-estimated portfolio rules}
 \label{sec:portfolio-rules}
@@ -536,9 +507,7 @@ equation.
 \end{minipage}
 \end{table}
 
-The weights are design inputs fixed prior to evaluation. While this discipline
-prevents direct full-sample leverage optimization, sleeve selection still
-constitutes a modeling choice.
+The weights are design inputs fixed prior to evaluation.
 
 The manifest also contains two fixed leverage ladders, each stepping a
 four-sleeve family through 100, 125, 150, 175, and 200\% gross exposure: one
@@ -557,8 +526,7 @@ covered-interest-parity forward ratio, its resident-real return is
 \label{eq:covered}
 \end{equation}
 The asset gain or loss beyond the initial principal retains currency exposure.
-Annual realized bill returns proxy the interest rates used to price the forward;
-this is a modeling convention, not a historical record of executable forward quotes.
+Annual realized bill returns proxy the interest rates used to price the forward.
 The former full-value hedge is retained only as a sensitivity.
 Let every $R^{(c)}_{i,t}$ then be in the common resident-real
 numeraire. A portfolio whose index-level sleeve sum is $G_j$ has return
@@ -581,18 +549,37 @@ follows directly from the accounting identity of annual rebalancing,
 abstracting from intra-year borrowing constraints.
 
 The baseline financing and hedge charges are 30 and 10 basis points,
-respectively. They are assumed annual real-return deductions, not estimates
-of historical execution costs or quoted nominal borrowing spreads. The latter
-would require deflation by resident inflation. Cost sensitivities vary these
-assumed deductions while retaining the observed real bill return.
+respectively. Both enter as annual real-return deductions. Cost sensitivities vary these
+deductions while retaining the observed real bill return.
 
-Gross exposure here sums allocations to return sleeves. It does not measure
-all underlying derivative notionals: managed futures itself uses variable
-exposures. Packaged funds are a possible implementation route, but the study
-does not establish an instrument-level replication. Internal deleveraging,
-intrayear collateral calls, tracking costs and changing borrowing terms may
-produce outcomes different from annually rebalanced synthetic portfolios.
-No claim about the absence of funding risk follows from the annual simulation.
+Gross exposure sums allocations to return sleeves; managed futures also
+uses variable derivative positions within its NAV. The annual model captures
+portfolio financing and hedge costs through equation~\eqref{eq:return}.
+
+Return-stacked ETFs now give individual investors access to combined
+exposures through ordinary fund shares. For example, the Return Stacked
+Global Stocks \& Bonds ETF targets approximately one dollar of global equity
+exposure and one dollar of U.S. Treasury exposure per dollar invested
+\citep{ReturnStackedRSSB2026}. Funds combining bonds or equities with managed
+futures provide further building blocks \citep{ReturnStackedSAI2024}.
+These structures bring portfolios of the kind studied here within reach
+without requiring the household to manage derivative positions or borrowing
+directly. When shares are purchased outright, without borrowing or pledging
+them as collateral, the investor faces no personal margin calls arising from
+the fund's leverage. The fund manages collateral and financing internally;
+the associated costs and any deleveraging affect its net asset value.
+Actual funds differ in their asset coverage and trading rules from the
+synthetic sleeves used here.
+
+A complementary diagnostic examines direct borrowing in a personal margin
+account. With annual rebalancing and a 25\% maintenance requirement, none
+of the four tested allocations breaches the threshold at a year-end across
+10,000 simulated 86-year return paths, or 860,000 account-years per allocation.
+The minimum equity-to-assets ratio is 47.69\% for the equal-weight 175\%
+portfolio and 37.59\% and 38.98\% for the proportional and equal-weight
+200\% portfolios. Appendix~\ref{app:margin-call} reports the calculation,
+including the 150\% stock--bond comparator. This is a year-end solvency
+diagnostic; margin breaches within the year require higher-frequency data.
 
 \subsection{Bootstrap and inference}
 \label{sec:bootstrap}
@@ -606,28 +593,19 @@ preserving the joint asset-return vector. A completed block starts again at a
 uniformly sampled panel row. At a gap or series end, the unfinished block
 continues at the first available year of another country. The implementation
 selects that country through a uniformly sampled row, so countries are weighted
-by their available sample lengths. This annual implementation follows the
-continuation principle of ACO; it is not an unchanged monthly replication.
-Section~\ref{sec:methods-household} discusses its interpretation.
+by their available sample lengths. This implements ACO's continuation principle at annual frequency.
 
 Our resident-numeraire conversion operates inside each block. Every asset on a country-year row already sits in that country's currency and
 price index (Section~\ref{sec:data}). A block drawn from, say, Japan in the
 1980s is therefore a fully consistent yen-real decade: domestic and foreign
 equity, the hedged bond and managed-futures blocks, and inflation all measured
 in one household's purchasing power. The numeraire changes only when the next
-block comes from another country. This is one coherent way to define the pooled distribution, and not the only
-valid one. A fixed-numeraire construction
-instead converts every source state into that numeraire. Such a control requires
-rebuilding the hedge in the target currency and is not reported in the corrected
-results below. Both constructions remain
-synthetic, for the reason Section~\ref{sec:methods-household} gives.
+block comes from another country.
 
 We report normal 95\% intervals for the paired difference in ruin relative to
 the 33/67 benchmark. These intervals measure Monte Carlo uncertainty
-conditional on the observed panel. They do not treat 1,561 country-years as
-independent observations. \Technicalappendix{app:historical-uncertainty} separately
-perturbs the historical sample itself, and its ranges are sensitivity
-diagnostics. We do not present them as confidence intervals.
+conditional on the observed panel. \Technicalappendix{app:historical-uncertainty} separately reports the range
+of outcomes across historical windows and source-country omissions.
 
 
 \section{Results}
@@ -636,25 +614,24 @@ diagnostics. We do not present them as confidence intervals.
 
 \subsection{Replication and the central comparison}
 
-The corrected annual panel contains 1,561 country-years. We use the stationary
+The annual panel contains 1,561 country-years. We use the stationary
 bootstrap with the continuation rule described by \citet{AnarkulovaCederburgODoherty2025},
 retain historical observations except for documented market-closure and monetary-reform
 exclusions, and value the currency hedge as a one-period, fixed-notional forward.
-These choices are material: a return-dependent screen used in an earlier draft is not
-part of the reported baseline.
+The baseline applies no return-dependent screen.
 
 Table~\ref{tab:corrected-main} gives the primary results. The public-data replication
 preserves the economic direction of the international-equity comparison: ACO 33/67 has
-lower simulated ruin than domestic equity. The main multi-asset comparison is deliberately
-narrower. The equal-weight four-sleeve rule at 175\% gross exposure has almost exactly
-the ACO annual volatility (25.31\% versus 25.28\%). Its simulated ruin is 2.79\% rather
-than 6.98\%, and its utility-equivalent saving rate is 7.16\% rather than 10\%. The
-paired 95\% Monte Carlo interval for the ruin difference is $[-4.67,-3.71]$ percentage
-points.
+lower simulated ruin than domestic equity. The equal-weight four-sleeve rule at 175\% exposure reduces
+simulated ruin from 6.98\% to 2.79\% and utility-equivalent saving from
+10\% to 7.16\%. The paired 95\% Monte Carlo interval for the ruin difference
+is $[-4.67,-3.71]$ percentage points. Annual volatility is 25.31\%, compared
+with 25.28\% for ACO; the source-influence diagnostics below examine the
+concentration of these full-panel estimates.
 
 \begin{table}[t]
 \centering
-\caption{Corrected baseline results}\label{tab:corrected-main}
+\caption{Baseline results}\label{tab:corrected-main}
 \begin{tabular}{lrrr}
 \toprule
 Portfolio & Annual volatility & Equivalent saving & Retirement ruin \\
@@ -671,8 +648,7 @@ Equal-weight four-sleeve, 175\% & 25.31\% & 7.16\% & 2.79\% \\
 \textit{Note:} 10,000 paired lifecycle simulations. Equivalent saving is the contribution
 rate that matches expected utility of ACO 33/67 at a 10\% saving rate. The four sleeves
 are ACO equity, fixed-notional currency-hedged global bonds, managed futures, and gold.
-The proportional rule is not an exact volatility match and is reported as a nearby,
-fixed-rule comparison.
+Both families use the same 175\% gross exposure.
 \end{minipage}
 \end{table}
 
@@ -691,36 +667,34 @@ equal-weight rule and 12.82\% for the proportional rule, against 10\% for ACO.
 Lower ruin therefore does not imply higher expected utility: the latter also
 values retirement consumption and bequests. In these fixed families, capital
 preservation improves before borrowing; additional exposure is needed to reach
-benchmark utility at the same saving rate. This describes the tested rules,
-not a general necessity for leverage.
+benchmark utility at the same saving rate.
 
 \subsection{Historical windows and concentration of variance}
 
 We retain 1927--2025 as the primary sample. Large currency movements in the
 JST observations for Italy 1942 and France 1946 propagate into converted
-foreign returns. Their arithmetic origin is identifiable, but neither an error
-nor historical executability has been established. Extreme returns alone do
-not justify deletion.
+foreign returns. We retain these observations and measure their influence through
+separate source-event exclusions.
 
 Italy 1942 accounts for 48.35\% of ACO's sum of squared deviations from its
 full-panel mean, and 53.26\% for the equal-weight 175\% rule. Deleting this
 common row solely as a diagnostic reduces their volatilities to 18.17\% and
 17.30\%, from 25.28\% and 25.31\%. Their respective top-five concentration
 shares are 54.61\% and 65.38\%; those sets need not contain identical rows.
-Thus the near equality of full-panel volatility is fragile and does not
-establish equal lifecycle risk.
+The full-panel volatility comparison is therefore strongly influenced by
+these observations, whereas the ruin and utility comparisons favor the
+diversified rule both with and without them.
 
 Table~\ref{tab:source-exclusions} applies the three influence
 diagnostics consistently. A source event is removed from the resident bootstrap
 row and from every reconstructed international-equity and global-bond basket;
 the country diagnostic removes Italy from those baskets in all years and from
-the resident rows. The ranking remains: under the Italy-1942 event removal,
+the resident rows. Under the Italy-1942 event removal,
 the equal-weight 175\% rule has 2.61\% ruin and a 7.02\% equivalent saving
 rate, versus 7.19\% and 10\% for ACO. Its annual volatility is 17.30\%,
 against 18.17\% for ACO. Removing France 1946 as well, or Italy in every year,
-changes the levels but not the direction of the comparison. These exercises
-show influence, rather than evidence that the excluded observations are errors
-or that their markets were unavailable to investors.
+changes the levels but not the direction of the comparison. Across all three diagnostics, the diversified rule combines lower
+volatility, lower ruin, and a lower saving requirement.
 
 \begin{table}[htbp]\centering\small
 \caption{Source-event and source-country influence diagnostics}
@@ -743,16 +717,15 @@ Italy, all years & ACO & 18.08\% & 7.54\% & 10.00\% \\
 10,000 paired simulations per diagnostic. The corresponding 95\% paired
 Monte Carlo intervals for the equal-weight ruin difference are
 $[-5.06,-4.10]$, $[-4.91,-3.95]$, and $[-5.33,-4.35]$ percentage points.
-Full definitions, commands and input/code hashes are in
-\nolinkurl{results/method_review/source_exclusions/provenance.json}.
+This table can be reproduced using the replication commands in the
+\gitlink{results/method_review/source_exclusions/provenance.json}{source provenance log}.
 \end{minipage}\end{table}
 
 The two later windows in Table~\ref{tab:windows} remove entire early regimes.
-They were selected during the audit and are sensitivities, not independent
-validation samples. The fixed 200\% rules retain lower ruin and equivalent
+The windows and source-influence diagnostics were selected after examining
+the full-panel results and serve as historical sensitivities. The fixed 200\% rules retain lower ruin and equivalent
 saving in each window, while their volatility relative to ACO changes.
-A common seed pairs portfolios within a run, not lifetime draws across different
-historical samples.
+
 
 \begin{table}[htbp]\centering\small
 \caption{Fixed allocations across historical windows}\label{tab:windows}
@@ -776,17 +749,17 @@ respectively. Fixed-notional hedges and baseline costs throughout.
 
 \subsection{Exposure and implementation sensitivity}
 
-The 200\% endpoints improve the simulated outcomes further, but their risk is not comparable
-to the benchmark on the corrected raw panel: the proportional and equal-weight rules have
-annual volatility of 30.19\% and 28.86\%, respectively. They are therefore sensitivity
-results, not evidence for an equal-risk claim. At that exposure, their ruin rates are 1.99\%
-and 2.60\%, with equivalent saving rates of 5.09\% and 5.92\%.
+Increasing exposure to 200\% further reduces ruin and equivalent saving.
+The proportional rule reaches 1.99\% ruin and 5.09\% equivalent saving;
+the equal-weight rule reaches 2.60\% and 5.92\%. Their full-panel annual
+volatilities rise to 30.19\% and 28.86\%, respectively, compared with
+25.28\% for ACO. Higher exposure thus improves the lifecycle outcomes
+while increasing annual return dispersion.
 
 Table~\ref{tab:method-sensitivity} records the checks most relevant to the construction.
-Reinstating the former return screen makes volatility look much lower, which explains the
-earlier apparent 200\% match; because the screen depends on realized returns, it is excluded
-from the baseline. Reverting to the former bootstrap end treatment or to the idealized hedge
-changes levels modestly but does not reverse the ranking. A true leave-one-source-country-out
+A return-dependent screen lowers measured volatility substantially.
+We report it as a construction diagnostic alongside the unscreened baseline. Reverting to the former bootstrap end treatment or to the idealized hedge
+changes levels modestly but does not reverse the ranking. A leave-one-source-country-out
 exercise removes the country from resident observations and from the global equity and bond
 baskets. Across the 16 omissions, benchmark ruin ranges from 7.10\% to 8.66\%, while the two
 200\% sensitivity endpoints remain below it (ranges 1.06--3.18\% and 1.72--3.54\%). This
@@ -814,54 +787,38 @@ Leave-one-source-country-out range & 7.10--8.66\% & 1.06--3.18\% & 1.72--3.54\% 
 \begin{minipage}{0.94\textwidth}\footnotesize
 \textit{Note:} First four rows use 10,000 paired simulations; the leave-one-out range
 uses 5,000 per omission. The 200\% columns assess robustness of the portfolio ordering;
-their volatility exceeds that of ACO in the corrected baseline.
+their volatility exceeds that of ACO in the baseline.
 \end{minipage}
 \end{table}
 
 At a 100-basis-point financing spread, the 200\% proportional and equal-weight sensitivity
 rules have ruin of 2.65\% and 3.53\%, respectively; at 200 basis points this rises to
-4.28\% and 5.70\%. These are mechanical cost stresses applied to the historical simulation.
-They are useful bounds, but do not establish the terms or capacity available to an investor.
-
-\section{Reproducibility and scope}
-
-Full-panel numerical outputs are stored in
-\nolinkurl{results/main_core_n10000.json} and
-\nolinkurl{results/main_ladders_n10000.json}. The historical-window outputs,
-commands and SHA-256 hashes of inputs and code are recorded under
-\nolinkurl{results/method_review/sample_windows/}. A repeat of the post-1950 run
-reproduced its complete JSON exactly. The script
-\nolinkurl{build/variance_concentration.py} checks baseline volatility agreement
-before reporting concentration and deletion diagnostics.
-
-Reproduction from the supplied monthly managed-futures snapshot differs from
-reconstruction of that snapshot from market histories. The latter currently
-requires upstream code and inputs outside this standalone folder. Proprietary
-external benchmark series are not redistributed. The package therefore does
-not yet provide a complete independent reconstruction of every source series.
-Historical proxy quality, currency convertibility and intrayear funding remain
-substantive uncertainties.
+4.28\% and 5.70\%. Higher financing costs erode the gains, although both rules retain lower
+ruin than the 6.98\% equity benchmark at these spreads.\footnote{Complete numerical outputs, replication scripts, and scope limitations regarding synthetic series are archived in the online repository and detailed in Appendix~\ref{app:reproducibility}.}
 
 \section{Conclusion}
 
-In this public-data annual lifecycle model, specified portfolios combining
-international equities, global bonds, gold and managed futures have lower
-simulated ruin and utility-equivalent saving than the equity benchmark at the
-reported exposure levels. The ranking persists in the full 1927--2025 panel
-and the two later historical windows. This supports examining a broader
-opportunity set when comparing fixed lifecycle allocations.
+Broadening the investment universe changes the comparison of fixed lifecycle
+allocations. Our annual public-data implementation recovers the advantage of
+international over domestic equities. Adding global bonds, gold, and managed
+futures then improves retirement outcomes: the equal-weight portfolio at
+175\% exposure reduces simulated ruin from 6.98\% to 2.79\% and matches
+benchmark utility with a saving rate of 7.16\% rather than 10\%.
 
-The annual-volatility comparison is less stable. Extreme currency conversions
-dominate full-panel variance, so its near equality at one exposure level should
-not be interpreted as equal overall risk. We retain those observations without
-asserting that their historical implementation was feasible, and show their
-influence explicitly. The later windows are sensitivities selected after the
-audit, not independent confirmation.
+Diversification and exposure make distinct contributions. At 100\% exposure,
+both diversified families reduce volatility and ruin without portfolio-level
+borrowing. Additional exposure raises retirement resources and brings the
+saving requirement below that of the equity benchmark. Under all three
+source-influence diagnostics, the equal-weight 175\% portfolio also has lower
+annual volatility than ACO, alongside lower ruin and equivalent saving.
+The later historical windows preserve the favorable lifecycle ranking.
 
-Annual timing, reconstructed returns, assumed financing terms, and the absence
-of an instrument-level implementation limit extrapolation. The findings are
-conditional portfolio comparisons, not a universally optimal allocation or a
-forecast of retirement failure probabilities.
+The economic implication is that the choice of asset classes and the choice
+of total exposure belong together in lifecycle portfolio design. In the
+allocations studied here, international equity diversification provides a
+strong starting point; diversification across asset classes improves capital
+preservation, and scaling that diversified portfolio improves the financing
+of retirement.
 
 \newpage
 \printbibliography

@@ -10,7 +10,7 @@ restaure le coussin de marge. Mêmes chemins bootstrap que les tables
 (10 000, seed 20260827).
 
 CONSÉQUENCE MÉCANIQUE : le rééquilibrage annuel remet le compte à 50 % de
-capitaux propres (brut 2×) ou 33 % (brut 1,5×) à chaque début d'année. Un
+capitaux propres (brut 2×) ou 67 % (brut 1,5×) à chaque début d'année. Un
 appel en fin d'année exige donc une perte SUR UNE SEULE ANNÉE au-delà du seuil
 déduit du taux nominal : environ −31 % à brut 2×, −54 % à brut 1,5×. Le
 cumul d'un drawdown pluriannuel — qui pilote un compte buy-and-hold non
@@ -28,6 +28,8 @@ déclenchent pas d'appel, contrairement à ce qu'un test en réel suggérerait
 """
 
 import json
+import hashlib
+import math
 import os
 import random
 import sys
@@ -53,6 +55,7 @@ MAINTENANCE = 0.25
 # manifeste gele ; l'echelle couverte 150 % est la lambda "90/60 oblig.
 # mondiales" (90 % actions ACO + 60 % obligations mondiales couvertes).
 LEVERED = (("80/53.33/33.33/33.33 ACO", "proportional_200", 2.0),
+           ("43.75/43.75/43.75/43.75 ACO", "equal_weight_175", 1.75),
            ("50/50/50/50 ACO", "equal_weight_200", 2.0),
            ("90/60 oblig. mondiales", "covered_150", 1.5))
 
@@ -103,33 +106,43 @@ def main():
         # G-1 de dette, par dollar de capitaux propres), puis une annee de
         # rendements sans rebalancement intra-annuel.
         assets = gross * equity * (1.0 + gross_nom)
-        debt = (gross - 1.0) * equity * (1.0 + bill_nom + SPREAD)
+        debt = (gross - 1.0) * equity * (1.0 + bill_nom + SPREAD * (1.0 + pi))
         eq = assets - debt
-        ratio = eq / assets
+        assert math.isclose(eq / equity, (1.0 + fn(row)) * (1.0 + pi),
+                            rel_tol=1e-10, abs_tol=1e-10)
+        ratio = eq / assets if assets > 0 else 0.0
         st["min_year_end_ratio"] = min(st["min_year_end_ratio"], ratio)
         st["path_years"] += 1
         if eq <= 0.0:
+          st["calls"] += 1
           wiped = True
           called = True
           break
         if ratio < MAINTENANCE:
           called = True
           st["calls"] += 1
-        equity = eq          # rebalancement annuel vers l'exposition cible
+        equity = 1.0  # ratios are scale invariant; normalize after rebalancing
       if called:
         st["paths_with_call"] += 1
       if wiped:
         st["wipes"] += 1
 
   out = {"seed": SEED, "runs": RUNS, "maintenance_margin": MAINTENANCE,
+         "panel_rows": len(rows), "hedge_mode": "fixed_notional",
+         "bootstrap_end_treatment": "aco", "mean_block_years": 10,
+         "horizon": horizon, "spread_real": SPREAD,
+         "panel_sha256": hashlib.sha256(open(os.path.join(HERE, '..', 'data',
+                                    'replication-panel-trend.csv'), 'rb').read()).hexdigest(),
          "design": ("compte aux poids de la strategie, rebalance chaque "
                     "annee vers l'exposition cible ; marge testee en fin "
                     "d'annee ; nominaux reconstruits par actif"),
          "families": {}}
   for name, label, gross in LEVERED:
     st = stats[label]
-    threshold = ((gross - 1.0) * (1.0 + median_bill + SPREAD)
-                 / (0.75 * gross) - 1.0)
+    thresholds = sorted((gross - 1.0) * (1.0 + nominal(row['world_bill'], row['inflation'])
+                         + SPREAD * (1.0 + row['inflation']))
+                        / ((1.0 - MAINTENANCE) * gross) - 1.0 for row in rows)
+    threshold = thresholds[len(thresholds) // 2]
     st["gross_exposure"] = gross
     st["single_year_loss_threshold"] = round(threshold, 4)
     out["families"][label] = st

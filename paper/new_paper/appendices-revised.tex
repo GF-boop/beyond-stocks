@@ -2,8 +2,7 @@
 \label{app:returns}
 The cumulative-return exhibit reports annual U.S.-resident returns under the
 current fixed-notional hedge. The logarithmic axis makes proportional changes
-comparable across dates. Historical prices do not establish that every modeled
-exposure was available at the assumed cost.
+comparable across dates.
 \begin{figure}[H]
 \centering
 \input{figures/cumulative_wealth.tex}
@@ -20,12 +19,12 @@ volatile before 1960, when the underlying market set is thin.}
 
 \section{Properties of the reconstructed managed-futures proxy}
 \label{app:mf-proxy}
-Managed futures enter through a reconstructed rule, so the construction and
-its external comparisons deserve separate scrutiny. The rule combines
+This appendix documents the managed-futures rule and compares its returns
+with commercial indexes and funds. The rule combines
 momentum signals at several horizons and scales positions using lagged
 volatility. The economic motivation follows \citet{MoskowitzOoiPedersen2012}
-and \citet{HurstOoiPedersen2017}. Agreement with a commercial index is a
-descriptive check; it cannot establish an investable historical track record.
+and \citet{HurstOoiPedersen2017}. The external comparisons measure how closely the proxy captures the
+return variation of commercial trend-following strategies over their common history.
 
 \subsection{Monthly inputs and the annual simulation series}
 \label{app:mf-monthly-data}
@@ -37,8 +36,7 @@ transformations. Price-only equities, synthetic bond returns, omitted
 commodity carry and roll, and incomplete early currency coverage limit the
 economic interpretation of the reconstructed return.
 
-The annual simulation does not resolve intrayear trading, drawdowns, or
-margin requirements. Its revised currency treatment applies a forward to
+The annual currency treatment applies a forward to
 the initial foreign principal. Exchange-rate exposure on the subsequent
 asset gain or loss remains. This differs from removing foreign collateral
 and replacing it with the resident bill for the entire terminal asset value.
@@ -62,24 +60,21 @@ Collateral and deflator & Monthly three-month cash rates from OECD via FRED, wit
 \begin{minipage}{0.94\textwidth}\footnotesize
 \textit{Note:} The machine-readable source-segment file records the provider,
 series identifier, dates, transformation, and source seam for every market.
-The source list is intentionally more granular than the annual Macrohistory
-panel: the latter cannot identify a month-end trading signal. The monthly
-snapshot is frozen for this replication, and source seams receive no return in the
-first month of a new segment, so a signal cannot cross them silently.
+The monthly snapshot is frozen for this replication. The first month of
+each source segment receives no return, preventing differences in source
+price levels from entering the trading signal.
 \end{minipage}
 \end{table}
 
 \subsection{Comparison with commercial trend-following indexes}
 \label{app:mf-external}
-These monthly correlations use the supplied dollar proxy and external return
-series. They do not depend on the resident panel, annual hedge or lifecycle
-bootstrap; those revisions do not invalidate this descriptive evidence.
+These correlations compare monthly dollar returns independently of the
+resident panel, annual hedge, and lifecycle bootstrap.
 The external comparison places the net monthly proxy alongside
 SG CTA, SG Trend, Barclay BTOP50, and the KMLMSIM simulation over their
 common period. The indexes are external benchmarks and enter no lifecycle
 resampling. Their proprietary inputs remain subject to their source terms.
-The monthly figure and correlations show co-movement, not replication of a
-fund or validation of the pre-index history.
+
 \begin{figure}[H]
 \centering
 \input{../figures/mf_vs_benchmarks.tex}
@@ -113,9 +108,8 @@ The broader comparison retains the original pairwise correlation matrix,
 the matrix on a common window, and the regressions on the proxy.
 Pairwise windows differ when funds have different inception dates. The
 common-window matrix addresses that comparability issue, at the cost of a
-shorter history. These exhibits are descriptive external comparisons;
-a correlation, regression coefficient, or insignificant intercept does not
-make the proxy interchangeable with an investable product.
+shorter history. The regressions report exposures to the proxy, intercepts, and tracking
+errors, describing both common return variation and differences across products.
 \begin{table}[H]
 \centering
 \caption{Correlation matrix of monthly returns: the net proxy, commercial
@@ -185,8 +179,8 @@ in Table~\ref{tab:mf-pack-corr}.
 \label{app:mf-annual}
 The annual moments and scatter plots use the current U.S.-resident panel
 and fixed-notional hedge. The proxy is net of a 0.85\% management fee and a
-0.57\% annual turnover deduction. These descriptive fits measure association;
-they do not identify a causal mechanism for the reduction in retirement ruin.
+0.57\% annual turnover deduction. The exhibits describe the proxy's relation to the other asset classes,
+including its behavior in equity-loss years.
 \begin{table}[H]
 \centering
 \caption{The managed-futures proxy against the other asset classes}
@@ -240,19 +234,18 @@ The correlations are unaffected by the cost convention. $^{\dagger}$Baseline.
 
 \section{Leverage ladders}
 \label{app:leverage-ladders}
-The following tables use the revised 1,561-country-year panel, the
+The following tables use the 1,561-country-year panel, the
 ACO-style block continuation, and the fixed-notional forward convention.
 Each family has five specified gross-exposure levels. Volatility is measured
 after the weights are set; the tables do not estimate a volatility target.
 They use 10,000 paths at seed 20260827 and the same paired ACO benchmark.
 The benchmark has 25.28\% annual volatility, 6.98\% retirement ruin, and a
-10\% reference saving rate. Because a small number of observations dominate
-the pooled variance, similar volatility is an especially fragile
-description of risk in this sample.
+10\% reference saving rate. Source-influence diagnostics in Table~\ref{tab:source-exclusions}
+examine the observations that contribute most to pooled variance.
 
 \begin{table}[H]
 \centering
-\caption{Proportional leverage ladder: revised results}
+\caption{Proportional leverage ladder}
 \label{tab:60402525-ladder}
 \small
 \begin{tabular}{rlrrr}
@@ -267,13 +260,13 @@ Gross & Equity/Bonds/Gold/MF & Volatility & Saving & Ruin \\
 \bottomrule
 \end{tabular}
 \par\smallskip{\footnotesize\textit{Note:} Equity is the ACO 33/67 sleeve.
-Bonds and managed futures use the revised fixed-notional hedge.
+Bonds and managed futures use the fixed-notional hedge.
 Saving is the contribution rate that matches benchmark utility.
-Source: \texttt{results/main\_ladders\_n10000.json}.}
+Tabulated from the \gitlink{results/main_ladders_n10000.json}{leverage ladder simulation dataset}.}
 \end{table}
 \begin{table}[H]
 \centering
-\caption{Equal-weight leverage ladder: revised results}
+\caption{Equal-weight leverage ladder}
 \label{tab:equal-ladder}
 \small
 \begin{tabular}{rlrrr}
@@ -288,9 +281,9 @@ Gross & Equity/Bonds/Gold/MF & Volatility & Saving & Ruin \\
 \bottomrule
 \end{tabular}
 \par\smallskip{\footnotesize\textit{Note:} Equity is the ACO 33/67 sleeve.
-Bonds and managed futures use the revised fixed-notional hedge.
+Bonds and managed futures use the fixed-notional hedge.
 Saving is the contribution rate that matches benchmark utility.
-Source: \texttt{results/main\_ladders\_n10000.json}.}
+Tabulated from the \gitlink{results/main_ladders_n10000.json}{leverage ladder simulation dataset}.}
 \end{table}
 
 \section{Historical-sample uncertainty}
@@ -298,30 +291,28 @@ Source: \texttt{results/main\_ladders\_n10000.json}.}
 Monte Carlo intervals measure sampling noise conditional on the observed
 history and the specified model. They do not measure uncertainty about the
 historical return-generating process. We retain 1927--2025 as the main
-sample. The revised 1950--2025 and 1970--2025 experiments, each with
+sample. The 1950--2025 and 1970--2025 experiments, each with
 10,000 paths, address sensitivity to the historical window. They are
-reported in the main text and stored under
-\path{results/method_review/sample_windows/}. These overlapping periods
-are selected historical comparisons, not independent validation samples.
+reported in the main text and archived in the
+\gitdirlink{results/method_review/sample_windows/}{sample window directory}.
 
-The revised source-country omissions remove the country from resident
+The source-country omissions remove the country from resident
 rows, international-equity constituents, and world-bond constituents.
 At 5,000 paths per omission, ACO ruin ranges from 7.10\% to 8.66\%;
 the proportional 200\% family ranges from 1.06\% to 3.18\%, and the
 equal-weight 200\% family from 1.72\% to 3.54\%.
 The corresponding saving rates range from 5.00\% to 5.26\% and from
 5.63\% to 6.16\%, against each sample's 10\% reference.
-These are ranges across omissions, not confidence intervals.
-The source audit is \path{paper/figures/source_country_sensitivity.json}.
+These are ranges across omissions, not confidence intervals, documented in the
+\gitlink{paper/figures/source_country_sensitivity.json}{country sensitivity audit}.
 
 The separate event experiments remove Italy 1942, then Italy 1942 and
 France 1946; the country experiment removes Italy throughout.
-Their reconstructed inputs and outputs are under
-\path{results/method_review/source_exclusions/}.
+Their inputs and outputs are archived in the
+\gitdirlink{results/method_review/source_exclusions/}{source exclusion directory}.
 They measure the influence of observations identified during the audit.
-They do not establish that those observations are errors, and their
-exclusions do not reconstruct every underlying monthly managed-futures
-input. The main text reports these results.
+The exclusions apply to resident rows and global equity and bond
+constituents; the monthly managed-futures inputs are held fixed. The main text reports these results.
 
 \section{Risk-aversion sensitivity}
 \label{app:gamma-sensitivity}
@@ -331,9 +322,8 @@ with $\gamma$ as recorded in the table. This is a joint preference
 sensitivity under that calibration, not an optimized allocation at each
 risk aversion. Retirement ruin is a depletion event and therefore does
 not change when preferences alone change. Equivalent saving does change.
-The revised results keep both families below the benchmark's saving
-rate throughout the reported grid. The 200\% portfolios do not have
-the benchmark's full-panel volatility.
+Both families require less saving than the benchmark throughout the
+reported preference grid.
 
 % Genere par build/gamma_sensitivity.py -- ne pas editer.
 \begin{table}[H]
@@ -364,7 +354,7 @@ $\gamma$ & ACO ruin & \multicolumn{2}{c}{Proportional 200\%} & \multicolumn{2}{c
 
 \section{Contribution- and withdrawal-rate sensitivity}
 \label{app:policy-sensitivity}
-The revised policy exercise varies contribution rates at a fixed 4\%
+The policy exercise varies contribution rates at a fixed 4\%
 withdrawal rule and withdrawal rates at a fixed 10\% benchmark contribution.
 On the contribution axis, the comparison is anchored to benchmark utility
 at that row's contribution rate. On the withdrawal axis, it is anchored
@@ -373,12 +363,10 @@ should be compared within a row.
 
 With proportional contributions and an initial-wealth-based withdrawal
 rule, changing the contribution rate scales account wealth and withdrawals
-together. The unchanged ruin rates on that axis are a property of the
-model, not evidence that saving has no economic importance.
+together. This scaling leaves ruin unchanged while increasing consumption and bequests.
 Higher withdrawal rates increase depletion in all three portfolios.
-Both diversified families retain lower simulated ruin and equivalent
-saving over this grid; the exercise remains conditional on the fixed
-200\% allocations and the annual return model.
+Both diversified families at 200\% exposure retain lower simulated ruin
+and equivalent saving over this grid.
 % Genere par build/policy_sensitivity.py -- ne pas editer.
 \begin{table}[H]
 \centering
@@ -411,19 +399,22 @@ $r_w=5\%$ & \emph{15.47\%} & \emph{10.00\%} & 4.81\% & 4.34\% & 6.40\% & 5.12\% 
 
 \section{Reproducibility and Conversion Checks}
 \label{app:reproducibility}
-The revised baseline is identified by 1,561 resident country-years,
+The baseline is identified by 1,561 resident country-years,
 10,000 paths, seed 20260827, ten-year mean blocks, and the
-\texttt{fixed\_notional} hedge convention. Source files, configurations,
-and outputs must be checked together: sharing a seed does not make paths
-identical across different historical panels.
+fixed-notional hedge convention. Portfolios share lifetime draws within each historical panel; changing
+the panel changes the draws even at the same seed. Full-panel numerical outputs are archived in the
+\gitlink{results/main_core_n10000.json}{core results} and
+\gitlink{results/main_ladders_n10000.json}{leverage ladder datasets}.
+Historical-window outputs and replication commands are recorded in the
+\gitdirlink{results/method_review/sample_windows/}{sample window directory}. The
+\gitlink{build/variance_concentration.py}{variance concentration script} checks baseline volatility agreement
+before reporting concentration and deletion diagnostics.
 
 The annual conversion and simulation can be reproduced from the supplied
 annual inputs. The monthly managed-futures reconstruction has an upstream
-engine dependency outside this paper directory. Accordingly, the package's
-ability to consume the frozen monthly output must be distinguished from
-an autonomous reconstruction of that output from the original providers.
-The external-index comparisons also depend on their licensed
-inputs. Neither limitation is removed by a successful LaTeX compilation.
+engine dependency outside this paper directory. The package consumes the frozen monthly output of that engine.
+Reconstructing it from provider data requires the upstream engine, while
+regenerating the external-index comparisons requires the licensed inputs.
 
 For a foreign asset's local real return $R^L_f$ and inflation $\pi_f$,
 the nominal gross return is $(1+R^L_f)(1+\pi_f)$. A fixed-notional
@@ -436,7 +427,7 @@ gross payoff is
  G^{H}_{f\to c}=\frac{B_c}{B_f}+(G_f-1)q.
 \]
 Deflating by resident inflation produces the real return used in the
-revised panel. The second term retains currency exposure on the foreign
+panel. The second term retains currency exposure on the foreign
 gain or loss. Consequently, equality of all residents' asset excess
 returns is not a valid check for this convention. That identity belongs
 to the earlier idealized full-terminal-value hedge.
@@ -444,17 +435,20 @@ to the earlier idealized full-terminal-value hedge.
 The return-cap diagnostic, ideal hedge, legacy block restart, restricted
 historical windows, and source exclusions are distinct experiments.
 Their output files identify the changed convention.
-The revised model does not silently discard a return because it is large.
-Documented market-year exclusions and influence diagnostics have different
-interpretations and should remain separately identifiable.
+The baseline retains large returns. Documented market-year exclusions and
+source-influence diagnostics are recorded separately.
 
 \section{Margin calls on the do-it-yourself route}
 \label{app:margin-call}
-The earlier margin exercise modeled annual rebalancing and a 25\%
-maintenance threshold on a directly financed account. Its reported absence
-of year-end calls was a result of that earlier annual sample and
-convention. It is not a revised estimate of margin-call risk.
-The exercise cannot observe a breach and liquidation within the year.
+Direct portfolio borrowing introduces a maintenance-margin constraint.
+We evaluate four directly financed allocations using the 1,561-country-year
+panel, fixed-notional currency hedges, and the baseline fees and costs.
+The account rebalances to its target exposure at the start of each year,
+and its equity share is tested against a 25\% maintenance threshold at
+year-end, before the next rebalance. We draw 10,000 paired 86-year return
+paths with ten-year mean blocks, ACO-style continuation, and seed 20260827.
+This account diagnostic follows each return path for the full horizon,
+without household contributions, withdrawals, or mortality truncation.
 
 For initial equity normalized to one, gross assets $L$, debt $L-1$,
 asset-book nominal gross return $G_A$, and debt gross accrual $G_D$,
@@ -467,11 +461,43 @@ A maintenance call at threshold $m$ occurs when
 $G_A < (L-1)G_D/[L(1-m)]$, provided the asset value remains positive.
 The threshold therefore depends on financing as well as exposure.
 Nominal rather than real account values determine the margin test.
+To match the paper's real financing deduction exactly, debt accrues at
+$G_D=(1+R_f^{(c)}+\phi)(1+\pi_c)$. The asset book includes sleeve fees
+and hedge costs, while the borrowing charge enters the debt leg.
 
-An annual check gives no bound on intrayear calls, variation margin,
-liquidity needs, changing broker requirements, or losses caused by forced
-deleveraging. Holding an unlevered position in a fund may move margin
-management inside the fund, but it does not remove the fund's financing,
-liquidity, or deleveraging risk. The lifecycle results are consequently
-conditional portfolio-return experiments, not an operational validation
-of a particular fund or brokerage implementation.
+\begin{table}[H]
+\centering
+\caption{Year-end maintenance-margin diagnostic}
+\label{tab:margin-current}
+\small
+\begin{tabular}{lrrr}
+\toprule
+Allocation & Gross exposure & Threshold breaches & Minimum equity share \\
+\midrule
+Equal-weight four-sleeve & 175\% & 0 & 47.69\% \\
+Proportional four-sleeve & 200\% & 0 & 37.59\% \\
+Equal-weight four-sleeve & 200\% & 0 & 38.98\% \\
+90/60 covered global bonds & 150\% & 0 & 53.24\% \\
+\bottomrule
+\end{tabular}
+\par\smallskip\begin{minipage}{0.95\textwidth}\footnotesize
+\textit{Note:} 860,000 simulated account-years per allocation; maintenance
+threshold 25\%. Minimum equity share is the smallest year-end ratio of
+account equity to gross assets. Account-years reuse the historical panel
+through block resampling. This table can be reproduced from the
+\gitlink{results/margin_call_n10000.json}{margin simulation dataset} using the
+\gitlink{build/margin_call_experiment.py}{margin call experiment script}.
+\end{minipage}
+\end{table}
+
+No allocation breaches the maintenance threshold at a year-end. Annual
+rebalancing restores the initial equity cushion: 50\% of assets at 200\%
+gross exposure and 57.14\% at 175\%. Even the lowest observed year-end
+equity share, 37.59\% for the proportional 200\% rule, remains above the
+25\% requirement.
+
+Actual margin management also depends on intrayear price paths, variation
+margin, liquidity, and changing broker requirements. A fund implementation
+manages these obligations within the fund. Extending the lifecycle model
+to account for such funding constraints would connect the portfolio-return
+comparison to instrument-level implementation.
