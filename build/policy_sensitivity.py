@@ -74,6 +74,7 @@ from replicate_extended import read_panel  # noqa: E402
 
 
 CONTRIBUTION_RATES = (0.05, 0.10, 0.15)
+PORTFOLIOS = (*PORTFOLIOS, 'ACO 33/67 200%')
 WITHDRAWAL_RATES = (0.03, 0.04, 0.05)
 
 
@@ -85,6 +86,7 @@ def _row(rows, base_rate, withdrawal_rate, runs, seed, spread, fx_hedge_cost,
     functions_all = return_functions(
         rows, spread, trend_fee, trend_cost, 0.0, fx_hedge_cost)
     names = (BENCHMARK_NAME, *PORTFOLIOS)
+    functions = {name: functions_all[name] for name in names}
     scenarios = scenarios_for(rows, functions, runs, 10.0, seed)
 
   target_utility = expected_utility(

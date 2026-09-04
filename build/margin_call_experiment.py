@@ -55,6 +55,8 @@ MAINTENANCE = 0.25
 # manifeste gele ; l'echelle couverte 150 % est la lambda "90/60 oblig.
 # mondiales" (90 % actions ACO + 60 % obligations mondiales couvertes).
 LEVERED = (("80/53.33/33.33/33.33 ACO", "proportional_200", 2.0),
+           ("ACO 33/67 175%", "aco_175", 1.75),
+           ("ACO 33/67 200%", "aco_200", 2.0),
            ("43.75/43.75/43.75/43.75 ACO", "equal_weight_175", 1.75),
            ("50/50/50/50 ACO", "equal_weight_200", 2.0),
            ("90/60 oblig. mondiales", "covered_150", 1.5))

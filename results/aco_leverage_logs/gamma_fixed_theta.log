@@ -1,0 +1,9 @@
+Gamma sensitivity: 6 valeurs x 10 000 chemins
+  gamma    2: ACO ruin 6.98%  P dr +4.99 ds +7.04  EW dr +4.38 ds +6.14
+  gamma    3: ACO ruin 6.98%  P dr +4.99 ds +5.03  EW dr +4.38 ds +4.20
+  gamma 3.84: ACO ruin 6.98%  P dr +4.99 ds +4.91  EW dr +4.38 ds +4.08
+  gamma    5: ACO ruin 6.98%  P dr +4.99 ds +5.10  EW dr +4.38 ds +4.27
+  gamma  7.5: ACO ruin 6.98%  P dr +4.99 ds +5.36  EW dr +4.38 ds +4.52
+  gamma   10: ACO ruin 6.98%  P dr +4.99 ds +5.47  EW dr +4.38 ds +4.62
+results/gamma_fixed_theta_n10000.json
+paper/figures/gamma_fixed_theta.tex

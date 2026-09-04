@@ -75,6 +75,7 @@ DEFAULT_SPREAD = 0.003
 DEFAULT_FX_HEDGE_COST = 0.001
 DESIGN_PATH = os.path.join(HERE, "..", "data", "fixed-stacked-design.json")
 BENCHMARK_NAME = "ACO 33/67"
+ACO_LEVERAGE_NAMES = tuple(f"ACO 33/67 {level}%" for level in (125, 150, 175, 200))
 CORE_EXPOSURE_NAMES = {
   "60/40 ACO/couvert",
   "60/40 ACO + 33.33 MF",
@@ -181,6 +182,11 @@ def return_functions(rows: list[dict[str, float]], spread: float,
     functions["ACO 33/67, change reel cst"] = lambda row: (
       0.33 * row["domestic"]
       + 0.67 * row["international_constant_real_fx"])
+
+  for level, name in zip((1.25, 1.5, 1.75, 2.0), ACO_LEVERAGE_NAMES):
+    functions[name] = lambda row, gross=level: (
+        gross * (0.33 * row['domestic'] + 0.67 * row['international'])
+        + (1.0 - gross) * row['bill'] - (gross - 1.0) * spread)
 
   if include_unhedged_control:
     # Controle secondaire : meme test, mais au change spot ex post. Il ne
@@ -475,6 +481,7 @@ def main() -> None:
       allowed = baseline_names | CORE_EXPOSURE_NAMES
     else:
       allowed = {BENCHMARK_NAME} | (set(FIXED_EXPOSURES) - CORE_EXPOSURE_NAMES)
+    allowed |= set(ACO_LEVERAGE_NAMES)
     functions = {name: function for name, function in functions.items()
                  if name in allowed}
 
@@ -499,6 +506,9 @@ def main() -> None:
   print("-" * 81)
   print(f"{'ACO 33/67':<24}{'100%*':>10}{'0.0%':>10}{'0.0%':>9}"
         f"{'0.0%':>9}{'100.0%':>9}{'0.0%':>10}")
+  for level, name in zip((1.25, 1.5, 1.75, 2.0), ACO_LEVERAGE_NAMES):
+    print(f"{name:<24}{level:>10.1%}{0.0:>10.1%}{0.0:>9.1%}"
+          f"{0.0:>9.1%}{level:>9.1%}{level-1:>10.1%}")
   print(f"{'Stocks/I 50/50':<24}{'100%*':>10}{'0.0%':>10}{'0.0%':>9}"
         f"{'0.0%':>9}{'100.0%':>9}{'0.0%':>10}")
   print(f"{'Actions domestiques':<24}{'100%**':>10}{'0.0%':>10}{'0.0%':>9}"
@@ -674,6 +684,7 @@ def main() -> None:
       "investability_exclusions": investability_exclusions,
       "observations": len(rows),
       "benchmark": BENCHMARK_NAME,
+      "aco_leverage_exposures": dict(zip(ACO_LEVERAGE_NAMES, (1.25, 1.5, 1.75, 2.0))),
       "results": machine_results,
     }
     with open(args.output_json, "w", encoding="utf-8") as handle:

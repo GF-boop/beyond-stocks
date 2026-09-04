@@ -52,7 +52,8 @@ currency-hedged global bonds, gold, and trend-following futures. Two simple
 four-sleeve families use fixed weights at exposures from 100\% to 200\%.
 Over 1927--2025, the equal-weight rule at 175\% exposure reduces simulated
 retirement ruin from 6.98\% to 2.79\% and matches benchmark utility on
-7.16\% of income instead of 10\%. Under each of the three specified source
+7.16\% of income instead of 10\%. At the same 175\% exposure, the equity-only
+benchmark has 14.81\% ruin and requires 9.64\% saving. Under each of the three specified source
 influence diagnostics, this rule has lower annual volatility, lower ruin and
 a lower saving requirement than the benchmark. Both diversified families
 already reduce ruin without portfolio-level borrowing, although matching
@@ -108,6 +109,10 @@ distribution of returns available to a household, while borrowing scales both
 gains and losses and incurs financing costs. We evaluate these choices
 together through two fixed portfolio families. Their annual volatility is a
 reported outcome of the comparison, alongside ruin and expected utility.
+We also scale ACO's equity allocation through the same exposure ladder,
+financing each borrowed dollar at the resident bill plus the same spread.
+This separates the benefit of broader diversification from the effect of
+borrowing more against equities.
 
 Our annual replication uses the
 Jord{\`a}--Schularick--Taylor Macrohistory Database and supplementary public
@@ -466,6 +471,18 @@ Section~\ref{sec:leverage-ladders-main} and
 annual volatility. The joint comparison identifies what additional exposure contributes to
 retirement outcomes.
 
+Higher risk aversion penalizes low household consumption rather than annual
+return variance itself. Social Security and the consumption floor moderate
+the transmission of portfolio losses to consumption, while large positive
+returns can raise measured volatility without creating low-consumption
+states. Equivalent saving also compares each rule with a benchmark whose
+utility is recomputed at the same $\gamma$. With annual bequest intensity
+held fixed, raising $\gamma$ from 2 to 10 increases required saving from
+3.86\% to 5.38\% for the equal-weight 200\% rule, but from 9.23\% to
+17.60\% for ACO at the same exposure. The response therefore depends on the
+consumption distribution, not on leverage alone
+(Appendix~\ref{app:gamma-sensitivity}).
+
 \subsection{Fixed, non-estimated portfolio rules}
 \label{sec:portfolio-rules}
 
@@ -540,6 +557,10 @@ where $\phi$ is the financing spread, $h_j$ is covered notional, and $\kappa$
 is the hedge friction. The managed-futures NAV includes its recorded U.S.
 collateral once; the forward payoff is added under equation~\eqref{eq:covered}.
 The portfolio financing position in equation~\eqref{eq:return} is separate.
+For ACO at exposure $G$, the same equation becomes
+$R_{\mathrm{ACO},G}=G R_{33/67}+(1-G)R_f-(G-1)\phi$ for $G\geq1$.
+Its equity sleeve remains unhedged. We evaluate $G=1,1.25,1.5,1.75,2$;
+the utility reference remains unlevered ACO at a 10\% saving rate.
 
 For a levered portfolio ($G_j>1$), the coefficient on the resident bill in
 equation~\eqref{eq:return} is negative. Holding all asset returns fixed, a
@@ -580,6 +601,10 @@ portfolio and 37.59\% and 38.98\% for the proportional and equal-weight
 200\% portfolios. Appendix~\ref{app:margin-call} reports the calculation,
 including the 150\% stock--bond comparator. This is a year-end solvency
 diagnostic; margin breaches within the year require higher-frequency data.
+The same test records 1,081 threshold breaches for ACO at 175\% and 17,934
+at 200\%, corresponding to 0.13\% and 2.09\% of simulated account-years.
+These are threshold diagnostics under annual exposure resets, without
+modeling forced liquidation after a breach.
 
 \subsection{Bootstrap and inference}
 \label{sec:bootstrap}
@@ -638,6 +663,8 @@ Portfolio & Annual volatility & Equivalent saving & Retirement ruin \\
 \midrule
 Domestic equity & 23.34\% & 18.60\% & 15.52\% \\
 ACO 33/67 & 25.28\% & 10.00\% & 6.98\% \\
+ACO 33/67, 175\% & 43.99\% & 9.64\% & 14.81\% \\
+ACO 33/67, 200\% & 50.28\% & 15.66\% & 20.28\% \\
 Stocks/I 50/50 & 22.59\% & 10.56\% & 7.78\% \\
 \addlinespace
 Proportional four-sleeve, 175\% & 26.47\% & 6.26\% & 2.25\% \\
@@ -652,7 +679,27 @@ Both families use the same 175\% gross exposure.
 \end{minipage}
 \end{table}
 
+\subsection{Diversification and equity leverage}
+\label{sec:aco-leverage}
+
+Increasing ACO's equity exposure initially lowers its saving requirement:
+the 125\% and 150\% rules require 8.56\% and 8.30\%, respectively.
+Beyond 150\%, the saving requirement rises to 9.64\% at 175\% and
+15.66\% at 200\%. Ruin increases throughout the ladder, from 6.98\%
+at 100\% to 20.28\% at 200\%.
+
+At the same 175\% gross exposure, the proportional and equal-weight
+portfolios have ruin of 2.25\% and 2.79\%, against 14.81\% for levered
+ACO, and require 6.26\% and 7.16\% saving, against 9.64\%.
+At 200\%, their saving requirements fall further to 5.09\% and 5.92\%,
+while ACO's rises. Thus the gains cannot be reproduced simply by applying
+the same leverage to the equity benchmark. Equal gross exposure equates
+portfolio borrowing; annual volatility remains an outcome of composition.
+Appendix~\ref{app:aco-leverage} reports the complete ACO ladder and the
+matched-exposure construction, cost, and household-policy sensitivities.
+
 \subsection{Which sleeves account for the result?}
+\label{sec:ablation}
 
 We examine whether the advantage over ACO extends to simpler compositions
 by removing global bonds, gold, and
@@ -683,6 +730,9 @@ metrics relative to its complete portfolio, illustrating that the simple
 four-sleeve rules leave room for alternative compositions. These comparisons
 measure each sleeve together with the specified reallocation of its weight;
 their effects are not additive contributions to the total gain over ACO.
+All six ablations also have lower ruin and annual volatility than ACO at
+175\% exposure. Five require less saving than its 9.64\%; the equal-weight
+reallocation without managed futures requires 10.14\%.
 
 \begin{table}[t]
 \centering
@@ -694,6 +744,7 @@ their effects are not additive contributions to the total gain over ACO.
 Family & Composition & Volatility & Saving & Ruin \\
 \midrule
 Benchmark & ACO 33/67 & 25.28\% & 10.00\% & 6.98\% \\
+Benchmark & ACO 33/67, 175\% & 43.99\% & 9.64\% & 14.81\% \\
 \addlinespace
 Proportional & Four sleeves & 26.47\% & 6.26\% & 2.25\% \\
 & Without global bonds & 34.84\% & 4.56\% & 2.13\% \\
@@ -769,12 +820,15 @@ volatility, lower ruin, and a lower saving requirement.
 Diagnostic & Portfolio & Volatility & Ruin & Equivalent saving \\
 \midrule
 Italy 1942 event & ACO & 18.17\% & 7.19\% & 10.00\% \\
+ & ACO 175\% & 31.26\% & 15.79\% & 10.02\% \\
  & Equal-weight 175\% & 17.30\% & 2.61\% & 7.02\% \\
 \addlinespace
 Italy 1942; France 1946 events & ACO & 17.50\% & 7.17\% & 10.00\% \\
+ & ACO 175\% & 29.90\% & 15.21\% & 10.28\% \\
  & Equal-weight 175\% & 15.61\% & 2.74\% & 7.03\% \\
 \addlinespace
 Italy, all years & ACO & 18.08\% & 7.54\% & 10.00\% \\
+ & ACO 175\% & 31.28\% & 15.22\% & 9.67\% \\
  & Equal-weight 175\% & 17.31\% & 2.70\% & 7.16\% \\
 \bottomrule
 \end{tabular}
@@ -798,12 +852,15 @@ saving in each window, while their volatility relative to ACO changes.
 Window & Portfolio & Volatility & Ruin & Equivalent saving \\
 \midrule
 1927--2025 & ACO & 25.28\% & 6.98\% & 10.00\% \\
+1927--2025 & ACO 200\% & 50.28\% & 20.28\% & 15.66\% \\
 1927--2025 & Proportional 200\% & 30.19\% & 1.99\% & 5.09\% \\
 1927--2025 & Equal-weight 200\% & 28.86\% & 2.60\% & 5.92\% \\
 1950--2025 & ACO & 16.59\% & 5.42\% & 10.00\% \\
+1950--2025 & ACO 200\% & 32.71\% & 18.85\% & 18.09\% \\
 1950--2025 & Proportional 200\% & 16.67\% & 0.43\% & 5.53\% \\
 1950--2025 & Equal-weight 200\% & 15.92\% & 0.72\% & 6.93\% \\
 1970--2025 & ACO & 17.24\% & 6.67\% & 10.00\% \\
+1970--2025 & ACO 200\% & 34.00\% & 23.67\% & 29.86\% \\
 1970--2025 & Proportional 200\% & 16.78\% & 0.16\% & 3.71\% \\
 1970--2025 & Equal-weight 200\% & 16.16\% & 0.21\% & 3.95\% \\
 \bottomrule\end{tabular}
@@ -862,6 +919,12 @@ rules have ruin of 2.65\% and 3.53\%, respectively; at 200 basis points this ris
 ruin than the 6.98\% equity benchmark at these spreads.\footnote{Complete numerical outputs, replication scripts, and scope limitations regarding synthetic series are archived in the online repository and detailed in Appendix~\ref{app:reproducibility}.}
 
 \section{Conclusion}
+
+The matched-exposure comparison separates diversification from borrowing.
+Levering ACO to 175\% produces 14.81\% simulated ruin, versus 2.25\%
+and 2.79\% for the diversified families, with higher saving requirements.
+The advantage of broader asset-class exposure therefore remains when the
+equity benchmark uses the same amount of portfolio borrowing.
 
 Broadening the investment universe changes the comparison of fixed lifecycle
 allocations. Our annual public-data implementation recovers the advantage of

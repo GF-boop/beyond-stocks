@@ -13,13 +13,9 @@ Points de methode :
   poids, levier ou actif n'est re-optimise a un gamma donne. Nous ne
   reproduisons donc pas le Panel D de la Table VII d'ACO, qui re-optimise la
   composition ; nous demandons si la regle *fixe* garde son avantage.
-* ACO calibrent le motif de legs a frequence mensuelle avec l'estimation de
-  De Nardi, French et Jones (2010), puis divisent l'utilite mensuelle par
-  12**gamma pour passer a l'annuel. L'intensite de legs annuelle depend donc
-  de gamma : theta(gamma) = theta_annuel_base * 12**(GAMMA_BASE - gamma), ou
-  theta_annuel_base = 2360 au gamma de reference 3,84. Sans ce reechelonnage,
-  un balayage a theta fixe comparerait des preferences differentes a chaque
-  ligne. Nous appliquons donc theta(gamma) exactement comme ACO le feraient.
+* Deux conventions : coefficient annuel de legs fixe (--fixed-theta), ou
+  ancienne sensibilite jointe theta=2360*12**(3.84-gamma). Cette derniere
+  est notre convention de sensibilite, pas une replication de celle d'ACO.
 * Grille gamma alignee sur celle d'ACO (Table VII, Panel D) plus le cas de
   reference : 2, 3, 3,84, 5, 7,5, 10. La valeur 7,5 correspond aussi a la
   moyenne des menages suedois de Calvet, Campbell, Gomes et Sodini (2025)
@@ -74,18 +70,13 @@ from replicate_extended import read_panel  # noqa: E402
 GAMMA_BASE = clu.GAMMA                    # 3.84
 THETA_ANNUAL_BASE = clu.BEQUEST_STRENGTH  # 2360, calibre a GAMMA_BASE
 GAMMA_GRID = (2.0, 3.0, 3.84, 5.0, 7.5, 10.0)
+PORTFOLIOS = (*PORTFOLIOS, 'ACO 33/67 200%')
+FIXED_THETA = False
 
 
 def theta_for_gamma(gamma: float) -> float:
-  """Intensite de legs annuelle coherente avec la calibration mensuelle d'ACO.
-
-  ACO : U_annuel = U_mensuel / 12**gamma, avec un theta mensuel fixe. Donc
-  theta_annuel(gamma) = theta_mensuel / 12**gamma. Au gamma de reference,
-  theta_annuel = THETA_ANNUAL_BASE, d'ou theta_mensuel = THETA_ANNUAL_BASE *
-  12**GAMMA_BASE et theta_annuel(gamma) = THETA_ANNUAL_BASE *
-  12**(GAMMA_BASE - gamma).
-  """
-  return THETA_ANNUAL_BASE * (12.0 ** (GAMMA_BASE - gamma))
+  """Annual bequest coefficient: fixed or legacy joint sensitivity."""
+  return THETA_ANNUAL_BASE if FIXED_THETA else THETA_ANNUAL_BASE * (12.0 ** (GAMMA_BASE - gamma))
 
 
 def evaluate_gamma(rows: list[dict[str, float]], gamma: float, runs: int,
@@ -129,6 +120,21 @@ def evaluate_gamma(rows: list[dict[str, float]], gamma: float, runs: int,
           "ruin_reduction_vs_aco": benchmark_ruin - ruin,
           "saving_reduction_vs_aco": BASE_SAVINGS_RATE - equivalent,
       }
+      theta = clu.BEQUEST_STRENGTH
+      clu.BEQUEST_STRENGTH = 0.0
+      consumption_only = evaluate_batch(scenarios, name, BASE_SAVINGS_RATE,
+                                         WITHDRAWAL_RATE, gamma).utility
+      clu.BEQUEST_STRENGTH = theta
+      total = float(np.mean(outcomes.utility))
+      consumption = float(np.mean(consumption_only))
+      at_equivalent = expected_utility(scenarios, name, equivalent, gamma, WITHDRAWAL_RATE)
+      result['portfolios'][name].update({
+          'mean_utility': total, 'consumption_utility': consumption,
+          'bequest_utility': total - consumption,
+          'bequest_share_of_negative_utility': (total - consumption) / total,
+          'equivalent_relative_utility_residual': (at_equivalent - target_utility) / abs(target_utility),
+          'worst_one_percent_share_of_negative_utility': float(np.sort(outcomes.utility)[:max(1, runs//100)].sum() / outcomes.utility.sum()),
+      })
   finally:
     clu.BEQUEST_STRENGTH = previous_theta
     clear_utility_batches()
@@ -188,17 +194,19 @@ def write_tex(path: str, results: list[dict], runs: int) -> None:
         "$\\gamma$, so the ruin columns are constant by construction and only "
         "the equivalent-saving columns respond. The bequest intensity is "
         "rescaled to each $\\gamma$ as "
-        "$\\theta(\\gamma)=\\theta_{3.84}\\cdot 12^{\\,3.84-\\gamma}$, matching "
-        "ACO's monthly-to-annual convention. $^{\\dagger}$Baseline.\n"
+        "$\\theta(\\gamma)=\\theta_{3.84}\\cdot 12^{\\,3.84-\\gamma}$, under "
+        "the legacy joint calibration. $^{\\dagger}$Baseline.\n"
         % f"{runs:,}".replace(",", "{,}"))
     handle.write("\\end{minipage}\n\\end{table}\n")
 
 
 def main() -> None:
+  global FIXED_THETA
   parser = argparse.ArgumentParser(description=__doc__)
   parser.add_argument("--panel", default=os.path.join(
       HERE, "..", "data", "replication-panel-trend.csv"))
   parser.add_argument("--runs", type=int, default=10_000)
+  parser.add_argument('--fixed-theta', action='store_true', help='Hold annual bequest intensity at 2360 across gamma')
   parser.add_argument("--seed", type=int, default=20260827)
   parser.add_argument("--spread", type=float, default=DEFAULT_SPREAD)
   parser.add_argument("--fx-hedge-cost", type=float,
@@ -210,6 +218,7 @@ def main() -> None:
   parser.add_argument("--output-tex", default=os.path.join(
       HERE, "..", "paper", "figures", "gamma_sensitivity.tex"))
   args = parser.parse_args()
+  FIXED_THETA = args.fixed_theta
   if args.runs <= 0:
     raise ValueError("--runs doit etre positif")
 
@@ -242,6 +251,7 @@ def main() -> None:
 
   payload = {
       "runs_per_gamma": args.runs,
+      "theta_convention": 'fixed_annual' if FIXED_THETA else 'legacy_monthly_coefficient_fixed',
       "seed": args.seed,
       "spread": args.spread,
       "fx_hedge_cost": args.fx_hedge_cost,

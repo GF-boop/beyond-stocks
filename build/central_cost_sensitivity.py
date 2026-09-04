@@ -49,6 +49,7 @@ from replicate_extended import read_panel  # noqa: E402
 
 
 FINANCING_SPREADS = (0.003, 0.010, 0.020, 0.030)
+PORTFOLIOS = (*PORTFOLIOS, 'ACO 33/67 200%')
 HEDGE_COSTS = (0.001, 0.005, 0.010)
 
 

@@ -1,0 +1,9 @@
+Gamma sensitivity: 6 valeurs x 10 000 chemins
+  gamma    2: ACO ruin 6.98%  P dr +4.99 ds +7.62  EW dr +4.38 ds +6.77
+  gamma    3: ACO ruin 6.98%  P dr +4.99 ds +6.27  EW dr +4.38 ds +5.41
+  gamma 3.84: ACO ruin 6.98%  P dr +4.99 ds +4.91  EW dr +4.38 ds +4.08
+  gamma    5: ACO ruin 6.98%  P dr +4.99 ds +5.10  EW dr +4.38 ds +4.27
+  gamma  7.5: ACO ruin 6.98%  P dr +4.99 ds +5.36  EW dr +4.38 ds +4.52
+  gamma   10: ACO ruin 6.98%  P dr +4.99 ds +5.47  EW dr +4.38 ds +4.62
+/home/guillaume/Desktop/Articles_Cayas/Cederburg_lifecycle/build/../paper/figures/gamma_sensitivity.json
+/home/guillaume/Desktop/Articles_Cayas/Cederburg_lifecycle/build/../paper/figures/gamma_sensitivity.tex

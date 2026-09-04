@@ -316,41 +316,29 @@ constituents; the monthly managed-futures inputs are held fixed. The main text r
 
 \section{Risk-aversion sensitivity}
 \label{app:gamma-sensitivity}
-The preference exercise holds the two 200\% portfolio rules fixed.
-Risk aversion takes six values: 2, 3, 3.84, 5, 7.5, and 10. The bequest calibration changes
-with $\gamma$ as recorded in the table. This is a joint preference
-sensitivity under that calibration, not an optimized allocation at each
-risk aversion. Retirement ruin is a depletion event and therefore does
-not change when preferences alone change. Equivalent saving does change.
-Both families require less saving than the benchmark throughout the
-reported preference grid.
+The exercise holds portfolio weights and exposure fixed and recomputes the
+unlevered ACO utility target at every risk-aversion coefficient. We report
+both the earlier joint calibration, which varies the annual bequest
+coefficient with $\gamma$, and a control holding that coefficient at 2360.
+The latter isolates the effect of changing curvature without changing the
+annual bequest coefficient. Neither exercise reoptimizes portfolio weights.
+Ruin is a wealth-depletion event and is unchanged by preferences alone.
 
-% Genere par build/gamma_sensitivity.py -- ne pas editer.
-\begin{table}[H]
-\centering
-\caption{Risk-aversion sensitivity of the fixed diversified families}
-\label{tab:gamma-sensitivity}
-\small\setlength{\tabcolsep}{3pt}
-\begin{tabular}{rrrrrr}
-\toprule
-$\gamma$ & ACO ruin & \multicolumn{2}{c}{Proportional 200\%} & \multicolumn{2}{c}{Equal-weight 200\%} \\
-\cmidrule(lr){3-4}\cmidrule(lr){5-6}
- & & Ruin & Equiv.\ saving & Ruin & Equiv.\ saving \\
-\multicolumn{6}{l}{\footnotesize\emph{lower is better, ACO equivalent saving is $10\%$ at every $\gamma$}} \\
-\midrule
-2 & \emph{6.98\%} & 1.99\% & 2.38\% & 2.60\% & 3.23\% \\
-3 & \emph{6.98\%} & 1.99\% & 3.73\% & 2.60\% & 4.59\% \\
-3.84$^{\dagger}$ & \emph{6.98\%} & 1.99\% & 5.09\% & 2.60\% & 5.92\% \\
-5 & \emph{6.98\%} & 1.99\% & 4.90\% & 2.60\% & 5.73\% \\
-7.5 & \emph{6.98\%} & 1.99\% & 4.64\% & 2.60\% & 5.48\% \\
-10 & \emph{6.98\%} & 1.99\% & 4.53\% & 2.60\% & 5.38\% \\
-\bottomrule
-\end{tabular}
-\begin{minipage}{0.95\textwidth}\footnotesize
-\textit{Note:} 10{,}000 paired lifecycle paths per row, full 1{,}561-country-year panel, ten-year mean stationary blocks, $\phi=30$ bp and $\kappa=10$ bp. Entries are levels, in percent: retirement ruin and the utility-equivalent saving rate, both lower is better. The ACO 33/67 ruin column is shown for reference and its equivalent saving is $10\%$ throughout. The two 200\% families keep their fixed weights and gross exposure at every $\gamma$, so this is a sensitivity of the fixed rule, not a reoptimized allocation. Retirement ruin is a wealth-depletion event and does not depend on $\gamma$, so the ruin columns are constant by construction and only the equivalent-saving columns respond. The bequest intensity is rescaled to each $\gamma$ as $\theta(\gamma)=\theta_{3.84}\cdot 12^{\,3.84-\gamma}$, matching ACO's monthly-to-annual convention. $^{\dagger}$Baseline.
-\end{minipage}
-\end{table}
+\input{figures/aco_gamma.tex}
 
+The modest saving response for diversified portfolios survives the
+fixed-coefficient control. At $\gamma=10$, consumption accounts for virtually
+all of their negative expected utility: the shifted bequest term contributes
+less than $10^{-10}$ of its magnitude. For the equal-weight rule, the worst
+one percent of paths accounts for 90.6\% of negative utility, compared with
+4.8\% at $\gamma=2$. High curvature therefore does give substantial weight
+to adverse consumption outcomes. Social Security and the consumption floor,
+the distinction between upside return variation and consumption shortfalls,
+and the changing benchmark utility explain why this need not translate
+into an exploding saving requirement. The relative utility residual at the
+reported saving solutions is below $10^{-6}$ throughout the fixed-coefficient
+grid. Tail concentration at high $\gamma$ also makes those estimates more
+sensitive to the sampled adverse paths.
 
 \section{Contribution- and withdrawal-rate sensitivity}
 \label{app:policy-sensitivity}
@@ -445,7 +433,7 @@ source-influence diagnostics are recorded separately.
 \section{Margin calls on the do-it-yourself route}
 \label{app:margin-call}
 Direct portfolio borrowing introduces a maintenance-margin constraint.
-We evaluate four directly financed allocations using the 1,561-country-year
+We evaluate six directly financed allocations using the 1,561-country-year
 panel, fixed-notional currency hedges, and the baseline fees and costs.
 The account rebalances to its target exposure at the start of each year,
 and its equity share is tested against a 25\% maintenance threshold at
@@ -478,6 +466,8 @@ and hedge costs, while the borrowing charge enters the debt leg.
 \toprule
 Allocation & Gross exposure & Threshold breaches & Minimum equity share \\
 \midrule
+ACO 33/67 & 175\% & 1,081 & 21.41\% \\
+ACO 33/67 & 200\% & 17,934 & 8.31\% \\
 Equal-weight four-sleeve & 175\% & 0 & 47.69\% \\
 Proportional four-sleeve & 200\% & 0 & 37.59\% \\
 Equal-weight four-sleeve & 200\% & 0 & 38.98\% \\
@@ -494,14 +484,29 @@ through block resampling. This table can be reproduced from the
 \end{minipage}
 \end{table}
 
-No allocation breaches the maintenance threshold at a year-end. Annual
-rebalancing restores the initial equity cushion: 50\% of assets at 200\%
-gross exposure and 57.14\% at 175\%. Even the lowest observed year-end
-equity share, 37.59\% for the proportional 200\% rule, remains above the
-25\% requirement.
+The four diversified allocations have no year-end threshold breaches.
+ACO records 1,081 at 175\% exposure and 17,934 at 200\%, or 0.13\% and
+2.09\% of account-years. Exposure is reset annually in this diagnostic,
+including after a breach; it measures threshold crossings rather than a
+lifecycle policy with forced liquidation. Annual rebalancing restores the
+initial equity cushion: 50\% of assets at 200\% gross exposure and 57.14\%
+at 175\%.
 
 Actual margin management also depends on intrayear price paths, variation
 margin, liquidity, and changing broker requirements. A fund implementation
 manages these obligations within the fund. Extending the lifecycle model
 to account for such funding constraints would connect the portfolio-return
 comparison to instrument-level implementation.
+
+
+\section{Matched-leverage comparisons}
+\label{app:aco-leverage}
+ACO retains its 33/67 domestic--international equity mix at each exposure.
+All borrowed amounts use the resident bill and the same financing spread
+as the diversified rules. These comparisons hold borrowing constant;
+portfolio volatility remains an outcome of asset composition.
+
+\input{figures/aco_ladder.tex}
+\input{figures/aco_policy.tex}
+\input{figures/aco_cost.tex}
+\input{figures/aco_methods.tex}

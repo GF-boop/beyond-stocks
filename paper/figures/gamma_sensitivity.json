@@ -1,5 +1,6 @@
 {
   "runs_per_gamma": 10000,
+  "theta_convention": "legacy_monthly_coefficient_fixed",
   "seed": 20260827,
   "spread": 0.003,
   "fx_hedge_cost": 0.001,
@@ -20,13 +21,37 @@
           "ruin": 0.0199,
           "equivalent_savings_rate": 0.02375611662864685,
           "ruin_reduction_vs_aco": 0.0499,
-          "saving_reduction_vs_aco": 0.07624388337135315
+          "saving_reduction_vs_aco": 0.07624388337135315,
+          "mean_utility": -0.07101390968261503,
+          "consumption_utility": -0.00040551247329858426,
+          "bequest_utility": -0.07060839720931646,
+          "bequest_share_of_negative_utility": 0.9942896754296313,
+          "equivalent_relative_utility_residual": -2.665105469949724e-07,
+          "worst_one_percent_share_of_negative_utility": 0.06580232488594356
         },
         "50/50/50/50 ACO": {
           "ruin": 0.026,
           "equivalent_savings_rate": 0.03229650855064392,
           "ruin_reduction_vs_aco": 0.043800000000000006,
-          "saving_reduction_vs_aco": 0.06770349144935608
+          "saving_reduction_vs_aco": 0.06770349144935608,
+          "mean_utility": -0.0865622207378366,
+          "consumption_utility": -0.0004393716885057163,
+          "bequest_utility": -0.08612284904933089,
+          "bequest_share_of_negative_utility": 0.9949242096059849,
+          "equivalent_relative_utility_residual": 4.5094657883633904e-08,
+          "worst_one_percent_share_of_negative_utility": 0.054001820180395864
+        },
+        "ACO 33/67 200%": {
+          "ruin": 0.2028,
+          "equivalent_savings_rate": 0.10349974036216736,
+          "ruin_reduction_vs_aco": -0.133,
+          "saving_reduction_vs_aco": -0.003499740362167353,
+          "mean_utility": -0.1572544822241053,
+          "consumption_utility": -0.0005066545831585376,
+          "bequest_utility": -0.15674782764094675,
+          "bequest_share_of_negative_utility": 0.9967781231034387,
+          "equivalent_relative_utility_residual": -1.5027216002386375e-08,
+          "worst_one_percent_share_of_negative_utility": 0.02978735174636334
         }
       }
     },
@@ -40,13 +65,37 @@
           "ruin": 0.0199,
           "equivalent_savings_rate": 0.03730455040931702,
           "ruin_reduction_vs_aco": 0.0499,
-          "saving_reduction_vs_aco": 0.06269544959068299
+          "saving_reduction_vs_aco": 0.06269544959068299,
+          "mean_utility": -7.878342300729993e-09,
+          "consumption_utility": -5.471252148936993e-09,
+          "bequest_utility": -2.4070901517930003e-09,
+          "bequest_share_of_negative_utility": 0.30553256762783254,
+          "equivalent_relative_utility_residual": 1.059917086779276e-07,
+          "worst_one_percent_share_of_negative_utility": 0.15019815494177036
         },
         "50/50/50/50 ACO": {
           "ruin": 0.026,
           "equivalent_savings_rate": 0.045887380838394165,
           "ruin_reduction_vs_aco": 0.043800000000000006,
-          "saving_reduction_vs_aco": 0.05411261916160584
+          "saving_reduction_vs_aco": 0.05411261916160584,
+          "mean_utility": -9.475661401703987e-09,
+          "consumption_utility": -6.2655426796848175e-09,
+          "bequest_utility": -3.210118722019169e-09,
+          "bequest_share_of_negative_utility": 0.3387751615356265,
+          "equivalent_relative_utility_residual": 1.6363423982098432e-07,
+          "worst_one_percent_share_of_negative_utility": 0.1319703465397923
+        },
+        "ACO 33/67 200%": {
+          "ruin": 0.2028,
+          "equivalent_savings_rate": 0.20088514685630798,
+          "ruin_reduction_vs_aco": -0.133,
+          "saving_reduction_vs_aco": -0.10088514685630798,
+          "mean_utility": -2.0606014657430807e-08,
+          "consumption_utility": -9.967205657383495e-09,
+          "bequest_utility": -1.0638809000047312e-08,
+          "bequest_share_of_negative_utility": 0.5162962939177962,
+          "equivalent_relative_utility_residual": 2.1342533305269276e-08,
+          "worst_one_percent_share_of_negative_utility": 0.07446700808005872
         }
       }
     },
@@ -60,13 +109,37 @@
           "ruin": 0.0199,
           "equivalent_savings_rate": 0.050919800996780396,
           "ruin_reduction_vs_aco": 0.0499,
-          "saving_reduction_vs_aco": 0.04908019900321961
+          "saving_reduction_vs_aco": 0.04908019900321961,
+          "mean_utility": -8.062671942515059e-13,
+          "consumption_utility": -8.038748625991242e-13,
+          "bequest_utility": -2.3923316523816512e-15,
+          "bequest_share_of_negative_utility": 0.002967169778751274,
+          "equivalent_relative_utility_residual": 3.8754273801357076e-07,
+          "worst_one_percent_share_of_negative_utility": 0.3473105199476089
         },
         "50/50/50/50 ACO": {
           "ruin": 0.026,
           "equivalent_savings_rate": 0.059187501668930054,
           "ruin_reduction_vs_aco": 0.043800000000000006,
-          "saving_reduction_vs_aco": 0.04081249833106995
+          "saving_reduction_vs_aco": 0.04081249833106995,
+          "mean_utility": -9.426113227869378e-13,
+          "consumption_utility": -9.39352795105922e-13,
+          "bequest_utility": -3.2585276810158416e-15,
+          "bequest_share_of_negative_utility": 0.0034569154881161765,
+          "equivalent_relative_utility_residual": 6.19369295614906e-08,
+          "worst_one_percent_share_of_negative_utility": 0.3163759728031473
+        },
+        "ACO 33/67 200%": {
+          "ruin": 0.2028,
+          "equivalent_savings_rate": 0.15661808848381042,
+          "ruin_reduction_vs_aco": -0.133,
+          "saving_reduction_vs_aco": -0.05661808848381042,
+          "mean_utility": -1.826152220504085e-12,
+          "consumption_utility": -1.8118483894813442e-12,
+          "bequest_utility": -1.430383102274085e-14,
+          "bequest_share_of_negative_utility": 0.00783277038033142,
+          "equivalent_relative_utility_residual": -1.3776834285382604e-08,
+          "worst_one_percent_share_of_negative_utility": 0.19300401003184692
         }
       }
     },
@@ -80,13 +153,37 @@
           "ruin": 0.0199,
           "equivalent_savings_rate": 0.04902049899101257,
           "ruin_reduction_vs_aco": 0.0499,
-          "saving_reduction_vs_aco": 0.05097950100898743
+          "saving_reduction_vs_aco": 0.05097950100898743,
+          "mean_utility": -7.144233639554592e-18,
+          "consumption_utility": -7.144215338841532e-18,
+          "bequest_utility": -1.830071305954061e-23,
+          "bequest_share_of_negative_utility": 2.5616061823926535e-06,
+          "equivalent_relative_utility_residual": 6.807487986555058e-09,
+          "worst_one_percent_share_of_negative_utility": 0.5738993925458113
         },
         "50/50/50/50 ACO": {
           "ruin": 0.026,
           "equivalent_savings_rate": 0.05728653073310852,
           "ruin_reduction_vs_aco": 0.043800000000000006,
-          "saving_reduction_vs_aco": 0.042713469266891485
+          "saving_reduction_vs_aco": 0.042713469266891485,
+          "mean_utility": -8.358411468030678e-18,
+          "consumption_utility": -8.3583865148549e-18,
+          "bequest_utility": -2.495317577904448e-23,
+          "bequest_share_of_negative_utility": 2.9853969111816993e-06,
+          "equivalent_relative_utility_residual": 3.8569194353560176e-07,
+          "worst_one_percent_share_of_negative_utility": 0.528824074699548
+        },
+        "ACO 33/67 200%": {
+          "ruin": 0.2028,
+          "equivalent_savings_rate": 0.20251968502998352,
+          "ruin_reduction_vs_aco": -0.133,
+          "saving_reduction_vs_aco": -0.10251968502998351,
+          "mean_utility": -1.794132621783563e-17,
+          "consumption_utility": -1.7941191155230534e-17,
+          "bequest_utility": -1.3506260509571288e-22,
+          "bequest_share_of_negative_utility": 7.5280167951823965e-06,
+          "equivalent_relative_utility_residual": -2.170360062141622e-08,
+          "worst_one_percent_share_of_negative_utility": 0.2964875927655808
         }
       }
     },
@@ -100,13 +197,37 @@
           "ruin": 0.0199,
           "equivalent_savings_rate": 0.046433061361312866,
           "ruin_reduction_vs_aco": 0.0499,
-          "saving_reduction_vs_aco": 0.05356693863868714
+          "saving_reduction_vs_aco": 0.05356693863868714,
+          "mean_utility": -2.5525643949442864e-28,
+          "consumption_utility": -2.552564394943212e-28,
+          "bequest_utility": -1.0744035585671237e-40,
+          "bequest_share_of_negative_utility": 4.2091144133136523e-13,
+          "equivalent_relative_utility_residual": -2.396923480294849e-07,
+          "worst_one_percent_share_of_negative_utility": 0.8417796584275159
         },
         "50/50/50/50 ACO": {
           "ruin": 0.026,
           "equivalent_savings_rate": 0.05475619435310364,
           "ruin_reduction_vs_aco": 0.043800000000000006,
-          "saving_reduction_vs_aco": 0.04524380564689637
+          "saving_reduction_vs_aco": 0.04524380564689637,
+          "mean_utility": -2.938028566824348e-28,
+          "consumption_utility": -2.938028566822904e-28,
+          "bequest_utility": -1.4443463531488755e-40,
+          "bequest_share_of_negative_utility": 4.916039174901687e-13,
+          "equivalent_relative_utility_residual": 3.191427002865759e-07,
+          "worst_one_percent_share_of_negative_utility": 0.80142404590387
+        },
+        "ACO 33/67 200%": {
+          "ruin": 0.2028,
+          "equivalent_savings_rate": 0.20257475972175598,
+          "ruin_reduction_vs_aco": -0.133,
+          "saving_reduction_vs_aco": -0.10257475972175598,
+          "mean_utility": -6.1019521694850505e-28,
+          "consumption_utility": -6.101952169475654e-28,
+          "bequest_utility": -9.39609856686791e-40,
+          "bequest_share_of_negative_utility": 1.5398512321772025e-12,
+          "equivalent_relative_utility_residual": -1.7528628237918262e-08,
+          "worst_one_percent_share_of_negative_utility": 0.4834338237595
         }
       }
     },
@@ -120,13 +241,37 @@
           "ruin": 0.0199,
           "equivalent_savings_rate": 0.04528680443763733,
           "ruin_reduction_vs_aco": 0.0499,
-          "saving_reduction_vs_aco": 0.054713195562362676
+          "saving_reduction_vs_aco": 0.054713195562362676,
+          "mean_utility": -1.4699376020896472e-38,
+          "consumption_utility": -1.4699376020896472e-38,
+          "bequest_utility": 0.0,
+          "bequest_share_of_negative_utility": -0.0,
+          "equivalent_relative_utility_residual": 2.222218466706832e-07,
+          "worst_one_percent_share_of_negative_utility": 0.9352481620665108
         },
         "50/50/50/50 ACO": {
           "ruin": 0.026,
           "equivalent_savings_rate": 0.05378994345664978,
           "ruin_reduction_vs_aco": 0.043800000000000006,
-          "saving_reduction_vs_aco": 0.046210056543350225
+          "saving_reduction_vs_aco": 0.046210056543350225,
+          "mean_utility": -1.676594139109019e-38,
+          "consumption_utility": -1.676594139109019e-38,
+          "bequest_utility": 0.0,
+          "bequest_share_of_negative_utility": -0.0,
+          "equivalent_relative_utility_residual": 8.58989341687535e-08,
+          "worst_one_percent_share_of_negative_utility": 0.9062210624603327
+        },
+        "ACO 33/67 200%": {
+          "ruin": 0.2028,
+          "equivalent_savings_rate": 0.176001638174057,
+          "ruin_reduction_vs_aco": -0.133,
+          "saving_reduction_vs_aco": -0.076001638174057,
+          "mean_utility": -3.251499266288569e-38,
+          "consumption_utility": -3.251499266288569e-38,
+          "bequest_utility": 0.0,
+          "bequest_share_of_negative_utility": -0.0,
+          "equivalent_relative_utility_residual": -5.0892202731672885e-08,
+          "worst_one_percent_share_of_negative_utility": 0.6056367525270859
         }
       }
     }

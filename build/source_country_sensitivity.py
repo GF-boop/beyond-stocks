@@ -25,7 +25,7 @@ COUNTRIES = (
     "Italy", "Japan", "Netherlands", "Norway", "Portugal", "Spain",
     "Sweden", "Switzerland", "UK", "USA",
 )
-PORTFOLIOS = ("ACO 33/67", "80/53.33/33.33/33.33 ACO", "50/50/50/50 ACO")
+PORTFOLIOS = ("ACO 33/67", "ACO 33/67 200%", "80/53.33/33.33/33.33 ACO", "50/50/50/50 ACO")
 
 
 def command(*args: str) -> None:

@@ -229,6 +229,12 @@
   ],
   "observations": 1462,
   "benchmark": "ACO 33/67",
+  "aco_leverage_exposures": {
+    "ACO 33/67 125%": 1.25,
+    "ACO 33/67 150%": 1.5,
+    "ACO 33/67 175%": 1.75,
+    "ACO 33/67 200%": 2.0
+  },
   "results": [
     {
       "strategy": "ACO 33/67",
@@ -248,6 +254,82 @@
         0.0
       ],
       "median_bequest": 1554292.5497965314
+    },
+    {
+      "strategy": "ACO 33/67 125%",
+      "mean_return": 0.09613797714700194,
+      "volatility": 0.22426983753359242,
+      "first_percentile_return": -0.47814908132783845,
+      "worst_year": -0.828332465582803,
+      "worst_country": "Japan",
+      "worst_calendar_year": 1945,
+      "equivalent_savings_rate": 0.08546182513237,
+      "median_retirement_wealth": 1151481.8432614044,
+      "mean_retirement_consumption": 91530.67985605172,
+      "ruin_probability": 0.0885,
+      "ruin_difference_vs_benchmark": 0.0131,
+      "ruin_difference_ci95": [
+        0.010144968439499783,
+        0.01605503156050022
+      ],
+      "median_bequest": 2470033.636050123
+    },
+    {
+      "strategy": "ACO 33/67 150%",
+      "mean_return": 0.1141160700800975,
+      "volatility": 0.26835192806937447,
+      "first_percentile_return": -0.5695703186640372,
+      "worst_year": -0.8136833997104147,
+      "worst_country": "Japan",
+      "worst_calendar_year": 1945,
+      "equivalent_savings_rate": 0.08268681168556213,
+      "median_retirement_wealth": 1412820.806710654,
+      "mean_retirement_consumption": 117713.64477075324,
+      "ruin_probability": 0.1139,
+      "ruin_difference_vs_benchmark": 0.0385,
+      "ruin_difference_ci95": [
+        0.034090095288335974,
+        0.042909904711664025
+      ],
+      "median_bequest": 3438927.6473662676
+    },
+    {
+      "strategy": "ACO 33/67 175%",
+      "mean_return": 0.13209416301319307,
+      "volatility": 0.31280151979732984,
+      "first_percentile_return": -0.6607275507104304,
+      "worst_year": -0.7990343338380262,
+      "worst_country": "Japan",
+      "worst_calendar_year": 1945,
+      "equivalent_savings_rate": 0.09673240780830383,
+      "median_retirement_wealth": 1640915.4836122289,
+      "mean_retirement_consumption": 152192.58178554152,
+      "ruin_probability": 0.1522,
+      "ruin_difference_vs_benchmark": 0.0768,
+      "ruin_difference_ci95": [
+        0.07104846454087138,
+        0.0825515354591286
+      ],
+      "median_bequest": 4035589.5925018257
+    },
+    {
+      "strategy": "ACO 33/67 200%",
+      "mean_return": 0.15007225594628865,
+      "volatility": 0.3574815526628608,
+      "first_percentile_return": -0.7548611375111578,
+      "worst_year": -0.9077117439991567,
+      "worst_country": "Japan",
+      "worst_calendar_year": 2008,
+      "equivalent_savings_rate": 0.1586189568042755,
+      "median_retirement_wealth": 1771143.8907491518,
+      "mean_retirement_consumption": 195795.53226212418,
+      "ruin_probability": 0.2089,
+      "ruin_difference_vs_benchmark": 0.1335,
+      "ruin_difference_ci95": [
+        0.1264035315524944,
+        0.14059646844750562
+      ],
+      "median_bequest": 3682490.5772903757
     },
     {
       "strategy": "40/26.67/16.67/16.67 ACO",

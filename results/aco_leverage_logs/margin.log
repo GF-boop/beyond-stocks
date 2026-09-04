@@ -1,0 +1,8 @@
+proportional_200 brut 200% {'calls': 0, 'paths_with_call': 0, 'wipes': 0, 'min_year_end_ratio': 0.37594143038645284, 'worst_asset_book_year': -0.14957627046084065, 'gross_exposure': 2.0, 'single_year_loss_threshold': -0.3071} | annees-compte: 860,000
+aco_175 brut 175% {'calls': 1081, 'paths_with_call': 1031, 'wipes': 0, 'min_year_end_ratio': 0.21410992042513333, 'worst_asset_book_year': -0.4504925608075102, 'gross_exposure': 1.75, 'single_year_loss_threshold': -0.4061} | annees-compte: 860,000
+aco_200 brut 200% {'calls': 17934, 'paths_with_call': 8708, 'wipes': 0, 'min_year_end_ratio': 0.08312824049598894, 'worst_asset_book_year': -0.4504925608075102, 'gross_exposure': 2.0, 'single_year_loss_threshold': -0.3071} | annees-compte: 860,000
+equal_weight_175 brut 175% {'calls': 0, 'paths_with_call': 0, 'wipes': 0, 'min_year_end_ratio': 0.4769380967812721, 'worst_asset_book_year': -0.11467225041309204, 'gross_exposure': 1.75, 'single_year_loss_threshold': -0.4061} | annees-compte: 860,000
+equal_weight_200 brut 200% {'calls': 0, 'paths_with_call': 0, 'wipes': 0, 'min_year_end_ratio': 0.38976111291148413, 'worst_asset_book_year': -0.11467225041309204, 'gross_exposure': 2.0, 'single_year_loss_threshold': -0.3071} | annees-compte: 860,000
+covered_150 brut 150% {'calls': 0, 'paths_with_call': 0, 'wipes': 0, 'min_year_end_ratio': 0.5324355012628383, 'worst_asset_book_year': -0.2433422782790705, 'gross_exposure': 1.5, 'single_year_loss_threshold': -0.5381} | annees-compte: 860,000
+bill nominal median: 3.625%
+-> /home/guillaume/Desktop/Articles_Cayas/Cederburg_lifecycle/build/../results/margin_call_n10000.json

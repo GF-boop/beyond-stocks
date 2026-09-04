@@ -1,0 +1,8 @@
+Central cost sensitivity: 7 specifications x 10 000 paths
+  phi 0.30%, kappa 0.10%: P saving 5.09%, ruin 1.99%; EW saving 5.92%, ruin 2.60%
+  phi 1.00%, kappa 0.10%: P saving 6.18%, ruin 2.65%; EW saving 7.18%, ruin 3.53%
+  phi 2.00%, kappa 0.10%: P saving 8.19%, ruin 4.28%; EW saving 9.55%, ruin 5.70%
+  phi 3.00%, kappa 0.10%: P saving 10.98%, ruin 6.84%; EW saving 12.99%, ruin 9.27%
+  phi 0.30%, kappa 0.10%: P saving 5.09%, ruin 1.99%; EW saving 5.92%, ruin 2.60%
+  phi 0.30%, kappa 0.50%: P saving 5.60%, ruin 2.24%; EW saving 6.60%, ruin 3.04%
+  phi 0.30%, kappa 1.00%: P saving 6.31%, ruin 2.77%; EW saving 7.59%, ruin 3.85%

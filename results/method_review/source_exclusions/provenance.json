@@ -17,7 +17,7 @@
       },
       "observations": 1560,
       "result": "/home/guillaume/Desktop/Articles_Cayas/Cederburg_lifecycle/results/method_review/source_exclusions/source_event_italy_1942/ladders_n10000.json",
-      "result_sha256": "2dfd97baef87a811f8de8a62f6ec50510d2eef3f181a9a4d45fcfdbbd88f2737"
+      "result_sha256": "ad632d6fe23f20610e2c221177bf06061c2acdfab730317f988d5d47c08c4b09"
     },
     "source_events_italy_1942_france_1946": {
       "definition": {
@@ -29,7 +29,7 @@
       },
       "observations": 1559,
       "result": "/home/guillaume/Desktop/Articles_Cayas/Cederburg_lifecycle/results/method_review/source_exclusions/source_events_italy_1942_france_1946/ladders_n10000.json",
-      "result_sha256": "a3ebe1d63860c328814a4731c6995b5d41a9e99bd49e6596e56fc1ae780ef1b7"
+      "result_sha256": "16ec25586011c352b425a6660371ce74db58d686948a05e2aba6c06126c97525"
     },
     "source_country_italy_all_years": {
       "definition": {
@@ -38,16 +38,16 @@
       },
       "observations": 1462,
       "result": "/home/guillaume/Desktop/Articles_Cayas/Cederburg_lifecycle/results/method_review/source_exclusions/source_country_italy_all_years/ladders_n10000.json",
-      "result_sha256": "8f833a3a03674ddc3d54fac5d09db999585215d223a6f548d30f73cc87380405"
+      "result_sha256": "c6511e9ff3f22581752b200df6edfb040ea4a9faf03b1f3274923bf87978bec7"
     }
   },
   "inputs": {
-    "data/replication-panel-trend.csv": "19dcb77aa650bee8131e3171ded33c9dc21f2e002380a3d9e53fe1570d980386",
+    "data/replication-panel-trend.csv": "c036ef8e6b3854b8cf11f6bf7a0481c2f6eadbfbaa47fda5061d6d5360d6512b",
     "build/source_exclusion_diagnostics.py": "ba2d76ac524c094f70fea8d2405cfc33ba8cdb46fcb30a4c7220301c8ad655b2",
     "build/international_equity.py": "a12e4f4f6c6d92be59028046e979315f03616f8dbb1aaacc7d44c0b3efb2171d",
     "build/build_replication_panel.py": "98b8938d239cd2ec0a4e26a90030d99448b0a25b1acae51dca00350df0c5af88",
-    "build/panel_replication_tendance.py": "bce0284e9809e4185ba533382d0b2219cc7c39a41dc4a670239a5daeac09484b",
-    "build/compare_fixed_stacked_utility.py": "f5a439c3612912a2041c71c935bf8c14a527b6d3fc9718a7ab0a8530e8438f16",
+    "build/panel_replication_tendance.py": "56285bfd7486c02b7a5581aa234d3ca42bc7138f730e35bc935c7a887013bbfe",
+    "build/compare_fixed_stacked_utility.py": "55c1b782de2a12049dae12b7a773537447f0d57c3e6407603ba6c4e353b8a29a",
     "build/replicate_extended.py": "0d5a79b4f36d814d7daa12cccd6fffafe18195c9fdda7ff64a17989f5fc3bfc4"
   }
 }

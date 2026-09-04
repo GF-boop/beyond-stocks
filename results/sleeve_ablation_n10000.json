@@ -102,6 +102,17 @@
       ]
     },
     {
+      "strategy": "ACO 33/67 175%",
+      "annual_volatility": 0.4398667854136487,
+      "equivalent_savings_rate": 0.09640106558799744,
+      "ruin_probability": 0.1481,
+      "ruin_difference_vs_aco": 0.0783,
+      "ruin_difference_ci95": [
+        0.07250629013455104,
+        0.08409370986544895
+      ]
+    },
+    {
       "strategy": "Proportional four-sleeve, 175%",
       "annual_volatility": 0.26473880855927606,
       "equivalent_savings_rate": 0.06257906556129456,

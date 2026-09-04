@@ -21,6 +21,26 @@
    "gross_exposure": 2.0,
    "single_year_loss_threshold": -0.3071
   },
+  "aco_175": {
+   "calls": 1081,
+   "paths_with_call": 1031,
+   "wipes": 0,
+   "path_years": 860000,
+   "min_year_end_ratio": 0.21410992042513333,
+   "worst_asset_book_year": -0.4504925608075102,
+   "gross_exposure": 1.75,
+   "single_year_loss_threshold": -0.4061
+  },
+  "aco_200": {
+   "calls": 17934,
+   "paths_with_call": 8708,
+   "wipes": 0,
+   "path_years": 860000,
+   "min_year_end_ratio": 0.08312824049598894,
+   "worst_asset_book_year": -0.4504925608075102,
+   "gross_exposure": 2.0,
+   "single_year_loss_threshold": -0.3071
+  },
   "equal_weight_175": {
    "calls": 0,
    "paths_with_call": 0,

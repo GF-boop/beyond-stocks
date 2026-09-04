@@ -58,8 +58,11 @@ python3 build/experiment_voltarget.py --mode frontier --runs 5000 \
 echo "== 5. Sensibilites et annexes =="
 python3 build/central_cost_sensitivity.py
 python3 build/gamma_sensitivity.py --runs 10000
+python3 build/gamma_sensitivity.py --runs 10000 --fixed-theta \
+  --output-json results/gamma_fixed_theta_n10000.json \
+  --output-tex paper/figures/gamma_fixed_theta.tex
 python3 build/policy_sensitivity.py
-python3 build/source_country_sensitivity.py --runs 10000
+python3 build/source_country_sensitivity.py --runs 5000
 python3 build/source_exclusion_diagnostics.py --runs 10000 --seed $SEED
 python3 build/variance_concentration.py
 python3 build/margin_call_experiment.py
@@ -101,6 +104,9 @@ if $external_ready; then
 else
   echo "Donnees externes non redistribuables absentes : matrices MF conservees."
 fi
+
+python3 build/replicate_aco_leverage.py --methods-only
+python3 build/render_aco_comparisons.py
 
 echo "== 8. Verification des artefacts =="
 python3 build/verify_repository.py

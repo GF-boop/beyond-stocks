@@ -26,6 +26,7 @@ sys.path.insert(0, HERE)
 
 from compare_fixed_stacked_utility import (  # noqa: E402
     BENCHMARK_NAME, DEFAULT_FX_HEDGE_COST, DEFAULT_SPREAD,
+    return_functions,
 )
 from compare_gold_trend_equal_vol import (  # noqa: E402
     DEFAULT_TREND_COST, DEFAULT_TREND_FEE,
@@ -96,6 +97,9 @@ def main() -> None:
                                    DEFAULT_FX_HEDGE_COST),
   }
   definitions: dict[str, dict] = {}
+  functions['ACO 33/67 175%'] = return_functions(
+      rows, DEFAULT_SPREAD, DEFAULT_TREND_FEE, DEFAULT_TREND_COST,
+      0.0, DEFAULT_FX_HEDGE_COST)['ACO 33/67 175%']
   for family, exposures in FAMILIES.items():
     functions[family] = function_for(exposures, DEFAULT_SPREAD,
                                      DEFAULT_TREND_FEE, DEFAULT_TREND_COST,
