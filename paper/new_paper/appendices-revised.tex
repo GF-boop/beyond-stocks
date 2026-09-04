@@ -405,6 +405,10 @@ fixed-notional hedge convention. Portfolios share lifetime draws within each his
 the panel changes the draws even at the same seed. Full-panel numerical outputs are archived in the
 \gitlink{results/main_core_n10000.json}{core results} and
 \gitlink{results/main_ladders_n10000.json}{leverage ladder datasets}.
+The constant-exposure sleeve ablations are stored in
+\gitlink{results/sleeve_ablation_n10000.json}{the ablation dataset};
+\gitlink{build/sleeve_ablation.py}{the replication script} records the
+reallocation rule and all simulation settings.
 Historical-window outputs and replication commands are recorded in the
 \gitdirlink{results/method_review/sample_windows/}{sample window directory}. The
 \gitlink{build/variance_concentration.py}{variance concentration script} checks baseline volatility agreement

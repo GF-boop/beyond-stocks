@@ -63,6 +63,7 @@ python3 build/source_country_sensitivity.py --runs 10000
 python3 build/source_exclusion_diagnostics.py --runs 10000 --seed $SEED
 python3 build/variance_concentration.py
 python3 build/margin_call_experiment.py
+python3 build/sleeve_ablation.py --runs 10000 --seed $SEED
 python3 build/compare_fixed_stacked_utility.py --runs 10000 --seed $SEED \
   --year-from 1950 --portfolio-set ladders \
   --output-json results/method_review/sample_windows/post1950_ladders_n10000.json
