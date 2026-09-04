@@ -83,13 +83,15 @@ def main() -> None:
   parser = argparse.ArgumentParser(description=__doc__)
   parser.add_argument("--runs", type=int, default=10_000)
   parser.add_argument("--seed", type=int, default=20260827)
+  parser.add_argument("--panel", default=os.path.join(HERE, "..", "data", "replication-panel-trend.csv"))
+  parser.add_argument("--ladder", action="store_true", help="Evaluate five exposures for every complete and ablated composition")
   parser.add_argument("--output-json", default=os.path.join(
       HERE, "..", "results", "sleeve_ablation_n10000.json"))
   args = parser.parse_args()
   if args.runs < 1:
     raise ValueError("--runs must be positive")
 
-  panel_path = os.path.join(HERE, "..", "data", "replication-panel-trend.csv")
+  panel_path = args.panel
   rows = read_panel(panel_path)
   functions: dict[str, Callable] = {
       BENCHMARK_NAME: function_for((1.0, 0.0, 0.0, 0.0), DEFAULT_SPREAD,
@@ -100,7 +102,15 @@ def main() -> None:
   functions['ACO 33/67 175%'] = return_functions(
       rows, DEFAULT_SPREAD, DEFAULT_TREND_FEE, DEFAULT_TREND_COST,
       0.0, DEFAULT_FX_HEDGE_COST)['ACO 33/67 175%']
-  for family, exposures in FAMILIES.items():
+  families = FAMILIES if not args.ladder else {
+      family.replace("175%", f"{level}%"): tuple(x * level / 175 for x in weights)
+      for family, weights in FAMILIES.items() for level in (100,125,150,175,200)
+  }
+  if args.ladder:
+    all_functions = return_functions(rows, DEFAULT_SPREAD, DEFAULT_TREND_FEE,
+                                    DEFAULT_TREND_COST, 0.0, DEFAULT_FX_HEDGE_COST)
+    functions.update({name: fn for name, fn in all_functions.items() if name.startswith("ACO 33/67 ") and name.endswith("%")})
+  for family, exposures in families.items():
     functions[family] = function_for(exposures, DEFAULT_SPREAD,
                                      DEFAULT_TREND_FEE, DEFAULT_TREND_COST,
                                      DEFAULT_FX_HEDGE_COST)

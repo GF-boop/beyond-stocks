@@ -8,12 +8,12 @@
       "benchmark_ruin": 0.0698,
       "portfolios": {
         "80/53.33/33.33/33.33 ACO": {
-          "equivalent_savings_rate": 0.050919800996780396,
-          "ruin_probability": 0.0199
+          "equivalent_savings_rate": 0.047236114740371704,
+          "ruin_probability": 0.018
         },
         "50/50/50/50 ACO": {
-          "equivalent_savings_rate": 0.059187501668930054,
-          "ruin_probability": 0.026
+          "equivalent_savings_rate": 0.05314937233924866,
+          "ruin_probability": 0.0227
         },
         "ACO 33/67 200%": {
           "equivalent_savings_rate": 0.15661808848381042,
@@ -27,12 +27,12 @@
       "benchmark_ruin": 0.0698,
       "portfolios": {
         "80/53.33/33.33/33.33 ACO": {
-          "equivalent_savings_rate": 0.06175079941749573,
-          "ruin_probability": 0.0265
+          "equivalent_savings_rate": 0.057295650243759155,
+          "ruin_probability": 0.0244
         },
         "50/50/50/50 ACO": {
-          "equivalent_savings_rate": 0.07176950573921204,
-          "ruin_probability": 0.0353
+          "equivalent_savings_rate": 0.06441834568977356,
+          "ruin_probability": 0.0316
         },
         "ACO 33/67 200%": {
           "equivalent_savings_rate": 0.22033968567848206,
@@ -46,12 +46,12 @@
       "benchmark_ruin": 0.0698,
       "portfolios": {
         "80/53.33/33.33/33.33 ACO": {
-          "equivalent_savings_rate": 0.08185306191444397,
-          "ruin_probability": 0.0428
+          "equivalent_savings_rate": 0.07584056258201599,
+          "ruin_probability": 0.0382
         },
         "50/50/50/50 ACO": {
-          "equivalent_savings_rate": 0.09552869200706482,
-          "ruin_probability": 0.057
+          "equivalent_savings_rate": 0.08548948168754578,
+          "ruin_probability": 0.0491
         },
         "ACO 33/67 200%": {
           "equivalent_savings_rate": 0.3834533393383026,
@@ -65,12 +65,12 @@
       "benchmark_ruin": 0.0698,
       "portfolios": {
         "80/53.33/33.33/33.33 ACO": {
-          "equivalent_savings_rate": 0.10976359248161316,
-          "ruin_probability": 0.0684
+          "equivalent_savings_rate": 0.10137233138084412,
+          "ruin_probability": 0.0619
         },
         "50/50/50/50 ACO": {
-          "equivalent_savings_rate": 0.12994036078453064,
-          "ruin_probability": 0.0927
+          "equivalent_savings_rate": 0.11561086773872375,
+          "ruin_probability": 0.0813
         },
         "ACO 33/67 200%": {
           "equivalent_savings_rate": 0.7663275301456451,
@@ -86,12 +86,12 @@
       "benchmark_ruin": 0.0698,
       "portfolios": {
         "80/53.33/33.33/33.33 ACO": {
-          "equivalent_savings_rate": 0.050919800996780396,
-          "ruin_probability": 0.0199
+          "equivalent_savings_rate": 0.047236114740371704,
+          "ruin_probability": 0.018
         },
         "50/50/50/50 ACO": {
-          "equivalent_savings_rate": 0.059187501668930054,
-          "ruin_probability": 0.026
+          "equivalent_savings_rate": 0.05314937233924866,
+          "ruin_probability": 0.0227
         },
         "ACO 33/67 200%": {
           "equivalent_savings_rate": 0.15661808848381042,
@@ -105,12 +105,12 @@
       "benchmark_ruin": 0.0698,
       "portfolios": {
         "80/53.33/33.33/33.33 ACO": {
-          "equivalent_savings_rate": 0.05600830912590027,
-          "ruin_probability": 0.0224
+          "equivalent_savings_rate": 0.05196782946586609,
+          "ruin_probability": 0.0208
         },
         "50/50/50/50 ACO": {
-          "equivalent_savings_rate": 0.06604978442192078,
-          "ruin_probability": 0.0304
+          "equivalent_savings_rate": 0.05928352475166321,
+          "ruin_probability": 0.0267
         },
         "ACO 33/67 200%": {
           "equivalent_savings_rate": 0.15661808848381042,
@@ -124,12 +124,12 @@
       "benchmark_ruin": 0.0698,
       "portfolios": {
         "80/53.33/33.33/33.33 ACO": {
-          "equivalent_savings_rate": 0.06314662098884583,
-          "ruin_probability": 0.0277
+          "equivalent_savings_rate": 0.058581024408340454,
+          "ruin_probability": 0.0257
         },
         "50/50/50/50 ACO": {
-          "equivalent_savings_rate": 0.0758955180644989,
-          "ruin_probability": 0.0385
+          "equivalent_savings_rate": 0.06812235713005066,
+          "ruin_probability": 0.0351
         },
         "ACO 33/67 200%": {
           "equivalent_savings_rate": 0.15661808848381042,

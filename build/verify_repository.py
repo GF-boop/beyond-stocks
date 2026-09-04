@@ -4,8 +4,10 @@
 from __future__ import annotations
 
 import csv
+import hashlib
 import json
 from pathlib import Path
+from trend_costs import DEFAULT_TREND_COST, DEFAULT_TREND_FEE
 
 from social_security import (
   MAX_TAXABLE_EARNINGS,
@@ -81,6 +83,9 @@ def main() -> None:
   )
   for name in audited_results:
     payload = read_json(RESULTS / name)
+    require(payload['trend_cost'] == DEFAULT_TREND_COST
+            and payload['trend_fee'] == DEFAULT_TREND_FEE,
+            f'{name}: obsolete MF costs')
     flags = payload.get("data_quality_flags", [])
     require("data_quality_exclusions" not in payload,
             f"{name}: ancien nom trompeur data_quality_exclusions")
@@ -120,6 +125,23 @@ def main() -> None:
   for name in ("frontier_n5000.txt", "spread_frontier_n10000.txt"):
     require((RESULTS / name).stat().st_size > 0, f"{name}: sortie absente ou vide")
 
+  panel_hash = hashlib.sha256((DATA / 'replication-panel-trend.csv').read_bytes()).hexdigest()
+  require(read_json(RESULTS / 'margin_call_n10000.json')['panel_sha256'] == panel_hash,
+          'annual margin diagnostic uses an obsolete panel')
+  require(read_json(RESULTS / 'panel_concentration/provenance.json')['raw_sha256'] == panel_hash,
+          'concentration comparison uses an obsolete panel')
+  monthly_hash = hashlib.sha256((DATA / 'managed-futures-monthly.csv').read_bytes()).hexdigest()
+  require(read_json(RESULTS / 'margin_monthly/input_provenance.json')['mf_sha256'] == monthly_hash,
+          'monthly margin diagnostic uses an obsolete MF series')
+  baseline = {r['strategy']: r for r in read_json(RESULTS / 'main_ladders_n10000.json')['results']}
+  full = {r['strategy']: r for r in read_json(RESULTS / 'panel_concentration/raw_n10000.json')['results']}
+  for name, row in baseline.items():
+    require(row == full[name], f'{name}: baseline and full-comparison outputs differ')
+  current = {(r['country'], r['year']): r for r in panel}
+  with (RESULTS / 'method_review/panel-filtered.csv').open() as handle:
+    for row in csv.DictReader(handle):
+      require(row == current[(row['country'], row['year'])],
+              'frozen legacy membership contains obsolete returns')
   print("Verification du depot: OK")
 
 

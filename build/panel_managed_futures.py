@@ -10,10 +10,9 @@ Le deflateur retenu est donc le CPI **americain** mensuel, et non l'inflation
 mondiale du panel NTSG : c'est la devise dans laquelle la poche est libellee
 qui commande, pas la composition geographique de l'indice actions.
 
-La deflation est faite **mois par mois avant composition**, et non sur le
-rendement annuel deja compose. Sur les annees a forte inflation les deux ne
-sont pas equivalents, et seule la premiere correspond a un investisseur qui
-subit l'erosion en continu.
+La deflation est faite **mois par mois avant composition**. Avec douze mois
+complets et les memes bornes de CPI, elle est algebriquement equivalente a
+la deflation du rendement nominal annuel compose par le ratio annuel de CPI.
 
 La serie retenue est `mf_1_6_12_gross_return`, en **brut** : les frais et les
 couts de transaction sont appliques en aval par les scripts de simulation (voir
@@ -32,6 +31,7 @@ from __future__ import annotations
 import csv
 import os
 import statistics
+import argparse
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(HERE, "..", "data")
@@ -82,12 +82,18 @@ def previous_month(month: str) -> str:
 
 
 def main() -> None:
+  parser = argparse.ArgumentParser(description=__doc__)
+  parser.add_argument("--input", default=os.path.join(
+      TREND, "managed-futures-monthly.csv"))
+  parser.add_argument("--output", default=os.path.join(
+      TREND, "managed-futures-annual-real.csv"))
+  args = parser.parse_args()
   cpi, patched = fill_isolated_gaps(
       read_cpi(os.path.join(TREND, "cpi-monthly.csv")))
 
   monthly: dict[int, list[float]] = {}
   monthly_cash: dict[int, list[float]] = {}
-  source = os.path.join(TREND, "managed-futures-monthly.csv")
+  source = args.input
   with open(source, encoding="utf-8") as handle:
     for row in csv.DictReader(handle):
       nominal = row.get(VARIANT)
@@ -121,7 +127,7 @@ def main() -> None:
     annual_cash[year] = cash_compounded - 1.0
 
   years = sorted(annual)
-  out = os.path.join(TREND, "managed-futures-annual-real.csv")
+  out = args.output
   with open(out, "w", newline="", encoding="utf-8") as handle:
     writer = csv.writer(handle, lineterminator="\n")
     writer.writerow(["year", "trend_real", "cash_real"])

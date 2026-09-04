@@ -1,0 +1,1117 @@
+{
+  "purpose": "Constant-gross-exposure sleeve ablation",
+  "ablation_rule": "Remove one sleeve and reallocate its notional pro rata among the remaining sleeves.",
+  "seed": 20260827,
+  "runs": 10000,
+  "observations": 1528,
+  "period": "1927-2025",
+  "mean_block_years": 10.0,
+  "bootstrap_end_treatment": "aco",
+  "hedge_mode": "fixed_notional",
+  "spread": 0.003,
+  "fx_hedge_cost": 0.001,
+  "trend_fee": 0.0085,
+  "trend_cost": 0.006146047846628103,
+  "panel_sha256": "5e8d132a660f0b7b17e7a2ebeb461a158b05068d1bcad98f27f44f2b7d22f9a2",
+  "definitions": {
+    "Proportional four-sleeve, 100%": {
+      "complete_exposures": [
+        0.4,
+        0.26666666666666666,
+        0.16666666666666669,
+        0.16666666666666669
+      ],
+      "ablations": {
+        "global bonds": {
+          "strategy": "Proportional four-sleeve, 100% without global bonds",
+          "exposures": [
+            0.5454545454545454,
+            0.0,
+            0.2272727272727273,
+            0.2272727272727273
+          ]
+        },
+        "gold": {
+          "strategy": "Proportional four-sleeve, 100% without gold",
+          "exposures": [
+            0.4800000000000001,
+            0.32000000000000006,
+            0.0,
+            0.20000000000000004
+          ]
+        },
+        "managed futures": {
+          "strategy": "Proportional four-sleeve, 100% without managed futures",
+          "exposures": [
+            0.4800000000000001,
+            0.32000000000000006,
+            0.20000000000000004,
+            0.0
+          ]
+        }
+      }
+    },
+    "Proportional four-sleeve, 125%": {
+      "complete_exposures": [
+        0.5,
+        0.33333333333333337,
+        0.20833333333333334,
+        0.20833333333333334
+      ],
+      "ablations": {
+        "global bonds": {
+          "strategy": "Proportional four-sleeve, 125% without global bonds",
+          "exposures": [
+            0.6818181818181819,
+            0.0,
+            0.2840909090909091,
+            0.2840909090909091
+          ]
+        },
+        "gold": {
+          "strategy": "Proportional four-sleeve, 125% without gold",
+          "exposures": [
+            0.6,
+            0.4,
+            0.0,
+            0.25
+          ]
+        },
+        "managed futures": {
+          "strategy": "Proportional four-sleeve, 125% without managed futures",
+          "exposures": [
+            0.6,
+            0.4,
+            0.25,
+            0.0
+          ]
+        }
+      }
+    },
+    "Proportional four-sleeve, 150%": {
+      "complete_exposures": [
+        0.6,
+        0.4,
+        0.25,
+        0.25
+      ],
+      "ablations": {
+        "global bonds": {
+          "strategy": "Proportional four-sleeve, 150% without global bonds",
+          "exposures": [
+            0.8181818181818181,
+            0.0,
+            0.3409090909090909,
+            0.3409090909090909
+          ]
+        },
+        "gold": {
+          "strategy": "Proportional four-sleeve, 150% without gold",
+          "exposures": [
+            0.72,
+            0.48,
+            0.0,
+            0.3
+          ]
+        },
+        "managed futures": {
+          "strategy": "Proportional four-sleeve, 150% without managed futures",
+          "exposures": [
+            0.72,
+            0.48,
+            0.3,
+            0.0
+          ]
+        }
+      }
+    },
+    "Proportional four-sleeve, 175%": {
+      "complete_exposures": [
+        0.7,
+        0.4666666666666667,
+        0.2916666666666667,
+        0.2916666666666667
+      ],
+      "ablations": {
+        "global bonds": {
+          "strategy": "Proportional four-sleeve, 175% without global bonds",
+          "exposures": [
+            0.9545454545454546,
+            0.0,
+            0.39772727272727276,
+            0.39772727272727276
+          ]
+        },
+        "gold": {
+          "strategy": "Proportional four-sleeve, 175% without gold",
+          "exposures": [
+            0.84,
+            0.5599999999999999,
+            0.0,
+            0.35000000000000003
+          ]
+        },
+        "managed futures": {
+          "strategy": "Proportional four-sleeve, 175% without managed futures",
+          "exposures": [
+            0.84,
+            0.5599999999999999,
+            0.35000000000000003,
+            0.0
+          ]
+        }
+      }
+    },
+    "Proportional four-sleeve, 200%": {
+      "complete_exposures": [
+        0.8,
+        0.5333333333333333,
+        0.33333333333333337,
+        0.33333333333333337
+      ],
+      "ablations": {
+        "global bonds": {
+          "strategy": "Proportional four-sleeve, 200% without global bonds",
+          "exposures": [
+            1.0909090909090908,
+            0.0,
+            0.4545454545454546,
+            0.4545454545454546
+          ]
+        },
+        "gold": {
+          "strategy": "Proportional four-sleeve, 200% without gold",
+          "exposures": [
+            0.9600000000000002,
+            0.6400000000000001,
+            0.0,
+            0.4000000000000001
+          ]
+        },
+        "managed futures": {
+          "strategy": "Proportional four-sleeve, 200% without managed futures",
+          "exposures": [
+            0.9600000000000002,
+            0.6400000000000001,
+            0.4000000000000001,
+            0.0
+          ]
+        }
+      }
+    },
+    "Equal-weight four-sleeve, 100%": {
+      "complete_exposures": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "ablations": {
+        "global bonds": {
+          "strategy": "Equal-weight four-sleeve, 100% without global bonds",
+          "exposures": [
+            0.3333333333333333,
+            0.0,
+            0.3333333333333333,
+            0.3333333333333333
+          ]
+        },
+        "gold": {
+          "strategy": "Equal-weight four-sleeve, 100% without gold",
+          "exposures": [
+            0.3333333333333333,
+            0.3333333333333333,
+            0.0,
+            0.3333333333333333
+          ]
+        },
+        "managed futures": {
+          "strategy": "Equal-weight four-sleeve, 100% without managed futures",
+          "exposures": [
+            0.3333333333333333,
+            0.3333333333333333,
+            0.3333333333333333,
+            0.0
+          ]
+        }
+      }
+    },
+    "Equal-weight four-sleeve, 125%": {
+      "complete_exposures": [
+        0.3125,
+        0.3125,
+        0.3125,
+        0.3125
+      ],
+      "ablations": {
+        "global bonds": {
+          "strategy": "Equal-weight four-sleeve, 125% without global bonds",
+          "exposures": [
+            0.41666666666666663,
+            0.0,
+            0.41666666666666663,
+            0.41666666666666663
+          ]
+        },
+        "gold": {
+          "strategy": "Equal-weight four-sleeve, 125% without gold",
+          "exposures": [
+            0.41666666666666663,
+            0.41666666666666663,
+            0.0,
+            0.41666666666666663
+          ]
+        },
+        "managed futures": {
+          "strategy": "Equal-weight four-sleeve, 125% without managed futures",
+          "exposures": [
+            0.41666666666666663,
+            0.41666666666666663,
+            0.41666666666666663,
+            0.0
+          ]
+        }
+      }
+    },
+    "Equal-weight four-sleeve, 150%": {
+      "complete_exposures": [
+        0.375,
+        0.375,
+        0.375,
+        0.375
+      ],
+      "ablations": {
+        "global bonds": {
+          "strategy": "Equal-weight four-sleeve, 150% without global bonds",
+          "exposures": [
+            0.5,
+            0.0,
+            0.5,
+            0.5
+          ]
+        },
+        "gold": {
+          "strategy": "Equal-weight four-sleeve, 150% without gold",
+          "exposures": [
+            0.5,
+            0.5,
+            0.0,
+            0.5
+          ]
+        },
+        "managed futures": {
+          "strategy": "Equal-weight four-sleeve, 150% without managed futures",
+          "exposures": [
+            0.5,
+            0.5,
+            0.5,
+            0.0
+          ]
+        }
+      }
+    },
+    "Equal-weight four-sleeve, 175%": {
+      "complete_exposures": [
+        0.4375,
+        0.4375,
+        0.4375,
+        0.4375
+      ],
+      "ablations": {
+        "global bonds": {
+          "strategy": "Equal-weight four-sleeve, 175% without global bonds",
+          "exposures": [
+            0.5833333333333333,
+            0.0,
+            0.5833333333333333,
+            0.5833333333333333
+          ]
+        },
+        "gold": {
+          "strategy": "Equal-weight four-sleeve, 175% without gold",
+          "exposures": [
+            0.5833333333333333,
+            0.5833333333333333,
+            0.0,
+            0.5833333333333333
+          ]
+        },
+        "managed futures": {
+          "strategy": "Equal-weight four-sleeve, 175% without managed futures",
+          "exposures": [
+            0.5833333333333333,
+            0.5833333333333333,
+            0.5833333333333333,
+            0.0
+          ]
+        }
+      }
+    },
+    "Equal-weight four-sleeve, 200%": {
+      "complete_exposures": [
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "ablations": {
+        "global bonds": {
+          "strategy": "Equal-weight four-sleeve, 200% without global bonds",
+          "exposures": [
+            0.6666666666666666,
+            0.0,
+            0.6666666666666666,
+            0.6666666666666666
+          ]
+        },
+        "gold": {
+          "strategy": "Equal-weight four-sleeve, 200% without gold",
+          "exposures": [
+            0.6666666666666666,
+            0.6666666666666666,
+            0.0,
+            0.6666666666666666
+          ]
+        },
+        "managed futures": {
+          "strategy": "Equal-weight four-sleeve, 200% without managed futures",
+          "exposures": [
+            0.6666666666666666,
+            0.6666666666666666,
+            0.6666666666666666,
+            0.0
+          ]
+        }
+      }
+    }
+  },
+  "results": [
+    {
+      "strategy": "ACO 33/67",
+      "annual_volatility": 0.17015326699223565,
+      "equivalent_savings_rate": 0.09999999403953552,
+      "ruin_probability": 0.0504,
+      "ruin_difference_vs_aco": 0.0,
+      "ruin_difference_ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "strategy": "ACO 33/67 175%",
+      "annual_volatility": 0.29525203504247743,
+      "equivalent_savings_rate": 0.12348029017448425,
+      "ruin_probability": 0.1433,
+      "ruin_difference_vs_aco": 0.0929,
+      "ruin_difference_ci95": [
+        0.08710295952556597,
+        0.09869704047443402
+      ]
+    },
+    {
+      "strategy": "ACO 33/67 125%",
+      "annual_volatility": 0.21149510271949815,
+      "equivalent_savings_rate": 0.09226569533348083,
+      "ruin_probability": 0.0692,
+      "ruin_difference_vs_aco": 0.0188,
+      "ruin_difference_ci95": [
+        0.015902861095669886,
+        0.021697138904330115
+      ]
+    },
+    {
+      "strategy": "ACO 33/67 150%",
+      "annual_volatility": 0.2532536050099363,
+      "equivalent_savings_rate": 0.09641852974891663,
+      "ruin_probability": 0.1039,
+      "ruin_difference_vs_aco": 0.0535,
+      "ruin_difference_ci95": [
+        0.04895199181202938,
+        0.058048008187970616
+      ]
+    },
+    {
+      "strategy": "ACO 33/67 200%",
+      "annual_volatility": 0.33740080870222816,
+      "equivalent_savings_rate": 0.2513987123966217,
+      "ruin_probability": 0.2109,
+      "ruin_difference_vs_aco": 0.1605,
+      "ruin_difference_ci95": [
+        0.15324128969805761,
+        0.1677587103019424
+      ]
+    },
+    {
+      "strategy": "Proportional four-sleeve, 100%",
+      "annual_volatility": 0.09432787536075629,
+      "equivalent_savings_rate": 0.10757109522819519,
+      "ruin_probability": 0.0121,
+      "ruin_difference_vs_aco": -0.0383,
+      "ruin_difference_ci95": [
+        -0.042468751538115294,
+        -0.03413124846188471
+      ]
+    },
+    {
+      "strategy": "Proportional four-sleeve, 100% without global bonds",
+      "annual_volatility": 0.11832811441890922,
+      "equivalent_savings_rate": 0.08715978264808655,
+      "ruin_probability": 0.0072,
+      "ruin_difference_vs_aco": -0.0432,
+      "ruin_difference_ci95": [
+        -0.047317781059464596,
+        -0.03908221894053541
+      ]
+    },
+    {
+      "strategy": "Proportional four-sleeve, 100% without gold",
+      "annual_volatility": 0.10078545050137294,
+      "equivalent_savings_rate": 0.10035809874534607,
+      "ruin_probability": 0.0145,
+      "ruin_difference_vs_aco": -0.0359,
+      "ruin_difference_ci95": [
+        -0.03983053121829172,
+        -0.03196946878170828
+      ]
+    },
+    {
+      "strategy": "Proportional four-sleeve, 100% without managed futures",
+      "annual_volatility": 0.10143874501557128,
+      "equivalent_savings_rate": 0.12494954466819763,
+      "ruin_probability": 0.0247,
+      "ruin_difference_vs_aco": -0.0257,
+      "ruin_difference_ci95": [
+        -0.02969011206121158,
+        -0.021709887938788423
+      ]
+    },
+    {
+      "strategy": "Proportional four-sleeve, 125%",
+      "annual_volatility": 0.1144465088401423,
+      "equivalent_savings_rate": 0.08494248986244202,
+      "ruin_probability": 0.0072,
+      "ruin_difference_vs_aco": -0.0432,
+      "ruin_difference_ci95": [
+        -0.04734567725535775,
+        -0.03905432274464225
+      ]
+    },
+    {
+      "strategy": "Proportional four-sleeve, 125% without global bonds",
+      "annual_volatility": 0.14584608060705653,
+      "equivalent_savings_rate": 0.06709221005439758,
+      "ruin_probability": 0.0061,
+      "ruin_difference_vs_aco": -0.0443,
+      "ruin_difference_ci95": [
+        -0.04842727528543083,
+        -0.04017272471456917
+      ]
+    },
+    {
+      "strategy": "Proportional four-sleeve, 125% without gold",
+      "annual_volatility": 0.12214787796997785,
+      "equivalent_savings_rate": 0.07803896069526672,
+      "ruin_probability": 0.0089,
+      "ruin_difference_vs_aco": -0.0415,
+      "ruin_difference_ci95": [
+        -0.045458124191420916,
+        -0.03754187580857909
+      ]
+    },
+    {
+      "strategy": "Proportional four-sleeve, 125% without managed futures",
+      "annual_volatility": 0.12404742878080911,
+      "equivalent_savings_rate": 0.10330149531364441,
+      "ruin_probability": 0.0188,
+      "ruin_difference_vs_aco": -0.0316,
+      "ruin_difference_ci95": [
+        -0.03543104853580432,
+        -0.02776895146419569
+      ]
+    },
+    {
+      "strategy": "Proportional four-sleeve, 150%",
+      "annual_volatility": 0.1352839515053116,
+      "equivalent_savings_rate": 0.06810876727104187,
+      "ruin_probability": 0.0055,
+      "ruin_difference_vs_aco": -0.0449,
+      "ruin_difference_ci95": [
+        -0.04903408740428485,
+        -0.04076591259571515
+      ]
+    },
+    {
+      "strategy": "Proportional four-sleeve, 150% without global bonds",
+      "annual_volatility": 0.17395814919021516,
+      "equivalent_savings_rate": 0.05268409848213196,
+      "ruin_probability": 0.0062,
+      "ruin_difference_vs_aco": -0.0442,
+      "ruin_difference_ci95": [
+        -0.04834162540117964,
+        -0.04005837459882037
+      ]
+    },
+    {
+      "strategy": "Proportional four-sleeve, 150% without gold",
+      "annual_volatility": 0.14416952100686334,
+      "equivalent_savings_rate": 0.06148567795753479,
+      "ruin_probability": 0.0062,
+      "ruin_difference_vs_aco": -0.0442,
+      "ruin_difference_ci95": [
+        -0.048247797441079834,
+        -0.04015220255892017
+      ]
+    },
+    {
+      "strategy": "Proportional four-sleeve, 150% without managed futures",
+      "annual_volatility": 0.1473399743380644,
+      "equivalent_savings_rate": 0.0873386561870575,
+      "ruin_probability": 0.0175,
+      "ruin_difference_vs_aco": -0.0329,
+      "ruin_difference_ci95": [
+        -0.036721818677567054,
+        -0.02907818132243294
+      ]
+    },
+    {
+      "strategy": "Proportional four-sleeve, 175%",
+      "annual_volatility": 0.15655344300799828,
+      "equivalent_savings_rate": 0.05514219403266907,
+      "ruin_probability": 0.0047,
+      "ruin_difference_vs_aco": -0.0457,
+      "ruin_difference_ci95": [
+        -0.04984927841108948,
+        -0.041550721588910516
+      ]
+    },
+    {
+      "strategy": "Proportional four-sleeve, 175% without global bonds",
+      "annual_volatility": 0.2024169409552221,
+      "equivalent_savings_rate": 0.04241183400154114,
+      "ruin_probability": 0.0078,
+      "ruin_difference_vs_aco": -0.0426,
+      "ruin_difference_ci95": [
+        -0.04672018196058606,
+        -0.038479818039413936
+      ]
+    },
+    {
+      "strategy": "Proportional four-sleeve, 175% without gold",
+      "annual_volatility": 0.16658915666124288,
+      "equivalent_savings_rate": 0.04915466904640198,
+      "ruin_probability": 0.0055,
+      "ruin_difference_vs_aco": -0.0449,
+      "ruin_difference_ci95": [
+        -0.04895905915139451,
+        -0.0408409408486055
+      ]
+    },
+    {
+      "strategy": "Proportional four-sleeve, 175% without managed futures",
+      "annual_volatility": 0.1710372162506417,
+      "equivalent_savings_rate": 0.07549497485160828,
+      "ruin_probability": 0.0185,
+      "ruin_difference_vs_aco": -0.0319,
+      "ruin_difference_ci95": [
+        -0.035735105441285095,
+        -0.028064894558714897
+      ]
+    },
+    {
+      "strategy": "Proportional four-sleeve, 200%",
+      "annual_volatility": 0.17810025921934525,
+      "equivalent_savings_rate": 0.04520931839942932,
+      "ruin_probability": 0.0051,
+      "ruin_difference_vs_aco": -0.0453,
+      "ruin_difference_ci95": [
+        -0.04946020862928579,
+        -0.04113979137071421
+      ]
+    },
+    {
+      "strategy": "Proportional four-sleeve, 200% without global bonds",
+      "annual_volatility": 0.23109439667892032,
+      "equivalent_savings_rate": 0.0350242555141449,
+      "ruin_probability": 0.0102,
+      "ruin_difference_vs_aco": -0.0402,
+      "ruin_difference_ci95": [
+        -0.04436648605352321,
+        -0.03603351394647679
+      ]
+    },
+    {
+      "strategy": "Proportional four-sleeve, 200% without gold",
+      "annual_volatility": 0.18926540381653423,
+      "equivalent_savings_rate": 0.039928048849105835,
+      "ruin_probability": 0.0057,
+      "ruin_difference_vs_aco": -0.0447,
+      "ruin_difference_ci95": [
+        -0.04875043285911945,
+        -0.04064956714088054
+      ]
+    },
+    {
+      "strategy": "Proportional four-sleeve, 200% without managed futures",
+      "annual_volatility": 0.19499166264641118,
+      "equivalent_savings_rate": 0.06656607985496521,
+      "ruin_probability": 0.0216,
+      "ruin_difference_vs_aco": -0.0288,
+      "ruin_difference_ci95": [
+        -0.03269909561619902,
+        -0.02490090438380098
+      ]
+    },
+    {
+      "strategy": "Equal-weight four-sleeve, 100%",
+      "annual_volatility": 0.09188053478245677,
+      "equivalent_savings_rate": 0.11329290270805359,
+      "ruin_probability": 0.0167,
+      "ruin_difference_vs_aco": -0.0337,
+      "ruin_difference_ci95": [
+        -0.038303698592835264,
+        -0.029096301407164737
+      ]
+    },
+    {
+      "strategy": "Equal-weight four-sleeve, 100% without global bonds",
+      "annual_volatility": 0.11380589541419911,
+      "equivalent_savings_rate": 0.09461382031440735,
+      "ruin_probability": 0.0098,
+      "ruin_difference_vs_aco": -0.0406,
+      "ruin_difference_ci95": [
+        -0.04503310041171255,
+        -0.03616689958828744
+      ]
+    },
+    {
+      "strategy": "Equal-weight four-sleeve, 100% without gold",
+      "annual_volatility": 0.09134271455455778,
+      "equivalent_savings_rate": 0.0979556143283844,
+      "ruin_probability": 0.0092,
+      "ruin_difference_vs_aco": -0.0412,
+      "ruin_difference_ci95": [
+        -0.045481033540445276,
+        -0.036918966459554725
+      ]
+    },
+    {
+      "strategy": "Equal-weight four-sleeve, 100% without managed futures",
+      "annual_volatility": 0.09782809557855233,
+      "equivalent_savings_rate": 0.14470872282981873,
+      "ruin_probability": 0.0367,
+      "ruin_difference_vs_aco": -0.0137,
+      "ruin_difference_ci95": [
+        -0.018592881670212745,
+        -0.008807118329787256
+      ]
+    },
+    {
+      "strategy": "Equal-weight four-sleeve, 125%",
+      "annual_volatility": 0.11119248141939415,
+      "equivalent_savings_rate": 0.09022840857505798,
+      "ruin_probability": 0.0096,
+      "ruin_difference_vs_aco": -0.0408,
+      "ruin_difference_ci95": [
+        -0.045215024931086374,
+        -0.03638497506891363
+      ]
+    },
+    {
+      "strategy": "Equal-weight four-sleeve, 125% without global bonds",
+      "annual_volatility": 0.1399454226770228,
+      "equivalent_savings_rate": 0.07373139262199402,
+      "ruin_probability": 0.0075,
+      "ruin_difference_vs_aco": -0.0429,
+      "ruin_difference_ci95": [
+        -0.04724149939031386,
+        -0.038558500609686144
+      ]
+    },
+    {
+      "strategy": "Equal-weight four-sleeve, 125% without gold",
+      "annual_volatility": 0.10935307650914795,
+      "equivalent_savings_rate": 0.07497718930244446,
+      "ruin_probability": 0.0053,
+      "ruin_difference_vs_aco": -0.0451,
+      "ruin_difference_ci95": [
+        -0.04933426494428039,
+        -0.04086573505571961
+      ]
+    },
+    {
+      "strategy": "Equal-weight four-sleeve, 125% without managed futures",
+      "annual_volatility": 0.1196262216900608,
+      "equivalent_savings_rate": 0.12331578135490417,
+      "ruin_probability": 0.0308,
+      "ruin_difference_vs_aco": -0.0196,
+      "ruin_difference_ci95": [
+        -0.024304882005520285,
+        -0.014895117994479713
+      ]
+    },
+    {
+      "strategy": "Equal-weight four-sleeve, 150%",
+      "annual_volatility": 0.13123702040411842,
+      "equivalent_savings_rate": 0.07276937365531921,
+      "ruin_probability": 0.0069,
+      "ruin_difference_vs_aco": -0.0435,
+      "ruin_difference_ci95": [
+        -0.0478392050089862,
+        -0.03916079499101379
+      ]
+    },
+    {
+      "strategy": "Equal-weight four-sleeve, 150% without global bonds",
+      "annual_volatility": 0.1666997899086581,
+      "equivalent_savings_rate": 0.058412402868270874,
+      "ruin_probability": 0.0073,
+      "ruin_difference_vs_aco": -0.0431,
+      "ruin_difference_ci95": [
+        -0.047458404307910304,
+        -0.038741595692089695
+      ]
+    },
+    {
+      "strategy": "Equal-weight four-sleeve, 150% without gold",
+      "annual_volatility": 0.12805214985260904,
+      "equivalent_savings_rate": 0.0578058660030365,
+      "ruin_probability": 0.0025,
+      "ruin_difference_vs_aco": -0.0479,
+      "ruin_difference_ci95": [
+        -0.05214059355724782,
+        -0.04365940644275217
+      ]
+    },
+    {
+      "strategy": "Equal-weight four-sleeve, 150% without managed futures",
+      "annual_volatility": 0.14213618851494592,
+      "equivalent_savings_rate": 0.10715863108634949,
+      "ruin_probability": 0.0286,
+      "ruin_difference_vs_aco": -0.0218,
+      "ruin_difference_ci95": [
+        -0.026443602492247868,
+        -0.017156397507752132
+      ]
+    },
+    {
+      "strategy": "Equal-weight four-sleeve, 175%",
+      "annual_volatility": 0.15172407677411087,
+      "equivalent_savings_rate": 0.059337884187698364,
+      "ruin_probability": 0.0057,
+      "ruin_difference_vs_aco": -0.0447,
+      "ruin_difference_ci95": [
+        -0.049016753083200165,
+        -0.04038324691679983
+      ]
+    },
+    {
+      "strategy": "Equal-weight four-sleeve, 175% without global bonds",
+      "annual_volatility": 0.19381454463751718,
+      "equivalent_savings_rate": 0.047147780656814575,
+      "ruin_probability": 0.0088,
+      "ruin_difference_vs_aco": -0.0416,
+      "ruin_difference_ci95": [
+        -0.046038202094788316,
+        -0.03716179790521168
+      ]
+    },
+    {
+      "strategy": "Equal-weight four-sleeve, 175% without gold",
+      "annual_volatility": 0.14717766380050284,
+      "equivalent_savings_rate": 0.04495468735694885,
+      "ruin_probability": 0.0019,
+      "ruin_difference_vs_aco": -0.0485,
+      "ruin_difference_ci95": [
+        -0.05275606520733704,
+        -0.04424393479266296
+      ]
+    },
+    {
+      "strategy": "Equal-weight four-sleeve, 175% without managed futures",
+      "annual_volatility": 0.16506703424268687,
+      "equivalent_savings_rate": 0.09503629803657532,
+      "ruin_probability": 0.0293,
+      "ruin_difference_vs_aco": -0.0211,
+      "ruin_difference_ci95": [
+        -0.02581462818240101,
+        -0.01638537181759899
+      ]
+    },
+    {
+      "strategy": "Equal-weight four-sleeve, 200%",
+      "annual_volatility": 0.17249605146036878,
+      "equivalent_savings_rate": 0.0488947331905365,
+      "ruin_probability": 0.0061,
+      "ruin_difference_vs_aco": -0.0443,
+      "ruin_difference_ci95": [
+        -0.04862722478374222,
+        -0.03997277521625778
+      ]
+    },
+    {
+      "strategy": "Equal-weight four-sleeve, 200% without global bonds",
+      "annual_volatility": 0.2211571717141969,
+      "equivalent_savings_rate": 0.03879937529563904,
+      "ruin_probability": 0.0105,
+      "ruin_difference_vs_aco": -0.0399,
+      "ruin_difference_ci95": [
+        -0.044374349943750696,
+        -0.0354256500562493
+      ]
+    },
+    {
+      "strategy": "Equal-weight four-sleeve, 200% without gold",
+      "annual_volatility": 0.16658280301913514,
+      "equivalent_savings_rate": 0.03522816300392151,
+      "ruin_probability": 0.0013,
+      "ruin_difference_vs_aco": -0.0491,
+      "ruin_difference_ci95": [
+        -0.0533534212570164,
+        -0.044846578742983596
+      ]
+    },
+    {
+      "strategy": "Equal-weight four-sleeve, 200% without managed futures",
+      "annual_volatility": 0.1882650313791702,
+      "equivalent_savings_rate": 0.08612814545631409,
+      "ruin_probability": 0.0336,
+      "ruin_difference_vs_aco": -0.0168,
+      "ruin_difference_ci95": [
+        -0.021629872404975603,
+        -0.011970127595024395
+      ]
+    }
+  ],
+  "ablation_effects": {
+    "Proportional four-sleeve, 100%": {
+      "global bonds": {
+        "ruin_difference_without_minus_complete": -0.0049,
+        "ruin_difference_ci95": [
+          -0.006571952110793272,
+          -0.0032280478892067277
+        ]
+      },
+      "gold": {
+        "ruin_difference_without_minus_complete": 0.0024,
+        "ruin_difference_ci95": [
+          0.0005205286701713255,
+          0.004279471329828674
+        ]
+      },
+      "managed futures": {
+        "ruin_difference_without_minus_complete": 0.0126,
+        "ruin_difference_ci95": [
+          0.01034450371652967,
+          0.01485549628347033
+        ]
+      }
+    },
+    "Proportional four-sleeve, 125%": {
+      "global bonds": {
+        "ruin_difference_without_minus_complete": -0.0011,
+        "ruin_difference_ci95": [
+          -0.0023238909090665433,
+          0.00012389090906654316
+        ]
+      },
+      "gold": {
+        "ruin_difference_without_minus_complete": 0.0017,
+        "ruin_difference_ci95": [
+          0.00016947720448117452,
+          0.0032305227955188253
+        ]
+      },
+      "managed futures": {
+        "ruin_difference_without_minus_complete": 0.0116,
+        "ruin_difference_ci95": [
+          0.009501189877384549,
+          0.01369881012261545
+        ]
+      }
+    },
+    "Proportional four-sleeve, 150%": {
+      "global bonds": {
+        "ruin_difference_without_minus_complete": 0.0007,
+        "ruin_difference_ci95": [
+          -0.0005852489829191891,
+          0.001985248982919189
+        ]
+      },
+      "gold": {
+        "ruin_difference_without_minus_complete": 0.0007,
+        "ruin_difference_ci95": [
+          -0.0006148021265814891,
+          0.002014802126581489
+        ]
+      },
+      "managed futures": {
+        "ruin_difference_without_minus_complete": 0.012,
+        "ruin_difference_ci95": [
+          0.009847815958238013,
+          0.014152184041761988
+        ]
+      }
+    },
+    "Proportional four-sleeve, 175%": {
+      "global bonds": {
+        "ruin_difference_without_minus_complete": 0.0031,
+        "ruin_difference_ci95": [
+          0.001674321397246969,
+          0.004525678602753031
+        ]
+      },
+      "gold": {
+        "ruin_difference_without_minus_complete": 0.0008,
+        "ruin_difference_ci95": [
+          -0.0005293106650758611,
+          0.0021293106650758613
+        ]
+      },
+      "managed futures": {
+        "ruin_difference_without_minus_complete": 0.0138,
+        "ruin_difference_ci95": [
+          0.011496608776018918,
+          0.016103391223981082
+        ]
+      }
+    },
+    "Proportional four-sleeve, 200%": {
+      "global bonds": {
+        "ruin_difference_without_minus_complete": 0.0051,
+        "ruin_difference_ci95": [
+          0.003451420071704742,
+          0.006748579928295259
+        ]
+      },
+      "gold": {
+        "ruin_difference_without_minus_complete": 0.0006,
+        "ruin_difference_ci95": [
+          -0.0007579448088233855,
+          0.0019579448088233855
+        ]
+      },
+      "managed futures": {
+        "ruin_difference_without_minus_complete": 0.0165,
+        "ruin_difference_ci95": [
+          0.013987727006959803,
+          0.0190122729930402
+        ]
+      }
+    },
+    "Equal-weight four-sleeve, 100%": {
+      "global bonds": {
+        "ruin_difference_without_minus_complete": -0.0069,
+        "ruin_difference_ci95": [
+          -0.008702052963119615,
+          -0.0050979470368803835
+        ]
+      },
+      "gold": {
+        "ruin_difference_without_minus_complete": -0.0075,
+        "ruin_difference_ci95": [
+          -0.009596823947561336,
+          -0.005403176052438664
+        ]
+      },
+      "managed futures": {
+        "ruin_difference_without_minus_complete": 0.02,
+        "ruin_difference_ci95": [
+          0.017132623815294117,
+          0.022867376184705884
+        ]
+      }
+    },
+    "Equal-weight four-sleeve, 125%": {
+      "global bonds": {
+        "ruin_difference_without_minus_complete": -0.0021,
+        "ruin_difference_ci95": [
+          -0.0033846629481264837,
+          -0.0008153370518735161
+        ]
+      },
+      "gold": {
+        "ruin_difference_without_minus_complete": -0.0043,
+        "ruin_difference_ci95": [
+          -0.0059954009319426495,
+          -0.002604599068057351
+        ]
+      },
+      "managed futures": {
+        "ruin_difference_without_minus_complete": 0.0212,
+        "ruin_difference_ci95": [
+          0.018309233530241803,
+          0.024090766469758197
+        ]
+      }
+    },
+    "Equal-weight four-sleeve, 150%": {
+      "global bonds": {
+        "ruin_difference_without_minus_complete": 0.0004,
+        "ruin_difference_ci95": [
+          -0.0007428968263651675,
+          0.0015428968263651675
+        ]
+      },
+      "gold": {
+        "ruin_difference_without_minus_complete": -0.0044,
+        "ruin_difference_ci95": [
+          -0.005915833908330252,
+          -0.002884166091669749
+        ]
+      },
+      "managed futures": {
+        "ruin_difference_without_minus_complete": 0.0217,
+        "ruin_difference_ci95": [
+          0.018790782020452017,
+          0.024609217979547984
+        ]
+      }
+    },
+    "Equal-weight four-sleeve, 175%": {
+      "global bonds": {
+        "ruin_difference_without_minus_complete": 0.0031,
+        "ruin_difference_ci95": [
+          0.0017865310272129579,
+          0.004413468972787042
+        ]
+      },
+      "gold": {
+        "ruin_difference_without_minus_complete": -0.0038,
+        "ruin_difference_ci95": [
+          -0.00518399576373174,
+          -0.00241600423626826
+        ]
+      },
+      "managed futures": {
+        "ruin_difference_without_minus_complete": 0.0236,
+        "ruin_difference_ci95": [
+          0.02061169960674566,
+          0.026588300393254338
+        ]
+      }
+    },
+    "Equal-weight four-sleeve, 200%": {
+      "global bonds": {
+        "ruin_difference_without_minus_complete": 0.0044,
+        "ruin_difference_ci95": [
+          0.0029891868650419448,
+          0.005810813134958056
+        ]
+      },
+      "gold": {
+        "ruin_difference_without_minus_complete": -0.0048,
+        "ruin_difference_ci95": [
+          -0.0062372959109221575,
+          -0.0033627040890778417
+        ]
+      },
+      "managed futures": {
+        "ruin_difference_without_minus_complete": 0.0275,
+        "ruin_difference_ci95": [
+          0.024270667892801072,
+          0.03072933210719893
+        ]
+      }
+    }
+  }
+}

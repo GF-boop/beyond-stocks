@@ -7,7 +7,7 @@
   "fx_hedge_cost": 0.001,
   "hedge_mode": "fixed_notional",
   "trend_fee": 0.0085,
-  "trend_cost": 0.00566285264726086,
+  "trend_cost": 0.006146047846628103,
   "trend_haircut": 0.0,
   "gold_reallocation_from_year": null,
   "withdrawal_rate": 0.04,
@@ -327,193 +327,193 @@
     },
     {
       "strategy": "40/26.67/16.67/16.67 ACO",
-      "mean_return": 0.056049758497010986,
-      "volatility": 0.1581404000169306,
-      "first_percentile_return": -0.1607850266539922,
-      "worst_year": -0.5871576549334804,
+      "mean_return": 0.057598166234420975,
+      "volatility": 0.15890118635645528,
+      "first_percentile_return": -0.1580452502791324,
+      "worst_year": -0.5872381874667083,
       "worst_country": "Italy",
       "worst_calendar_year": 1944,
-      "equivalent_savings_rate": 0.1256369650363922,
-      "median_retirement_wealth": 662176.8202581012,
-      "mean_retirement_consumption": 55821.51549812219,
-      "ruin_probability": 0.0414,
-      "ruin_difference_vs_benchmark": -0.0296,
+      "equivalent_savings_rate": 0.12110790610313416,
+      "median_retirement_wealth": 684049.9112325545,
+      "mean_retirement_consumption": 57063.333437011985,
+      "ruin_probability": 0.0388,
+      "ruin_difference_vs_benchmark": -0.0322,
       "ruin_difference_ci95": [
-        -0.03678212401242599,
-        -0.022417875987574012
+        -0.039405588885957805,
+        -0.024994411114042193
       ],
-      "median_bequest": 810289.5722699731
+      "median_bequest": 889765.9671409475
     },
     {
       "strategy": "50/33.33/20.83/20.83 ACO",
-      "mean_return": 0.06861067389769092,
-      "volatility": 0.19499966477830488,
-      "first_percentile_return": -0.1838358611391402,
-      "worst_year": -0.5438225125076104,
+      "mean_return": 0.0705461835694534,
+      "volatility": 0.19591631603255644,
+      "first_percentile_return": -0.16936768712235087,
+      "worst_year": -0.5439231781741451,
       "worst_country": "Italy",
       "worst_calendar_year": 1944,
-      "equivalent_savings_rate": 0.0969705879688263,
-      "median_retirement_wealth": 824993.8604435893,
-      "mean_retirement_consumption": 64684.80881610811,
-      "ruin_probability": 0.0254,
-      "ruin_difference_vs_benchmark": -0.0456,
+      "equivalent_savings_rate": 0.09279289841651917,
+      "median_retirement_wealth": 861455.3827986843,
+      "mean_retirement_consumption": 66712.2846129992,
+      "ruin_probability": 0.0234,
+      "ruin_difference_vs_benchmark": -0.0476,
       "ruin_difference_ci95": [
-        -0.05247582675199897,
-        -0.03872417324800103
+        -0.054487752863213154,
+        -0.04071224713678685
       ],
-      "median_bequest": 1393691.2467276035
+      "median_bequest": 1549504.9937341386
     },
     {
       "strategy": "60/40/25/25 ACO",
-      "mean_return": 0.08117158929837084,
-      "volatility": 0.2326130864224766,
-      "first_percentile_return": -0.21282010636997475,
-      "worst_year": -0.5004873700817405,
+      "mean_return": 0.08349420090448582,
+      "volatility": 0.2336815082776359,
+      "first_percentile_return": -0.20745816549196022,
+      "worst_year": -0.5006081688815822,
       "worst_country": "Italy",
       "worst_calendar_year": 1944,
-      "equivalent_savings_rate": 0.0766511857509613,
-      "median_retirement_wealth": 1027944.4091035206,
-      "mean_retirement_consumption": 76167.23697934377,
-      "ruin_probability": 0.0158,
-      "ruin_difference_vs_benchmark": -0.0552,
+      "equivalent_savings_rate": 0.07275226712226868,
+      "median_retirement_wealth": 1084632.1412836968,
+      "mean_retirement_consumption": 79338.70626298318,
+      "ruin_probability": 0.0152,
+      "ruin_difference_vs_benchmark": -0.0558,
       "ruin_difference_ci95": [
-        -0.061998968114404134,
-        -0.048401031885595865
+        -0.06262904614784949,
+        -0.048970953852150514
       ],
-      "median_bequest": 2315071.84073133
+      "median_bequest": 2570974.649716539
     },
     {
       "strategy": "70/46.67/29.17/29.17 ACO",
-      "mean_return": 0.09373250469905077,
-      "volatility": 0.2706664409407504,
-      "first_percentile_return": -0.2570651787963422,
-      "worst_year": -0.497924722594526,
+      "mean_return": 0.09644221823951825,
+      "volatility": 0.2718843877366183,
+      "first_percentile_return": -0.23409328125614706,
+      "worst_year": -0.4980656545276748,
       "worst_country": "Italy",
       "worst_calendar_year": 1947,
-      "equivalent_savings_rate": 0.06159082055091858,
-      "median_retirement_wealth": 1273712.825368119,
-      "mean_retirement_consumption": 91032.27045037522,
-      "ruin_probability": 0.0124,
-      "ruin_difference_vs_benchmark": -0.0586,
+      "equivalent_savings_rate": 0.057962387800216675,
+      "median_retirement_wealth": 1356987.1956898086,
+      "mean_retirement_consumption": 95854.7351571298,
+      "ruin_probability": 0.0118,
+      "ruin_difference_vs_benchmark": -0.0592,
       "ruin_difference_ci95": [
-        -0.06536571761454525,
-        -0.05183428238545475
+        -0.0659503277239017,
+        -0.05244967227609829
       ],
-      "median_bequest": 3751703.399956215
+      "median_bequest": 4277624.05686162
     },
     {
       "strategy": "80/53.33/33.33/33.33 ACO",
-      "mean_return": 0.10629342009973072,
-      "volatility": 0.3089972363845309,
-      "first_percentile_return": -0.2836141870903234,
-      "worst_year": -0.519062466563723,
+      "mean_return": 0.1093902355745507,
+      "volatility": 0.3103633706476708,
+      "first_percentile_return": -0.2753815158998933,
+      "worst_year": -0.5192235316301788,
       "worst_country": "Italy",
       "worst_calendar_year": 1947,
-      "equivalent_savings_rate": 0.050322026014328,
-      "median_retirement_wealth": 1576042.892050096,
-      "mean_retirement_consumption": 110290.20396340352,
-      "ruin_probability": 0.0106,
-      "ruin_difference_vs_benchmark": -0.0604,
+      "equivalent_savings_rate": 0.04692229628562927,
+      "median_retirement_wealth": 1693546.266409081,
+      "mean_retirement_consumption": 117447.46853411612,
+      "ruin_probability": 0.009,
+      "ruin_difference_vs_benchmark": -0.062,
       "ruin_difference_ci95": [
-        -0.06721019834286006,
-        -0.053589801657139946
+        -0.06884420064993037,
+        -0.05515579935006963
       ],
-      "median_bequest": 5821004.797313223
+      "median_bequest": 6795948.300005992
     },
     {
       "strategy": "25/25/25/25 ACO",
-      "mean_return": 0.05212187224257458,
-      "volatility": 0.15068180163604863,
-      "first_percentile_return": -0.15473645186332502,
-      "worst_year": -0.6124910695216921,
+      "mean_return": 0.054444483848689565,
+      "volatility": 0.15215218323622517,
+      "first_percentile_return": -0.15485725066316683,
+      "worst_year": -0.6126118683215339,
       "worst_country": "Italy",
       "worst_calendar_year": 1944,
-      "equivalent_savings_rate": 0.13857242465019226,
-      "median_retirement_wealth": 613484.4344135715,
-      "mean_retirement_consumption": 53472.654430521325,
-      "ruin_probability": 0.0524,
-      "ruin_difference_vs_benchmark": -0.0186,
+      "equivalent_savings_rate": 0.1314416229724884,
+      "median_retirement_wealth": 645092.2917577379,
+      "mean_retirement_consumption": 55154.56816764596,
+      "ruin_probability": 0.0488,
+      "ruin_difference_vs_benchmark": -0.0222,
       "ruin_difference_ci95": [
-        -0.026816661044277247,
-        -0.01038333895572275
+        -0.030334561290486277,
+        -0.014065438709513725
       ],
-      "median_bequest": 684905.5496889205
+      "median_bequest": 776385.2911108444
     },
     {
       "strategy": "31.25/31.25/31.25/31.25 ACO",
-      "mean_return": 0.06370081607964542,
-      "volatility": 0.18552831835762013,
-      "first_percentile_return": -0.1725918829876957,
-      "worst_year": -0.575489280742875,
+      "mean_return": 0.06660408058728914,
+      "volatility": 0.18731976696165448,
+      "first_percentile_return": -0.1593666511590302,
+      "worst_year": -0.5756402792426772,
       "worst_country": "Italy",
       "worst_calendar_year": 1944,
-      "equivalent_savings_rate": 0.10883674025535583,
-      "median_retirement_wealth": 753498.5475879818,
-      "mean_retirement_consumption": 61033.07273598854,
-      "ruin_probability": 0.0338,
-      "ruin_difference_vs_benchmark": -0.0372,
+      "equivalent_savings_rate": 0.10198721289634705,
+      "median_retirement_wealth": 804646.7417004041,
+      "mean_retirement_consumption": 63724.34666594446,
+      "ruin_probability": 0.0318,
+      "ruin_difference_vs_benchmark": -0.0392,
       "ruin_difference_ci95": [
-        -0.04489317184455189,
-        -0.029506828155448105
+        -0.04682530667026337,
+        -0.03157469332973663
       ],
-      "median_bequest": 1122632.9599263412
+      "median_bequest": 1313108.326874419
     },
     {
       "strategy": "37.5/37.5/37.5/37.5 ACO",
-      "mean_return": 0.07527975991671625,
-      "volatility": 0.2211652085937726,
-      "first_percentile_return": -0.2034325992289402,
-      "worst_year": -0.538487491964058,
+      "mean_return": 0.07876367732588872,
+      "volatility": 0.22326929670274742,
+      "first_percentile_return": -0.18459565548907647,
+      "worst_year": -0.5386686901638206,
       "worst_country": "Italy",
       "worst_calendar_year": 1944,
-      "equivalent_savings_rate": 0.08738043904304504,
-      "median_retirement_wealth": 931897.5699259522,
-      "mean_retirement_consumption": 70708.2436193889,
-      "ruin_probability": 0.024,
-      "ruin_difference_vs_benchmark": -0.047,
+      "equivalent_savings_rate": 0.08087238669395447,
+      "median_retirement_wealth": 1002092.333877271,
+      "mean_retirement_consumption": 74847.70462553808,
+      "ruin_probability": 0.0226,
+      "ruin_difference_vs_benchmark": -0.0484,
       "ruin_difference_ci95": [
-        -0.05445859096853066,
-        -0.03954140903146934
+        -0.05579996406710457,
+        -0.041000035932895425
       ],
-      "median_bequest": 1795400.537742429
+      "median_bequest": 2116625.086957241
     },
     {
       "strategy": "43.75/43.75/43.75/43.75 ACO",
-      "mean_return": 0.08685870375378708,
-      "volatility": 0.2572642281457859,
-      "first_percentile_return": -0.22320819933738442,
-      "worst_year": -0.5014857031852409,
+      "mean_return": 0.0909232740644883,
+      "volatility": 0.2596762178757666,
+      "first_percentile_return": -0.21132028820709647,
+      "worst_year": -0.501697101084964,
       "worst_country": "Italy",
       "worst_calendar_year": 1944,
-      "equivalent_savings_rate": 0.07128557562828064,
-      "median_retirement_wealth": 1145033.1913957074,
-      "mean_retirement_consumption": 83111.2168069659,
-      "ruin_probability": 0.0194,
-      "ruin_difference_vs_benchmark": -0.0516,
-      "ruin_difference_ci95": [
-        -0.058899588940518506,
-        -0.044300411059481494
-      ],
-      "median_bequest": 2790914.3440841744
-    },
-    {
-      "strategy": "50/50/50/50 ACO",
-      "mean_return": 0.09843764759085792,
-      "volatility": 0.2936549977200568,
-      "first_percentile_return": -0.26090769185820056,
-      "worst_year": -0.48269579957312025,
-      "worst_country": "Italy",
-      "worst_calendar_year": 1947,
-      "equivalent_savings_rate": 0.059069544076919556,
-      "median_retirement_wealth": 1389080.0335377594,
-      "mean_retirement_consumption": 99041.73500872937,
+      "equivalent_savings_rate": 0.06512519717216492,
+      "median_retirement_wealth": 1253357.437841584,
+      "mean_retirement_consumption": 89300.96544362619,
       "ruin_probability": 0.0172,
       "ruin_difference_vs_benchmark": -0.0538,
       "ruin_difference_ci95": [
-        -0.061076820066571405,
-        -0.046523179933428596
+        -0.06101317834574811,
+        -0.04658682165425189
       ],
-      "median_bequest": 4250968.897937476
+      "median_bequest": 3439360.5755458563
+    },
+    {
+      "strategy": "50/50/50/50 ACO",
+      "mean_return": 0.10308287080308788,
+      "volatility": 0.29637201780015937,
+      "first_percentile_return": -0.23777892906288942,
+      "worst_year": -0.4829373971728038,
+      "worst_country": "Italy",
+      "worst_calendar_year": 1947,
+      "equivalent_savings_rate": 0.05317696928977966,
+      "median_retirement_wealth": 1555720.6804998224,
+      "mean_retirement_consumption": 108121.02741359491,
+      "ruin_probability": 0.0136,
+      "ruin_difference_vs_benchmark": -0.0574,
+      "ruin_difference_ci95": [
+        -0.06457041958187916,
+        -0.050229580418120846
+      ],
+      "median_bequest": 5352514.174675233
     }
   ]
 }

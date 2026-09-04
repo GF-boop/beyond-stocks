@@ -22,6 +22,8 @@ TICKS = (10, 12, 14, 16, 18)
 
 
 def parse_strategy(name: str):
+  if name.startswith("ACO 33/67"):
+    return None
   parts = name.split()[0].split("/")
   weights = [float(w) for w in parts]
   equal = max(weights) - min(weights) < 1e-9
@@ -39,8 +41,6 @@ def yv(value: float, vmax: float) -> float:
 def series(d: dict, equal: bool):
   pts = []
   for r in d["results"]:
-    if r["strategy"] == "ACO 33/67":
-      continue
     if parse_strategy(r["strategy"]) == equal:
       pts.append((r["volatility"] * 100.0,
                   r["ruin_probability"] * 100.0,

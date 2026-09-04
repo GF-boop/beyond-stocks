@@ -38,6 +38,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from compare_fixed_stacked_utility import (  # noqa: E402
     return_functions,
+    DEFAULT_TREND_FEE,
+    DEFAULT_TREND_COST,
 )
 from replicate_extended import (  # noqa: E402
     MAX_AGE,
@@ -70,7 +72,7 @@ def main():
   rows = read_panel(os.path.join(HERE, "..", "data",
                                  "replication-panel-trend.csv"))
   functions = return_functions(
-    rows, SPREAD, 0.0085, 0.00566285264726086, 0.0, 0.001)
+    rows, SPREAD, DEFAULT_TREND_FEE, DEFAULT_TREND_COST, 0.0, 0.001)
   horizon = MAX_AGE - START_AGE + 1
   rng = random.Random(SEED)
 

@@ -8,7 +8,7 @@
  "mean_block_years": 10,
  "horizon": 86,
  "spread_real": 0.003,
- "panel_sha256": "c036ef8e6b3854b8cf11f6bf7a0481c2f6eadbfbaa47fda5061d6d5360d6512b",
+ "panel_sha256": "84470636614a7d89d25e549af766d006328b941ae645eff281c5a6c0c590a3c1",
  "design": "compte aux poids de la strategie, rebalance chaque annee vers l'exposition cible ; marge testee en fin d'annee ; nominaux reconstruits par actif",
  "families": {
   "proportional_200": {
@@ -16,8 +16,8 @@
    "paths_with_call": 0,
    "wipes": 0,
    "path_years": 860000,
-   "min_year_end_ratio": 0.37594143038645284,
-   "worst_asset_book_year": -0.14957627046084065,
+   "min_year_end_ratio": 0.3858952360601311,
+   "worst_asset_book_year": -0.15084372560178394,
    "gross_exposure": 2.0,
    "single_year_loss_threshold": -0.3071
   },
@@ -46,8 +46,8 @@
    "paths_with_call": 0,
    "wipes": 0,
    "path_years": 860000,
-   "min_year_end_ratio": 0.4769380967812721,
-   "worst_asset_book_year": -0.11467225041309204,
+   "min_year_end_ratio": 0.48908487871664463,
+   "worst_asset_book_year": -0.11478766639782534,
    "gross_exposure": 1.75,
    "single_year_loss_threshold": -0.4061
   },
@@ -56,8 +56,8 @@
    "paths_with_call": 0,
    "wipes": 0,
    "path_years": 860000,
-   "min_year_end_ratio": 0.38976111291148413,
-   "worst_asset_book_year": -0.11467225041309204,
+   "min_year_end_ratio": 0.4039323585027521,
+   "worst_asset_book_year": -0.11478766639782534,
    "gross_exposure": 2.0,
    "single_year_loss_threshold": -0.3071
   },

@@ -1,0 +1,264 @@
+{
+  "raw_sha256": "84470636614a7d89d25e549af766d006328b941ae645eff281c5a6c0c590a3c1",
+  "screened_observations": 1528,
+  "raw_observations": 1561,
+  "exclusions": [
+    {
+      "country": "Belgium",
+      "year": 1940,
+      "reasons": [
+        "fermeture ou restriction de marche ACO A.III"
+      ]
+    },
+    {
+      "country": "Belgium",
+      "year": 1941,
+      "reasons": [
+        "inflation annuelle superieure ou egale a 50 %"
+      ]
+    },
+    {
+      "country": "Belgium",
+      "year": 1942,
+      "reasons": [
+        "inflation annuelle superieure ou egale a 50 %"
+      ]
+    },
+    {
+      "country": "Belgium",
+      "year": 1944,
+      "reasons": [
+        "fermeture ou restriction de marche ACO A.III"
+      ]
+    },
+    {
+      "country": "Belgium",
+      "year": 1945,
+      "reasons": [
+        "fermeture ou restriction de marche ACO A.III",
+        "deflation annuelle inferieure ou egale a -20 %"
+      ]
+    },
+    {
+      "country": "Denmark",
+      "year": 1940,
+      "reasons": [
+        "fermeture ou restriction de marche ACO A.III"
+      ]
+    },
+    {
+      "country": "Finland",
+      "year": 1946,
+      "reasons": [
+        "inflation annuelle superieure ou egale a 50 %"
+      ]
+    },
+    {
+      "country": "France",
+      "year": 1939,
+      "reasons": [
+        "fermeture ou restriction de marche ACO A.III"
+      ]
+    },
+    {
+      "country": "France",
+      "year": 1940,
+      "reasons": [
+        "fermeture ou restriction de marche ACO A.III"
+      ]
+    },
+    {
+      "country": "France",
+      "year": 1941,
+      "reasons": [
+        "fermeture ou restriction de marche ACO A.III"
+      ]
+    },
+    {
+      "country": "France",
+      "year": 1946,
+      "reasons": [
+        "inflation annuelle superieure ou egale a 50 %"
+      ]
+    },
+    {
+      "country": "France",
+      "year": 1948,
+      "reasons": [
+        "inflation annuelle superieure ou egale a 50 %"
+      ]
+    },
+    {
+      "country": "France",
+      "year": 1974,
+      "reasons": [
+        "restriction de marche ACO A.III"
+      ]
+    },
+    {
+      "country": "France",
+      "year": 1979,
+      "reasons": [
+        "restriction de marche ACO A.III"
+      ]
+    },
+    {
+      "country": "Germany",
+      "year": 1931,
+      "reasons": [
+        "crise bancaire et restriction de marche ACO A.III"
+      ]
+    },
+    {
+      "country": "Germany",
+      "year": 1932,
+      "reasons": [
+        "crise bancaire et restriction de marche ACO A.III"
+      ]
+    },
+    {
+      "country": "Germany",
+      "year": 1943,
+      "reasons": [
+        "fermeture de marche et reforme monetaire ACO A.III"
+      ]
+    },
+    {
+      "country": "Italy",
+      "year": 1942,
+      "reasons": [
+        "Italy 1942 source-conversion influence identified in the audit; not a verified closure"
+      ]
+    },
+    {
+      "country": "Italy",
+      "year": 1943,
+      "reasons": [
+        "inflation annuelle superieure ou egale a 50 %"
+      ]
+    },
+    {
+      "country": "Italy",
+      "year": 1944,
+      "reasons": [
+        "inflation annuelle superieure ou egale a 50 %"
+      ]
+    },
+    {
+      "country": "Italy",
+      "year": 1945,
+      "reasons": [
+        "inflation annuelle superieure ou egale a 50 %"
+      ]
+    },
+    {
+      "country": "Italy",
+      "year": 1947,
+      "reasons": [
+        "inflation annuelle superieure ou egale a 50 %"
+      ]
+    },
+    {
+      "country": "Japan",
+      "year": 1945,
+      "reasons": [
+        "fermeture de marche ACO A.III",
+        "inflation annuelle superieure ou egale a 50 %"
+      ]
+    },
+    {
+      "country": "Netherlands",
+      "year": 1940,
+      "reasons": [
+        "fermeture ou restriction de marche ACO A.III"
+      ]
+    },
+    {
+      "country": "Netherlands",
+      "year": 1944,
+      "reasons": [
+        "fermeture ou restriction de marche ACO A.III"
+      ]
+    },
+    {
+      "country": "Netherlands",
+      "year": 1945,
+      "reasons": [
+        "fermeture ou restriction de marche ACO A.III"
+      ]
+    },
+    {
+      "country": "Netherlands",
+      "year": 1946,
+      "reasons": [
+        "fermeture ou restriction de marche ACO A.III"
+      ]
+    },
+    {
+      "country": "Norway",
+      "year": 1940,
+      "reasons": [
+        "fermeture ou restriction de marche ACO A.III"
+      ]
+    },
+    {
+      "country": "Portugal",
+      "year": 1974,
+      "reasons": [
+        "fermeture ou restriction de marche ACO A.III"
+      ]
+    },
+    {
+      "country": "Portugal",
+      "year": 1975,
+      "reasons": [
+        "fermeture ou restriction de marche ACO A.III"
+      ]
+    },
+    {
+      "country": "Portugal",
+      "year": 1976,
+      "reasons": [
+        "fermeture ou restriction de marche ACO A.III"
+      ]
+    },
+    {
+      "country": "Portugal",
+      "year": 1977,
+      "reasons": [
+        "fermeture ou restriction de marche ACO A.III"
+      ]
+    },
+    {
+      "country": "Switzerland",
+      "year": 1940,
+      "reasons": [
+        "restriction de marche ACO A.III"
+      ]
+    }
+  ],
+  "winsor_limits": {
+    "domestic_equity_real": [
+      -0.5327973531660616,
+      0.9449053948172911
+    ],
+    "international_equity_real": [
+      -0.43233515684709356,
+      0.6309935110630793
+    ],
+    "world_bond_real_fixed_notional": [
+      -0.3314337929348628,
+      0.24270790714026094
+    ],
+    "trend_real_fixed_notional": [
+      -0.28876690638267255,
+      0.5451393670884652
+    ],
+    "gold_real": [
+      -0.3838219312149161,
+      1.0350898537937165
+    ]
+  },
+  "interpretation": "Screen includes retrospective annual inflation and an audit-selected Italy event. It is not a fully ex ante investability rule. Winsorization is a statistical sensitivity, not reconstructed tradable returns. Monthly MF inputs remain fixed.",
+  "pairing": "Same seeds within each panel; different supports prevent pathwise pairing of raw and screened samples."
+}

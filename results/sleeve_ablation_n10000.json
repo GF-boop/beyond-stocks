@@ -11,8 +11,8 @@
   "spread": 0.003,
   "fx_hedge_cost": 0.001,
   "trend_fee": 0.0085,
-  "trend_cost": 0.00566285264726086,
-  "panel_sha256": "c036ef8e6b3854b8cf11f6bf7a0481c2f6eadbfbaa47fda5061d6d5360d6512b",
+  "trend_cost": 0.006146047846628103,
+  "panel_sha256": "84470636614a7d89d25e549af766d006328b941ae645eff281c5a6c0c590a3c1",
   "definitions": {
     "Proportional four-sleeve, 175%": {
       "complete_exposures": [
@@ -114,35 +114,35 @@
     },
     {
       "strategy": "Proportional four-sleeve, 175%",
-      "annual_volatility": 0.26473880855927606,
-      "equivalent_savings_rate": 0.06257906556129456,
-      "ruin_probability": 0.0225,
-      "ruin_difference_vs_aco": -0.0473,
+      "annual_volatility": 0.26578017528854353,
+      "equivalent_savings_rate": 0.058697909116744995,
+      "ruin_probability": 0.0213,
+      "ruin_difference_vs_aco": -0.0485,
       "ruin_difference_ci95": [
-        -0.051703145857559606,
-        -0.0428968541424404
+        -0.05291556399121744,
+        -0.04408443600878256
       ]
     },
     {
       "strategy": "Proportional four-sleeve, 175% without global bonds",
-      "annual_volatility": 0.3484401527709891,
-      "equivalent_savings_rate": 0.04564580321311951,
-      "ruin_probability": 0.0213,
-      "ruin_difference_vs_aco": -0.0485,
+      "annual_volatility": 0.3495147593106201,
+      "equivalent_savings_rate": 0.04148337244987488,
+      "ruin_probability": 0.0192,
+      "ruin_difference_vs_aco": -0.0506,
       "ruin_difference_ci95": [
-        -0.05301025962492055,
-        -0.04398974037507945
+        -0.05507999856485626,
+        -0.04612000143514374
       ]
     },
     {
       "strategy": "Proportional four-sleeve, 175% without gold",
-      "annual_volatility": 0.2392822910135052,
-      "equivalent_savings_rate": 0.057171374559402466,
-      "ruin_probability": 0.0242,
-      "ruin_difference_vs_aco": -0.0456,
+      "annual_volatility": 0.23973718211063164,
+      "equivalent_savings_rate": 0.05271175503730774,
+      "ruin_probability": 0.0212,
+      "ruin_difference_vs_aco": -0.0486,
       "ruin_difference_ci95": [
-        -0.04972649001627115,
-        -0.041473509983728854
+        -0.052851110518495614,
+        -0.04434888948150438
       ]
     },
     {
@@ -158,35 +158,35 @@
     },
     {
       "strategy": "Equal-weight four-sleeve, 175%",
-      "annual_volatility": 0.2531247503482838,
-      "equivalent_savings_rate": 0.07164934277534485,
-      "ruin_probability": 0.0279,
-      "ruin_difference_vs_aco": -0.0419,
+      "annual_volatility": 0.25540999554906363,
+      "equivalent_savings_rate": 0.06525954604148865,
+      "ruin_probability": 0.0248,
+      "ruin_difference_vs_aco": -0.045,
       "ruin_difference_ci95": [
-        -0.04666688380186869,
-        -0.03713311619813131
+        -0.049678643496837205,
+        -0.04032135650316279
       ]
     },
     {
       "strategy": "Equal-weight four-sleeve, 175% without global bonds",
-      "annual_volatility": 0.32727969464264456,
-      "equivalent_savings_rate": 0.05625376105308533,
-      "ruin_probability": 0.0296,
-      "ruin_difference_vs_aco": -0.0402,
+      "annual_volatility": 0.3298563457268176,
+      "equivalent_savings_rate": 0.04917231202125549,
+      "ruin_probability": 0.0243,
+      "ruin_difference_vs_aco": -0.0455,
       "ruin_difference_ci95": [
-        -0.04515032288272839,
-        -0.03524967711727161
+        -0.05027836960077432,
+        -0.040721630399225675
       ]
     },
     {
       "strategy": "Equal-weight four-sleeve, 175% without gold",
-      "annual_volatility": 0.1969101046984922,
-      "equivalent_savings_rate": 0.0572533905506134,
-      "ruin_probability": 0.0204,
-      "ruin_difference_vs_aco": -0.0494,
+      "annual_volatility": 0.19807830613399288,
+      "equivalent_savings_rate": 0.05038878321647644,
+      "ruin_probability": 0.0183,
+      "ruin_difference_vs_aco": -0.0515,
       "ruin_difference_ci95": [
-        -0.05385074513038228,
-        -0.04494925486961772
+        -0.05598034630249705,
+        -0.047019653697502946
       ]
     },
     {
@@ -204,47 +204,47 @@
   "ablation_effects": {
     "Proportional four-sleeve, 175%": {
       "global bonds": {
-        "ruin_difference_without_minus_complete": -0.0012,
+        "ruin_difference_without_minus_complete": -0.0021,
         "ruin_difference_ci95": [
-          -0.0032926797988402446,
-          0.000892679798840245
+          -0.004069444014277262,
+          -0.00013055598572273746
         ]
       },
       "gold": {
-        "ruin_difference_without_minus_complete": 0.0017,
+        "ruin_difference_without_minus_complete": -0.0001,
         "ruin_difference_ci95": [
-          -0.00028900311486410014,
-          0.0036890031148640997
+          -0.0019698133004601975,
+          0.0017698133004601976
         ]
       },
       "managed futures": {
-        "ruin_difference_without_minus_complete": 0.0146,
+        "ruin_difference_without_minus_complete": 0.0158,
         "ruin_difference_ci95": [
-          0.012137221288402422,
-          0.01706277871159758
+          0.013248078855498712,
+          0.018351921144501293
         ]
       }
     },
     "Equal-weight four-sleeve, 175%": {
       "global bonds": {
-        "ruin_difference_without_minus_complete": 0.0017,
+        "ruin_difference_without_minus_complete": -0.0005,
         "ruin_difference_ci95": [
-          -0.00032726731312767115,
-          0.0037272673131276707
+          -0.0023491267904037025,
+          0.0013491267904037027
         ]
       },
       "gold": {
-        "ruin_difference_without_minus_complete": -0.0075,
+        "ruin_difference_without_minus_complete": -0.0065,
         "ruin_difference_ci95": [
-          -0.0097213843554967,
-          -0.0052786156445033
+          -0.00846574964254498,
+          -0.00453425035745502
         ]
       },
       "managed futures": {
-        "ruin_difference_without_minus_complete": 0.0278,
+        "ruin_difference_without_minus_complete": 0.0309,
         "ruin_difference_ci95": [
-          0.02443757998274498,
-          0.031162420017255017
+          0.027396674220179922,
+          0.034403325779820075
         ]
       }
     }

@@ -7,7 +7,7 @@
   "fx_hedge_cost": 0.001,
   "hedge_mode": "fixed_notional",
   "trend_fee": 0.0085,
-  "trend_cost": 0.00566285264726086,
+  "trend_cost": 0.006146047846628103,
   "trend_haircut": 0.0,
   "gold_reallocation_from_year": null,
   "withdrawal_rate": 0.04,
@@ -325,193 +325,193 @@
     },
     {
       "strategy": "40/26.67/16.67/16.67 ACO",
-      "mean_return": 0.05781836762201279,
-      "volatility": 0.08969103924137146,
-      "first_percentile_return": -0.12362191874798406,
-      "worst_year": -0.2575759847358039,
+      "mean_return": 0.05952307920685093,
+      "volatility": 0.09087269225263794,
+      "first_percentile_return": -0.11912281649955742,
+      "worst_year": -0.24850606929523927,
       "worst_country": "Portugal",
       "worst_calendar_year": 1974,
-      "equivalent_savings_rate": 0.10029765963554382,
-      "median_retirement_wealth": 795717.6292552429,
-      "mean_retirement_consumption": 61757.92792561682,
-      "ruin_probability": 0.0088,
-      "ruin_difference_vs_benchmark": -0.0516,
+      "equivalent_savings_rate": 0.09593263268470764,
+      "median_retirement_wealth": 828014.0808448081,
+      "mean_retirement_consumption": 63226.12454173637,
+      "ruin_probability": 0.0082,
+      "ruin_difference_vs_benchmark": -0.0522,
       "ruin_difference_ci95": [
-        -0.05607561415479555,
-        -0.04712438584520445
+        -0.05670716683970009,
+        -0.047692833160299916
       ],
-      "median_bequest": 1346910.0760419397
+      "median_bequest": 1471559.9661002983
     },
     {
       "strategy": "50/33.33/20.83/20.83 ACO",
-      "mean_return": 0.0688531254892985,
-      "volatility": 0.10957305762211791,
-      "first_percentile_return": -0.15184186523691393,
-      "worst_year": -0.26808644813831967,
+      "mean_return": 0.07098401497034618,
+      "volatility": 0.11103817684502915,
+      "first_percentile_return": -0.14387131560702113,
+      "worst_year": -0.25674905383761387,
       "worst_country": "Portugal",
       "worst_calendar_year": 1974,
-      "equivalent_savings_rate": 0.08059671521186829,
-      "median_retirement_wealth": 981772.2270645173,
-      "mean_retirement_consumption": 71339.63982071803,
-      "ruin_probability": 0.0047,
-      "ruin_difference_vs_benchmark": -0.0557,
+      "equivalent_savings_rate": 0.07632896304130554,
+      "median_retirement_wealth": 1031441.7842520764,
+      "mean_retirement_consumption": 73695.53198956091,
+      "ruin_probability": 0.0037,
+      "ruin_difference_vs_benchmark": -0.0567,
       "ruin_difference_ci95": [
-        -0.060254751147692014,
-        -0.051145248852307985
+        -0.06129203359470001,
+        -0.052107966405299994
       ],
-      "median_bequest": 2184616.828300419
+      "median_bequest": 2449541.9215521114
     },
     {
       "strategy": "60/40/25/25 ACO",
-      "mean_return": 0.07988788335658423,
-      "volatility": 0.13005486093923335,
-      "first_percentile_return": -0.17957570562394032,
-      "worst_year": -0.2785969115408354,
+      "mean_return": 0.08244495073384144,
+      "volatility": 0.13179511964915241,
+      "first_percentile_return": -0.17714958852801785,
+      "worst_year": -0.2649920383799884,
       "worst_country": "Portugal",
       "worst_calendar_year": 1974,
-      "equivalent_savings_rate": 0.06574758887290955,
-      "median_retirement_wealth": 1203042.5423410349,
-      "mean_retirement_consumption": 83465.18505489216,
-      "ruin_probability": 0.0029,
-      "ruin_difference_vs_benchmark": -0.0575,
+      "equivalent_savings_rate": 0.06165006756782532,
+      "median_retirement_wealth": 1276859.1544830827,
+      "mean_retirement_consumption": 87094.1638433362,
+      "ruin_probability": 0.0024,
+      "ruin_difference_vs_benchmark": -0.058,
       "ruin_difference_ci95": [
-        -0.06209657610088043,
-        -0.052903423899119575
+        -0.0626066890407745,
+        -0.05339331095922551
       ],
-      "median_bequest": 3456876.4237093283
+      "median_bequest": 3954991.545216663
     },
     {
       "strategy": "70/46.67/29.17/29.17 ACO",
-      "mean_return": 0.09092264122386996,
-      "volatility": 0.15089240607793117,
-      "first_percentile_return": -0.20950019045279986,
-      "worst_year": -0.32578930479164653,
+      "mean_return": 0.0939058864973367,
+      "volatility": 0.15290283429695453,
+      "first_percentile_return": -0.2046055279161205,
+      "worst_year": -0.30229282247856737,
       "worst_country": "Portugal",
       "worst_calendar_year": 1990,
-      "equivalent_savings_rate": 0.054282695055007935,
-      "median_retirement_wealth": 1470459.5573291413,
-      "mean_retirement_consumption": 98820.86263128181,
-      "ruin_probability": 0.0033,
-      "ruin_difference_vs_benchmark": -0.0571,
+      "equivalent_savings_rate": 0.050356119871139526,
+      "median_retirement_wealth": 1582613.5152922464,
+      "mean_retirement_consumption": 104256.35944665516,
+      "ruin_probability": 0.0022,
+      "ruin_difference_vs_benchmark": -0.0582,
       "ruin_difference_ci95": [
-        -0.06169012895491861,
-        -0.05250987104508138
+        -0.06280571982942024,
+        -0.053594280170579774
       ],
-      "median_bequest": 5289552.764006525
+      "median_bequest": 6153115.326070411
     },
     {
       "strategy": "80/53.33/33.33/33.33 ACO",
-      "mean_return": 0.10195739909115568,
-      "volatility": 0.17195641607934217,
-      "first_percentile_return": -0.2477666624501089,
-      "worst_year": -0.3771717635250353,
+      "mean_return": 0.10536682226083194,
+      "volatility": 0.17423388371723386,
+      "first_percentile_return": -0.23360401191968252,
+      "worst_year": -0.35031864088151626,
       "worst_country": "Portugal",
       "worst_calendar_year": 1990,
-      "equivalent_savings_rate": 0.04538491368293762,
-      "median_retirement_wealth": 1782645.0073545803,
-      "mean_retirement_consumption": 118247.6472192285,
-      "ruin_probability": 0.0043,
-      "ruin_difference_vs_benchmark": -0.0561,
+      "equivalent_savings_rate": 0.04163804650306702,
+      "median_retirement_wealth": 1942069.717937975,
+      "mean_retirement_consumption": 126204.62569756794,
+      "ruin_probability": 0.003,
+      "ruin_difference_vs_benchmark": -0.0574,
       "ruin_difference_ci95": [
-        -0.06067811049626061,
-        -0.051521889503739385
+        -0.06198450289181679,
+        -0.05281549710818321
       ],
-      "median_bequest": 7860918.919902148
+      "median_bequest": 9240334.461824656
     },
     {
       "strategy": "25/25/25/25 ACO",
-      "mean_return": 0.054233164926839585,
-      "volatility": 0.08533391846969891,
-      "first_percentile_return": -0.12037340642837704,
-      "worst_year": -0.17996717105003232,
+      "mean_return": 0.05679023230409678,
+      "volatility": 0.08786141668492539,
+      "first_percentile_return": -0.11950644869425472,
+      "worst_year": -0.16636229788918536,
       "worst_country": "Portugal",
       "worst_calendar_year": 1974,
-      "equivalent_savings_rate": 0.10470721125602722,
-      "median_retirement_wealth": 763158.3374799277,
-      "mean_retirement_consumption": 60375.25494996561,
-      "ruin_probability": 0.008,
-      "ruin_difference_vs_benchmark": -0.0524,
+      "equivalent_savings_rate": 0.09816846251487732,
+      "median_retirement_wealth": 807627.951863088,
+      "mean_retirement_consumption": 62412.19826617669,
+      "ruin_probability": 0.0066,
+      "ruin_difference_vs_benchmark": -0.0538,
       "ruin_difference_ci95": [
-        -0.05710644960720823,
-        -0.04769355039279177
+        -0.05850037714275444,
+        -0.04909962285724556
       ],
-      "median_bequest": 1223943.626736006
+      "median_bequest": 1413929.1153040493
     },
     {
       "strategy": "31.25/31.25/31.25/31.25 ACO",
-      "mean_return": 0.064371622120332,
-      "volatility": 0.10405821450848714,
-      "first_percentile_return": -0.14041968363479743,
-      "worst_year": -0.19957528033143754,
+      "mean_return": 0.0675679563419035,
+      "volatility": 0.10722340841087358,
+      "first_percentile_return": -0.13912035910976012,
+      "worst_year": -0.17440047785313842,
       "worst_country": "Portugal",
       "worst_calendar_year": 1990,
-      "equivalent_savings_rate": 0.08480700850486755,
-      "median_retirement_wealth": 935919.5602057052,
-      "mean_retirement_consumption": 69324.59040656887,
-      "ruin_probability": 0.005,
-      "ruin_difference_vs_benchmark": -0.0554,
+      "equivalent_savings_rate": 0.07826164364814758,
+      "median_retirement_wealth": 1007461.9486569443,
+      "mean_retirement_consumption": 72554.91335420599,
+      "ruin_probability": 0.0033,
+      "ruin_difference_vs_benchmark": -0.0571,
       "ruin_difference_ci95": [
-        -0.06011772584919035,
-        -0.05068227415080965
+        -0.061797680248204576,
+        -0.05240231975179542
       ],
-      "median_bequest": 1986708.1814555614
+      "median_bequest": 2349594.0917648664
     },
     {
       "strategy": "37.5/37.5/37.5/37.5 ACO",
-      "mean_return": 0.07451007931382443,
-      "volatility": 0.12341244302019054,
-      "first_percentile_return": -0.1616335982528579,
-      "worst_year": -0.24626791766614,
+      "mean_return": 0.07834568037971021,
+      "volatility": 0.12719669127929426,
+      "first_percentile_return": -0.1559606830130292,
+      "worst_year": -0.21605815469218106,
       "worst_country": "Portugal",
       "worst_calendar_year": 1990,
-      "equivalent_savings_rate": 0.06940194964408875,
-      "median_retirement_wealth": 1144210.7718153638,
-      "mean_retirement_consumption": 80682.76615123493,
-      "ruin_probability": 0.004,
-      "ruin_difference_vs_benchmark": -0.0564,
+      "equivalent_savings_rate": 0.06306740641593933,
+      "median_retirement_wealth": 1249084.3546623667,
+      "mean_retirement_consumption": 85611.63215334249,
+      "ruin_probability": 0.0026,
+      "ruin_difference_vs_benchmark": -0.0578,
       "ruin_difference_ci95": [
-        -0.06112131586411552,
-        -0.05167868413588448
+        -0.06249029623728388,
+        -0.053109703762716114
       ],
-      "median_bequest": 3095448.1752294395
+      "median_bequest": 3740219.006977642
     },
     {
       "strategy": "43.75/43.75/43.75/43.75 ACO",
-      "mean_return": 0.08464853650731685,
-      "volatility": 0.14314131094113114,
-      "first_percentile_return": -0.1952214907242726,
-      "worst_year": -0.29296055500084245,
+      "mean_return": 0.08912340441751694,
+      "volatility": 0.14753320109503276,
+      "first_percentile_return": -0.18101240476719882,
+      "worst_year": -0.2577158315312237,
       "worst_country": "Portugal",
       "worst_calendar_year": 1990,
-      "equivalent_savings_rate": 0.05743733048439026,
-      "median_retirement_wealth": 1384689.4431636892,
-      "mean_retirement_consumption": 95124.06476312871,
-      "ruin_probability": 0.004,
-      "ruin_difference_vs_benchmark": -0.0564,
+      "equivalent_savings_rate": 0.05137506127357483,
+      "median_retirement_wealth": 1539954.0156605716,
+      "mean_retirement_consumption": 102441.52787872424,
+      "ruin_probability": 0.0024,
+      "ruin_difference_vs_benchmark": -0.058,
       "ruin_difference_ci95": [
-        -0.06113756296598638,
-        -0.05166243703401362
+        -0.06268934758341455,
+        -0.05331065241658546
       ],
-      "median_bequest": 4728999.195427213
+      "median_bequest": 5895006.6092033945
     },
     {
       "strategy": "50/50/50/50 ACO",
-      "mean_return": 0.09478699370080927,
-      "volatility": 0.16310893115919728,
-      "first_percentile_return": -0.23235769009275165,
-      "worst_year": -0.33965319233554486,
+      "mean_return": 0.09990112845532365,
+      "volatility": 0.16810116231033875,
+      "first_percentile_return": -0.20942990729089075,
+      "worst_year": -0.2993735083702663,
       "worst_country": "Portugal",
       "worst_calendar_year": 1990,
-      "equivalent_savings_rate": 0.04808506369590759,
-      "median_retirement_wealth": 1678540.7194437508,
-      "mean_retirement_consumption": 113505.70154782663,
-      "ruin_probability": 0.0043,
-      "ruin_difference_vs_benchmark": -0.0561,
+      "equivalent_savings_rate": 0.0423111617565155,
+      "median_retirement_wealth": 1897389.484308235,
+      "mean_retirement_consumption": 124152.79918587138,
+      "ruin_probability": 0.0027,
+      "ruin_difference_vs_benchmark": -0.0577,
       "ruin_difference_ci95": [
-        -0.060851076623177944,
-        -0.05134892337682205
+        -0.06239486273784577,
+        -0.05300513726215423
       ],
-      "median_bequest": 7014529.565044468
+      "median_bequest": 9044314.768513966
     }
   ]
 }

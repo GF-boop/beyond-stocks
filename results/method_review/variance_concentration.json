@@ -1,7 +1,7 @@
 {
   "definition": "Shares of sum of squared deviations from full-sample mean; deletion diagnostics are not proposed sample screens.",
-  "panel_sha256": "19dcb77aa650bee8131e3171ded33c9dc21f2e002380a3d9e53fe1570d980386",
-  "baseline_sha256": "a964aa61e53161fa4949acd20254f340490d5c1eff4a479c4aa870ab763fed53",
+  "panel_sha256": "84470636614a7d89d25e549af766d006328b941ae645eff281c5a6c0c590a3c1",
+  "baseline_sha256": "982fef323892224bc627c18864462f5115a68d0b935e929d92aabbcf736518c8",
   "observations": 1561,
   "portfolios": [
     {
@@ -88,832 +88,1164 @@
       ]
     },
     {
-      "strategy": "40/26.67/16.67/16.67 ACO",
-      "volatility": 0.15593497815278598,
+      "strategy": "ACO 33/67 125%",
+      "volatility": 0.31471125465279914,
       "largest_contributors": [
         {
           "country": "Italy",
           "year": 1942,
-          "return": 4.466963089321199,
-          "variance_share": 0.5131576679476471
+          "return": 8.803135673200373,
+          "variance_share": 0.4902277570379447
         },
         {
           "country": "France",
           "year": 1946,
-          "return": 1.5202036333211986,
-          "variance_share": 0.056595327521542005
-        },
-        {
-          "country": "Japan",
-          "year": 1945,
-          "return": -0.8668905953680349,
-          "variance_share": 0.022405414375029763
-        },
-        {
-          "country": "Italy",
-          "year": 1944,
-          "return": -0.58753363371403,
-          "variance_share": 0.010883999345766119
+          "return": 2.6328399082993785,
+          "variance_share": 0.04151939331239681
         },
         {
           "country": "Finland",
           "year": 1945,
-          "return": 0.58061077955529,
-          "variance_share": 0.007282936069655446
+          "return": 1.434149077152915,
+          "variance_share": 0.011519415943030369
         },
         {
-          "country": "Italy",
+          "country": "Japan",
           "year": 1945,
-          "return": -0.4552685955589383,
-          "variance_share": 0.006864306219520481
+          "return": -0.8321366616236501,
+          "variance_share": 0.005624082712667601
+        },
+        {
+          "country": "Finland",
+          "year": 1999,
+          "return": 0.9934515961128756,
+          "variance_share": 0.005165940946628021
         },
         {
           "country": "Spain",
           "year": 1946,
-          "return": 0.5562160001243525,
-          "variance_share": 0.0066225816301632165
+          "return": 0.8998016614850071,
+          "variance_share": 0.004139681158706673
+        },
+        {
+          "country": "France",
+          "year": 1954,
+          "return": 0.8446751904017378,
+          "variance_share": 0.003588661238189522
+        },
+        {
+          "country": "Japan",
+          "year": 2008,
+          "return": -0.5709695666716749,
+          "variance_share": 0.002914166643036301
         },
         {
           "country": "Netherlands",
           "year": 1946,
-          "return": 0.550422653901903,
-          "variance_share": 0.006470369217494999
+          "return": 0.7628326076758899,
+          "variance_share": 0.0028431513769561793
         },
         {
-          "country": "Italy",
-          "year": 1947,
-          "return": -0.4345114906869355,
-          "variance_share": 0.006317208362707973
-        },
-        {
-          "country": "Belgium",
-          "year": 1941,
-          "return": -0.41095921073721337,
-          "variance_share": 0.005723949365710296
+          "country": "Japan",
+          "year": 2013,
+          "return": 0.7600377620833578,
+          "variance_share": 0.002819223916926248
         }
       ],
       "deletion_diagnostics": [
         {
           "count": 1,
-          "variance_share": 0.5131576679476471,
-          "remaining_volatility": 0.10880032228787664
+          "variance_share": 0.4902277570379447,
+          "remaining_volatility": 0.22470136297030155
         },
         {
           "count": 5,
-          "variance_share": 0.6103253452596404,
-          "remaining_volatility": 0.09744747693157244
+          "variance_share": 0.5540565899526675,
+          "remaining_volatility": 0.21034440467113583
         },
         {
           "count": 10,
-          "variance_share": 0.6423237600552373,
-          "remaining_volatility": 0.09351643896278283
+          "variance_share": 0.5703614742864823,
+          "remaining_volatility": 0.20672947608814699
+        }
+      ]
+    },
+    {
+      "strategy": "ACO 33/67 150%",
+      "volatility": 0.3771344031556985,
+      "largest_contributors": [
+        {
+          "country": "Italy",
+          "year": 1942,
+          "return": 10.58161149653312,
+          "variance_share": 0.49336512881577044
+        },
+        {
+          "country": "France",
+          "year": 1946,
+          "return": 3.2259375912265833,
+          "variance_share": 0.04350763857938585
+        },
+        {
+          "country": "Finland",
+          "year": 1945,
+          "return": 1.773297055566998,
+          "variance_share": 0.012335100291689218
+        },
+        {
+          "country": "Finland",
+          "year": 1999,
+          "return": 1.185459568560026,
+          "variance_share": 0.005126517529308268
+        },
+        {
+          "country": "Spain",
+          "year": 1946,
+          "return": 1.1061659125957681,
+          "variance_share": 0.00439256319433723
+        },
+        {
+          "country": "Japan",
+          "year": 1945,
+          "return": -0.8182484349594312,
+          "variance_share": 0.0039585397885517955
+        },
+        {
+          "country": "France",
+          "year": 1954,
+          "return": 1.0058302283855256,
+          "variance_share": 0.0035450704695943976
+        },
+        {
+          "country": "Netherlands",
+          "year": 1946,
+          "return": 0.9292658069536793,
+          "variance_share": 0.0029594067885366174
+        },
+        {
+          "country": "Japan",
+          "year": 2008,
+          "return": -0.683942519239506,
+          "variance_share": 0.0029052590035527365
+        },
+        {
+          "country": "Japan",
+          "year": 2013,
+          "return": 0.9119794391646924,
+          "variance_share": 0.0028344901070472585
+        }
+      ],
+      "deletion_diagnostics": [
+        {
+          "count": 1,
+          "variance_share": 0.49336512881577044,
+          "remaining_volatility": 0.2684400673301881
+        },
+        {
+          "count": 5,
+          "variance_share": 0.5587269484104911,
+          "remaining_volatility": 0.25068078317273557
+        },
+        {
+          "count": 10,
+          "variance_share": 0.5749297145677739,
+          "remaining_volatility": 0.24639959011259793
+        }
+      ]
+    },
+    {
+      "strategy": "ACO 33/67 175%",
+      "volatility": 0.4398667854136487,
+      "largest_contributors": [
+        {
+          "country": "Italy",
+          "year": 1942,
+          "return": 12.360087319865865,
+          "variance_share": 0.49492093913222174
+        },
+        {
+          "country": "France",
+          "year": 1946,
+          "return": 3.819035274153788,
+          "variance_share": 0.044896539462347555
+        },
+        {
+          "country": "Finland",
+          "year": 1945,
+          "return": 2.1124450339810807,
+          "variance_share": 0.0129180643888502
+        },
+        {
+          "country": "Finland",
+          "year": 1999,
+          "return": 1.3774675410071764,
+          "variance_share": 0.005091218215987861
+        },
+        {
+          "country": "Spain",
+          "year": 1946,
+          "return": 1.312530163706529,
+          "variance_share": 0.004571790142810716
+        },
+        {
+          "country": "France",
+          "year": 1954,
+          "return": 1.1669852663693137,
+          "variance_share": 0.003509085191228746
+        },
+        {
+          "country": "Netherlands",
+          "year": 1946,
+          "return": 1.0956990062314684,
+          "variance_share": 0.003039794896359296
+        },
+        {
+          "country": "Japan",
+          "year": 1945,
+          "return": -0.8043602082952123,
+          "variance_share": 0.0029411100576986647
+        },
+        {
+          "country": "Japan",
+          "year": 2008,
+          "return": -0.796915471807337,
+          "variance_share": 0.002894815247753108
+        },
+        {
+          "country": "Japan",
+          "year": 2013,
+          "return": 1.063921116246027,
+          "variance_share": 0.002841446220467054
+        }
+      ],
+      "deletion_diagnostics": [
+        {
+          "count": 1,
+          "variance_share": 0.49492093913222174,
+          "remaining_volatility": 0.31261056605730364
+        },
+        {
+          "count": 5,
+          "variance_share": 0.5623985513422182,
+          "remaining_volatility": 0.2911535795226272
+        },
+        {
+          "count": 10,
+          "variance_share": 0.5776248029557249,
+          "remaining_volatility": 0.286461770665695
+        }
+      ]
+    },
+    {
+      "strategy": "ACO 33/67 200%",
+      "volatility": 0.5027926674134526,
+      "largest_contributors": [
+        {
+          "country": "Italy",
+          "year": 1942,
+          "return": 14.13856314319861,
+          "variance_share": 0.4957082111180616
+        },
+        {
+          "country": "France",
+          "year": 1946,
+          "return": 4.412132957080993,
+          "variance_share": 0.0459176939728141
+        },
+        {
+          "country": "Finland",
+          "year": 1945,
+          "return": 2.451593012395163,
+          "variance_share": 0.013354056447145053
+        },
+        {
+          "country": "Finland",
+          "year": 1999,
+          "return": 1.5694755134543268,
+          "variance_share": 0.005060913186777546
+        },
+        {
+          "country": "Spain",
+          "year": 1946,
+          "return": 1.5188944148172903,
+          "variance_share": 0.004705006249651459
+        },
+        {
+          "country": "France",
+          "year": 1954,
+          "return": 1.328140304353102,
+          "variance_share": 0.003479523802615998
+        },
+        {
+          "country": "Netherlands",
+          "year": 1946,
+          "return": 1.262132205509258,
+          "variance_share": 0.0030984367573302796
+        },
+        {
+          "country": "Japan",
+          "year": 2008,
+          "return": -0.9098884243751683,
+          "variance_share": 0.0028847692466130955
+        },
+        {
+          "country": "Japan",
+          "year": 2013,
+          "return": 1.2158627933273616,
+          "variance_share": 0.002844480803614134
+        },
+        {
+          "country": "Belgium",
+          "year": 2008,
+          "return": -0.8773710442018358,
+          "variance_share": 0.0027115569192729173
+        }
+      ],
+      "deletion_diagnostics": [
+        {
+          "count": 1,
+          "variance_share": 0.4957082111180616,
+          "remaining_volatility": 0.3570526450091175
+        },
+        {
+          "count": 5,
+          "variance_share": 0.5647458809744498,
+          "remaining_volatility": 0.33190621741289783
+        },
+        {
+          "count": 10,
+          "variance_share": 0.5797646485038962,
+          "remaining_volatility": 0.3266045603729938
+        }
+      ]
+    },
+    {
+      "strategy": "40/26.67/16.67/16.67 ACO",
+      "volatility": 0.1565892350509376,
+      "largest_contributors": [
+        {
+          "country": "Italy",
+          "year": 1942,
+          "return": 4.466882556787971,
+          "variance_share": 0.5085021019139102
+        },
+        {
+          "country": "France",
+          "year": 1946,
+          "return": 1.5201231007879705,
+          "variance_share": 0.05599843014692192
+        },
+        {
+          "country": "Japan",
+          "year": 1945,
+          "return": -0.8669711279012629,
+          "variance_share": 0.02229731293963947
+        },
+        {
+          "country": "Italy",
+          "year": 1944,
+          "return": -0.5876141662472578,
+          "variance_share": 0.010848136258900888
+        },
+        {
+          "country": "Finland",
+          "year": 1945,
+          "return": 0.580530247022062,
+          "variance_share": 0.00717742442372499
+        },
+        {
+          "country": "Italy",
+          "year": 1945,
+          "return": -0.45534912809216616,
+          "variance_share": 0.006850676768680135
+        },
+        {
+          "country": "Spain",
+          "year": 1946,
+          "return": 0.5561354675911245,
+          "variance_share": 0.006524658205856711
+        },
+        {
+          "country": "Netherlands",
+          "year": 1946,
+          "return": 0.5503421213686751,
+          "variance_share": 0.006374209420108803
+        },
+        {
+          "country": "Italy",
+          "year": 1947,
+          "return": -0.4345920232201634,
+          "variance_share": 0.006306369902233417
+        },
+        {
+          "country": "Belgium",
+          "year": 1941,
+          "return": -0.41103974327044124,
+          "variance_share": 0.005716048316729692
+        }
+      ],
+      "deletion_diagnostics": [
+        {
+          "count": 1,
+          "variance_share": 0.5085021019139102,
+          "remaining_volatility": 0.10977865767241922
+        },
+        {
+          "count": 5,
+          "variance_share": 0.6048234056830976,
+          "remaining_volatility": 0.09854602560879577
+        },
+        {
+          "count": 10,
+          "variance_share": 0.6365953682967063,
+          "remaining_volatility": 0.09465916390463164
         }
       ]
     },
     {
       "strategy": "50/33.33/20.83/20.83 ACO",
-      "volatility": 0.19146419663286654,
+      "volatility": 0.19225106095112632,
       "largest_contributors": [
         {
           "country": "Italy",
           "year": 1942,
-          "return": 5.606014722517338,
-          "variance_share": 0.5364241778114004
+          "return": 5.6059140568508035,
+          "variance_share": 0.5316502524074238
         },
         {
           "country": "France",
           "year": 1946,
-          "return": 1.983416668235659,
-          "variance_share": 0.06419711685550071
+          "return": 1.9833160025691243,
+          "variance_share": 0.06353717703784945
         },
         {
           "country": "Japan",
           "year": 1945,
-          "return": -0.8582187954738574,
-          "variance_share": 0.014980627490380845
+          "return": -0.8583194611403924,
+          "variance_share": 0.014923817709012459
         },
         {
           "country": "Finland",
           "year": 1945,
-          "return": 0.7911611781734866,
-          "variance_share": 0.009160834623674514
+          "return": 0.7910605125069516,
+          "variance_share": 0.009034854522055687
         },
         {
           "country": "Spain",
           "year": 1946,
-          "return": 0.7282748986726397,
-          "variance_share": 0.00763813264156738
+          "return": 0.7281742330061048,
+          "variance_share": 0.0075290414880786975
         },
         {
           "country": "Netherlands",
           "year": 1946,
-          "return": 0.7053616645556426,
-          "variance_share": 0.007117698482929151
+          "return": 0.7052609988891079,
+          "variance_share": 0.00701448015409883
         },
         {
           "country": "Italy",
           "year": 1944,
-          "return": -0.5442924859832974,
-          "variance_share": 0.006542055440211707
+          "return": -0.5443931516498322,
+          "variance_share": 0.006531966881535068
         },
         {
           "country": "Italy",
           "year": 1947,
-          "return": -0.4556492346561323,
-          "variance_share": 0.004783262363535767
+          "return": -0.45574990032266716,
+          "variance_share": 0.00478126894610393
         },
         {
           "country": "Italy",
           "year": 1945,
-          "return": -0.4527474208738274,
-          "variance_share": 0.004730331948738596
+          "return": -0.4528480865403623,
+          "variance_share": 0.004728565585895106
         },
         {
-          "country": "France",
-          "year": 1947,
-          "return": -0.40502247184100865,
-          "variance_share": 0.0039020569007563936
+          "country": "Japan",
+          "year": 1979,
+          "return": 0.5554983795922523,
+          "variance_share": 0.004099779470167624
         }
       ],
       "deletion_diagnostics": [
         {
           "count": 1,
-          "variance_share": 0.5364241778114004,
-          "remaining_volatility": 0.13035451354661853
+          "variance_share": 0.5316502524074238,
+          "remaining_volatility": 0.13156339264350944
         },
         {
           "count": 5,
-          "variance_share": 0.6324008894225238,
-          "remaining_volatility": 0.11615976967952882
+          "variance_share": 0.6266751431644202,
+          "remaining_volatility": 0.11754493726144676
         },
         {
           "count": 10,
-          "variance_share": 0.6594762945586955,
-          "remaining_volatility": 0.11201101745126192
+          "variance_share": 0.6538312042022206,
+          "remaining_volatility": 0.11337788371077505
         }
       ]
     },
     {
       "strategy": "60/40/25/25 ACO",
-      "volatility": 0.22784975687404346,
+      "volatility": 0.22876503546439098,
       "largest_contributors": [
         {
           "country": "Italy",
           "year": 1942,
-          "return": 6.745066355713477,
-          "variance_share": 0.5485594493914187
+          "return": 6.744945556913635,
+          "variance_share": 0.5437790580463466
         },
         {
           "country": "France",
           "year": 1946,
-          "return": 2.4466297031501205,
-          "variance_share": 0.06917379879707164
+          "return": 2.446508904350279,
+          "variance_share": 0.06847951278698199
         },
         {
           "country": "Japan",
           "year": 1945,
-          "return": -0.8495469955796799,
-          "variance_share": 0.010662507013566976
+          "return": -0.8496677943795217,
+          "variance_share": 0.010633159079282644
         },
         {
           "country": "Finland",
           "year": 1945,
-          "return": 1.0017115767916838,
-          "variance_share": 0.010496200725753586
+          "return": 1.001590777991842,
+          "variance_share": 0.010357160411017618
         },
         {
           "country": "Spain",
           "year": 1946,
-          "return": 0.9003337972209272,
-          "variance_share": 0.008314877295606012
+          "return": 0.9002129984210855,
+          "variance_share": 0.008199336469724589
         },
         {
           "country": "Netherlands",
           "year": 1946,
-          "return": 0.8603006752093826,
-          "variance_share": 0.007523393950124422
+          "return": 0.8601798764095409,
+          "variance_share": 0.007416574630153685
         },
         {
           "country": "Italy",
           "year": 1944,
-          "return": -0.501051338252565,
-          "variance_share": 0.004164747536012185
-        },
-        {
-          "country": "Italy",
-          "year": 1947,
-          "return": -0.47678697862532915,
-          "variance_share": 0.0038240147769932342
+          "return": -0.5011721370524067,
+          "variance_share": 0.004166390692713878
         },
         {
           "country": "Japan",
           "year": 1979,
-          "return": 0.6201587802679993,
-          "variance_share": 0.0036063776358633707
+          "return": 0.6615552379500862,
+          "variance_share": 0.0041135329343974375
+        },
+        {
+          "country": "Italy",
+          "year": 1947,
+          "return": -0.476907777425171,
+          "variance_share": 0.0038269238518470815
         },
         {
           "country": "Italy",
           "year": 1945,
-          "return": -0.45022624618871676,
-          "variance_share": 0.0034677036551488435
+          "return": -0.4503470449885586,
+          "variance_share": 0.0034718653413267626
         }
       ],
       "deletion_diagnostics": [
         {
           "count": 1,
-          "variance_share": 0.5485594493914187,
-          "remaining_volatility": 0.15308015247082868
+          "variance_share": 0.5437790580463466,
+          "remaining_volatility": 0.1545078404205457
         },
         {
           "count": 5,
-          "variance_share": 0.6472068332234169,
-          "remaining_volatility": 0.13540408718001679
+          "variance_share": 0.6414482267933534,
+          "remaining_volatility": 0.13705699524555212
         },
         {
           "count": 10,
-          "variance_share": 0.6697930707775589,
-          "remaining_volatility": 0.13120946925000576
+          "variance_share": 0.6644435142437923,
+          "remaining_volatility": 0.1328022989254479
         }
       ]
     },
     {
       "strategy": "70/46.67/29.17/29.17 ACO",
-      "volatility": 0.26473880855927606,
+      "volatility": 0.26578017528854353,
       "largest_contributors": [
         {
           "country": "Italy",
           "year": 1942,
-          "return": 7.884117988909616,
-          "variance_share": 0.5553191438652811
+          "return": 7.883977056976468,
+          "variance_share": 0.5505722003822272
         },
         {
           "country": "France",
           "year": 1946,
-          "return": 2.909842738064581,
-          "variance_share": 0.07261895067218371
+          "return": 2.9097018061314324,
+          "variance_share": 0.07190501874888511
         },
         {
           "country": "Finland",
           "year": 1945,
-          "return": 1.2122619754098805,
-          "variance_share": 0.011476771019851811
+          "return": 1.2121210434767318,
+          "variance_share": 0.011329021826635718
         },
         {
           "country": "Spain",
           "year": 1946,
-          "return": 1.0723926957692147,
-          "variance_share": 0.008789661482912936
+          "return": 1.0722517638360658,
+          "variance_share": 0.008670178058213721
         },
         {
           "country": "Japan",
           "year": 1945,
-          "return": -0.8408751956855025,
-          "variance_share": 0.007960840187968806
+          "return": -0.8410161276186514,
+          "variance_share": 0.007947011770810228
         },
         {
           "country": "Netherlands",
           "year": 1946,
-          "return": 1.0152396858631225,
-          "variance_share": 0.007794651894238967
+          "return": 1.0150987539299736,
+          "variance_share": 0.007685912873267159
         },
         {
           "country": "Japan",
           "year": 1979,
-          "return": 0.7193162290121518,
-          "variance_share": 0.003598377254564203
+          "return": 0.7676120963079198,
+          "variance_share": 0.004107978383913658
         },
         {
           "country": "Italy",
           "year": 1947,
-          "return": -0.497924722594526,
-          "variance_share": 0.003183806380557742
+          "return": -0.4980656545276748,
+          "variance_share": 0.0031895623154068143
         },
         {
           "country": "Italy",
           "year": 1944,
-          "return": -0.4578101905218321,
-          "variance_share": 0.002765586769144208
+          "return": -0.45795112245498076,
+          "variance_share": 0.0027725342709349694
         },
         {
           "country": "Denmark",
           "year": 1946,
-          "return": 0.6378343175012023,
-          "variance_share": 0.002724202681412422
+          "return": 0.6376933855680537,
+          "variance_share": 0.0026746819162886196
         }
       ],
       "deletion_diagnostics": [
         {
           "count": 1,
-          "variance_share": 0.5553191438652811,
-          "remaining_volatility": 0.17652538561208586
+          "variance_share": 0.5505722003822272,
+          "remaining_volatility": 0.17816451128945385
         },
         {
           "count": 5,
-          "variance_share": 0.6561653672281984,
-          "remaining_volatility": 0.15530091019200876
+          "variance_share": 0.650423430786772,
+          "remaining_volatility": 0.15721319409457415
         },
         {
           "count": 10,
-          "variance_share": 0.6762319922081159,
-          "remaining_volatility": 0.15089984372628878
+          "variance_share": 0.6708541005465832,
+          "remaining_volatility": 0.1527511599902217
         }
       ]
     },
     {
       "strategy": "80/53.33/33.33/33.33 ACO",
-      "volatility": 0.3019468723827785,
+      "volatility": 0.3031129340905602,
       "largest_contributors": [
         {
           "country": "Italy",
           "year": 1942,
-          "return": 9.023169622105756,
-          "variance_share": 0.5592692326121992
+          "return": 9.0230085570393,
+          "variance_share": 0.5545684088983641
         },
         {
           "country": "France",
           "year": 1946,
-          "return": 3.373055772979042,
-          "variance_share": 0.0751179477666064
+          "return": 3.3728947079125864,
+          "variance_share": 0.07439231219128258
         },
         {
           "country": "Finland",
           "year": 1945,
-          "return": 1.4228123740280783,
-          "variance_share": 0.01222065780702225
+          "return": 1.4226513089616224,
+          "variance_share": 0.012066842195402593
         },
         {
           "country": "Spain",
           "year": 1946,
-          "return": 1.2444515943175027,
-          "variance_share": 0.009137714148818397
+          "return": 1.2442905292510469,
+          "variance_share": 0.009015696325927327
         },
         {
           "country": "Netherlands",
           "year": 1946,
-          "return": 1.1701786965168626,
-          "variance_share": 0.00798584413153313
+          "return": 1.170017631450407,
+          "variance_share": 0.00787605443910052
         },
         {
           "country": "Japan",
           "year": 1945,
-          "return": -0.8322033957913249,
-          "variance_share": 0.006168181717830868
+          "return": -0.8323644608577807,
+          "variance_share": 0.006163549478181089
         },
         {
           "country": "Japan",
           "year": 1979,
-          "return": 0.818473677756304,
-          "variance_share": 0.0035847529256240623
+          "return": 0.8736689546657532,
+          "variance_share": 0.004095188499928902
         },
         {
           "country": "Finland",
           "year": 1946,
-          "return": 0.7568041498126105,
-          "variance_share": 0.002992283368877691
+          "return": 0.7566430847461547,
+          "variance_share": 0.002939667115714493
         },
         {
           "country": "Italy",
           "year": 1947,
-          "return": -0.519062466563723,
-          "variance_share": 0.002733267185570607
+          "return": -0.5192235316301788,
+          "variance_share": 0.002740749884082019
         },
         {
           "country": "Denmark",
           "year": 1946,
-          "return": 0.7225988899418079,
-          "variance_share": 0.0026867251372931227
+          "return": 0.722437824875352,
+          "variance_share": 0.002638013193921735
         }
       ],
       "deletion_diagnostics": [
         {
           "count": 1,
-          "variance_share": 0.5592692326121992,
-          "remaining_volatility": 0.20043785884155205
+          "variance_share": 0.5545684088983641,
+          "remaining_volatility": 0.20228368020835885
         },
         {
           "count": 5,
-          "variance_share": 0.6637313964661793,
-          "remaining_volatility": 0.17508514891510707
+          "variance_share": 0.6579193140500771,
+          "remaining_volatility": 0.1772815568250174
         },
         {
           "count": 10,
-          "variance_share": 0.6818966068013756,
-          "remaining_volatility": 0.17053123254093422
+          "variance_share": 0.6764964822219053,
+          "remaining_volatility": 0.1726436458562058
         }
       ]
     },
     {
       "strategy": "25/25/25/25 ACO",
-      "volatility": 0.14955535610093573,
+      "volatility": 0.150938352033835,
       "largest_contributors": [
         {
           "country": "Italy",
           "year": 1942,
-          "return": 4.179746213860517,
-          "variance_share": 0.48850179551004114
+          "return": 4.179625415060674,
+          "variance_share": 0.47902229019412074
         },
         {
           "country": "France",
           "year": 1946,
-          "return": 1.6042634797333315,
-          "variance_share": 0.06912751565671763
+          "return": 1.6041426809334898,
+          "variance_share": 0.06765275792981172
         },
         {
           "country": "Japan",
           "year": 1945,
-          "return": -0.8695667934283628,
-          "variance_share": 0.02429791130253736
+          "return": -0.8696875922282047,
+          "variance_share": 0.02398169563212502
         },
         {
           "country": "Italy",
           "year": 1944,
-          "return": -0.6127730732593426,
-          "variance_share": 0.012634843840128
+          "return": -0.6128938720591843,
+          "variance_share": 0.012496002982851022
         },
         {
           "country": "Netherlands",
           "year": 1946,
-          "return": 0.6235227376047702,
-          "variance_share": 0.009387638934477308
+          "return": 0.6234019388049283,
+          "variance_share": 0.009137722128339167
         },
         {
           "country": "Spain",
           "year": 1946,
-          "return": 0.6075295984732483,
-          "variance_share": 0.008870309917081917
-        },
-        {
-          "country": "Italy",
-          "year": 1945,
-          "return": -0.44776037698274856,
-          "variance_share": 0.007135102730712935
+          "return": 0.6074087996734064,
+          "variance_share": 0.008632033072134702
         },
         {
           "country": "Japan",
           "year": 1979,
-          "return": 0.5414119655857967,
-          "variance_share": 0.006887199787093245
+          "return": 0.5828084232678837,
+          "variance_share": 0.007882288657949783
+        },
+        {
+          "country": "Italy",
+          "year": 1945,
+          "return": -0.4478811757825904,
+          "variance_share": 0.007073852817010101
         },
         {
           "country": "Belgium",
           "year": 1941,
-          "return": -0.4370979351563942,
-          "variance_share": 0.006833415282804377
+          "return": -0.437218733956236,
+          "variance_share": 0.006776199722422675
         },
         {
           "country": "Italy",
           "year": 1947,
-          "return": -0.41632815719163413,
-          "variance_share": 0.006264456969402106
+          "return": -0.4164489559914759,
+          "variance_share": 0.006214758780716269
         }
       ],
       "deletion_diagnostics": [
         {
           "count": 1,
-          "variance_share": 0.48850179551004114,
-          "remaining_volatility": 0.10696219093027173
+          "variance_share": 0.47902229019412074,
+          "remaining_volatility": 0.10894828340017032
         },
         {
           "count": 5,
-          "variance_share": 0.6039497052439013,
-          "remaining_volatility": 0.09422235742473963
+          "variance_share": 0.5922904688672477,
+          "remaining_volatility": 0.09648574806840367
         },
         {
           "count": 10,
-          "variance_share": 0.639940189930996,
-          "remaining_volatility": 0.08998773551702936
+          "variance_share": 0.6288696019174812,
+          "remaining_volatility": 0.09220722983717196
         }
       ]
     },
     {
       "strategy": "31.25/31.25/31.25/31.25 ACO",
-      "volatility": 0.18330963235115996,
+      "volatility": 0.1850011786433803,
       "largest_contributors": [
         {
           "country": "Italy",
           "year": 1942,
-          "return": 5.246993628191485,
-          "variance_share": 0.5127436318476933
+          "return": 5.246842629691684,
+          "variance_share": 0.5028159407670867
         },
         {
           "country": "France",
           "year": 1946,
-          "return": 2.088491476250826,
-          "variance_share": 0.07829534269098049
+          "return": 2.0883404777510237,
+          "variance_share": 0.07663807108000541
         },
         {
           "country": "Japan",
           "year": 1945,
-          "return": -0.8615640430492674,
-          "variance_share": 0.016293174619863324
+          "return": -0.8617150415490696,
+          "variance_share": 0.016102692879268483
         },
         {
           "country": "Netherlands",
           "year": 1946,
-          "return": 0.7967367691842268,
-          "variance_share": 0.010281472565310179
+          "return": 0.7965857706844245,
+          "variance_share": 0.010010342026149198
         },
         {
           "country": "Spain",
           "year": 1946,
-          "return": 0.7924168966087597,
-          "variance_share": 0.01016082977825171
-        },
-        {
-          "country": "Finland",
-          "year": 1945,
-          "return": 0.7028406239043133,
-          "variance_share": 0.00781965000682726
-        },
-        {
-          "country": "Italy",
-          "year": 1944,
-          "return": -0.5758417854149379,
-          "variance_share": 0.007775913390763623
+          "return": 0.7922658981089574,
+          "variance_share": 0.00989239049406533
         },
         {
           "country": "Japan",
           "year": 1979,
-          "return": 0.6704614350314747,
-          "variance_share": 0.007048713062350012
+          "return": 0.7222070071340835,
+          "variance_share": 0.008077071941651935
+        },
+        {
+          "country": "Italy",
+          "year": 1944,
+          "return": -0.5759927839147402,
+          "variance_share": 0.00770772295081776
+        },
+        {
+          "country": "Finland",
+          "year": 1945,
+          "return": 0.7026896254045111,
+          "variance_share": 0.0076040954551162025
         },
         {
           "country": "Italy",
           "year": 1945,
-          "return": -0.44336214765359033,
-          "variance_share": 0.004883665438075092
+          "return": -0.4435131461533926,
+          "variance_share": 0.004852937988852228
         },
         {
           "country": "Italy",
           "year": 1947,
-          "return": -0.43292006778700554,
-          "variance_share": 0.004684167864696639
+          "return": -0.4330710662868078,
+          "variance_share": 0.004655875008106101
         }
       ],
       "deletion_diagnostics": [
         {
           "count": 1,
-          "variance_share": 0.5127436318476933,
-          "remaining_volatility": 0.1279548530607726
+          "variance_share": 0.5028159407670867,
+          "remaining_volatility": 0.13044622497289557
         },
         {
           "count": 5,
-          "variance_share": 0.627774451502099,
-          "remaining_volatility": 0.1119065387521625
+          "variance_share": 0.6154594372465751,
+          "remaining_volatility": 0.11479834935526631
         },
         {
           "count": 10,
-          "variance_share": 0.6599865612648116,
-          "remaining_volatility": 0.10712826192910099
+          "variance_share": 0.6483571405911194,
+          "remaining_volatility": 0.10995509943744133
         }
       ]
     },
     {
       "strategy": "37.5/37.5/37.5/37.5 ACO",
-      "volatility": 0.2179545813837947,
+      "volatility": 0.2199455902490451,
       "largest_contributors": [
         {
           "country": "Italy",
           "year": 1942,
-          "return": 6.314241042522453,
-          "variance_share": 0.5254665153208016
+          "return": 6.314059844322691,
+          "variance_share": 0.5153891504872463
         },
         {
           "country": "France",
           "year": 1946,
-          "return": 2.5727194727683202,
-          "variance_share": 0.08425112293630715
+          "return": 2.5725382745685574,
+          "variance_share": 0.08248971605028714
         },
         {
           "country": "Japan",
           "year": 1945,
-          "return": -0.8535612926701719,
-          "variance_share": 0.01161009863271754
+          "return": -0.8537424908699347,
+          "variance_share": 0.011491298582755898
         },
         {
           "country": "Spain",
           "year": 1946,
-          "return": 0.9773041947442712,
-          "variance_share": 0.011010422331373265
+          "return": 0.9771229965445084,
+          "variance_share": 0.010724260862817109
         },
         {
           "country": "Netherlands",
           "year": 1946,
-          "return": 0.9699508007636836,
-          "variance_share": 0.010831888634677059
+          "return": 0.9697696025639208,
+          "variance_share": 0.010549660399518396
         },
         {
           "country": "Finland",
           "year": 1945,
-          "return": 0.8957269116686761,
-          "variance_share": 0.009111506778258923
+          "return": 0.8955457134689134,
+          "variance_share": 0.008867507358006076
         },
         {
           "country": "Japan",
           "year": 1979,
-          "return": 0.7995109044771528,
-          "variance_share": 0.007102675620176661
+          "return": 0.8616055910002833,
+          "variance_share": 0.00814695989042063
         },
         {
           "country": "Italy",
           "year": 1944,
-          "return": -0.5389104975705336,
-          "variance_share": 0.005069306271691085
+          "return": -0.5390916957702961,
+          "variance_share": 0.005037768419709508
         },
         {
           "country": "Denmark",
           "year": 1946,
-          "return": 0.6400830689670379,
-          "variance_share": 0.0043240609121533045
+          "return": 0.6399018707672751,
+          "variance_share": 0.004191221550814351
         },
         {
           "country": "Italy",
           "year": 1947,
-          "return": -0.4495119783823771,
-          "variance_share": 0.003698363023475605
+          "return": -0.4496931765821398,
+          "variance_share": 0.003682833410425575
         }
       ],
       "deletion_diagnostics": [
         {
           "count": 1,
-          "variance_share": 0.5254665153208016,
-          "remaining_volatility": 0.15013587635902706
+          "variance_share": 0.5153891504872463,
+          "remaining_volatility": 0.15310979645383274
         },
         {
           "count": 5,
-          "variance_share": 0.6431700478558765,
-          "remaining_volatility": 0.1302584058065935
+          "variance_share": 0.6306440863826248,
+          "remaining_volatility": 0.13374382351128417
         },
         {
           "count": 10,
-          "variance_share": 0.6724759604616322,
-          "remaining_volatility": 0.12495006628455958
+          "variance_share": 0.660570377012001,
+          "remaining_volatility": 0.1283719328804082
         }
       ]
     },
     {
       "strategy": "43.75/43.75/43.75/43.75 ACO",
-      "volatility": 0.2531247503482838,
+      "volatility": 0.25540999554906363,
       "largest_contributors": [
         {
           "country": "Italy",
           "year": 1942,
-          "return": 7.381488456853423,
-          "variance_share": 0.5325800035688188
+          "return": 7.3812770589537,
+          "variance_share": 0.5224781687921417
         },
         {
           "country": "France",
           "year": 1946,
-          "return": 3.0569474692858143,
-          "variance_share": 0.08834212327315773
+          "return": 3.056736071386091,
+          "variance_share": 0.0865183349214228
         },
         {
           "country": "Spain",
           "year": 1946,
-          "return": 1.1621914928797825,
-          "variance_share": 0.01160003312212183
+          "return": 1.1619800949800594,
+          "variance_share": 0.011302905178052472
         },
         {
           "country": "Netherlands",
           "year": 1946,
-          "return": 1.1431648323431403,
-          "variance_share": 0.011193710286127024
+          "return": 1.142953434443417,
+          "variance_share": 0.010905422764847393
         },
         {
           "country": "Finland",
           "year": 1945,
-          "return": 1.0886131994330384,
-          "variance_share": 0.010068893014455663
+          "return": 1.0884018015333152,
+          "variance_share": 0.009805236618760593
         },
         {
           "country": "Japan",
           "year": 1945,
-          "return": -0.8455585422910764,
-          "variance_share": 0.00867118862738905
+          "return": -0.8457699401907998,
+          "variance_share": 0.008595276196727094
         },
         {
           "country": "Japan",
           "year": 1979,
-          "return": 0.9285603739228309,
-          "variance_share": 0.0071123570819732395
+          "return": 1.001004174866483,
+          "variance_share": 0.008164527258551359
         },
         {
           "country": "Denmark",
           "year": 1946,
-          "return": 0.739349862058717,
-          "variance_share": 0.004278369806526299
+          "return": 0.7391384641589938,
+          "variance_share": 0.004147275279535676
         },
         {
           "country": "Finland",
           "year": 1946,
-          "return": 0.7225219357196805,
-          "variance_share": 0.0040610102776980385
+          "return": 0.7223105378199574,
+          "variance_share": 0.003935204736776616
         },
         {
           "country": "Italy",
           "year": 1944,
-          "return": -0.5019792097261289,
-          "variance_share": 0.003451929991789939
+          "return": -0.502190607625852,
+          "variance_share": 0.0034400698220958628
         }
       ],
       "deletion_diagnostics": [
         {
           "count": 1,
-          "variance_share": 0.5325800035688188,
-          "remaining_volatility": 0.1730488980995585
+          "variance_share": 0.5224781687921417,
+          "remaining_volatility": 0.1764905236470453
         },
         {
           "count": 5,
-          "variance_share": 0.653784763264681,
-          "remaining_volatility": 0.14892886763764518
+          "variance_share": 0.641010068275225,
+          "remaining_volatility": 0.15303500203118847
         },
         {
           "count": 10,
-          "variance_share": 0.6813596190500577,
-          "remaining_volatility": 0.14305911684848624
+          "variance_share": 0.6692924215689117,
+          "remaining_volatility": 0.14707319843116082
         }
       ]
     },
     {
       "strategy": "50/50/50/50 ACO",
-      "volatility": 0.28862820442708786,
+      "volatility": 0.29120447381274117,
       "largest_contributors": [
         {
           "country": "Italy",
           "year": 1942,
-          "return": 8.448735871184391,
-          "variance_share": 0.5367478975236055
+          "return": 8.448494273584707,
+          "variance_share": 0.5266747237601148
         },
         {
           "country": "France",
           "year": 1946,
-          "return": 3.5411754658033083,
-          "variance_share": 0.09128815629452218
+          "return": 3.540933868203625,
+          "variance_share": 0.08942528876263857
         },
         {
           "country": "Spain",
           "year": 1946,
-          "return": 1.3470787910152946,
-          "variance_share": 0.012028167301412615
+          "return": 1.346837193415611,
+          "variance_share": 0.011723920527146972
         },
         {
           "country": "Netherlands",
           "year": 1946,
-          "return": 1.316378863922597,
-          "variance_share": 0.011444720864224081
+          "return": 1.3161372663229136,
+          "variance_share": 0.011153024268778452
         },
         {
           "country": "Finland",
           "year": 1945,
-          "return": 1.281499487197401,
-          "variance_share": 0.01079944559921604
+          "return": 1.2812578895977176,
+          "variance_share": 0.010521697698560236
         },
         {
           "country": "Japan",
           "year": 1979,
-          "return": 1.057609843368509,
-          "variance_share": 0.007103247765809119
+          "return": 1.140402758732683,
+          "variance_share": 0.008159295232410277
         },
         {
           "country": "Japan",
           "year": 1945,
-          "return": -0.8375557919119807,
-          "variance_share": 0.00671797939957923
+          "return": -0.8377973895116644,
+          "variance_share": 0.006668981578777658
         },
         {
           "country": "Finland",
           "year": 1946,
-          "return": 0.8757250958644405,
-          "variance_share": 0.004668418502041281
+          "return": 0.8754834982647569,
+          "variance_share": 0.004528707862373875
         },
         {
           "country": "Denmark",
           "year": 1946,
-          "return": 0.8386166551503961,
-          "variance_share": 0.004234192260927572
+          "return": 0.8383750575507125,
+          "variance_share": 0.004104877552523597
         },
         {
           "country": "Norway",
           "year": 1979,
-          "return": 0.7005267966348364,
-          "variance_share": 0.002804488358411206
+          "return": 0.7656340312626988,
+          "variance_share": 0.0033344760109201873
         }
       ],
       "deletion_diagnostics": [
         {
           "count": 1,
-          "variance_share": 0.5367478975236055,
-          "remaining_volatility": 0.19643793857587405
+          "variance_share": 0.5266747237601148,
+          "remaining_volatility": 0.20033747305709376
         },
         {
           "count": 5,
-          "variance_share": 0.6623083875829804,
-          "remaining_volatility": 0.16770095454649095
+          "variance_share": 0.649498655017239,
+          "remaining_volatility": 0.172394166851291
         },
         {
           "count": 10,
-          "variance_share": 0.6878367138697488,
-          "remaining_volatility": 0.16138169664860258
+          "variance_share": 0.6762949932542447,
+          "remaining_volatility": 0.16582208682934152
         }
       ]
     }

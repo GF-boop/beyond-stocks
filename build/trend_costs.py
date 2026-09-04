@@ -12,8 +12,8 @@ perime en silence si le signal ou l'univers change.
   (colonne ``mf_1_6_12_turnover``), annualise (x12), multiplie par un spread
   aller-retour de 3 points de base. Le spread est celui des futures liquides
   d'aujourd'hui : la question posee est prospective. Le turnover vaut environ
-  18,9x par an pour le proxy, qui rebalance quatre secteurs par inverse-
-  volatilite, ce qui donne un cout d'environ 0,57 %.
+  20,5x par an pour le proxy, qui rebalance quatre secteurs par inverse-
+  volatilite, ce qui donne un cout d'environ 0,61 %.
 """
 
 from __future__ import annotations

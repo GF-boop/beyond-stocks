@@ -8,7 +8,7 @@ comparable across dates.
 \input{figures/cumulative_wealth.tex}
 \caption{Cumulative real return by asset class, U.S.\ resident, 1927--2025.
 Managed futures are the reconstructed time-series-momentum proxy net of the
-0.85\% fee and 0.57\% turnover cost. World bonds are the covered equal-weight
+0.85\% fee and 0.61\% turnover cost. World bonds are the covered equal-weight
 basket of all panel sovereigns. Gold is the spliced MeasuringWorth--LBMA price less custody.
 Equity and gold are unhedged, while bonds and managed futures are currency-hedged
 under covered interest parity. The managed-futures proxy compounds at close to
@@ -35,6 +35,12 @@ The source table records the original reconstruction's inputs and
 transformations. Price-only equities, synthetic bond returns, omitted
 commodity carry and roll, and incomplete early currency coverage limit the
 economic interpretation of the reconstructed return.
+
+The synthetic bond inputs are excess P\&Ls rather than foreign bond holdings.
+The construction converts those P\&Ls at month end without adding a foreign
+principal: a zero local excess return is therefore not turned into an exchange-
+rate return. Price-index equities remain cash assets and retain their principal
+currency exposure.
 
 The annual currency treatment applies a forward to
 the initial foreign principal. Exchange-rate exposure on the subsequent
@@ -82,7 +88,7 @@ resampling. Their proprietary inputs remain subject to their source terms.
 proxy (variant 1/6/12, the one used in the paper) against three commercial
 trend-following indexes and KMLMSIM, the Testfolio simulation of KMLM. SG CTA,
 SG Trend, and BTOP50 are net of index fees, and the proxy is net of the 0.85\%
-management fee and 0.57\% turnover cost. KMLMSIM uses the KFA MLM Index less
+management fee and the monthly measured trading costs. KMLMSIM uses the KFA MLM Index less
 0.90\% per year before the ETF's inception. The SG and BarclayHedge indexes are
 proprietary and are used here only under the terms held for this research.}
 \label{fig:mf-vs-benchmarks}
@@ -104,7 +110,7 @@ history from the first full month after listing.
 
 \subsection{The proxy among commercial benchmarks and investable funds}
 \label{app:mf-funds}
-The broader comparison retains the original pairwise correlation matrix,
+The broader comparison reports the updated pairwise correlation matrix,
 the matrix on a common window, and the regressions on the proxy.
 Pairwise windows differ when funds have different inception dates. The
 common-window matrix addresses that comparability issue, at the cost of a
@@ -179,7 +185,7 @@ in Table~\ref{tab:mf-pack-corr}.
 \label{app:mf-annual}
 The annual moments and scatter plots use the current U.S.-resident panel
 and fixed-notional hedge. The proxy is net of a 0.85\% management fee and a
-0.57\% annual turnover deduction. The exhibits describe the proxy's relation to the other asset classes,
+0.61\% annual turnover deduction. The exhibits describe the proxy's relation to the other asset classes,
 including its behavior in equity-loss years.
 \begin{table}[H]
 \centering
@@ -226,9 +232,9 @@ series independently of the lifecycle bootstrap and resident-currency hedge.
 variant's management fee and its own realized turnover cost. ``Corr.\
 baseline'' is the Pearson correlation of the annual series with the
 $1/6/12$ blend used throughout the paper. The baseline mean here differs from
-Table~\ref{tab:mf-diagnostics} by about 0.15 point because that table applies
+Table~\ref{tab:mf-diagnostics} by about 0.19 point because that table applies
 a flat annual turnover drag while this one compounds the monthly realized cost.
-The correlations are unaffected by the cost convention. $^{\dagger}$Baseline.
+The correlations use the monthly-cost convention for every variant. $^{\dagger}$Baseline.
 \end{minipage}
 \end{table}
 
@@ -252,11 +258,11 @@ examine the observations that contribute most to pooled variance.
 \toprule
 Gross & Equity/Bonds/Gold/MF & Volatility & Saving & Ruin \\
 \midrule
-100\% & 40/26.67/16.67/16.67 & 15.59\% & 12.82\% & 5.22\% \\
-125\% & 50/33.33/20.83/20.83 & 19.15\% & 9.90\% & 3.39\% \\
-150\% & 60/40/25/25 & 22.78\% & 7.81\% & 2.66\% \\
-175\% & 70/46.67/29.17/29.17 & 26.47\% & 6.26\% & 2.25\% \\
-200\% & 80/53.33/33.33/33.33 & 30.19\% & 5.09\% & 1.99\% \\
+100\% & 40/26.67/16.67/16.67 & 15.66\% & 12.35\% & 5.04\% \\
+125\% & 50/33.33/20.83/20.83 & 19.23\% & 9.46\% & 3.32\% \\
+150\% & 60/40/25/25 & 22.88\% & 7.39\% & 2.53\% \\
+175\% & 70/46.67/29.17/29.17 & 26.58\% & 5.87\% & 2.13\% \\
+200\% & 80/53.33/33.33/33.33 & 30.31\% & 4.72\% & 1.80\% \\
 \bottomrule
 \end{tabular}
 \par\smallskip{\footnotesize\textit{Note:} Equity is the ACO 33/67 sleeve.
@@ -273,11 +279,11 @@ Tabulated from the \gitlink{results/main_ladders_n10000.json}{leverage ladder si
 \toprule
 Gross & Equity/Bonds/Gold/MF & Volatility & Saving & Ruin \\
 \midrule
-100\% & 25/25/25/25 & 14.96\% & 14.00\% & 6.21\% \\
-125\% & 31.25/31.25/31.25/31.25 & 18.33\% & 10.95\% & 4.20\% \\
-150\% & 37.5/37.5/37.5/37.5 & 21.80\% & 8.78\% & 3.27\% \\
-175\% & 43.75/43.75/43.75/43.75 & 25.31\% & 7.16\% & 2.79\% \\
-200\% & 50/50/50/50 & 28.86\% & 5.92\% & 2.60\% \\
+100\% & 25/25/25/25 & 15.09\% & 13.26\% & 5.90\% \\
+125\% & 31.25/31.25/31.25/31.25 & 18.50\% & 10.25\% & 4.00\% \\
+150\% & 37.5/37.5/37.5/37.5 & 21.99\% & 8.11\% & 2.97\% \\
+175\% & 43.75/43.75/43.75/43.75 & 25.54\% & 6.53\% & 2.48\% \\
+200\% & 50/50/50/50 & 29.12\% & 5.31\% & 2.27\% \\
 \bottomrule
 \end{tabular}
 \par\smallskip{\footnotesize\textit{Note:} Equity is the ACO 33/67 sleeve.
@@ -299,10 +305,10 @@ reported in the main text and archived in the
 The source-country omissions remove the country from resident
 rows, international-equity constituents, and world-bond constituents.
 At 5,000 paths per omission, ACO ruin ranges from 7.10\% to 8.66\%;
-the proportional 200\% family ranges from 1.06\% to 3.18\%, and the
-equal-weight 200\% family from 1.72\% to 3.54\%.
-The corresponding saving rates range from 5.00\% to 5.26\% and from
-5.63\% to 6.16\%, against each sample's 10\% reference.
+the proportional 200\% family ranges from 0.90\% to 2.88\%, and the
+equal-weight 200\% family from 1.36\% to 3.16\%.
+The corresponding saving rates range from 4.65\% to 4.89\% and from
+5.07\% to 5.56\%, against each sample's 10\% reference.
 These are ranges across omissions, not confidence intervals, documented in the
 \gitlink{paper/figures/source_country_sensitivity.json}{country sensitivity audit}.
 
@@ -330,8 +336,8 @@ The modest saving response for diversified portfolios survives the
 fixed-coefficient control. At $\gamma=10$, consumption accounts for virtually
 all of their negative expected utility: the shifted bequest term contributes
 less than $10^{-10}$ of its magnitude. For the equal-weight rule, the worst
-one percent of paths accounts for 90.6\% of negative utility, compared with
-4.8\% at $\gamma=2$. High curvature therefore does give substantial weight
+one percent of paths accounts for 92.6\% of negative utility, compared with
+5.3\% at $\gamma=2$. High curvature therefore does give substantial weight
 to adverse consumption outcomes. Social Security and the consumption floor,
 the distinction between upside return variation and consumption shortfalls,
 and the changing benchmark utility explain why this need not translate
@@ -355,34 +361,7 @@ together. This scaling leaves ruin unchanged while increasing consumption and be
 Higher withdrawal rates increase depletion in all three portfolios.
 Both diversified families at 200\% exposure retain lower simulated ruin
 and equivalent saving over this grid.
-% Genere par build/policy_sensitivity.py -- ne pas editer.
-\begin{table}[H]
-\centering
-\caption{Contribution- and withdrawal-rate sensitivity of the fixed diversified families}
-\label{tab:policy-sensitivity}
-\small\setlength{\tabcolsep}{4pt}
-\begin{tabular}{rrrrrrr}
-\toprule
-Rate & \multicolumn{2}{c}{ACO 33/67} & \multicolumn{2}{c}{Proportional 200\%} & \multicolumn{2}{c}{Equal-weight 200\%} \\
-\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
- & Ruin & Saving & Ruin & Equiv.\ saving & Ruin & Equiv.\ saving \\
-\multicolumn{7}{l}{\footnotesize\emph{lower is better, the ACO columns are the reference}} \\
-\midrule
-\multicolumn{7}{l}{\emph{Contribution rate $r_c$ (withdrawal held at 4\%)}} \\
-$r_c=5\%$ & \emph{6.98\%} & \emph{5.00\%} & 1.99\% & 2.67\% & 2.60\% & 3.07\% \\
-$r_c=10\%$\,$^{\dagger}$ & \emph{6.98\%} & \emph{10.00\%} & 1.99\% & 5.09\% & 2.60\% & 5.92\% \\
-$r_c=15\%$ & \emph{6.98\%} & \emph{15.00\%} & 1.99\% & 7.36\% & 2.60\% & 8.62\% \\
-\addlinespace
-\multicolumn{7}{l}{\emph{Withdrawal rate $r_w$ (contribution held at 10\%)}} \\
-$r_w=3\%$ & \emph{2.54\%} & \emph{10.00\%} & 0.95\% & 5.48\% & 1.16\% & 6.32\% \\
-$r_w=4\%$\,$^{\dagger}$ & \emph{6.98\%} & \emph{10.00\%} & 1.99\% & 5.09\% & 2.60\% & 5.92\% \\
-$r_w=5\%$ & \emph{15.47\%} & \emph{10.00\%} & 4.81\% & 4.34\% & 6.40\% & 5.12\% \\
-\bottomrule
-\end{tabular}
-\begin{minipage}{0.96\textwidth}\footnotesize
-\textit{Note:} 10{,}000 paired lifecycle paths per row, full 1{,}561-country-year panel, ten-year mean stationary blocks, $\phi=30$ bp and $\kappa=10$ bp. Entries are levels, in percent: retirement ruin and the utility-equivalent saving rate, both lower is better. The two ACO 33/67 columns are the reference. The two 200\% families keep their fixed weights and gross exposure in every row. On the contribution-rate axis the ACO 33/67 benchmark also contributes $r_c$, so its reference saving rate is $r_c$ itself and the family saving is the rate that matches ACO's lifecycle utility at that $r_c$. On the withdrawal-rate axis the benchmark saving rate stays at 10\%. $^{\dagger}$Baseline.
-\end{minipage}
-\end{table}
+\input{../figures/policy_sensitivity.tex}
 
 
 \section{Reproducibility and Conversion Checks}
@@ -468,9 +447,9 @@ Allocation & Gross exposure & Threshold breaches & Minimum equity share \\
 \midrule
 ACO 33/67 & 175\% & 1,081 & 21.41\% \\
 ACO 33/67 & 200\% & 17,934 & 8.31\% \\
-Equal-weight four-sleeve & 175\% & 0 & 47.69\% \\
-Proportional four-sleeve & 200\% & 0 & 37.59\% \\
-Equal-weight four-sleeve & 200\% & 0 & 38.98\% \\
+Equal-weight four-sleeve & 175\% & 0 & 48.91\% \\
+Proportional four-sleeve & 200\% & 0 & 38.59\% \\
+Equal-weight four-sleeve & 200\% & 0 & 40.39\% \\
 90/60 covered global bonds & 150\% & 0 & 53.24\% \\
 \bottomrule
 \end{tabular}
@@ -492,11 +471,60 @@ lifecycle policy with forced liquidation. Annual rebalancing restores the
 initial equity cushion: 50\% of assets at 200\% gross exposure and 57.14\%
 at 175\%.
 
-Actual margin management also depends on intrayear price paths, variation
-margin, liquidity, and changing broker requirements. A fund implementation
-manages these obligations within the fund. Extending the lifecycle model
-to account for such funding constraints would connect the portfolio-return
-comparison to instrument-level implementation.
+\subsection{Monthly monitoring between annual rebalances}
+We supplement the annual resident-panel experiment with a monthly USD proxy
+control over 1970--2025. Equity uses 33\% US and 67\% ex-US total-return
+simulations. A US Treasury total-return simulation substitutes for the global
+bond sleeve, while gold and the net MF series provide the other two sleeves.
+This control has 56 complete calendar years. Its market composition and
+numeraire are explicit so that frequency effects can be measured within the
+same monthly dataset. It is not a monthly reconstruction of the 16-resident
+annual panel.
+
+For sleeve weights $w_j$, exposure $L$, and month $m$ within a year,
+\[
+ A_m=L\sum_jw_j\prod_{s=1}^m(1+r_{j,s}),\qquad
+ D_m=(L-1)\prod_{s=1}^m(1+r_{f,s}+0.003/12),\qquad
+ e_m=1-D_m/A_m.
+\]
+Positions are held through the year; no monthly reset restores the equity
+cushion. We compare $\min_m e_m$ with the December value on these same paths,
+at maintenance thresholds of 25\%, 35\%, and 40\%. The replication also
+resamples 10,000 paired 86-year paths in blocks averaging ten years. Crossings
+are recorded without imposing liquidation, allowing the monthly and annual
+monitoring rules to be compared without changing the return path after a call.
+
+\input{figures/margin_monthly.tex}
+
+At 200\% exposure and a 40\% maintenance requirement, ACO crosses in 13
+historical years under monthly monitoring, against nine at year-end. The
+proportional and equal-weight portfolios stay above that threshold in this
+sample, with minimum month-end equity shares of 40.3\% and 41.2\%.
+At the baseline 25\% requirement, ACO crosses in 2008 under both monitoring
+frequencies and the diversified rules have no crossing. Monthly observation
+thus detects additional funding pressure when the maintenance requirement is
+tighter. Intramonth extrema and changes in broker requirements require finer
+data; neither the annual nor monthly experiment measures them.
+
+\section{Full comparisons under alternative panel treatments}
+\label{app:panel-comparison}
+The main text reports all portfolio rules under both the raw and source-screened
+panels. The following tables give the corresponding complete return moments
+and the separate 0.5\% winsorization sensitivity. These treatments were chosen
+after the influence audit. Excluded observations remain available in the raw
+panel; the screen is not treated as proof that excluded economic losses did
+not occur. The exclusion list, reasons, quantile thresholds, and input hashes
+are recorded in \gitlink{results/panel_concentration/provenance.json}{the panel-comparison manifest}.
+\input{figures/panel_full_moments.tex}
+\input{figures/panel_winsorized.tex}
+
+\begin{figure}[p]\centering
+\includegraphics[width=\textwidth]{figures/ablation_saving_ruin_screened.pdf}
+\caption{Complete and ablated exposure ladders on the source-screened panel.
+Marker shapes identify 100, 125, 150, 175, and 200\% exposure. All compositions use
+10,000 shared paths and the screened unlevered ACO utility target. The raw-panel
+counterpart appears in Figure~\ref{tab:sleeve-ablation}.}
+\label{fig:screened-ablations}\end{figure}
 
 
 \section{Matched-leverage comparisons}

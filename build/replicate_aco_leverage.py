@@ -5,6 +5,7 @@ panel and household conventions of the corresponding published experiment.
 """
 from pathlib import Path
 import argparse
+import csv
 import subprocess
 import sys
 from concurrent.futures import ThreadPoolExecutor
@@ -24,6 +25,19 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--methods-only', action='store_true')
     args = parser.parse_args()
+    # Preserve the archived diagnostic's membership, but refresh its returns
+    # whenever the canonical MF construction changes.
+    filtered = ROOT / 'results/method_review/panel-filtered.csv'
+    with filtered.open() as handle:
+        keys = [(r['country'], r['year']) for r in csv.DictReader(handle)]
+    with (ROOT / 'data/replication-panel-trend.csv').open() as handle:
+        reader = csv.DictReader(handle)
+        fields = reader.fieldnames
+        current = {(r['country'], r['year']): r for r in reader}
+    with filtered.open('w') as handle:
+        writer = csv.DictWriter(handle, fieldnames=fields)
+        writer.writeheader()
+        writer.writerows(current[key] for key in keys)
     base = ['build/compare_fixed_stacked_utility.py', '--runs', '10000',
             '--seed', '20260827', '--portfolio-set', 'ladders']
     jobs = [('baseline', base + ['--output-json', 'results/main_ladders_n10000.json'])]

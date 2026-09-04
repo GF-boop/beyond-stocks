@@ -1,0 +1,38 @@
+\begin{table}[p]\centering\scriptsize
+\caption{Month-end and year-end maintenance tests on identical USD proxy paths}\label{tab:monthly-margin}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{lrrrrr}\toprule
+Portfolio & Gross (\%) & Maintenance & Monthly years & Annual years & Min. equity share \\
+\midrule
+ACO & 100 & 25.00\% & 0 & 0 & 100.00\% \\
+ACO & 100 & 40.00\% & 0 & 0 & 100.00\% \\
+ACO & 125 & 25.00\% & 0 & 0 & 62.51\% \\
+ACO & 125 & 40.00\% & 0 & 0 & 62.51\% \\
+ACO & 150 & 25.00\% & 0 & 0 & 37.52\% \\
+ACO & 150 & 40.00\% & 1 & 0 & 37.52\% \\
+ACO & 175 & 25.00\% & 1 & 1 & 19.67\% \\
+ACO & 175 & 40.00\% & 3 & 2 & 19.67\% \\
+ACO & 200 & 25.00\% & 1 & 1 & 6.29\% \\
+ACO & 200 & 40.00\% & 13 & 9 & 6.29\% \\
+Proportional & 100 & 25.00\% & 0 & 0 & 100.00\% \\
+Proportional & 100 & 40.00\% & 0 & 0 & 100.00\% \\
+Proportional & 125 & 25.00\% & 0 & 0 & 76.14\% \\
+Proportional & 125 & 40.00\% & 0 & 0 & 76.14\% \\
+Proportional & 150 & 25.00\% & 0 & 0 & 60.23\% \\
+Proportional & 150 & 40.00\% & 0 & 0 & 60.23\% \\
+Proportional & 175 & 25.00\% & 0 & 0 & 48.86\% \\
+Proportional & 175 & 40.00\% & 0 & 0 & 48.86\% \\
+Proportional & 200 & 25.00\% & 0 & 0 & 40.34\% \\
+Proportional & 200 & 40.00\% & 0 & 0 & 40.34\% \\
+Equal-weight & 100 & 25.00\% & 0 & 0 & 100.00\% \\
+Equal-weight & 100 & 40.00\% & 0 & 0 & 100.00\% \\
+Equal-weight & 125 & 25.00\% & 0 & 0 & 76.47\% \\
+Equal-weight & 125 & 40.00\% & 0 & 0 & 76.47\% \\
+Equal-weight & 150 & 25.00\% & 0 & 0 & 60.79\% \\
+Equal-weight & 150 & 40.00\% & 0 & 0 & 60.79\% \\
+Equal-weight & 175 & 25.00\% & 0 & 0 & 49.58\% \\
+Equal-weight & 175 & 40.00\% & 0 & 0 & 49.58\% \\
+Equal-weight & 200 & 25.00\% & 0 & 0 & 41.18\% \\
+Equal-weight & 200 & 40.00\% & 0 & 0 & 41.18\% \\
+\bottomrule\end{tabular}}
+\par\smallskip\begin{minipage}{0.97\textwidth}\footnotesize 1970--2025, 56 complete years. Entries count historical years with at least one crossing. Sleeve quantities are fixed within each year; exposure resets annually. VTI/VXUS total-return simulations supply 33/67 equities; IEF supplies a US Treasury proxy for global bonds; gold is spot less custody, MF is the reconstructed net USD series. Debt accrues USD cash plus 30 bp/year. The two tests use the same asset and debt paths. Monthly closes do not measure intramonth extrema or simulate forced liquidation. Bootstrap outputs and the 35\% threshold are provided in the replication dataset.\end{minipage}\end{table}

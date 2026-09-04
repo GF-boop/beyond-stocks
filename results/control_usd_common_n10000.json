@@ -2,10 +2,12 @@
   "seed": 20260827,
   "runs": 10000,
   "mean_block": 10.0,
+  "bootstrap_end_treatment": "aco",
   "spread": 0.003,
   "fx_hedge_cost": 0.001,
+  "hedge_mode": "fixed_notional",
   "trend_fee": 0.0085,
-  "trend_cost": 0.00566285264726086,
+  "trend_cost": 0.006146047846628103,
   "trend_haircut": 0.0,
   "gold_reallocation_from_year": null,
   "withdrawal_rate": 0.04,
@@ -13,13 +15,14 @@
   "year_from": null,
   "year_to": null,
   "excluded_countries": [],
+  "excluded_country_years": [],
   "excluded_war_years": false,
   "included_suspect_data": true,
   "sample_mode": "full",
   "portfolio_set": "all",
   "usd_numeraire": false,
   "usd_common_sample": true,
-  "source_observations": 1557,
+  "source_observations": 1561,
   "included_unhedged_control": false,
   "data_quality_flags": [
     {
@@ -91,6 +94,12 @@
     },
     {
       "country": "France",
+      "year": 1946,
+      "inflation": 0.5249457700650759,
+      "reason": "inflation annuelle superieure ou egale a 50 %"
+    },
+    {
+      "country": "France",
       "year": 1948,
       "inflation": 0.5862726406101049,
       "reason": "inflation annuelle superieure ou egale a 50 %"
@@ -124,6 +133,12 @@
       "year": 1943,
       "inflation": 0.007299269741511072,
       "reason": "fermeture de marche et reforme monetaire ACO A.III"
+    },
+    {
+      "country": "Italy",
+      "year": 1943,
+      "inflation": 0.6770186573813866,
+      "reason": "inflation annuelle superieure ou egale a 50 %"
     },
     {
       "country": "Italy",
@@ -210,445 +225,527 @@
       "reason": "restriction de marche ACO A.III"
     }
   ],
-  "observations": 1534,
+  "observations": 1540,
   "benchmark": "ACO 33/67",
+  "aco_leverage_exposures": {
+    "ACO 33/67 125%": 1.25,
+    "ACO 33/67 150%": 1.5,
+    "ACO 33/67 175%": 1.75,
+    "ACO 33/67 200%": 2.0
+  },
   "results": [
     {
       "strategy": "Actions domestiques",
-      "mean_return": 0.07534135496343562,
-      "volatility": 0.23150479082938547,
-      "first_percentile_return": -0.4555548845821202,
+      "mean_return": 0.07423507447309223,
+      "volatility": 0.23228169825227998,
+      "first_percentile_return": -0.4578800848299217,
       "worst_year": -0.9034720866582836,
       "worst_country": "Japan",
       "worst_calendar_year": 1945,
-      "equivalent_savings_rate": 0.16674396395683289,
-      "median_retirement_wealth": 745251.2701464978,
-      "mean_retirement_consumption": 68576.57651658241,
-      "ruin_probability": 0.1442,
-      "ruin_difference_vs_benchmark": 0.0737,
+      "equivalent_savings_rate": 0.18352988362312317,
+      "median_retirement_wealth": 670121.840061944,
+      "mean_retirement_consumption": 63397.22350231853,
+      "ruin_probability": 0.1698,
+      "ruin_difference_vs_benchmark": 0.0888,
       "ruin_difference_ci95": [
-        0.06776545537959439,
-        0.07963454462040562
+        0.08230753047094878,
+        0.09529246952905122
       ],
-      "median_bequest": 940072.9285036717
+      "median_bequest": 715730.4815134325
     },
     {
       "strategy": "ACO 33/67",
-      "mean_return": 0.07461134093623138,
-      "volatility": 0.17388284603139598,
-      "first_percentile_return": -0.38755114456554957,
+      "mean_return": 0.07960015836891275,
+      "volatility": 0.2537630933306732,
+      "first_percentile_return": -0.40423709886140613,
       "worst_year": -0.8460248882878691,
       "worst_country": "Japan",
       "worst_calendar_year": 1945,
       "equivalent_savings_rate": 0.09999999403953552,
-      "median_retirement_wealth": 901184.1534773207,
-      "mean_retirement_consumption": 72633.19556849837,
-      "ruin_probability": 0.0705,
+      "median_retirement_wealth": 839410.5666957909,
+      "mean_retirement_consumption": 69775.24593369274,
+      "ruin_probability": 0.081,
       "ruin_difference_vs_benchmark": 0.0,
       "ruin_difference_ci95": [
         0.0,
         0.0
       ],
-      "median_bequest": 1574938.8825296815
+      "median_bequest": 1338657.0377564346
     },
     {
       "strategy": "Stocks/I",
-      "mean_return": 0.07479656837596976,
-      "volatility": 0.17956955305773853,
-      "first_percentile_return": -0.3934683346791087,
+      "mean_return": 0.07823886842519709,
+      "volatility": 0.226282493871081,
+      "first_percentile_return": -0.40291989207586376,
       "worst_year": -0.8606010430982727,
       "worst_country": "Japan",
       "worst_calendar_year": 1945,
-      "equivalent_savings_rate": 0.1049775779247284,
-      "median_retirement_wealth": 887983.1135465307,
-      "mean_retirement_consumption": 72154.09456038126,
-      "ruin_probability": 0.076,
-      "ruin_difference_vs_benchmark": 0.0055,
+      "equivalent_savings_rate": 0.10474178194999695,
+      "median_retirement_wealth": 820003.3367280319,
+      "mean_retirement_consumption": 68872.1790673966,
+      "ruin_probability": 0.0871,
+      "ruin_difference_vs_benchmark": 0.0061,
       "ruin_difference_ci95": [
-        0.0028217751310159024,
-        0.008178224868984098
+        0.003175392549542089,
+        0.009024607450457911
       ],
-      "median_bequest": 1512846.4419899979
+      "median_bequest": 1289310.9622366591
     },
     {
       "strategy": "Balanced domestique",
-      "mean_return": 0.05392984273314982,
-      "volatility": 0.15606862366834698,
-      "first_percentile_return": -0.2901471020021702,
+      "mean_return": 0.05255434145585946,
+      "volatility": 0.15776724118814808,
+      "first_percentile_return": -0.3456197868056132,
       "worst_year": -0.9034978740030082,
       "worst_country": "Japan",
       "worst_calendar_year": 1945,
-      "equivalent_savings_rate": 0.1870182454586029,
-      "median_retirement_wealth": 584431.6489192825,
-      "mean_retirement_consumption": 55043.445549939715,
-      "ruin_probability": 0.1287,
-      "ruin_difference_vs_benchmark": 0.0582,
+      "equivalent_savings_rate": 0.1925019919872284,
+      "median_retirement_wealth": 561049.4812684413,
+      "mean_retirement_consumption": 53120.84817114405,
+      "ruin_probability": 0.1527,
+      "ruin_difference_vs_benchmark": 0.0717,
       "ruin_difference_ci95": [
-        0.05224140651116083,
-        0.06415859348883916
+        0.06515318140002505,
+        0.07824681859997495
       ],
-      "median_bequest": 560463.7662835921
+      "median_bequest": 495682.7682122169
     },
     {
       "strategy": "Balanced/I",
-      "mean_return": 0.0536029707806703,
-      "volatility": 0.1260503741151377,
-      "first_percentile_return": -0.2739343093319349,
+      "mean_return": 0.05495661782712238,
+      "volatility": 0.15073302694893922,
+      "first_percentile_return": -0.2768660835477296,
       "worst_year": -0.8777752478670016,
       "worst_country": "Japan",
       "worst_calendar_year": 1945,
-      "equivalent_savings_rate": 0.1507074534893036,
-      "median_retirement_wealth": 626062.6410708243,
-      "mean_retirement_consumption": 55479.997787253655,
-      "ruin_probability": 0.0905,
-      "ruin_difference_vs_benchmark": 0.02,
+      "equivalent_savings_rate": 0.1445944607257843,
+      "median_retirement_wealth": 612175.6495176812,
+      "mean_retirement_consumption": 54461.1578319031,
+      "ruin_probability": 0.1032,
+      "ruin_difference_vs_benchmark": 0.0222,
       "ruin_difference_ci95": [
-        0.015411528205672315,
-        0.024588471794327688
+        0.01724489859956541,
+        0.027155101400434593
       ],
-      "median_bequest": 689668.8624812365
+      "median_bequest": 652676.5635685215
     },
     {
       "strategy": "90/60 local fixe",
-      "mean_return": 0.07689930025322628,
-      "volatility": 0.17411369193700785,
-      "first_percentile_return": -0.35216718868040114,
+      "mean_return": 0.08105634224765602,
+      "volatility": 0.24041643243345015,
+      "first_percentile_return": -0.3712545034230232,
       "worst_year": -0.8527554349987667,
       "worst_country": "Japan",
       "worst_calendar_year": 1945,
-      "equivalent_savings_rate": 0.1008787453174591,
-      "median_retirement_wealth": 967053.9057721321,
-      "mean_retirement_consumption": 76525.49670577169,
-      "ruin_probability": 0.0802,
-      "ruin_difference_vs_benchmark": 0.0097,
+      "equivalent_savings_rate": 0.0977008044719696,
+      "median_retirement_wealth": 904305.3531885707,
+      "mean_retirement_consumption": 73946.63668625949,
+      "ruin_probability": 0.0873,
+      "ruin_difference_vs_benchmark": 0.0063,
       "ruin_difference_ci95": [
-        0.005682711829352468,
-        0.013717288170647532
+        0.0023573121898485512,
+        0.01024268781015145
       ],
-      "median_bequest": 1779937.0663868296
+      "median_bequest": 1588697.292365156
     },
     {
       "strategy": "90/60 oblig. mondiales",
-      "mean_return": 0.0758003665780867,
-      "volatility": 0.16787331407157502,
-      "first_percentile_return": -0.34030022067517174,
-      "worst_year": -0.8512090035510079,
+      "mean_return": 0.08041341954276897,
+      "volatility": 0.24222542185658913,
+      "first_percentile_return": -0.3632080643627765,
+      "worst_year": -0.8492750568784514,
       "worst_country": "Japan",
       "worst_calendar_year": 1945,
-      "equivalent_savings_rate": 0.09875378012657166,
-      "median_retirement_wealth": 949315.8882789579,
-      "mean_retirement_consumption": 75396.86558724554,
-      "ruin_probability": 0.0738,
-      "ruin_difference_vs_benchmark": 0.0033,
+      "equivalent_savings_rate": 0.09489741921424866,
+      "median_retirement_wealth": 906293.3009583136,
+      "mean_retirement_consumption": 73407.99433304317,
+      "ruin_probability": 0.0809,
+      "ruin_difference_vs_benchmark": -0.0001,
       "ruin_difference_ci95": [
-        -0.0002221335920296959,
-        0.006822133592029695
+        -0.003489325731069696,
+        0.003289325731069696
       ],
-      "median_bequest": 1786050.706600557
+      "median_bequest": 1592435.2257120223
     },
     {
       "strategy": "ACO 33/67, change reel cst",
-      "mean_return": 0.07304597293472524,
-      "volatility": 0.15716590913315934,
-      "first_percentile_return": -0.3752380104626019,
+      "mean_return": 0.0725327429322291,
+      "volatility": 0.15725784455410452,
+      "first_percentile_return": -0.374964376830537,
       "worst_year": -0.4562514755754792,
       "worst_country": "Belgium",
       "worst_calendar_year": 2008,
-      "equivalent_savings_rate": 0.0912540853023529,
-      "median_retirement_wealth": 894875.8267255984,
-      "mean_retirement_consumption": 70666.59738675231,
-      "ruin_probability": 0.0425,
-      "ruin_difference_vs_benchmark": -0.028,
+      "equivalent_savings_rate": 0.09201380610466003,
+      "median_retirement_wealth": 808627.0401523607,
+      "mean_retirement_consumption": 66127.96778979638,
+      "ruin_probability": 0.0529,
+      "ruin_difference_vs_benchmark": -0.0281,
       "ruin_difference_ci95": [
-        -0.031881587978202126,
-        -0.024118412021797875
+        -0.03231810130986277,
+        -0.02388189869013723
       ],
-      "median_bequest": 1592190.482978971
+      "median_bequest": 1280008.8575961962
+    },
+    {
+      "strategy": "ACO 33/67 125%",
+      "mean_return": 0.09819832523995513,
+      "volatility": 0.315912618018249,
+      "first_percentile_return": -0.48268583485283095,
+      "worst_year": -0.8321366616236501,
+      "worst_country": "Japan",
+      "worst_calendar_year": 1945,
+      "equivalent_savings_rate": 0.08695152401924133,
+      "median_retirement_wealth": 1044126.7243325287,
+      "mean_retirement_consumption": 88348.9706631332,
+      "ruin_probability": 0.0937,
+      "ruin_difference_vs_benchmark": 0.0127,
+      "ruin_difference_ci95": [
+        0.009592227058025975,
+        0.015807772941974024
+      ],
+      "median_bequest": 2079630.7461863498
+    },
+    {
+      "strategy": "ACO 33/67 150%",
+      "mean_return": 0.1167964921109975,
+      "volatility": 0.37859382317944906,
+      "first_percentile_return": -0.5760004486688138,
+      "worst_year": -0.8182484349594312,
+      "worst_country": "Japan",
+      "worst_calendar_year": 1945,
+      "equivalent_savings_rate": 0.08568999171257019,
+      "median_retirement_wealth": 1250105.7805250078,
+      "mean_retirement_consumption": 114132.4050737762,
+      "ruin_probability": 0.123,
+      "ruin_difference_vs_benchmark": 0.042,
+      "ruin_difference_ci95": [
+        0.03735179794563169,
+        0.046648202054368315
+      ],
+      "median_bequest": 2819811.7696744436
+    },
+    {
+      "strategy": "ACO 33/67 175%",
+      "mean_return": 0.13539465898203987,
+      "volatility": 0.4415803547670747,
+      "first_percentile_return": -0.6633625558011033,
+      "worst_year": -0.8043602082952123,
+      "worst_country": "Japan",
+      "worst_calendar_year": 1945,
+      "equivalent_savings_rate": 0.10110971331596375,
+      "median_retirement_wealth": 1412461.1953363793,
+      "mean_retirement_consumption": 149667.01740278627,
+      "ruin_probability": 0.1617,
+      "ruin_difference_vs_benchmark": 0.0807,
+      "ruin_difference_ci95": [
+        0.07479403539771966,
+        0.08660596460228033
+      ],
+      "median_bequest": 3237628.0523861363
+    },
+    {
+      "strategy": "ACO 33/67 200%",
+      "mean_return": 0.15399282585308224,
+      "volatility": 0.5047579246756754,
+      "first_percentile_return": -0.7578734259500838,
+      "worst_year": -0.9098884243751683,
+      "worst_country": "Japan",
+      "worst_calendar_year": 2008,
+      "equivalent_savings_rate": 0.16587600111961365,
+      "median_retirement_wealth": 1498298.358397487,
+      "mean_retirement_consumption": 197148.22171286796,
+      "ruin_probability": 0.219,
+      "ruin_difference_vs_benchmark": 0.138,
+      "ruin_difference_ci95": [
+        0.13077268512045886,
+        0.14522731487954116
+      ],
+      "median_bequest": 2835330.6982143535
     },
     {
       "strategy": "60/40 ACO/couvert",
-      "mean_return": 0.05275921186673422,
-      "volatility": 0.118261588292098,
-      "first_percentile_return": -0.25164665949451664,
-      "worst_year": -0.8679986006822534,
+      "mean_return": 0.0553447766567604,
+      "volatility": 0.1656807554262975,
+      "first_percentile_return": -0.25688949445576154,
+      "worst_year": -0.866709302900549,
       "worst_country": "Japan",
       "worst_calendar_year": 1945,
-      "equivalent_savings_rate": 0.1459873616695404,
-      "median_retirement_wealth": 626617.3080568549,
-      "mean_retirement_consumption": 55041.397336948765,
-      "ruin_probability": 0.0841,
+      "equivalent_savings_rate": 0.1377844512462616,
+      "median_retirement_wealth": 618214.6221932499,
+      "mean_retirement_consumption": 54436.238163756934,
+      "ruin_probability": 0.0946,
       "ruin_difference_vs_benchmark": 0.0136,
       "ruin_difference_ci95": [
-        0.00948776109433295,
-        0.017712238905667047
+        0.009251627821763638,
+        0.01794837217823636
       ],
-      "median_bequest": 694422.4909546677
+      "median_bequest": 660314.6393268569
     },
     {
       "strategy": "60/40 ACO + 33.33 MF",
-      "mean_return": 0.07088154920880013,
-      "volatility": 0.1289853759392652,
-      "first_percentile_return": -0.2087408723433283,
-      "worst_year": -0.8655685411440683,
+      "mean_return": 0.07766877727752881,
+      "volatility": 0.1798884854375649,
+      "first_percentile_return": -0.2031009460190238,
+      "worst_year": -0.8608305418693032,
       "worst_country": "Japan",
       "worst_calendar_year": 1945,
-      "equivalent_savings_rate": 0.08872589468955994,
-      "median_retirement_wealth": 913803.4456989947,
-      "mean_retirement_consumption": 70376.81301169436,
-      "ruin_probability": 0.031,
-      "ruin_difference_vs_benchmark": -0.0395,
+      "equivalent_savings_rate": 0.07508602738380432,
+      "median_retirement_wealth": 991096.6177611062,
+      "mean_retirement_consumption": 75198.3477241534,
+      "ruin_probability": 0.0334,
+      "ruin_difference_vs_benchmark": -0.0476,
       "ruin_difference_ci95": [
-        -0.04379166356994811,
-        -0.03520833643005189
+        -0.05210115670462249,
+        -0.04309884329537752
       ],
-      "median_bequest": 1807629.9410633347
+      "median_bequest": 2174484.179894015
     },
     {
       "strategy": "60/40 ACO + 33.33 Or",
-      "mean_return": 0.0617794473884843,
-      "volatility": 0.1364853090859543,
-      "first_percentile_return": -0.21867579843736404,
-      "worst_year": -0.8511553503521293,
+      "mean_return": 0.06721116909476205,
+      "volatility": 0.23982664521873287,
+      "first_percentile_return": -0.2334124386472017,
+      "worst_year": -0.849866052570425,
       "worst_country": "Japan",
       "worst_calendar_year": 1945,
-      "equivalent_savings_rate": 0.11000409722328186,
-      "median_retirement_wealth": 747722.0220528978,
-      "mean_retirement_consumption": 60662.21338229122,
-      "ruin_probability": 0.0426,
-      "ruin_difference_vs_benchmark": -0.0279,
+      "equivalent_savings_rate": 0.10418245196342468,
+      "median_retirement_wealth": 735336.9674999452,
+      "mean_retirement_consumption": 60300.17709825003,
+      "ruin_probability": 0.0526,
+      "ruin_difference_vs_benchmark": -0.0284,
       "ruin_difference_ci95": [
-        -0.03243463452831984,
-        -0.023365365471680156
+        -0.033071182923563425,
+        -0.02372881707643658
       ],
-      "median_bequest": 1123284.9924498624
+      "median_bequest": 1053924.0132851694
     },
     {
       "strategy": "54/36/20/20 ACO",
-      "mean_return": 0.06443652464275332,
-      "volatility": 0.12182172055772754,
-      "first_percentile_return": -0.1895136086127591,
-      "worst_year": -0.8597925341875172,
+      "mean_return": 0.07084528391482073,
+      "volatility": 0.20027403409847874,
+      "first_percentile_return": -0.19111592421205825,
+      "worst_year": -0.8565629452881469,
       "worst_country": "Japan",
       "worst_calendar_year": 1945,
-      "equivalent_savings_rate": 0.09852352738380432,
-      "median_retirement_wealth": 815333.0389456662,
-      "mean_retirement_consumption": 63142.98115446627,
-      "ruin_probability": 0.0306,
-      "ruin_difference_vs_benchmark": -0.0399,
+      "equivalent_savings_rate": 0.08733126521110535,
+      "median_retirement_wealth": 853786.1612287402,
+      "mean_retirement_consumption": 65539.4132643256,
+      "ruin_probability": 0.0379,
+      "ruin_difference_vs_benchmark": -0.0431,
       "ruin_difference_ci95": [
-        -0.04444252406607704,
-        -0.03535747593392296
+        -0.04773190651872421,
+        -0.03846809348127579
       ],
-      "median_bequest": 1401913.277324492
+      "median_bequest": 1533695.6799318409
     },
     {
       "strategy": "40/26.67/16.67/16.67 ACO",
-      "mean_return": 0.05096972849107391,
-      "volatility": 0.09855748199176768,
-      "first_percentile_return": -0.15766734308786226,
-      "worst_year": -0.8695550105022627,
+      "mean_return": 0.055727544595473064,
+      "volatility": 0.15721971832943965,
+      "first_percentile_return": -0.16095009129180318,
+      "worst_year": -0.8669711279012629,
       "worst_country": "Japan",
       "worst_calendar_year": 1945,
-      "equivalent_savings_rate": 0.1329897940158844,
-      "median_retirement_wealth": 622900.2439309545,
-      "mean_retirement_consumption": 53273.86364836399,
-      "ruin_probability": 0.0452,
-      "ruin_difference_vs_benchmark": -0.0253,
+      "equivalent_savings_rate": 0.11877498030662537,
+      "median_retirement_wealth": 652489.1267734667,
+      "mean_retirement_consumption": 54871.98481808696,
+      "ruin_probability": 0.0585,
+      "ruin_difference_vs_benchmark": -0.0225,
       "ruin_difference_ci95": [
-        -0.03004731974171458,
-        -0.020552680258285418
+        -0.02754296878370423,
+        -0.017457031216295767
       ],
-      "median_bequest": 734916.2855408875
+      "median_bequest": 806050.8142768602
     },
     {
       "strategy": "50/33.33/20.83/20.83 ACO",
-      "mean_return": 0.06204293500283506,
-      "volatility": 0.11716433774485592,
-      "first_percentile_return": -0.1832287764521639,
-      "worst_year": -0.8615493143916422,
+      "mean_return": 0.0683575580231555,
+      "volatility": 0.1930903994399014,
+      "first_percentile_return": -0.18671836623816543,
+      "worst_year": -0.8583194611403924,
       "worst_country": "Japan",
       "worst_calendar_year": 1945,
-      "equivalent_savings_rate": 0.10345497727394104,
-      "median_retirement_wealth": 777135.3690684137,
-      "mean_retirement_consumption": 61110.61569818929,
-      "ruin_probability": 0.0318,
-      "ruin_difference_vs_benchmark": -0.0387,
+      "equivalent_savings_rate": 0.09125789999961853,
+      "median_retirement_wealth": 819166.4733199901,
+      "mean_retirement_consumption": 63588.25423645768,
+      "ruin_probability": 0.0407,
+      "ruin_difference_vs_benchmark": -0.0403,
       "ruin_difference_ci95": [
-        -0.04331361896536718,
-        -0.034086381034632816
+        -0.04503175575625515,
+        -0.035568244243744856
       ],
-      "median_bequest": 1271759.8472273978
+      "median_bequest": 1399845.8759925994
     },
     {
       "strategy": "60/40/25/25 ACO",
-      "mean_return": 0.07311614151459621,
-      "volatility": 0.13678926224907673,
-      "first_percentile_return": -0.21642002681244518,
-      "worst_year": -0.8535436182810217,
+      "mean_return": 0.08098757145083794,
+      "volatility": 0.229802682373155,
+      "first_percentile_return": -0.21261307128570425,
+      "worst_year": -0.8496677943795217,
       "worst_country": "Japan",
       "worst_calendar_year": 1945,
-      "equivalent_savings_rate": 0.08188650012016296,
-      "median_retirement_wealth": 970499.2257845639,
-      "mean_retirement_consumption": 71205.96123432026,
-      "ruin_probability": 0.0246,
-      "ruin_difference_vs_benchmark": -0.0459,
+      "equivalent_savings_rate": 0.07195815443992615,
+      "median_retirement_wealth": 1021251.1176441889,
+      "mean_retirement_consumption": 74869.94477049985,
+      "ruin_probability": 0.0301,
+      "ruin_difference_vs_benchmark": -0.0509,
       "ruin_difference_ci95": [
-        -0.05042070122263731,
-        -0.0413792987773627
+        -0.05547628065844595,
+        -0.04632371934155405
       ],
-      "median_bequest": 2095999.138712702
+      "median_bequest": 2313481.210513737
     },
     {
       "strategy": "70/46.67/29.17/29.17 ACO",
-      "mean_return": 0.08418934802635737,
-      "volatility": 0.15705106793309515,
-      "first_percentile_return": -0.2442078738479153,
-      "worst_year": -0.8455379221704011,
+      "mean_return": 0.09361758487852039,
+      "volatility": 0.26700964634577873,
+      "first_percentile_return": -0.24403640770364224,
+      "worst_year": -0.8410161276186514,
       "worst_country": "Japan",
       "worst_calendar_year": 1945,
-      "equivalent_savings_rate": 0.06576696038246155,
-      "median_retirement_wealth": 1197812.392912881,
-      "mean_retirement_consumption": 84238.61912381253,
-      "ruin_probability": 0.0195,
-      "ruin_difference_vs_benchmark": -0.051,
+      "equivalent_savings_rate": 0.057649046182632446,
+      "median_retirement_wealth": 1263441.3489321605,
+      "mean_retirement_consumption": 89535.93319850527,
+      "ruin_probability": 0.0256,
+      "ruin_difference_vs_benchmark": -0.0554,
       "ruin_difference_ci95": [
-        -0.05549538126139135,
-        -0.046504618738608644
+        -0.060010642178322846,
+        -0.05078935782167715
       ],
-      "median_bequest": 3329681.1740099704
+      "median_bequest": 3704517.7378603844
     },
     {
       "strategy": "80/53.33/33.33/33.33 ACO",
-      "mean_return": 0.09526255453811855,
-      "volatility": 0.17773207098334168,
-      "first_percentile_return": -0.27863015679141717,
-      "worst_year": -0.8375322260597804,
+      "mean_return": 0.10624759830620284,
+      "volatility": 0.3045300274246575,
+      "first_percentile_return": -0.2786038455568547,
+      "worst_year": -0.8323644608577807,
       "worst_country": "Japan",
       "worst_calendar_year": 1945,
-      "equivalent_savings_rate": 0.053605109453201294,
-      "median_retirement_wealth": 1474253.562827839,
-      "mean_retirement_consumption": 101065.69985486126,
-      "ruin_probability": 0.0186,
-      "ruin_difference_vs_benchmark": -0.0519,
+      "equivalent_savings_rate": 0.04681077599525452,
+      "median_retirement_wealth": 1559001.0408019987,
+      "mean_retirement_consumption": 108619.73367484951,
+      "ruin_probability": 0.0228,
+      "ruin_difference_vs_benchmark": -0.0582,
       "ruin_difference_ci95": [
-        -0.0564297517202894,
-        -0.047370248279710606
+        -0.06286374666281237,
+        -0.05353625333718764
       ],
-      "median_bequest": 5171083.484039733
+      "median_bequest": 5771172.603668459
     },
     {
       "strategy": "25/25/25/25 ACO",
-      "mean_return": 0.047343470669556596,
-      "volatility": 0.09521550778086699,
-      "first_percentile_return": -0.1480619307611385,
-      "worst_year": -0.8730799294615654,
+      "mean_return": 0.05288700585081034,
+      "volatility": 0.15160244884389076,
+      "first_percentile_return": -0.1554680901538293,
+      "worst_year": -0.8696875922282047,
       "worst_country": "Japan",
       "worst_calendar_year": 1945,
-      "equivalent_savings_rate": 0.1464005410671234,
-      "median_retirement_wealth": 576857.7666740823,
-      "mean_retirement_consumption": 50862.27536174669,
-      "ruin_probability": 0.0527,
-      "ruin_difference_vs_benchmark": -0.0178,
+      "equivalent_savings_rate": 0.12675467133522034,
+      "median_retirement_wealth": 622674.6448483893,
+      "mean_retirement_consumption": 53455.24800560306,
+      "ruin_probability": 0.0673,
+      "ruin_difference_vs_benchmark": -0.0137,
       "ruin_difference_ci95": [
-        -0.023185212233206753,
-        -0.012414787766793247
+        -0.019309864532019178,
+        -0.008090135467980823
       ],
-      "median_bequest": 606011.6470706362
+      "median_bequest": 721126.3250428073
     },
     {
       "strategy": "31.25/31.25/31.25/31.25 ACO",
-      "mean_return": 0.057510112725938436,
-      "volatility": 0.1126899451143164,
-      "first_percentile_return": -0.16693520285076238,
-      "worst_year": -0.8659554630907708,
+      "mean_return": 0.06480688459232711,
+      "volatility": 0.18588322286873463,
+      "first_percentile_return": -0.15884315958984638,
+      "worst_year": -0.8617150415490696,
       "worst_country": "Japan",
       "worst_calendar_year": 1945,
-      "equivalent_savings_rate": 0.11659172177314758,
-      "median_retirement_wealth": 705103.1598039505,
-      "mean_retirement_consumption": 57357.04287697892,
-      "ruin_probability": 0.0394,
-      "ruin_difference_vs_benchmark": -0.0311,
+      "equivalent_savings_rate": 0.09848889708518982,
+      "median_retirement_wealth": 773913.6231023024,
+      "mean_retirement_consumption": 61414.32532152871,
+      "ruin_probability": 0.0491,
+      "ruin_difference_vs_benchmark": -0.0319,
       "ruin_difference_ci95": [
-        -0.03623877702467532,
-        -0.02596122297532468
+        -0.0371770843942816,
+        -0.026622915605718396
       ],
-      "median_bequest": 992503.7489614659
+      "median_bequest": 1203030.181556195
     },
     {
       "strategy": "37.5/37.5/37.5/37.5 ACO",
-      "mean_return": 0.06767675478232026,
-      "volatility": 0.1312035777947969,
-      "first_percentile_return": -0.1980573872853474,
-      "worst_year": -0.8588309967199756,
+      "mean_return": 0.07672676333384387,
+      "volatility": 0.22103435769531324,
+      "first_percentile_return": -0.18866520484592264,
+      "worst_year": -0.8537424908699347,
       "worst_country": "Japan",
       "worst_calendar_year": 1945,
-      "equivalent_savings_rate": 0.09423330426216125,
-      "median_retirement_wealth": 856341.0430579339,
-      "mean_retirement_consumption": 65603.01841628412,
-      "ruin_probability": 0.031,
-      "ruin_difference_vs_benchmark": -0.0395,
+      "equivalent_savings_rate": 0.0781961977481842,
+      "median_retirement_wealth": 953575.2560780577,
+      "mean_retirement_consumption": 71681.55377740286,
+      "ruin_probability": 0.0376,
+      "ruin_difference_vs_benchmark": -0.0434,
       "ruin_difference_ci95": [
-        -0.04447956523875295,
-        -0.034520434761247054
+        -0.048440022993358006,
+        -0.038359977006641996
       ],
-      "median_bequest": 1568293.6268379148
+      "median_bequest": 1955442.931058866
     },
     {
       "strategy": "43.75/43.75/43.75/43.75 ACO",
-      "mean_return": 0.0778433968387021,
-      "volatility": 0.15037306344831639,
-      "first_percentile_return": -0.22078491479370418,
-      "worst_year": -0.851706530349181,
+      "mean_return": 0.08864664207536065,
+      "volatility": 0.2566985522136823,
+      "first_percentile_return": -0.2116445906137116,
+      "worst_year": -0.8457699401907998,
       "worst_country": "Japan",
       "worst_calendar_year": 1945,
-      "equivalent_savings_rate": 0.07729914784431458,
-      "median_retirement_wealth": 1041281.1915865121,
-      "mean_retirement_consumption": 76106.95512130499,
-      "ruin_probability": 0.0267,
-      "ruin_difference_vs_benchmark": -0.0438,
+      "equivalent_savings_rate": 0.06318685412406921,
+      "median_retirement_wealth": 1179693.983712425,
+      "mean_retirement_consumption": 84988.01535404487,
+      "ruin_probability": 0.0317,
+      "ruin_difference_vs_benchmark": -0.0493,
       "ruin_difference_ci95": [
-        -0.04872299052133633,
-        -0.03887700947866367
+        -0.05420688564308069,
+        -0.044393114356919304
       ],
-      "median_bequest": 2407084.028534974
+      "median_bequest": 3090212.6985422918
     },
     {
       "strategy": "50/50/50/50 ACO",
-      "mean_return": 0.08801003889508394,
-      "volatility": 0.16997665099623488,
-      "first_percentile_return": -0.2545987849710187,
-      "worst_year": -0.8445820639783859,
+      "mean_return": 0.1005665208168774,
+      "volatility": 0.292688316856909,
+      "first_percentile_return": -0.24229224939102081,
+      "worst_year": -0.8377973895116644,
       "worst_country": "Japan",
       "worst_calendar_year": 1945,
-      "equivalent_savings_rate": 0.06421682238578796,
-      "median_retirement_wealth": 1266827.0890575992,
-      "mean_retirement_consumption": 89504.59494192642,
-      "ruin_probability": 0.0241,
-      "ruin_difference_vs_benchmark": -0.0464,
+      "equivalent_savings_rate": 0.05176165699958801,
+      "median_retirement_wealth": 1436984.8137514978,
+      "mean_retirement_consumption": 102270.47488796411,
+      "ruin_probability": 0.0277,
+      "ruin_difference_vs_benchmark": -0.0533,
       "ruin_difference_ci95": [
-        -0.05129031843624122,
-        -0.041509681563758775
+        -0.058190792541374894,
+        -0.048409207458625106
       ],
-      "median_bequest": 3625605.429687946
+      "median_bequest": 4768953.611641467
     },
     {
       "strategy": "90/60/25/25 ACO",
-      "mean_return": 0.09615729622594871,
-      "volatility": 0.18314517862382512,
-      "first_percentile_return": -0.28782057602944505,
-      "worst_year": -0.836754021149776,
+      "mean_return": 0.10605621433684652,
+      "volatility": 0.30474082910520045,
+      "first_percentile_return": -0.2947259956719468,
+      "worst_year": -0.832233548357424,
       "worst_country": "Japan",
       "worst_calendar_year": 1945,
-      "equivalent_savings_rate": 0.05422315001487732,
-      "median_retirement_wealth": 1493639.845988462,
-      "mean_retirement_consumption": 102872.93463785342,
-      "ruin_probability": 0.0193,
-      "ruin_difference_vs_benchmark": -0.0512,
+      "equivalent_savings_rate": 0.048952072858810425,
+      "median_retirement_wealth": 1521030.254767439,
+      "mean_retirement_consumption": 107362.99885836564,
+      "ruin_probability": 0.0245,
+      "ruin_difference_vs_benchmark": -0.0565,
       "ruin_difference_ci95": [
-        -0.055573196095993115,
-        -0.04682680390400689
+        -0.061059398211519275,
+        -0.05194060178848073
       ],
-      "median_bequest": 5101958.259681135
+      "median_bequest": 5347440.811202493
     }
   ]
 }

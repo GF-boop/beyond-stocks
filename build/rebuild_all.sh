@@ -10,11 +10,16 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 SEED=20260827
+MF_ENGINE="../CTO_vs_PEA/data/trend/managed_futures/run_managed_futures.py"
+MF_MONTHLY="../CTO_vs_PEA/data/trend/managed_futures/data/managed-futures-monthly.csv"
 
 # build/data_quality.py signale Japon 1945-1949 sans le retirer du panel central.
 # build/investability.py porte le filtre ex ante de la sensibilite investissable.
 
 echo "== 1. Panel et donnees =="
+[[ -f "$MF_ENGINE" ]] || { echo "Moteur MF amont absent: $MF_ENGINE" >&2; exit 1; }
+python3 "$MF_ENGINE" --futures-pnl-fx
+cp "$MF_MONTHLY" data/managed-futures-monthly.csv
 python3 build/international_equity.py          # -> data/international-equity.csv
 python3 build/build_replication_panel.py       # -> data/replication-panel.csv
 python3 build/panel_managed_futures.py         # -> data/managed-futures-annual-real.csv
@@ -107,6 +112,15 @@ fi
 
 python3 build/replicate_aco_leverage.py --methods-only
 python3 build/render_aco_comparisons.py
+python3 build/mf_variants.py
+python3 build/panel_concentration_comparison.py
+python3 build/sleeve_ablation.py --ladder --runs 10000 \
+  --output-json results/sleeve_ablation_ladders_n10000.json
+python3 build/sleeve_ablation.py --ladder --runs 10000 \
+  --panel results/panel_concentration/panel-screened.csv \
+  --output-json results/panel_concentration/screened_ablation_ladders_n10000.json
+python3 build/monthly_margin_diagnostic.py
+python3 build/render_panel_margin_ablation.py
 
 echo "== 8. Verification des artefacts =="
 python3 build/verify_repository.py

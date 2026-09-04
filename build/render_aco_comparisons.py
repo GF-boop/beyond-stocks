@@ -43,7 +43,7 @@ def main():
             rows.append([mode,str(r['gamma']),*(pct(r['portfolios'][n]['equivalent_savings_rate']) for n in (A,P,E))])
     table('aco_gamma.tex',r'Risk aversion and the saving requirement at 200\% exposure','tab:aco-gamma','lrrrr',
           r'Calibration & $\gamma$ & ACO & Proportional & Equal-weight',rows,
-          r'10,000 paired paths; ACO at 100\% requires 10\% saving at each $\gamma$. The joint calibration uses $\theta=2360\,12^{3.84-\gamma}$; the fixed-annual calibration keeps $\theta=2360$. At $\gamma=3.84$ both coincide. All portfolios keep their weights and exposure fixed. Ruin is 20.28\%, 1.99\%, and 2.60\%, respectively, throughout both grids.')
+          r'10,000 paired paths; ACO at 100\% requires 10\% saving at each $\gamma$. The joint calibration uses $\theta=2360\,12^{3.84-\gamma}$; the fixed-annual calibration keeps $\theta=2360$. At $\gamma=3.84$ both coincide. All portfolios keep their weights and exposure fixed. Ruin is identical across preference calibrations; its baseline levels appear in the leverage ladders.')
     policy=read('paper/figures/policy_sensitivity.json')
     rows=[]
     for key,value in policy.items():

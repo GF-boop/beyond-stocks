@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-30",
+  "generated": "2026-09-05",
   "proxy": {
     "file": "data/managed-futures-monthly.csv",
     "column": "mf_1_6_12_net_return",
@@ -47,7 +47,7 @@
     {
       "fund": "WTMF",
       "description": "0. WisdomTree Managed Futures Strategy Fund (ETF, 2011)",
-      "corr": 0.229,
+      "corr": 0.192,
       "n_months": 179,
       "first": "2011-02",
       "last": "2025-12"
@@ -55,7 +55,7 @@
     {
       "fund": "QMHIX",
       "description": "AQR Managed Futures Strategy HV Fund, classe I (OPCVM, 2013)",
-      "corr": 0.515,
+      "corr": 0.527,
       "n_months": 149,
       "first": "2013-08",
       "last": "2025-12"
@@ -63,7 +63,7 @@
     {
       "fund": "AHLIX",
       "description": "American Beacon AHL Managed Futures Fund, classe R5 (OPCVM, 2014)",
-      "corr": 0.538,
+      "corr": 0.561,
       "n_months": 136,
       "first": "2014-09",
       "last": "2025-12"
@@ -71,7 +71,7 @@
     {
       "fund": "AHLT",
       "description": "American Beacon AHL Trend ETF (2023)",
-      "corr": 0.648,
+      "corr": 0.679,
       "n_months": 27,
       "first": "2023-10",
       "last": "2025-12"
@@ -79,7 +79,7 @@
     {
       "fund": "IMF",
       "description": "Invesco Managed Futures Strategy ETF (2025)",
-      "corr": 0.635,
+      "corr": 0.676,
       "n_months": 9,
       "first": "2025-04",
       "last": "2025-12"
@@ -87,7 +87,7 @@
     {
       "fund": "ISMF",
       "description": "iShares Managed Futures Active ETF (2025)",
-      "corr": 0.583,
+      "corr": 0.621,
       "n_months": 9,
       "first": "2025-04",
       "last": "2025-12"
@@ -95,7 +95,7 @@
     {
       "fund": "APEX",
       "description": "AQR Apex UCITS Fund RA USD Acc (multi-stratégies, 2022)",
-      "corr": 0.152,
+      "corr": 0.181,
       "n_months": 45,
       "first": "2022-04",
       "last": "2025-12"
@@ -286,7 +286,7 @@
       {
         "a": "PROXY",
         "b": "WTMF",
-        "corr": 0.229,
+        "corr": 0.192,
         "n_months": 179,
         "first": "2011-02",
         "last": "2025-12"
@@ -294,7 +294,7 @@
       {
         "a": "PROXY",
         "b": "QMHIX",
-        "corr": 0.515,
+        "corr": 0.527,
         "n_months": 149,
         "first": "2013-08",
         "last": "2025-12"
@@ -302,7 +302,7 @@
       {
         "a": "PROXY",
         "b": "AHLIX",
-        "corr": 0.538,
+        "corr": 0.561,
         "n_months": 136,
         "first": "2014-09",
         "last": "2025-12"
@@ -310,7 +310,7 @@
       {
         "a": "PROXY",
         "b": "AHLT",
-        "corr": 0.648,
+        "corr": 0.679,
         "n_months": 27,
         "first": "2023-10",
         "last": "2025-12"
@@ -318,7 +318,7 @@
       {
         "a": "PROXY",
         "b": "IMF",
-        "corr": 0.635,
+        "corr": 0.676,
         "n_months": 9,
         "first": "2025-04",
         "last": "2025-12"
@@ -326,7 +326,7 @@
       {
         "a": "PROXY",
         "b": "ISMF",
-        "corr": 0.583,
+        "corr": 0.621,
         "n_months": 9,
         "first": "2025-04",
         "last": "2025-12"
@@ -334,7 +334,7 @@
       {
         "a": "PROXY",
         "b": "APEX",
-        "corr": 0.152,
+        "corr": 0.181,
         "n_months": 45,
         "first": "2022-04",
         "last": "2025-12"
@@ -509,24 +509,24 @@
       }
     ],
     "mean_corr_vs_others": {
-      "PROXY": 0.471,
-      "WTMF": 0.262,
-      "QMHIX": 0.561,
-      "AHLIX": 0.606,
-      "AHLT": 0.633,
-      "IMF": 0.524,
-      "ISMF": 0.652,
-      "APEX": 0.258
+      "PROXY": 0.491,
+      "WTMF": 0.256,
+      "QMHIX": 0.563,
+      "AHLIX": 0.609,
+      "AHLT": 0.638,
+      "IMF": 0.53,
+      "ISMF": 0.657,
+      "APEX": 0.262
     }
   },
   "clusters_full_overlap": [
     [
       "PROXY",
+      "IMF",
       "QMHIX",
       "AHLIX",
       "AHLT",
-      "ISMF",
-      "IMF"
+      "ISMF"
     ],
     [
       "WTMF"
@@ -544,19 +544,19 @@
       "n_months": 132,
       "proxy_vs_funds": {
         "WTMF": {
-          "corr": 0.241,
+          "corr": 0.21,
           "n": 132,
           "first": "2015-01",
           "last": "2025-12"
         },
         "QMHIX": {
-          "corr": 0.515,
+          "corr": 0.522,
           "n": 132,
           "first": "2015-01",
           "last": "2025-12"
         },
         "AHLIX": {
-          "corr": 0.528,
+          "corr": 0.548,
           "n": 132,
           "first": "2015-01",
           "last": "2025-12"
@@ -581,7 +581,7 @@
       ],
       "mean_pairwise_corr": 0.466,
       "proxy_vs_centroid": {
-        "corr": 0.556,
+        "corr": 0.56,
         "n": 132,
         "first": "2015-01",
         "last": "2025-12"
@@ -595,7 +595,7 @@
         "WTMF": 0.062,
         "QMHIX": 0.154,
         "AHLIX": 0.096,
-        "proxy": 0.111
+        "proxy": 0.107
       },
       "matrix": {
         "labels": [
@@ -608,7 +608,7 @@
           {
             "a": "PROXY",
             "b": "WTMF",
-            "corr": 0.241,
+            "corr": 0.21,
             "n_months": 132,
             "first": "2015-01",
             "last": "2025-12"
@@ -616,7 +616,7 @@
           {
             "a": "PROXY",
             "b": "QMHIX",
-            "corr": 0.515,
+            "corr": 0.522,
             "n_months": 132,
             "first": "2015-01",
             "last": "2025-12"
@@ -624,7 +624,7 @@
           {
             "a": "PROXY",
             "b": "AHLIX",
-            "corr": 0.528,
+            "corr": 0.548,
             "n_months": 132,
             "first": "2015-01",
             "last": "2025-12"
@@ -655,10 +655,10 @@
           }
         ],
         "mean_corr_vs_others": {
-          "PROXY": 0.428,
-          "WTMF": 0.317,
-          "QMHIX": 0.506,
-          "AHLIX": 0.537
+          "PROXY": 0.427,
+          "WTMF": 0.307,
+          "QMHIX": 0.508,
+          "AHLIX": 0.544
         }
       },
       "clusters": [
@@ -680,31 +680,31 @@
       "n_months": 24,
       "proxy_vs_funds": {
         "WTMF": {
-          "corr": 0.143,
+          "corr": 0.128,
           "n": 24,
           "first": "2024-01",
           "last": "2025-12"
         },
         "QMHIX": {
-          "corr": 0.396,
+          "corr": 0.463,
           "n": 24,
           "first": "2024-01",
           "last": "2025-12"
         },
         "AHLIX": {
-          "corr": 0.616,
+          "corr": 0.612,
           "n": 24,
           "first": "2024-01",
           "last": "2025-12"
         },
         "APEX": {
-          "corr": 0.363,
+          "corr": 0.37,
           "n": 24,
           "first": "2024-01",
           "last": "2025-12"
         },
         "AHLT": {
-          "corr": 0.65,
+          "corr": 0.644,
           "n": 24,
           "first": "2024-01",
           "last": "2025-12"
@@ -764,7 +764,7 @@
       ],
       "mean_pairwise_corr": 0.518,
       "proxy_vs_centroid": {
-        "corr": 0.573,
+        "corr": 0.592,
         "n": 24,
         "first": "2024-01",
         "last": "2025-12"
@@ -782,7 +782,7 @@
         "AHLIX": 0.098,
         "APEX": 0.071,
         "AHLT": 0.136,
-        "proxy": 0.066
+        "proxy": 0.061
       },
       "matrix": {
         "labels": [
@@ -797,7 +797,7 @@
           {
             "a": "PROXY",
             "b": "WTMF",
-            "corr": 0.143,
+            "corr": 0.128,
             "n_months": 24,
             "first": "2024-01",
             "last": "2025-12"
@@ -805,7 +805,7 @@
           {
             "a": "PROXY",
             "b": "QMHIX",
-            "corr": 0.396,
+            "corr": 0.463,
             "n_months": 24,
             "first": "2024-01",
             "last": "2025-12"
@@ -813,7 +813,7 @@
           {
             "a": "PROXY",
             "b": "AHLIX",
-            "corr": 0.616,
+            "corr": 0.612,
             "n_months": 24,
             "first": "2024-01",
             "last": "2025-12"
@@ -821,7 +821,7 @@
           {
             "a": "PROXY",
             "b": "APEX",
-            "corr": 0.363,
+            "corr": 0.37,
             "n_months": 24,
             "first": "2024-01",
             "last": "2025-12"
@@ -829,7 +829,7 @@
           {
             "a": "PROXY",
             "b": "AHLT",
-            "corr": 0.65,
+            "corr": 0.644,
             "n_months": 24,
             "first": "2024-01",
             "last": "2025-12"
@@ -916,12 +916,12 @@
           }
         ],
         "mean_corr_vs_others": {
-          "PROXY": 0.434,
-          "WTMF": 0.293,
-          "QMHIX": 0.538,
-          "AHLIX": 0.634,
-          "APEX": 0.419,
-          "AHLT": 0.622
+          "PROXY": 0.443,
+          "WTMF": 0.29,
+          "QMHIX": 0.551,
+          "AHLIX": 0.633,
+          "APEX": 0.421,
+          "AHLT": 0.621
         }
       },
       "clusters": [
@@ -947,43 +947,43 @@
       "n_months": 9,
       "proxy_vs_funds": {
         "WTMF": {
-          "corr": -0.156,
+          "corr": -0.131,
           "n": 9,
           "first": "2025-04",
           "last": "2025-12"
         },
         "QMHIX": {
-          "corr": 0.343,
+          "corr": 0.361,
           "n": 9,
           "first": "2025-04",
           "last": "2025-12"
         },
         "AHLIX": {
-          "corr": 0.512,
+          "corr": 0.456,
           "n": 9,
           "first": "2025-04",
           "last": "2025-12"
         },
         "APEX": {
-          "corr": 0.764,
+          "corr": 0.735,
           "n": 9,
           "first": "2025-04",
           "last": "2025-12"
         },
         "AHLT": {
-          "corr": 0.611,
+          "corr": 0.583,
           "n": 9,
           "first": "2025-04",
           "last": "2025-12"
         },
         "IMF": {
-          "corr": 0.635,
+          "corr": 0.676,
           "n": 9,
           "first": "2025-04",
           "last": "2025-12"
         },
         "ISMF": {
-          "corr": 0.583,
+          "corr": 0.621,
           "n": 9,
           "first": "2025-04",
           "last": "2025-12"
@@ -1098,7 +1098,7 @@
       ],
       "mean_pairwise_corr": 0.62,
       "proxy_vs_centroid": {
-        "corr": 0.606,
+        "corr": 0.605,
         "n": 9,
         "first": "2025-04",
         "last": "2025-12"
@@ -1120,7 +1120,7 @@
         "AHLT": 0.143,
         "IMF": 0.144,
         "ISMF": 0.062,
-        "proxy": 0.083
+        "proxy": 0.075
       },
       "matrix": {
         "labels": [
@@ -1137,7 +1137,7 @@
           {
             "a": "PROXY",
             "b": "WTMF",
-            "corr": -0.156,
+            "corr": -0.131,
             "n_months": 9,
             "first": "2025-04",
             "last": "2025-12"
@@ -1145,7 +1145,7 @@
           {
             "a": "PROXY",
             "b": "QMHIX",
-            "corr": 0.343,
+            "corr": 0.361,
             "n_months": 9,
             "first": "2025-04",
             "last": "2025-12"
@@ -1153,7 +1153,7 @@
           {
             "a": "PROXY",
             "b": "AHLIX",
-            "corr": 0.512,
+            "corr": 0.456,
             "n_months": 9,
             "first": "2025-04",
             "last": "2025-12"
@@ -1161,7 +1161,7 @@
           {
             "a": "PROXY",
             "b": "APEX",
-            "corr": 0.764,
+            "corr": 0.735,
             "n_months": 9,
             "first": "2025-04",
             "last": "2025-12"
@@ -1169,7 +1169,7 @@
           {
             "a": "PROXY",
             "b": "AHLT",
-            "corr": 0.611,
+            "corr": 0.583,
             "n_months": 9,
             "first": "2025-04",
             "last": "2025-12"
@@ -1177,7 +1177,7 @@
           {
             "a": "PROXY",
             "b": "IMF",
-            "corr": 0.635,
+            "corr": 0.676,
             "n_months": 9,
             "first": "2025-04",
             "last": "2025-12"
@@ -1185,7 +1185,7 @@
           {
             "a": "PROXY",
             "b": "ISMF",
-            "corr": 0.583,
+            "corr": 0.621,
             "n_months": 9,
             "first": "2025-04",
             "last": "2025-12"
@@ -1360,14 +1360,14 @@
           }
         ],
         "mean_corr_vs_others": {
-          "PROXY": 0.47,
-          "WTMF": 0.319,
-          "QMHIX": 0.619,
-          "AHLIX": 0.686,
-          "APEX": 0.499,
-          "AHLT": 0.741,
-          "IMF": 0.613,
-          "ISMF": 0.713
+          "PROXY": 0.472,
+          "WTMF": 0.322,
+          "QMHIX": 0.622,
+          "AHLIX": 0.678,
+          "APEX": 0.495,
+          "AHLT": 0.737,
+          "IMF": 0.619,
+          "ISMF": 0.719
         }
       },
       "clusters": [

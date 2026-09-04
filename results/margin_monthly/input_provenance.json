@@ -1,0 +1,12 @@
+{
+  "snapshot": "/home/guillaume/Desktop/Articles_Cayas/CTO_vs_PEA/data/trend/canonical/data/all-assets-monthly.csv",
+  "snapshot_sha256": "1321910c19ee9185a0a75af9b6a73a22fb04042f599642176e9ddf3e605e2d8a",
+  "mf_sha256": "fe970e51a9cc499c92882524994335c6c5e2b1244a57bd4df2c5c26ef83ead65",
+  "series": {
+    "BM_VTISIM": "domestic",
+    "BM_VXUSSIM": "international",
+    "BM_IEFSIM": "bond",
+    "METAL_GOLD": "gold"
+  },
+  "interpretation": "VTI/VXUS/IEF historical total-return simulations, gold spot, reconstructed MF net, USD collateral; IEF replaces global bonds; US resident only."
+}
