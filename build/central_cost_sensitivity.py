@@ -137,6 +137,12 @@ def main() -> None:
       HERE, "..", "paper", "figures", "central_cost_sensitivity.json"))
   parser.add_argument("--cost-tex", default=os.path.join(
       HERE, "..", "paper", "figures", "central_cost_sensitivity.tex"))
+  parser.add_argument("--financing-spread", action="append", type=float,
+                      help="run only the specified financing spread(s)")
+  parser.add_argument("--hedge-cost", action="append", type=float,
+                      help="run only the specified hedge friction(s)")
+  parser.add_argument("--skip-financing", action="store_true")
+  parser.add_argument("--skip-hedging", action="store_true")
   args = parser.parse_args()
   if args.runs <= 0:
     raise ValueError("--runs must be positive")
@@ -146,7 +152,9 @@ def main() -> None:
   print(f"Central cost sensitivity: 7 specifications x {args.runs:,} paths"
         .replace(",", " "))
   financing = []
-  for spread in FINANCING_SPREADS:
+  financing_spreads = (() if args.skip_financing
+                       else tuple(args.financing_spread or FINANCING_SPREADS))
+  for spread in financing_spreads:
     # Memes trajectoires pour chaque cout : les differences entre lignes ne
     # reflètent donc pas un nouveau tirage de mortalite, revenu ou rendement.
     result = evaluate(rows, args.runs, args.seed, spread,
@@ -155,7 +163,9 @@ def main() -> None:
     print(f"  phi {spread:.2%}, kappa {DEFAULT_FX_HEDGE_COST:.2%}: "
           + report(result))
   hedging = []
-  for cost in HEDGE_COSTS:
+  hedge_costs = (() if args.skip_hedging
+                 else tuple(args.hedge_cost or HEDGE_COSTS))
+  for cost in hedge_costs:
     result = evaluate(rows, args.runs, args.seed,
                       DEFAULT_SPREAD, cost, args.trend_fee, args.trend_cost)
     hedging.append(result)
@@ -170,7 +180,8 @@ def main() -> None:
   with open(args.output_json, "w", encoding="utf-8") as handle:
     json.dump(payload, handle, indent=2)
     handle.write("\n")
-  write_cost_tex(args.cost_tex, financing, hedging, args.runs)
+  if financing_spreads == FINANCING_SPREADS and hedge_costs == HEDGE_COSTS:
+    write_cost_tex(args.cost_tex, financing, hedging, args.runs)
 
 
 def report(result: dict) -> str:

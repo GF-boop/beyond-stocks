@@ -78,14 +78,14 @@ WITHDRAWAL_RATES = (0.03, 0.04, 0.05)
 
 
 def _row(rows, base_rate, withdrawal_rate, runs, seed, spread, fx_hedge_cost,
-         trend_fee, trend_cost):
+         trend_fee, trend_cost, scenarios=None):
   """Un point du sweep : ACO 33/67 epargne ``base_rate`` et retire
   ``withdrawal_rate``, les deux familles sont evaluees aux memes tirages."""
-  functions_all = return_functions(
-      rows, spread, trend_fee, trend_cost, 0.0, fx_hedge_cost)
-  names = (BENCHMARK_NAME, *PORTFOLIOS)
-  functions = {name: functions_all[name] for name in names}
-  scenarios = scenarios_for(rows, functions, runs, 10.0, seed)
+  if scenarios is None:
+    functions_all = return_functions(
+        rows, spread, trend_fee, trend_cost, 0.0, fx_hedge_cost)
+    names = (BENCHMARK_NAME, *PORTFOLIOS)
+    scenarios = scenarios_for(rows, functions, runs, 10.0, seed)
 
   target_utility = expected_utility(
       scenarios, BENCHMARK_NAME, base_rate, GAMMA, withdrawal_rate)
@@ -121,21 +121,21 @@ def _row(rows, base_rate, withdrawal_rate, runs, seed, spread, fx_hedge_cost,
 
 
 def evaluate_contribution_axis(rows, runs, seed, spread, fx_hedge_cost,
-                               trend_fee, trend_cost):
+                               trend_fee, trend_cost, scenarios=None):
   out = []
   for base_rate in CONTRIBUTION_RATES:
     entry = _row(rows, base_rate, WITHDRAWAL_RATE, runs, seed, spread,
-                 fx_hedge_cost, trend_fee, trend_cost)
+                 fx_hedge_cost, trend_fee, trend_cost, scenarios)
     out.append(entry)
   return out
 
 
 def evaluate_withdrawal_axis(rows, runs, seed, spread, fx_hedge_cost,
-                             trend_fee, trend_cost):
+                             trend_fee, trend_cost, scenarios=None):
   out = []
   for withdrawal_rate in WITHDRAWAL_RATES:
     entry = _row(rows, BASE_SAVINGS_RATE, withdrawal_rate, runs, seed, spread,
-                 fx_hedge_cost, trend_fee, trend_cost)
+                 fx_hedge_cost, trend_fee, trend_cost, scenarios)
     out.append(entry)
   return out
 
@@ -249,16 +249,23 @@ def main() -> None:
   n = len(CONTRIBUTION_RATES) + len(WITHDRAWAL_RATES)
   print(f"Policy sensitivity: {n} lignes x {args.runs:,} chemins"
         .replace(",", " "))
+  functions_all = return_functions(
+      rows, args.spread, args.trend_fee, args.trend_cost, 0.0,
+      args.fx_hedge_cost)
+  names = (BENCHMARK_NAME, *PORTFOLIOS)
+  scenarios = scenarios_for(
+      rows, {name: functions_all[name] for name in names}, args.runs, 10.0,
+      args.seed)
 
   contribution = evaluate_contribution_axis(
       rows, args.runs, args.seed, args.spread, args.fx_hedge_cost,
-      args.trend_fee, args.trend_cost)
+      args.trend_fee, args.trend_cost, scenarios)
   for entry in contribution:
     print(f"  r_c {entry['contribution_rate']:>5.0%}: {_report(entry)}")
 
   withdrawal = evaluate_withdrawal_axis(
       rows, args.runs, args.seed, args.spread, args.fx_hedge_cost,
-      args.trend_fee, args.trend_cost)
+      args.trend_fee, args.trend_cost, scenarios)
   for entry in withdrawal:
     print(f"  r_w {entry['withdrawal_rate']:>5.0%}: {_report(entry)}")
 

@@ -90,12 +90,13 @@ def theta_for_gamma(gamma: float) -> float:
 
 def evaluate_gamma(rows: list[dict[str, float]], gamma: float, runs: int,
                    seed: int, spread: float, fx_hedge_cost: float,
-                   trend_fee: float, trend_cost: float) -> dict:
-  functions_all = return_functions(
-      rows, spread, trend_fee, trend_cost, 0.0, fx_hedge_cost)
-  names = (BENCHMARK_NAME, *PORTFOLIOS)
-  functions = {name: functions_all[name] for name in names}
-  scenarios = scenarios_for(rows, functions, runs, 10.0, seed)
+                   trend_fee: float, trend_cost: float, scenarios=None) -> dict:
+  if scenarios is None:
+    functions_all = return_functions(
+        rows, spread, trend_fee, trend_cost, 0.0, fx_hedge_cost)
+    names = (BENCHMARK_NAME, *PORTFOLIOS)
+    functions = {name: functions_all[name] for name in names}
+    scenarios = scenarios_for(rows, functions, runs, 10.0, seed)
 
   # Reechelonnage du motif de legs : les agregateurs d'utilite lisent
   # compare_lifecycle_utility.BEQUEST_STRENGTH comme un global au moment de
@@ -218,11 +219,18 @@ def main() -> None:
 
   print(f"Gamma sensitivity: {len(GAMMA_GRID)} valeurs x {args.runs:,} chemins"
         .replace(",", " "))
+  functions_all = return_functions(
+      rows, args.spread, args.trend_fee, args.trend_cost, 0.0,
+      args.fx_hedge_cost)
+  names = (BENCHMARK_NAME, *PORTFOLIOS)
+  scenarios = scenarios_for(
+      rows, {name: functions_all[name] for name in names}, args.runs, 10.0,
+      args.seed)
   results = []
   for gamma in GAMMA_GRID:
     result = evaluate_gamma(
         rows, gamma, args.runs, args.seed, args.spread, args.fx_hedge_cost,
-        args.trend_fee, args.trend_cost)
+        args.trend_fee, args.trend_cost, scenarios)
     results.append(result)
     proportional = result["portfolios"][PROPORTIONAL]
     equal_weight = result["portfolios"][EQUAL_WEIGHT]

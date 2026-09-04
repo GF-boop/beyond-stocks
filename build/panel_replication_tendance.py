@@ -26,6 +26,7 @@ from __future__ import annotations
 import csv
 import math
 import os
+import argparse
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 # Tous les souverains du panel entrent dans le panier, y compris celui du
@@ -92,12 +93,42 @@ def covered_real_return(asset_real: float, foreign_bill_real: float,
           * (1.0 + asset_real) / (1.0 + foreign_bill_real) - 1.0)
 
 
+def fixed_notional_hedged_real_return(
+    asset_real: float, foreign_bill_real: float, resident_bill_real: float,
+    foreign_inflation: float, resident_inflation: float,
+    foreign_fx: float, foreign_previous_fx: float,
+    resident_fx: float, resident_previous_fx: float,
+    ) -> float:
+  """Rendement reel d'un actif etranger avec forward sur le notionnel initial.
+
+  La convention ``covered_real_return`` suppose implicitement que la valeur
+  terminale de l'actif entier est couverte. Un fonds couvre plus usuellement le
+  notionnel connu au debut de la periode, puis renouvelle le forward. Cette
+  fonction ajoute donc le payoff du forward sur une unite de devise etrangere
+  au rendement local realise. Le forward est valorise sous CIP a partir des
+  bills nominaux observes; le reste de la valeur terminale garde un risque FX.
+  """
+  foreign_bill_nominal = ((1.0 + foreign_bill_real)
+                          * (1.0 + foreign_inflation))
+  resident_bill_nominal = ((1.0 + resident_bill_real)
+                           * (1.0 + resident_inflation))
+  asset_nominal = (1.0 + asset_real) * (1.0 + foreign_inflation)
+  currency = ((resident_fx / foreign_fx)
+              / (resident_previous_fx / foreign_previous_fx))
+  gross_resident_nominal = (
+      resident_bill_nominal / foreign_bill_nominal
+      + (asset_nominal - 1.0) * currency)
+  return gross_resident_nominal / (1.0 + resident_inflation) - 1.0
+
+
 def build(
     panel: list[dict[str, str]],
     world: dict[int, dict[str, str]],
     trend_us_real: dict[int, float],
     trend_us_cash_real: dict[int, float],
     gold_us_real: dict[int, float],
+    excluded_bond_issuers: frozenset[str] = frozenset(),
+    excluded_bond_issuer_years: frozenset[tuple[str, int]] = frozenset(),
     ) -> list[dict[str, str | float]]:
   by_country_year = {
     (row["country"], int(row["year"])): row for row in panel
@@ -126,9 +157,13 @@ def build(
 
     resident_bill = float(row["bill_real"])
     covered_bonds: list[float] = []
+    fixed_notional_bonds: list[float] = []
     unhedged_bonds: list[float] = []
     unhedged_bills: list[float] = []
     for issuer in BOND_ISSUERS:
+      if (issuer in excluded_bond_issuers
+          or (issuer, year) in excluded_bond_issuer_years):
+        continue
       issuer_row = by_country_year.get((issuer, year))
       issuer_previous = by_country_year.get((issuer, year - 1))
       if issuer_row is None or issuer_previous is None:
@@ -145,6 +180,10 @@ def build(
       issuer_bill = float(issuer_row["bill_real"])
       covered_bonds.append(covered_real_return(
         issuer_bond, issuer_bill, resident_bill))
+      fixed_notional_bonds.append(fixed_notional_hedged_real_return(
+        issuer_bond, issuer_bill, resident_bill,
+        float(issuer_row["inflation"]), resident_inflation,
+        issuer_fx, issuer_previous_fx, resident_fx, resident_previous_fx))
       unhedged_bonds.append(convert_local_real_return(
         issuer_bond, *arguments))
       unhedged_bills.append(convert_local_real_return(
@@ -154,6 +193,9 @@ def build(
       continue
     world_bond = sum(covered_bonds) / len(covered_bonds)
     world_bond = (1.0 + world_bond) * (1.0 - BOND_FEE) - 1.0
+    world_bond_fixed_notional = sum(fixed_notional_bonds) / len(fixed_notional_bonds)
+    world_bond_fixed_notional = ((1.0 + world_bond_fixed_notional)
+                                 * (1.0 - BOND_FEE) - 1.0)
     world_bill = resident_bill
     world_bond_unhedged = sum(unhedged_bonds) / len(unhedged_bonds)
     world_bond_unhedged = ((1.0 + world_bond_unhedged)
@@ -174,6 +216,10 @@ def build(
 
     trend_hedged = covered_real_return(
       trend_us_real[year], trend_us_cash_real[year], resident_bill)
+    trend_fixed_notional = fixed_notional_hedged_real_return(
+      trend_us_real[year], trend_us_cash_real[year], resident_bill,
+      us_inflation[year], resident_inflation,
+      1.0, 1.0, resident_fx, resident_previous_fx)
     trend_unhedged = convert_us_real_return(
       trend_us_real[year], us_inflation[year], resident_inflation,
       resident_fx, resident_previous_fx)
@@ -186,19 +232,21 @@ def build(
       "world_equity_real": world_equity,
       "world_equity_source": world_equity_source,
       "world_bond_real": world_bond,
+      "world_bond_real_fixed_notional": world_bond_fixed_notional,
       "world_bill_real": world_bill,
       "world_bond_real_unhedged": world_bond_unhedged,
       "world_bill_real_unhedged": world_bill_unhedged,
       "world_bond_issuers": len(covered_bonds),
       "trend_real": trend_hedged,
+      "trend_real_fixed_notional": trend_fixed_notional,
       "trend_cash_us_real": trend_us_cash_real[year],
       "trend_real_unhedged": trend_unhedged,
       "gold_real": converted_gold,
     })
     if not all(math.isfinite(float(output[column])) for column in (
-        "world_equity_real", "world_bond_real", "world_bill_real",
+        "world_equity_real", "world_bond_real", "world_bond_real_fixed_notional", "world_bill_real",
         "world_bond_real_unhedged", "world_bill_real_unhedged",
-        "trend_real", "trend_cash_us_real", "trend_real_unhedged",
+        "trend_real", "trend_real_fixed_notional", "trend_cash_us_real", "trend_real_unhedged",
         "gold_real")):
       continue
     result.append(output)
@@ -206,12 +254,24 @@ def build(
 
 
 def main() -> None:
+  parser = argparse.ArgumentParser(description=__doc__)
+  parser.add_argument("--panel", help="input replication panel")
+  parser.add_argument("--out", help="output extended panel")
+  parser.add_argument("--trend", help="annual managed-futures input")
+  parser.add_argument("--world", help="world-equity input")
+  parser.add_argument("--gold", help="gold input")
+  parser.add_argument("--exclude-bond-issuer", action="append", default=[],
+                      help="remove an issuer from every global bond basket (repeatable)")
+  parser.add_argument("--exclude-bond-issuer-year", action="append", default=[],
+                      metavar="COUNTRY:YEAR",
+                      help="diagnostic only: remove a source country-year from global bond baskets")
+  args = parser.parse_args()
   data = os.path.join(HERE, "..", "data")
-  trend_path = os.path.join(data, "managed-futures-annual-real.csv")
-  panel_path = os.path.join(data, "replication-panel.csv")
-  out = os.path.join(data, "replication-panel-trend.csv")
-  world_path = os.path.join(data, "jst-ntsg-panel-2025.csv")
-  gold_path = os.path.join(data, "gold-annual.csv")
+  trend_path = args.trend or os.path.join(data, "managed-futures-annual-real.csv")
+  panel_path = args.panel or os.path.join(data, "replication-panel.csv")
+  out = args.out or os.path.join(data, "replication-panel-trend.csv")
+  world_path = args.world or os.path.join(data, "jst-ntsg-panel-2025.csv")
+  gold_path = args.gold or os.path.join(data, "gold-annual.csv")
 
   trend_rows = read_rows(trend_path)
   trend = {int(row["year"]): float(row["trend_real"])
@@ -221,19 +281,33 @@ def main() -> None:
   world = {int(row["year"]): row for row in read_rows(world_path)}
   gold = {int(row["year"]): float(row["gold_real"])
           for row in read_rows(gold_path)}
-  rows = build(read_rows(panel_path), world, trend, trend_cash, gold)
+  unknown = sorted(set(args.exclude_bond_issuer) - set(BOND_ISSUERS))
+  if unknown:
+    raise ValueError(f"unknown bond issuer(s): {', '.join(unknown)}")
+  excluded_bond_issuer_years = set()
+  for value in args.exclude_bond_issuer_year:
+    try:
+      country, year = value.rsplit(":", 1)
+      if country not in BOND_ISSUERS:
+        raise ValueError(f"unknown bond issuer: {country}")
+      excluded_bond_issuer_years.add((country, int(year)))
+    except ValueError:
+      raise
+  rows = build(read_rows(panel_path), world, trend, trend_cash, gold,
+               frozenset(args.exclude_bond_issuer),
+               frozenset(excluded_bond_issuer_years))
 
   fieldnames = [
     "country", "year", "domestic_equity_real", "international_equity_real",
     "international_equity_real_constant_real_fx",
     "world_equity_real_resident_reconstructed", "xrusd",
     "world_equity_real", "world_equity_source", "bond_real", "bill_real",
-    "world_bond_real", "world_bill_real", "world_bond_real_unhedged",
+    "world_bond_real", "world_bond_real_fixed_notional", "world_bill_real", "world_bond_real_unhedged",
     "world_bill_real_unhedged", "world_bond_issuers", "inflation",
-    "trend_real", "trend_cash_us_real", "trend_real_unhedged", "gold_real",
+    "trend_real", "trend_real_fixed_notional", "trend_cash_us_real", "trend_real_unhedged", "gold_real",
   ]
   with open(out, "w", newline="", encoding="utf-8") as handle:
-    writer = csv.DictWriter(handle, lineterminator="\n", fieldnames=fieldnames)
+    writer = csv.DictWriter(handle, fieldnames=fieldnames)
     writer.writeheader()
     writer.writerows(rows)
 

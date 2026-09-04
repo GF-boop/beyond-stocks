@@ -1,0 +1,22 @@
+{
+  "runs_per_specification": 10000,
+  "seed": 20260827,
+  "financing_stress": [],
+  "hedging_stress": [
+    {
+      "spread": 0.003,
+      "hedge_cost": 0.005,
+      "benchmark_ruin": 0.0698,
+      "portfolios": {
+        "80/53.33/33.33/33.33 ACO": {
+          "equivalent_savings_rate": 0.05600830912590027,
+          "ruin_probability": 0.0224
+        },
+        "50/50/50/50 ACO": {
+          "equivalent_savings_rate": 0.06604978442192078,
+          "ruin_probability": 0.0304
+        }
+      }
+    }
+  ]
+}

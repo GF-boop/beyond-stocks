@@ -25,6 +25,7 @@ from __future__ import annotations
 import csv
 import math
 import os
+import argparse
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 PANEL = os.path.join(HERE, "..", "data", "replication-panel-trend.csv")
@@ -72,11 +73,24 @@ def sy(value: float) -> float:
 
 
 def main() -> None:
+    global OUT, OUT_MF, OUT_CONVEX
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--output-dir', default=OUT_DIR)
+    parser.add_argument('--fixed-notional', action='store_true')
+    args = parser.parse_args()
+    os.makedirs(args.output_dir, exist_ok=True)
+    OUT = os.path.join(args.output_dir, 'cumulative_wealth.tex')
+    OUT_MF = os.path.join(args.output_dir, 'mf_diagnostics.tex')
+    OUT_CONVEX = os.path.join(args.output_dir, 'mf_convexity.tex')
     rows = [
         row for row in csv.DictReader(open(PANEL, encoding="utf-8"))
         if row["country"] == "USA"
     ]
     rows.sort(key=lambda r: int(r["year"]))
+    if args.fixed_notional:
+        for row in rows:
+            row['world_bond_real'] = row['world_bond_real_fixed_notional']
+            row['trend_real'] = row['trend_real_fixed_notional']
     if not rows:
         raise SystemExit("Aucune observation pour la residence USA")
 

@@ -8,7 +8,9 @@ The complete mapping number → script → command → output → paper table is
 [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md); the canonical rebuild order is
 documented in [`build/rebuild_all.sh`](build/rebuild_all.sh).
 
-The current manuscript is [`paper/main.pdf`](paper/main.pdf). It supersedes
+The current manuscript is [`paper/new_paper/main-styled.pdf`](paper/new_paper/main-styled.pdf).
+Its source and technical appendices are in [`paper/new_paper/`](paper/new_paper/).
+It supersedes
 the first version of the extension, which mixed U.S. real returns and local
 returns. The old global numbers must no longer be used.
 
@@ -28,13 +30,10 @@ over the bill or collateral actually embedded is added to the resident's
 bill. Financing remains local and the base case subtracts a 0.10% friction on
 the covered notionals.
 
-The main panel contains 1,557 raw country-years, 16 countries and each of
-the 99 years 1927–2025. The investability filter drops 30 rows and is now an
-explicitly labelled sensitivity, not the central case. A consistent control
-uses only the 99 rows of the U.S. resident. The exclusion rule is the ex ante
-filter of [`build/investability.py`](build/investability.py). The bond basket
-has 12 to 16 issuers: 16 in 1,312 of the 1,557 country-years, and never fewer
-than 12 over the analysis window.
+The main panel contains 1,561 raw country-years, 16 countries and each of
+the 99 years 1927–2025. The investability filter is an explicitly labelled
+sensitivity, not the central case. The fixed-notional global-bond basket has
+13 to 16 issuers over the analysis window.
 
 The resident's numeraire is an assumption of the experiment, not a mere
 display convention. The `--usd-numeraire` control keeps the same
@@ -63,68 +62,16 @@ euro. The paired results and intervals are in
 
 ## Corrected central results
 
-10,000 paired paths, mean blocks of ten years, 0.30% spread, ACO's fixed
-33/67 portfolio as the benchmark at a 10% saving rate:
-
-| Strategy | Equivalent saving | Ruin |
-| --- | ---: | ---: |
-| Domestic equity | 16.85% | 14.95% |
-| ACO 33/67 at constant real exchange rate | 9.03% | 4.57% |
-| **ACO 33/67** | **10.00%** | **7.36%** |
-| Domestic balanced | 18.56% | 13.81% |
-| Balanced/I | 14.77% | 9.58% |
-| 90/60 local | 9.92% | 8.52% |
-| **90/60 covered world bonds** | **9.77%** | **7.81%** |
-| 60/40 ACO/covered | 14.37% | 8.90% |
-| 60/40 ACO + 33.33% managed futures | 8.67% | 3.29% |
-| 60/40 ACO + 33.33% gold | 10.97% | 4.38% |
-| 54/36/20/20 ACO | 9.73% | 3.19% |
-| 90/60/25/25 ACO | 5.36% | 1.96% |
-
-Two fixed-leverage ladders complete these recipes: a family proportional to
-60/40/25/25 and an equal-weight family across equity / bonds / gold / MF,
-each at 100%, 125%, 150%, 175% and 200% gross exposure. They target no
-volatility. Within the ±1-point band around ACO's 17.43%, the 200% level of
-the 60/40/25/25 family reaches 17.80% volatility, 5.32% equivalent saving and
-1.83% ruin; the 200% equal-weight family reaches 17.02%, 6.39% and 2.51%. At
-a comparable risk budget, both families therefore have both higher utility
-and lower ruin than ACO's 33/67 (10.00% equivalent saving and 7.36% ruin).
-This is the central result: in the extended asset universe and under the
-model's explicit assumptions, diversification is more efficient than ACO's
-100%-equity portfolio. The comparison is demanding: ACO's 33/67 is selected
-by a grid search that maximises mean utility on their historical panel, while
-the two families above are fixed rules, not fitted to moments or to simulated
-utility. This is an in-sample selection advantage for ACO, not a claim that
-the household anticipates future returns. Full tables are in the detailed
-results.
-
-Before 1968, the gold price is administered. An availability variant
-reallocates the gold sleeve then in equal parts to the non-gold sleeves
-already active, without changing leverage or financing. It improves the 60/40
-with gold to 9.39% equivalent saving and 3.11% ruin, and the 54/36/20/20 to
-8.87% and 2.55%. It is reported in the appendix and in the detailed results;
-it is not a counterfactual gold-return assumption.
-
-Equivalent saving equalises expected lifecycle utility with ACO 33/67 at a
-10% saving rate; it does not equalise wealth at age 65.
-
-The clean test keeps the 33/67 equity sleeve, the weights and local financing
-unchanged. The covered bond basket cuts volatility from 17.44% to 16.83% and
-ruin from 8.52% to 7.81%. Diversification therefore reduces risk; utility
-remains almost identical to that of the 33/67.
-
-For the 60/40 ACO + 33.33% MF portfolio, ruin is **3.29%** in the full panel,
-**0.37%** for the consistent U.S. resident and **0.95%** in the investability
-sensitivity. These three numbers replace the old U.S. real return copied to
-all residents.
-
-The multi-asset gains remain sensitive to assumptions: with a 2% managed
-futures haircut, the moderate MF portfolio requires 10.46% saving. At a 1.40%
-spread alone, it remains favourable at 9.62%; with the 2% haircut added, it
-rises to 11.61%. Over 1927–1969, no multi-asset strategy evaluated dominates
-the 33/67. Full tables are regenerated by the sensitivity scripts
-(`build/central_cost_sensitivity.py`, `build/historical_uncertainty.py`) into
-`paper/figures/`.
+The current 10,000-path outputs are versioned in `results/` and reported in
+the manuscript. Under the 1927–2025 baseline, the equal-weight four-sleeve
+rule at 175% exposure has 17.30% annual volatility, 2.61% retirement ruin and
+7.02% equivalent saving after removing the Italy-1942 source event; ACO has
+18.17%, 7.19% and 10.00%, respectively. The two further source-influence
+diagnostics have the same ordering. At 100% exposure, the diversified rules
+reduce volatility and ruin without portfolio-level borrowing, while utility
+parity requires additional saving. These are post-audit diagnostics rather
+than independent validation; the paper describes their scope and the return,
+timing, and hedging limitations.
 
 ## Lifecycle model
 
@@ -177,8 +124,8 @@ The external-validation scripts
 [`paper/build_mf_pack_matrix.py`](paper/build_mf_pack_matrix.py)) additionally
 read SG, BarclayHedge, testfol and fund series that are not redistributed.
 Without them, the canonical rebuild skips those diagnostics and the external
-figure and tables remain those of
-[`paper/main.pdf`](paper/main.pdf), not publicly rebuildable. To regenerate
+figure and tables remain versioned in the manuscript, but are not publicly
+rebuildable. To regenerate
 them, place `official-index-returns-monthly.csv` and the `testfol/` folder
 under `data/benchmarks-externes/`.
 
@@ -201,11 +148,11 @@ bash build/rebuild_all.sh
 Compiling the paper alone:
 
 ```bash
-cd paper
-pdflatex -interaction=nonstopmode main.tex
-biber main
-pdflatex -interaction=nonstopmode main.tex
-pdflatex -interaction=nonstopmode main.tex
+cd paper/new_paper
+pdflatex -interaction=nonstopmode main-styled.tex
+biber main-styled
+pdflatex -interaction=nonstopmode main-styled.tex
+pdflatex -interaction=nonstopmode main-styled.tex
 ```
 
 ## Licence

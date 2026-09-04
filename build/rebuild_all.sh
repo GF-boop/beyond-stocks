@@ -59,13 +59,19 @@ echo "== 5. Sensibilites et annexes =="
 python3 build/central_cost_sensitivity.py
 python3 build/gamma_sensitivity.py --runs 10000
 python3 build/policy_sensitivity.py
-python3 build/mf_variants.py
-python3 build/mf_variant_lifecycle.py
-python3 build/historical_uncertainty.py
-python3 build/margin_call_experiment.py
+python3 build/source_country_sensitivity.py --runs 10000
+python3 build/source_exclusion_diagnostics.py --runs 10000 --seed $SEED
+python3 build/variance_concentration.py
+python3 build/compare_fixed_stacked_utility.py --runs 10000 --seed $SEED \
+  --year-from 1950 --portfolio-set ladders \
+  --output-json results/method_review/sample_windows/post1950_ladders_n10000.json
+python3 build/compare_fixed_stacked_utility.py --runs 10000 --seed $SEED \
+  --year-from 1970 --portfolio-set ladders \
+  --output-json results/method_review/sample_windows/post1970_ladders_n10000.json
 
 echo "== 6. Figures et diagnostics publics =="
-( cd paper && python3 build_appendix_data.py && python3 build_mf_benchmark_data.py )
+( cd paper && python3 build_appendix_data.py --fixed-notional \
+  --output-dir new_paper/figures && python3 build_mf_benchmark_data.py )
 python3 build/plot_ladders_main.py \
   results/main_ladders_n10000.json paper/figures/ladders_main.tex    # Figure 1
 python3 build/plot_ladders_main.py \
@@ -98,6 +104,8 @@ echo "== 8. Verification des artefacts =="
 python3 build/verify_repository.py
 
 echo "== 9. PDF =="
-( cd paper && pdflatex main.tex && biber main && pdflatex main.tex && pdflatex main.tex )
+( cd paper/new_paper && pdflatex -interaction=nonstopmode main-styled.tex && \
+  biber main-styled && pdflatex -interaction=nonstopmode main-styled.tex && \
+  pdflatex -interaction=nonstopmode main-styled.tex )
 
 echo "Reconstruction terminee. Verifier les sorties results/ et paper/figures/."

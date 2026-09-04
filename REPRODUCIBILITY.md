@@ -41,7 +41,7 @@ Provenance, licence and consuming script of every file:
 | `managed-futures-annual-real.csv` | `build/panel_managed_futures.py` | `managed-futures-monthly.csv`, `cpi-monthly.csv` |
 | `replication-panel-trend.csv` | `build/panel_replication_tendance.py` | `replication-panel.csv`, `jst-ntsg-panel-2025.csv`, `gold-annual.csv`, `managed-futures-annual-real.csv` |
 
-`replication-panel-trend.csv` (1,557 country-years, 16 markets, 1927–2025) is
+`replication-panel-trend.csv` (1,561 country-years, 16 markets, 1927–2025) is
 the direct input of all simulations.
 
 Data quality: `build/data_quality.py` (module `SUSPECT_PERIODS` /

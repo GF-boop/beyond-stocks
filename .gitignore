@@ -9,6 +9,22 @@ paper/*.run.xml
 paper/*.fls
 paper/*.fdb_latexmk
 paper/*.synctex.gz
+paper/new_paper/*.aux
+paper/new_paper/*.bbl
+paper/new_paper/*.bcf
+paper/new_paper/*.blg
+paper/new_paper/*.log
+paper/new_paper/*.out
+paper/new_paper/*.run.xml
+paper/new_paper/*.fls
+paper/new_paper/*.fdb_latexmk
+paper/new_paper/*.synctex.gz
+paper/archive/
+paper/main-styled.tex
+paper/main-styled-alternative.pdf
+paper/new_paper/main-styled-before-consolidation.tex
+paper/review-*.md
+results/*.log
 
 # Python
 __pycache__/

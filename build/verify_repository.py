@@ -40,10 +40,10 @@ def main() -> None:
 
   expected_rows = {
     "jst-real-returns-2025.csv": 2247,
-    "international-equity.csv": 2319,
-    "replication-panel.csv": 2233,
+    "international-equity.csv": 2324,
+    "replication-panel.csv": 2237,
     "managed-futures-annual-real.csv": 99,
-    "replication-panel-trend.csv": 1557,
+    "replication-panel-trend.csv": 1561,
   }
   for name, expected in expected_rows.items():
     rows = read_csv(name)
@@ -57,7 +57,7 @@ def main() -> None:
   require(len({row["country"] for row in panel}) == 16,
           "le panel ne contient pas 16 pays")
   issuers = {int(row["world_bond_issuers"]) for row in panel}
-  require(issuers == {12, 13, 14, 15, 16},
+  require(issuers == {13, 14, 15, 16},
           f"nombre d'emetteurs obligataires inattendu: {sorted(issuers)}")
 
   main_core = read_json(RESULTS / "main_core_n10000.json")
@@ -69,8 +69,8 @@ def main() -> None:
   require(abs(100.0 * benchmark["ruin_probability"]
               - grid_benchmark["ruin_pct"]) <= 0.005,
           "grid search et experience principale divergent sur la ruine ACO")
-  require(grid["argmax"]["domestic_pct"] == 30.0,
-          "l'optimum du grid search n'est plus 30/70")
+  require(grid["argmax"]["domestic_pct"] == 25.0,
+          "l'optimum du grid search n'est plus 25/75")
 
   audited_results = (
     "main_core_n10000.json", "main_ladders_n10000.json",

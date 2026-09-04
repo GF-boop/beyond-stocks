@@ -186,6 +186,8 @@ def read_panel(path: str) -> list[dict[str, float]]:
         # (jusqu'a 16), agreges a poids egaux puis convertis dans la monnaie et
         # le pouvoir d'achat du resident porte par cette ligne.
         "world_bond": float(row.get("world_bond_real", row["bond_real"])),
+        "world_bond_fixed_notional": float(row.get(
+          "world_bond_real_fixed_notional", row.get("world_bond_real", row["bond_real"]))),
         "world_bill": float(row.get("world_bill_real", row["bill_real"])),
         "world_bond_unhedged": float(row.get(
           "world_bond_real_unhedged", row.get("world_bond_real",
@@ -199,6 +201,8 @@ def read_panel(path: str) -> list[dict[str, float]]:
         "world_equity": float(row.get("world_equity_real",
                                       row["domestic_equity_real"])),
         "trend": float(row.get("trend_real", 0.0)),
+        "trend_fixed_notional": float(row.get(
+          "trend_real_fixed_notional", row.get("trend_real", 0.0))),
         "trend_unhedged": float(row.get(
           "trend_real_unhedged", row.get("trend_real", 0.0))),
         # L'or ne verse aucun revenu : son rendement est la seule variation de
@@ -212,11 +216,16 @@ def read_panel(path: str) -> list[dict[str, float]]:
 def block_bootstrap(rows: list[dict[str, float]], horizon: int,
                     rng: random.Random,
                     mean_block: float = MEAN_BLOCK_MONTHS_EQUIVALENT,
+                    end_treatment: str = "aco",
                     ) -> list[dict[str, float]]:
   """Blocs de longueur geometrique. Une longueur moyenne de 1 revient a un
   tirage independant annee par annee, ce qui reproduit le bootstrap IID que le
-  papier presente en comparaison. Un bloc reste dans le meme pays et s'arrete
-  a la premiere lacune de sa serie, conformement au bootstrap du papier."""
+  papier presente en comparaison. Un bloc reste dans le meme pays. Lorsqu'il
+  atteint une lacune ou la fin de la serie, il est complete par un nouveau pays
+  et la premiere observation disponible de celui-ci, comme dans ACO (2025,
+  section 4.4). Cette regle evite de sous-ponderer les debuts de series."""
+  if end_treatment not in {"aco", "restart"}:
+    raise ValueError("end_treatment must be aco or restart")
   if mean_block <= 1.0:
     return [rows[rng.randrange(len(rows))] for _ in range(horizon)]
   probability = 1.0 / mean_block
@@ -226,12 +235,20 @@ def block_bootstrap(rows: list[dict[str, float]], horizon: int,
     length = max(1, int(math.ceil(
       math.log(1.0 - rng.random()) / math.log(1.0 - probability))))
     start = rows[rng.randrange(len(rows))]
-    for offset in range(length):
-      observation = by_country_year.get(
-        (start["country"], start["year"] + offset))
+    country, year = start["country"], start["year"]
+    for _ in range(length):
+      observation = by_country_year.get((country, year))
       if observation is None:
-        break
+        if end_treatment == "restart":
+          break
+        # ACO raccordent un bloc incomplet au debut de l'historique d'un pays
+        # tire au hasard. Les lignes sont triees par pays puis annee, donc le
+        # minimum est la premiere observation utilisable de ce pays.
+        country = rows[rng.randrange(len(rows))]["country"]
+        year = min(item["year"] for item in rows if item["country"] == country)
+        observation = by_country_year[(country, year)]
       path.append(observation)
+      year += 1
       if len(path) >= horizon:
         break
   return path[:horizon]

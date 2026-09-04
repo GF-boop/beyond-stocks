@@ -7,6 +7,7 @@ import json
 import os
 import random
 import sys
+import argparse
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
@@ -47,30 +48,41 @@ def mix_fn(w: float):
 
 
 def main():
-  rows = read_panel(os.path.join(HERE, "..", "data", "replication-panel-trend.csv"))
+  parser = argparse.ArgumentParser(description=__doc__)
+  parser.add_argument("--runs", type=int, default=RUNS)
+  parser.add_argument("--panel", default=os.path.join(
+      HERE, "..", "data", "replication-panel-trend.csv"))
+  parser.add_argument("--output-json", default=os.path.join(
+      HERE, "..", "results", "grid_equity_n10000.json"))
+  args = parser.parse_args()
+  if args.runs <= 0:
+    raise ValueError("--runs must be positive")
+  rows = read_panel(args.panel)
   female_survival = mortality_table("female", "ssa")
   male_survival = mortality_table("male", "ssa")
   horizon = MAX_AGE - START_AGE + 1
 
+  names = {weight: f"mix_{weight:.2f}" for weight in GRID}
+  functions = {name: mix_fn(weight) for weight, name in names.items()}
+  functions[BENCHMARK_NAME] = mix_fn(0.33)
+  rng = random.Random(SEED)
+  scenarios = []
+  for _ in range(args.runs):
+    path = block_bootstrap(rows, horizon, rng, 10.0)
+    female_death = draw_death_age(female_survival, rng)
+    male_death = draw_death_age(male_survival, rng)
+    female_income, male_income, _ = draw_household_income(rng)
+    scenarios.append(build_scenario(
+      path, functions, female_death, male_death, female_income, male_income))
+  util_b = expected_utility(scenarios, BENCHMARK_NAME, BASE_SAVINGS_RATE)
   results = []
   for w in GRID:
-    clear_utility_batches()
-    rng = random.Random(SEED)
-    functions = {"mix": mix_fn(w), BENCHMARK_NAME: mix_fn(0.33)}
-    scenarios = []
-    for _ in range(RUNS):
-      path = block_bootstrap(rows, horizon, rng, 10.0)
-      female_death = draw_death_age(female_survival, rng)
-      male_death = draw_death_age(male_survival, rng)
-      female_income, male_income, _ = draw_household_income(rng)
-      scenarios.append(build_scenario(
-        path, functions, female_death, male_death, female_income, male_income))
-    util = expected_utility(scenarios, "mix", BASE_SAVINGS_RATE)
-    util_b = expected_utility(scenarios, BENCHMARK_NAME, BASE_SAVINGS_RATE)
-    eq = equivalent_savings_rate(scenarios, "mix", util_b, GAMMA,
+    name = names[w]
+    util = expected_utility(scenarios, name, BASE_SAVINGS_RATE)
+    eq = equivalent_savings_rate(scenarios, name, util_b, GAMMA,
                                  WITHDRAWAL_RATE)
     ruined = float(np.mean(evaluate_batch(
-      scenarios, "mix", BASE_SAVINGS_RATE).ruined))
+      scenarios, name, BASE_SAVINGS_RATE).ruined))
     row = {"domestic_pct": round(w * 100, 1),
            "international_pct": round((1 - w) * 100, 1),
            "mean_utility": util,
@@ -82,8 +94,8 @@ def main():
           f"saving éq. vs 33/67={eq * 100:6.2f}%", flush=True)
 
   best = max(results, key=lambda r: r["mean_utility"])
-  out = {"seed": SEED, "runs": RUNS, "grid": results, "argmax": best}
-  path = os.path.join(HERE, "..", "results", "grid_equity_n10000.json")
+  out = {"seed": SEED, "runs": args.runs, "grid": results, "argmax": best}
+  path = args.output_json
   with open(path, "w") as f:
     json.dump(out, f, indent=1)
   print(f"argmax : {best['domestic_pct']}% domestique / "

@@ -45,7 +45,6 @@ sys.path.insert(0, HERE)
 from compare_gold_trend_equal_vol import (  # noqa: E402
   DEFAULT_TREND_COST,
   DEFAULT_TREND_FEE,
-  trend_returns,
 )
 from compare_lifecycle_utility import (  # noqa: E402
   BASE_SAVINGS_RATE,
@@ -138,10 +137,19 @@ def return_functions(rows: list[dict[str, float]], spread: float,
                      gold_reallocation_from_year: int | None = None,
                     include_unhedged_control: bool = False,
                     include_constant_real_fx: bool = True,
+                    hedge_mode: str = "fixed_notional",
                     ) -> dict[str, ReturnFunction]:
   """Construit les rendements sans estimer aucun poids ni levier."""
-  net_trend = trend_returns(
-    rows, trend_fee, trend_cost, trend_haircut, volatility_multiplier=1.0)
+  if hedge_mode not in {"ideal", "fixed_notional"}:
+    raise ValueError("hedge_mode must be ideal or fixed_notional")
+  bond_key = "world_bond" if hedge_mode == "ideal" else "world_bond_fixed_notional"
+  trend_key = "trend" if hedge_mode == "ideal" else "trend_fixed_notional"
+  # Apply the fee and turnover cost to the selected gross return convention.
+  selected_trend = [row[trend_key] for row in rows]
+  net_trend = [
+    (1.0 + value) * (1.0 - trend_fee) - 1.0 - trend_cost - trend_haircut
+    for value in selected_trend
+  ]
   trend_by_row = {id(row): value for row, value in zip(rows, net_trend)}
   functions: dict[str, ReturnFunction] = {
     "Actions domestiques": lambda row: row["domestic"],
@@ -162,7 +170,7 @@ def return_functions(rows: list[dict[str, float]], spread: float,
     # comparateur local ; seuls les obligations couvertes sont mondialisees.
     "90/60 oblig. mondiales": lambda row: (
       0.9 * (0.33 * row["domestic"] + 0.67 * row["international"])
-      + 0.6 * row["world_bond"] - 0.5 * row["world_bill"] - 0.5 * spread
+      + 0.6 * row[bond_key] - 0.5 * row["world_bill"] - 0.5 * spread
       - 0.6 * fx_hedge_cost),
   }
 
@@ -216,7 +224,7 @@ def return_functions(rows: list[dict[str, float]], spread: float,
         effective_trend = t
       aco_equity = 0.33 * row["domestic"] + 0.67 * row["international"]
       return (effective_equity * aco_equity
-              + effective_bond * row["world_bond"]
+              + effective_bond * row[bond_key]
               + effective_gold * row["gold"]
               + effective_trend * trend_by_row[id(row)]
               + cash * row["world_bill"]
@@ -328,6 +336,12 @@ def main() -> None:
   parser.add_argument("--spread", type=float, default=DEFAULT_SPREAD)
   parser.add_argument("--fx-hedge-cost", type=float,
                       default=DEFAULT_FX_HEDGE_COST)
+  parser.add_argument("--hedge-mode", choices=("ideal", "fixed_notional"),
+                      default="fixed_notional",
+                      help="fixed_notional hedges beginning-of-year FX notional; ideal is the legacy full-value CIP convention")
+  parser.add_argument("--bootstrap-end-treatment", choices=("aco", "restart"),
+                      default="aco",
+                      help="aco completes a truncated block at a new country's first year; restart is the legacy implementation")
   parser.add_argument("--trend-fee", type=float, default=DEFAULT_TREND_FEE)
   parser.add_argument("--trend-cost", type=float, default=DEFAULT_TREND_COST)
   parser.add_argument("--trend-haircut", type=float, default=0.0)
@@ -337,6 +351,9 @@ def main() -> None:
   parser.add_argument("--year-from", type=int)
   parser.add_argument("--year-to", type=int)
   parser.add_argument("--exclude-country", action="append", default=[])
+  parser.add_argument("--exclude-country-year", action="append", default=[],
+                      metavar="COUNTRY:YEAR",
+                      help="diagnostic only: remove a resident country-year from the bootstrap panel")
   parser.add_argument(
     "--portfolio-set", choices=("all", "core", "ladders"), default="all",
     help=("all (defaut) evalue toutes les recettes ; core produit les tableaux "
@@ -412,8 +429,18 @@ def main() -> None:
   if args.year_to is not None:
     rows = [row for row in rows if row["year"] <= args.year_to]
   excluded = set(args.exclude_country)
+  excluded_country_years = set()
+  for value in args.exclude_country_year:
+    try:
+      country, year = value.rsplit(":", 1)
+      excluded_country_years.add((country, int(year)))
+    except ValueError as error:
+      raise ValueError("--exclude-country-year must be COUNTRY:YEAR") from error
   if excluded:
     rows = [row for row in rows if row["country"] not in excluded]
+  if excluded_country_years:
+    rows = [row for row in rows
+            if (row["country"], row["year"]) not in excluded_country_years]
   if args.exclude_war_years:
     rows = [row for row in rows
             if not is_war_year(row["country"], row["year"])]
@@ -436,7 +463,7 @@ def main() -> None:
   functions = return_functions(
     rows, args.spread, args.trend_fee, args.trend_cost, args.trend_haircut,
     args.fx_hedge_cost, args.reallocate_administered_gold_from,
-    args.include_unhedged_control, not args.usd_numeraire)
+    args.include_unhedged_control, not args.usd_numeraire, args.hedge_mode)
   if args.portfolio_set != "all":
     baseline_names = {
       "Actions domestiques", "ACO 33/67", "Stocks/I",
@@ -536,7 +563,8 @@ def main() -> None:
   income_at_25: list[float] = []
   income_at_47: list[float] = []
   for _ in range(args.runs):
-    path = block_bootstrap(rows, horizon, rng, args.mean_block)
+    path = block_bootstrap(rows, horizon, rng, args.mean_block,
+                           args.bootstrap_end_treatment)
     female_death = draw_death_age(female_survival, rng)
     male_death = draw_death_age(male_survival, rng)
     female_income, male_income, household_income = draw_household_income(rng)
@@ -617,8 +645,10 @@ def main() -> None:
       "seed": args.seed,
       "runs": args.runs,
       "mean_block": args.mean_block,
+      "bootstrap_end_treatment": args.bootstrap_end_treatment,
       "spread": args.spread,
       "fx_hedge_cost": args.fx_hedge_cost,
+      "hedge_mode": args.hedge_mode,
       "trend_fee": args.trend_fee,
       "trend_cost": args.trend_cost,
       "trend_haircut": args.trend_haircut,
@@ -628,6 +658,10 @@ def main() -> None:
       "year_from": args.year_from,
       "year_to": args.year_to,
       "excluded_countries": sorted(excluded),
+      "excluded_country_years": [
+        {"country": country, "year": year}
+        for country, year in sorted(excluded_country_years)
+      ],
       "excluded_war_years": args.exclude_war_years,
       "included_suspect_data": bool(quality_flags),
       "sample_mode": sample_mode,

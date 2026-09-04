@@ -48,7 +48,20 @@ import os
 # renormalises sur les marches restants. Le papier signale des ajustements
 # analogues autour des grandes ruptures (fermeture du NYSE en 1914, defaut grec
 # de 2012).
-MAX_CONVERTED_RETURN = 3.0
+# Des ruptures de prix ou de change restent dans le panel. Les supprimer sur
+# la base du rendement realise utiliserait une information de fin de periode et
+# modifierait retrospectivement le panier de l'investisseur. Les controles de
+# qualite documentent les observations suspectes sans les filtrer ici.
+MAX_CONVERTED_RETURN: float | None = None
+
+# Les taux de change JST traversent la reforme Reichsmark--Deutsche Mark de
+# 1948-49. Combiner ce saut de parite avec le rendement actions annuel de 1949
+# reviendrait a attribuer a un investisseur etranger un rendement negociable
+# continu au cours d'une fermeture et d'une conversion obligatoire. ACO (2025,
+# Table A.III) documente la fermeture allemande jusqu'en 1948; notre frequence
+# annuelle ne peut pas isoler proprement la reouverture de 1949. Cette
+# exclusion est fondee sur la disponibilite du marche, jamais sur le rendement.
+UNINVESTABLE_FOREIGN_MARKET_YEARS = {("Germany", 1949)}
 MIN_CAP_COVERAGE = 0.75
 
 
@@ -211,10 +224,18 @@ def capitalization_weights(
 def build(by_country: dict[str, dict[int, dict[str, float]]],
           gdp_weights: dict[tuple[str, int], float],
           cap_weights: dict[tuple[str, int], float],
+          excluded_markets: frozenset[str] = frozenset(),
+          excluded_market_years: frozenset[tuple[str, int]] = frozenset(),
           ) -> list[dict[str, float | str]]:
   """Pour chaque pays-annee, calcule le rendement reel des actions
   internationales telles que les verrait un investisseur de ce pays."""
+  # Keep excluded countries as possible residents so that shared macro inputs
+  # (notably U.S. CPI for the MF sleeve) remain available. They are removed
+  # from every investable international/world basket below; callers that test
+  # a source-country omission also remove their resident rows at simulation.
   countries = list(by_country)
+  investable_countries = [country for country in countries
+                          if country not in excluded_markets]
   rows: list[dict[str, float | str]] = []
 
   for domestic in countries:
@@ -225,7 +246,7 @@ def build(by_country: dict[str, dict[int, dict[str, float]]],
       # capitalisation ou entierement par PIB : les deux methodes ne sont
       # jamais melangees au sein d'un meme panier.
       weight_year = year - 1
-      candidates = [c for c in countries
+      candidates = [c for c in investable_countries
                     if year in by_country[c] and year - 1 in by_country[c]]
       # Le panel de rendements commence parfois avant la premiere observation
       # de PIB de l'annee precedente. Pour cette seule bordure, conserver la
@@ -263,6 +284,9 @@ def build(by_country: dict[str, dict[int, dict[str, float]]],
       real_international_constant_real_fx = 0.0
       retained_weight = 0.0
       for share, country in zip(shares, others):
+        if ((country, year) in UNINVESTABLE_FOREIGN_MARKET_YEARS
+            or (country, year) in excluded_market_years):
+          continue
         foreign = by_country[country][year]
         foreign_fx = foreign["xrusd"]
         if not foreign_fx:
@@ -285,7 +309,9 @@ def build(by_country: dict[str, dict[int, dict[str, float]]],
         # Rendement total pour l'investisseur domestique : le marche
         # etranger, compose avec la variation de change.
         converted = (1.0 + local_return) * (1.0 + fx_change) - 1.0
-        if not math.isfinite(converted) or abs(converted) > MAX_CONVERTED_RETURN:
+        if (not math.isfinite(converted)
+            or (MAX_CONVERTED_RETURN is not None
+                and abs(converted) > MAX_CONVERTED_RETURN)):
           continue
         nominal_international += share * converted
         # Meme marche, meme poids et meme filtre que dans le panier observe.
@@ -335,6 +361,9 @@ def build(by_country: dict[str, dict[int, dict[str, float]]],
       if not previous_domestic:
         continue
       for share, country in zip(world_shares, world_candidates):
+        if ((country, year) in UNINVESTABLE_FOREIGN_MARKET_YEARS
+            or (country, year) in excluded_market_years):
+          continue
         market = by_country[country][year]
         previous_market = by_country[country].get(year - 1, {})
         if not previous_market or not market["xrusd"]:
@@ -343,7 +372,9 @@ def build(by_country: dict[str, dict[int, dict[str, float]]],
                     / (previous_domestic["xrusd"]
                        / previous_market["xrusd"])) - 1.0
         converted = (1.0 + market["eq_tr"]) * (1.0 + fx_change) - 1.0
-        if not math.isfinite(converted) or abs(converted) > MAX_CONVERTED_RETURN:
+        if (not math.isfinite(converted)
+            or (MAX_CONVERTED_RETURN is not None
+                and abs(converted) > MAX_CONVERTED_RETURN)):
           continue
         nominal_world += share * converted
         retained_world_weight += share
@@ -381,6 +412,13 @@ def main() -> None:
     here, "..", "data", "bb-mcap-gdp.csv"))
   parser.add_argument("--out", default=os.path.join(
     here, "..", "data", "international-equity.csv"))
+  parser.add_argument("--max-converted-return", type=float,
+                      help="legacy diagnostic only: drop a foreign constituent when its absolute converted nominal return exceeds this value")
+  parser.add_argument("--exclude-market", action="append", default=[],
+                      help="remove a country from every international and world basket (repeatable)")
+  parser.add_argument("--exclude-market-year", action="append", default=[],
+                      metavar="COUNTRY:YEAR",
+                      help="diagnostic only: remove a source country-year from every equity basket")
   args = parser.parse_args()
 
   by_country = read_jst(args.dta)
@@ -389,7 +427,20 @@ def main() -> None:
   extend_weights(gdp_weights, args.gmd)
   ratios = read_mcap_ratios(args.mcap)
   cap_weights = capitalization_weights(gdp_weights, ratios)
-  rows = build(by_country, gdp_weights, cap_weights)
+  global MAX_CONVERTED_RETURN
+  MAX_CONVERTED_RETURN = args.max_converted_return
+  unknown = sorted(set(args.exclude_market) - set(by_country))
+  if unknown:
+    raise ValueError(f"unknown market(s): {', '.join(unknown)}")
+  excluded_market_years = set()
+  for value in args.exclude_market_year:
+    try:
+      country, year = value.rsplit(":", 1)
+      excluded_market_years.add((country, int(year)))
+    except ValueError as error:
+      raise ValueError("--exclude-market-year must be COUNTRY:YEAR") from error
+  rows = build(by_country, gdp_weights, cap_weights,
+               frozenset(args.exclude_market), frozenset(excluded_market_years))
 
   print(f"{len(rows)} observations, {len({r['country'] for r in rows})} pays")
   print(f"marches moyens par observation : "
