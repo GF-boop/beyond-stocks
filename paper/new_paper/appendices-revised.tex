@@ -42,10 +42,17 @@ principal: a zero local excess return is therefore not turned into an exchange-
 rate return. Price-index equities remain cash assets and retain their principal
 currency exposure.
 
-The annual currency treatment applies a forward to
-the initial foreign principal. Exchange-rate exposure on the subsequent
-asset gain or loss remains. This differs from removing foreign collateral
-and replacing it with the resident bill for the entire terminal asset value.
+The proxy includes the U.S.-dollar collateral return recorded in the monthly
+snapshot. For the annual household simulation, its dollar net asset value
+(NAV) is treated as a foreign asset. The baseline applies the
+initial-notional forward in equation~\eqref{eq:covered}, using the recorded
+collateral return for the foreign cash leg, as it does for global bonds.
+Exchange-rate exposure on subsequent NAV gains or losses remains.
+
+The alternative full-value convention replaces foreign collateral with the
+resident bill for the entire terminal asset value. A futures strategy
+collateralized directly in the household's currency would be a different
+implementation.
 
 \begin{table}[H]
 \centering
@@ -313,7 +320,7 @@ These are ranges across omissions, not confidence intervals, documented in the
 \gitlink{paper/figures/source_country_sensitivity.json}{country sensitivity audit}.
 
 The separate event experiments remove Italy 1942, then Italy 1942 and
-France 1946; the country experiment removes Italy throughout.
+France 1946.
 Their inputs and outputs are archived in the
 \gitdirlink{results/method_review/source_exclusions/}{source exclusion directory}.
 They measure the influence of observations identified during the audit.

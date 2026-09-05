@@ -44,7 +44,7 @@
 
 \begin{abstract}
 \noindent
-Should households saving for retirement hold only equities?
+Should lifecycle investors hold only equities?
 \citet{AnarkulovaCederburgODoherty2025} find that internationally diversified
 stocks outperform conventional balanced and target-date allocations in their
 baseline model. We recover the domestic-to-international equity ranking in an
@@ -52,9 +52,8 @@ annual public-data implementation, then widen the investment universe to
 currency-hedged global bonds, gold, and trend-following futures. Two simple
 four-sleeve families use fixed weights at exposures from 100\% to 200\%.
 Over 1927--2025, the equal-weight rule at 175\% exposure reduces simulated
-retirement ruin from 6.98\% to 2.48\% and matches benchmark utility with
-a utility-equivalent saving rate of 6.53\% of labor income instead of 10\%.
-At the same 175\% exposure, the equity-only
+retirement ruin from 6.98\% to 2.48\% and matches benchmark utility on
+6.53\% of income instead of 10\%. At the same 175\% exposure, the equity-only
 benchmark has 14.81\% ruin and requires 9.64\% saving.
 The proportional family at 175\% requires 5.87\% saving and has 2.13\%
 ruin. Post-1970 ablations, historical-panel resampling, and explicit return
@@ -85,7 +84,7 @@ results.
 
 \newpage
 
-\section*{Introduction}
+\section{Introduction}
 
 Households saving for retirement face two distinct decisions: which assets to
 combine and how much exposure to take. Balanced and target-date portfolios
@@ -108,18 +107,12 @@ assets bring different exposures to inflation, currency movements and market
 trends. Whether those differences improve retirement outcomes depends on their
 joint return distribution and on the cost of holding them.
 
-The economic rationale is to combine assets before deciding how much to
-borrow. In \citet{Markowitz1952}, imperfectly correlated returns can reduce
-portfolio variance for a given expected return. \citet{Asness1996} applies
-this logic to a levered balanced portfolio as an alternative to an all-equity
-allocation. Beyond variance, \citet{MoskowitzOoiPedersen2012} find that
-diversified trend-following futures performed particularly well during
-extreme market movements. These findings motivate testing both annual
-dispersion and retirement shortfalls; they do not establish that our
-portfolios have smaller drawdowns or dominate the entire return distribution.
-Here, an improvement means a lower simulated probability of exhausting
-retirement assets and a lower saving rate needed to attain the benchmark's
-expected utility. Annual volatility is reported separately.
+The extension follows the distinction between portfolio composition and total
+exposure in \citet{Markowitz1952,Asness1996}. Diversification can improve the
+distribution of returns available to a household, while borrowing scales both
+gains and losses and incurs financing costs. We evaluate these choices
+together through two fixed portfolio families. Their annual volatility is a
+reported outcome of the comparison, alongside ruin and expected utility.
 We also scale ACO's equity allocation through the same exposure ladder,
 financing each borrowed dollar at the resident bill plus the same spread.
 This separates the benefit of broader diversification from the effect of
@@ -132,55 +125,31 @@ sources.\footnote{The research repository is available at
 The final panel contains 1,561 country-years across 16 developed markets over
 1927--2025. It recovers the qualitative ranking of the fixed equity and
 balanced strategies: simulated retirement ruin is 6.98\% for the 33/67
-benchmark, compared with 15.52\% for domestic equities. The 33/67 mix is also
-near the utility maximum on our public-panel domestic--international equity
-grid: the best mix, 25/75, requires 9.96\% saving to match the utility of
-33/67 at 10\%. The multi-asset comparison therefore starts from a nearly
-optimal unlevered equity mix within that grid.
+benchmark, compared with 15.52\% for domestic equities. The annual implementation provides a common framework for comparing
+these allocations with the multi-asset extensions.
 
-The central experiment keeps the benchmark's equity mix fixed and adds
-currency-hedged global bonds, gold, and managed futures in two simple families.
-The proportional family starts from a conventional 60/40 stock--bond
-portfolio and borrows 50\% of investor capital to add 25\% gold and 25\%
-managed futures, giving 60/40/25/25 at 150\% gross exposure. We scale all
-four positions proportionally to obtain the other exposure levels. The
-equal-weight family assigns one quarter of gross exposure to each sleeve.
-Equal weighting avoids estimating allocation weights from return moments;
-\citet{DeMiguelGarlappiUppal2009} find that none of the 14 portfolio models
-they examine consistently outperforms $1/N$ out of sample across seven
-datasets. This motivates a transparent benchmark, without implying that
-equal weighting is optimal for our four sleeves. Both families use fixed
-exposures of 100, 125, 150, 175, and 200\%.
+The central experiment keeps the benchmark's equity mix fixed and adds the
+three other sleeves in two families: one proportional to 60/40/25/25 and
+one equally weighted. Each family is evaluated at gross exposures of 100,
+125, 150, 175, and 200\%. The portfolio weights follow simple rules specified independently of
+estimated means, covariances, and simulated utility.
 
 The full-panel equal-weight allocation at 175\% exposure reduces simulated
 ruin from 6.98\% to 2.48\% and equivalent saving from 10\% to 6.53\%.
-The raw annual volatilities are close, at 25.54\% and 25.28\%, respectively,
-but extreme currency conversions strongly influence these estimates:
-Italy 1942 alone accounts for 48.35\% of the equity benchmark's pooled
-sum of squared return deviations. We therefore examine exclusions of the
-largest source events, Italy 1942 and France 1946. Removing Italy 1942
+Under all three specified source-influence diagnostics, it has lower annual
+volatility as well as lower ruin and equivalent saving. Removing Italy 1942
 gives 17.64\% volatility against 18.17\%, 2.42\% ruin against 7.19\%, and
-6.41\% equivalent saving against 10\%. Removing France 1946 as well
-gives the same direction on all three measures.
-The ranking also survives a broader historical-access and monetary-stress
-screen: equal-weight 175\% has 15.17\% volatility, 0.57\% ruin, and 5.93\%
-equivalent saving, against 17.02\%, 5.04\%, and 10\% for ACO. This screen
-excludes documented disruptions, extreme inflation, and the influential
-Italy observation; it is a retrospective sensitivity, not proof that every
-retained return was historically investable.
+6.41\% equivalent saving against 10\%. Removing France 1946 as well, or Italy
+throughout the sample, gives the same direction on all three measures.
+The diversified advantage therefore extends to volatility when the most
+influential source observations are removed.
 
 The primary sample covers 1927--2025, retaining the range of monetary and
 market regimes in the historical record. Post-1950 and post-1970 windows
 examine the contribution of early history and preserve the favorable ruin
-and utility ranking of the two 200\% families. Thus the lower ruin and saving
-requirements are not confined to the early historical sample. The central
-question is whether these gains from broader diversification persist across
-exposure levels, portfolio compositions, and implementation assumptions.
-
-Section~\ref{sec:aggregate-adoption} distinguishes these household-level
-gains from adoption across the retirement system: large reallocations can
-change prices and returns in equities and gold, while common trend-following
-signals raise additional questions about trading capacity.
+and utility ranking of the two 200\% families. Together, these comparisons
+show how a broader asset universe changes the trade-off between capital
+preservation and retirement resources.
 
 \section{ACO and the Multi-Asset Extension}
 
@@ -205,7 +174,7 @@ Section~\ref{sec:spread-sensitivity}.
 ACO select portfolio weights by maximizing average simulated utility. On our
 public panel, a grid search restricted to the domestic--international equity
 mix places the optimum at 25\% domestic and 75\% international, with 33/67
-within 0.04 percentage points of equivalent saving. We therefore retain
+within 0.02 percentage points of equivalent saving. We therefore retain
 33/67 as a common equity sleeve and reference strategy. The multi-asset
 families use fixed heuristic weights rather than an analogous optimization.
 The resulting comparison asks whether simple diversified rules improve on
@@ -220,36 +189,26 @@ each exposure level.
 \Technicalappendix{app:gamma-sensitivity} separately examines how the
 comparison changes with risk aversion.
 
-The question is what investors today can learn from long-run market history,
-not whether they could have purchased the same funds in 1927.
-Managed-futures ETFs and funds combining traditional assets with
-managed-futures exposure now provide practical ways to implement these
-allocations.\footnote{Examples include the
-\href{https://www.imgp.com/us/fund/US53700T8273-imgp-dbi-managed-futures-strategy-etf/}{iMGP DBi Managed Futures Strategy ETF (DBMF)}
-and the
-\href{https://www.returnstackedetfs.com/rsst-return-stacked-us-stocks-managed-futures/}{Return Stacked U.S. Stocks \& Managed Futures ETF (RSST)}.
-These illustrate available implementation instruments; access depends on
-jurisdiction and brokerage arrangements, and their exposures and costs need
-not match the simulated portfolios exactly.}
-Historical availability of the fund wrapper is therefore not the relevant
-criterion: a globally diversified equity portfolio evaluated over ACO's
-history likewise differs from what households could readily access at the
-time. Both exercises use historical returns to inform present-day allocation
-decisions.
+\subsection{Three empirical questions}
 
-\subsection{The central question}
+Our investigation addresses three questions.
 
-Having recovered ACO's main portfolio ranking on public data, we ask whether
-diversification across asset classes can further reduce retirement ruin and
-the saving required to attain benchmark utility, including when the equity
-benchmark uses the same leverage.
+First, how much of the international-equity comparison survives when real
+exchange rates are held constant? We keep the national markets and weights
+fixed and remove the joint movement of nominal currencies and relative prices.
+The counterfactual measures the accounting contribution of currency movements.
 
-Section~\ref{sec:leverage-ladders-main} compares the
-fixed exposure ladders, removes individual sleeves to identify their
-contributions, and tests sensitivity to historical windows, household
-preferences, and implementation costs. A common retirement-income target
-also checks whether lower ruin under each portfolio's own withdrawal rule
-translates into a greater ability to fund the same planned spending.
+Second, does replacing local sovereign bonds with a currency-hedged global
+bond basket improve outcomes? Keeping equity weights and leverage fixed
+allows us to compare the two bond sleeves under the stated currency and
+financing conventions.
+
+Third, do the four-sleeve portfolios improve retirement outcomes across fixed
+exposure levels? We compare ruin, equivalent saving and annual volatility,
+then examine which conclusions survive changes in the historical sample,
+household preferences and implementation costs. This last step matters because
+extreme currency conversions can move the volatility comparison without
+reversing the lifecycle ranking.
 
 \section{Data}
 \label{sec:data}
@@ -381,24 +340,31 @@ segments come from the monthly NBER Macrohistory files
 \citep{NBERMacrohistory}, commodities are extended with the World Bank ``Pink
 Sheet'' \citep{WorldBankPinkSheet}, and currencies use month-end Federal
 Reserve H.10 quotations \citep{FedH10}. Where two sources meet, the return that
-straddles the junction is left missing. This prevents source-level differences from entering the trading signal.
+straddles the junction is left missing. This prevents source-level differences from entering the trading signal. Appendix~\ref{app:mf-external} reports the monthly proxy's performance and its relation to contemporary managed-futures benchmarks.
 
-We use the reconstructed managed-futures series to extend the public-data
-allocation experiment to trend following. Its returns include U.S.-dollar
-collateral income and are converted into the household's currency using the
-same initial-notional hedge convention as global bonds.
-Appendix~\ref{app:mf-external} reports the external comparisons;
-Appendix~\ref{app:mf-monthly-data} documents the construction details and
-limitations.
-
+The proxy includes the U.S.-dollar collateral return recorded in the snapshot.
+Synthetic bond returns are excess P\&Ls. Their foreign-currency P\&L is
+converted at month end, but no foreign bond principal is added to that P\&L;
+a zero local excess return therefore remains zero when the exchange rate moves.
+The baseline treats its dollar NAV as a foreign asset and applies the
+initial-notional forward in equation~\eqref{eq:covered}, using the recorded
+collateral return for the foreign cash leg. Currency exposure on subsequent
+NAV gains or losses remains. This is the same hedge convention as for global
+bonds. Replacing collateral for the entire terminal value is the alternative
+full-value convention. A locally collateralized futures strategy would be a
+different implementation.
 We subtract a 0.85\% annual management
 fee and transaction costs based on measured turnover and a three-basis-point
 spread. Its monthly correlation with several official CTA indexes is about
 0.55--0.59 over 2000--2025.
 
-The additional return-deduction experiment in
-Appendix~\ref{app:review-cost-mf} measures how much deterioration in the
-proxy's returns the portfolio results can absorb.
+The reconstruction supplies a public-data proxy for this allocation experiment.
+The external comparisons establish common return variation, rather than
+equivalence to an investable CTA index. Synthetic instruments and omitted
+commodity carry limit a precise performance interpretation. The literature
+provides independent evidence for the economic mechanism; the additional
+return-deduction experiment in Appendix~\ref{app:review-cost-mf} measures how
+much deterioration in our particular proxy the portfolio results can absorb.
 
 \subsection{Realized portfolio properties}
 
@@ -784,7 +750,7 @@ The comparison measures the effect of changing composition at fixed exposure.
 Figure~\ref{tab:sleeve-ablation} uses a demanding, historically informed
 benchmark. ACO's 33/67 equity allocation was selected by maximizing simulated
 lifecycle utility in their historical framework; in our public-panel equity
-grid, it is within 0.04 percentage points of equivalent saving of the best
+grid, it is within 0.02 percentage points of equivalent saving of the best
 domestic--international mix. The diversified sleeve weights and their pro-rata
 ablations are fixed rules, without a corresponding optimization of historical
 utility. Their sizeable gains at 175\% exposure therefore demonstrate that
@@ -905,18 +871,19 @@ The full-panel volatility comparison is therefore strongly influenced by
 these observations, whereas the ruin and utility comparisons favor the
 diversified rule both with and without them.
 
-Table~\ref{tab:source-exclusions} applies the two source-event influence
+Table~\ref{tab:source-exclusions} applies the three influence
 diagnostics consistently. A source event is removed from the resident bootstrap
-row and from every reconstructed international-equity and global-bond basket
-for that year. Under the Italy-1942 event removal,
+row and from every reconstructed international-equity and global-bond basket;
+the country diagnostic removes Italy from those baskets in all years and from
+the resident rows. Under the Italy-1942 event removal,
 the equal-weight 175\% rule has 2.42\% ruin and a 6.41\% equivalent saving
 rate, versus 7.19\% and 10\% for ACO. Its annual volatility is 17.64\%,
-against 18.17\% for ACO. Removing France 1946 as well
-changes the levels but not the direction of the comparison. In both diagnostics, the diversified rule combines lower
+against 18.17\% for ACO. Removing France 1946 as well, or Italy in every year,
+changes the levels but not the direction of the comparison. Across all three diagnostics, the diversified rule combines lower
 volatility, lower ruin, and a lower saving requirement.
 
 \begin{table}[htbp]\centering\small
-\caption{Source-event influence diagnostics}
+\caption{Source-event and source-country influence diagnostics}
 \label{tab:source-exclusions}
 \begin{tabular}{llrrr}
 \toprule
@@ -929,12 +896,16 @@ Italy 1942 event & ACO & 18.17\% & 7.19\% & 10.00\% \\
 Italy 1942; France 1946 events & ACO & 17.50\% & 7.17\% & 10.00\% \\
  & ACO 175\% & 29.90\% & 15.21\% & 10.28\% \\
  & Equal-weight 175\% & 16.00\% & 2.53\% & 6.41\% \\
+\addlinespace
+Italy, all years & ACO & 18.08\% & 7.54\% & 10.00\% \\
+ & ACO 175\% & 31.28\% & 15.22\% & 9.67\% \\
+ & Equal-weight 175\% & 17.65\% & 2.49\% & 6.52\% \\
 \bottomrule
 \end{tabular}
 \par\smallskip\begin{minipage}{0.95\textwidth}\footnotesize
 10,000 paired simulations per diagnostic. The corresponding 95\% paired
 Monte Carlo intervals for the equal-weight ruin difference are
-$[-5.25,-4.29]$ and $[-5.12,-4.16]$ percentage points.
+$[-5.25,-4.29]$, $[-5.12,-4.16]$, and $[-5.53,-4.57]$ percentage points.
 This table can be reproduced using the replication commands in the
 \gitlink{results/method_review/source_exclusions/provenance.json}{source provenance log}.
 \end{minipage}\end{table}
@@ -1071,62 +1042,7 @@ stress tests after baseline fees and costs, preserving the proxy's return
 fluctuations. They establish tolerance to lower returns without validating
 omitted carry, trading constraints, or a different crisis-response profile.
 
-\section{Individual allocation, market capacity, and aggregate adoption}
-\label{sec:aggregate-adoption}
-
-Our simulations evaluate a household whose trades do not move market prices.
-Historical returns are held fixed when portfolio weights change. This is a
-partial-equilibrium comparison: it measures household outcomes under a given
-return environment, without solving for how widespread adoption would change
-that environment. The distinction applies to the equity benchmark as well as
-the multi-asset extensions.
-
-For equities, \citet{GabaixKoijen2023} develop an inelastic-markets framework
-in which institutional allocation constraints limit the response of demand
-to prices, allowing portfolio flows to move aggregate valuations substantially.
-The mechanism is not simply a fixed number of shares: it also concerns how
-willing existing investors are to adjust their holdings. Applied to our
-setting, this implies that a broad retirement reallocation toward equities
-cannot be assumed to preserve historical returns. Buying existing shares
-transfers ownership; it does not automatically create productive capital.
-With expected cash flows held fixed, a higher purchase price lowers the
-prospective return.
-
-For gold, the mechanism is straightforward: if retirement funds seek to buy
-much more of it, its price must rise enough to encourage existing owners to
-sell or producers to supply more. \citet{ErbHarvey2013} discuss this demand
-effect and find that high inflation-adjusted gold prices have historically
-been followed by lower real returns. Investors who already own gold benefit
-from the price rise; those buying afterwards pay more for the same asset.
-Large-scale adoption could therefore change the returns available to future
-investors, even if gold continues to diversify their portfolios.
-
-For trend following, the concern is that many funds may buy or sell the same
-contracts at the same time. Larger orders can become more expensive to
-execute and can themselves move prices. \citet{BaltasCrowding2019} finds
-weaker subsequent performance when many investors hold similar momentum
-positions. His evidence concerns strategies that rank assets against one
-another, so it does not directly measure the capacity of our rule, which
-uses each asset's own past returns. \citet{BaltasKosowski2013} find no
-statistically significant evidence that scale constrained performance in
-their historical CTA sample. This supports feasibility at the scale they
-studied, without establishing how much additional capital the strategy could
-absorb. That depends on the contracts traded, the size and frequency of
-orders, and the liquidity available to execute them.
-
-This distinction matters equally for interpreting ACO. Their household
-simulations also resample historical returns without making prices respond
-to widespread adoption of the recommended equity allocation
-\citep{AnarkulovaCederburgODoherty2025}. Neither study therefore establishes
-what would happen if the retirement system as a whole adopted its
-portfolios. Our finding is that broader diversification improves household
-outcomes under the same historical-return approach used to evaluate the
-equity benchmark. The cost and return stresses show how much those gains
-can withstand higher costs or lower MF returns. Assessing a system-wide
-reallocation would require an additional analysis of how investor demand
-changes prices and trading conditions for all the portfolios compared.
-
-\section*{Conclusion}
+\section{Conclusion}
 
 The matched-exposure comparison separates diversification from borrowing.
 Levering ACO to 175\% produces 14.81\% simulated ruin, versus 2.13\%
@@ -1144,8 +1060,8 @@ benchmark utility with a saving rate of 6.53\% rather than 10\%.
 Diversification and exposure make distinct contributions. At 100\% exposure,
 both diversified families reduce volatility and ruin without portfolio-level
 borrowing. Additional exposure raises retirement resources and brings the
-saving requirement below that of the equity benchmark. Under both
-source-event influence diagnostics, the equal-weight 175\% portfolio also has lower
+saving requirement below that of the equity benchmark. Under all three
+source-influence diagnostics, the equal-weight 175\% portfolio also has lower
 annual volatility than ACO, alongside lower ruin and equivalent saving.
 The later historical windows preserve the favorable lifecycle ranking.
 At 175\% exposure, all six three-sleeve ablations retain lower ruin than
