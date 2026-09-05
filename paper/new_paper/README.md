@@ -1,5 +1,23 @@
 # Revised manuscript with technical appendices
 
+The September 5 review revision integrates the MF return deductions, 175%
+financing/hedge-cost grid, post-1970 ablations, outer calendar-panel bootstrap,
+and common planned ACO withdrawal. Regenerate the five added exhibits with
+`python3 ../../build/render_review_controls.py` before the LaTeX build below.
+Their input hashes are recorded in
+`../../results/method_review/review_exhibits_provenance.json`.
+
+The common-withdrawal exhibit reports unconditional failure frequencies
+alongside rates conditional on reaching retirement with a positive target.
+ACO has the same 698 failures in both presentations (6.98% of 10,000
+lifetimes; 7.10% of 9,832 eligible paths). The output JSON includes an
+own-capital-target audit: all four portfolios reproduce the main engine's
+failure indicators exactly and match their archived main ruin estimates.
+Only the earlier common-target funding ratios required correction for paths
+with no retirement years; the main unconditional ruin definition is unchanged.
+The historical-bootstrap ranges retain inner simulation noise and are
+described as sensitivity ranges rather than calibrated confidence intervals.
+
 `main-styled.tex` and `main-styled.pdf` are the revised manuscript. They
 use the 1,561-country-year raw panel, the ACO bootstrap continuation rule, and
 the fixed-notional currency-hedge convention. The equal-weight four-sleeve

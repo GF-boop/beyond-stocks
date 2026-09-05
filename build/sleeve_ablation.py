@@ -84,6 +84,10 @@ def main() -> None:
   parser.add_argument("--runs", type=int, default=10_000)
   parser.add_argument("--seed", type=int, default=20260827)
   parser.add_argument("--panel", default=os.path.join(HERE, "..", "data", "replication-panel-trend.csv"))
+  parser.add_argument("--year-from", type=int,
+                      help="retain calendar years greater than or equal to this value")
+  parser.add_argument("--year-to", type=int,
+                      help="retain calendar years less than or equal to this value")
   parser.add_argument("--ladder", action="store_true", help="Evaluate five exposures for every complete and ablated composition")
   parser.add_argument("--output-json", default=os.path.join(
       HERE, "..", "results", "sleeve_ablation_n10000.json"))
@@ -93,6 +97,12 @@ def main() -> None:
 
   panel_path = args.panel
   rows = read_panel(panel_path)
+  if args.year_from is not None:
+    rows = [row for row in rows if row["year"] >= args.year_from]
+  if args.year_to is not None:
+    rows = [row for row in rows if row["year"] <= args.year_to]
+  if len(rows) < 2:
+    raise ValueError("The requested historical window is too short")
   functions: dict[str, Callable] = {
       BENCHMARK_NAME: function_for((1.0, 0.0, 0.0, 0.0), DEFAULT_SPREAD,
                                    DEFAULT_TREND_FEE, DEFAULT_TREND_COST,
@@ -179,7 +189,9 @@ def main() -> None:
       "purpose": "Constant-gross-exposure sleeve ablation",
       "ablation_rule": "Remove one sleeve and reallocate its notional pro rata among the remaining sleeves.",
       "seed": args.seed, "runs": args.runs, "observations": len(rows),
-      "period": "1927-2025", "mean_block_years": 10.0,
+      "period": f"{min(row['year'] for row in rows)}-{max(row['year'] for row in rows)}",
+      "year_from": args.year_from, "year_to": args.year_to,
+      "mean_block_years": 10.0,
       "bootstrap_end_treatment": "aco", "hedge_mode": "fixed_notional",
       "spread": DEFAULT_SPREAD, "fx_hedge_cost": DEFAULT_FX_HEDGE_COST,
       "trend_fee": DEFAULT_TREND_FEE, "trend_cost": DEFAULT_TREND_COST,

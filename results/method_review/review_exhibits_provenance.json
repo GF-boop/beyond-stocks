@@ -1,0 +1,24 @@
+{
+  "renderer": "build/render_review_controls.py",
+  "renderer_sha256": "cdad222925e5f032f0be722bd6b8faaa0a6aa35ddabd29544d3a549550241a98",
+  "inputs_sha256": {
+    "results/main_ladders_n10000.json": "982fef323892224bc627c18864462f5115a68d0b935e929d92aabbcf736518c8",
+    "results/method_review/mf_return_haircuts/haircut_100bp_n10000.json": "22f467c59e84238cae51a0dda8bf8855c71fc369cf74312c586abd8c30e12e21",
+    "results/method_review/mf_return_haircuts/haircut_200bp_n10000.json": "2a36ee6deddcd4f8e3bcae19a35a785a370b31eabbc5667959cc89badd3b7740",
+    "results/method_review/mf_return_haircuts/haircut_300bp_n10000.json": "1354e099a49d7eab59a6079f23df4b16bfd3c1e3ee12b9048d31cfa2e0c5e54f",
+    "results/method_review/mf_return_haircuts/haircut_400bp_n10000.json": "5112614f40e650f9abfde9e0c9d4ef3cfc1a7d4d79d6af6d1b0e665b0104a8dc",
+    "results/method_review/mf_return_haircuts/haircut_600bp_n10000.json": "d9742e3cefffa255d9a2d4f57126e23b8046b3ccf64db3d7dc676ba5c98bc27c",
+    "results/method_review/mf_return_haircuts/haircut_700bp_n10000.json": "34b596cde9990f7cd5476d099ae74a692dfae0f3b565b07bf274503bd0698f68",
+    "results/method_review/costs_175/financing_100bp_n10000.json": "42b5432ab346c30a115109edb52a5b81af5186c9318f59580da3cf70409b9d01",
+    "results/method_review/costs_175/financing_200bp_n10000.json": "53487397f17e99cc1fe8eb2fb37785501a2720afb1192c1dfc6ccce0cbd8919d",
+    "results/method_review/costs_175/financing_250bp_n10000.json": "a65b426c35d5632aaf4d8ab26cbcf17855cec06ef81cbb5ad5c614db7efc4f13",
+    "results/method_review/costs_175/financing_300bp_n10000.json": "5ba73d9fc223df72e2fad345afcece0a906924986f48ea3f9f917ac3798536ba",
+    "results/method_review/costs_175/hedge_100bp_n10000.json": "d718fdd73418871f6a7668e39606b43006d92bf4650cf75cb43bd8b3b45d722c",
+    "results/method_review/costs_175/hedge_50bp_n10000.json": "bb8fea80018437c9ab44ec45bd6311dc563dee0820e78c129bac3991eadab70e",
+    "results/method_review/post1970_ablation/ablation_1970_n10000.json": "7f7aaec98eb6a67d38a524c789d4c976799f72917a60b8f1bac92fe0ba44077c",
+    "results/method_review/historical_panel_bootstrap/calendar_blocks_5y_outer100_inner1000.json": "06ed8517a0c87ee7406b11ff48a70962e6fa5b3a8c03a3fc367e49f7d7ca0db9",
+    "results/method_review/historical_panel_bootstrap/calendar_blocks_10y_outer100_inner1000.json": "629c05b440e0947bf4ffbe5b2f780a2011e6a421145a797eeebd106e9d39315d",
+    "results/method_review/historical_panel_bootstrap/calendar_blocks_20y_outer100_inner1000.json": "5916d191bc91e50c374602d712bb801431462fff3d955d9179bc98a19e1fee44",
+    "results/method_review/common_consumption_target/aco_common_target_n10000.json": "2d8bca34c6fb7e16aa2e106c3723be4aee162c322f00610171e4ac25a96db1ec"
+  }
+}

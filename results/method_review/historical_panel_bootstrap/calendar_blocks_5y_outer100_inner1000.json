@@ -1,0 +1,1757 @@
+{
+  "purpose": "Nested stationary bootstrap of complete calendar-year panels",
+  "outer_replicates": 100,
+  "inner_runs": 1000,
+  "outer_mean_block_years": 5.0,
+  "inner_mean_block_years": 10.0,
+  "seed": 20260905,
+  "calendar_years": [
+    1927,
+    2025
+  ],
+  "source_observations": 1561,
+  "summary": {
+    "70/46.67/29.17/29.17 ACO": {
+      "ruin_difference_vs_aco": {
+        "median": -0.055,
+        "p05": -0.17509999999999998,
+        "p95": -0.004950000000000003,
+        "share_better_than_aco": 0.98
+      },
+      "equivalent_savings_rate": {
+        "median": 0.05694687366485596,
+        "p05": 0.03464724123477936,
+        "p95": 0.09215143322944641,
+        "share_better_than_aco": null
+      },
+      "ruin_probability": {
+        "median": 0.028,
+        "p05": 0.0029500000000000004,
+        "p95": 0.06629999999999998,
+        "share_better_than_aco": null
+      }
+    },
+    "43.75/43.75/43.75/43.75 ACO": {
+      "ruin_difference_vs_aco": {
+        "median": -0.0505,
+        "p05": -0.18255,
+        "p95": 0.008249999999999987,
+        "share_better_than_aco": 0.86
+      },
+      "equivalent_savings_rate": {
+        "median": 0.06245717406272888,
+        "p05": 0.03138439357280731,
+        "p95": 0.1289539158344269,
+        "share_better_than_aco": null
+      },
+      "ruin_probability": {
+        "median": 0.032,
+        "p05": 0.002,
+        "p95": 0.08429999999999999,
+        "share_better_than_aco": null
+      }
+    }
+  },
+  "replicates": [
+    {
+      "benchmark_ruin": 0.012,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.006,
+          "ruin_difference_vs_aco": -0.006,
+          "equivalent_savings_rate": 0.07115116715431213
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.007,
+          "ruin_difference_vs_aco": -0.005,
+          "equivalent_savings_rate": 0.09545716643333435
+        }
+      },
+      "replicate": 1,
+      "unique_source_years": 53
+    },
+    {
+      "benchmark_ruin": 0.147,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.018,
+          "ruin_difference_vs_aco": -0.129,
+          "equivalent_savings_rate": 0.04583510756492615
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.01,
+          "ruin_difference_vs_aco": -0.137,
+          "equivalent_savings_rate": 0.041897743940353394
+        }
+      },
+      "replicate": 2,
+      "unique_source_years": 65
+    },
+    {
+      "benchmark_ruin": 0.129,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.027,
+          "ruin_difference_vs_aco": -0.102,
+          "equivalent_savings_rate": 0.060023218393325806
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.027,
+          "ruin_difference_vs_aco": -0.102,
+          "equivalent_savings_rate": 0.06753352284431458
+        }
+      },
+      "replicate": 3,
+      "unique_source_years": 72
+    },
+    {
+      "benchmark_ruin": 0.051,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.012,
+          "ruin_difference_vs_aco": -0.039,
+          "equivalent_savings_rate": 0.05239066481590271
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.012,
+          "ruin_difference_vs_aco": -0.039,
+          "equivalent_savings_rate": 0.054976314306259155
+        }
+      },
+      "replicate": 4,
+      "unique_source_years": 74
+    },
+    {
+      "benchmark_ruin": 0.201,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.036,
+          "ruin_difference_vs_aco": -0.165,
+          "equivalent_savings_rate": 0.03903880715370178
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.026,
+          "ruin_difference_vs_aco": -0.175,
+          "equivalent_savings_rate": 0.032965511083602905
+        }
+      },
+      "replicate": 5,
+      "unique_source_years": 74
+    },
+    {
+      "benchmark_ruin": 0.196,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.058,
+          "ruin_difference_vs_aco": -0.138,
+          "equivalent_savings_rate": 0.03900310397148132
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.057,
+          "ruin_difference_vs_aco": -0.139,
+          "equivalent_savings_rate": 0.033714085817337036
+        }
+      },
+      "replicate": 6,
+      "unique_source_years": 54
+    },
+    {
+      "benchmark_ruin": 0.099,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.017,
+          "ruin_difference_vs_aco": -0.082,
+          "equivalent_savings_rate": 0.04330006241798401
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.016,
+          "ruin_difference_vs_aco": -0.083,
+          "equivalent_savings_rate": 0.04291132092475891
+        }
+      },
+      "replicate": 7,
+      "unique_source_years": 61
+    },
+    {
+      "benchmark_ruin": 0.001,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.0,
+          "ruin_difference_vs_aco": -0.001,
+          "equivalent_savings_rate": 0.08165642619132996
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.002,
+          "ruin_difference_vs_aco": 0.001,
+          "equivalent_savings_rate": 0.10520711541175842
+        }
+      },
+      "replicate": 8,
+      "unique_source_years": 63
+    },
+    {
+      "benchmark_ruin": 0.071,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.056,
+          "ruin_difference_vs_aco": -0.015,
+          "equivalent_savings_rate": 0.08572885394096375
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.079,
+          "ruin_difference_vs_aco": 0.008,
+          "equivalent_savings_rate": 0.11311593651771545
+        }
+      },
+      "replicate": 9,
+      "unique_source_years": 66
+    },
+    {
+      "benchmark_ruin": 0.099,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.03,
+          "ruin_difference_vs_aco": -0.069,
+          "equivalent_savings_rate": 0.05002036690711975
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.027,
+          "ruin_difference_vs_aco": -0.072,
+          "equivalent_savings_rate": 0.04727187752723694
+        }
+      },
+      "replicate": 10,
+      "unique_source_years": 64
+    },
+    {
+      "benchmark_ruin": 0.098,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.042,
+          "ruin_difference_vs_aco": -0.056,
+          "equivalent_savings_rate": 0.06330981850624084
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.053,
+          "ruin_difference_vs_aco": -0.045,
+          "equivalent_savings_rate": 0.06820341944694519
+        }
+      },
+      "replicate": 11,
+      "unique_source_years": 70
+    },
+    {
+      "benchmark_ruin": 0.069,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.049,
+          "ruin_difference_vs_aco": -0.02,
+          "equivalent_savings_rate": 0.10330012440681458
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.082,
+          "ruin_difference_vs_aco": 0.013,
+          "equivalent_savings_rate": 0.1471107304096222
+        }
+      },
+      "replicate": 12,
+      "unique_source_years": 62
+    },
+    {
+      "benchmark_ruin": 0.054,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.023,
+          "ruin_difference_vs_aco": -0.031,
+          "equivalent_savings_rate": 0.0649271309375763
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.024,
+          "ruin_difference_vs_aco": -0.03,
+          "equivalent_savings_rate": 0.08164694905281067
+        }
+      },
+      "replicate": 13,
+      "unique_source_years": 69
+    },
+    {
+      "benchmark_ruin": 0.188,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.041,
+          "ruin_difference_vs_aco": -0.147,
+          "equivalent_savings_rate": 0.03996726870536804
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.026,
+          "ruin_difference_vs_aco": -0.162,
+          "equivalent_savings_rate": 0.04149988293647766
+        }
+      },
+      "replicate": 14,
+      "unique_source_years": 69
+    },
+    {
+      "benchmark_ruin": 0.217,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.04,
+          "ruin_difference_vs_aco": -0.177,
+          "equivalent_savings_rate": 0.03730836510658264
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.024,
+          "ruin_difference_vs_aco": -0.193,
+          "equivalent_savings_rate": 0.031499773263931274
+        }
+      },
+      "replicate": 15,
+      "unique_source_years": 59
+    },
+    {
+      "benchmark_ruin": 0.073,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.042,
+          "ruin_difference_vs_aco": -0.031,
+          "equivalent_savings_rate": 0.05781605839729309
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.048,
+          "ruin_difference_vs_aco": -0.025,
+          "equivalent_savings_rate": 0.07048925757408142
+        }
+      },
+      "replicate": 16,
+      "unique_source_years": 62
+    },
+    {
+      "benchmark_ruin": 0.093,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.041,
+          "ruin_difference_vs_aco": -0.052,
+          "equivalent_savings_rate": 0.06875923275947571
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.056,
+          "ruin_difference_vs_aco": -0.037,
+          "equivalent_savings_rate": 0.08378687500953674
+        }
+      },
+      "replicate": 17,
+      "unique_source_years": 60
+    },
+    {
+      "benchmark_ruin": 0.074,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.046,
+          "ruin_difference_vs_aco": -0.028,
+          "equivalent_savings_rate": 0.07502105832099915
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.055,
+          "ruin_difference_vs_aco": -0.019,
+          "equivalent_savings_rate": 0.0925358235836029
+        }
+      },
+      "replicate": 18,
+      "unique_source_years": 63
+    },
+    {
+      "benchmark_ruin": 0.1,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.035,
+          "ruin_difference_vs_aco": -0.065,
+          "equivalent_savings_rate": 0.04840025305747986
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.035,
+          "ruin_difference_vs_aco": -0.065,
+          "equivalent_savings_rate": 0.053513675928115845
+        }
+      },
+      "replicate": 19,
+      "unique_source_years": 64
+    },
+    {
+      "benchmark_ruin": 0.089,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.04,
+          "ruin_difference_vs_aco": -0.049,
+          "equivalent_savings_rate": 0.06488856673240662
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.048,
+          "ruin_difference_vs_aco": -0.041,
+          "equivalent_savings_rate": 0.0729927122592926
+        }
+      },
+      "replicate": 20,
+      "unique_source_years": 63
+    },
+    {
+      "benchmark_ruin": 0.111,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.052,
+          "ruin_difference_vs_aco": -0.059,
+          "equivalent_savings_rate": 0.05937519669532776
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.059,
+          "ruin_difference_vs_aco": -0.052,
+          "equivalent_savings_rate": 0.06049075722694397
+        }
+      },
+      "replicate": 21,
+      "unique_source_years": 62
+    },
+    {
+      "benchmark_ruin": 0.205,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.096,
+          "ruin_difference_vs_aco": -0.109,
+          "equivalent_savings_rate": 0.05596759915351868
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.109,
+          "ruin_difference_vs_aco": -0.096,
+          "equivalent_savings_rate": 0.057130008935928345
+        }
+      },
+      "replicate": 22,
+      "unique_source_years": 70
+    },
+    {
+      "benchmark_ruin": 0.064,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.029,
+          "ruin_difference_vs_aco": -0.035,
+          "equivalent_savings_rate": 0.0498633086681366
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.036,
+          "ruin_difference_vs_aco": -0.028,
+          "equivalent_savings_rate": 0.05334010720252991
+        }
+      },
+      "replicate": 23,
+      "unique_source_years": 48
+    },
+    {
+      "benchmark_ruin": 0.054,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.026,
+          "ruin_difference_vs_aco": -0.028,
+          "equivalent_savings_rate": 0.06710276007652283
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.025,
+          "ruin_difference_vs_aco": -0.029,
+          "equivalent_savings_rate": 0.08063986897468567
+        }
+      },
+      "replicate": 24,
+      "unique_source_years": 67
+    },
+    {
+      "benchmark_ruin": 0.083,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.007,
+          "ruin_difference_vs_aco": -0.076,
+          "equivalent_savings_rate": 0.045168131589889526
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.003,
+          "ruin_difference_vs_aco": -0.08,
+          "equivalent_savings_rate": 0.046365708112716675
+        }
+      },
+      "replicate": 25,
+      "unique_source_years": 64
+    },
+    {
+      "benchmark_ruin": 0.144,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.017,
+          "ruin_difference_vs_aco": -0.127,
+          "equivalent_savings_rate": 0.04048958420753479
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.006,
+          "ruin_difference_vs_aco": -0.138,
+          "equivalent_savings_rate": 0.04058697819709778
+        }
+      },
+      "replicate": 26,
+      "unique_source_years": 56
+    },
+    {
+      "benchmark_ruin": 0.155,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.042,
+          "ruin_difference_vs_aco": -0.113,
+          "equivalent_savings_rate": 0.04024103283882141
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.041,
+          "ruin_difference_vs_aco": -0.114,
+          "equivalent_savings_rate": 0.038537412881851196
+        }
+      },
+      "replicate": 27,
+      "unique_source_years": 67
+    },
+    {
+      "benchmark_ruin": 0.288,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.072,
+          "ruin_difference_vs_aco": -0.216,
+          "equivalent_savings_rate": 0.04096147418022156
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.065,
+          "ruin_difference_vs_aco": -0.223,
+          "equivalent_savings_rate": 0.03317168354988098
+        }
+      },
+      "replicate": 28,
+      "unique_source_years": 59
+    },
+    {
+      "benchmark_ruin": 0.045,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.032,
+          "ruin_difference_vs_aco": -0.013,
+          "equivalent_savings_rate": 0.08643481135368347
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.051,
+          "ruin_difference_vs_aco": 0.006,
+          "equivalent_savings_rate": 0.1268264353275299
+        }
+      },
+      "replicate": 29,
+      "unique_source_years": 79
+    },
+    {
+      "benchmark_ruin": 0.063,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.049,
+          "ruin_difference_vs_aco": -0.014,
+          "equivalent_savings_rate": 0.08818134665489197
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.07,
+          "ruin_difference_vs_aco": 0.007,
+          "equivalent_savings_rate": 0.11429974436759949
+        }
+      },
+      "replicate": 30,
+      "unique_source_years": 62
+    },
+    {
+      "benchmark_ruin": 0.144,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.049,
+          "ruin_difference_vs_aco": -0.095,
+          "equivalent_savings_rate": 0.04135516285896301
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.051,
+          "ruin_difference_vs_aco": -0.093,
+          "equivalent_savings_rate": 0.03767731785774231
+        }
+      },
+      "replicate": 31,
+      "unique_source_years": 58
+    },
+    {
+      "benchmark_ruin": 0.038,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.028,
+          "ruin_difference_vs_aco": -0.01,
+          "equivalent_savings_rate": 0.0868888795375824
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.046,
+          "ruin_difference_vs_aco": 0.008,
+          "equivalent_savings_rate": 0.11758127808570862
+        }
+      },
+      "replicate": 32,
+      "unique_source_years": 61
+    },
+    {
+      "benchmark_ruin": 0.267,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.029,
+          "ruin_difference_vs_aco": -0.238,
+          "equivalent_savings_rate": 0.030643433332443237
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.012,
+          "ruin_difference_vs_aco": -0.255,
+          "equivalent_savings_rate": 0.025115102529525757
+        }
+      },
+      "replicate": 33,
+      "unique_source_years": 67
+    },
+    {
+      "benchmark_ruin": 0.051,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.027,
+          "ruin_difference_vs_aco": -0.024,
+          "equivalent_savings_rate": 0.07486376166343689
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.046,
+          "ruin_difference_vs_aco": -0.005,
+          "equivalent_savings_rate": 0.09285816550254822
+        }
+      },
+      "replicate": 34,
+      "unique_source_years": 68
+    },
+    {
+      "benchmark_ruin": 0.182,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.007,
+          "ruin_difference_vs_aco": -0.175,
+          "equivalent_savings_rate": 0.0312441885471344
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.002,
+          "ruin_difference_vs_aco": -0.18,
+          "equivalent_savings_rate": 0.023946374654769897
+        }
+      },
+      "replicate": 35,
+      "unique_source_years": 62
+    },
+    {
+      "benchmark_ruin": 0.098,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.017,
+          "ruin_difference_vs_aco": -0.081,
+          "equivalent_savings_rate": 0.04215988516807556
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.019,
+          "ruin_difference_vs_aco": -0.079,
+          "equivalent_savings_rate": 0.0430850088596344
+        }
+      },
+      "replicate": 36,
+      "unique_source_years": 62
+    },
+    {
+      "benchmark_ruin": 0.017,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.004,
+          "ruin_difference_vs_aco": -0.013,
+          "equivalent_savings_rate": 0.07477638125419617
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.005,
+          "ruin_difference_vs_aco": -0.012,
+          "equivalent_savings_rate": 0.09493699669837952
+        }
+      },
+      "replicate": 37,
+      "unique_source_years": 71
+    },
+    {
+      "benchmark_ruin": 0.057,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.042,
+          "ruin_difference_vs_aco": -0.015,
+          "equivalent_savings_rate": 0.07217827439308167
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.059,
+          "ruin_difference_vs_aco": 0.002,
+          "equivalent_savings_rate": 0.09187003970146179
+        }
+      },
+      "replicate": 38,
+      "unique_source_years": 75
+    },
+    {
+      "benchmark_ruin": 0.05,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.014,
+          "ruin_difference_vs_aco": -0.036,
+          "equivalent_savings_rate": 0.04790559411048889
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.016,
+          "ruin_difference_vs_aco": -0.034,
+          "equivalent_savings_rate": 0.05108872056007385
+        }
+      },
+      "replicate": 39,
+      "unique_source_years": 71
+    },
+    {
+      "benchmark_ruin": 0.081,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.022,
+          "ruin_difference_vs_aco": -0.059,
+          "equivalent_savings_rate": 0.045678526163101196
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.024,
+          "ruin_difference_vs_aco": -0.057,
+          "equivalent_savings_rate": 0.05124655365943909
+        }
+      },
+      "replicate": 40,
+      "unique_source_years": 64
+    },
+    {
+      "benchmark_ruin": 0.188,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.052,
+          "ruin_difference_vs_aco": -0.136,
+          "equivalent_savings_rate": 0.04417338967323303
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.049,
+          "ruin_difference_vs_aco": -0.139,
+          "equivalent_savings_rate": 0.04284349083900452
+        }
+      },
+      "replicate": 41,
+      "unique_source_years": 76
+    },
+    {
+      "benchmark_ruin": 0.143,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.028,
+          "ruin_difference_vs_aco": -0.115,
+          "equivalent_savings_rate": 0.044251710176467896
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.041,
+          "ruin_difference_vs_aco": -0.102,
+          "equivalent_savings_rate": 0.03980174660682678
+        }
+      },
+      "replicate": 42,
+      "unique_source_years": 67
+    },
+    {
+      "benchmark_ruin": 0.068,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.01,
+          "ruin_difference_vs_aco": -0.058,
+          "equivalent_savings_rate": 0.071978360414505
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.017,
+          "ruin_difference_vs_aco": -0.051,
+          "equivalent_savings_rate": 0.09600672125816345
+        }
+      },
+      "replicate": 43,
+      "unique_source_years": 66
+    },
+    {
+      "benchmark_ruin": 0.04,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.024,
+          "ruin_difference_vs_aco": -0.016,
+          "equivalent_savings_rate": 0.0697450339794159
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.03,
+          "ruin_difference_vs_aco": -0.01,
+          "equivalent_savings_rate": 0.09147664904594421
+        }
+      },
+      "replicate": 44,
+      "unique_source_years": 58
+    },
+    {
+      "benchmark_ruin": 0.046,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.002,
+          "ruin_difference_vs_aco": -0.044,
+          "equivalent_savings_rate": 0.0584697425365448
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.002,
+          "ruin_difference_vs_aco": -0.044,
+          "equivalent_savings_rate": 0.06231185793876648
+        }
+      },
+      "replicate": 45,
+      "unique_source_years": 53
+    },
+    {
+      "benchmark_ruin": 0.139,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.04,
+          "ruin_difference_vs_aco": -0.099,
+          "equivalent_savings_rate": 0.050118595361709595
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.049,
+          "ruin_difference_vs_aco": -0.09,
+          "equivalent_savings_rate": 0.0545867383480072
+        }
+      },
+      "replicate": 46,
+      "unique_source_years": 76
+    },
+    {
+      "benchmark_ruin": 0.034,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.011,
+          "ruin_difference_vs_aco": -0.023,
+          "equivalent_savings_rate": 0.0853792130947113
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.02,
+          "ruin_difference_vs_aco": -0.014,
+          "equivalent_savings_rate": 0.10559383034706116
+        }
+      },
+      "replicate": 47,
+      "unique_source_years": 71
+    },
+    {
+      "benchmark_ruin": 0.081,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.04,
+          "ruin_difference_vs_aco": -0.041,
+          "equivalent_savings_rate": 0.06921860575675964
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.059,
+          "ruin_difference_vs_aco": -0.022,
+          "equivalent_savings_rate": 0.07928428053855896
+        }
+      },
+      "replicate": 48,
+      "unique_source_years": 65
+    },
+    {
+      "benchmark_ruin": 0.071,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.066,
+          "ruin_difference_vs_aco": -0.005,
+          "equivalent_savings_rate": 0.07612273097038269
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.09,
+          "ruin_difference_vs_aco": 0.019,
+          "equivalent_savings_rate": 0.0905468761920929
+        }
+      },
+      "replicate": 49,
+      "unique_source_years": 61
+    },
+    {
+      "benchmark_ruin": 0.227,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.041,
+          "ruin_difference_vs_aco": -0.186,
+          "equivalent_savings_rate": 0.03432193398475647
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.034,
+          "ruin_difference_vs_aco": -0.193,
+          "equivalent_savings_rate": 0.029192179441452026
+        }
+      },
+      "replicate": 50,
+      "unique_source_years": 57
+    },
+    {
+      "benchmark_ruin": 0.076,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.052,
+          "ruin_difference_vs_aco": -0.024,
+          "equivalent_savings_rate": 0.07907930016517639
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.058,
+          "ruin_difference_vs_aco": -0.018,
+          "equivalent_savings_rate": 0.09411534667015076
+        }
+      },
+      "replicate": 51,
+      "unique_source_years": 72
+    },
+    {
+      "benchmark_ruin": 0.098,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.094,
+          "ruin_difference_vs_aco": -0.004,
+          "equivalent_savings_rate": 0.08808258175849915
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.121,
+          "ruin_difference_vs_aco": 0.023,
+          "equivalent_savings_rate": 0.11532184481620789
+        }
+      },
+      "replicate": 52,
+      "unique_source_years": 66
+    },
+    {
+      "benchmark_ruin": 0.129,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.042,
+          "ruin_difference_vs_aco": -0.087,
+          "equivalent_savings_rate": 0.051579445600509644
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.039,
+          "ruin_difference_vs_aco": -0.09,
+          "equivalent_savings_rate": 0.055118948221206665
+        }
+      },
+      "replicate": 53,
+      "unique_source_years": 66
+    },
+    {
+      "benchmark_ruin": 0.088,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.025,
+          "ruin_difference_vs_aco": -0.063,
+          "equivalent_savings_rate": 0.048295408487319946
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.019,
+          "ruin_difference_vs_aco": -0.069,
+          "equivalent_savings_rate": 0.046969860792160034
+        }
+      },
+      "replicate": 54,
+      "unique_source_years": 69
+    },
+    {
+      "benchmark_ruin": 0.054,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.022,
+          "ruin_difference_vs_aco": -0.032,
+          "equivalent_savings_rate": 0.057229071855545044
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.027,
+          "ruin_difference_vs_aco": -0.027,
+          "equivalent_savings_rate": 0.06645247340202332
+        }
+      },
+      "replicate": 55,
+      "unique_source_years": 63
+    },
+    {
+      "benchmark_ruin": 0.179,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.018,
+          "ruin_difference_vs_aco": -0.161,
+          "equivalent_savings_rate": 0.03740033507347107
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.005,
+          "ruin_difference_vs_aco": -0.174,
+          "equivalent_savings_rate": 0.033319681882858276
+        }
+      },
+      "replicate": 56,
+      "unique_source_years": 64
+    },
+    {
+      "benchmark_ruin": 0.084,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.04,
+          "ruin_difference_vs_aco": -0.044,
+          "equivalent_savings_rate": 0.05963888764381409
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.037,
+          "ruin_difference_vs_aco": -0.047,
+          "equivalent_savings_rate": 0.06814280152320862
+        }
+      },
+      "replicate": 57,
+      "unique_source_years": 66
+    },
+    {
+      "benchmark_ruin": 0.023,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.023,
+          "ruin_difference_vs_aco": 0.0,
+          "equivalent_savings_rate": 0.13667604327201843
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.042,
+          "ruin_difference_vs_aco": 0.019,
+          "equivalent_savings_rate": 0.26003149151802063
+        }
+      },
+      "replicate": 58,
+      "unique_source_years": 59
+    },
+    {
+      "benchmark_ruin": 0.054,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.0,
+          "ruin_difference_vs_aco": -0.054,
+          "equivalent_savings_rate": 0.04880121350288391
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.003,
+          "ruin_difference_vs_aco": -0.051,
+          "equivalent_savings_rate": 0.051603883504867554
+        }
+      },
+      "replicate": 59,
+      "unique_source_years": 76
+    },
+    {
+      "benchmark_ruin": 0.156,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.001,
+          "ruin_difference_vs_aco": -0.155,
+          "equivalent_savings_rate": 0.031200319528579712
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.001,
+          "ruin_difference_vs_aco": -0.155,
+          "equivalent_savings_rate": 0.025525838136672974
+        }
+      },
+      "replicate": 60,
+      "unique_source_years": 65
+    },
+    {
+      "benchmark_ruin": 0.15,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.022,
+          "ruin_difference_vs_aco": -0.128,
+          "equivalent_savings_rate": 0.04046270251274109
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.021,
+          "ruin_difference_vs_aco": -0.129,
+          "equivalent_savings_rate": 0.03544017672538757
+        }
+      },
+      "replicate": 61,
+      "unique_source_years": 68
+    },
+    {
+      "benchmark_ruin": 0.101,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.039,
+          "ruin_difference_vs_aco": -0.062,
+          "equivalent_savings_rate": 0.0618877112865448
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.048,
+          "ruin_difference_vs_aco": -0.053,
+          "equivalent_savings_rate": 0.0634591281414032
+        }
+      },
+      "replicate": 62,
+      "unique_source_years": 62
+    },
+    {
+      "benchmark_ruin": 0.208,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.012,
+          "ruin_difference_vs_aco": -0.196,
+          "equivalent_savings_rate": 0.0348677933216095
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.004,
+          "ruin_difference_vs_aco": -0.204,
+          "equivalent_savings_rate": 0.03277263045310974
+        }
+      },
+      "replicate": 63,
+      "unique_source_years": 49
+    },
+    {
+      "benchmark_ruin": 0.056,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.005,
+          "ruin_difference_vs_aco": -0.051,
+          "equivalent_savings_rate": 0.04175439476966858
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.003,
+          "ruin_difference_vs_aco": -0.053,
+          "equivalent_savings_rate": 0.04201802611351013
+        }
+      },
+      "replicate": 64,
+      "unique_source_years": 57
+    },
+    {
+      "benchmark_ruin": 0.075,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.013,
+          "ruin_difference_vs_aco": -0.062,
+          "equivalent_savings_rate": 0.05857732892036438
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.025,
+          "ruin_difference_vs_aco": -0.05,
+          "equivalent_savings_rate": 0.07107976078987122
+        }
+      },
+      "replicate": 65,
+      "unique_source_years": 53
+    },
+    {
+      "benchmark_ruin": 0.161,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.031,
+          "ruin_difference_vs_aco": -0.13,
+          "equivalent_savings_rate": 0.04224565625190735
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.024,
+          "ruin_difference_vs_aco": -0.137,
+          "equivalent_savings_rate": 0.04169312119483948
+        }
+      },
+      "replicate": 66,
+      "unique_source_years": 70
+    },
+    {
+      "benchmark_ruin": 0.131,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.077,
+          "ruin_difference_vs_aco": -0.054,
+          "equivalent_savings_rate": 0.06910189986228943
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.093,
+          "ruin_difference_vs_aco": -0.038,
+          "equivalent_savings_rate": 0.0846850574016571
+        }
+      },
+      "replicate": 67,
+      "unique_source_years": 63
+    },
+    {
+      "benchmark_ruin": 0.04,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.002,
+          "ruin_difference_vs_aco": -0.038,
+          "equivalent_savings_rate": 0.05233803391456604
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.003,
+          "ruin_difference_vs_aco": -0.037,
+          "equivalent_savings_rate": 0.05942109227180481
+        }
+      },
+      "replicate": 68,
+      "unique_source_years": 56
+    },
+    {
+      "benchmark_ruin": 0.05,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.022,
+          "ruin_difference_vs_aco": -0.028,
+          "equivalent_savings_rate": 0.09350022673606873
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.041,
+          "ruin_difference_vs_aco": -0.009,
+          "equivalent_savings_rate": 0.12894728779792786
+        }
+      },
+      "replicate": 69,
+      "unique_source_years": 57
+    },
+    {
+      "benchmark_ruin": 0.184,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.043,
+          "ruin_difference_vs_aco": -0.141,
+          "equivalent_savings_rate": 0.054223865270614624
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.044,
+          "ruin_difference_vs_aco": -0.14,
+          "equivalent_savings_rate": 0.05869284272193909
+        }
+      },
+      "replicate": 70,
+      "unique_source_years": 65
+    },
+    {
+      "benchmark_ruin": 0.084,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.01,
+          "ruin_difference_vs_aco": -0.074,
+          "equivalent_savings_rate": 0.0602053701877594
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.006,
+          "ruin_difference_vs_aco": -0.078,
+          "equivalent_savings_rate": 0.06332305073738098
+        }
+      },
+      "replicate": 71,
+      "unique_source_years": 62
+    },
+    {
+      "benchmark_ruin": 0.067,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.019,
+          "ruin_difference_vs_aco": -0.048,
+          "equivalent_savings_rate": 0.055862098932266235
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.026,
+          "ruin_difference_vs_aco": -0.041,
+          "equivalent_savings_rate": 0.0644659698009491
+        }
+      },
+      "replicate": 72,
+      "unique_source_years": 70
+    },
+    {
+      "benchmark_ruin": 0.107,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.039,
+          "ruin_difference_vs_aco": -0.068,
+          "equivalent_savings_rate": 0.05347791314125061
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.041,
+          "ruin_difference_vs_aco": -0.066,
+          "equivalent_savings_rate": 0.05760565400123596
+        }
+      },
+      "replicate": 73,
+      "unique_source_years": 74
+    },
+    {
+      "benchmark_ruin": 0.078,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.006,
+          "ruin_difference_vs_aco": -0.072,
+          "equivalent_savings_rate": 0.047488659620285034
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.005,
+          "ruin_difference_vs_aco": -0.073,
+          "equivalent_savings_rate": 0.051050931215286255
+        }
+      },
+      "replicate": 74,
+      "unique_source_years": 59
+    },
+    {
+      "benchmark_ruin": 0.083,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.037,
+          "ruin_difference_vs_aco": -0.046,
+          "equivalent_savings_rate": 0.07432946562767029
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.046,
+          "ruin_difference_vs_aco": -0.037,
+          "equivalent_savings_rate": 0.09084287285804749
+        }
+      },
+      "replicate": 75,
+      "unique_source_years": 72
+    },
+    {
+      "benchmark_ruin": 0.007,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.004,
+          "ruin_difference_vs_aco": -0.003,
+          "equivalent_savings_rate": 0.09923240542411804
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.013,
+          "ruin_difference_vs_aco": 0.006,
+          "equivalent_savings_rate": 0.1427532136440277
+        }
+      },
+      "replicate": 76,
+      "unique_source_years": 65
+    },
+    {
+      "benchmark_ruin": 0.01,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.003,
+          "ruin_difference_vs_aco": -0.007,
+          "equivalent_savings_rate": 0.10687366127967834
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.005,
+          "ruin_difference_vs_aco": -0.005,
+          "equivalent_savings_rate": 0.1612846553325653
+        }
+      },
+      "replicate": 77,
+      "unique_source_years": 59
+    },
+    {
+      "benchmark_ruin": 0.188,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.042,
+          "ruin_difference_vs_aco": -0.146,
+          "equivalent_savings_rate": 0.05015501379966736
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.042,
+          "ruin_difference_vs_aco": -0.146,
+          "equivalent_savings_rate": 0.04563215374946594
+        }
+      },
+      "replicate": 78,
+      "unique_source_years": 61
+    },
+    {
+      "benchmark_ruin": 0.04,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.028,
+          "ruin_difference_vs_aco": -0.012,
+          "equivalent_savings_rate": 0.06152072548866272
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.031,
+          "ruin_difference_vs_aco": -0.009,
+          "equivalent_savings_rate": 0.07615688443183899
+        }
+      },
+      "replicate": 79,
+      "unique_source_years": 63
+    },
+    {
+      "benchmark_ruin": 0.026,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.011,
+          "ruin_difference_vs_aco": -0.015,
+          "equivalent_savings_rate": 0.07973787188529968
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.017,
+          "ruin_difference_vs_aco": -0.009,
+          "equivalent_savings_rate": 0.11386337876319885
+        }
+      },
+      "replicate": 80,
+      "unique_source_years": 67
+    },
+    {
+      "benchmark_ruin": 0.082,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.022,
+          "ruin_difference_vs_aco": -0.06,
+          "equivalent_savings_rate": 0.04596516489982605
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.026,
+          "ruin_difference_vs_aco": -0.056,
+          "equivalent_savings_rate": 0.044608861207962036
+        }
+      },
+      "replicate": 81,
+      "unique_source_years": 71
+    },
+    {
+      "benchmark_ruin": 0.035,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.003,
+          "ruin_difference_vs_aco": -0.032,
+          "equivalent_savings_rate": 0.06129017472267151
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.002,
+          "ruin_difference_vs_aco": -0.033,
+          "equivalent_savings_rate": 0.0716579258441925
+        }
+      },
+      "replicate": 82,
+      "unique_source_years": 63
+    },
+    {
+      "benchmark_ruin": 0.115,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.053,
+          "ruin_difference_vs_aco": -0.062,
+          "equivalent_savings_rate": 0.05666467547416687
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.052,
+          "ruin_difference_vs_aco": -0.063,
+          "equivalent_savings_rate": 0.06119385361671448
+        }
+      },
+      "replicate": 83,
+      "unique_source_years": 66
+    },
+    {
+      "benchmark_ruin": 0.139,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.047,
+          "ruin_difference_vs_aco": -0.092,
+          "equivalent_savings_rate": 0.04660490155220032
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.044,
+          "ruin_difference_vs_aco": -0.095,
+          "equivalent_savings_rate": 0.04586943984031677
+        }
+      },
+      "replicate": 84,
+      "unique_source_years": 74
+    },
+    {
+      "benchmark_ruin": 0.097,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.012,
+          "ruin_difference_vs_aco": -0.085,
+          "equivalent_savings_rate": 0.053498297929763794
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.031,
+          "ruin_difference_vs_aco": -0.066,
+          "equivalent_savings_rate": 0.054297178983688354
+        }
+      },
+      "replicate": 85,
+      "unique_source_years": 56
+    },
+    {
+      "benchmark_ruin": 0.018,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.023,
+          "ruin_difference_vs_aco": 0.005,
+          "equivalent_savings_rate": 0.08782342076301575
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.035,
+          "ruin_difference_vs_aco": 0.017,
+          "equivalent_savings_rate": 0.12907984852790833
+        }
+      },
+      "replicate": 86,
+      "unique_source_years": 70
+    },
+    {
+      "benchmark_ruin": 0.072,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.037,
+          "ruin_difference_vs_aco": -0.035,
+          "equivalent_savings_rate": 0.07063409686088562
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.042,
+          "ruin_difference_vs_aco": -0.03,
+          "equivalent_savings_rate": 0.08422824740409851
+        }
+      },
+      "replicate": 87,
+      "unique_source_years": 74
+    },
+    {
+      "benchmark_ruin": 0.116,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.052,
+          "ruin_difference_vs_aco": -0.064,
+          "equivalent_savings_rate": 0.05421486496925354
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.057,
+          "ruin_difference_vs_aco": -0.059,
+          "equivalent_savings_rate": 0.06260249018669128
+        }
+      },
+      "replicate": 88,
+      "unique_source_years": 55
+    },
+    {
+      "benchmark_ruin": 0.081,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.006,
+          "ruin_difference_vs_aco": -0.075,
+          "equivalent_savings_rate": 0.05631539225578308
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.002,
+          "ruin_difference_vs_aco": -0.079,
+          "equivalent_savings_rate": 0.06145867705345154
+        }
+      },
+      "replicate": 89,
+      "unique_source_years": 59
+    },
+    {
+      "benchmark_ruin": 0.044,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.023,
+          "ruin_difference_vs_aco": -0.021,
+          "equivalent_savings_rate": 0.06554511189460754
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.027,
+          "ruin_difference_vs_aco": -0.017,
+          "equivalent_savings_rate": 0.0744081437587738
+        }
+      },
+      "replicate": 90,
+      "unique_source_years": 64
+    },
+    {
+      "benchmark_ruin": 0.138,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.098,
+          "ruin_difference_vs_aco": -0.04,
+          "equivalent_savings_rate": 0.09208044409751892
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.139,
+          "ruin_difference_vs_aco": 0.001,
+          "equivalent_savings_rate": 0.12051615118980408
+        }
+      },
+      "replicate": 91,
+      "unique_source_years": 61
+    },
+    {
+      "benchmark_ruin": 0.193,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.018,
+          "ruin_difference_vs_aco": -0.175,
+          "equivalent_savings_rate": 0.034176141023635864
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.011,
+          "ruin_difference_vs_aco": -0.182,
+          "equivalent_savings_rate": 0.028637200593948364
+        }
+      },
+      "replicate": 92,
+      "unique_source_years": 72
+    },
+    {
+      "benchmark_ruin": 0.065,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.02,
+          "ruin_difference_vs_aco": -0.045,
+          "equivalent_savings_rate": 0.07493522763252258
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.033,
+          "ruin_difference_vs_aco": -0.032,
+          "equivalent_savings_rate": 0.09191128611564636
+        }
+      },
+      "replicate": 93,
+      "unique_source_years": 64
+    },
+    {
+      "benchmark_ruin": 0.068,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.056,
+          "ruin_difference_vs_aco": -0.012,
+          "equivalent_savings_rate": 0.08400782942771912
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.069,
+          "ruin_difference_vs_aco": 0.001,
+          "equivalent_savings_rate": 0.12329158186912537
+        }
+      },
+      "replicate": 94,
+      "unique_source_years": 45
+    },
+    {
+      "benchmark_ruin": 0.122,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.016,
+          "ruin_difference_vs_aco": -0.106,
+          "equivalent_savings_rate": 0.03466436266899109
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.016,
+          "ruin_difference_vs_aco": -0.106,
+          "equivalent_savings_rate": 0.03377756476402283
+        }
+      },
+      "replicate": 95,
+      "unique_source_years": 55
+    },
+    {
+      "benchmark_ruin": 0.099,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.062,
+          "ruin_difference_vs_aco": -0.037,
+          "equivalent_savings_rate": 0.09072443842887878
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.084,
+          "ruin_difference_vs_aco": -0.015,
+          "equivalent_savings_rate": 0.10489043593406677
+        }
+      },
+      "replicate": 96,
+      "unique_source_years": 59
+    },
+    {
+      "benchmark_ruin": 0.179,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.051,
+          "ruin_difference_vs_aco": -0.128,
+          "equivalent_savings_rate": 0.0432678759098053
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.061,
+          "ruin_difference_vs_aco": -0.118,
+          "equivalent_savings_rate": 0.04309561848640442
+        }
+      },
+      "replicate": 97,
+      "unique_source_years": 70
+    },
+    {
+      "benchmark_ruin": 0.076,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.033,
+          "ruin_difference_vs_aco": -0.043,
+          "equivalent_savings_rate": 0.06878957152366638
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.058,
+          "ruin_difference_vs_aco": -0.018,
+          "equivalent_savings_rate": 0.08742454648017883
+        }
+      },
+      "replicate": 98,
+      "unique_source_years": 65
+    },
+    {
+      "benchmark_ruin": 0.097,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.044,
+          "ruin_difference_vs_aco": -0.053,
+          "equivalent_savings_rate": 0.07160535454750061
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.048,
+          "ruin_difference_vs_aco": -0.049,
+          "equivalent_savings_rate": 0.08365002274513245
+        }
+      },
+      "replicate": 99,
+      "unique_source_years": 63
+    },
+    {
+      "benchmark_ruin": 0.086,
+      "strategies": {
+        "70/46.67/29.17/29.17 ACO": {
+          "ruin_probability": 0.02,
+          "ruin_difference_vs_aco": -0.066,
+          "equivalent_savings_rate": 0.04830208420753479
+        },
+        "43.75/43.75/43.75/43.75 ACO": {
+          "ruin_probability": 0.02,
+          "ruin_difference_vs_aco": -0.066,
+          "equivalent_savings_rate": 0.04996338486671448
+        }
+      },
+      "replicate": 100,
+      "unique_source_years": 63
+    }
+  ]
+}

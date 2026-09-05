@@ -320,6 +320,32 @@ They measure the influence of observations identified during the audit.
 The exclusions apply to resident rows and global equity and bond
 constituents; the monthly managed-futures inputs are held fixed. The main text reports these results.
 
+\subsection{Resampling the calendar history}
+The outer experiment draws stationary blocks of complete calendar-year
+cross-sections, with mean lengths of 5, 10, or 20 years and circular wrapping
+at the sample endpoints. Each selected cross-section retains all available
+resident rows and their already constructed asset returns. Sampled years are
+relabelled consecutively before the inner country-block bootstrap, avoiding
+duplicate country-year identifiers. There are 100 outer histories for each
+length, each containing 99 calendar positions, with 1,000 paired inner
+lifecycle paths per history and a ten-year inner mean block. The outer seed
+is 20260905 and the inner seed is that value plus the replicate index.
+
+The exercise preserves common shocks within each sampled calendar year and
+consecutive observations within outer blocks. It resamples the assembled
+return panel; it does not reconstruct MF signals or constituent weights from
+synthetic price paths. It therefore measures sensitivity to the frequency and
+ordering of observed states, conditional on the sleeve reconstruction.
+Dependence is broken at outer block joins, and country gaps still trigger
+the inner continuation convention. Percentile ranges include residual inner
+Monte Carlo noise; with 100 outer draws they are coarse historical-sensitivity
+estimates, not calibrated sampling-confidence intervals or probabilities
+that one strategy will outperform in the future.
+\input{figures/review_history.tex}
+The \gitlink{build/historical_panel_bootstrap.py}{outer-bootstrap script}
+and \gitdirlink{results/method_review/historical_panel_bootstrap/}{replicate outputs}
+record both specifications and all replicate-level estimates.
+
 \section{Risk-aversion sensitivity}
 \label{app:gamma-sensitivity}
 The exercise holds portfolio weights and exposure fixed and recomputes the
@@ -363,6 +389,50 @@ Both diversified families at 200\% exposure retain lower simulated ruin
 and equivalent saving over this grid.
 \input{../figures/policy_sensitivity.tex}
 
+
+\subsection{A common planned withdrawal anchored to ACO}
+\label{app:common-withdrawal}
+For each paired path $i$, we fix the annual real financial withdrawal at
+$D_i=0.04W^{\mathrm{ACO}}_{i,65}$, where the benchmark is unlevered ACO
+with a 10\% saving rate. Every candidate also saves 10\% and faces the
+same income and mortality draws. Its implied initial withdrawal rate is
+\[
+q_{i,j}=\frac{D_i}{W^j_{i,65}}
+       =0.04\frac{W^{\mathrm{ACO}}_{i,65}}{W^j_{i,65}}.
+\]
+Thus a candidate that accumulates less capital than ACO on a particular
+path must withdraw more than 4\% of its own capital to finance the target.
+For example, capital equal to two-thirds of ACO's implies a 6\% initial
+rate. Lower annual volatility alone does not determine this capital ratio.
+Among the 9,832 paths reaching retirement with a positive benchmark target,
+the proportional and equal-weight 175\% rules have median implied rates
+of 2.69\% and 2.93\%; their 90th percentiles are 4.72\% and 6.83\%.
+Rates exceed 4\% on 18.46\% and 32.26\% of these paths, respectively,
+and exceed 6\% on 2.72\% and 14.14\%.
+Failure to fund the common financial draw occurs on 7.10\% of these paths
+for unlevered ACO, 2.21\% for proportional 175\%, and 8.12\% for
+equal-weight 175\%. These probabilities condition on retirement and a
+positive target, unlike the main unconditional ruin statistics.
+On the common denominator of all 10,000 simulated lifetimes, the corresponding
+frequencies are 6.98\%, 2.17\%, and 7.98\%. ACO has exactly the same
+698 failures as in the main experiment: $698/10{,}000=6.98\%$ and
+$698/9{,}832=7.10\%$ answer different conditioning questions. Replacing
+the common target with each strategy's own 4\%-of-capital target reproduces
+its main-engine failure indicators path by path for all four tested strategies;
+the recorded audit also verifies equality with their archived main ruin rates.
+The corrected funding ratios exclude paths with no retirement years. This
+does not revise the main experiment's definition of unconditional ruin.
+The target remains fixed if ACO subsequently depletes its account;
+public pensions continue under the common household assumptions.
+The equal-weight result therefore identifies a limitation in financing
+ACO's planned income across heterogeneous accumulation outcomes, rather
+than its failure rate under a 4\%-of-own-capital policy. The reported
+rate distribution describes all eligible paths and does not by itself
+attribute the difference in failures to high initial withdrawal rates.
+The \gitlink{build/common_consumption_target.py}{common-target script}
+and \gitlink{results/method_review/common_consumption_target/aco_common_target_n10000.json}{numerical outputs}
+record the experiment on 10,000 paired paths at seed 20260827.
+\input{figures/review_common.tex}
 
 \section{Reproducibility and Conversion Checks}
 \label{app:reproducibility}
@@ -538,3 +608,52 @@ portfolio volatility remains an outcome of asset composition.
 \input{figures/aco_policy.tex}
 \input{figures/aco_cost.tex}
 \input{figures/aco_methods.tex}
+
+\section{Post-1970 sleeve roles}
+\label{app:review-post1970}
+This window uses the current raw panel restricted to 1970--2025, with the
+same fixed-notional hedge, financing, fees and bootstrap continuation as the
+main experiment. Both complete families and each pro-rata ablation hold
+175\% gross exposure. It complements the full-history ablations by evaluating
+the compositions after the administered-gold era. Differences across windows
+also reflect the bond and equity regimes and changes in the MF market universe.
+\input{figures/review_post1970.tex}
+The proportional rule's bond ablation illustrates a trade-off: removing bonds
+raises volatility and estimated ruin while lowering equivalent saving.
+Gold's removal worsens saving and ruin for both families, although the
+equal-weight saving difference is small. These findings support distinct
+capital-preservation roles without establishing that every sleeve improves
+every metric. The \gitlink{build/sleeve_ablation.py}{ablation script}, with
+\texttt{--year-from 1970}, produces the
+\gitlink{results/method_review/post1970_ablation/ablation_1970_n10000.json}{recorded window results}.
+
+\section{Return and financing stresses at 175\% exposure}
+\label{app:review-cost-mf}
+These two experiments vary one assumption at a time, retain fixed portfolio
+weights and common path draws, and keep the utility target at unlevered ACO
+saving 10\%. MF deductions are additional to the 0.85\% management fee and
+baseline measured turnover cost. A deduction $d$ reduces each resident-year
+net MF return by $d$, and hence portfolio return by its MF weight times $d$.
+This leaves annual return variance unchanged within each fixed portfolio;
+it does not emulate a change in signals or in crisis dependence. It is a
+transparent test of tolerance to lower sleeve returns.
+\input{figures/review_mf.tex}
+The tested deductions bracket the equal-weight saving crossing between
+300 and 400 bp and its ruin crossing between 400 and 600 bp. The proportional
+rule's saving crossing lies between 600 and 700 bp; its ruin remains below
+ACO at the largest deduction tested. These are grid brackets, not exact
+break-even costs or estimates of the proxy's measurement error.
+\input{figures/review_costs.tex}
+At 175\% gross exposure, a 100 bp spread costs 75 bp of investor capital
+annually in addition to the resident bill financing leg. A 300 bp spread costs
+225 bp. The 100 bp case already represents costly financing relative to
+the efficient retail routes discussed in Section~\ref{sec:portfolio-rules};
+200--300 bp are deliberately severe stresses. The proportional saving crossing lies between 250 and 300 bp;
+the equal-weight crossing lies between 200 and 250 bp. No ruin crossing is
+established on the financing grid through 300 bp, although the equal-weight
+estimate there is only 0.06 percentage point below ACO. A hedge friction of
+100 bp separately leaves both families below the benchmark in saving and
+ruin. These controls do not impose a forced-liquidation policy; the monthly
+maintenance-margin diagnostic remains a separate threshold experiment.
+Replication outputs: \gitdirlink{results/method_review/mf_return_haircuts/}{MF deductions};
+\gitdirlink{results/method_review/costs_175/}{financing and hedge costs}.

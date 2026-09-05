@@ -37,7 +37,7 @@
 \author{Guillaume Flament\\[2pt]
 \normalsize Cayas\\[1pt]
 \normalsize \href{mailto:guillaume.flament@cayas.fr}{guillaume.flament@cayas.fr}}
-\date{September 4, 2026}
+\date{September 5, 2026}
 
 \begin{document}
 \maketitle
@@ -54,17 +54,17 @@ four-sleeve families use fixed weights at exposures from 100\% to 200\%.
 Over 1927--2025, the equal-weight rule at 175\% exposure reduces simulated
 retirement ruin from 6.98\% to 2.48\% and matches benchmark utility on
 6.53\% of income instead of 10\%. At the same 175\% exposure, the equity-only
-benchmark has 14.81\% ruin and requires 9.64\% saving. Under each of the three specified source
-influence diagnostics, this rule has lower annual volatility, lower ruin and
-a lower saving requirement than the benchmark. A complete source-screened
-comparison gives this rule 15.17\% volatility, 0.57\% ruin, and 5.93\%
-equivalent saving, against 17.02\%, 5.04\%, and 10\% for unlevered equities.
-Both diversified families
-already reduce ruin without portfolio-level borrowing, although matching
-benchmark utility then requires more saving. Later historical windows also
-support the diversified ranking. Diversification and total exposure play distinct roles: combining asset
-classes improves capital preservation, while scaling the diversified portfolio
-lowers the saving required to finance retirement.
+benchmark has 14.81\% ruin and requires 9.64\% saving.
+The proportional family at 175\% requires 5.87\% saving and has 2.13\%
+ruin. Post-1970 ablations, historical-panel resampling, and explicit return
+and financing-cost stresses support the broader diversification result,
+with greater sensitivity for the equal-weight family. A common planned
+withdrawal anchored to the equity benchmark favors the proportional family
+but exposes a limitation of equal weighting. Both families reduce ruin
+without portfolio-level borrowing, although matching benchmark utility then
+requires more saving. The evidence supports combining diversification and
+exposure in lifecycle design, with implementation costs, historical regimes,
+and the retirement-income objective determining the strength of the gain.
 
 \medskip
 \noindent \textit{JEL classifications:} C15, D14, G11, G17.\\
@@ -313,13 +313,14 @@ net performance and capacity. Hence our one-, six-, and twelve-month blend, and
 hence the explicit turnover cost below.
 \citet{LempiereEtAl2014} find a trend premium in equities, bonds, currencies,
 and commodities as far back as 1800. That
-history is what justifies running the rule over the full 1927--2025 window. Trend following also lowers sequence risk in
+history motivates evaluating the rule over the full 1927--2025 window. Trend following also lowers sequence risk in
 retirement decumulation \citep{ClareSeatonSmithThomas2017,ClareSeatonSmithThomas2019}
 and improves risk-parity implementations through correlation-aware weighting
-\citep{Baltas2015}. That literature, however, stops at portfolio-level
-backtests: none of it embeds trend following in a full lifecycle model with
-the pooled developed-market panel, which is the gap the lifecycle results of
-Section~\ref{sec:leverage-ladders-main} fill.
+\citep{Baltas2015}. These studies already establish a retirement-income
+motivation for trend following. Our contribution is to evaluate this mechanism
+alongside global bonds and gold in an annual adaptation of ACO's household
+framework, reporting utility-equivalent saving as well as capital depletion
+under explicitly matched portfolio financing.
 
 The managed-futures signal uses a separate, frozen monthly price snapshot.
 Completed calendar-year returns are compounded and joined to the annual
@@ -356,6 +357,14 @@ We subtract a 0.85\% annual management
 fee and transaction costs based on measured turnover and a three-basis-point
 spread. Its monthly correlation with several official CTA indexes is about
 0.55--0.59 over 2000--2025.
+
+The reconstruction supplies a public-data proxy for this allocation experiment.
+The external comparisons establish common return variation, rather than
+equivalence to an investable CTA index. Synthetic instruments and omitted
+commodity carry limit a precise performance interpretation. The literature
+provides independent evidence for the economic mechanism; the additional
+return-deduction experiment in Appendix~\ref{app:review-cost-mf} measures how
+much deterioration in our particular proxy the portfolio results can absorb.
 
 \subsection{Realized portfolio properties}
 
@@ -598,6 +607,32 @@ the associated costs and any deleveraging affect its net asset value.
 Actual funds differ in their asset coverage and trading rules from the
 synthetic sleeves used here.
 
+Retail investors can access financing substantially cheaper than standard
+broker margin loans. Return-stacked funds obtain embedded financing through
+futures; industry evidence for S\&P~500 and Treasury futures places this
+funding near short-term institutional rates \citep{ReturnStackedFinancing2024}.
+An eligible investor can also borrow by selling a box spread on European-style
+index options, receiving cash against a fixed terminal payment
+\citep{CMEBoxFinancing2024}. A practitioner article published by Cboe reports
+SPX box financing around 30--50 bp above maturity-matched Treasury yields
+for three- and five-year maturities, using February 2025 market estimates
+\citep{WangBoxFinancing2025}. This evidence supports the order of magnitude
+of our 30 bp baseline as an efficient retail-financing assumption, rather
+than an institutional-only privilege. It does not establish a current
+executable 30 bp quote for every maturity, currency, or account; commissions,
+execution, fund fees, and collateral requirements must be accounted for
+separately. Box maturities also differ from our annually reset bill financing.
+
+Relative to these efficient funding routes, a persistent 100 bp spread is
+already an expensive financing scenario for a cost-conscious investor with
+the requisite access; 200--300 bp represents a severe stress. Standard margin
+loans remain a more costly alternative: the IBKR schedule consulted for this
+revision quotes benchmark plus 150 bp for its initial Pro tier and plus
+250 bp for Lite \citep{IBKRMargin2026}. These broker markups use a different
+reference rate from our resident bill. The financing sensitivities therefore
+measure robustness to paying more for exposure, rather than assuming that
+retail investors must incur those higher spreads.
+
 A complementary diagnostic examines direct borrowing in a personal margin
 account. With annual rebalancing and a 25\% maintenance requirement, none
 of the four tested allocations breaches the threshold at a year-end across
@@ -640,6 +675,14 @@ We report normal 95\% intervals for the paired difference in ruin relative to
 the 33/67 benchmark. These intervals measure Monte Carlo uncertainty
 conditional on the observed panel. \Technicalappendix{app:historical-uncertainty} separately reports the range
 of outcomes across historical windows and source-country omissions.
+We also resample complete calendar-year cross-sections in outer stationary
+blocks averaging 5, 10, or 20 years. Each of 100 outer histories per setting
+is evaluated on 1,000 paired inner lifecycle paths. This preserves the
+within-year cross-country and cross-asset dependence, including common global
+sleeves. The resulting percentile ranges describe variation across resampled
+histories together with residual inner Monte Carlo noise; they are not
+calibrated confidence intervals. Appendix~\ref{app:historical-uncertainty}
+details the construction and its limits.
 
 
 \section{Results}
@@ -704,6 +747,19 @@ borrowing, hedge convention, and per-unit cost assumptions unchanged.
 Total sleeve and hedge charges adjust with the resulting weights.
 The comparison measures the effect of changing composition at fixed exposure.
 
+Figure~\ref{tab:sleeve-ablation} uses a demanding, historically informed
+benchmark. ACO's 33/67 equity allocation was selected by maximizing simulated
+lifecycle utility in their historical framework; in our public-panel equity
+grid, it is within 0.02 percentage points of equivalent saving of the best
+domestic--international mix. The diversified sleeve weights and their pro-rata
+ablations are fixed rules, without a corresponding optimization of historical
+utility. Their sizeable gains at 175\% exposure therefore demonstrate that
+expanding the asset opportunity set can improve on an already well-chosen
+equity allocation using simple portfolio rules. This comparison does not
+constitute an out-of-sample test: all strategies are evaluated on historical
+data, and the ACO 33/67 mix is held fixed across the leverage ladder rather
+than reoptimized at each exposure.
+
 At 175\% exposure, every three-sleeve allocation in Figure~\ref{tab:sleeve-ablation} has lower
 simulated ruin than ACO's 6.98\%. Five of the six also match benchmark
 utility with less than 10\% saving. Across the proportional ablations,
@@ -756,6 +812,31 @@ Lower ruin therefore does not imply higher expected utility: the latter also
 values retirement consumption and bequests. In these fixed families, capital
 preservation improves before borrowing; additional exposure is needed to reach
 benchmark utility at the same saving rate.
+
+\subsection{Financing a common planned retirement income}
+
+A complementary common-withdrawal test fixes each household's
+planned real draw at 4\% of its paired unlevered ACO retirement wealth.
+Relative to a candidate portfolio's own retirement capital, this draw can
+exceed 4\% substantially: for equal-weight 175\%, its median implied rate
+is 2.93\%, but the 90th percentile is 6.83\%.
+This test jointly evaluates accumulation and the capacity to finance the
+benchmark's planned income; it differs from withdrawing 4\% of each
+strategy's own capital (Appendix~\ref{app:common-withdrawal}).
+Using the main experiment's denominator of all simulated lifetimes, the
+proportional 175\% rule has a 2.17\% probability of failing to fund that
+draw, compared with 6.98\% for ACO and 7.98\% for equal-weight 175\%.
+ACO's 698 failures reproduce the main experiment exactly. Conditional on
+reaching retirement with a positive target, the respective rates are 2.21\%,
+7.10\%, and 8.12\%; Appendix~\ref{app:common-withdrawal} reconciles the
+denominators and reports the path-by-path identity check.
+The equal-weight rule requires withdrawals above 4\% of its own capital
+on 32.26\% of eligible paths. Its less favorable result on this criterion
+coexists with lower ruin under its own 4\% withdrawal rule and a lower
+utility-equivalent saving rate. The proportional family improves the common
+income comparison as well, indicating that the broader diversification
+benefit can survive this more demanding comparison of accumulation and
+retirement funding. Annual volatility alone does not explain the difference.
 
 \subsection{Historical windows and concentration of variance}
 
@@ -858,6 +939,32 @@ Window & Portfolio & Volatility & Ruin & Equivalent saving \\
 respectively. Fixed-notional hedges and baseline costs throughout.
 \end{minipage}\end{table}
 
+Post-1970 ablations make the regime dependence more explicit
+(Appendix~\ref{app:review-post1970}). At 175\%, the complete proportional
+and equal-weight families each require 4.16\% equivalent saving, with
+estimated ruin of 0.04\% and 0.03\%. Removing gold raises proportional
+ruin to 0.64\% and required saving to 4.63\%; removing it from equal
+weight raises ruin to 0.08\% and saving to 4.19\%, while reducing annual
+volatility. Removing bonds raises volatility in both families and ruin to
+0.20\% and 0.16\%, although required saving falls. Removing MF raises
+ruin to 0.68\% and 0.81\%. Gold and bonds thus contribute to capital
+preservation in this later window, with different utility and volatility
+trade-offs. Very small ruin estimates represent few simulated events and
+should not be interpreted as precise distinctions between families. These
+window comparisons change several regimes jointly and do not isolate a
+causal effect of ending administered gold prices.
+
+The outer calendar-history experiment also supports a broader, rather than
+composition-invariant, conclusion. Proportional 175\% has lower estimated
+ruin than ACO in 98--100\% of outer histories across the three block lengths;
+equal-weight 175\% does so in 86--97\%. With ten-year outer blocks, their
+median ruin differences are respectively $-5.15$ and $-4.70$ percentage
+points. The 5th--95th percentile ranges are $[-12.90,-1.19]$ and
+$[-13.11,0.11]$. Equivalent-saving ranges are 3.90--8.40\% and
+3.51--11.33\%. Hence the proportional family's advantage is more stable
+in this diagnostic; the equal-weight ordering can reverse in some resampled
+histories (Appendix~\ref{app:historical-uncertainty}).
+
 \subsection{Exposure and implementation sensitivity}
 
 Increasing exposure to 200\% further reduces ruin and equivalent saving.
@@ -907,6 +1014,34 @@ rules have ruin of 2.44\% and 3.16\%, respectively; at 200 basis points this ris
 3.82\% and 4.91\%. Higher financing costs erode the gains, although both rules retain lower
 ruin than the 6.98\% equity benchmark at these spreads.\footnote{Complete numerical outputs, replication scripts, and scope limitations regarding synthetic series are archived in the online repository and detailed in Appendix~\ref{app:reproducibility}.}
 
+The new cost and proxy-return controls focus on the central 175\% exposure
+(Appendix~\ref{app:review-cost-mf}). At a 100 bp financing spread, the
+proportional and equal-weight rules require 6.78\% and 7.53\% saving and
+have 2.51\% and 3.24\% ruin. Relative to efficient financing through
+futures-based funds or short index-option boxes, this 100 bp scenario is
+already costly; it is an adverse-cost control above the 30 bp baseline.
+A quoted retail loan rate must be compared with the contemporaneous bill
+rate used in the model: its premium over that bill need not equal the
+broker's markup over its own reference benchmark. A financing spread of 200 bp, additional
+to the resident bill, leaves saving requirements at 8.35\% and 9.29\%
+for the proportional and equal-weight families. At 250 bp these become
+9.28\% and 10.36\%; at 300 bp, 10.34\% and 11.58\%. Thus the tested
+grid brackets loss of the saving advantage at 250--300 bp and 200--250 bp,
+respectively. At 300 bp their ruin remains 5.32\% and 6.92\%, versus
+6.98\% for unlevered ACO; the latter difference is small. These persistent
+high spreads are severe stresses for efficient futures-based financing,
+whose cost distinction from retail margin borrowing is discussed in
+Section~\ref{sec:portfolio-rules}. They are not total borrowing rates.
+
+Separately, deducting an additional 300 bp annually from the net MF sleeve
+leaves required saving at 7.47\% and 9.39\%, with ruin of 3.01\% and
+4.76\%. The equal-weight saving advantage disappears between 300 and
+400 bp of MF return deduction, whereas the proportional rule retains it
+at 600 bp and loses it at 700 bp. These are additive annual-return
+stress tests after baseline fees and costs, preserving the proxy's return
+fluctuations. They establish tolerance to lower returns without validating
+omitted carry, trading constraints, or a different crisis-response profile.
+
 \section{Conclusion}
 
 The matched-exposure comparison separates diversification from borrowing.
@@ -934,6 +1069,16 @@ unlevered ACO, and five also
 require less saving to match its utility. The gains thus extend across
 several diversified compositions, with managed futures making the largest
 contribution to capital preservation in the ablation comparisons.
+
+The additional evidence sharpens this interpretation. Post-1970 ablations
+show a capital-preservation role for gold and bonds, while MF-return and
+financing stresses quantify how far the gains can erode before benchmark
+utility requires 10\% saving again. Historical-panel resampling and a common
+ACO income target favor the proportional family more consistently than
+equal weighting. The latter's weaker common-income outcome remains a
+limitation, even though its own-capital ruin and baseline utility improve.
+The result is therefore an advantage for several diversified allocations
+under stated conditions, rather than universal dominance by one fixed rule.
 
 The economic implication is that the choice of asset classes and the choice
 of total exposure belong together in lifecycle portfolio design. In the

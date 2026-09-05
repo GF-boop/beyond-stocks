@@ -1,0 +1,122 @@
+{
+  "purpose": "Common path-specific ACO planned financial withdrawal",
+  "runs": 10000,
+  "seed": 20260827,
+  "year_from": null,
+  "period": "1927-2025",
+  "observations": 1561,
+  "mean_block_years": 10.0,
+  "benchmark": "ACO 33/67",
+  "benchmark_savings_rate": 0.1,
+  "target_withdrawal_rate": 0.04,
+  "median_initial_target_dollars": 35732.953826046956,
+  "mean_initial_target_dollars": 48219.67416355101,
+  "strategies": {
+    "ACO 33/67": {
+      "shortfall_probability_all_paths": 0.0698,
+      "shortfall_count": 698,
+      "eligible_path_count": 9832,
+      "retired_path_share": 0.9832,
+      "implicit_withdrawal_rate_positive_capital": {
+        "median": 0.04,
+        "p90": 0.04,
+        "share_above_4pct": 0.0,
+        "share_above_6pct": 0.0,
+        "share_above_8pct": 0.0
+      },
+      "zero_capital_share_among_retired": 0.0,
+      "shortfall_probability": 0.0709926769731489,
+      "mean_financial_funding_ratio": 0.9802097654352692,
+      "median_financial_funding_ratio": 1.0,
+      "mean_shortfall_share": 0.01979023456473076,
+      "mean_shortfall_years_conditional": 9.053008595988539,
+      "median_shortfall_dollars_conditional": 252402.45375311183
+    },
+    "ACO 33/67 175%": {
+      "shortfall_probability_all_paths": 0.0625,
+      "shortfall_count": 625,
+      "eligible_path_count": 9832,
+      "retired_path_share": 0.9832,
+      "implicit_withdrawal_rate_positive_capital": {
+        "median": 0.022219797329632238,
+        "p90": 0.046739848464115316,
+        "share_above_4pct": 0.15235964198535396,
+        "share_above_6pct": 0.04424328722538649,
+        "share_above_8pct": 0.014849471114727422
+      },
+      "zero_capital_share_among_retired": 0.0,
+      "shortfall_probability": 0.06356794141578519,
+      "mean_financial_funding_ratio": 0.9760133170582252,
+      "median_financial_funding_ratio": 1.0,
+      "mean_shortfall_share": 0.02398668294177473,
+      "mean_shortfall_years_conditional": 11.4336,
+      "median_shortfall_dollars_conditional": 207307.44891076337
+    },
+    "70/46.67/29.17/29.17 ACO": {
+      "shortfall_probability_all_paths": 0.0217,
+      "shortfall_count": 217,
+      "eligible_path_count": 9832,
+      "retired_path_share": 0.9832,
+      "implicit_withdrawal_rate_positive_capital": {
+        "median": 0.026940040643089858,
+        "p90": 0.04717940998074314,
+        "share_above_4pct": 0.1846013018714402,
+        "share_above_6pct": 0.027156224572823434,
+        "share_above_8pct": 0.0010170870626525631
+      },
+      "zero_capital_share_among_retired": 0.0,
+      "shortfall_probability": 0.02207078925956062,
+      "mean_financial_funding_ratio": 0.9926897076539307,
+      "median_financial_funding_ratio": 1.0,
+      "mean_shortfall_share": 0.007310292346069212,
+      "mean_shortfall_years_conditional": 10.23041474654378,
+      "median_shortfall_dollars_conditional": 444796.43747108977
+    },
+    "43.75/43.75/43.75/43.75 ACO": {
+      "shortfall_probability_all_paths": 0.0798,
+      "shortfall_count": 798,
+      "eligible_path_count": 9832,
+      "retired_path_share": 0.9832,
+      "implicit_withdrawal_rate_positive_capital": {
+        "median": 0.029337080258121536,
+        "p90": 0.0682601778994595,
+        "share_above_4pct": 0.322620016273393,
+        "share_above_6pct": 0.14137510170870626,
+        "share_above_8pct": 0.05949959316517494
+      },
+      "zero_capital_share_among_retired": 0.0,
+      "shortfall_probability": 0.08116354759967453,
+      "mean_financial_funding_ratio": 0.9676843325033553,
+      "median_financial_funding_ratio": 1.0,
+      "mean_shortfall_share": 0.032315667496644565,
+      "mean_shortfall_years_conditional": 12.063909774436091,
+      "median_shortfall_dollars_conditional": 612646.7078719041
+    }
+  },
+  "own_withdrawal_identity_audit": {
+    "ACO 33/67": {
+      "own_target_event_mismatches": 0,
+      "main_rule_ruin_count": 698,
+      "main_rule_ruin_all_paths": 0.0698,
+      "matches_archived_main_ruin": true
+    },
+    "ACO 33/67 175%": {
+      "own_target_event_mismatches": 0,
+      "main_rule_ruin_count": 1481,
+      "main_rule_ruin_all_paths": 0.1481,
+      "matches_archived_main_ruin": true
+    },
+    "70/46.67/29.17/29.17 ACO": {
+      "own_target_event_mismatches": 0,
+      "main_rule_ruin_count": 213,
+      "main_rule_ruin_all_paths": 0.0213,
+      "matches_archived_main_ruin": true
+    },
+    "43.75/43.75/43.75/43.75 ACO": {
+      "own_target_event_mismatches": 0,
+      "main_rule_ruin_count": 248,
+      "main_rule_ruin_all_paths": 0.0248,
+      "matches_archived_main_ruin": true
+    }
+  }
+}
