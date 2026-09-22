@@ -1,5 +1,12 @@
 # Snapshot mensuel canonique pour les managed futures
 
+> Copie du README du projet `CTO_vs_PEA`. Ce dépôt ne contient que les
+> fichiers lus par le moteur, dans `data/mf-inputs/` :
+> `all-assets-monthly.csv`, `cash-returns-monthly.csv`,
+> `fx-spot-returns-monthly.csv`, `series-metadata.csv`, `source-segments.csv`
+> et `snapshot-manifest.csv`. Les autres fichiers cités ci-dessous restent dans
+> `CTO_vs_PEA`.
+
 Le répertoire local `data/` contient les séries mensuelles directement
 consommables par les simulations. **Aucun téléchargement et aucune pipeline ne
 sont nécessaires à l'usage** : le fichier principal est

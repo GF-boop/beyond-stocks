@@ -1,16 +1,9 @@
 #!/usr/bin/env bash
-# Reconstruction canonique du papier ERC — documentation executable.
-# Chaque etape est independante ; en cas de doute, relancer uniquement
-# l'etape dont on audite la sortie. Duree totale : plusieurs heures.
+# Reconstruction complete du papier, dans l'ordre. Chaque etape peut etre
+# relancee seule. Duree totale : plusieurs heures.
 #
-# Trois familles de preuves restent des archives versionnees et ne sont pas
-# recalculees ici, faute de source redistribuable :
-#   - la baseline archivee results/main_ladders_n10000.json, qui sert de
-#     temoin de reproduction au cas baseline ERC ;
-#   - l'experience de disponibilite results/historical_availability/ et le
-#     diagnostic de taux courts results/method_review/bill_volatility/,
-#     cites par les annexes ;
-#   - les entrees de fonds non redistribuables (matrices MF).
+# Seules les comparaisons aux indices CTA et aux fonds (etape 7) dependent de
+# donnees non redistribuables ; sans elles, ces figures restent versionnees.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
@@ -29,7 +22,11 @@ python3 build/panel_replication_tendance.py    # -> data/replication-panel-trend
 echo "== 2. Exclusions de source (alimente le cas ERC --full) =="
 python3 build/source_exclusion_diagnostics.py   # panneau Italie 1942
 
-echo "== 3. Experience principale ERC (10 000 traj.) =="
+echo "== 3. Replication d'ACO et experience principale (10 000 traj.) =="
+python3 build/compare_fixed_stacked_utility.py --runs 10000 --portfolio-set core \
+  --include-suspect-data --output-json results/main_core_n10000.json
+python3 build/compare_fixed_stacked_utility.py --runs 10000 --portfolio-set ladders \
+  --include-suspect-data --output-json results/main_ladders_n10000.json
 # erc_refocusing.py refuse d'ecraser un dossier existant : on repart du final.
 rm -rf results/erc_refocusing/n10000_final
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 \
@@ -43,8 +40,7 @@ python3 build/composition_value.py --runs 10000 --seed $SEED --year-from 1970 \
 echo "== 5. Sensibilites et annexes restaurees =="
 python3 build/gamma_sensitivity.py --runs 10000
 python3 build/gamma_sensitivity.py --runs 10000 --fixed-theta \
-  --output-json results/gamma_fixed_theta_n10000.json \
-  --output-tex paper/figures/gamma_fixed_theta.tex
+  --output-json results/gamma_fixed_theta_n10000.json
 python3 build/policy_sensitivity.py
 for block in 5 10 20; do
   python3 build/historical_panel_bootstrap.py --outer-replicates 100 --inner-runs 1000 \
@@ -52,6 +48,9 @@ for block in 5 10 20; do
     --output-json "results/method_review/historical_panel_bootstrap/calendar_blocks_${block}y_outer100_inner1000.json"
 done
 python3 build/margin_call_experiment.py
+python3 build/bill_quintiles.py                 # Table des quintiles de taux reels
+python3 build/historical_availability.py --prepare --runs 10000 \
+  --allow-incomplete-mf-reallocation
 python3 build/monthly_margin_diagnostic.py
 
 echo "== 6. Figures et donnees d'annexes =="

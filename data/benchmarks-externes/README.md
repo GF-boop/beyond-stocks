@@ -12,8 +12,8 @@ This folder feeds the external validation of the managed-futures proxy
 **No data in this folder is versioned.** The providers (Société Générale,
 BarclayHedge, testfol.io, Yahoo Finance) do not permit redistribution. Only
 this file and `funds/README.md` are tracked by Git. In the absence of the
-files, the scripts stop cleanly and the figures and tables remain those of
-`paper/main.pdf` — not publicly rebuildable, as noted in the main README.
+files, the scripts stop cleanly and the figures and tables remain those
+versioned with the manuscript in `paper/new_paper/`.
 
 To regenerate these outputs, fetch the files below with authorised access to
 the sources, under the exact expected names.

@@ -1151,8 +1151,8 @@
       ]
     }
   ],
-  "manifest_sha256": "687ae41a14893ad50ad62abddbfaaed077594d77d00c88de5ff575c534caeb38",
+  "manifest_sha256": "979340494f290baf231219b8010fd360218422c07d227986129299c048f8a5d6",
   "annual_sha256": "4f87144eec63ed1831f141891b36185718cb20717624da9f498001f637238b2e",
   "incomplete_mf_year_rule": "Zero MF weight and pro-rata annual reallocation; calendar data-coverage screen, not an ex-ante trading rule.",
-  "elapsed_seconds": 65.12468120299673
+  "elapsed_seconds": 64.76484913500099
 }

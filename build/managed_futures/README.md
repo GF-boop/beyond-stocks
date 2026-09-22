@@ -1,13 +1,16 @@
 # Proxy managed futures mensuel — variantes MOP, AQR et 1/6/12
 
-Cette stratégie lit directement le snapshot canonique figé. Elle ne télécharge
-aucune donnée et ne reconstruit aucune série de marché.
+Cette stratégie lit directement le snapshot figé de `data/mf-inputs/`. Elle ne
+télécharge aucune donnée et ne reconstruit aucune série de marché. Le moteur
+vient du projet voisin `CTO_vs_PEA` et régénère à l'octet près
+`data/managed-futures-monthly.csv`.
 
 ```bash
-python3 run_managed_futures.py
+python3 build/managed_futures/run_managed_futures.py
 ```
 
-Les résultats statiques se trouvent sous `data/` : rendements mensuels,
+Les résultats sont écrits sous `build/managed_futures/output/` (non versionné ;
+`rebuild_all.sh` en copie la série mensuelle dans `data/`) : rendements mensuels,
 rendements annuels composés, contributions sectorielles, positions par marché,
 statistiques par période et empreintes SHA-256. Le fichier annuel ne conserve
 que les années calendaires possédant douze rendements mensuels, afin d'être
@@ -73,14 +76,14 @@ Le P&L des contrats est exprimé en excès de cash pour les obligations et les
 devises. Le moteur ajoute une fois le rendement cash USD au NAV afin de
 représenter le collateral ; `--no-add-usd-collateral` permet une sensibilité
 sans cette composante. Le fichier de collateral est local et versionné dans
-`../canonical/data/cash-returns-monthly.csv`.
+`data/mf-inputs/cash-returns-monthly.csv`.
 
 Par défaut, les rendements d'actions en devise locale sont convertis en USD
 avec le spot de fin de mois. Les obligations sont des P&L synthétiques en
 excès du cash : seul leur P&L est converti au spot, sans exposition du
 principal au change. Cette convention correspond à un contrat futures
 collatéralisé en USD; un P&L local nul reste nul lorsque la devise bouge.
-Le spot est lu dans `../canonical/data/fx-spot-returns-monthly.csv`.
+Le spot est lu dans `data/mf-inputs/fx-spot-returns-monthly.csv`.
 Il est distinct du rendement des forwards qui constituent le secteur devises.
 Lorsqu'un spot USD n'est pas disponible, le marché étranger est exclu de ce
 mois : il n'est jamais traité par défaut comme un rendement USD.
@@ -115,31 +118,13 @@ d'un produit futures investissable.
 
 ## Validation externe
 
-La comparaison hors ligne aux historiques officiels SG CTA, SG Trend, SG Trend
-Indicator et Barclay BTOP50 se trouve sous
-[`official_benchmarks/`](official_benchmarks/README.md). Sur 2000-2025, la
-corrélation contemporaine de la combinaison 1/6/12 vaut `0,514` avec SG CTA,
-`0,489` avec SG Trend et `0,526` avec BTOP50. Elle atteint `0,528` avec
-DBMFSIM et `0,525` avec KMLMSIM. Les variantes MOP 12 mois et AQR 1/3/12 sont
-publiées dans les mêmes fichiers et comparées dans les figures.
+La comparaison aux indices SG CTA, SG Trend et BTOP50 et aux fonds cotés est
+produite par `paper/build_mf_benchmark_data.py` et `paper/build_mf_pack_matrix.py`
+(annexe B du papier). Sur 2000-2025, la corrélation mensuelle de la combinaison
+1/6/12 vaut environ 0,51 avec SG CTA, 0,49 avec SG Trend et 0,53 avec BTOP50.
 
-Ce test externe montre que la série capte désormais une part matériellement
-plus grande du facteur trend, mais pas qu'elle réplique DBMF ou SG CTA. Elle
-reste un proxy de recherche : roll des commodities et ciblage de risque
-journalier manquent toujours.
-
-## Figures de diagnostic
-
-Le script `plot_managed_futures.py` produit trois figures dans `figures/` :
-
-- `mf-reconstructed-profile.png` : trajectoires, drawdowns et Sharpes glissants
-  de MOP 12 mois, AQR 1/3/12 et 1/6/12, ainsi que l'origine sectorielle ;
-- `mf-reconstructed-vs-official.png` : trajectoires et corrélations glissantes
-  des trois variantes face à SG CTA, avec les corrélations aux autres indices ;
-- `mf-reconstructed-convexity.png` : nuages annuels, ajustements quadratiques et
-  moyennes par quintile face aux actions, obligations et à l'or mondiaux du
-  panel NTSG, en rendements réels sur la fenêtre commune 1927-2025. Le
-  comparatif est réel pour éviter de confondre inflation et diversification.
-
-Les statistiques numériques de convexité sont conservées dans
-`data/mf-reconstructed-convexity-stats.csv`.
+`build/mf_excess_return_check.py` reconstruit la série avec des rendements
+cohérents avec des futures (actions dividendes inclus et en excès du cash
+local, commodities en excès du cash USD) : l'écart annuel moyen est de
+−0,05 point et les résultats du papier bougent de quelques dixièmes de point
+au plus (`results/revision_2026-09-22/mf_excess_return_check.json`).

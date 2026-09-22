@@ -4,13 +4,7 @@ This is a separate robustness experiment, not a replacement of the main
 1927–2025 panel or published baseline simulations. Personal taxes remain
 unmodeled. All costs use the existing contemporary-cost convention.
 
-> **Retired producer.** The script that generated this experiment
-> (`build/historical_availability.py`) was removed during the repository
-> cleanup, so the run can no longer be reproduced from source. The frozen
-> output `results_n10000.json` is retained because the current manuscript links
-> it. The design and results below are kept as the experiment's record.
-
-## Preregistered choices for this run
+## Choices fixed before the run
 
 - Five gross exposures (100/125/150/175/200%) for ACO and for each of two
   diversified families under four availability modes: 45 strategy paths.
@@ -42,24 +36,16 @@ unmodeled. All costs use the existing contemporary-cost convention.
 
 ## Reproduction
 
-The producer script and its renderer were removed in the repository cleanup;
-this section documents how the frozen run was originally obtained and is not
-re-executable. It used Python with NumPy, pandas and matplotlib, from the
-Cederburg_lifecycle root:
+From the repository root:
 
 ```sh
-python3 build/historical_availability.py --prepare
-python3 build/historical_availability.py --runs 10000 --allow-incomplete-mf-reallocation
-python3 build/render_historical_availability.py
+python3 build/historical_availability.py --prepare --runs 10000 --allow-incomplete-mf-reallocation
 ```
 
-Preparation reads the existing engine and canonical public-data snapshots in
-the neighboring CTO_vs_PEA project. It does not edit them or download data.
-Their exact input hashes, local paths, coverage gaps, entry dates, and measured
-costs are recorded in manifest.json. The Python environment used was
-`/mnt/Data/caillasse/caillasse/.venv/bin/python3`.
-Repository HEAD before the experiment: d27372fb9e7da3a9653f4c9822f6b51ead53914d;
-the experiment is a working-tree addition, with its script hash in the manifest.
+Preparation reads the managed-futures engine in `build/managed_futures/` and
+its inputs in `data/mf-inputs/`. Input hashes, coverage gaps, entry dates and
+measured costs are recorded in `manifest.json`. The script was recovered on
+22 September 2026 and reproduces `results_n10000.json` exactly.
 
 The annual turnover deduction follows the baseline convention: mean monthly
 turnover over available strategy months, multiplied by 12 and 3 bp, charged

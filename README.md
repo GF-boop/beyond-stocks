@@ -53,6 +53,9 @@ currency of the country of residence and deflated by that country's inflation.
 | [`build/historical_panel_bootstrap_eqvol.py`](build/historical_panel_bootstrap_eqvol.py) | Resampled calendar histories at equal volatility |
 | [`build/mf_variant_lifecycle.py`](build/mf_variant_lifecycle.py) | Managed-futures signal and fee variants |
 | [`build/composition_value.py`](build/composition_value.py) | Contribution of each asset class |
+| [`build/compare_fixed_stacked_utility.py`](build/compare_fixed_stacked_utility.py) | Replication of ACO (`--portfolio-set core`) and exposure ladders |
+| [`build/historical_availability.py`](build/historical_availability.py) | Gold and managed-futures markets added as they opened |
+| [`build/bill_quintiles.py`](build/bill_quintiles.py) | Returns of leverage by real-bill quintile |
 | [`build/gamma_sensitivity.py`](build/gamma_sensitivity.py), [`build/policy_sensitivity.py`](build/policy_sensitivity.py) | Risk aversion, saving and withdrawal policies |
 | [`build/margin_call_experiment.py`](build/margin_call_experiment.py), [`build/monthly_margin_diagnostic.py`](build/monthly_margin_diagnostic.py) | Annual and monthly margin tests |
 | [`build/deflator_fee_check.py`](build/deflator_fee_check.py), [`build/mf_excess_return_check.py`](build/mf_excess_return_check.py) | Audit checks on deflators, bond fees and futures-consistent returns |

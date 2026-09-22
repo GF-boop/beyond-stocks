@@ -215,8 +215,8 @@ def main() -> None:
   parser.add_argument("--trend-cost", type=float, default=DEFAULT_TREND_COST)
   parser.add_argument("--output-json", default=os.path.join(
       HERE, "..", "paper", "figures", "gamma_sensitivity.json"))
-  parser.add_argument("--output-tex", default=os.path.join(
-      HERE, "..", "paper", "figures", "gamma_sensitivity.tex"))
+  parser.add_argument("--output-tex", default=None,
+                      help="table LaTeX optionnelle ; l'annexe lit le JSON via render_restored_appendices.py")
   args = parser.parse_args()
   FIXED_THETA = args.fixed_theta
   if args.runs <= 0:
@@ -267,8 +267,9 @@ def main() -> None:
   with open(args.output_json, "w", encoding="utf-8") as handle:
     json.dump(payload, handle, indent=2)
     handle.write("\n")
-  write_tex(args.output_tex, results, args.runs)
-  print(f"{args.output_json}\n{args.output_tex}")
+  if args.output_tex:
+    write_tex(args.output_tex, results, args.runs)
+  print(args.output_json)
 
 
 if __name__ == "__main__":

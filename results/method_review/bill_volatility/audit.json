@@ -4,7 +4,7 @@
     "results/main_ladders_n10000.json": "982fef323892224bc627c18864462f5115a68d0b935e929d92aabbcf736518c8",
     "data/managed-futures-monthly.csv": "fe970e51a9cc499c92882524994335c6c5e2b1244a57bd4df2c5c26ef83ead65",
     "data/cpi-monthly.csv": "0542a822c90e7ffe4e08848a8f536a6a5e03eb60d96d0385d075953c9fb4224c",
-    "build/review_bill_volatility.py": "786370a607422dd8eb81d73b56188a2565e7c105409ba1bfbef401399d242ff7"
+    "build/bill_quintiles.py": "786370a607422dd8eb81d73b56188a2565e7c105409ba1bfbef401399d242ff7"
   },
   "definition": "175% minus 100%, fixed composition; equal-weighted resident country-years; ex-post pooled bill quintiles. Additive arithmetic-return attribution, not utility or causal attribution.",
   "quintiles": [

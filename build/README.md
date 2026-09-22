@@ -1,7 +1,7 @@
 # Role of the scripts in `build/`
 
-The current paper rests on the ERC pipeline: `erc_refocusing.py` runs the main
-experiment, `composition_value.py` values the composition across the panel, the
+`erc_refocusing.py` runs the main experiment (the risk parity portfolio is
+called ERC, equal risk contribution, in the code), `composition_value.py` values the composition across the panel, the
 `sensitivity` producers fill the appendices, and the `render_*` scripts turn
 frozen JSON into the LaTeX tables included by `paper/new_paper/`. The shared
 lifecycle engine is imported by nearly every producer, so **do not move or
@@ -41,8 +41,17 @@ optional, non-redistributed files under `data/benchmarks-externes/`.
 - `mf_variants.py` — managed-futures construction variants.
 - `mf_fund_correlations.py` — external fund correlations (non-redistributed
   inputs).
+- `managed_futures/run_managed_futures.py` — monthly managed-futures proxy
+  from `data/mf-inputs/` (see `managed_futures/README.md`).
 - `international_equity.py`, `build_replication_panel.py`,
   `panel_managed_futures.py`, `panel_replication_tendance.py` — data, step 1.
+- `compare_fixed_stacked_utility.py --portfolio-set core` — replication of ACO
+  (`results/main_core_n10000.json`); `--portfolio-set ladders` — exposure
+  ladders used as a reproduction check (`results/main_ladders_n10000.json`).
+- `bill_quintiles.py` — returns of leverage by real-bill quintile
+  (`results/method_review/bill_volatility/`, `figures/bill_quintiles.tex`).
+- `historical_availability.py` — gold and managed-futures markets added as they
+  opened (`results/historical_availability/`).
 - `fetch_mf_fund_data.py` — optional fetch of external fund price files.
 - `revision_checks.py` — September 22, 2026 revision: bond-free strategies,
   equal-volatility scaling, excess-return Sharpe ratios, common-income dollars
@@ -54,6 +63,9 @@ optional, non-redistributed files under `data/benchmarks-externes/`.
   Table VI (resampled histories) and Table VII Panel E (managed-futures
   signal variants) at the equal-volatility exposures, with the path-matched
   income failure.
+- `deflator_fee_check.py`, `mf_excess_return_check.py` — audit checks of the
+  same revision: consistent deflators for gold and managed futures, the bond
+  fund fee, and futures-consistent managed-futures returns. Not in the paper.
 
 ## Renderers (frozen JSON → LaTeX, no simulation)
 
@@ -73,7 +85,8 @@ reproducible from a cleaned checkout.
 ## Tests and verification
 
 - `test_erc_refocusing.py`, `test_composition_value.py`,
-  `test_common_consumption_target.py`, `test_panel_margin_ablation.py` —
+  `test_common_consumption_target.py`, `test_panel_margin_ablation.py`,
+  `test_historical_availability.py` —
   focused unit tests.
 - `verify_repository.py` — post-rebuild invariants of the ERC chain (data row
   counts, frozen-run fingerprints, preference/bootstrap/margin provenance,

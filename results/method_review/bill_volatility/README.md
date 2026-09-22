@@ -5,12 +5,8 @@ replacement of the main panel. It decomposes the arithmetic return increment of
 the 175% over the 100% allocation, by equal-weighted resident country-years and
 by ex-post pooled bill-return quintile.
 
-> **Retired producer.** The script that generated this diagnostic
-> (`build/review_bill_volatility.py`) was removed during the repository cleanup,
-> so the run can no longer be reproduced from source. The frozen output
-> `audit.json` is retained because the current manuscript links this directory
-> (see `paper/new_paper/appendices-refocused.tex`). The definition and results
-> below are kept as the diagnostic's record.
+Producer: `build/bill_quintiles.py`, which also writes
+`paper/new_paper/figures/bill_quintiles.tex`. It reproduces `audit.json` exactly.
 
 ## Definition
 
@@ -20,8 +16,7 @@ attribution, not utility or causal attribution."
 
 Inputs fingerprinted in `audit.json` (`inputs_sha256`):
 `data/replication-panel-trend.csv`, `results/main_ladders_n10000.json`,
-`data/managed-futures-monthly.csv`, `data/cpi-monthly.csv`, and the retired
-producer script.
+`data/managed-futures-monthly.csv`, `data/cpi-monthly.csv`, and the producer script.
 
 ## Contents
 
