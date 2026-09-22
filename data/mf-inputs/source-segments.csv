@@ -1,0 +1,89 @@
+asset_id,segment_id,provider,source_series,transformation,start_month,end_month,source_observations,return_observations,reset_at_start,notes
+EQ_AUS,EQ_AUS_OECD,OECD via FRED,SPASTT01AUM661N,price_return,1958-01,2025-12,816,815,yes,Indice de cours national mensuel.
+EQ_BEL,EQ_BEL_OECD,OECD via FRED,SPASTT01BEM661N,price_return,1985-04,2025-12,489,488,yes,Indice de cours national mensuel.
+EQ_CAN,EQ_CAN_OECD,OECD via FRED,SPASTT01CAM661N,price_return,1956-01,2025-12,840,839,yes,Indice de cours national mensuel.
+EQ_CHE,EQ_CHE_OECD,OECD via FRED,SPASTT01CHM661N,price_return,1955-01,2025-12,852,851,yes,Indice de cours national mensuel.
+EQ_DNK,EQ_DNK_OECD,OECD via FRED,SPASTT01DKM661N,price_return,1983-01,2025-12,516,515,yes,Indice de cours national mensuel.
+EQ_ESP,EQ_ESP_OECD,OECD via FRED,SPASTT01ESM661N,price_return,1985-01,2025-12,492,491,yes,Indice de cours national mensuel.
+EQ_FIN,EQ_FIN_OECD,OECD via FRED,SPASTT01FIM661N,price_return,1957-01,2025-12,828,827,yes,Indice de cours national mensuel.
+EQ_IRL,EQ_IRL_OECD,OECD via FRED,SPASTT01IEM661N,price_return,1955-01,2025-12,852,851,yes,Indice de cours national mensuel.
+EQ_ITA,EQ_ITA_OECD,OECD via FRED,SPASTT01ITM661N,price_return,1957-01,2025-12,828,827,yes,Indice de cours national mensuel.
+EQ_JPN,EQ_JPN_OECD,OECD via FRED,SPASTT01JPM661N,price_return,1959-01,2025-12,804,803,yes,Indice de cours national mensuel.
+EQ_NLD,EQ_NLD_OECD,OECD via FRED,SPASTT01NLM661N,price_return,1957-01,2025-12,828,827,yes,Indice de cours national mensuel.
+EQ_NOR,EQ_NOR_OECD,OECD via FRED,SPASTT01NOM661N,price_return,1986-01,2025-12,480,479,yes,Indice de cours national mensuel.
+EQ_PRT,EQ_PRT_OECD,OECD via FRED,SPASTT01PTM661N,price_return,1988-01,2025-12,456,455,yes,Indice de cours national mensuel.
+EQ_SWE,EQ_SWE_OECD,OECD via FRED,SPASTT01SEM661N,price_return,1950-01,2025-12,912,911,yes,Indice de cours national mensuel.
+EQ_GBR,EQ_GBR_NBER_B,NBER Macrohistory,m11012b,price_return,1921-01,1924-12,48,47,yes,Rendements calcules uniquement a l'interieur de ce segment.
+EQ_GBR,EQ_GBR_NBER_C,NBER Macrohistory,m11012c,price_return,1925-01,1934-12,120,119,yes,Rendements calcules uniquement a l'interieur de ce segment.
+EQ_GBR,EQ_GBR_OECD,OECD via FRED,SPASTT01GBM661N,price_return,1957-12,2025-12,817,816,yes,Rendements calcules uniquement a l'interieur de ce segment.
+EQ_DEU,EQ_DEU_NBER,NBER Macrohistory,m11023b,price_return,1924-01,1935-12,137,134,yes,Rendements calcules uniquement a l'interieur de ce segment.
+EQ_DEU,EQ_DEU_OECD,OECD via FRED,SPASTT01DEM661N,price_return,1960-01,2025-12,792,791,yes,Rendements calcules uniquement a l'interieur de ce segment.
+EQ_FRA,EQ_FRA_NBER,NBER Macrohistory,m11024,price_return,1921-01,1939-12,228,227,yes,Rendements calcules uniquement a l'interieur de ce segment.
+EQ_FRA,EQ_FRA_OECD,OECD via FRED,SPASTT01FRM661N,price_return,1955-01,2025-12,852,851,yes,Rendements calcules uniquement a l'interieur de ce segment.
+EQ_USA,EQ_USA_NBER_A,NBER Macrohistory,m11025a,price_return,1921-01,1944-12,288,287,yes,Rendements calcules uniquement a l'interieur de ce segment.
+EQ_USA,EQ_USA_NBER_B,NBER Macrohistory,m11025b,price_return,1945-01,1956-12,144,143,yes,Rendements calcules uniquement a l'interieur de ce segment.
+EQ_USA,EQ_USA_OECD,OECD via FRED,SPASTT01USM661N,price_return,1957-01,2025-12,828,827,yes,Rendements calcules uniquement a l'interieur de ce segment.
+BOND_AUS_10Y,BOND_AUS_10Y_OECD,OECD via FRED,IRLTLT01AUM156N,par_10y_excess_return,1969-07,2025-12,678,677,yes,Coupon fixe au taux du mois precedent; maturite initiale dix ans. Cash trois mois soustrait (OECD mensuel ou fallback JST/GMD annuel).
+BOND_BEL_10Y,BOND_BEL_10Y_OECD,OECD via FRED,IRLTLT01BEM156N,par_10y_excess_return,1955-01,2025-12,852,851,yes,Coupon fixe au taux du mois precedent; maturite initiale dix ans. Cash trois mois soustrait (OECD mensuel ou fallback JST/GMD annuel).
+BOND_CAN_10Y,BOND_CAN_10Y_OECD,OECD via FRED,IRLTLT01CAM156N,par_10y_excess_return,1955-01,2025-12,852,851,yes,Coupon fixe au taux du mois precedent; maturite initiale dix ans. Cash trois mois soustrait (OECD mensuel ou fallback JST/GMD annuel).
+BOND_CHE_10Y,BOND_CHE_10Y_OECD,OECD via FRED,IRLTLT01CHM156N,par_10y_excess_return,1955-01,2025-12,852,851,yes,Coupon fixe au taux du mois precedent; maturite initiale dix ans. Cash trois mois soustrait (OECD mensuel ou fallback JST/GMD annuel).
+BOND_DEU_10Y,BOND_DEU_10Y_OECD,OECD via FRED,IRLTLT01DEM156N,par_10y_excess_return,1956-05,2025-12,836,835,yes,Coupon fixe au taux du mois precedent; maturite initiale dix ans. Cash trois mois soustrait (OECD mensuel ou fallback JST/GMD annuel).
+BOND_DNK_10Y,BOND_DNK_10Y_OECD,OECD via FRED,IRLTLT01DKM156N,par_10y_excess_return,1987-01,2025-12,468,467,yes,Coupon fixe au taux du mois precedent; maturite initiale dix ans. Cash trois mois soustrait (OECD mensuel ou fallback JST/GMD annuel).
+BOND_ESP_10Y,BOND_ESP_10Y_OECD,OECD via FRED,IRLTLT01ESM156N,par_10y_excess_return,1980-01,2025-12,552,551,yes,Coupon fixe au taux du mois precedent; maturite initiale dix ans. Cash trois mois soustrait (OECD mensuel ou fallback JST/GMD annuel).
+BOND_FIN_10Y,BOND_FIN_10Y_OECD,OECD via FRED,IRLTLT01FIM156N,par_10y_excess_return,1988-01,2025-12,455,453,yes,Coupon fixe au taux du mois precedent; maturite initiale dix ans. Cash trois mois soustrait (OECD mensuel ou fallback JST/GMD annuel).
+BOND_FRA_10Y,BOND_FRA_10Y_OECD,OECD via FRED,IRLTLT01FRM156N,par_10y_excess_return,1960-01,2025-12,792,791,yes,Coupon fixe au taux du mois precedent; maturite initiale dix ans. Cash trois mois soustrait (OECD mensuel ou fallback JST/GMD annuel).
+BOND_GBR_10Y,BOND_GBR_10Y_OECD,OECD via FRED,IRLTLT01GBM156N,par_10y_excess_return,1960-01,2025-12,792,791,yes,Coupon fixe au taux du mois precedent; maturite initiale dix ans. Cash trois mois soustrait (OECD mensuel ou fallback JST/GMD annuel).
+BOND_IRL_10Y,BOND_IRL_10Y_OECD,OECD via FRED,IRLTLT01IEM156N,par_10y_excess_return,1970-12,2025-12,661,660,yes,Coupon fixe au taux du mois precedent; maturite initiale dix ans. Cash trois mois soustrait (OECD mensuel ou fallback JST/GMD annuel).
+BOND_ITA_10Y,BOND_ITA_10Y_OECD,OECD via FRED,IRLTLT01ITM156N,par_10y_excess_return,1991-03,2025-12,418,417,yes,Coupon fixe au taux du mois precedent; maturite initiale dix ans. Cash trois mois soustrait (OECD mensuel ou fallback JST/GMD annuel).
+BOND_JPN_10Y,BOND_JPN_10Y_OECD,OECD via FRED,IRLTLT01JPM156N,par_10y_excess_return,1989-01,2025-12,444,443,yes,Coupon fixe au taux du mois precedent; maturite initiale dix ans. Cash trois mois soustrait (OECD mensuel ou fallback JST/GMD annuel).
+BOND_NLD_10Y,BOND_NLD_10Y_OECD,OECD via FRED,IRLTLT01NLM156N,par_10y_excess_return,1959-01,2025-12,804,803,yes,Coupon fixe au taux du mois precedent; maturite initiale dix ans. Cash trois mois soustrait (OECD mensuel ou fallback JST/GMD annuel).
+BOND_NOR_10Y,BOND_NOR_10Y_OECD,OECD via FRED,IRLTLT01NOM156N,par_10y_excess_return,1985-01,2025-12,492,491,yes,Coupon fixe au taux du mois precedent; maturite initiale dix ans. Cash trois mois soustrait (OECD mensuel ou fallback JST/GMD annuel).
+BOND_PRT_10Y,BOND_PRT_10Y_OECD,OECD via FRED,IRLTLT01PTM156N,par_10y_excess_return,1993-07,2025-12,390,389,yes,Coupon fixe au taux du mois precedent; maturite initiale dix ans. Cash trois mois soustrait (OECD mensuel ou fallback JST/GMD annuel).
+BOND_SWE_10Y,BOND_SWE_10Y_OECD,OECD via FRED,IRLTLT01SEM156N,par_10y_excess_return,1986-12,2025-12,469,468,yes,Coupon fixe au taux du mois precedent; maturite initiale dix ans. Cash trois mois soustrait (OECD mensuel ou fallback JST/GMD annuel).
+BOND_USA_10Y,BOND_USA_10Y_OECD,OECD via FRED,IRLTLT01USM156N,par_10y_excess_return,1953-04,2025-12,873,872,yes,Coupon fixe au taux du mois precedent; maturite initiale dix ans. Cash trois mois soustrait (OECD mensuel ou fallback JST/GMD annuel).
+BOND_USA_10Y,BOND_USA_NBER_A,NBER Macrohistory,m13033a,par_10y_excess_return,1921-01,1941-09,249,248,yes,Taux longs partiellement tax-exempt; maturite/callabilite variable. Cash trois mois soustrait (OECD mensuel ou fallback JST/GMD annuel).
+BOND_USA_10Y,BOND_USA_NBER_B,NBER Macrohistory,m13033b,par_10y_excess_return,1941-10,1953-03,138,137,yes,Taux longs NBER convertis avec une maturite proxy de dix ans. Cash trois mois soustrait (OECD mensuel ou fallback JST/GMD annuel).
+BOND_GBR_10Y,BOND_GBR_CONSOL,Bank of England via FRED,YCLTUK,par_10y_excess_return,1921-01,1934-12,168,167,yes,Perpetuite longue; changement de duration explicite avant 1935. Cash trois mois soustrait (OECD mensuel ou fallback JST/GMD annuel).
+BOND_GBR_10Y,BOND_GBR_BOE_10Y,Bank of England via FRED,MTGB10UKM,par_10y_excess_return,1935-01,1959-12,300,299,yes,Serie dix ans BoE; reset entre Consol et dix ans. Cash trois mois soustrait (OECD mensuel ou fallback JST/GMD annuel).
+BOND_FRA_10Y,BOND_FRA_RENTE_3,NBER Macrohistory,m11021,par_10y_excess_return,1921-01,1940-04,232,231,yes,"Rente perpetuelle 3 %, coupon annualise uniformement par mois. Cash trois mois soustrait (OECD mensuel ou fallback JST/GMD annuel)."
+CMD_ALUMINUM,CMD_ALUMINUM_WB,World Bank Pink Sheet,aluminum,price_return,1960-01,2025-12,792,791,yes,Prix mensuel spot/cash.
+CMD_BARLEY,CMD_BARLEY_WB,World Bank Pink Sheet,barley,price_return,1960-01,2020-08,728,727,yes,Prix mensuel spot/cash.
+CMD_COAL,CMD_COAL_WB,World Bank Pink Sheet,coal,price_return,1970-01,2025-12,672,671,yes,Prix mensuel spot/cash.
+CMD_COCOA,CMD_COCOA_WB,World Bank Pink Sheet,cocoa,price_return,1960-01,2025-12,792,791,yes,Prix mensuel spot/cash.
+CMD_COFFEE,CMD_COFFEE_WB,World Bank Pink Sheet,coffee,price_return,1960-01,2025-12,792,791,yes,Prix mensuel spot/cash.
+CMD_COPPER,CMD_COPPER_NBER,NBER/BLS via FRED,copper,price_return,1921-01,1951-12,372,371,yes,Longue serie historique; aucun rendement au raccord 1960.
+CMD_COPPER,CMD_COPPER_WB,World Bank Pink Sheet,copper_wb,price_return,1960-01,2025-12,792,791,yes,Prix mensuel de marche; premier mois du segment sans rendement.
+CMD_CORN,CMD_CORN_NBER,NBER/BLS via FRED,corn,price_return,1921-01,1959-12,468,467,yes,Longue serie historique; aucun rendement au raccord 1960.
+CMD_CORN,CMD_CORN_WB,World Bank Pink Sheet,maize,price_return,1960-01,2025-12,792,791,yes,Prix mensuel de marche; premier mois du segment sans rendement.
+CMD_CRUDE_OIL,CMD_CRUDE_OIL_WB,World Bank Pink Sheet,crude_oil,price_return,1960-01,2025-12,792,791,yes,Prix mensuel spot/cash.
+CMD_LEAD,CMD_LEAD_WB,World Bank Pink Sheet,lead,price_return,1960-01,2025-12,792,791,yes,Prix mensuel spot/cash.
+CMD_NATURAL_GAS,CMD_NATURAL_GAS_WB,World Bank Pink Sheet,natural_gas,price_return,1960-01,2025-12,792,791,yes,Prix mensuel spot/cash.
+CMD_NICKEL,CMD_NICKEL_WB,World Bank Pink Sheet,nickel,price_return,1960-01,2025-12,792,791,yes,Prix mensuel spot/cash.
+CMD_PALM_OIL,CMD_PALM_OIL_WB,World Bank Pink Sheet,palm_oil,price_return,1960-01,2025-12,792,791,yes,Prix mensuel spot/cash.
+CMD_PIG_IRON,CMD_PIG_IRON_NBER,NBER via FRED,pig_iron,price_return,1938-01,1958-04,244,243,yes,Serie historique terminee; aucun prolongement artificiel.
+CMD_SOYBEANS,CMD_SOYBEANS_WB,World Bank Pink Sheet,soybeans,price_return,1960-01,2025-12,792,791,yes,Prix mensuel spot/cash.
+CMD_SUGAR,CMD_SUGAR_NBER,NBER/BLS via FRED,sugar,price_return,1921-01,1956-07,427,426,yes,Longue serie historique; aucun rendement au raccord 1960.
+CMD_SUGAR,CMD_SUGAR_WB,World Bank Pink Sheet,sugar_wb,price_return,1960-01,2025-12,792,791,yes,Prix mensuel de marche; premier mois du segment sans rendement.
+CMD_TEA,CMD_TEA_WB,World Bank Pink Sheet,tea,price_return,1960-01,2025-12,792,791,yes,Prix mensuel spot/cash.
+CMD_TIN,CMD_TIN_WB,World Bank Pink Sheet,tin,price_return,1960-01,2025-12,792,791,yes,Prix mensuel spot/cash.
+CMD_WHEAT,CMD_WHEAT_NBER,NBER/BLS via FRED,wheat,price_return,1921-01,1959-12,468,467,yes,Longue serie historique; aucun rendement au raccord 1960.
+CMD_WHEAT,CMD_WHEAT_WB,World Bank Pink Sheet,wheat_wb,price_return,1960-01,2025-12,792,791,yes,Prix mensuel de marche; premier mois du segment sans rendement.
+CMD_ZINC,CMD_ZINC_WB,World Bank Pink Sheet,zinc,price_return,1960-01,2025-12,792,791,yes,Prix mensuel spot/cash.
+METAL_GOLD,METAL_GOLD_OFFICIAL,MeasuringWorth,us_price,price_return,1921-01,1959-12,468,467,yes,Prix officiel annuel repete par mois; hausse de 1934 placee en janvier.
+METAL_GOLD,METAL_GOLD_WB,World Bank Pink Sheet,gold,price_return,1960-01,2025-12,792,791,yes,Prix mensuel USD/once; inclut integralement la liberalisation de 1968.
+METAL_SILVER,METAL_SILVER_WB,World Bank Pink Sheet,silver,price_return,1960-01,2025-12,792,791,yes,Prix mensuel USD/once.
+FX_AUD,FX_AUD_FRED_H10,Board of Governors H.10 via FRED,DEXUSAL,synthetic_forward_excess_return,1971-01,2025-12,660,659,yes,"Derniere cotation quotidienne disponible de chaque mois, USD par unite. Differentiel de taux trois mois ajoute, connu au mois precedent."
+FX_CAD,FX_CAD_FRED_H10,Board of Governors H.10 via FRED,DEXCAUS,synthetic_forward_excess_return,1971-01,2025-12,660,659,yes,"Derniere cotation quotidienne disponible de chaque mois, USD par unite. Differentiel de taux trois mois ajoute, connu au mois precedent."
+FX_EUR,FX_EUR_FRED_H10,Board of Governors H.10 via FRED,DEXUSEU,synthetic_forward_excess_return,1999-01,2025-12,324,323,yes,"Derniere cotation quotidienne disponible de chaque mois, USD par unite. Differentiel de taux trois mois ajoute, connu au mois precedent."
+FX_JPY,FX_JPY_FRED_H10,Board of Governors H.10 via FRED,DEXJPUS,synthetic_forward_excess_return,1971-01,2025-12,660,659,yes,"Derniere cotation quotidienne disponible de chaque mois, USD par unite. Differentiel de taux trois mois ajoute, connu au mois precedent."
+FX_CHF,FX_CHF_FRED_H10,Board of Governors H.10 via FRED,DEXSZUS,synthetic_forward_excess_return,1971-01,2025-12,660,659,yes,"Derniere cotation quotidienne disponible de chaque mois, USD par unite. Differentiel de taux trois mois ajoute, connu au mois precedent."
+FX_GBP,FX_GBP_FRED_H10,Board of Governors H.10 via FRED,DEXUSUK,synthetic_forward_excess_return,1971-01,2025-12,660,659,yes,"Derniere cotation quotidienne disponible de chaque mois, USD par unite. Differentiel de taux trois mois ajoute, connu au mois precedent."
+BM_SPYSIM,BM_SPYSIM_TESTFOL,Testfol,SPYSIM,already_monthly_return,1921-01,2025-12,1260,1260,yes,Rendement total SIM; controle/sensibilite uniquement.
+BM_VTISIM,BM_VTISIM_TESTFOL,Testfol,VTISIM,already_monthly_return,1926-07,2025-12,1194,1194,yes,Rendement total SIM; controle/sensibilite uniquement.
+BM_VXUSSIM,BM_VXUSSIM_TESTFOL,Testfol,VXUSSIM,already_monthly_return,1970-01,2025-12,672,672,yes,Rendement total SIM; controle/sensibilite uniquement.
+BM_URTHSIM,BM_URTHSIM_TESTFOL,Testfol,URTHSIM,already_monthly_return,1970-01,2025-12,672,672,yes,Rendement total SIM; controle/sensibilite uniquement.
+BM_VTSIM,BM_VTSIM_TESTFOL,Testfol,VTSIM,already_monthly_return,1970-01,2025-12,672,672,yes,Rendement total SIM; controle/sensibilite uniquement.
+BM_SHYSIM,BM_SHYSIM_TESTFOL,Testfol,SHYSIM,already_monthly_return,1962-01,2025-12,768,768,yes,Rendement total SIM; controle/sensibilite uniquement.
+BM_IEISIM,BM_IEISIM_TESTFOL,Testfol,IEISIM,already_monthly_return,1962-01,2025-12,768,768,yes,Rendement total SIM; controle/sensibilite uniquement.
+BM_IEFSIM,BM_IEFSIM_TESTFOL,Testfol,IEFSIM,already_monthly_return,1962-01,2025-12,768,768,yes,Rendement total SIM; controle/sensibilite uniquement.
+BM_TLTSIM,BM_TLTSIM_TESTFOL,Testfol,TLTSIM,already_monthly_return,1962-01,2025-12,768,768,yes,Rendement total SIM; controle/sensibilite uniquement.

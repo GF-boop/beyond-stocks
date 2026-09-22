@@ -145,9 +145,9 @@ currencies). Consumed column: `mf_1_6_12_gross_return`;
   (<https://www.measuringworth.com/datasets/exchangeglobal/>), and Federal
   Reserve H.10 fixings via FRED from 1971.
 
-**Use.** `build/mf_variants.py` and `build/mf_variant_lifecycle.py` rebuild
-the annual real series from this file; `build/panel_managed_futures.py`
-produces `data/managed-futures-annual-real.csv`, which enters
+**Use.** `build/mf_variants.py` rebuilds the annual real series from this file;
+`build/panel_managed_futures.py` produces
+`data/managed-futures-annual-real.csv`, which enters
 `build/panel_replication_tendance.py`.
 
 **Limitations.** Annual signal before 1971 in part, equity prices as price
@@ -155,6 +155,16 @@ indexes (no dividends, no futures contracts), gross-of-fee returns in the
 source series — fees and costs are applied downstream. Monthly correlation
 2000–2025 of about 0.51–0.53 with SG CTA, SG Trend and BTOP50: the goal is an
 aligned proxy, not a replication of rolled futures.
+
+**Engine and inputs.** The engine is `build/managed_futures/run_managed_futures.py`
+(copied on 2026-09-22 from the sibling project `CTO_vs_PEA`; it regenerates this
+file byte for byte). Its inputs are in `data/mf-inputs/`: the canonical monthly
+snapshot `all-assets-monthly.csv`, the lagged cash returns
+`cash-returns-monthly.csv` and the USD spot changes `fx-spot-returns-monthly.csv`,
+with their metadata. `build/managed_futures/build_canonical_assets.py` documents
+how the snapshot was assembled; it is kept for audit and is not run by
+`rebuild_all.sh`. The snapshot contains OECD and NBER data subject to citation and
+copyright terms: check the licences before redistributing `data/mf-inputs/`.
 
 ## 8. Monthly U.S. CPI — `cpi-monthly.csv`
 

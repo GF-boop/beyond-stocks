@@ -1,91 +1,64 @@
 #!/usr/bin/env bash
-# Reconstruction canonique du papier — documentation executable.
+# Reconstruction canonique du papier ERC — documentation executable.
 # Chaque etape est independante ; en cas de doute, relancer uniquement
 # l'etape dont on audite la sortie. Duree totale : plusieurs heures.
 #
-# Depot autonome pour toutes les simulations. Les validations externes de
-# l'etape 7 ont besoin d'indices et de fonds non redistribuables ; sans eux,
-# leurs artefacts versionnes sont conserves et le reste du rebuild continue.
+# Trois familles de preuves restent des archives versionnees et ne sont pas
+# recalculees ici, faute de source redistribuable :
+#   - la baseline archivee results/main_ladders_n10000.json, qui sert de
+#     temoin de reproduction au cas baseline ERC ;
+#   - l'experience de disponibilite results/historical_availability/ et le
+#     diagnostic de taux courts results/method_review/bill_volatility/,
+#     cites par les annexes ;
+#   - les entrees de fonds non redistribuables (matrices MF).
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
 SEED=20260827
-MF_ENGINE="../CTO_vs_PEA/data/trend/managed_futures/run_managed_futures.py"
-MF_MONTHLY="../CTO_vs_PEA/data/trend/managed_futures/data/managed-futures-monthly.csv"
-
-# build/data_quality.py signale Japon 1945-1949 sans le retirer du panel central.
-# build/investability.py porte le filtre ex ante de la sensibilite investissable.
+MF_ENGINE="build/managed_futures/run_managed_futures.py"
+MF_OUTPUT="build/managed_futures/output"
 
 echo "== 1. Panel et donnees =="
-[[ -f "$MF_ENGINE" ]] || { echo "Moteur MF amont absent: $MF_ENGINE" >&2; exit 1; }
-python3 "$MF_ENGINE" --futures-pnl-fx
-cp "$MF_MONTHLY" data/managed-futures-monthly.csv
+python3 "$MF_ENGINE" --output "$MF_OUTPUT"      # entrees : data/mf-inputs/
+cp "$MF_OUTPUT/managed-futures-monthly.csv" data/managed-futures-monthly.csv
 python3 build/international_equity.py          # -> data/international-equity.csv
 python3 build/build_replication_panel.py       # -> data/replication-panel.csv
 python3 build/panel_managed_futures.py         # -> data/managed-futures-annual-real.csv
 python3 build/panel_replication_tendance.py    # -> data/replication-panel-trend.csv
 
-echo "== 2. Experience principale (10 000 traj.) =="
-python3 build/compare_fixed_stacked_utility.py --runs 10000 --seed $SEED \
-  --portfolio-set core    --output-json results/main_core_n10000.json
-python3 build/compare_fixed_stacked_utility.py --runs 10000 --seed $SEED \
-  --portfolio-set ladders --output-json results/main_ladders_n10000.json
-python3 build/grid_search_equity.py
-python3 build/compare_fixed_stacked_utility.py --runs 10000 --seed $SEED \
-  --year-from 1970 --portfolio-set all \
-  --output-json results/window_1970_2025_n10000.json
-python3 build/compare_fixed_stacked_utility.py --runs 10000 --seed $SEED \
-  --portfolio-set core --reallocate-administered-gold-from 1968 \
-  --output-json results/sensitivity_gold_unavailable_n10000.json
+echo "== 2. Exclusions de source (alimente le cas ERC --full) =="
+python3 build/source_exclusion_diagnostics.py --runs 10000 --seed $SEED \
+  --output-dir results/method_review/source_exclusions
 
-echo "== 3. Controles numeraire et USA =="
-python3 build/compare_fixed_stacked_utility.py --runs 20000 --seed $SEED \
-  --sample-mode usa --output-json results/control_usa_n20000.json
-python3 build/compare_fixed_stacked_utility.py --runs 20000 --seed $SEED \
-  --sample-mode usa --portfolio-set ladders \
-  --output-json results/control_usa_ladders_n20000.json
-python3 build/compare_fixed_stacked_utility.py --runs 10000 --seed $SEED \
-  --usd-numeraire --output-json results/control_usd_numeraire_n10000.json
-python3 build/compare_fixed_stacked_utility.py --runs 10000 --seed $SEED \
-  --usd-common-sample --output-json results/control_usd_common_n10000.json
-python3 build/experiment_fixed_numeraire.py --runs 20000 \
-  --output-json results/control_numeraires_n20000.json
+echo "== 3. Experience principale ERC (10 000 traj.) =="
+# erc_refocusing.py refuse d'ecraser un dossier existant : on repart du final.
+rm -rf results/erc_refocusing/n10000_final
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 \
+  python3 build/erc_refocusing.py --runs 10000 --full --tag final
 
-echo "== 4. Sweeps de levier (sortie console archivee) =="
-python3 build/experiment_voltarget.py --mode frontier --runs 5000 \
-  | tee results/frontier_n5000.txt                                  # Table 7
-{
-  for phi in 0 0.0015 0.003 0.006 0.010; do                         # Table 9 (levier 1.5)
-    python3 build/experiment_voltarget.py --mode frontier --runs 10000 --spread $phi
-  done
-} | tee results/spread_frontier_n10000.txt
+echo "== 4. Valeur de composition =="
+python3 build/composition_value.py --runs 10000 --seed $SEED
+python3 build/composition_value.py --runs 10000 --seed $SEED --year-from 1970 \
+  --output-json results/composition_value_1970_n10000.json
 
-echo "== 5. Sensibilites et annexes =="
-python3 build/central_cost_sensitivity.py
+echo "== 5. Sensibilites et annexes restaurees =="
 python3 build/gamma_sensitivity.py --runs 10000
 python3 build/gamma_sensitivity.py --runs 10000 --fixed-theta \
   --output-json results/gamma_fixed_theta_n10000.json \
   --output-tex paper/figures/gamma_fixed_theta.tex
 python3 build/policy_sensitivity.py
-python3 build/source_country_sensitivity.py --runs 5000
-python3 build/source_exclusion_diagnostics.py --runs 10000 --seed $SEED
-python3 build/variance_concentration.py
+for block in 5 10 20; do
+  python3 build/historical_panel_bootstrap.py --outer-replicates 100 --inner-runs 1000 \
+    --outer-mean-block "$block" \
+    --output-json "results/method_review/historical_panel_bootstrap/calendar_blocks_${block}y_outer100_inner1000.json"
+done
 python3 build/margin_call_experiment.py
-python3 build/sleeve_ablation.py --runs 10000 --seed $SEED
-python3 build/compare_fixed_stacked_utility.py --runs 10000 --seed $SEED \
-  --year-from 1950 --portfolio-set ladders \
-  --output-json results/method_review/sample_windows/post1950_ladders_n10000.json
-python3 build/compare_fixed_stacked_utility.py --runs 10000 --seed $SEED \
-  --year-from 1970 --portfolio-set ladders \
-  --output-json results/method_review/sample_windows/post1970_ladders_n10000.json
+python3 build/monthly_margin_diagnostic.py
 
-echo "== 6. Figures et diagnostics publics =="
+echo "== 6. Figures et donnees d'annexes =="
 ( cd paper && python3 build_appendix_data.py --fixed-notional \
-  --output-dir new_paper/figures && python3 build_mf_benchmark_data.py )
-python3 build/plot_ladders_main.py \
-  results/main_ladders_n10000.json paper/figures/ladders_main.tex    # Figure 1
-python3 build/plot_ladders_main.py \
-  results/control_usa_ladders_n20000.json paper/figures/ladders_usa.tex 8 19 # Figure 2
+    --output-dir new_paper/figures && python3 build_mf_benchmark_data.py )
+python3 build/mf_variants.py
 
 echo "== 7. Validation externe conditionnelle =="
 external_ready=true
@@ -110,24 +83,26 @@ else
   echo "Donnees externes non redistribuables absentes : matrices MF conservees."
 fi
 
-python3 build/replicate_aco_leverage.py --methods-only
-python3 build/render_aco_comparisons.py
-python3 build/mf_variants.py
-python3 build/panel_concentration_comparison.py
-python3 build/sleeve_ablation.py --ladder --runs 10000 \
-  --output-json results/sleeve_ablation_ladders_n10000.json
-python3 build/sleeve_ablation.py --ladder --runs 10000 \
-  --panel results/panel_concentration/panel-screened.csv \
-  --output-json results/panel_concentration/screened_ablation_ladders_n10000.json
-python3 build/monthly_margin_diagnostic.py
+echo "== 7b. Controles de la revision du 22 septembre 2026 (volatilite egale, strategies sans obligations) =="
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 build/revision_checks.py
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 build/revision_checks.py 0.03
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 build/eqvol_sensitivity.py
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 build/mf_variant_lifecycle.py
+for b in 5 10 20; do
+  OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 build/historical_panel_bootstrap_eqvol.py --outer-mean-block $b
+done
+
+echo "== 8. Rendu des figures =="
+python3 build/render_sleeve_properties.py >/dev/null
+python3 build/render_erc_refocusing.py
+python3 build/render_composition_value.py
+python3 build/render_restored_appendices.py
 python3 build/render_panel_margin_ablation.py
 
-echo "== 8. Verification des artefacts =="
+echo "== 9. Verification des artefacts =="
 python3 build/verify_repository.py
 
-echo "== 9. PDF =="
-( cd paper/new_paper && pdflatex -interaction=nonstopmode main-styled.tex && \
-  biber main-styled && pdflatex -interaction=nonstopmode main-styled.tex && \
-  pdflatex -interaction=nonstopmode main-styled.tex )
+echo "== 10. PDF =="
+( cd paper/new_paper && ./build.sh )
 
 echo "Reconstruction terminee. Verifier les sorties results/ et paper/figures/."

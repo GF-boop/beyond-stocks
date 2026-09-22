@@ -1,0 +1,73 @@
+asset_id,asset_class,market,return_kind,default_universe,currency_basis,first_return_month,last_return_month,observations,important_limit
+BM_IEFSIM,bond_benchmark,Treasuries US 7-10 ans,reconstructed_total_return,no,USD,1962-01,2025-12,768,Benchmark reconstruit et recouvrant; exclu de l'univers MF par defaut.
+BM_IEISIM,bond_benchmark,Treasuries US 3-7 ans,reconstructed_total_return,no,USD,1962-01,2025-12,768,Benchmark reconstruit et recouvrant; exclu de l'univers MF par defaut.
+BM_SHYSIM,bond_benchmark,Treasuries US 1-3 ans,reconstructed_total_return,no,USD,1962-01,2025-12,768,Benchmark reconstruit et recouvrant; exclu de l'univers MF par defaut.
+BM_SPYSIM,equity_benchmark,S&P 500 TR,reconstructed_total_return,no,USD,1921-01,2025-12,1260,Benchmark reconstruit et recouvrant; exclu de l'univers MF par defaut.
+BM_TLTSIM,bond_benchmark,Treasuries US longs,reconstructed_total_return,no,USD,1962-01,2025-12,768,Benchmark reconstruit et recouvrant; exclu de l'univers MF par defaut.
+BM_URTHSIM,equity_benchmark,MSCI World TR,reconstructed_total_return,no,USD,1970-01,2025-12,672,Benchmark reconstruit et recouvrant; exclu de l'univers MF par defaut.
+BM_VTISIM,equity_benchmark,Marche US total TR,reconstructed_total_return,no,USD,1926-07,2025-12,1194,Benchmark reconstruit et recouvrant; exclu de l'univers MF par defaut.
+BM_VTSIM,equity_benchmark,Monde total TR,reconstructed_total_return,no,USD,1970-01,2025-12,672,Benchmark reconstruit et recouvrant; exclu de l'univers MF par defaut.
+BM_VXUSSIM,equity_benchmark,Actions hors US TR,reconstructed_total_return,no,USD,1970-01,2025-12,672,Benchmark reconstruit et recouvrant; exclu de l'univers MF par defaut.
+BOND_AUS_10Y,bond,Australie,synthetic_excess_return,yes,local,1969-08,2025-12,677,Proxy obligataire en exces de cash; ni indice observe ni future roule.
+BOND_BEL_10Y,bond,Belgique,synthetic_excess_return,yes,local,1955-02,2025-12,851,Proxy obligataire en exces de cash; ni indice observe ni future roule.
+BOND_CAN_10Y,bond,Canada,synthetic_excess_return,yes,local,1956-02,2025-12,839,Proxy obligataire en exces de cash; ni indice observe ni future roule.
+BOND_CHE_10Y,bond,Suisse,synthetic_excess_return,yes,local,1955-02,2025-12,851,Proxy obligataire en exces de cash; ni indice observe ni future roule.
+BOND_DEU_10Y,bond,Allemagne,synthetic_excess_return,yes,local,1956-06,2025-12,835,Proxy obligataire en exces de cash; ni indice observe ni future roule.
+BOND_DNK_10Y,bond,Danemark,synthetic_excess_return,yes,local,1987-02,2025-12,467,Proxy obligataire en exces de cash; ni indice observe ni future roule.
+BOND_ESP_10Y,bond,Espagne,synthetic_excess_return,yes,local,1980-02,2025-12,551,Proxy obligataire en exces de cash; ni indice observe ni future roule.
+BOND_FIN_10Y,bond,Finlande,synthetic_excess_return,yes,local,1988-02,2025-12,453,Proxy obligataire en exces de cash; ni indice observe ni future roule.
+BOND_FRA_10Y,bond,France,synthetic_excess_return,yes,local,1923-01,2025-12,999,Proxy obligataire en exces de cash; ni indice observe ni future roule.
+BOND_GBR_10Y,bond,Royaume-Uni,synthetic_excess_return,yes,local,1921-02,2025-12,1257,Proxy obligataire en exces de cash; ni indice observe ni future roule.
+BOND_IRL_10Y,bond,Irlande,synthetic_excess_return,yes,local,1984-02,2025-12,503,Proxy obligataire en exces de cash; ni indice observe ni future roule.
+BOND_ITA_10Y,bond,Italie,synthetic_excess_return,yes,local,1991-04,2025-12,417,Proxy obligataire en exces de cash; ni indice observe ni future roule.
+BOND_JPN_10Y,bond,Japon,synthetic_excess_return,yes,local,1989-02,2025-12,443,Proxy obligataire en exces de cash; ni indice observe ni future roule.
+BOND_NLD_10Y,bond,Pays-Bas,synthetic_excess_return,yes,local,1959-02,2025-12,803,Proxy obligataire en exces de cash; ni indice observe ni future roule.
+BOND_NOR_10Y,bond,Norvege,synthetic_excess_return,yes,local,1985-02,2025-12,491,Proxy obligataire en exces de cash; ni indice observe ni future roule.
+BOND_PRT_10Y,bond,Portugal,synthetic_excess_return,yes,local,1993-08,2025-12,389,Proxy obligataire en exces de cash; ni indice observe ni future roule.
+BOND_SWE_10Y,bond,Suede,synthetic_excess_return,yes,local,1987-01,2025-12,468,Proxy obligataire en exces de cash; ni indice observe ni future roule.
+BOND_USA_10Y,bond,Etats-Unis,synthetic_excess_return,yes,local,1921-02,2025-12,1257,Proxy obligataire en exces de cash; ni indice observe ni future roule.
+CMD_ALUMINUM,commodity,Aluminium,spot_price_return,yes,USD/source unit,1960-02,2025-12,791,"Prix spot/cash; carry, collateral et roll futures absents."
+CMD_BARLEY,commodity,Orge,spot_price_return,yes,USD/source unit,1960-02,2020-08,727,"Prix spot/cash; carry, collateral et roll futures absents."
+CMD_COAL,commodity,Charbon,spot_price_return,yes,USD/source unit,1970-02,2025-12,671,"Prix spot/cash; carry, collateral et roll futures absents."
+CMD_COCOA,commodity,Cacao,spot_price_return,yes,USD/source unit,1960-02,2025-12,791,"Prix spot/cash; carry, collateral et roll futures absents."
+CMD_COFFEE,commodity,Cafe,spot_price_return,yes,USD/source unit,1960-02,2025-12,791,"Prix spot/cash; carry, collateral et roll futures absents."
+CMD_COPPER,commodity,Cuivre,spot_price_return,yes,USD/source unit,1921-02,2025-12,1162,"Prix spot/cash; carry, collateral et roll futures absents."
+CMD_CORN,commodity,Mais,spot_price_return,yes,USD/source unit,1921-02,2025-12,1258,"Prix spot/cash; carry, collateral et roll futures absents."
+CMD_CRUDE_OIL,commodity,Petrole brut,spot_price_return,yes,USD/source unit,1960-02,2025-12,791,"Prix spot/cash; carry, collateral et roll futures absents."
+CMD_LEAD,commodity,Plomb,spot_price_return,yes,USD/source unit,1960-02,2025-12,791,"Prix spot/cash; carry, collateral et roll futures absents."
+CMD_NATURAL_GAS,commodity,Gaz naturel,spot_price_return,yes,USD/source unit,1960-02,2025-12,791,"Prix spot/cash; carry, collateral et roll futures absents."
+CMD_NICKEL,commodity,Nickel,spot_price_return,yes,USD/source unit,1960-02,2025-12,791,"Prix spot/cash; carry, collateral et roll futures absents."
+CMD_PALM_OIL,commodity,Huile de palme,spot_price_return,yes,USD/source unit,1960-02,2025-12,791,"Prix spot/cash; carry, collateral et roll futures absents."
+CMD_PIG_IRON,commodity,Fonte,spot_price_return,yes,USD/source unit,1938-02,1958-04,243,"Prix spot/cash; carry, collateral et roll futures absents."
+CMD_SOYBEANS,commodity,Soja,spot_price_return,yes,USD/source unit,1960-02,2025-12,791,"Prix spot/cash; carry, collateral et roll futures absents."
+CMD_SUGAR,commodity,Sucre,spot_price_return,yes,USD/source unit,1921-02,2025-12,1217,"Prix spot/cash; carry, collateral et roll futures absents."
+CMD_TEA,commodity,The,spot_price_return,yes,USD/source unit,1960-02,2025-12,791,"Prix spot/cash; carry, collateral et roll futures absents."
+CMD_TIN,commodity,Etain,spot_price_return,yes,USD/source unit,1960-02,2025-12,791,"Prix spot/cash; carry, collateral et roll futures absents."
+CMD_WHEAT,commodity,Ble,spot_price_return,yes,USD/source unit,1921-02,2025-12,1258,"Prix spot/cash; carry, collateral et roll futures absents."
+CMD_ZINC,commodity,Zinc,spot_price_return,yes,USD/source unit,1960-02,2025-12,791,"Prix spot/cash; carry, collateral et roll futures absents."
+EQ_AUS,equity,Australie,price_return,yes,local,1958-02,2025-12,815,"Dividendes absents; proxy de prix, pas rendement total."
+EQ_BEL,equity,Belgique,price_return,yes,local,1985-05,2025-12,488,"Dividendes absents; proxy de prix, pas rendement total."
+EQ_CAN,equity,Canada,price_return,yes,local,1956-02,2025-12,839,"Dividendes absents; proxy de prix, pas rendement total."
+EQ_CHE,equity,Suisse,price_return,yes,local,1955-02,2025-12,851,"Dividendes absents; proxy de prix, pas rendement total."
+EQ_DEU,equity,Allemagne,price_return,yes,local,1924-02,2025-12,925,"Dividendes absents; proxy de prix, pas rendement total."
+EQ_DNK,equity,Danemark,price_return,yes,local,1983-02,2025-12,515,"Dividendes absents; proxy de prix, pas rendement total."
+EQ_ESP,equity,Espagne,price_return,yes,local,1985-02,2025-12,491,"Dividendes absents; proxy de prix, pas rendement total."
+EQ_FIN,equity,Finlande,price_return,yes,local,1957-02,2025-12,827,"Dividendes absents; proxy de prix, pas rendement total."
+EQ_FRA,equity,France,price_return,yes,local,1921-02,2025-12,1078,"Dividendes absents; proxy de prix, pas rendement total."
+EQ_GBR,equity,Royaume-Uni,price_return,yes,local,1921-02,2025-12,982,"Dividendes absents; proxy de prix, pas rendement total."
+EQ_IRL,equity,Irlande,price_return,yes,local,1955-02,2025-12,851,"Dividendes absents; proxy de prix, pas rendement total."
+EQ_ITA,equity,Italie,price_return,yes,local,1957-02,2025-12,827,"Dividendes absents; proxy de prix, pas rendement total."
+EQ_JPN,equity,Japon,price_return,yes,local,1959-02,2025-12,803,"Dividendes absents; proxy de prix, pas rendement total."
+EQ_NLD,equity,Pays-Bas,price_return,yes,local,1957-02,2025-12,827,"Dividendes absents; proxy de prix, pas rendement total."
+EQ_NOR,equity,Norvege,price_return,yes,local,1986-02,2025-12,479,"Dividendes absents; proxy de prix, pas rendement total."
+EQ_PRT,equity,Portugal,price_return,yes,local,1988-02,2025-12,455,"Dividendes absents; proxy de prix, pas rendement total."
+EQ_SWE,equity,Suede,price_return,yes,local,1950-02,2025-12,911,"Dividendes absents; proxy de prix, pas rendement total."
+EQ_USA,equity,Etats-Unis,price_return,yes,local,1921-02,2025-12,1257,"Dividendes absents; proxy de prix, pas rendement total."
+FX_AUD,currency,Dollar australien,forward_excess_return,yes,USD par unite etrangere,1971-02,2025-12,659,Forward synthetique: spot H.10 fin de mois + differentiel de taux trois mois.
+FX_CAD,currency,Dollar canadien,forward_excess_return,yes,USD par unite etrangere,1971-02,2025-12,659,Forward synthetique: spot H.10 fin de mois + differentiel de taux trois mois.
+FX_CHF,currency,Franc suisse,forward_excess_return,yes,USD par unite etrangere,1971-02,2025-12,659,Forward synthetique: spot H.10 fin de mois + differentiel de taux trois mois.
+FX_EUR,currency,Euro,forward_excess_return,yes,USD par unite etrangere,1999-02,2025-12,323,Forward synthetique: spot H.10 fin de mois + differentiel de taux trois mois.
+FX_GBP,currency,Livre sterling,forward_excess_return,yes,USD par unite etrangere,1971-02,2025-12,659,Forward synthetique: spot H.10 fin de mois + differentiel de taux trois mois.
+FX_JPY,currency,Yen japonais,forward_excess_return,yes,USD par unite etrangere,1971-02,2025-12,659,Forward synthetique: spot H.10 fin de mois + differentiel de taux trois mois.
+METAL_GOLD,precious_metal,Or,spot_price_return,yes,USD,1921-02,2025-12,1258,Prix officiel US avant 1960; spot ensuite; aucun frais de garde.
+METAL_SILVER,precious_metal,Argent,spot_price_return,yes,USD,1960-02,2025-12,791,Spot World Bank depuis 1960; aucun roll futures.
