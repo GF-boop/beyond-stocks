@@ -26,7 +26,7 @@ Points de methode :
 * La ligne r_c = 10 % de l'axe contribution et la ligne r_w = 4 % de l'axe
   retrait sont le cas de reference et doivent coincider.
 
-Sorties autonomes pour main.tex :
+Sorties autonomes pour le manuscrit :
 
 * ``figures/policy_sensitivity.json`` : audit complet ;
 * ``figures/policy_sensitivity.tex`` : tabular a deux panneaux inclus par
@@ -201,7 +201,7 @@ def write_tex(path: str, contribution, withdrawal, runs: int) -> None:
     handle.write("\\begin{minipage}{0.96\\textwidth}\\footnotesize\n")
     handle.write(
         "\\textit{Note:} %s paired lifecycle paths per row, full "
-        "1{,}557-country-year panel, ten-year mean stationary blocks, "
+        "1{,}561-country-year panel, ten-year mean stationary blocks, "
         "$\\phi=30$ bp and $\\kappa=10$ bp. Entries are levels, in percent: "
         "retirement ruin and the utility-equivalent saving rate, both lower "
         "is better. The two ACO 33/67 columns are the reference. The two "

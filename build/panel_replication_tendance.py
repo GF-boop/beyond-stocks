@@ -18,7 +18,7 @@ separees pour sensibilite.
 
 Le panier obligataire exige huit emetteurs au minimum. Sur la fenetre
 1927--2025 ce plancher ne retire aucune observation : le panier effectivement
-produit contient 12 a 16 souverains, dont 16 dans la grande majorite du panel.
+produit contient 13 a 16 souverains, dont 16 dans la grande majorite du panel.
 """
 
 from __future__ import annotations
@@ -129,7 +129,14 @@ def build(
     gold_us_real: dict[int, float],
     excluded_bond_issuers: frozenset[str] = frozenset(),
     excluded_bond_issuer_years: frozenset[tuple[str, int]] = frozenset(),
+    source_inflation: dict[str, dict[int, float]] | None = None,
     ) -> list[dict[str, str | float]]:
+  """``source_inflation`` donne, pour ``"gold"`` et ``"trend"``, l'inflation
+  americaine qui a servi a deflater chaque serie source (CPI decembre sur
+  decembre). Elle sert a retrouver exactement le rendement nominal en USD avant
+  la conversion dans la monnaie du resident. Sans elle, la conversion
+  re-nominalise avec l'inflation americaine du panel JST, qui n'est pas celle
+  du deflateur source."""
   by_country_year = {
     (row["country"], int(row["year"])): row for row in panel
   }
@@ -143,7 +150,12 @@ def build(
     country = row["country"]
     year = int(row["year"])
     previous = by_country_year.get((country, year - 1))
-    if (previous is None or year not in trend_us_real
+    gold_inflation = trend_inflation = us_inflation.get(year)
+    if source_inflation is not None:
+      gold_inflation = source_inflation["gold"].get(year)
+      trend_inflation = source_inflation["trend"].get(year)
+    if (gold_inflation is None or trend_inflation is None
+        or previous is None or year not in trend_us_real
         or year not in trend_us_cash_real
         or year not in gold_us_real or year not in us_inflation):
       continue
@@ -218,13 +230,13 @@ def build(
       trend_us_real[year], trend_us_cash_real[year], resident_bill)
     trend_fixed_notional = fixed_notional_hedged_real_return(
       trend_us_real[year], trend_us_cash_real[year], resident_bill,
-      us_inflation[year], resident_inflation,
+      trend_inflation, resident_inflation,
       1.0, 1.0, resident_fx, resident_previous_fx)
     trend_unhedged = convert_us_real_return(
-      trend_us_real[year], us_inflation[year], resident_inflation,
+      trend_us_real[year], trend_inflation, resident_inflation,
       resident_fx, resident_previous_fx)
     converted_gold = convert_us_real_return(
-      gold_us_real[year], us_inflation[year], resident_inflation,
+      gold_us_real[year], gold_inflation, resident_inflation,
       resident_fx, resident_previous_fx)
 
     output = dict(row)

@@ -21,7 +21,7 @@ Points de methode :
   moyenne des menages suedois de Calvet, Campbell, Gomes et Sodini (2025)
   citee par ACO.
 
-Sorties autonomes pour main.tex :
+Sorties autonomes pour le manuscrit :
 
 * ``figures/gamma_sensitivity.json`` : audit complet ;
 * ``figures/gamma_sensitivity.tex`` : tabular inclus par l'annexe.

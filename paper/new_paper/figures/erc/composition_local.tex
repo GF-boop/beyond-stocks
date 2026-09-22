@@ -1,0 +1,29 @@
+\begin{table}[p]\centering
+\caption{First-order decomposition of changes in asset class weights}\label{tab:composition-local}
+\begin{minipage}{\linewidth}\small The table decomposes the changes in Panels A to C of Table~\ref{tab:composition-value} using the first-order approximation in Section~\ref{app:framework}. Local is the derivative of the equivalent savings rate with respect to the change in weights, evaluated at the initial weights. The first three columns scale it to a reallocation of 10\% of wealth and split it into a mean term, $E[M_t]\,E[\Delta R_t]$, and a covariance term, $\mathrm{Cov}(M_t,\Delta R_t)$. The next two columns report the local value for the full reallocation and the exact change from Table~\ref{tab:composition-value}. Sign indicates whether the two agree in sign. The sample is 1927 to 2025, and entries are in percentage points.\end{minipage}
+\medskip
+
+{\setlength{\tabcolsep}{4pt}\footnotesize
+\begin{tabular}{lrrrrrrr}\toprule
+Change in weights & Realloc. & \shortstack{Local\\ per 10 pp} & \shortstack{of which\\ mean} & \shortstack{of which\\ cov.} & \shortstack{Local,\\ full move} & Exact & Sign \\ \midrule
+\multicolumn{8}{c}{Panel A: Add one asset class to the all-equity strategy at 175\%} \\
+$+$ Global bonds & 46.7 & $-$1.6 & +2.4 & $-$4.0 & $-$7.6 & $-$2.1 & \checkmark \\
+$+$ Gold & 29.2 & $-$3.4 & +1.6 & $-$5.0 & $-$9.9 & $-$3.3 & \checkmark \\
+$+$ Managed futures & 29.2 & $-$4.8 & +0.2 & $-$5.0 & $-$14.0 & $-$5.4 & \checkmark \\
+$+$ All three asset classes & 105.0 & $-$3.0 & +1.5 & $-$4.5 & $-$31.5 & $-$3.8 & \checkmark \\
+\midrule
+\multicolumn{8}{c}{Panel B: Remove one asset class from the proportional strategy at 175\%} \\
+$-$ Global bonds & 46.7 & $-$1.0 & $-$1.6 & +0.6 & $-$4.5 & $-$1.7 & \checkmark \\
+$-$ Gold & 29.2 & $-$0.9 & $-$1.1 & +0.2 & $-$2.5 & $-$0.8 & \checkmark \\
+$-$ Managed futures & 29.2 & +0.3 & $-$0.1 & +0.5 & +0.9 & +1.2 & \checkmark \\
+$-$ Bonds and gold & 75.8 & $-$0.9 & $-$1.4 & +0.5 & $-$7.1 & $-$1.6 & \checkmark \\
+$-$ All three asset classes & 105.0 & $-$0.6 & $-$1.0 & +0.5 & $-$6.1 & +3.8 & $\times$ \\
+\midrule
+\multicolumn{8}{c}{Panel C: Remove one asset class from the risk parity strategy at 175\%} \\
+$-$ Global bonds & 83.1 & $-$1.5 & $-$1.7 & +0.1 & $-$12.6 & $-$4.7 & \checkmark \\
+$-$ Gold & 21.1 & $-$1.2 & $-$1.1 & $-$0.1 & $-$2.5 & $-$1.4 & \checkmark \\
+$-$ Managed futures & 45.4 & $-$0.2 & $-$0.1 & $-$0.1 & $-$1.1 & +0.9 & $\times$ \\
+$-$ Bonds and gold & 104.2 & $-$1.4 & $-$1.5 & +0.1 & $-$15.1 & $-$4.9 & \checkmark \\
+$-$ All three asset classes & 149.6 & $-$1.1 & $-$1.1 & +0.0 & $-$16.1 & +1.4 & $\times$ \\
+\bottomrule\end{tabular}}
+\end{table}

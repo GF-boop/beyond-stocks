@@ -1,0 +1,433 @@
+{
+  "mf_haircut": 0.0,
+  "benchmarks": {
+    "2000-01_2025-12": {
+      "proxy": {
+        "geometric_mean": 0.06113228857847197,
+        "volatility": 0.10511680596461118,
+        "sharpe": 0.413240747881986
+      },
+      "sg_cta": {
+        "geometric_mean": 0.042003060757009436,
+        "volatility": 0.08690042560936914,
+        "sharpe": 0.26797640035268827
+      },
+      "sg_trend": {
+        "geometric_mean": 0.0537664957341617,
+        "volatility": 0.1334225374430439,
+        "sharpe": 0.2971559139773609
+      },
+      "btop50": {
+        "geometric_mean": 0.0408856138579905,
+        "volatility": 0.07983652949620564,
+        "sharpe": 0.2710934798165997
+      }
+    },
+    "2000-01_2009-12": {
+      "proxy": {
+        "geometric_mean": 0.12268198982422573,
+        "volatility": 0.11492749651536137,
+        "sharpe": 0.7940642042709655
+      },
+      "sg_cta": {
+        "geometric_mean": 0.06628444629266173,
+        "volatility": 0.09274195640059721,
+        "sharpe": 0.39674341555379994
+      },
+      "sg_trend": {
+        "geometric_mean": 0.08223396311019804,
+        "volatility": 0.16082998168693122,
+        "sharpe": 0.3743413686493916
+      },
+      "btop50": {
+        "geometric_mean": 0.06353098607643637,
+        "volatility": 0.0935073548538547,
+        "sharpe": 0.3659994089867213
+      }
+    },
+    "2010-01_2025-12": {
+      "proxy": {
+        "geometric_mean": 0.024389252414250384,
+        "volatility": 0.09735752047644741,
+        "sharpe": 0.13924826801696885
+      },
+      "sg_cta": {
+        "geometric_mean": 0.027108787540058188,
+        "volatility": 0.08300563949928474,
+        "sharpe": 0.17894942503752534
+      },
+      "sg_trend": {
+        "geometric_mean": 0.036355849723598066,
+        "volatility": 0.11309269265429556,
+        "sharpe": 0.23660557389486295
+      },
+      "btop50": {
+        "geometric_mean": 0.026977769544274555,
+        "volatility": 0.06990546758234122,
+        "sharpe": 0.19670010364909613
+      }
+    }
+  },
+  "runs": 10000,
+  "seed": 20260827,
+  "spread": 0.003,
+  "aco_volatility": 0.25282649424998765,
+  "equal_volatility_exposures": {
+    "Proportional": 1.6628028302811098,
+    "Risk parity": 2.64880387110615,
+    "Stocks, gold, MF": 1.2613743681628145,
+    "Stocks and MF": 1.3218984247519163
+  },
+  "sleeves": {
+    "full": {
+      "stocks": {
+        "mean_excess": 0.07857282330598675,
+        "sd_excess": 0.2540117576501685,
+        "sharpe": 0.3093275052810715
+      },
+      "bonds": {
+        "mean_excess": 0.016809861108760083,
+        "sd_excess": 0.05863144512370595,
+        "sharpe": 0.28670385103578994
+      },
+      "gold": {
+        "mean_excess": 0.037324271818670464,
+        "sd_excess": 0.3212456075893868,
+        "sharpe": 0.11618609231344887
+      },
+      "mf": {
+        "mean_excess": 0.07107937338436873,
+        "sd_excess": 0.1452306678242279,
+        "sharpe": 0.48942399321881397
+      }
+    },
+    "post1970": {
+      "stocks": {
+        "mean_excess": 0.07067707552744233,
+        "sd_excess": 0.1692032622611916,
+        "sharpe": 0.41770515877135544
+      },
+      "bonds": {
+        "mean_excess": 0.020232657222586187,
+        "sd_excess": 0.06705254945067933,
+        "sharpe": 0.3017432951966781
+      },
+      "gold": {
+        "mean_excess": 0.0534239145419937,
+        "sd_excess": 0.23185089074935256,
+        "sharpe": 0.23042358978792446
+      },
+      "mf": {
+        "mean_excess": 0.07282083605164567,
+        "sd_excess": 0.11866685471949968,
+        "sharpe": 0.6136577582997111
+      }
+    }
+  },
+  "common_income_dollars": {
+    "median_retirement_wealth": 909471.6292070949,
+    "median_common_income": 36378.865168283795
+  },
+  "results": [
+    {
+      "strategy": "ACO 33/67",
+      "weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "gross": 1.0,
+      "annual_volatility": 0.25282649424998765,
+      "ruin_probability": 0.0698,
+      "equivalent_savings_rate": 0.09999999403953552,
+      "common_failure": 0.0698,
+      "common_failure_at_equivalent_saving": 0.0698,
+      "paired_ruin_vs_aco": {
+        "difference": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "paired_common_vs_aco": {
+        "difference": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "failures_above_median_income_share": 0.5616045845272206
+    },
+    {
+      "strategy": "ACO 175%",
+      "weights": [
+        1.75,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "gross": 1.75,
+      "annual_volatility": 0.43986678541364876,
+      "ruin_probability": 0.1481,
+      "equivalent_savings_rate": 0.09640106558799744,
+      "common_failure": 0.0625,
+      "common_failure_at_equivalent_saving": 0.0689,
+      "paired_ruin_vs_aco": {
+        "difference": 0.0783,
+        "ci95": [
+          0.07250629013455104,
+          0.08409370986544895
+        ]
+      },
+      "paired_common_vs_aco": {
+        "difference": -0.0073,
+        "ci95": [
+          -0.012517201743559789,
+          -0.0020827982564402105
+        ]
+      },
+      "failures_above_median_income_share": 0.3149492017416546
+    },
+    {
+      "strategy": "Proportional 175%",
+      "weights": [
+        0.7000000000000001,
+        0.4666666666666667,
+        0.29166666666666663,
+        0.29166666666666663
+      ],
+      "gross": 1.75,
+      "annual_volatility": 0.2657801752885436,
+      "ruin_probability": 0.0213,
+      "equivalent_savings_rate": 0.058697909116744995,
+      "common_failure": 0.0217,
+      "common_failure_at_equivalent_saving": 0.1256,
+      "paired_ruin_vs_aco": {
+        "difference": -0.0485,
+        "ci95": [
+          -0.05291556399121744,
+          -0.04408443600878256
+        ]
+      },
+      "paired_common_vs_aco": {
+        "difference": -0.0481,
+        "ci95": [
+          -0.05291667474695581,
+          -0.04328332525304419
+        ]
+      },
+      "failures_above_median_income_share": 0.6918789808917197
+    },
+    {
+      "strategy": "Proportional equal volatility",
+      "weights": [
+        0.665121132112444,
+        0.4434140880749626,
+        0.2771338050468516,
+        0.2771338050468516
+      ],
+      "gross": 1.6628028302811098,
+      "annual_volatility": 0.25282649424998765,
+      "ruin_probability": 0.0225,
+      "equivalent_savings_rate": 0.0634983479976654,
+      "common_failure": 0.0318,
+      "common_failure_at_equivalent_saving": 0.131,
+      "paired_ruin_vs_aco": {
+        "difference": -0.0473,
+        "ci95": [
+          -0.051703145857559606,
+          -0.0428968541424404
+        ]
+      },
+      "paired_common_vs_aco": {
+        "difference": -0.038,
+        "ci95": [
+          -0.04296473904887078,
+          -0.03303526095112922
+        ]
+      },
+      "failures_above_median_income_share": 0.7053435114503817
+    },
+    {
+      "strategy": "Risk parity 175%",
+      "weights": [
+        0.2542253901174114,
+        0.8306793738934216,
+        0.2109449193131088,
+        0.454150316676058
+      ],
+      "gross": 1.75,
+      "annual_volatility": 0.17131466724454172,
+      "ruin_probability": 0.0379,
+      "equivalent_savings_rate": 0.0828913152217865,
+      "common_failure": 0.1425,
+      "common_failure_at_equivalent_saving": 0.2017,
+      "paired_ruin_vs_aco": {
+        "difference": -0.0319,
+        "ci95": [
+          -0.036953951838444694,
+          -0.0268460481615553
+        ]
+      },
+      "paired_common_vs_aco": {
+        "difference": 0.0727,
+        "ci95": [
+          0.06515897767571469,
+          0.08024102232428532
+        ]
+      },
+      "failures_above_median_income_share": 0.7050074367873079
+    },
+    {
+      "strategy": "Risk parity equal volatility",
+      "weights": [
+        0.38479611284369747,
+        1.2573181378382445,
+        0.3192866964952783,
+        0.6874029239289293
+      ],
+      "gross": 2.6488038711061495,
+      "annual_volatility": 0.2528264942499876,
+      "ruin_probability": 0.0188,
+      "equivalent_savings_rate": 0.04178151488304138,
+      "common_failure": 0.0217,
+      "common_failure_at_equivalent_saving": 0.1686,
+      "paired_ruin_vs_aco": {
+        "difference": -0.051,
+        "ci95": [
+          -0.05567141156917316,
+          -0.046328588430826836
+        ]
+      },
+      "paired_common_vs_aco": {
+        "difference": -0.0481,
+        "ci95": [
+          -0.05337358859374388,
+          -0.042826411406256114
+        ]
+      },
+      "failures_above_median_income_share": 0.6714116251482799
+    },
+    {
+      "strategy": "Stocks, gold, MF 175%",
+      "weights": [
+        0.9545454545454547,
+        0.0,
+        0.3977272727272727,
+        0.3977272727272727
+      ],
+      "gross": 1.7500000000000002,
+      "annual_volatility": 0.3495147593106201,
+      "ruin_probability": 0.0192,
+      "equivalent_savings_rate": 0.04148337244987488,
+      "common_failure": 0.0086,
+      "common_failure_at_equivalent_saving": 0.1147,
+      "paired_ruin_vs_aco": {
+        "difference": -0.0506,
+        "ci95": [
+          -0.05507999856485626,
+          -0.04612000143514374
+        ]
+      },
+      "paired_common_vs_aco": {
+        "difference": -0.0612,
+        "ci95": [
+          -0.06605117564721336,
+          -0.05634882435278663
+        ]
+      },
+      "failures_above_median_income_share": 0.6608544027898866
+    },
+    {
+      "strategy": "Stocks, gold, MF equal volatility",
+      "weights": [
+        0.6880223826342625,
+        0.0,
+        0.286675992764276,
+        0.286675992764276
+      ],
+      "gross": 1.2613743681628145,
+      "annual_volatility": 0.25282649424998765,
+      "ruin_probability": 0.0243,
+      "equivalent_savings_rate": 0.06894978880882263,
+      "common_failure": 0.0423,
+      "common_failure_at_equivalent_saving": 0.1392,
+      "paired_ruin_vs_aco": {
+        "difference": -0.0455,
+        "ci95": [
+          -0.04988421610953309,
+          -0.041115783890466905
+        ]
+      },
+      "paired_common_vs_aco": {
+        "difference": -0.0275,
+        "ci95": [
+          -0.0326541167518741,
+          -0.022345883248125902
+        ]
+      },
+      "failures_above_median_income_share": 0.7320402298850575
+    },
+    {
+      "strategy": "Stocks and MF 175%",
+      "weights": [
+        1.2352941176470589,
+        0.0,
+        0.0,
+        0.5147058823529412
+      ],
+      "gross": 1.75,
+      "annual_volatility": 0.3329881101390297,
+      "ruin_probability": 0.0205,
+      "equivalent_savings_rate": 0.032454878091812134,
+      "common_failure": 0.0027,
+      "common_failure_at_equivalent_saving": 0.0532,
+      "paired_ruin_vs_aco": {
+        "difference": -0.0493,
+        "ci95": [
+          -0.05361531101457534,
+          -0.04498468898542465
+        ]
+      },
+      "paired_common_vs_aco": {
+        "difference": -0.0671,
+        "ci95": [
+          -0.0720040692454243,
+          -0.06219593075457572
+        ]
+      },
+      "failures_above_median_income_share": 0.4718045112781955
+    },
+    {
+      "strategy": "Stocks and MF equal volatility",
+      "weights": [
+        0.9331047704131175,
+        0.0,
+        0.0,
+        0.3887936543387989
+      ],
+      "gross": 1.3218984247519163,
+      "annual_volatility": 0.25282649424998765,
+      "ruin_probability": 0.0209,
+      "equivalent_savings_rate": 0.052157193422317505,
+      "common_failure": 0.0082,
+      "common_failure_at_equivalent_saving": 0.0587,
+      "paired_ruin_vs_aco": {
+        "difference": -0.0489,
+        "ci95": [
+          -0.05316332761615106,
+          -0.04463667238384894
+        ]
+      },
+      "paired_common_vs_aco": {
+        "difference": -0.0616,
+        "ci95": [
+          -0.06631261697003593,
+          -0.05688738302996407
+        ]
+      },
+      "failures_above_median_income_share": 0.5894378194207837
+    }
+  ]
+}

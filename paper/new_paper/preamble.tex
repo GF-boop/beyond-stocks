@@ -1,0 +1,61 @@
+% Shared preamble of the paper and its internet appendix.
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{xr-hyper}
+\usepackage{hyperref}
+\usepackage[backend=biber,style=authoryear,natbib=true,maxcitenames=4,maxbibnames=20,
+            uniquename=false,uniquelist=false,giveninits=false,dashed=true]{biblatex}
+\setcounter{biburllcpenalty}{7000}
+\setcounter{biburlucpenalty}{8000}
+\setcounter{biburlnumpenalty}{7000}
+\addbibresource{references.bib}
+\addbibresource{references-erc.bib}
+
+% Journal of Finance-style reference list: "Author, First, Year, Title, Journal Volume, Pages."
+\DeclareNameAlias{sortname}{family-given/given-family}
+\renewcommand*{\revsdnamepunct}{\addcomma}
+\DeclareDelimFormat{finalnamedelim}{\ifnumgreater{\value{liststop}}{2}{\finalandcomma}{}\addspace\bibstring{and}\space}
+\renewcommand*{\labelnamepunct}{\addcomma\space}
+\renewbibmacro*{date+extradate}{%
+  \iffieldundef{labelyear}{}{\printtext{\printlabeldateextra}}}
+\DeclareFieldFormat*{title}{#1}
+\DeclareFieldFormat*{journaltitle}{#1}
+\DeclareFieldFormat[article]{volume}{#1}
+\DeclareFieldFormat{pages}{#1}
+\DeclareFieldFormat{url}{\url{#1}}
+\renewbibmacro*{in:}{}
+\renewbibmacro*{volume+number+eid}{\printfield{volume}}
+\renewcommand*{\bibpagespunct}{\addcomma\space}
+\AtEveryBibitem{\clearfield{number}\clearfield{doi}\clearfield{issn}\clearfield{isbn}%
+  \clearfield{urlyear}\clearfield{urlmonth}\clearfield{urlday}\clearfield{eprint}%
+  \ifentrytype{article}{\clearfield{url}}{}%
+  \ifentrytype{misc}{\clearfield{note}\clearfield{addendum}}{}%
+  \ifentrytype{online}{\clearfield{note}\clearfield{addendum}}{}}
+\setlength{\bibhang}{1.5em}
+\renewcommand*{\bibfont}{\small}
+\DeclareDelimFormat[bib]{finalnamedelim}{\addcomma\space and\space}
+\DeclareDelimFormat[bib]{nameyeardelim}{\addcomma\space}
+\AtBeginBibliography{\renewcommand*{\newunitpunct}{\addcomma\space}}
+
+\newcommand{\gitrepo}{https://github.com/GF-boop/beyond-stocks}
+\newcommand{\gitlink}[2]{\href{\gitrepo/blob/main/#1}{#2}}
+\newcommand{\gitdirlink}[2]{\href{\gitrepo/tree/main/#1}{#2}}
+
+\hypersetup{pdftitle={Beyond All-Equity: Levered Diversification over the Lifecycle},pdfauthor={Guillaume Flament},colorlinks=true,citecolor=blue!55!black,linkcolor=blue!55!black,urlcolor=blue!55!black}
+\renewcommand{\thetable}{\Roman{table}}
+\captionsetup[table]{labelsep=colon,font=normalsize,skip=4pt}
+\captionsetup[figure]{labelsep=period,font=small,justification=justified,labelfont=bf}
+\setlength{\emergencystretch}{3em}
+\setlength{\parindent}{1.5em}
+\setlength{\parskip}{0pt}
+\onehalfspacing

@@ -1,0 +1,12 @@
+\begin{table}[p]\centering
+\caption{Year-end maintenance margin breaches}\label{tab:restored-margin}
+\begin{minipage}{\linewidth}\small The table reports the number of year-end breaches of a 25\% maintenance margin requirement across 10,000 simulated 86-year account paths (860,000 account-years) with annual rebalancing to the target exposure. Asset and debt values are nominal. The simulation excludes contributions, withdrawals, and mortality, and the account returns to its target exposure after each breach. The last column reports the lowest year-end ratio of equity to assets.\end{minipage}
+\medskip
+
+{\small\setlength{\tabcolsep}{4pt}\begin{tabular}{lrrr}\toprule
+Strategy & Gross exposure & Breaches & Minimum equity share \\ \midrule
+All-equity & 175.00\% & 1,081 & 21.41\% \\
+All-equity & 200.00\% & 17,934 & 8.31\% \\
+Proportional & 200.00\% & 0 & 38.59\% \\
+\bottomrule\end{tabular}}
+\end{table}

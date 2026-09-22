@@ -1,6 +1,6 @@
 """Donnees d'annexe sur les classes d'actifs.
 
-Produit trois fichiers autonomes inclus par main.tex :
+Produit trois fichiers autonomes inclus par le manuscrit :
 
 * ``figures/cumulative_wealth.tex`` : environnement tikzpicture, cumul d'un
   dollar reel par classe d'actifs. Pas de dependance pgfplots : les
@@ -26,6 +26,7 @@ import csv
 import math
 import os
 import argparse
+import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 PANEL = os.path.join(HERE, "..", "data", "replication-panel-trend.csv")
@@ -34,8 +35,10 @@ OUT = os.path.join(OUT_DIR, "cumulative_wealth.tex")
 OUT_MF = os.path.join(OUT_DIR, "mf_diagnostics.tex")
 OUT_CONVEX = os.path.join(OUT_DIR, "mf_convexity.tex")
 
-TREND_FEE = 0.0085
-TREND_DRAG = 0.0057
+sys.path.insert(0, os.path.join(HERE, "..", "build"))
+from trend_costs import TREND_FEE, TREND_COST
+
+TREND_DRAG = TREND_COST
 
 # (cle, colonne du panel, couleur tikz, libelle de legende, transformation)
 SERIES = [
@@ -297,7 +300,7 @@ def write_mf_diagnostics(rows: list[dict], first_year: int, last_year: int) -> N
         # Bloc 1 : moments annuels reels, residence americaine.
         f.write("\\setlength{\\tabcolsep}{5pt}\n")
         f.write("\\begin{tabular}{lrrrrrr}\n\\toprule\n")
-        f.write("Asset & Mean & SD & Sharpe$_0$ & Skew & 5th pctl & Max DD \\\\\n")
+        f.write("Asset & Mean & SD & Mean/SD & Skew & 5th pctl & Max DD \\\\\n")
         f.write("\\midrule\n")
         for key, _col, label, _t in MF_SERIES:
             v = series[key]

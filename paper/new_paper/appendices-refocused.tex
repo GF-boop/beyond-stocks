@@ -1,0 +1,565 @@
+% Internet Appendix
+\onehalfspacing
+\begin{center}
+{\large\bfseries Internet Appendix}\\[6pt]
+``Beyond All-Equity: Levered Diversification over the Lifecycle''
+\end{center}
+\bigskip
+
+\setcounter{section}{0}
+\renewcommand{\thesection}{\Alph{section}}
+\counterwithin*{table}{section}
+\counterwithin*{figure}{section}
+\counterwithin*{equation}{section}
+\renewcommand{\thetable}{\thesection.\Roman{table}}
+\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\renewcommand{\theHsection}{IA.\Alph{section}}
+\renewcommand{\theHtable}{IA.\thesection.\Roman{table}}
+\renewcommand{\theHfigure}{IA.\thesection.\arabic{figure}}
+\renewcommand{\theHequation}{IA.\thesection.\arabic{equation}}
+
+\section{Data appendix}
+\label{app:data-reconstruction}
+
+This appendix describes the construction of the asset class returns. Section~\ref{app:panel} describes
+the country-year panel and the conversion of returns into the investor's currency.
+Section~\ref{app:gold} describes gold returns. Section~\ref{app:mf-proxy} describes the construction of
+the managed-futures series and compares it with commercial trend-following indexes and funds.
+
+\subsection{Country-year panel and local real returns}
+\label{app:panel}\label{app:returns}
+
+The panel begins with release 6 of the Jord\`a-Schularick-Taylor Macrohistory Database
+\citep{MacrohistoryDB,JordaEtAl2019}. We extend each series through 2025 using dividend-adjusted local
+indexes, locally listed exchange-traded funds, and the Global Macro Database
+\citep{MullerXuLehbibChen2025}. A source indicator identifies the appended years.
+
+Let $S_{c,f,t}$ denote units of the investor's currency $c$ per unit of foreign currency $f$. If
+$R^{N}_{f,t}$ is a nominal return in foreign currency and $\pi_{c,t}$ is local inflation, the local real
+return on an unhedged foreign asset is
+\begin{equation}
+  1+R^{(c)}_{f,t}=(1+R^{N}_{f,t})\frac{S_{c,f,t}}{S_{c,f,t-1}}\frac{1}{1+\pi_{c,t}}.
+  \label{eq:conversion}
+\end{equation}
+We apply this conversion to international stocks and gold. The international stock basket excludes the
+investor's country and weights foreign markets by lagged market capitalization, constructed from the
+market-capitalization-to-GDP ratios of \citet{KuvshinovZimmermann2022}, with real GDP weights from the
+Maddison Project (via the Macrohistory Database and \citealt{MullerXuLehbibChen2025}) when these ratios
+are unavailable.
+
+Figure~\ref{fig:cumwealth} plots the cumulative real return on each asset class for a US investor. The
+logarithmic scale makes proportional changes comparable across dates.
+
+\begin{figure}[p]
+\centering
+\input{figures/cumulative_wealth.tex}
+\caption{Cumulative real returns by asset class. The figure shows the cumulative real return on each asset
+class for a US investor from 1927 to 2025 on a logarithmic scale. Managed futures are net of the 0.85\%
+management fee and 0.61\% trading costs. Global bonds are the hedged, equally weighted basket of all panel
+government bonds. Gold is net of custody costs. Stocks and gold are unhedged, and bonds and managed
+futures are hedged into US dollars.}
+\label{fig:cumwealth}
+\end{figure}
+
+\subsection{Gold}
+\label{app:gold}
+
+Gold returns use the annual US dollar price from MeasuringWorth \citep{OfficerWilliamsonMeasuringWorth}
+through 1967 and the London Bullion Market Association afternoon fixing \citep{LBMA} from 1968. Both are
+quoted in dollars per troy ounce, and we splice them without adjustment. We deduct custody costs of 0.40\%
+per year and convert the dollar return into local currency using equation~\eqref{eq:conversion}. Before
+1968, the dollar price was administered, and exchange-rate parities under the gold standard and the
+Bretton Woods system also constrained gold prices in other currencies. US residents regained the right to
+hold gold at the end of 1974 \citep{USMintGold1974}.
+
+\subsection{Managed futures}
+\label{app:mf-proxy}
+
+\subsubsection{Monthly inputs}
+\label{app:mf-monthly-data}
+
+The managed-futures series is constructed from monthly data and then compounded into calendar years for
+the annual simulations. Table~\ref{tab:mf-monthly-sources} describes the monthly inputs. The source
+families are OECD and FRED national equity and yield series \citep{OECDMEI,FRED}, NBER historical series
+\citep{NBERMacrohistory}, World Bank commodity prices \citep{WorldBankPinkSheet}, and Federal Reserve H.10
+exchange rates \citep{FedH10}. Bond futures are approximated by synthetic excess returns on par ten-year
+bonds, equity futures by price index returns, and currency forwards by lagged three-month interest
+differentials. The first month of each source segment receives no return, so that differences in price
+levels across sources do not enter the trading signal. The series earns the US dollar cash return on its
+collateral once. For the annual simulations, its dollar net asset value is treated as a foreign asset and
+hedged in the same manner as global bonds.
+
+\begin{table}[p]
+\centering
+\caption{Monthly data used to construct the managed-futures series}
+\label{tab:mf-monthly-sources}
+\begin{minipage}{\linewidth}\small The table describes the monthly data sources, transformations, and
+markets used to construct the managed-futures series. Each source segment is documented in the
+replication files with its provider, series identifier, dates, and transformation.\end{minipage}
+\medskip
+
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.16\textwidth}>{\raggedright\arraybackslash}p{0.50\textwidth}>{\raggedright\arraybackslash}p{0.24\textwidth}}
+\toprule
+Input & Monthly source and transformation & Markets \\
+\midrule
+Equities & National price indexes from OECD Main Economic Indicators via FRED and, before their availability, the US, UK, German, and French NBER Macrohistory monthly price series. & 18 local-currency price returns; dividends are absent. \\
+Rates & Monthly government bond yields from OECD via FRED, augmented before their start by NBER US yields, UK Consol and Bank of England yields, and the French 3\% rente. Each yield is priced as a par ten-year bond, less the lagged three-month cash return. & 18 synthetic local-currency bond excess returns. \\
+Commodities & NBER and BLS monthly wholesale prices for the early history and the World Bank Pink Sheet from 1960. Gold uses the official US price before 1960 and the Pink Sheet thereafter; silver starts in 1960. & 19 commodity spot returns plus gold and silver; carry and roll returns are unavailable. \\
+Currencies & Federal Reserve H.10 dollar exchange rates via FRED at month-end, with a lagged three-month interest differential forming a synthetic forward return. & AUD, CAD, CHF, GBP, and JPY from 1971 and EUR from 1999. \\
+Collateral and deflator & Monthly three-month cash rates from OECD via FRED, with the prior-year annual rate where monthly rates do not exist, and monthly US CPI. & US cash collateral return; CPI converts the final return to real terms. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Comparison with commercial trend-following indexes}
+\label{app:mf-external}
+
+Figure~\ref{fig:mf-vs-benchmarks} and Table~\ref{tab:mf-benchmark-corr} compare the monthly dollar returns
+of the managed-futures series with those of the SG CTA, SG Trend, and BTOP50 indexes of commercial funds
+and with the KMLMSIM simulation of the KFA MLM Index \citep{SGIndices,BTOP50,Testfol}. These comparisons do
+not depend on the annual panel, the currency hedge, or the lifecycle simulations. The proprietary indexes
+are used only for this comparison. The managed-futures series has correlations of 0.55 to 0.59 with the
+three commercial indexes over 2000 to 2025, whereas the three indexes have correlations of 0.96 to 0.97
+with each other.
+
+\begin{figure}[p]
+\centering
+\input{../figures/mf_vs_benchmarks.tex}
+\caption{Growth of one dollar in managed-futures strategies. The figure shows the cumulative monthly
+return from 2000 to 2025 on the managed-futures series, three commercial trend-following indexes, and
+KMLMSIM, the Testfolio simulation of the KFA MLM Index. The commercial indexes are net of fees, and the
+managed-futures series is net of its management fee and trading costs. KMLMSIM uses the KFA MLM Index less
+0.90\% per year before the inception of the KMLM fund.}
+\label{fig:mf-vs-benchmarks}
+\end{figure}
+
+\begin{table}[p]
+\centering
+\caption{Correlations of the managed-futures series with trend-following benchmarks}
+\label{tab:mf-benchmark-corr}
+\begin{minipage}{\linewidth}\small The table reports the correlation of monthly returns on the
+managed-futures series with the returns on commercial trend-following indexes and funds over the common
+period shown. KMLMSIM is the Testfolio simulation of the KFA MLM Index before the inception of the KMLM
+fund, and the rows for DBMF and KMLM use the funds' own returns from the first full month after listing
+\citep{Testfol,YahooFinance}.\end{minipage}
+\medskip
+
+\small
+\input{../figures/mf_benchmark_corr.tex}
+\end{table}
+
+\subsubsection{Comparison with investable funds}
+\label{app:mf-funds}
+
+Tables~\ref{tab:mf-pack-corr} to~\ref{tab:mf-pack-reg} extend the comparison to investable
+managed-futures funds with at least 60 months of returns. Shorter histories provide imprecise estimates.
+The pairwise correlations in Table~\ref{tab:mf-pack-corr} use each pair's overlapping months, and
+Table~\ref{tab:mf-pack-long-corr} uses a common window for all series with at least ten years of returns.
+Table~\ref{tab:mf-pack-reg} regresses the returns of each index and fund on the returns of the
+managed-futures series. The regressions have $R^2$ values of about 0.3 for the commercial indexes and
+intercepts that are not statistically different from zero.
+
+\begin{table}[p]
+\centering
+\caption{Correlations of monthly returns: managed-futures series, benchmarks, and investable funds}
+\label{tab:mf-pack-corr}
+\begin{minipage}{\linewidth}\small The table reports the correlations of monthly returns between the
+managed-futures series (Proxy), commercial trend-following benchmarks, and investable funds with at least
+60 months of returns. Each correlation uses the overlapping months of the two series within January 2000
+to December 2025. The funds' first months are June 2019 for DBMF, January 2021 for KMLM, February 2011 for
+WTMF, August 2013 for QMHIX, and September 2014 for AHLIX. Fund returns are total returns net of fees from
+Yahoo Finance adjusted closing prices. QMHIX, AHLIX, DBMF, and KMLM are trend-following funds; WTMF is a
+systematic equity-timing strategy. Shading is proportional to the correlation.\end{minipage}
+\medskip
+
+\footnotesize
+\input{figures/restored/mf_pack_corr.tex}
+\end{table}
+
+\begin{table}[p]
+\centering
+\caption{Correlations of monthly returns over a common window}
+\label{tab:mf-pack-long-corr}
+\begin{minipage}{\linewidth}\small The table reports the correlations of monthly returns between the
+managed-futures series and the benchmarks and funds with at least ten years of returns, all measured over
+the common window from September 2014 to December 2025 (136 months). Sources are as in
+Table~\ref{tab:mf-pack-corr}.\end{minipage}
+\medskip
+
+\footnotesize
+\input{../figures/mf_pack_long_corr.tex}
+\end{table}
+
+\begin{table}[p]
+\centering
+\caption{Regressions of benchmark and fund returns on the managed-futures series}
+\label{tab:mf-pack-reg}
+\begin{minipage}{\linewidth}\small The table reports ordinary least squares regressions
+$R^{s}_t=\alpha+\beta R^{\text{proxy}}_t+\varepsilon_t$ of monthly returns on each benchmark and fund on
+the returns of the managed-futures series, over each series' overlap with the managed-futures series
+within January 2000 to December 2025. $\alpha$ is in percent per month, and $t$-statistics are in
+parentheses. $\sigma_f/\sigma_p$ is the ratio of annualized volatilities, and TE is the tracking error, the
+annualized standard deviation of $R^{s}_t-R^{\text{proxy}}_t$, in percent per year.\end{minipage}
+\medskip
+
+\footnotesize
+\input{figures/restored/mf_pack_regressions.tex}
+\end{table}
+
+\subsubsection{Annual properties}
+\label{app:mf-annual}
+
+Table~\ref{tab:mf-diagnostics} reports the annual properties of the managed-futures series and the other
+asset classes for a US investor, and Figure~\ref{fig:mf-convexity} plots the annual return on managed
+futures against the annual return on each asset class. The 10\% volatility target applies ex ante to
+monthly returns, using the preceding 36 months of returns (at least 24), and the scaling factor reaches
+its cap of three in 26.4\% of months. The annualized standard deviation of monthly real gross returns is
+10.71\% over 1927 to 2025. Compounding into calendar years gives an annual standard deviation of 14.18\%
+net of costs, because monthly returns are not independent.
+
+\begin{table}[p]
+\centering
+\caption{Annual properties of the managed-futures series and other asset classes}
+\label{tab:mf-diagnostics}
+\begin{minipage}{\linewidth}\small The table summarizes annual real returns for a US investor from 1927 to
+2025. The first panel reports the arithmetic mean, the standard deviation (population), the ratio of mean
+to standard deviation, skewness, the 5th percentile, and the maximum drawdown in cumulative real value.
+The second panel reports the returns on world stocks, managed futures, and gold and US inflation in the
+ten years with the lowest world stock returns. Unlike Table~\ref{tab:sleeves}, the table uses the 99 US
+observations rather than the pooled panel.\end{minipage}
+\medskip
+
+\small
+\input{figures/mf_diagnostics.tex}
+\end{table}
+
+\begin{figure}[p]
+\centering
+\resizebox{\linewidth}{!}{\input{figures/mf_convexity.tex}}
+\caption{Annual managed-futures returns and asset class returns. The figure plots the annual real return
+on managed futures against the annual real return on each asset class for a US investor from 1927 to 2025.
+Red (blue) points are years in which the asset class lost (gained). The green curve is a quadratic fit, and
+the black marks are average managed-futures returns within quintiles of the asset class return. ``curv.''
+is the coefficient on the squared term, and $t$ is its heteroskedasticity-robust $t$-statistic.}
+\label{fig:mf-convexity}
+\end{figure}
+
+\subsubsection{Alternative construction choices}
+\label{app:mf-variants}
+
+Table~\ref{tab:mf-variants} reports the properties of the managed-futures series under alternative signal
+horizons and management fees. Each variant is charged its own trading costs. Panel E of
+Table~\ref{tab:sensitivity} in the paper reports the lifecycle outcomes of each variant, rebuilt through the
+same currency hedge and evaluated with a common flat trading cost at the equal-volatility exposures.
+
+\begin{table}[p]
+\centering
+\caption{Managed-futures series under alternative construction choices}
+\label{tab:mf-variants}
+\begin{minipage}{\linewidth}\small The table reports annual real returns for a US investor from 1927 to
+2025 on variants of the managed-futures series that differ in signal horizons and management fees, net of
+each variant's fee and realized trading costs. The baseline mean differs slightly from
+Table~\ref{tab:mf-diagnostics}, which uses a flat annual trading-cost deduction. Mean/SD uses the sample
+standard deviation. ``Corr. baseline'' is the correlation of each variant's annual returns with the
+1/6/12-month baseline, marked $^{\dagger}$.\end{minipage}
+\medskip
+
+\small
+\resizebox{\linewidth}{!}{\input{../figures/mf_variants.tex}}
+\end{table}
+
+\clearpage
+\section{Methods appendix}
+\label{app:methods}
+
+This appendix provides additional details on the portfolio returns, the bootstrap, the risk parity
+weights, the properties of the household problem, and the experiments reported in the paper.
+
+\subsection{Currency hedge and portfolio returns}
+\label{app:hedge}
+
+Let $A^f_t$ be the gross nominal return on a foreign asset, $B^f_t$ and $B^c_t$ the gross nominal bill
+returns in the foreign and local currencies, and $q_t=S_{c,f,t}/S_{c,f,t-1}$ the change in the exchange
+rate. The hedge sells the initial foreign principal forward at the covered-interest-parity rate, so the
+local real return on the hedged position is
+\begin{equation}
+ 1+R^{c,H}_t=\frac{B^c_t/B^f_t+(A^f_t-1)q_t}{1+\pi_{c,t}}.
+ \label{eq:covered}
+\end{equation}
+Gains and losses beyond the initial principal remain exposed to the exchange rate. Realized annual bill
+returns proxy for the interest rates that price the forward. The managed-futures series already includes
+its US dollar collateral return, and the forward payoff is added according to
+equation~\eqref{eq:covered}. The hedging cost of 0.10\% per year applies to the hedged notional.
+
+For a levered portfolio, the coefficient on the local bill return in equation~\eqref{eq:return} of the
+paper is negative. Holding asset returns fixed, a higher ex post real bill return lowers the portfolio
+return, and an inflation surprise that lowers the real bill return raises it.
+
+\subsection{Bootstrap continuation and local currencies}
+\label{app:bootstrap}
+
+When a bootstrap block reaches a gap or the end of a country's data, the block continues at the first
+available year of another country, selected through a uniformly drawn panel row. Countries are therefore
+weighted by the length of their samples. Each country-year contains returns measured in that country's
+currency and price index, so a block from Japan in the 1980s is a consistent sequence of yen-denominated
+real returns. A simulated lifetime can join real return histories from several countries. The simulation
+does not model a currency exchange at these joins.
+
+\subsection{Risk parity weights}
+\label{app:allocation}\label{app:leverage-ladders}
+
+For a positive definite covariance matrix $\widehat\Sigma$, the risk parity weights solve
+\begin{equation}
+ x^*=\arg\min_{x_i>0}\left\{\frac12 x'\widehat\Sigma x-\frac14\sum_{i=1}^4\log x_i\right\},\qquad
+ v=x^*/(\mathbf1'x^*).
+\end{equation}
+The first-order conditions imply $x_i(\widehat\Sigma x)_i=1/4$, so each asset class contributes equally to
+portfolio variance \citep{MaillardRoncalliTeiletche2010,RoncalliRiskBudgeting2014}. The covariance matrix
+is the sample covariance of annual real returns on the four asset classes, net of fees, custody, and
+hedging costs, across all 1,561 country-years with equal weights. We apply no shrinkage or winsorization.
+All eigenvalues are positive, and the computed risk contributions differ from 25\% by less than $10^{-7}$.
+The weights are 14.53\% stocks, 47.47\% global bonds, 12.05\% gold, and 25.95\% managed futures. Borrowing
+costs are added only after the weights are scaled to the target exposure, so the equal contributions apply
+to the unlevered portfolio.
+
+For the comparison at equal volatility, we scale the weights of each diversified strategy by the gross
+exposure $G$ at which the sample standard deviation of its annual real return, including financing and
+hedging costs, equals the 25.28\% of the unlevered all-equity strategy across the 1,561 country-years. We
+solve for $G$ by bisection. The resulting exposures are 166\% for the proportional strategy, 265\% for
+risk parity, 126\% for stocks, gold, and managed futures, and 132\% for stocks and managed futures. When
+we reduce managed-futures returns, we hold these exposures fixed.
+
+\subsection{Properties of the household problem}
+\label{app:framework}\label{sec:utility-framework}
+
+This section derives the two properties of the household problem used in the paper. Let $v$ denote the
+asset class proportions, $G$ gross exposure, and $r_c$ the savings rate, and let
+$V(r_c,v,G)=E[U(C,B)]$ denote expected utility.
+
+\paragraph{Invariance of ruin to the savings rate.}
+For a fixed strategy and simulated path, wealth is proportional to the savings rate. Let $A(v,G)$ be
+retirement wealth, $d_t(v,G)$ the withdrawal actually paid in retirement, and $b(v,G)$ the bequest, all at
+a unit savings rate. Then
+\begin{equation}
+ D=0.04\,r_cA,\qquad C_t=\max\{SS_t+r_c d_t,SSI_t\},\qquad B=r_cb.
+ \label{eq:scale-wealth}
+\end{equation}
+The planned and actual withdrawals scale together, so the event of exhausting wealth does not depend on
+$r_c>0$. Table~\ref{tab:restored-policy} shows that ruin probabilities are identical across savings rates.
+Fixing the withdrawal at 4\% of the all-equity strategy's retirement wealth breaks this proportionality,
+which is why the path-matched income experiment measures a distinct outcome.
+
+\paragraph{Equivalent savings rates and marginal utility of return.}
+$V$ increases with $r_c$ whenever additional saving raises consumption above the floor or the bequest. At
+a locally unique equivalent savings rate with $V_{r_c}>0$, the implicit function theorem gives, for an
+allocation parameter $a$,
+\begin{equation}
+ \frac{\partial r_c^*}{\partial a}=-\frac{V_a}{V_{r_c}}.
+ \label{eq:saving-gradient}
+\end{equation}
+Let $\widetilde R_{t}$ be the vector of net asset class returns and $M_t=\partial U/\partial R^p_t$ the
+sensitivity of lifetime utility to the portfolio return in year $t$, which includes all subsequent effects
+on wealth, withdrawals, consumption, and the bequest. For a change in proportions $h$ with $\mathbf1'h=0$,
+and under conditions that allow differentiation inside the expectation \citep{Glasserman1991},
+\begin{align}
+ V_h&=G\sum_t\Bigl(E[M_t]\,E[h'\widetilde R_t]+\mathrm{Cov}(M_t,h'\widetilde R_t)\Bigr),
+ \label{eq:composition-value}\\
+ V_G&=E\!\left[\sum_t M_t\bigl(v'\widetilde R_t-R^f_t-\phi\bigr)\right],\qquad G>1.
+ \label{eq:exposure-value}
+\end{align}
+Equation~\eqref{eq:composition-value} separates the value of a change in weights into an average-return
+term and a term that measures whether the added asset pays off when the marginal utility of return is
+high. Equation~\eqref{eq:exposure-value} shows that leverage adds value only when the utility-weighted
+portfolio return exceeds the bill return plus the borrowing spread. Differentiability fails on paths where
+the household's wealth is exhausted or the consumption floor begins to bind, and such paths occur with
+positive probability in a discrete bootstrap. The derivatives therefore describe small changes in weights,
+and the paper reports exact changes. The risk parity conditions do not imply that either derivative is
+zero, so the risk parity weights need not maximize household utility even with a known covariance matrix.
+
+\subsection{Financing routes}
+\label{app:funding-routes}\label{app:implementation}
+
+The borrowing spread of 0.30\% is an annual spread above the local bill rate. Futures and box spreads on
+European-style index options provide financing close to this level \citep{CMEBoxFinancing2024}.
+\citet{WangBoxFinancing2025} reports implied box-spread financing rates of 0.30\% to 0.50\% above three- and
+five-year Treasury yields in February 2025. Access, maturity, collateral requirements, and execution costs
+differ across these routes. The model separately charges managed-futures fees and trading costs, gold
+custody, and hedging costs, and it does not charge an additional cost for annual rebalancing. The
+volatility-scaled positions inside the managed-futures series are distinct from the portfolio's gross
+exposure, which measures the allocation to each asset class.
+
+Holding leveraged fund shares differs from borrowing against pledged assets. Direct borrowing can force
+liquidation or require additional collateral, whereas a leveraged fund can reduce exposure internally. The
+annual model sets depleted wealth to zero and does not simulate forced liquidation within the year.
+
+\subsection{Resampled calendar histories}
+\label{app:historical-uncertainty}\label{app:history}
+
+The analysis in Table~\ref{tab:restored-history} measures uncertainty about the historical record rather
+than simulation error given that record. We resample blocks of calendar-year cross-sections from the
+panel. Each cross-section retains all countries observed in that year and their joint returns. The outer
+blocks follow the stationary block bootstrap of \citet{PolitisRomano1994} with circular wrapping and average
+lengths of 5, 10, or 20 years. Each of 100 outer histories contains 99 calendar years, which are relabeled
+consecutively before the household simulation. Each history supports 1,000 household simulations with the
+ten-year average block length of the paper. The strategies are held at their base-case equal-volatility
+exposures in every history.
+
+\subsection{Historically investable asset classes}
+\label{app:availability}
+
+The historical availability analysis retains the 1927 to 2025 sample but sets the gold weight to zero
+before 1975 and adds managed-futures sectors as their futures markets opened, starting from commodities
+and adding currencies in 1972, interest rates in 1977, and equity indexes in 1982
+\citep{CMEContractDates2026,USMintGold1974}. The removed weight is reallocated in proportion to the
+remaining weights at unchanged gross exposure. For 1960 to 1963, the restricted managed-futures series
+lacks twelve months of signals, and its weight is also reallocated. At 175\% exposure, the restricted
+proportional strategy has a ruin probability of 2.26\% and an equivalent savings rate of 5.77\%.
+
+\clearpage
+\section{Supplemental results}
+\label{app:supplemental}
+
+This appendix contains supplemental empirical results.
+
+\subsection{Removing one asset class}
+\label{app:ablations}
+
+In Section~\ref{sec:sleeves}, we examine the contribution of each asset class. Table~\ref{tab:ablations}
+reports retirement outcomes after removing one asset class from the proportional and risk parity
+strategies at 175\% exposure, with the removed weight redistributed across the remaining asset classes.
+Removing managed futures raises the ruin probability, the equivalent savings rate, and the path-matched income
+failure probability of both strategies. Removing bonds improves all three outcomes. Removing gold lowers
+the equivalent savings rate and the path-matched income failure of both strategies, with little
+change in the ruin probability.
+
+\input{figures/erc/ablations.tex}
+
+\subsection{First-order decomposition}
+\label{app:local-decomposition}
+
+Tables~\ref{tab:composition-local} to~\ref{tab:exposure-local} evaluate the derivatives in
+equations~\eqref{eq:composition-value} and~\eqref{eq:exposure-value} at the initial weights and compare
+them with exact changes. The derivatives are informative only for small reallocations. For reallocations
+of 100\% of wealth or more, such as removing all three diversifying asset classes, the local and exact
+values can differ in sign. Where the two agree in sign, adding any diversifying asset class to the levered
+all-equity strategy lowers the equivalent savings rate through the covariance term. The average-return
+term raises it for bonds and gold and is close to zero for managed futures. For leverage, the
+average-return term lowers the equivalent savings rate and the covariance term offsets part of this
+effect. Beyond 175\% exposure, the covariance term dominates for the all-equity strategy.
+Table~\ref{tab:exposure-value} reports the exact changes from leverage in both samples.
+
+\input{figures/erc/composition_local.tex}
+\input{figures/erc/exposure_value.tex}
+\input{figures/erc/exposure_local.tex}
+
+\subsection{Risk parity weights from alternative samples}
+\label{app:erc-calibration}
+
+Table~\ref{tab:erc-calibration} reports the risk parity weights estimated from the post-1970 sample and
+from the sample that excludes Italy in 1942. The lifecycle simulations in Table~\ref{tab:sensitivity} retain
+the full-sample weights, so that they measure the effect of the evaluation sample rather than of the
+estimation sample.
+
+\input{figures/erc/calibration.tex}
+
+\subsection{Risk aversion}
+\label{app:gamma-sensitivity}
+
+Table~\ref{tab:restored-gamma} reports equivalent savings rates for the all-equity and proportional
+strategies at 200\% exposure for risk aversion parameters from 2 to 10. We consider two conventions for
+the bequest intensity. The joint calibration holds fixed the monthly intensity of
+\citet{AnarkulovaCederburgODoherty2025}, so that the annual intensity changes with $\gamma$. The fixed
+calibration holds the annual intensity at $\theta=2{,}360$. The proportional strategy requires less
+saving than the unlevered all-equity strategy under every specification.
+
+The equivalent savings rates of the levered all-equity strategy vary non-monotonically with $\gamma$ for
+two reasons. First, at $\gamma=3$ the joint calibration implies a bequest intensity about eight times
+larger than the fixed calibration, and the bequest accounts for 52\% of the negative expected utility of the
+levered all-equity strategy. The frequent ruin of this strategy leaves no bequest, which explains its
+equivalent savings rate of 20.09\% under the joint calibration, compared with 12.42\% under the fixed
+calibration. Second, as $\gamma$ rises, expected utility is increasingly determined by the lowest
+consumption paths. The worst 1\% of lifetimes account for 19\% of the negative expected utility of the
+levered all-equity strategy at $\gamma=3.84$, 30\% at $\gamma=5$, 48\% at $\gamma=7.5$, and 61\% at
+$\gamma=10$. The equivalent savings rate then reflects a small number of paths in which consumption falls
+toward the Social Security and SSI floor, and it need not be monotonic in $\gamma$. For $\gamma\geq5$, the
+bequest accounts for less than 0.02\% of expected utility, and the two conventions give the same
+equivalent savings rates.
+
+\input{figures/restored/preferences.tex}
+
+\subsection{Savings and withdrawal rates}
+\label{app:policy-sensitivity}
+
+Table~\ref{tab:restored-policy} varies the savings rate from 5\% to 15\% and the withdrawal rate from 3\% to
+5\%. The ruin probabilities do not change with the savings rate, as implied by
+equation~\eqref{eq:scale-wealth}. Including the all-equity strategy at 200\% exposure distinguishes the
+effect of diversification from that of leverage.
+
+\input{figures/restored/policy.tex}
+
+\subsection{Real bill rates and the returns to leverage}
+\label{app:bill-attribution}
+
+Table~\ref{tab:bill-quintiles} decomposes the annual return gain from raising exposure from 100\% to 175\%
+by quintile of the ex post real bill return. The bill leg contributes positively in years with negative
+real bill returns, but the total gain is positive in all five quintiles for both the all-equity and
+proportional strategies.
+
+\input{figures/restored/bills.tex}
+
+\subsection{Margin requirements}
+\label{app:margin-call}
+
+The 25\% threshold corresponds to the maintenance requirement for long margin-eligible equities in US
+Regulation T accounts \citep{FINRAMargin2021}. The equity fraction of an account with gross assets $L$ and
+debt $L-1$ at the start of the year is
+\begin{equation}
+ m_{\text{end}}=\frac{LG_A-(L-1)G_D}{LG_A}
+\end{equation}
+at year-end, where $G_A$ is the gross nominal asset return and $G_D$ is the gross nominal cost of debt,
+including the borrowing spread. Table~\ref{tab:restored-margin} reports year-end breaches in the
+bootstrap simulations. Table~\ref{tab:monthly-margin} uses monthly US dollar data from 1970 to 2025 to
+compare month-end and year-end tests on the same paths.
+
+\input{figures/restored/margin.tex}
+\input{figures/restored/monthly.tex}
+
+\subsection{Personal taxes}
+\label{app:taxation}
+
+Our returns are net of implementation costs but before personal taxes. Gold, managed-futures
+distributions, rebalancing gains, and interest expense can be taxed differently. For example, the tax
+disclosure of the SPDR Gold Trust treats individual holders as owning their share of the underlying gold,
+with long-term gains taxed as collectibles \citep{GLDTax2022,IRSTopic409}, and managed-futures fund
+prospectuses report returns after taxes on distributions \citep{DBMFTax2026}. Rankings in taxable accounts
+can therefore differ from those in tax-advantaged retirement accounts.
+
+\clearpage
+\section{Replication}
+\label{app:reproducibility}
+
+The \href{\gitrepo}{replication repository} contains the public source data, strategy definitions,
+numerical results, and code to rebuild all exhibits. The
+\gitlink{data/replication-panel-trend.csv}{annual return panel} and the
+\gitlink{data/managed-futures-monthly.csv}{monthly managed-futures data} are the two data inputs. The
+proprietary SG and BarclayHedge indexes are used only in Section~\ref{app:mf-external}, and their
+redistribution is subject to the providers' terms.
+
+The \gitlink{results/erc_refocusing/PROTOCOL.md}{experimental protocol} specifies the risk parity
+estimation, the exposure grid, and the sensitivity analyses. The
+\gitdirlink{results/erc_refocusing/n10000_final/}{result files} contain the risk parity weights, covariance
+matrix, input checksums, and the complete results for each specification. The simulations use 10,000
+paths, seed 20260827, and an average block length of ten years. Each alternative sample recomputes the
+utility reference of the unlevered all-equity strategy. The
+\gitlink{results/erc_refocusing/VALIDATION.md}{validation checks} confirm, among other identities, that
+the path-matched income calculation reproduces the baseline ruin indicators exactly when each strategy is
+assigned its own 4\% withdrawal. The bond-free strategies, the comparison at equal volatility, its sensitivity analyses
+(\gitlink{build/eqvol_sensitivity.py}{eqvol\_sensitivity.py}), resampled histories
+(\gitlink{build/historical_panel_bootstrap_eqvol.py}{historical\_panel\_bootstrap\_eqvol.py}) and
+managed-futures variants (\gitlink{build/mf_variant_lifecycle.py}{mf\_variant\_lifecycle.py}), the Sharpe ratios in excess of bills, and
+the comparison of the managed-futures series with commercial indexes by subperiod are produced by
+\gitlink{build/revision_checks.py}{a separate script}, which reuses the same seed and reproduces the
+baseline results exactly. The \gitlink{paper/new_paper/README.md}{build instructions} describe how
+to regenerate the tables and figures from the result files.

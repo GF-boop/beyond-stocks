@@ -1,77 +1,65 @@
-# Public replication of ACO and a multi-asset extension
+# Currency-consistent lifecycle investing: the ERC refocusing
 
-This folder partially replicates Anarkulova, Cederburg and O'Doherty (ACO),
-*Beyond the Status Quo* (revision of 10 July 2025), and then evaluates global
-portfolios, gold and a managed-futures proxy in the same lifecycle model.
+The current manuscript is
+[`paper/new_paper/main-styled.pdf`](paper/new_paper/main-styled.pdf), with
+source and technical appendices in [`paper/new_paper/`](paper/new_paper/).
+Its [replication guide](paper/new_paper/README.md) documents the execution and
+document build, and
+[`results/erc_refocusing/PROTOCOL.md`](results/erc_refocusing/PROTOCOL.md)
+fixes the design of the main experiment before any performance was examined.
 
-The complete mapping number → script → command → output → paper table is in
-[`REPRODUCIBILITY.md`](REPRODUCIBILITY.md); the canonical rebuild order is
-documented in [`build/rebuild_all.sh`](build/rebuild_all.sh).
+The paper partially replicates Anarkulova, Cederburg and O'Doherty (ACO),
+*Beyond the Status Quo*, and evaluates global portfolios, gold and a
+managed-futures proxy in the same lifecycle model. It then compares fixed
+proportional and equal-weight four-sleeve ladders against an
+equal-risk-contribution (ERC) portfolio whose covariance is retrospective. The
+analysis is currency-consistent: every foreign asset is reconstructed as a
+nominal return in its original currency, converted into the currency of the
+country of residence, and deflated by that country's inflation. The resident's
+numeraire is an assumption of the experiment, not a display convention.
 
-The current manuscript is [`paper/new_paper/main-styled.pdf`](paper/new_paper/main-styled.pdf).
-Its source and technical appendices are in [`paper/new_paper/`](paper/new_paper/).
-It supersedes
-the first version of the extension, which mixed U.S. real returns and local
-returns. The old global numbers must no longer be used.
+The canonical rebuild order is documented and executable in
+[`build/rebuild_all.sh`](build/rebuild_all.sh). Each step is independent and
+can be rerun in isolation.
 
-## Numeraire correction
+## Repository layout
 
-One row of the panel is a household residing in a given country. Each
-unhedged foreign asset is therefore:
+| Path | Contents |
+| --- | --- |
+| `build/` | Simulation, diagnostic, rendering and verification scripts |
+| `data/` | Versioned reconstructed panels and source metadata (`data/SOURCES.md`) |
+| `results/` | Frozen JSON outputs; `results/erc_refocusing/` holds the main run |
+| `paper/new_paper/` | Current manuscript, figures and build guide |
+| `paper/figures/` | Shared generated LaTeX tables included by the appendices |
+| `papers/` | Non-redistributed reference PDFs (ignored by git) |
 
-1. reconstructed as a nominal return in its original currency;
-2. converted into the currency of the country of residence;
-3. deflated by that country's inflation.
+## Main scripts
 
-The equity sleeve of each extension is now exactly ACO's: 33% domestic and
-67% international in the resident's numeraire. Gold follows the spot exchange
-rate. Bonds and managed futures are covered with carry: their excess return
-over the bill or collateral actually embedded is added to the resident's
-bill. Financing remains local and the base case subtracts a 0.10% friction on
-the covered notionals.
-
-The main panel contains 1,561 raw country-years, 16 countries and each of
-the 99 years 1927–2025. The investability filter is an explicitly labelled
-sensitivity, not the central case. The fixed-notional global-bond basket has
-13 to 16 issuers over the analysis window.
-
-The resident's numeraire is an assumption of the experiment, not a mere
-display convention. The `--usd-numeraire` control keeps the same
-country-year blocks but converts them all into real dollars and finances at
-the U.S. bill. On the 1,534 convertible common observations of the full
-panel, ACO 33/67 ruin falls from 7.05% (resident numeraire) to 3.04% (fixed
-dollar); the MF and gold gains shrink from 3.95 to 2.79 points and from 2.79
-to 1.17 points respectively. This counterfactual is not a literal U.S.
-portfolio, because the so-called domestic sleeve remains the source country's
-sleeve. It shows that the pooled results are conditional on the numeraire
-choice. The paired outputs are
-[`control_usd_common_n10000.json`](results/control_usd_common_n10000.json)
-and
-[`control_usd_numeraire_n10000.json`](results/control_usd_numeraire_n10000.json).
-The first file also contains the constant-real-exchange-rate counterfactual:
-ruin is 4.25% there, with 7.30% mean return and 15.72% volatility, against
-7.46% and 17.39% in the resident case at observed exchange rates. These three
-constructions are distinct diagnostics, not an additive attribution.
-
-The multi-numeraire test confirms that the effect is not specific to fixing
-one currency: on 1,428 common states, ACO ruin is 7.05% under the resident
-numeraire, 2.20% in dollars, 7.17% under the German numeraire and 9.90% in
-yen. Germany represents its own historical numeraire, not a reconstructed
-euro. The paired results and intervals are in
-[`control_numeraires_n20000.json`](results/control_numeraires_n20000.json).
-
-## Corrected central results
-
-The current 10,000-path outputs are versioned in `results/` and reported in
-the manuscript. Under the 1927–2025 baseline, the equal-weight four-sleeve
-rule at 175% exposure has 17.30% annual volatility, 2.61% retirement ruin and
-7.02% equivalent saving after removing the Italy-1942 source event; ACO has
-18.17%, 7.19% and 10.00%, respectively. The two further source-influence
-diagnostics have the same ordering. At 100% exposure, the diversified rules
-reduce volatility and ruin without portfolio-level borrowing, while utility
-parity requires additional saving. These are post-audit diagnostics rather
-than independent validation; the paper describes their scope and the return,
-timing, and hedging limitations.
+| File | Role |
+| --- | --- |
+| [`build/international_equity.py`](build/international_equity.py) | Foreign and world equity by currency of residence |
+| [`build/build_replication_panel.py`](build/build_replication_panel.py) | Local panel, inflation and exchange rates |
+| [`build/panel_managed_futures.py`](build/panel_managed_futures.py) | Monthly managed-futures proxy → real annual series |
+| [`build/panel_replication_tendance.py`](build/panel_replication_tendance.py) | Resident conversion of bonds, bills, gold and MF |
+| [`build/erc_refocusing.py`](build/erc_refocusing.py) | Main ERC experiment, ablations and sensitivity cases |
+| [`build/composition_value.py`](build/composition_value.py) | Value of composition across the historical panel |
+| [`build/compare_fixed_stacked_utility.py`](build/compare_fixed_stacked_utility.py) | Shared stacked-utility engine and baseline archive |
+| [`build/source_exclusion_diagnostics.py`](build/source_exclusion_diagnostics.py) | Source-event exclusion panels |
+| [`build/gamma_sensitivity.py`](build/gamma_sensitivity.py) | Joint preference calibration and fixed-bequest comparison |
+| [`build/policy_sensitivity.py`](build/policy_sensitivity.py) | Household-policy grid |
+| [`build/historical_panel_bootstrap.py`](build/historical_panel_bootstrap.py) | Nested calendar-history bootstrap |
+| [`build/margin_call_experiment.py`](build/margin_call_experiment.py) | Annual maintenance-margin diagnostic |
+| [`build/monthly_margin_diagnostic.py`](build/monthly_margin_diagnostic.py) | Monthly monitoring diagnostic |
+| [`build/mf_variants.py`](build/mf_variants.py) | Managed-futures variants |
+| [`build/mf_fund_correlations.py`](build/mf_fund_correlations.py) | External fund correlations (non-redistributed inputs) |
+| [`build/render_erc_refocusing.py`](build/render_erc_refocusing.py) | ERC tables and ladder figure from the frozen run |
+| [`build/render_composition_value.py`](build/render_composition_value.py) | Composition-value exhibits |
+| [`build/render_restored_appendices.py`](build/render_restored_appendices.py) | Restored appendix tables |
+| [`build/render_panel_margin_ablation.py`](build/render_panel_margin_ablation.py) | Monthly maintenance-margin table |
+| [`build/verify_repository.py`](build/verify_repository.py) | Post-rebuild artefact verification |
+| [`build/income_process.py`](build/income_process.py) | GKOS incomes |
+| [`build/social_security.py`](build/social_security.py) | SSA and SSI benefits |
+| [`build/mortality.py`](build/mortality.py) | Mortality |
 
 ## Lifecycle model
 
@@ -89,25 +77,6 @@ aggregation uses `theta=2,360`, which is exactly the normalisation obtained
 by dividing the whole monthly utility by that factor under uniform
 consumption.
 
-## Main scripts
-
-| File | Role |
-| --- | --- |
-| [`build/international_equity.py`](build/international_equity.py) | Foreign and world equity by currency of residence |
-| [`build/build_replication_panel.py`](build/build_replication_panel.py) | Local panel, inflation and exchange rates |
-| [`build/panel_managed_futures.py`](build/panel_managed_futures.py) | Monthly managed-futures proxy → real annual series |
-| [`build/panel_replication_tendance.py`](build/panel_replication_tendance.py) | Resident conversion of bonds, bills, gold and MF |
-| [`build/compare_fixed_stacked_utility.py`](build/compare_fixed_stacked_utility.py) | Main experiment, sensitivities and paired CIs |
-| [`build/experiment_fixed_numeraire.py`](build/experiment_fixed_numeraire.py) | Paired control under dollars, German marks and yen |
-| [`build/income_process.py`](build/income_process.py) | GKOS incomes |
-| [`build/social_security.py`](build/social_security.py) | SSA and SSI benefits |
-| [`build/mortality.py`](build/mortality.py) | Mortality |
-
-The older scripts `replicate_*`, `compare_equal_vol.py` and
-`compare_lifecycle_utility.py` remain exploratory experiments. The current
-manuscript rests on `compare_fixed_stacked_utility.py`, with no leverage
-calibrated on observed volatility.
-
 ## Dependencies
 
 - Python 3.10 or newer.
@@ -118,16 +87,15 @@ calibrated on observed volatility.
   the sensitivities run without `pandas`.
 - A LaTeX distribution with `biber` for the PDF.
 
-This folder is self-contained: no script reads outside `Cederburg_lifecycle/`.
-The external-validation scripts
-([`paper/build_mf_benchmark_data.py`](paper/build_mf_benchmark_data.py) and
-[`paper/build_mf_pack_matrix.py`](paper/build_mf_pack_matrix.py)) additionally
-read SG, BarclayHedge, testfol and fund series that are not redistributed.
-Without them, the canonical rebuild skips those diagnostics and the external
-figure and tables remain versioned in the manuscript, but are not publicly
-rebuildable. To regenerate
-them, place `official-index-returns-monthly.csv` and the `testfol/` folder
-under `data/benchmarks-externes/`.
+The reconstruction of the panels from primary sources needs the upstream
+managed-futures engine under `../CTO_vs_PEA/`; when it is absent the versioned
+panel is kept and the rest of the rebuild proceeds. The external-validation
+scripts ([`paper/build_mf_benchmark_data.py`](paper/build_mf_benchmark_data.py)
+and [`paper/build_mf_pack_matrix.py`](paper/build_mf_pack_matrix.py))
+additionally read SG, BarclayHedge, testfol and fund series that are not
+redistributed. Without them, the canonical rebuild skips those diagnostics and
+the external figures and tables remain versioned in the manuscript, but are
+not publicly rebuildable.
 
 The provenance, licence and consuming script of every file in `data/` are in
 [`data/SOURCES.md`](data/SOURCES.md). The primary sources (JST Macrohistory,
@@ -135,11 +103,6 @@ Global Macro Database, Big Bang Database, MeasuringWorth) are freely
 accessible for non-commercial research and must be cited per their terms.
 
 ## Rebuild and execution
-
-The full canonical order (data → main experiment → controls → sweeps →
-sensitivities → figures → PDF) is in [`build/rebuild_all.sh`](build/rebuild_all.sh).
-Each step is independent and can be rerun in isolation; the mapping number →
-script → output → table is in [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md).
 
 ```bash
 bash build/rebuild_all.sh
@@ -168,15 +131,16 @@ redistributed.
 ## Limitations
 
 The replication is annual and partial: it does not reproduce ACO's exactly
-age-optimised policy or their proprietary TDF. World bonds cover 12 to 16
+age-optimised policy or their proprietary TDF. World bonds cover 13 to 16
 developed sovereigns, not the global investable universe. Their hedging relies
-on covered interest parity and a fixed
-friction, with no historical basis data. The constant-real-exchange-rate
-equity counterfactual is not an investable hedge. Gold includes an
-administered-price regime. The managed-futures proxy uses incomplete
-historical prices, omits some rolls and correlates only 0.49–0.53 with modern
-CTA indexes. Finally, the weights are fixed and not estimated, but the family
-of strategies was not pre-registered on an independent sample.
+on covered interest parity and a fixed friction, with no historical basis
+data. The constant-real-exchange-rate equity counterfactual is not an
+investable hedge. Gold includes an administered-price regime. The
+managed-futures proxy uses incomplete historical prices, omits some rolls and
+correlates only 0.49–0.53 with modern CTA indexes. ERC covariance and weights
+are retrospective, with no expected-return forecast or outcome optimisation.
+Finally, the weights are fixed and not estimated, but the family of strategies
+was not pre-registered on an independent sample.
 
 ## AI assistance
 

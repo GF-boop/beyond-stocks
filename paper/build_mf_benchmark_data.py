@@ -1,6 +1,6 @@
 """Validation externe du proxy managed futures contre les indices CTA.
 
-Produit deux fichiers autonomes inclus par main.tex :
+Produit deux fichiers autonomes inclus par le manuscrit :
 
 * ``figures/mf_vs_benchmarks.tex`` : tikzpicture, cumul d'un dollar 2000-2025
   du proxy net (variante canonique 1/6/12), des indices SG CTA, SG Trend et
@@ -210,11 +210,14 @@ def main() -> None:
                      correlation(window(sg_cta), window(btop))[0],
                      correlation(window(sg_trend), window(btop))[0])
         kmlm_c = correlation(window(kmlmsim), window(sg_cta))[0]
+        proxy_correlations = [correlation(proxy_win, other)[0]
+                              for _, other in rows_out[:3]]
+        proxy_lo, proxy_hi = min(proxy_correlations), max(proxy_correlations)
         f.write(f"\\multicolumn{{3}}{{p{{0.82\\textwidth}}}}{{\\footnotesize "
                 f"\\textit{{Memo, 2000--2025:}} the three commercial indexes "
                 f"correlate {idx_lo:.2f}--{idx_hi:.2f} with each other, whereas "
-                f"KMLMSIM correlates {kmlm_c:.2f} with SG CTA. The proxy near "
-                f"0.51 sits between these two reference patterns.}} \\\\\n")
+                f"KMLMSIM correlates {kmlm_c:.2f} with SG CTA. The proxy "
+                f"correlates {proxy_lo:.2f}--{proxy_hi:.2f} with the three commercial indexes.}} \\\\\n")
         f.write("\\bottomrule\n\\end{tabular}\n")
 
     # --- console ----------------------------------------------------------

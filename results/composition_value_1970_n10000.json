@@ -1,0 +1,1027 @@
+{
+  "purpose": "Utility-weighted value of composition changes, Section 3 (V_h = E[sum_t M_t h^T R~_t]).",
+  "panel": "data/replication-panel-trend.csv",
+  "panel_sha256": "84470636614a7d89d25e549af766d006328b941ae645eff281c5a6c0c590a3c1",
+  "observations": 894,
+  "runs": 10000,
+  "seed": 20260827,
+  "mean_block_years": 10.0,
+  "savings_rate": 0.1,
+  "withdrawal_rate": 0.04,
+  "gamma": 3.84,
+  "spread": 0.003,
+  "fx_hedge_cost": 0.001,
+  "trend_fee": 0.0085,
+  "trend_cost": 0.006146047846628103,
+  "target_utility": -1.4172319186224202e-12,
+  "experiments": [
+    {
+      "label": "Equity diversification",
+      "universe": [
+        "domestic",
+        "international"
+      ],
+      "baseline_name": "Equity: domestic only",
+      "baseline_exposures": {
+        "domestic": 1.0,
+        "international": 0.0
+      },
+      "baseline_utility": -1.982510272973518e-12,
+      "utility_slope": 1.2509763184050238e-11,
+      "baseline_saving": 0.16956749558448792,
+      "transfers": [
+        {
+          "label": "international 33/67",
+          "weights": {
+            "domestic": -0.67,
+            "international": 0.67
+          },
+          "value": 9.135823344695907e-13,
+          "value_work": 5.296034286195041e-13,
+          "value_retirement": 3.839789058500865e-13,
+          "mean_part": -1.4472368203179101e-13,
+          "covariance_part": 1.0583060165013817e-12,
+          "mean_part_work": -1.0807312168269512e-13,
+          "mean_part_retirement": -3.6650560349095885e-14,
+          "covariance_part_work": 6.376765503021992e-13,
+          "covariance_part_retirement": 4.206294661991825e-13,
+          "mean_return_difference_retirement": -0.0020532228206871735,
+          "exact_utility_change": 5.652783543510975e-13,
+          "exact_saving": 0.09999999403953552,
+          "exact_saving_change": -0.06956750154495239,
+          "reallocation": 0.67,
+          "implied_saving_change": -0.07302954668513585,
+          "local_saving_change": -0.07302954668513585,
+          "local_mean_component": 0.011568858650842532,
+          "local_covariance_component": -0.08459840533597839,
+          "exact_saving_change_per_10pp": -0.01038320918581379
+        }
+      ],
+      "exposure": []
+    },
+    {
+      "label": "Four-sleeve composition at 100% exposure",
+      "universe": [
+        "equity",
+        "bonds",
+        "gold",
+        "mf"
+      ],
+      "baseline_name": "ACO 33/67",
+      "baseline_exposures": {
+        "equity": 1.0,
+        "bonds": 0.0,
+        "gold": 0.0,
+        "mf": 0.0
+      },
+      "baseline_utility": -1.4172319186224202e-12,
+      "utility_slope": 1.2248503971123332e-11,
+      "baseline_saving": 0.09999999403953552,
+      "transfers": [
+        {
+          "label": "bonds 4/15",
+          "weights": {
+            "equity": -0.26666666666666666,
+            "bonds": 0.26666666666666666
+          },
+          "value": -7.69396975889681e-14,
+          "value_work": -1.466041863594957e-13,
+          "value_retirement": 6.966448877052759e-14,
+          "mean_part": -5.379803594510035e-13,
+          "covariance_part": 4.610406618620353e-13,
+          "mean_part_work": -4.1248338492032383e-13,
+          "mean_part_retirement": -1.2549697453067963e-13,
+          "covariance_part_work": 2.6587919856082813e-13,
+          "covariance_part_retirement": 1.951614633012072e-13,
+          "mean_return_difference_retirement": -0.00701639048279254,
+          "exact_utility_change": -1.870808122448373e-13,
+          "exact_saving": 0.11511263251304626,
+          "exact_saving_change": 0.015112638473510742,
+          "reallocation": 0.26666666666666666,
+          "implied_saving_change": 0.0062815587740640486,
+          "local_saving_change": 0.0062815587740640486,
+          "local_mean_component": 0.0439221280181913,
+          "local_covariance_component": -0.037640569244127245,
+          "exact_saving_change_per_10pp": 0.005667239427566528
+        },
+        {
+          "label": "gold 1/6",
+          "weights": {
+            "equity": -0.16666666666666666,
+            "gold": 0.16666666666666666
+          },
+          "value": 3.9169576280960073e-13,
+          "value_work": 1.6348157337762493e-13,
+          "value_retirement": 2.2821418943197583e-13,
+          "mean_part": -1.1095936400164389e-13,
+          "covariance_part": 5.026551268112446e-13,
+          "mean_part_work": -8.628877921241187e-14,
+          "mean_part_retirement": -2.467058478923201e-14,
+          "covariance_part_work": 2.497703525900368e-13,
+          "covariance_part_retirement": 2.528847742212078e-13,
+          "mean_return_difference_retirement": -0.0013720797379163435,
+          "exact_utility_change": 2.2396769317899474e-13,
+          "exact_saving": 0.08421698212623596,
+          "exact_saving_change": -0.01578301191329956,
+          "reallocation": 0.16666666666666666,
+          "implied_saving_change": -0.0319790697486852,
+          "local_saving_change": -0.0319790697486852,
+          "local_mean_component": 0.009059013595720589,
+          "local_covariance_component": -0.04103808334440579,
+          "exact_saving_change_per_10pp": -0.009469807147979736
+        },
+        {
+          "label": "managed futures 1/6",
+          "weights": {
+            "equity": -0.16666666666666666,
+            "mf": 0.16666666666666666
+          },
+          "value": 4.319405413688944e-13,
+          "value_work": 2.2335695153227247e-13,
+          "value_retirement": 2.0858358983662194e-13,
+          "mean_part": 1.8869318239723235e-14,
+          "covariance_part": 4.130712231291712e-13,
+          "mean_part_work": 1.4065258956440469e-14,
+          "mean_part_retirement": 4.804059283282767e-15,
+          "covariance_part_work": 2.09291692575832e-13,
+          "covariance_part_retirement": 2.0377953055333919e-13,
+          "mean_return_difference_retirement": 0.00026163122092380016,
+          "exact_utility_change": 2.9491804084612167e-13,
+          "exact_saving": 0.07898584008216858,
+          "exact_saving_change": -0.021014153957366943,
+          "reallocation": 0.16666666666666666,
+          "implied_saving_change": -0.035264759058512216,
+          "local_saving_change": -0.035264759058512216,
+          "local_mean_component": -0.0015405406475932828,
+          "local_covariance_component": -0.03372421841091894,
+          "exact_saving_change_per_10pp": -0.012608492374420167
+        },
+        {
+          "label": "proportional package",
+          "weights": {
+            "equity": -0.6,
+            "bonds": 0.26666666666666666,
+            "gold": 0.16666666666666666,
+            "mf": 0.16666666666666666
+          },
+          "value": 7.466966065895268e-13,
+          "value_work": 2.4023433855040165e-13,
+          "value_retirement": 5.064622680391252e-13,
+          "mean_part": -6.300704052129242e-13,
+          "covariance_part": 1.3767670118024512e-12,
+          "mean_part_work": -4.847069051762953e-13,
+          "mean_part_retirement": -1.4536350003662887e-13,
+          "covariance_part_work": 7.249412437266969e-13,
+          "covariance_part_retirement": 6.518257680757542e-13,
+          "mean_return_difference_retirement": -0.008126838999785085,
+          "exact_utility_change": 8.396845251583349e-14,
+          "exact_saving": 0.09425881505012512,
+          "exact_saving_change": -0.0057411789894104,
+          "reallocation": 0.6,
+          "implied_saving_change": -0.060962270033133356,
+          "local_saving_change": -0.060962270033133356,
+          "local_mean_component": 0.05144060096631861,
+          "local_covariance_component": -0.11240287099945198,
+          "exact_saving_change_per_10pp": -0.0009568631649017334
+        }
+      ],
+      "exposure": []
+    },
+    {
+      "label": "Four-sleeve composition at 175% exposure",
+      "universe": [
+        "equity",
+        "bonds",
+        "gold",
+        "mf"
+      ],
+      "baseline_name": "ACO 175%",
+      "baseline_exposures": {
+        "equity": 1.75,
+        "bonds": 0.0,
+        "gold": 0.0,
+        "mf": 0.0
+      },
+      "baseline_utility": -1.5918767522601115e-12,
+      "utility_slope": 8.30841108415043e-12,
+      "baseline_saving": 0.12508991360664368,
+      "transfers": [
+        {
+          "label": "bonds",
+          "weights": {
+            "equity": -0.4666666666666667,
+            "bonds": 0.4666666666666667
+          },
+          "value": 6.363621752840361e-13,
+          "value_work": 2.8120469787733705e-13,
+          "value_retirement": 3.5515747740669914e-13,
+          "mean_part": -7.183730767243051e-13,
+          "covariance_part": 1.3547352520083412e-12,
+          "mean_part_work": -5.105817868294835e-13,
+          "mean_part_retirement": -2.077912898948216e-13,
+          "covariance_part_work": 7.917864847068205e-13,
+          "covariance_part_retirement": 5.629487673015209e-13,
+          "mean_return_difference_retirement": -0.012278683344886946,
+          "exact_utility_change": 4.1169579205893743e-13,
+          "exact_saving": 0.07855883240699768,
+          "exact_saving_change": -0.046531081199645996,
+          "reallocation": 0.4666666666666667,
+          "implied_saving_change": -0.07659252399029638,
+          "local_saving_change": -0.07659252399029638,
+          "local_mean_component": 0.08646335255301849,
+          "local_covariance_component": -0.16305587654331485,
+          "exact_saving_change_per_10pp": -0.009970945971352714
+        },
+        {
+          "label": "gold",
+          "weights": {
+            "equity": -0.29166666666666663,
+            "gold": 0.29166666666666663
+          },
+          "value": 1.0826338187461781e-12,
+          "value_work": 5.328877241086757e-13,
+          "value_retirement": 5.497460946375024e-13,
+          "mean_part": -1.4785991978808008e-13,
+          "covariance_part": 1.2304937385342582e-12,
+          "mean_part_work": -1.069986121434503e-13,
+          "mean_part_retirement": -4.0861307644629774e-14,
+          "covariance_part_work": 6.398863362521261e-13,
+          "covariance_part_retirement": 5.906074022821322e-13,
+          "mean_return_difference_retirement": -0.0024011395413536013,
+          "exact_utility_change": 7.710510754388954e-13,
+          "exact_saving": 0.051782041788101196,
+          "exact_saving_change": -0.07330787181854248,
+          "reallocation": 0.29166666666666663,
+          "implied_saving_change": -0.13030575976331604,
+          "local_saving_change": -0.13030575976331604,
+          "local_mean_component": 0.017796413573005022,
+          "local_covariance_component": -0.14810217333632106,
+          "exact_saving_change_per_10pp": -0.02513412748064314
+        },
+        {
+          "label": "managed futures",
+          "weights": {
+            "equity": -0.29166666666666663,
+            "mf": 0.29166666666666663
+          },
+          "value": 1.1849367334894622e-12,
+          "value_work": 6.491562741775104e-13,
+          "value_retirement": 5.357804593119518e-13,
+          "mean_part": 2.5456602998478463e-14,
+          "covariance_part": 1.1594801304909837e-12,
+          "mean_part_work": 1.7341368767812154e-14,
+          "mean_part_retirement": 8.115234230666307e-15,
+          "covariance_part_work": 6.318149054096983e-13,
+          "covariance_part_retirement": 5.276652250812854e-13,
+          "mean_return_difference_retirement": 0.0004578546366166504,
+          "exact_utility_change": 9.360324557214146e-13,
+          "exact_saving": 0.041773587465286255,
+          "exact_saving_change": -0.08331632614135742,
+          "reallocation": 0.29166666666666663,
+          "implied_saving_change": -0.14261893417261345,
+          "local_saving_change": -0.14261893417261345,
+          "local_mean_component": -0.003063955639730061,
+          "local_covariance_component": -0.1395549785328834,
+          "exact_saving_change_per_10pp": -0.028565597534179695
+        },
+        {
+          "label": "proportional package",
+          "weights": {
+            "equity": -1.05,
+            "bonds": 0.4666666666666667,
+            "gold": 0.29166666666666663,
+            "mf": 0.29166666666666663
+          },
+          "value": 2.9039327275196766e-12,
+          "value_work": 1.4632486961635233e-12,
+          "value_retirement": 1.4406840313561531e-12,
+          "mean_part": -8.40776393513907e-13,
+          "covariance_part": 3.744709121033584e-12,
+          "mean_part_work": -6.002390302051218e-13,
+          "mean_part_retirement": -2.4053736330878523e-13,
+          "covariance_part_work": 2.0634877263686455e-12,
+          "covariance_part_retirement": 1.6812213946649385e-12,
+          "mean_return_difference_retirement": -0.014221968249623905,
+          "exact_utility_change": 1.0777543245836678e-12,
+          "exact_saving": 0.04159793257713318,
+          "exact_saving_change": -0.0834919810295105,
+          "reallocation": 1.0499999999999998,
+          "implied_saving_change": -0.3495172179262259,
+          "local_saving_change": -0.3495172179262259,
+          "local_mean_component": 0.10119581048629347,
+          "local_covariance_component": -0.4507130284125194,
+          "exact_saving_change_per_10pp": -0.007951617240905763
+        }
+      ],
+      "exposure": []
+    },
+    {
+      "label": "Leverage of the equity benchmark",
+      "universe": [
+        "equity"
+      ],
+      "baseline_name": "ACO 33/67",
+      "baseline_exposures": {
+        "equity": 1.0
+      },
+      "baseline_utility": -1.4172319186224202e-12,
+      "utility_slope": 1.2248503971123332e-11,
+      "baseline_saving": 0.09999999403953552,
+      "transfers": [],
+      "exposure": [
+        {
+          "label": "leverage +0.25",
+          "weights": {
+            "_exposure": 0.25
+          },
+          "value": 1.9150950008677805e-13,
+          "value_work": 2.43331709647905e-13,
+          "value_retirement": -5.182220956112692e-14,
+          "mean_part": 6.774037656725383e-13,
+          "covariance_part": -4.858942655857603e-13,
+          "mean_part_work": 5.19483861421558e-13,
+          "mean_part_retirement": 1.579199042509804e-13,
+          "covariance_part_work": -2.76152151773653e-13,
+          "covariance_part_retirement": -2.097421138121073e-13,
+          "mean_return_difference_retirement": 0.008806237627035694,
+          "exact_utility_change": 1.0665203302684708e-13,
+          "exact_saving": 0.09053876996040344,
+          "exact_saving_change": -0.00946122407913208,
+          "reallocation": 0.25,
+          "implied_saving_change": -0.015635338041141558,
+          "local_saving_change": -0.015635338041141558,
+          "local_mean_component": -0.055305020700451506,
+          "local_covariance_component": 0.03966968265930995,
+          "exact_saving_change_per_10pp": -0.0037844896316528323,
+          "delta_g": 0.25
+        },
+        {
+          "label": "leverage +0.75",
+          "weights": {
+            "_exposure": 0.75
+          },
+          "value": 5.74528500260334e-13,
+          "value_work": 7.299951289437149e-13,
+          "value_retirement": -1.554666286833808e-13,
+          "mean_part": 2.032211297017615e-12,
+          "covariance_part": -1.457682796757281e-12,
+          "mean_part_work": 1.5584515842646739e-12,
+          "mean_part_retirement": 4.737597127529411e-13,
+          "covariance_part_work": -8.284564553209591e-13,
+          "covariance_part_retirement": -6.29226341436322e-13,
+          "mean_return_difference_retirement": 0.02641871288110708,
+          "exact_utility_change": -1.7464483363769128e-13,
+          "exact_saving": 0.12508991360664368,
+          "exact_saving_change": 0.025089919567108154,
+          "reallocation": 0.75,
+          "implied_saving_change": -0.046906014123424655,
+          "local_saving_change": -0.046906014123424655,
+          "local_mean_component": -0.1659150621013545,
+          "local_covariance_component": 0.11900904797792985,
+          "exact_saving_change_per_10pp": 0.003345322608947754,
+          "delta_g": 0.75
+        }
+      ]
+    },
+    {
+      "label": "Leverage of the proportional portfolio",
+      "universe": [
+        "equity",
+        "bonds",
+        "gold",
+        "mf"
+      ],
+      "baseline_name": "Proportional 100%",
+      "baseline_exposures": {
+        "equity": 0.4,
+        "bonds": 0.26666666666666666,
+        "gold": 0.16666666666666666,
+        "mf": 0.16666666666666666
+      },
+      "baseline_utility": -1.3332634661065867e-12,
+      "utility_slope": 1.3987583902715947e-11,
+      "baseline_saving": 0.09425881505012512,
+      "transfers": [],
+      "exposure": [
+        {
+          "label": "leverage +0.25",
+          "weights": {
+            "_exposure": 0.25
+          },
+          "value": 4.000445113324895e-13,
+          "value_work": 3.9303844890776553e-13,
+          "value_retirement": 7.006062424723967e-15,
+          "mean_part": 4.590708430888716e-13,
+          "covariance_part": -5.902633175638214e-14,
+          "mean_part_work": 4.5144654327037806e-13,
+          "mean_part_retirement": 7.624299818493578e-15,
+          "covariance_part_work": -5.840809436261253e-14,
+          "covariance_part_retirement": -6.182373937696105e-16,
+          "mean_return_difference_retirement": 0.006774527877089423,
+          "exact_utility_change": 3.541494159039142e-13,
+          "exact_saving": 0.0711500346660614,
+          "exact_saving_change": -0.02310878038406372,
+          "reallocation": 0.25,
+          "implied_saving_change": -0.02859997224072511,
+          "local_saving_change": -0.02859997224072511,
+          "local_mean_component": -0.03281988128055014,
+          "local_covariance_component": 0.004219909039825033,
+          "exact_saving_change_per_10pp": -0.009243512153625488,
+          "delta_g": 0.25
+        },
+        {
+          "label": "leverage +0.75",
+          "weights": {
+            "_exposure": 0.75
+          },
+          "value": 1.2001335339974684e-12,
+          "value_work": 1.1791153467232965e-12,
+          "value_retirement": 2.1018187274171902e-14,
+          "mean_part": 1.3772125292666148e-12,
+          "covariance_part": -1.7707899526914642e-13,
+          "mean_part_work": 1.3543396298111341e-12,
+          "mean_part_retirement": 2.2872899455480733e-14,
+          "covariance_part_work": -1.7522428308783758e-13,
+          "covariance_part_retirement": -1.8547121813088316e-15,
+          "mean_return_difference_retirement": 0.02032358363126827,
+          "exact_utility_change": 8.191410384301432e-13,
+          "exact_saving": 0.04159793257713318,
+          "exact_saving_change": -0.05266088247299194,
+          "reallocation": 0.75,
+          "implied_saving_change": -0.08579991672217532,
+          "local_saving_change": -0.08579991672217532,
+          "local_mean_component": -0.09845964384165042,
+          "local_covariance_component": 0.012659727119475099,
+          "exact_saving_change_per_10pp": -0.007021450996398926,
+          "delta_g": 0.75
+        }
+      ]
+    },
+    {
+      "label": "Leverage of the equity benchmark at 175%",
+      "universe": [
+        "equity"
+      ],
+      "baseline_name": "ACO 175%",
+      "baseline_exposures": {
+        "equity": 1.75
+      },
+      "baseline_utility": -1.5918767522601115e-12,
+      "utility_slope": 8.30841108415043e-12,
+      "baseline_saving": 0.12508991360664368,
+      "transfers": [],
+      "exposure": [
+        {
+          "label": "leverage +0.25",
+          "weights": {
+            "_exposure": 0.25
+          },
+          "value": -2.588201954983026e-13,
+          "value_work": -7.847306759024262e-14,
+          "value_retirement": -1.8034712790805994e-13,
+          "mean_part": 5.169905362536627e-13,
+          "covariance_part": -7.758107317519653e-13,
+          "mean_part_work": 3.674597517563106e-13,
+          "mean_part_retirement": 1.4953078449735202e-13,
+          "covariance_part_work": -4.4593281934655324e-13,
+          "covariance_part_retirement": -3.29877912405412e-13,
+          "mean_return_difference_retirement": 0.008806237627035694,
+          "exact_utility_change": -4.73717347743708e-13,
+          "exact_saving": 0.29857346415519714,
+          "exact_saving_change": 0.17348355054855347,
+          "reallocation": 0.25,
+          "implied_saving_change": 0.031151587575155237,
+          "local_saving_change": 0.031151587575155237,
+          "local_mean_component": -0.06222495866145833,
+          "local_covariance_component": 0.09337654623661357,
+          "exact_saving_change_per_10pp": 0.0693934202194214,
+          "delta_g": 0.25
+        }
+      ]
+    },
+    {
+      "label": "Leverage of the proportional portfolio at 175%",
+      "universe": [
+        "equity",
+        "bonds",
+        "gold",
+        "mf"
+      ],
+      "baseline_name": "Proportional 175%",
+      "baseline_exposures": {
+        "equity": 0.7000000000000001,
+        "bonds": 0.4666666666666667,
+        "gold": 0.29166666666666663,
+        "mf": 0.29166666666666663
+      },
+      "baseline_utility": -5.141224276764436e-13,
+      "utility_slope": 6.626875057581648e-12,
+      "baseline_saving": 0.04159793257713318,
+      "transfers": [],
+      "exposure": [
+        {
+          "label": "leverage +0.25",
+          "weights": {
+            "_exposure": 0.25
+          },
+          "value": 1.6003724525389348e-13,
+          "value_work": 1.6298292678216424e-13,
+          "value_retirement": -2.9456815282707608e-15,
+          "mean_part": 2.2943732261487585e-13,
+          "covariance_part": -6.940007736098234e-14,
+          "mean_part_work": 2.2594965932382324e-13,
+          "mean_part_retirement": 3.487663291052586e-15,
+          "covariance_part_work": -6.296673254165899e-14,
+          "covariance_part_retirement": -6.433344819323348e-15,
+          "mean_return_difference_retirement": 0.006774527877089423,
+          "exact_utility_change": 1.362222152078126e-13,
+          "exact_saving": 0.03230157494544983,
+          "exact_saving_change": -0.00929635763168335,
+          "reallocation": 0.25,
+          "implied_saving_change": -0.024149730282118226,
+          "local_saving_change": -0.024149730282118226,
+          "local_mean_component": -0.0346222496457636,
+          "local_covariance_component": 0.01047251936364537,
+          "exact_saving_change_per_10pp": -0.00371854305267334,
+          "delta_g": 0.25
+        }
+      ]
+    },
+    {
+      "label": "Four-sleeve composition at 175% exposure (proportional)",
+      "universe": [
+        "equity",
+        "bonds",
+        "gold",
+        "mf"
+      ],
+      "baseline_name": "Proportional 175%",
+      "baseline_exposures": {
+        "equity": 0.7000000000000001,
+        "bonds": 0.4666666666666667,
+        "gold": 0.29166666666666663,
+        "mf": 0.29166666666666663
+      },
+      "baseline_utility": -5.141224276764436e-13,
+      "utility_slope": 6.626875057581648e-12,
+      "baseline_saving": 0.04159793257713318,
+      "transfers": [
+        {
+          "label": "remove bonds",
+          "weights": {
+            "equity": 0.4666666666666667,
+            "bonds": -0.4666666666666667
+          },
+          "value": 2.2707141064174978e-13,
+          "value_work": 2.3819639491432247e-13,
+          "value_retirement": -1.1124984272572688e-14,
+          "mean_part": 4.156387562484901e-13,
+          "covariance_part": -1.8856734560674028e-13,
+          "mean_part_work": 4.093454283526181e-13,
+          "mean_part_retirement": 6.2933278958720136e-15,
+          "covariance_part_work": -1.7114903343829559e-13,
+          "covariance_part_retirement": -1.74183121684447e-14,
+          "mean_return_difference_retirement": 0.012278683344886946,
+          "exact_utility_change": 1.1058949224812314e-13,
+          "exact_saving": 0.0314883291721344,
+          "exact_saving_change": -0.01010960340499878,
+          "reallocation": 0.4666666666666667,
+          "implied_saving_change": -0.034265231903227576,
+          "local_saving_change": -0.034265231903227576,
+          "local_mean_component": -0.06272017393371071,
+          "local_covariance_component": 0.02845494203048312,
+          "exact_saving_change_per_10pp": -0.0021663435867854525
+        },
+        {
+          "label": "remove gold",
+          "weights": {
+            "equity": 0.29166666666666663,
+            "gold": -0.29166666666666663
+          },
+          "value": 2.4224109470747954e-14,
+          "value_work": 2.2721678522104776e-14,
+          "value_retirement": 1.5024309486431763e-15,
+          "mean_part": 8.656377394549785e-14,
+          "covariance_part": -6.23396644747499e-14,
+          "mean_part_work": 8.532658270143925e-14,
+          "mean_part_retirement": 1.23719124405861e-15,
+          "covariance_part_work": -6.260490417933447e-14,
+          "covariance_part_retirement": 2.6523970458456657e-16,
+          "mean_return_difference_retirement": 0.0024011395413536013,
+          "exact_utility_change": -1.2552475415221016e-13,
+          "exact_saving": 0.04592880606651306,
+          "exact_saving_change": 0.004330873489379883,
+          "reallocation": 0.29166666666666663,
+          "implied_saving_change": -0.003655434765294652,
+          "local_saving_change": -0.003655434765294652,
+          "local_mean_component": -0.013062532972681042,
+          "local_covariance_component": 0.00940709820738639,
+          "exact_saving_change_per_10pp": 0.0014848709106445315
+        },
+        {
+          "label": "remove mf",
+          "weights": {
+            "equity": 0.29166666666666663,
+            "mf": -0.29166666666666663
+          },
+          "value": -1.167690685511609e-13,
+          "value_work": -1.0617832616731497e-13,
+          "value_retirement": -1.0590742383845928e-14,
+          "mean_part": -1.4291629404683813e-14,
+          "covariance_part": -1.0247743914647707e-13,
+          "mean_part_work": -1.4049930636964323e-14,
+          "mean_part_retirement": -2.4169876771948826e-16,
+          "covariance_part_work": -9.212839553035063e-14,
+          "covariance_part_retirement": -1.0349043616126439e-14,
+          "mean_return_difference_retirement": -0.0004578546366166504,
+          "exact_utility_change": -2.1319362140222114e-13,
+          "exact_saving": 0.05257001519203186,
+          "exact_saving_change": 0.010972082614898682,
+          "reallocation": 0.29166666666666663,
+          "implied_saving_change": 0.017620532684944498,
+          "local_saving_change": 0.017620532684944498,
+          "local_mean_component": 0.002156616697991477,
+          "local_covariance_component": 0.015463915986953021,
+          "exact_saving_change_per_10pp": 0.0037618568965366917
+        },
+        {
+          "label": "remove bonds and gold",
+          "weights": {
+            "equity": 0.7583333333333333,
+            "bonds": -0.4666666666666667,
+            "gold": -0.29166666666666663
+          },
+          "value": 2.5129552011249767e-13,
+          "value_work": 2.609180734364272e-13,
+          "value_retirement": -9.622553323929517e-15,
+          "mean_part": 5.022025301939879e-13,
+          "covariance_part": -2.509070100814902e-13,
+          "mean_part_work": 4.946720110540573e-13,
+          "mean_part_retirement": 7.530519139930625e-15,
+          "covariance_part_work": -2.337539376176301e-13,
+          "covariance_part_retirement": -1.7153072463860127e-14,
+          "mean_return_difference_retirement": 0.01467982288624055,
+          "exact_utility_change": -1.417218688622534e-13,
+          "exact_saving": 0.041773587465286255,
+          "exact_saving_change": 0.00017565488815307617,
+          "reallocation": 0.7583333333333333,
+          "implied_saving_change": -0.03792066666852222,
+          "local_saving_change": -0.03792066666852222,
+          "local_mean_component": -0.07578270690639173,
+          "local_covariance_component": 0.037862040237869515,
+          "exact_saving_change_per_10pp": 2.3163281954251804e-05
+        },
+        {
+          "label": "remove package",
+          "weights": {
+            "equity": 1.0499999999999998,
+            "bonds": -0.4666666666666667,
+            "gold": -0.29166666666666663,
+            "mf": -0.29166666666666663
+          },
+          "value": 1.3452645156133673e-13,
+          "value_work": 1.5473974726911217e-13,
+          "value_retirement": -2.0213295707775436e-14,
+          "mean_part": 4.87910900789304e-13,
+          "covariance_part": -3.533844492279672e-13,
+          "mean_part_work": 4.806220804170929e-13,
+          "mean_part_retirement": 7.288820372211134e-15,
+          "covariance_part_work": -3.258823331479806e-13,
+          "covariance_part_retirement": -2.7502116079986574e-14,
+          "mean_return_difference_retirement": 0.014221968249623894,
+          "exact_utility_change": -1.077754324583668e-12,
+          "exact_saving": 0.12508991360664368,
+          "exact_saving_change": 0.0834919810295105,
+          "reallocation": 1.0499999999999998,
+          "implied_saving_change": -0.020300133983577714,
+          "local_saving_change": -0.020300133983577714,
+          "local_mean_component": -0.07362609020840025,
+          "local_covariance_component": 0.05332595622482252,
+          "exact_saving_change_per_10pp": 0.007951617240905763
+        }
+      ],
+      "exposure": []
+    },
+    {
+      "label": "Four-sleeve composition at 175% exposure (ERC)",
+      "universe": [
+        "equity",
+        "bonds",
+        "gold",
+        "mf"
+      ],
+      "baseline_name": "ERC 175%",
+      "baseline_exposures": {
+        "equity": 0.25427500000000003,
+        "bonds": 0.830725,
+        "gold": 0.21087499999999998,
+        "mf": 0.454125
+      },
+      "baseline_utility": -7.670711709532621e-13,
+      "utility_slope": 9.12017262450048e-12,
+      "baseline_saving": 0.0572296679019928,
+      "transfers": [
+        {
+          "label": "remove bonds",
+          "weights": {
+            "equity": 0.830725,
+            "bonds": -0.830725
+          },
+          "value": 9.672987019880339e-13,
+          "value_work": 9.53221942016864e-13,
+          "value_retirement": 1.4076759971169902e-14,
+          "mean_part": 9.91545475480349e-13,
+          "covariance_part": -2.424677349231503e-14,
+          "mean_part_work": 9.823280415682558e-13,
+          "mean_part_retirement": 9.217433912093164e-15,
+          "covariance_part_work": -2.910609955139177e-14,
+          "covariance_part_retirement": 4.8593260590767416e-15,
+          "mean_return_difference_retirement": 0.021857591189316877,
+          "exact_utility_change": 4.45903000580112e-13,
+          "exact_saving": 0.027433663606643677,
+          "exact_saving_change": -0.02979600429534912,
+          "reallocation": 0.830725,
+          "implied_saving_change": -0.10606144662102969,
+          "local_saving_change": -0.10606144662102969,
+          "local_mean_component": -0.10872003374329296,
+          "local_covariance_component": 0.0026585871222632746,
+          "exact_saving_change_per_10pp": -0.0035867470336572414
+        },
+        {
+          "label": "remove gold",
+          "weights": {
+            "equity": 0.21087499999999998,
+            "gold": -0.21087499999999998
+          },
+          "value": 6.001574892798652e-14,
+          "value_work": 6.05719335493827e-14,
+          "value_retirement": -5.561846213961842e-16,
+          "mean_part": 8.401159237872138e-14,
+          "covariance_part": -2.3995843450734863e-14,
+          "mean_part_work": 8.327446265803129e-14,
+          "mean_part_retirement": 7.371297206900921e-16,
+          "covariance_part_work": -2.2702529108648588e-14,
+          "covariance_part_retirement": -1.293314342086276e-15,
+          "mean_return_difference_retirement": 0.001736023888398654,
+          "exact_utility_change": -2.057916119225322e-14,
+          "exact_saving": 0.05657622218132019,
+          "exact_saving_change": -0.0006534457206726074,
+          "reallocation": 0.21087499999999998,
+          "implied_saving_change": -0.006580549667092912,
+          "local_saving_change": -0.006580549667092912,
+          "local_mean_component": -0.00921162305119447,
+          "local_covariance_component": 0.0026310733841015577,
+          "exact_saving_change_per_10pp": -0.0003098734893527481
+        },
+        {
+          "label": "remove mf",
+          "weights": {
+            "equity": 0.454125,
+            "mf": -0.454125
+          },
+          "value": 2.1096167983406044e-14,
+          "value_work": 1.671969509897772e-14,
+          "value_retirement": 4.376472884428324e-15,
+          "mean_part": -2.971065943095509e-14,
+          "covariance_part": 5.0806827414361134e-14,
+          "mean_part_work": -2.9413413206614335e-14,
+          "mean_part_retirement": -2.972462243407578e-16,
+          "covariance_part_work": 4.613310830559205e-14,
+          "covariance_part_retirement": 4.6737191087690795e-15,
+          "mean_return_difference_retirement": -0.0007128796692121241,
+          "exact_utility_change": -1.9584064159101515e-13,
+          "exact_saving": 0.06869807839393616,
+          "exact_saving_change": 0.01146841049194336,
+          "reallocation": 0.454125,
+          "implied_saving_change": -0.0023131325307081565,
+          "local_saving_change": -0.0023131325307081565,
+          "local_mean_component": 0.0032576860827327127,
+          "local_covariance_component": -0.005570818613440869,
+          "exact_saving_change_per_10pp": 0.0025253862905462946
+        },
+        {
+          "label": "remove bonds and gold",
+          "weights": {
+            "equity": 1.0416,
+            "bonds": -0.830725,
+            "gold": -0.21087499999999998
+          },
+          "value": 1.0273144509160205e-12,
+          "value_work": 1.0137938755662468e-12,
+          "value_retirement": 1.3520575349773718e-14,
+          "mean_part": 1.0755570678590704e-12,
+          "covariance_part": -4.82426169430499e-14,
+          "mean_part_work": 1.0656025042262871e-12,
+          "mean_part_retirement": 9.954563632783254e-15,
+          "covariance_part_work": -5.1808628660040364e-14,
+          "covariance_part_retirement": 3.566011716990464e-15,
+          "mean_return_difference_retirement": 0.023593615077715534,
+          "exact_utility_change": 3.3718144632679964e-13,
+          "exact_saving": 0.03147903084754944,
+          "exact_saving_change": -0.02575063705444336,
+          "reallocation": 1.0416,
+          "implied_saving_change": -0.1126419962881226,
+          "local_saving_change": -0.1126419962881226,
+          "local_mean_component": -0.11793165679448744,
+          "local_covariance_component": 0.005289660506364833,
+          "exact_saving_change_per_10pp": -0.0024722193792668357
+        },
+        {
+          "label": "remove package",
+          "weights": {
+            "equity": 1.495725,
+            "bonds": -0.830725,
+            "gold": -0.21087499999999998,
+            "mf": -0.454125
+          },
+          "value": 1.0484106188994264e-12,
+          "value_work": 1.0305135706652243e-12,
+          "value_retirement": 1.7897048234202033e-14,
+          "mean_part": 1.0458464084281152e-12,
+          "covariance_part": 2.5642104713112586e-15,
+          "mean_part_work": 1.0361890910196726e-12,
+          "mean_part_retirement": 9.657317408442495e-15,
+          "covariance_part_work": -5.675520354448287e-15,
+          "covariance_part_retirement": 8.239730825759545e-15,
+          "mean_return_difference_retirement": 0.022880735408503404,
+          "exact_utility_change": -8.248055813068495e-13,
+          "exact_saving": 0.12508991360664368,
+          "exact_saving_change": 0.06786024570465088,
+          "reallocation": 1.495725,
+          "implied_saving_change": -0.11495512881883074,
+          "local_saving_change": -0.11495512881883074,
+          "local_mean_component": -0.11467397071175471,
+          "local_covariance_component": -0.00028115810707603824,
+          "exact_saving_change_per_10pp": 0.004536946678343337
+        }
+      ],
+      "exposure": []
+    },
+    {
+      "label": "Leverage of the ERC portfolio",
+      "universe": [
+        "equity",
+        "bonds",
+        "gold",
+        "mf"
+      ],
+      "baseline_name": "ERC 100%",
+      "baseline_exposures": {
+        "equity": 0.1453,
+        "bonds": 0.4747,
+        "gold": 0.1205,
+        "mf": 0.2595
+      },
+      "baseline_utility": -1.6518622820091823e-12,
+      "utility_slope": 1.5446153972170383e-11,
+      "baseline_saving": 0.11717769503593445,
+      "transfers": [],
+      "exposure": [
+        {
+          "label": "leverage +0.25",
+          "weights": {
+            "_exposure": 0.25
+          },
+          "value": 3.875682084682973e-13,
+          "value_work": 3.6334692278736426e-13,
+          "value_retirement": 2.422128568093307e-14,
+          "mean_part": 4.249455210611469e-13,
+          "covariance_part": -3.737731259284954e-14,
+          "mean_part_work": 3.9812622841813383e-13,
+          "mean_part_retirement": 2.6819292643013058e-14,
+          "covariance_part_work": -3.4779305630769554e-14,
+          "covariance_part_retirement": -2.598006962079991e-15,
+          "mean_return_difference_retirement": 0.005537561140106636,
+          "exact_utility_change": 3.5703080304912103e-13,
+          "exact_saving": 0.09154447913169861,
+          "exact_saving_change": -0.02563321590423584,
+          "reallocation": 0.25,
+          "implied_saving_change": -0.025091567076605998,
+          "local_saving_change": -0.025091567076605998,
+          "local_mean_component": -0.027511412991659864,
+          "local_covariance_component": 0.002419845915053866,
+          "exact_saving_change_per_10pp": -0.010253286361694336,
+          "delta_g": 0.25
+        },
+        {
+          "label": "leverage +0.75",
+          "weights": {
+            "_exposure": 0.75
+          },
+          "value": 1.1627046254048921e-12,
+          "value_work": 1.0900407683620928e-12,
+          "value_retirement": 7.266385704279922e-14,
+          "mean_part": 1.2748365631834405e-12,
+          "covariance_part": -1.1213193777854862e-13,
+          "mean_part_work": 1.1943786852544014e-12,
+          "mean_part_retirement": 8.045787792903918e-14,
+          "covariance_part_work": -1.0433791689230865e-13,
+          "covariance_part_retirement": -7.794020886239971e-15,
+          "mean_return_difference_retirement": 0.016612683420319907,
+          "exact_utility_change": 8.847911110559202e-13,
+          "exact_saving": 0.0572296679019928,
+          "exact_saving_change": -0.05994802713394165,
+          "reallocation": 0.75,
+          "implied_saving_change": -0.075274701229818,
+          "local_saving_change": -0.075274701229818,
+          "local_mean_component": -0.08253423897497958,
+          "local_covariance_component": 0.007259537745161596,
+          "exact_saving_change_per_10pp": -0.007993070284525554,
+          "delta_g": 0.75
+        }
+      ]
+    },
+    {
+      "label": "Leverage of the ERC portfolio at 175%",
+      "universe": [
+        "equity",
+        "bonds",
+        "gold",
+        "mf"
+      ],
+      "baseline_name": "ERC 175%",
+      "baseline_exposures": {
+        "equity": 0.25427500000000003,
+        "bonds": 0.830725,
+        "gold": 0.21087499999999998,
+        "mf": 0.454125
+      },
+      "baseline_utility": -7.670711709532621e-13,
+      "utility_slope": 9.12017262450048e-12,
+      "baseline_saving": 0.0572296679019928,
+      "transfers": [],
+      "exposure": [
+        {
+          "label": "leverage +0.25",
+          "weights": {
+            "_exposure": 0.25
+          },
+          "value": 2.0657877929476025e-13,
+          "value_work": 2.055075844028078e-13,
+          "value_retirement": 1.0711948919524478e-15,
+          "mean_part": 2.5145879089361946e-13,
+          "covariance_part": -4.4880011598859236e-14,
+          "mean_part_work": 2.4911604100818707e-13,
+          "mean_part_retirement": 2.342749885432389e-15,
+          "covariance_part_work": -4.3608456605379296e-14,
+          "covariance_part_retirement": -1.2715549934799414e-15,
+          "mean_return_difference_retirement": 0.0055375611401066345,
+          "exact_utility_change": 1.8337062515997656e-13,
+          "exact_saving": 0.045508772134780884,
+          "exact_saving_change": -0.011720895767211914,
+          "reallocation": 0.25,
+          "implied_saving_change": -0.02265075320392576,
+          "local_saving_change": -0.02265075320392576,
+          "local_mean_component": -0.027571713962748823,
+          "local_covariance_component": 0.004920960758823066,
+          "exact_saving_change_per_10pp": -0.004688358306884766,
+          "delta_g": 0.25
+        }
+      ]
+    }
+  ],
+  "optimal_composition": {
+    "gross": 1.75,
+    "weights": {
+      "equity": 0.7183241926017636,
+      "bonds": 1.2180749174198732e-11,
+      "gold": 0.18499783149537236,
+      "mf": 0.8466779758906835
+    },
+    "reallocation": 1.0316758073982366,
+    "saving": 0.02273549645246252,
+    "saving_change_vs_aco175": -0.10235441715418116,
+    "value": 4.126439121757089e-12,
+    "mean_part": -1.9886466622418988e-14,
+    "covariance_part": 4.146325588379508e-12,
+    "local_saving_change": -0.49665803484722915,
+    "local_mean_component": 0.002393534265577624,
+    "local_covariance_component": -0.4990515691128068
+  },
+  "optimal_composition_stressed": [
+    {
+      "haircut_bp": 300,
+      "weights": {
+        "equity": 0.9586358853235988,
+        "bonds": 0.0,
+        "gold": 0.29823221393465105,
+        "mf": 0.49313190074175006
+      },
+      "reallocation": 0.7913641146764011,
+      "saving": 0.03954532895415566,
+      "saving_change_vs_aco175": -0.08554458465248801
+    },
+    {
+      "haircut_bp": 600,
+      "weights": {
+        "equity": 1.1049596901279888,
+        "bonds": 0.041587432731379326,
+        "gold": 0.42872442854287474,
+        "mf": 0.17472844859775702
+      },
+      "reallocation": 0.6450403098720111,
+      "saving": 0.04556092504991559,
+      "saving_change_vs_aco175": -0.07952898855672809
+    }
+  ]
+}

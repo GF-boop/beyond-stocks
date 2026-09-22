@@ -1,0 +1,246 @@
+{
+  "engine": {
+    "periods": {
+      "full": {
+        "months": 1198,
+        "gross_excess_mean": 0.07799479034710977,
+        "gross_excess_vol": 0.10548304195262208,
+        "gross_sharpe": 0.7394059642510241,
+        "net_cagr": 0.10104206851848274
+      },
+      "1927-1969": {
+        "months": 516,
+        "gross_excess_mean": 0.07237973964014287,
+        "gross_excess_vol": 0.10987652138290148,
+        "gross_sharpe": 0.6587370871335785,
+        "net_cagr": 0.07991995368683491
+      },
+      "1970-1999": {
+        "months": 360,
+        "gross_excess_mean": 0.10802760461761872,
+        "gross_excess_vol": 0.09966293649036215,
+        "gross_sharpe": 1.083929577251273,
+        "net_cagr": 0.17370705516302665
+      },
+      "2000-2025": {
+        "months": 312,
+        "gross_excess_mean": 0.05740691081418001,
+        "gross_excess_vol": 0.1048176276108219,
+        "gross_sharpe": 0.5476837448308458,
+        "net_cagr": 0.06113228857846864
+      }
+    },
+    "annual_real_gross_mean": 0.09496906622847279,
+    "mean_annual_difference_vs_canonical": 1.4716622981975685e-14,
+    "corr_with_canonical": 1.0,
+    "lifecycle": {
+      "ACO 33/67": {
+        "ruin_probability": 0.0698,
+        "equivalent_savings_rate": 0.09999999403953552,
+        "matched_failure": 0.0698,
+        "annual_volatility": 0.25282649424998765
+      },
+      "Proportional equal volatility": {
+        "ruin_probability": 0.0225,
+        "equivalent_savings_rate": 0.0634983479976654,
+        "matched_failure": 0.0318,
+        "annual_volatility": 0.25282649424999015
+      },
+      "Risk parity equal volatility": {
+        "ruin_probability": 0.0188,
+        "equivalent_savings_rate": 0.04178151488304138,
+        "matched_failure": 0.0217,
+        "annual_volatility": 0.25282649425000603
+      },
+      "Stocks and MF equal volatility": {
+        "ruin_probability": 0.0209,
+        "equivalent_savings_rate": 0.052157193422317505,
+        "matched_failure": 0.0082,
+        "annual_volatility": 0.25282649424998954
+      }
+    }
+  },
+  "equity_excess": {
+    "periods": {
+      "full": {
+        "months": 1198,
+        "gross_excess_mean": 0.08271028074170209,
+        "gross_excess_vol": 0.10570394477679869,
+        "gross_sharpe": 0.7824710886273039,
+        "net_cagr": 0.10603509478702011
+      },
+      "1927-1969": {
+        "months": 516,
+        "gross_excess_mean": 0.0803102865899634,
+        "gross_excess_vol": 0.11038312665353092,
+        "gross_sharpe": 0.7275594470343303,
+        "net_cagr": 0.08843475820569346
+      },
+      "1970-1999": {
+        "months": 360,
+        "gross_excess_mean": 0.10756530576970492,
+        "gross_excess_vol": 0.10037275270585097,
+        "gross_sharpe": 1.0716584219318184,
+        "net_cagr": 0.17276050559923872
+      },
+      "2000-2025": {
+        "months": 312,
+        "gross_excess_mean": 0.06285474953338165,
+        "gross_excess_vol": 0.10423186216262648,
+        "gross_sharpe": 0.6030281741998746,
+        "net_cagr": 0.06669200170503364
+      }
+    },
+    "annual_real_gross_mean": 0.100842492452198,
+    "mean_annual_difference_vs_canonical": 0.005873426223739885,
+    "corr_with_canonical": 0.9669070359847125,
+    "lifecycle": {
+      "ACO 33/67": {
+        "ruin_probability": 0.0698,
+        "equivalent_savings_rate": 0.09999999403953552,
+        "matched_failure": 0.0698,
+        "annual_volatility": 0.25282649424998765
+      },
+      "Proportional equal volatility": {
+        "ruin_probability": 0.0211,
+        "equivalent_savings_rate": 0.0608038604259491,
+        "matched_failure": 0.0231,
+        "annual_volatility": 0.25534578114423934
+      },
+      "Risk parity equal volatility": {
+        "ruin_probability": 0.0161,
+        "equivalent_savings_rate": 0.03749290108680725,
+        "matched_failure": 0.0115,
+        "annual_volatility": 0.25936260388437604
+      },
+      "Stocks and MF equal volatility": {
+        "ruin_probability": 0.0203,
+        "equivalent_savings_rate": 0.049236446619033813,
+        "matched_failure": 0.0075,
+        "annual_volatility": 0.25677896206024775
+      }
+    }
+  },
+  "commodity_excess": {
+    "periods": {
+      "full": {
+        "months": 1198,
+        "gross_excess_mean": 0.07158579687305719,
+        "gross_excess_vol": 0.10820030093175192,
+        "gross_sharpe": 0.6616044156680343,
+        "net_cagr": 0.09363892325469636
+      },
+      "1927-1969": {
+        "months": 516,
+        "gross_excess_mean": 0.05923186512527342,
+        "gross_excess_vol": 0.11660961234600124,
+        "gross_sharpe": 0.5079501074878977,
+        "net_cagr": 0.06474040550060578
+      },
+      "1970-1999": {
+        "months": 360,
+        "gross_excess_mean": 0.10580016998315253,
+        "gross_excess_vol": 0.0984623320112558,
+        "gross_sharpe": 1.0745243162741454,
+        "net_cagr": 0.171486968705018
+      },
+      "2000-2025": {
+        "months": 312,
+        "gross_excess_mean": 0.05599236285299007,
+        "gross_excess_vol": 0.10456863433886038,
+        "gross_sharpe": 0.5354604007884788,
+        "net_cagr": 0.059646324581488
+      }
+    },
+    "annual_real_gross_mean": 0.08865550077395465,
+    "mean_annual_difference_vs_canonical": -0.00631356545450346,
+    "corr_with_canonical": 0.8656444909688238,
+    "lifecycle": {
+      "ACO 33/67": {
+        "ruin_probability": 0.0698,
+        "equivalent_savings_rate": 0.09999999403953552,
+        "matched_failure": 0.0698,
+        "annual_volatility": 0.25282649424998765
+      },
+      "Proportional equal volatility": {
+        "ruin_probability": 0.025,
+        "equivalent_savings_rate": 0.06667301058769226,
+        "matched_failure": 0.0341,
+        "annual_volatility": 0.24789697235756886
+      },
+      "Risk parity equal volatility": {
+        "ruin_probability": 0.0244,
+        "equivalent_savings_rate": 0.04780510067939758,
+        "matched_failure": 0.031,
+        "annual_volatility": 0.24082071818741044
+      },
+      "Stocks and MF equal volatility": {
+        "ruin_probability": 0.0273,
+        "equivalent_savings_rate": 0.05706128478050232,
+        "matched_failure": 0.0112,
+        "annual_volatility": 0.24848356843571015
+      }
+    }
+  },
+  "both_excess": {
+    "periods": {
+      "full": {
+        "months": 1198,
+        "gross_excess_mean": 0.07617014296300034,
+        "gross_excess_vol": 0.10838991913167441,
+        "gross_sharpe": 0.7027419484506415,
+        "net_cagr": 0.0984679557956547
+      },
+      "1927-1969": {
+        "months": 516,
+        "gross_excess_mean": 0.06677134871751836,
+        "gross_excess_vol": 0.11700471914310827,
+        "gross_sharpe": 0.5706722703709961,
+        "net_cagr": 0.07274352621519253
+      },
+      "1970-1999": {
+        "months": 360,
+        "gross_excess_mean": 0.10568819186000834,
+        "gross_excess_vol": 0.09974279074642697,
+        "gross_sharpe": 1.059607326695883,
+        "net_cagr": 0.17088956521930654
+      },
+      "2000-2025": {
+        "months": 312,
+        "gross_excess_mean": 0.06118700681868499,
+        "gross_excess_vol": 0.10345103652948896,
+        "gross_sharpe": 0.5914586153155023,
+        "net_cagr": 0.06499892581840272
+      }
+    },
+    "annual_real_gross_mean": 0.09446520707665466,
+    "mean_annual_difference_vs_canonical": -0.0005038591518034355,
+    "corr_with_canonical": 0.8394048414093694,
+    "lifecycle": {
+      "ACO 33/67": {
+        "ruin_probability": 0.0698,
+        "equivalent_savings_rate": 0.09999999403953552,
+        "matched_failure": 0.0698,
+        "annual_volatility": 0.25282649424998765
+      },
+      "Proportional equal volatility": {
+        "ruin_probability": 0.0238,
+        "equivalent_savings_rate": 0.06393089890480042,
+        "matched_failure": 0.0254,
+        "annual_volatility": 0.2503464202776536
+      },
+      "Risk parity equal volatility": {
+        "ruin_probability": 0.0201,
+        "equivalent_savings_rate": 0.043091386556625366,
+        "matched_failure": 0.0185,
+        "annual_volatility": 0.24742418857781429
+      },
+      "Stocks and MF equal volatility": {
+        "ruin_probability": 0.0249,
+        "equivalent_savings_rate": 0.05399468541145325,
+        "matched_failure": 0.0098,
+        "annual_volatility": 0.25248822843134794
+      }
+    }
+  }
+}

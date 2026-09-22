@@ -1,0 +1,70 @@
+{
+  "case": "spread_100bp",
+  "runs": 10000,
+  "seed": 20260827,
+  "observations": 1561,
+  "spread": 0.01,
+  "mf_haircut": 0.0,
+  "results": [
+    {
+      "strategy": "ACO 33/67",
+      "weights": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "gross": 1.0,
+      "annual_volatility": 0.25282649424998765,
+      "ruin_probability": 0.0698,
+      "equivalent_savings_rate": 0.09999999403953552,
+      "matched_failure": 0.0698,
+      "matched_failure_at_equivalent_saving": 0.0698
+    },
+    {
+      "strategy": "Proportional equal volatility",
+      "weights": [
+        0.665121132112444,
+        0.4434140880749626,
+        0.2771338050468516,
+        0.2771338050468516
+      ],
+      "gross": 1.6628028302811098,
+      "annual_volatility": 0.25282649424998765,
+      "ruin_probability": 0.0262,
+      "equivalent_savings_rate": 0.07208356261253357,
+      "matched_failure": 0.0551,
+      "matched_failure_at_equivalent_saving": 0.1422
+    },
+    {
+      "strategy": "Risk parity equal volatility",
+      "weights": [
+        0.38479611284369747,
+        1.2573181378382445,
+        0.3192866964952783,
+        0.6874029239289293
+      ],
+      "gross": 2.6488038711061495,
+      "annual_volatility": 0.25282649424998765,
+      "ruin_probability": 0.0306,
+      "equivalent_savings_rate": 0.05750986933708191,
+      "matched_failure": 0.0644,
+      "matched_failure_at_equivalent_saving": 0.1853
+    },
+    {
+      "strategy": "Stocks and MF equal volatility",
+      "weights": [
+        0.9331047704131175,
+        0.0,
+        0.0,
+        0.3887936543387989
+      ],
+      "gross": 1.3218984247519163,
+      "annual_volatility": 0.25282649424998765,
+      "ruin_probability": 0.0231,
+      "equivalent_savings_rate": 0.05547419190406799,
+      "matched_failure": 0.0099,
+      "matched_failure_at_equivalent_saving": 0.0624
+    }
+  ]
+}

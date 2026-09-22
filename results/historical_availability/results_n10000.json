@@ -1,0 +1,1158 @@
+{
+  "runs": 10000,
+  "seed": 20260827,
+  "observations": 1561,
+  "period": "1927\u20132025",
+  "mean_block_years": 10,
+  "spread": 0.003,
+  "hedge_cost": 0.001,
+  "trend_fee": 0.0085,
+  "gamma": 3.84,
+  "withdrawal_rate": 0.04,
+  "results": [
+    {
+      "strategy": "ACO 33/67",
+      "annual_volatility": 0.2528264942499876,
+      "mean_return": 0.08115151109382268,
+      "ruin_probability": 0.0698,
+      "equivalent_savings_rate": 0.09999999403953552,
+      "ruin_difference_vs_aco": 0.0,
+      "ruin_difference_ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "strategy": "ACO 33/67 125%",
+      "annual_volatility": 0.31471125465279914,
+      "mean_return": 0.10004471692031938,
+      "ruin_probability": 0.0813,
+      "equivalent_savings_rate": 0.08564886450767517,
+      "ruin_difference_vs_aco": 0.0115,
+      "ruin_difference_ci95": [
+        0.008634785211266255,
+        0.014365214788733744
+      ]
+    },
+    {
+      "strategy": "ACO 33/67 150%",
+      "annual_volatility": 0.3771344031556985,
+      "mean_return": 0.11893792274681605,
+      "ruin_probability": 0.1069,
+      "equivalent_savings_rate": 0.08303740620613098,
+      "ruin_difference_vs_aco": 0.0371,
+      "ruin_difference_ci95": [
+        0.03270292781969913,
+        0.041497072180300874
+      ]
+    },
+    {
+      "strategy": "ACO 33/67 175%",
+      "annual_volatility": 0.4398667854136487,
+      "mean_return": 0.13783112857331276,
+      "ruin_probability": 0.1481,
+      "equivalent_savings_rate": 0.09640106558799744,
+      "ruin_difference_vs_aco": 0.0783,
+      "ruin_difference_ci95": [
+        0.07250629013455104,
+        0.08409370986544895
+      ]
+    },
+    {
+      "strategy": "ACO 33/67 200%",
+      "annual_volatility": 0.5027926674134526,
+      "mean_return": 0.15672433439980943,
+      "ruin_probability": 0.2028,
+      "equivalent_savings_rate": 0.15661808848381042,
+      "ruin_difference_vs_aco": 0.133,
+      "ruin_difference_ci95": [
+        0.12588641032418882,
+        0.1401135896758112
+      ]
+    },
+    {
+      "strategy": "Proportional 100% | Baseline",
+      "family": "Proportional",
+      "gross_percent": 100,
+      "mode": "Baseline",
+      "post1974_weights": [
+        0.4,
+        0.26666666666666666,
+        0.16666666666666663,
+        0.16666666666666663
+      ],
+      "trend_cost": 0.00614604784662825,
+      "annual_volatility": 0.15658923505093872,
+      "mean_return": 0.056557720939742734,
+      "ruin_probability": 0.0504,
+      "equivalent_savings_rate": 0.1234879195690155,
+      "ruin_difference_vs_aco": -0.0194,
+      "ruin_difference_ci95": [
+        -0.024305089553999324,
+        -0.014494910446000677
+      ],
+      "ruin_difference_vs_same_baseline": 0.0,
+      "same_baseline_ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "strategy": "Proportional 100% | Gold restriction",
+      "family": "Proportional",
+      "gross_percent": 100,
+      "mode": "Gold restriction",
+      "post1974_weights": [
+        0.4,
+        0.26666666666666666,
+        0.16666666666666663,
+        0.16666666666666663
+      ],
+      "trend_cost": 0.006154457955815784,
+      "annual_volatility": 0.1420089809335553,
+      "mean_return": 0.05719856956733168,
+      "ruin_probability": 0.0552,
+      "equivalent_savings_rate": 0.12294861674308777,
+      "ruin_difference_vs_aco": -0.0146,
+      "ruin_difference_ci95": [
+        -0.019179539023981257,
+        -0.010020460976018742
+      ],
+      "ruin_difference_vs_same_baseline": 0.0048,
+      "same_baseline_ci95": [
+        0.002337992058926253,
+        0.007262007941073746
+      ]
+    },
+    {
+      "strategy": "Proportional 100% | MF restriction",
+      "family": "Proportional",
+      "gross_percent": 100,
+      "mode": "MF restriction",
+      "post1974_weights": [
+        0.4,
+        0.26666666666666666,
+        0.16666666666666663,
+        0.16666666666666663
+      ],
+      "trend_cost": 0.004629380762437867,
+      "annual_volatility": 0.15888559351849002,
+      "mean_return": 0.056740347914342695,
+      "ruin_probability": 0.0461,
+      "equivalent_savings_rate": 0.12184879183769226,
+      "ruin_difference_vs_aco": -0.0237,
+      "ruin_difference_ci95": [
+        -0.028625204456009246,
+        -0.018774795543990752
+      ],
+      "ruin_difference_vs_same_baseline": -0.0043,
+      "same_baseline_ci95": [
+        -0.006105154491968481,
+        -0.0024948455080315186
+      ]
+    },
+    {
+      "strategy": "Proportional 100% | Joint restriction",
+      "family": "Proportional",
+      "gross_percent": 100,
+      "mode": "Joint restriction",
+      "post1974_weights": [
+        0.4,
+        0.26666666666666666,
+        0.16666666666666663,
+        0.16666666666666663
+      ],
+      "trend_cost": 0.004588477471466391,
+      "annual_volatility": 0.14332940994658566,
+      "mean_return": 0.05698524201962674,
+      "ruin_probability": 0.0492,
+      "equivalent_savings_rate": 0.12178364396095276,
+      "ruin_difference_vs_aco": -0.0206,
+      "ruin_difference_ci95": [
+        -0.025145384022719246,
+        -0.016054615977280754
+      ],
+      "ruin_difference_vs_same_baseline": -0.0012,
+      "same_baseline_ci95": [
+        -0.003535607911450807,
+        0.0011356079114508073
+      ]
+    },
+    {
+      "strategy": "Proportional 125% | Baseline",
+      "family": "Proportional",
+      "gross_percent": 125,
+      "mode": "Baseline",
+      "post1974_weights": [
+        0.5,
+        0.33333333333333337,
+        0.20833333333333331,
+        0.20833333333333331
+      ],
+      "trend_cost": 0.00614604784662825,
+      "annual_volatility": 0.19225106095112796,
+      "mean_return": 0.06930247922771945,
+      "ruin_probability": 0.0332,
+      "equivalent_savings_rate": 0.09456583857536316,
+      "ruin_difference_vs_aco": -0.0366,
+      "ruin_difference_ci95": [
+        -0.041098005984453956,
+        -0.032101994015546045
+      ],
+      "ruin_difference_vs_same_baseline": 0.0,
+      "same_baseline_ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "strategy": "Proportional 125% | Gold restriction",
+      "family": "Proportional",
+      "gross_percent": 125,
+      "mode": "Gold restriction",
+      "post1974_weights": [
+        0.5,
+        0.33333333333333337,
+        0.20833333333333331,
+        0.20833333333333331
+      ],
+      "trend_cost": 0.006154457955815784,
+      "annual_volatility": 0.17315557561923905,
+      "mean_return": 0.07010354001220562,
+      "ruin_probability": 0.0373,
+      "equivalent_savings_rate": 0.09362098574638367,
+      "ruin_difference_vs_aco": -0.0325,
+      "ruin_difference_ci95": [
+        -0.036678446713994825,
+        -0.028321553286005174
+      ],
+      "ruin_difference_vs_same_baseline": 0.0041,
+      "same_baseline_ci95": [
+        0.0019276321240133247,
+        0.0062723678759866765
+      ]
+    },
+    {
+      "strategy": "Proportional 125% | MF restriction",
+      "family": "Proportional",
+      "gross_percent": 125,
+      "mode": "MF restriction",
+      "post1974_weights": [
+        0.5,
+        0.33333333333333337,
+        0.20833333333333331,
+        0.20833333333333331
+      ],
+      "trend_cost": 0.004629380762437867,
+      "annual_volatility": 0.1955736031007461,
+      "mean_return": 0.0695307629459694,
+      "ruin_probability": 0.031,
+      "equivalent_savings_rate": 0.09327861666679382,
+      "ruin_difference_vs_aco": -0.0388,
+      "ruin_difference_ci95": [
+        -0.04335040710157663,
+        -0.03424959289842337
+      ],
+      "ruin_difference_vs_same_baseline": -0.0022,
+      "same_baseline_ci95": [
+        -0.003862639197935094,
+        -0.0005373608020649066
+      ]
+    },
+    {
+      "strategy": "Proportional 125% | Joint restriction",
+      "family": "Proportional",
+      "gross_percent": 125,
+      "mode": "Joint restriction",
+      "post1974_weights": [
+        0.5,
+        0.33333333333333337,
+        0.20833333333333331,
+        0.20833333333333331
+      ],
+      "trend_cost": 0.004588477471466391,
+      "annual_volatility": 0.17536796300811586,
+      "mean_return": 0.06983688057757445,
+      "ruin_probability": 0.0331,
+      "equivalent_savings_rate": 0.09301164746284485,
+      "ruin_difference_vs_aco": -0.0367,
+      "ruin_difference_ci95": [
+        -0.04092004639983516,
+        -0.03247995360016485
+      ],
+      "ruin_difference_vs_same_baseline": -0.0001,
+      "same_baseline_ci95": [
+        -0.002291455316916273,
+        0.0020914553169162735
+      ]
+    },
+    {
+      "strategy": "Proportional 150% | Baseline",
+      "family": "Proportional",
+      "gross_percent": 150,
+      "mode": "Baseline",
+      "post1974_weights": [
+        0.6,
+        0.4,
+        0.25,
+        0.25
+      ],
+      "trend_cost": 0.00614604784662825,
+      "annual_volatility": 0.22876503546439317,
+      "mean_return": 0.08204723751569615,
+      "ruin_probability": 0.0253,
+      "equivalent_savings_rate": 0.07392695546150208,
+      "ruin_difference_vs_aco": -0.0445,
+      "ruin_difference_ci95": [
+        -0.048870612014917186,
+        -0.04012938798508281
+      ],
+      "ruin_difference_vs_same_baseline": 0.0,
+      "same_baseline_ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "strategy": "Proportional 150% | Gold restriction",
+      "family": "Proportional",
+      "gross_percent": 150,
+      "mode": "Gold restriction",
+      "post1974_weights": [
+        0.6,
+        0.4,
+        0.25,
+        0.25
+      ],
+      "trend_cost": 0.006154457955815784,
+      "annual_volatility": 0.20522577150049073,
+      "mean_return": 0.08300851045707956,
+      "ruin_probability": 0.0282,
+      "equivalent_savings_rate": 0.07310858368873596,
+      "ruin_difference_vs_aco": -0.0416,
+      "ruin_difference_ci95": [
+        -0.04575195953101601,
+        -0.037448040468983985
+      ],
+      "ruin_difference_vs_same_baseline": 0.0029,
+      "same_baseline_ci95": [
+        0.0010106048068708384,
+        0.004789395193129161
+      ]
+    },
+    {
+      "strategy": "Proportional 150% | MF restriction",
+      "family": "Proportional",
+      "gross_percent": 150,
+      "mode": "MF restriction",
+      "post1974_weights": [
+        0.6,
+        0.4,
+        0.25,
+        0.25
+      ],
+      "trend_cost": 0.004629380762437867,
+      "annual_volatility": 0.23310797844204142,
+      "mean_return": 0.08232117797759607,
+      "ruin_probability": 0.0235,
+      "equivalent_savings_rate": 0.07292690873146057,
+      "ruin_difference_vs_aco": -0.0463,
+      "ruin_difference_ci95": [
+        -0.05075060140148312,
+        -0.041849398598516885
+      ],
+      "ruin_difference_vs_same_baseline": -0.0018,
+      "same_baseline_ci95": [
+        -0.003157537333689662,
+        -0.0004424626663103381
+      ]
+    },
+    {
+      "strategy": "Proportional 150% | Joint restriction",
+      "family": "Proportional",
+      "gross_percent": 150,
+      "mode": "Joint restriction",
+      "post1974_weights": [
+        0.6,
+        0.4,
+        0.25,
+        0.25
+      ],
+      "trend_cost": 0.004588477471466391,
+      "annual_volatility": 0.20833393734339933,
+      "mean_return": 0.08268851913552215,
+      "ruin_probability": 0.0259,
+      "equivalent_savings_rate": 0.07264289259910583,
+      "ruin_difference_vs_aco": -0.0439,
+      "ruin_difference_ci95": [
+        -0.04813910745435887,
+        -0.03966089254564113
+      ],
+      "ruin_difference_vs_same_baseline": 0.0006,
+      "same_baseline_ci95": [
+        -0.0013003491350495333,
+        0.002500349135049533
+      ]
+    },
+    {
+      "strategy": "Proportional 175% | Baseline",
+      "family": "Proportional",
+      "gross_percent": 175,
+      "mode": "Baseline",
+      "post1974_weights": [
+        0.7,
+        0.4666666666666666,
+        0.29166666666666663,
+        0.29166666666666663
+      ],
+      "trend_cost": 0.00614604784662825,
+      "annual_volatility": 0.26578017528854625,
+      "mean_return": 0.09479199580367284,
+      "ruin_probability": 0.0213,
+      "equivalent_savings_rate": 0.058697909116744995,
+      "ruin_difference_vs_aco": -0.0485,
+      "ruin_difference_ci95": [
+        -0.05291556399121744,
+        -0.04408443600878256
+      ],
+      "ruin_difference_vs_same_baseline": 0.0,
+      "same_baseline_ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "strategy": "Proportional 175% | Gold restriction",
+      "family": "Proportional",
+      "gross_percent": 175,
+      "mode": "Gold restriction",
+      "post1974_weights": [
+        0.7,
+        0.4666666666666666,
+        0.29166666666666663,
+        0.29166666666666663
+      ],
+      "trend_cost": 0.006154457955815784,
+      "annual_volatility": 0.23784625796007752,
+      "mean_return": 0.09591348090195351,
+      "ruin_probability": 0.024,
+      "equivalent_savings_rate": 0.05805853009223938,
+      "ruin_difference_vs_aco": -0.0458,
+      "ruin_difference_ci95": [
+        -0.049981140372085245,
+        -0.041618859627914756
+      ],
+      "ruin_difference_vs_same_baseline": 0.0027,
+      "same_baseline_ci95": [
+        0.0007504452944441403,
+        0.0046495547055558605
+      ]
+    },
+    {
+      "strategy": "Proportional 175% | MF restriction",
+      "family": "Proportional",
+      "gross_percent": 175,
+      "mode": "MF restriction",
+      "post1974_weights": [
+        0.7,
+        0.4666666666666666,
+        0.29166666666666663,
+        0.29166666666666663
+      ],
+      "trend_cost": 0.004629380762437867,
+      "annual_volatility": 0.27113745218671664,
+      "mean_return": 0.09511159300922276,
+      "ruin_probability": 0.0204,
+      "equivalent_savings_rate": 0.05785009264945984,
+      "ruin_difference_vs_aco": -0.0494,
+      "ruin_difference_ci95": [
+        -0.05385074513038228,
+        -0.04494925486961772
+      ],
+      "ruin_difference_vs_same_baseline": -0.0009,
+      "same_baseline_ci95": [
+        -0.002243659693723546,
+        0.00044365969372354617
+      ]
+    },
+    {
+      "strategy": "Proportional 175% | Joint restriction",
+      "family": "Proportional",
+      "gross_percent": 175,
+      "mode": "Joint restriction",
+      "post1974_weights": [
+        0.7,
+        0.4666666666666666,
+        0.29166666666666663,
+        0.29166666666666663
+      ],
+      "trend_cost": 0.004588477471466391,
+      "annual_volatility": 0.24184838381473434,
+      "mean_return": 0.09554015769346985,
+      "ruin_probability": 0.0226,
+      "equivalent_savings_rate": 0.05765661597251892,
+      "ruin_difference_vs_aco": -0.0472,
+      "ruin_difference_ci95": [
+        -0.05149311402928071,
+        -0.04290688597071929
+      ],
+      "ruin_difference_vs_same_baseline": 0.0013,
+      "same_baseline_ci95": [
+        -0.0005900783076901658,
+        0.0031900783076901657
+      ]
+    },
+    {
+      "strategy": "Proportional 200% | Baseline",
+      "family": "Proportional",
+      "gross_percent": 200,
+      "mode": "Baseline",
+      "post1974_weights": [
+        0.8,
+        0.5333333333333333,
+        0.33333333333333326,
+        0.33333333333333326
+      ],
+      "trend_cost": 0.00614604784662825,
+      "annual_volatility": 0.3031129340905635,
+      "mean_return": 0.10753675409164956,
+      "ruin_probability": 0.018,
+      "equivalent_savings_rate": 0.047236114740371704,
+      "ruin_difference_vs_aco": -0.0518,
+      "ruin_difference_ci95": [
+        -0.05625752144934235,
+        -0.047342478550657645
+      ],
+      "ruin_difference_vs_same_baseline": 0.0,
+      "same_baseline_ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "strategy": "Proportional 200% | Gold restriction",
+      "family": "Proportional",
+      "gross_percent": 200,
+      "mode": "Gold restriction",
+      "post1974_weights": [
+        0.8,
+        0.5333333333333333,
+        0.33333333333333326,
+        0.33333333333333326
+      ],
+      "trend_cost": 0.006154457955815784,
+      "annual_volatility": 0.2708182578426911,
+      "mean_return": 0.10881845134682742,
+      "ruin_probability": 0.0215,
+      "equivalent_savings_rate": 0.046914249658584595,
+      "ruin_difference_vs_aco": -0.0483,
+      "ruin_difference_ci95": [
+        -0.052574951286090854,
+        -0.04402504871390915
+      ],
+      "ruin_difference_vs_same_baseline": 0.0035,
+      "same_baseline_ci95": [
+        0.0016109952689610891,
+        0.005389004731038911
+      ]
+    },
+    {
+      "strategy": "Proportional 200% | MF restriction",
+      "family": "Proportional",
+      "gross_percent": 200,
+      "mode": "MF restriction",
+      "post1974_weights": [
+        0.8,
+        0.5333333333333333,
+        0.33333333333333326,
+        0.33333333333333326
+      ],
+      "trend_cost": 0.004629380762437867,
+      "annual_volatility": 0.3094795620468574,
+      "mean_return": 0.10790200804084947,
+      "ruin_probability": 0.0182,
+      "equivalent_savings_rate": 0.0464683473110199,
+      "ruin_difference_vs_aco": -0.0516,
+      "ruin_difference_ci95": [
+        -0.05610982048406362,
+        -0.04709017951593638
+      ],
+      "ruin_difference_vs_same_baseline": 0.0002,
+      "same_baseline_ci95": [
+        -0.0011293973684855605,
+        0.0015293973684855607
+      ]
+    },
+    {
+      "strategy": "Proportional 200% | Joint restriction",
+      "family": "Proportional",
+      "gross_percent": 200,
+      "mode": "Joint restriction",
+      "post1974_weights": [
+        0.8,
+        0.5333333333333333,
+        0.33333333333333326,
+        0.33333333333333326
+      ],
+      "trend_cost": 0.004588477471466391,
+      "annual_volatility": 0.27571136422716186,
+      "mean_return": 0.10839179625141755,
+      "ruin_probability": 0.0211,
+      "equivalent_savings_rate": 0.046506911516189575,
+      "ruin_difference_vs_aco": -0.0487,
+      "ruin_difference_ci95": [
+        -0.053026816347335574,
+        -0.044373183652664426
+      ],
+      "ruin_difference_vs_same_baseline": 0.0031,
+      "same_baseline_ci95": [
+        0.0011704838622979684,
+        0.005029516137702032
+      ]
+    },
+    {
+      "strategy": "Equal-weight 100% | Baseline",
+      "family": "Equal-weight",
+      "gross_percent": 100,
+      "mode": "Baseline",
+      "post1974_weights": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "trend_cost": 0.00614604784662825,
+      "annual_volatility": 0.1509383520338398,
+      "mean_return": 0.05352527019228677,
+      "ruin_probability": 0.059,
+      "equivalent_savings_rate": 0.13263002038002014,
+      "ruin_difference_vs_aco": -0.0108,
+      "ruin_difference_ci95": [
+        -0.01624904989810877,
+        -0.00535095010189123
+      ],
+      "ruin_difference_vs_same_baseline": 0.0,
+      "same_baseline_ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "strategy": "Equal-weight 100% | Gold restriction",
+      "family": "Equal-weight",
+      "gross_percent": 100,
+      "mode": "Gold restriction",
+      "post1974_weights": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "trend_cost": 0.006154457955815784,
+      "annual_volatility": 0.12462587015062931,
+      "mean_return": 0.054287233219565786,
+      "ruin_probability": 0.0582,
+      "equivalent_savings_rate": 0.1290755569934845,
+      "ruin_difference_vs_aco": -0.0116,
+      "ruin_difference_ci95": [
+        -0.01671376910838272,
+        -0.00648623089161728
+      ],
+      "ruin_difference_vs_same_baseline": -0.0008,
+      "same_baseline_ci95": [
+        -0.003707252887097191,
+        0.0021072528870971913
+      ]
+    },
+    {
+      "strategy": "Equal-weight 100% | MF restriction",
+      "family": "Equal-weight",
+      "gross_percent": 100,
+      "mode": "MF restriction",
+      "post1974_weights": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "trend_cost": 0.004629380762437867,
+      "annual_volatility": 0.15687187262862234,
+      "mean_return": 0.05368499126114294,
+      "ruin_probability": 0.0581,
+      "equivalent_savings_rate": 0.13225504755973816,
+      "ruin_difference_vs_aco": -0.0117,
+      "ruin_difference_ci95": [
+        -0.017242715986558466,
+        -0.006157284013441537
+      ],
+      "ruin_difference_vs_same_baseline": -0.0009,
+      "same_baseline_ci95": [
+        -0.0032108541353974528,
+        0.001410854135397453
+      ]
+    },
+    {
+      "strategy": "Equal-weight 100% | Joint restriction",
+      "family": "Equal-weight",
+      "gross_percent": 100,
+      "mode": "Joint restriction",
+      "post1974_weights": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "trend_cost": 0.004588477471466391,
+      "annual_volatility": 0.1301346568172295,
+      "mean_return": 0.05379998309469483,
+      "ruin_probability": 0.0522,
+      "equivalent_savings_rate": 0.12872526049613953,
+      "ruin_difference_vs_aco": -0.0176,
+      "ruin_difference_ci95": [
+        -0.022692115823776622,
+        -0.012507884176223378
+      ],
+      "ruin_difference_vs_same_baseline": -0.0068,
+      "same_baseline_ci95": [
+        -0.009610110694227432,
+        -0.003989889305772567
+      ]
+    },
+    {
+      "strategy": "Equal-weight 125% | Baseline",
+      "family": "Equal-weight",
+      "gross_percent": 125,
+      "mode": "Baseline",
+      "post1974_weights": [
+        0.3125,
+        0.3125,
+        0.3125,
+        0.3125
+      ],
+      "trend_cost": 0.00614604784662825,
+      "annual_volatility": 0.1850011786433868,
+      "mean_return": 0.06551191579339949,
+      "ruin_probability": 0.04,
+      "equivalent_savings_rate": 0.10248562693595886,
+      "ruin_difference_vs_aco": -0.0298,
+      "ruin_difference_ci95": [
+        -0.034809266595898336,
+        -0.024790733404101668
+      ],
+      "ruin_difference_vs_same_baseline": 0.0,
+      "same_baseline_ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "strategy": "Equal-weight 125% | Gold restriction",
+      "family": "Equal-weight",
+      "gross_percent": 125,
+      "mode": "Gold restriction",
+      "post1974_weights": [
+        0.3125,
+        0.3125,
+        0.3125,
+        0.3125
+      ],
+      "trend_cost": 0.006154457955815784,
+      "annual_volatility": 0.15029141331716026,
+      "mean_return": 0.06646436957749825,
+      "ruin_probability": 0.0401,
+      "equivalent_savings_rate": 0.09840962290763855,
+      "ruin_difference_vs_aco": -0.0297,
+      "ruin_difference_ci95": [
+        -0.03446178409468305,
+        -0.024938215905316953
+      ],
+      "ruin_difference_vs_same_baseline": 0.0001,
+      "same_baseline_ci95": [
+        -0.002292603731013844,
+        0.0024926037310138436
+      ]
+    },
+    {
+      "strategy": "Equal-weight 125% | MF restriction",
+      "family": "Equal-weight",
+      "gross_percent": 125,
+      "mode": "MF restriction",
+      "post1974_weights": [
+        0.3125,
+        0.3125,
+        0.3125,
+        0.3125
+      ],
+      "trend_cost": 0.004629380762437867,
+      "annual_volatility": 0.19317086909152784,
+      "mean_return": 0.0657115671294697,
+      "ruin_probability": 0.0406,
+      "equivalent_savings_rate": 0.10258015990257263,
+      "ruin_difference_vs_aco": -0.0292,
+      "ruin_difference_ci95": [
+        -0.0343393216556573,
+        -0.024060678344342706
+      ],
+      "ruin_difference_vs_same_baseline": 0.0006,
+      "same_baseline_ci95": [
+        -0.0016175665632729617,
+        0.0028175665632729613
+      ]
+    },
+    {
+      "strategy": "Equal-weight 125% | Joint restriction",
+      "family": "Equal-weight",
+      "gross_percent": 125,
+      "mode": "Joint restriction",
+      "post1974_weights": [
+        0.3125,
+        0.3125,
+        0.3125,
+        0.3125
+      ],
+      "trend_cost": 0.004588477471466391,
+      "annual_volatility": 0.15837503075836956,
+      "mean_return": 0.06585530692140956,
+      "ruin_probability": 0.0353,
+      "equivalent_savings_rate": 0.09875556826591492,
+      "ruin_difference_vs_aco": -0.0345,
+      "ruin_difference_ci95": [
+        -0.03932159209546323,
+        -0.029678407904536772
+      ],
+      "ruin_difference_vs_same_baseline": -0.0047,
+      "same_baseline_ci95": [
+        -0.007246461535589183,
+        -0.0021535384644108166
+      ]
+    },
+    {
+      "strategy": "Equal-weight 150% | Baseline",
+      "family": "Equal-weight",
+      "gross_percent": 150,
+      "mode": "Baseline",
+      "post1974_weights": [
+        0.375,
+        0.375,
+        0.375,
+        0.375
+      ],
+      "trend_cost": 0.00614604784662825,
+      "annual_volatility": 0.21994559024905327,
+      "mean_return": 0.0774985613945122,
+      "ruin_probability": 0.0297,
+      "equivalent_savings_rate": 0.08112320303916931,
+      "ruin_difference_vs_aco": -0.0401,
+      "ruin_difference_ci95": [
+        -0.04484861767416387,
+        -0.03535138232583612
+      ],
+      "ruin_difference_vs_same_baseline": 0.0,
+      "same_baseline_ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "strategy": "Equal-weight 150% | Gold restriction",
+      "family": "Equal-weight",
+      "gross_percent": 150,
+      "mode": "Gold restriction",
+      "post1974_weights": [
+        0.375,
+        0.375,
+        0.375,
+        0.375
+      ],
+      "trend_cost": 0.006154457955815784,
+      "annual_volatility": 0.17697797981010074,
+      "mean_return": 0.07864150593543072,
+      "ruin_probability": 0.0279,
+      "equivalent_savings_rate": 0.07657977938652039,
+      "ruin_difference_vs_aco": -0.0419,
+      "ruin_difference_ci95": [
+        -0.04640158986287393,
+        -0.03739841013712607
+      ],
+      "ruin_difference_vs_same_baseline": -0.0018,
+      "same_baseline_ci95": [
+        -0.003910795316293536,
+        0.00031079531629353606
+      ]
+    },
+    {
+      "strategy": "Equal-weight 150% | MF restriction",
+      "family": "Equal-weight",
+      "gross_percent": 150,
+      "mode": "MF restriction",
+      "post1974_weights": [
+        0.375,
+        0.375,
+        0.375,
+        0.375
+      ],
+      "trend_cost": 0.004629380762437867,
+      "annual_volatility": 0.230328855699295,
+      "mean_return": 0.07773814299779645,
+      "ruin_probability": 0.0317,
+      "equivalent_savings_rate": 0.08152583241462708,
+      "ruin_difference_vs_aco": -0.0381,
+      "ruin_difference_ci95": [
+        -0.04299822138736868,
+        -0.03320177861263132
+      ],
+      "ruin_difference_vs_same_baseline": 0.002,
+      "same_baseline_ci95": [
+        7.990415947440764e-05,
+        0.003920095840525592
+      ]
+    },
+    {
+      "strategy": "Equal-weight 150% | Joint restriction",
+      "family": "Equal-weight",
+      "gross_percent": 150,
+      "mode": "Joint restriction",
+      "post1974_weights": [
+        0.375,
+        0.375,
+        0.375,
+        0.375
+      ],
+      "trend_cost": 0.004588477471466391,
+      "annual_volatility": 0.18762838998533132,
+      "mean_return": 0.07791063074812428,
+      "ruin_probability": 0.0255,
+      "equivalent_savings_rate": 0.07733693718910217,
+      "ruin_difference_vs_aco": -0.0443,
+      "ruin_difference_ci95": [
+        -0.04893584975510372,
+        -0.03966415024489628
+      ],
+      "ruin_difference_vs_same_baseline": -0.0042,
+      "same_baseline_ci95": [
+        -0.0063094843943582515,
+        -0.0020905156056417475
+      ]
+    },
+    {
+      "strategy": "Equal-weight 175% | Baseline",
+      "family": "Equal-weight",
+      "gross_percent": 175,
+      "mode": "Baseline",
+      "post1974_weights": [
+        0.4375,
+        0.4375,
+        0.4375,
+        0.4375
+      ],
+      "trend_cost": 0.00614604784662825,
+      "annual_volatility": 0.25540999554907345,
+      "mean_return": 0.08948520699562491,
+      "ruin_probability": 0.0248,
+      "equivalent_savings_rate": 0.06525954604148865,
+      "ruin_difference_vs_aco": -0.045,
+      "ruin_difference_ci95": [
+        -0.049678643496837205,
+        -0.04032135650316279
+      ],
+      "ruin_difference_vs_same_baseline": 0.0,
+      "same_baseline_ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "strategy": "Equal-weight 175% | Gold restriction",
+      "family": "Equal-weight",
+      "gross_percent": 175,
+      "mode": "Gold restriction",
+      "post1974_weights": [
+        0.4375,
+        0.4375,
+        0.4375,
+        0.4375
+      ],
+      "trend_cost": 0.006154457955815784,
+      "annual_volatility": 0.20428582127300537,
+      "mean_return": 0.09081864229336319,
+      "ruin_probability": 0.0231,
+      "equivalent_savings_rate": 0.06071445345878601,
+      "ruin_difference_vs_aco": -0.0467,
+      "ruin_difference_ci95": [
+        -0.051166233314729775,
+        -0.04223376668527022
+      ],
+      "ruin_difference_vs_same_baseline": -0.0017,
+      "same_baseline_ci95": [
+        -0.0036499882109905946,
+        0.0002499882109905948
+      ]
+    },
+    {
+      "strategy": "Equal-weight 175% | MF restriction",
+      "family": "Equal-weight",
+      "gross_percent": 175,
+      "mode": "MF restriction",
+      "post1974_weights": [
+        0.4375,
+        0.4375,
+        0.4375,
+        0.4375
+      ],
+      "trend_cost": 0.004629380762437867,
+      "annual_volatility": 0.2679887604518558,
+      "mean_return": 0.0897647188661232,
+      "ruin_probability": 0.028,
+      "equivalent_savings_rate": 0.06575086712837219,
+      "ruin_difference_vs_aco": -0.0418,
+      "ruin_difference_ci95": [
+        -0.04663523879813846,
+        -0.03696476120186153
+      ],
+      "ruin_difference_vs_same_baseline": 0.0032,
+      "same_baseline_ci95": [
+        0.0012805285522665712,
+        0.005119471447733429
+      ]
+    },
+    {
+      "strategy": "Equal-weight 175% | Joint restriction",
+      "family": "Equal-weight",
+      "gross_percent": 175,
+      "mode": "Joint restriction",
+      "post1974_weights": [
+        0.4375,
+        0.4375,
+        0.4375,
+        0.4375
+      ],
+      "trend_cost": 0.004588477471466391,
+      "annual_volatility": 0.21748635816358067,
+      "mean_return": 0.089965954574839,
+      "ruin_probability": 0.0218,
+      "equivalent_savings_rate": 0.061494916677474976,
+      "ruin_difference_vs_aco": -0.048,
+      "ruin_difference_ci95": [
+        -0.05255046789196491,
+        -0.043449532108035094
+      ],
+      "ruin_difference_vs_same_baseline": -0.003,
+      "same_baseline_ci95": [
+        -0.00493950682614753,
+        -0.0010604931738524698
+      ]
+    },
+    {
+      "strategy": "Equal-weight 200% | Baseline",
+      "family": "Equal-weight",
+      "gross_percent": 200,
+      "mode": "Baseline",
+      "post1974_weights": [
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "trend_cost": 0.00614604784662825,
+      "annual_volatility": 0.2912044738127527,
+      "mean_return": 0.1014718525967376,
+      "ruin_probability": 0.0227,
+      "equivalent_savings_rate": 0.05314937233924866,
+      "ruin_difference_vs_aco": -0.0471,
+      "ruin_difference_ci95": [
+        -0.05177480662659961,
+        -0.042425193373400394
+      ],
+      "ruin_difference_vs_same_baseline": 0.0,
+      "same_baseline_ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "strategy": "Equal-weight 200% | Gold restriction",
+      "family": "Equal-weight",
+      "gross_percent": 200,
+      "mode": "Gold restriction",
+      "post1974_weights": [
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "trend_cost": 0.006154457955815784,
+      "annual_volatility": 0.23199565345806614,
+      "mean_return": 0.10299577865129564,
+      "ruin_probability": 0.02,
+      "equivalent_savings_rate": 0.048718661069869995,
+      "ruin_difference_vs_aco": -0.0498,
+      "ruin_difference_ci95": [
+        -0.0543260848840955,
+        -0.04527391511590449
+      ],
+      "ruin_difference_vs_same_baseline": -0.0027,
+      "same_baseline_ci95": [
+        -0.004745717959494168,
+        -0.0006542820405058326
+      ]
+    },
+    {
+      "strategy": "Equal-weight 200% | MF restriction",
+      "family": "Equal-weight",
+      "gross_percent": 200,
+      "mode": "MF restriction",
+      "post1974_weights": [
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "trend_cost": 0.004629380762437867,
+      "annual_volatility": 0.3059653028496903,
+      "mean_return": 0.10179129473444995,
+      "ruin_probability": 0.025,
+      "equivalent_savings_rate": 0.05365946888923645,
+      "ruin_difference_vs_aco": -0.0448,
+      "ruin_difference_ci95": [
+        -0.04957689034642184,
+        -0.04002310965357816
+      ],
+      "ruin_difference_vs_same_baseline": 0.0023,
+      "same_baseline_ci95": [
+        0.000451396871431649,
+        0.004148603128568351
+      ]
+    },
+    {
+      "strategy": "Equal-weight 200% | Joint restriction",
+      "family": "Equal-weight",
+      "gross_percent": 200,
+      "mode": "Joint restriction",
+      "post1974_weights": [
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "trend_cost": 0.004588477471466391,
+      "annual_volatility": 0.24773041828573192,
+      "mean_return": 0.10202127840155373,
+      "ruin_probability": 0.0191,
+      "equivalent_savings_rate": 0.04947414994239807,
+      "ruin_difference_vs_aco": -0.0507,
+      "ruin_difference_ci95": [
+        -0.055277133554612286,
+        -0.04612286644538772
+      ],
+      "ruin_difference_vs_same_baseline": -0.0036,
+      "same_baseline_ci95": [
+        -0.0055783439212803935,
+        -0.0016216560787196059
+      ]
+    }
+  ],
+  "manifest_sha256": "687ae41a14893ad50ad62abddbfaaed077594d77d00c88de5ff575c534caeb38",
+  "annual_sha256": "4f87144eec63ed1831f141891b36185718cb20717624da9f498001f637238b2e",
+  "incomplete_mf_year_rule": "Zero MF weight and pro-rata annual reallocation; calendar data-coverage screen, not an ex-ante trading rule.",
+  "elapsed_seconds": 65.12468120299673
+}

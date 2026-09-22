@@ -60,7 +60,7 @@ def main():
     returns=np.array([[[float(rows[f'{y}-{m:02}'][k]) for k in ('domestic','international','bond','gold','mf')]
                        for m in range(1,13)] for y in years])
     cash=np.array([[float(rows[f'{y}-{m:02}']['cash']) for m in range(1,13)] for y in years])
-    returns[:,:,3] -= 0.001/12  # same gold custody rate, in monthly units
+    returns[:,:,3] -= 0.004/12  # 0.40% gold custody, as in the annual panel, in monthly units
     rng=np.random.default_rng(20260827)
     draws=np.empty((10000,86),dtype=int)
     draws[:,0]=rng.integers(len(years),size=10000)

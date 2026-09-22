@@ -1,0 +1,30 @@
+\begin{table}[htbp]\centering\scriptsize
+\caption{Incremental leverage returns by ex-post real-bill quintile}\label{tab:bill-quintiles}
+\begin{tabular}{lrrrrrrr}\toprule
+Quintile & $n$ & Mean bill & Sleeves & Bill leg & Spread & Hedge & Total \\
+\midrule
+\multicolumn{8}{l}{\textit{ACO: 175\% minus 100\% exposure}} \\
+Q1 & 313 & -7.47 & 2.85 & 5.60 & -0.23 & 0.00 & 8.22 \\
+Q2 & 312 & -0.84 & 5.31 & 0.63 & -0.23 & 0.00 & 5.72 \\
+Q3 & 312 & 0.77 & 6.82 & -0.58 & -0.23 & 0.00 & 6.02 \\
+Q4 & 312 & 2.41 & 7.90 & -1.80 & -0.23 & 0.00 & 5.87 \\
+Q5 & 312 & 6.44 & 7.56 & -4.83 & -0.23 & 0.00 & 2.50 \\
+\addlinespace
+\multicolumn{8}{l}{\textit{Proportional: 175\% minus 100\% exposure}} \\
+Q1 & 313 & -7.47 & 0.33 & 5.60 & -0.23 & -0.03 & 5.67 \\
+Q2 & 312 & -0.84 & 3.62 & 0.63 & -0.23 & -0.03 & 3.99 \\
+Q3 & 312 & 0.77 & 4.87 & -0.58 & -0.23 & -0.03 & 4.04 \\
+Q4 & 312 & 2.41 & 5.84 & -1.80 & -0.23 & -0.03 & 3.77 \\
+Q5 & 312 & 6.44 & 6.73 & -4.83 & -0.23 & -0.03 & 1.64 \\
+\addlinespace
+\multicolumn{8}{l}{\textit{Equal-weight: 175\% minus 100\% exposure}} \\
+Q1 & 313 & -7.47 & 0.26 & 5.60 & -0.23 & -0.04 & 5.60 \\
+Q2 & 312 & -0.84 & 3.42 & 0.63 & -0.23 & -0.04 & 3.79 \\
+Q3 & 312 & 0.77 & 4.63 & -0.58 & -0.23 & -0.04 & 3.79 \\
+Q4 & 312 & 2.41 & 5.54 & -1.80 & -0.23 & -0.04 & 3.47 \\
+Q5 & 312 & 6.44 & 6.42 & -4.83 & -0.23 & -0.04 & 1.32 \\
+\addlinespace
+\bottomrule\end{tabular}
+\par\smallskip\begin{minipage}{0.97\textwidth}\footnotesize
+1,561 equally weighted country-years, 1927--2025. Q1 contains the lowest realized real bills. Mean bill is in percent; contributions are annual percentage points. For fixed sleeve weights $a_i$ summing to one, the four components are $0.75\sum_i a_iR_i$, $-0.75R_f$, $-0.75\phi$, and $-0.75h\kappa$, with $\phi=0.003$, $\kappa=0.001$, and $h$ the covered share at 100\%. Sleeves include baseline MF fees and turnover costs, before hedge friction. Components add to the observed portfolio-return difference before rounding. Quintiles are ex post and do not define a trading rule. These are annual arithmetic-return effects, not contributions to ruin or utility.
+\end{minipage}\end{table}

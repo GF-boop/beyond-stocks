@@ -1,0 +1,2196 @@
+{
+  "outer_replicates": 100,
+  "inner_runs": 1000,
+  "outer_mean_block_years": 20.0,
+  "seed": 20260905,
+  "weights": {
+    "ACO 33/67": [
+      1.0,
+      0,
+      0,
+      0
+    ],
+    "Proportional equal volatility": [
+      0.665121132112444,
+      0.4434140880749626,
+      0.2771338050468516,
+      0.2771338050468516
+    ],
+    "Risk parity equal volatility": [
+      0.38479611284369747,
+      1.2573181378382445,
+      0.3192866964952783,
+      0.6874029239289293
+    ],
+    "Stocks and MF equal volatility": [
+      0.9331047704131175,
+      0.0,
+      0.0,
+      0.3887936543387989
+    ]
+  },
+  "summary": {
+    "Proportional equal volatility": {
+      "ruin_difference_vs_aco": {
+        "median": -0.049,
+        "p05": -0.1082,
+        "p95": -0.012900000000000005,
+        "share_below_zero": 1.0
+      },
+      "equivalent_savings_rate": {
+        "median": 0.06430646777153015,
+        "p05": 0.04375038146972656,
+        "p95": 0.0927652209997177,
+        "share_below_zero": 0.99
+      },
+      "matched_difference_vs_aco": {
+        "median": -0.034,
+        "p05": -0.10505,
+        "p95": 0.034449999999999974,
+        "share_below_zero": 0.83
+      }
+    },
+    "Risk parity equal volatility": {
+      "ruin_difference_vs_aco": {
+        "median": -0.0515,
+        "p05": -0.11660000000000001,
+        "p95": -0.015900000000000004,
+        "share_below_zero": 1.0
+      },
+      "equivalent_savings_rate": {
+        "median": 0.04333466291427612,
+        "p05": 0.022854655981063843,
+        "p95": 0.07638402879238128,
+        "share_below_zero": 1.0
+      },
+      "matched_difference_vs_aco": {
+        "median": -0.03849999999999999,
+        "p05": -0.11510000000000002,
+        "p95": 0.041549999999999976,
+        "share_below_zero": 0.85
+      }
+    },
+    "Stocks and MF equal volatility": {
+      "ruin_difference_vs_aco": {
+        "median": -0.0515,
+        "p05": -0.10404999999999999,
+        "p95": -0.016950000000000003,
+        "share_below_zero": 1.0
+      },
+      "equivalent_savings_rate": {
+        "median": 0.05345204472541809,
+        "p05": 0.040716415643692015,
+        "p95": 0.06698517203330993,
+        "share_below_zero": 1.0
+      },
+      "matched_difference_vs_aco": {
+        "median": -0.0645,
+        "p05": -0.12065000000000001,
+        "p95": -0.025,
+        "share_below_zero": 1.0
+      }
+    }
+  },
+  "replicates": [
+    {
+      "benchmark_ruin": 0.149,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.093,
+          "equivalent_savings_rate": 0.05596861243247986,
+          "matched_difference_vs_aco": -0.095
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.105,
+          "equivalent_savings_rate": 0.03984197974205017,
+          "matched_difference_vs_aco": -0.10999999999999999
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.087,
+          "equivalent_savings_rate": 0.05246898531913757,
+          "matched_difference_vs_aco": -0.12
+        }
+      },
+      "replicate": 1
+    },
+    {
+      "benchmark_ruin": 0.022,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.008,
+          "equivalent_savings_rate": 0.09215030074119568,
+          "matched_difference_vs_aco": 0.009000000000000001
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.012,
+          "equivalent_savings_rate": 0.07181546092033386,
+          "matched_difference_vs_aco": 0.007000000000000003
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.009,
+          "equivalent_savings_rate": 0.0696437656879425,
+          "matched_difference_vs_aco": -0.019999999999999997
+        }
+      },
+      "replicate": 2
+    },
+    {
+      "benchmark_ruin": 0.006,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.006,
+          "equivalent_savings_rate": 0.07451704144477844,
+          "matched_difference_vs_aco": 0.011000000000000001
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.006,
+          "equivalent_savings_rate": 0.03741982579231262,
+          "matched_difference_vs_aco": -0.004
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.004,
+          "equivalent_savings_rate": 0.05639532208442688,
+          "matched_difference_vs_aco": -0.006
+        }
+      },
+      "replicate": 3
+    },
+    {
+      "benchmark_ruin": 0.11,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.102,
+          "equivalent_savings_rate": 0.04473164677619934,
+          "matched_difference_vs_aco": -0.105
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.108,
+          "equivalent_savings_rate": 0.028441280126571655,
+          "matched_difference_vs_aco": -0.105
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.085,
+          "equivalent_savings_rate": 0.05110141634941101,
+          "matched_difference_vs_aco": -0.105
+        }
+      },
+      "replicate": 4
+    },
+    {
+      "benchmark_ruin": 0.045,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.043,
+          "equivalent_savings_rate": 0.056038230657577515,
+          "matched_difference_vs_aco": -0.043
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.044,
+          "equivalent_savings_rate": 0.03635087609291077,
+          "matched_difference_vs_aco": -0.039
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.041,
+          "equivalent_savings_rate": 0.05723187327384949,
+          "matched_difference_vs_aco": -0.045
+        }
+      },
+      "replicate": 5
+    },
+    {
+      "benchmark_ruin": 0.054,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.034,
+          "equivalent_savings_rate": 0.05863991379737854,
+          "matched_difference_vs_aco": -0.031
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.038,
+          "equivalent_savings_rate": 0.037309736013412476,
+          "matched_difference_vs_aco": -0.034
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.035,
+          "equivalent_savings_rate": 0.05547180771827698,
+          "matched_difference_vs_aco": -0.046
+        }
+      },
+      "replicate": 6
+    },
+    {
+      "benchmark_ruin": 0.041,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.04,
+          "equivalent_savings_rate": 0.05843797326087952,
+          "matched_difference_vs_aco": -0.034
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.041,
+          "equivalent_savings_rate": 0.025373011827468872,
+          "matched_difference_vs_aco": -0.041
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.036,
+          "equivalent_savings_rate": 0.04517057538032532,
+          "matched_difference_vs_aco": -0.041
+        }
+      },
+      "replicate": 7
+    },
+    {
+      "benchmark_ruin": 0.113,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.108,
+          "equivalent_savings_rate": 0.05375322699546814,
+          "matched_difference_vs_aco": -0.088
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.112,
+          "equivalent_savings_rate": 0.02901133894920349,
+          "matched_difference_vs_aco": -0.107
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.092,
+          "equivalent_savings_rate": 0.04037395119667053,
+          "matched_difference_vs_aco": -0.11
+        }
+      },
+      "replicate": 8
+    },
+    {
+      "benchmark_ruin": 0.091,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.042,
+          "equivalent_savings_rate": 0.05510684847831726,
+          "matched_difference_vs_aco": -0.063
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.053,
+          "equivalent_savings_rate": 0.03296491503715515,
+          "matched_difference_vs_aco": -0.072
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.039,
+          "equivalent_savings_rate": 0.06227251887321472,
+          "matched_difference_vs_aco": -0.064
+        }
+      },
+      "replicate": 9
+    },
+    {
+      "benchmark_ruin": 0.095,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.059,
+          "equivalent_savings_rate": 0.05926284193992615,
+          "matched_difference_vs_aco": -0.07
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.065,
+          "equivalent_savings_rate": 0.042019397020339966,
+          "matched_difference_vs_aco": -0.074
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.049,
+          "equivalent_savings_rate": 0.06242683529853821,
+          "matched_difference_vs_aco": -0.074
+        }
+      },
+      "replicate": 10
+    },
+    {
+      "benchmark_ruin": 0.025,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.018,
+          "equivalent_savings_rate": 0.08225944638252258,
+          "matched_difference_vs_aco": -0.0030000000000000027
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.008,
+          "equivalent_savings_rate": 0.06819590926170349,
+          "matched_difference_vs_aco": 0.012999999999999998
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.015,
+          "equivalent_savings_rate": 0.0668475329875946,
+          "matched_difference_vs_aco": -0.024
+        }
+      },
+      "replicate": 11
+    },
+    {
+      "benchmark_ruin": 0.124,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.112,
+          "equivalent_savings_rate": 0.05131903290748596,
+          "matched_difference_vs_aco": -0.099
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.113,
+          "equivalent_savings_rate": 0.03078821301460266,
+          "matched_difference_vs_aco": -0.095
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.104,
+          "equivalent_savings_rate": 0.04625353217124939,
+          "matched_difference_vs_aco": -0.12
+        }
+      },
+      "replicate": 12
+    },
+    {
+      "benchmark_ruin": 0.09,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.07,
+          "equivalent_savings_rate": 0.06137433648109436,
+          "matched_difference_vs_aco": -0.059
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.075,
+          "equivalent_savings_rate": 0.03819718956947327,
+          "matched_difference_vs_aco": -0.06899999999999999
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.069,
+          "equivalent_savings_rate": 0.05165371298789978,
+          "matched_difference_vs_aco": -0.08199999999999999
+        }
+      },
+      "replicate": 13
+    },
+    {
+      "benchmark_ruin": 0.083,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.04,
+          "equivalent_savings_rate": 0.07870927453041077,
+          "matched_difference_vs_aco": 0.011999999999999997
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.035,
+          "equivalent_savings_rate": 0.06002190709114075,
+          "matched_difference_vs_aco": 0.02099999999999999
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.052,
+          "equivalent_savings_rate": 0.05584743618965149,
+          "matched_difference_vs_aco": -0.065
+        }
+      },
+      "replicate": 14
+    },
+    {
+      "benchmark_ruin": 0.108,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.106,
+          "equivalent_savings_rate": 0.04332581162452698,
+          "matched_difference_vs_aco": -0.104
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.106,
+          "equivalent_savings_rate": 0.020415455102920532,
+          "matched_difference_vs_aco": -0.108
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.094,
+          "equivalent_savings_rate": 0.043713778257369995,
+          "matched_difference_vs_aco": -0.106
+        }
+      },
+      "replicate": 15
+    },
+    {
+      "benchmark_ruin": 0.083,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.022,
+          "equivalent_savings_rate": 0.07574233412742615,
+          "matched_difference_vs_aco": -0.006000000000000005
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.026,
+          "equivalent_savings_rate": 0.05087926983833313,
+          "matched_difference_vs_aco": -0.024000000000000007
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.037,
+          "equivalent_savings_rate": 0.0442524254322052,
+          "matched_difference_vs_aco": -0.059000000000000004
+        }
+      },
+      "replicate": 16
+    },
+    {
+      "benchmark_ruin": 0.121,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.056,
+          "equivalent_savings_rate": 0.07428762316703796,
+          "matched_difference_vs_aco": -0.031
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.07,
+          "equivalent_savings_rate": 0.05003657937049866,
+          "matched_difference_vs_aco": -0.03799999999999999
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.059,
+          "equivalent_savings_rate": 0.0581190288066864,
+          "matched_difference_vs_aco": -0.094
+        }
+      },
+      "replicate": 17
+    },
+    {
+      "benchmark_ruin": 0.059,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.01,
+          "equivalent_savings_rate": 0.08763787150382996,
+          "matched_difference_vs_aco": 0.006000000000000005
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.017,
+          "equivalent_savings_rate": 0.06407824158668518,
+          "matched_difference_vs_aco": -0.020999999999999998
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.018,
+          "equivalent_savings_rate": 0.06537631154060364,
+          "matched_difference_vs_aco": -0.029999999999999995
+        }
+      },
+      "replicate": 18
+    },
+    {
+      "benchmark_ruin": 0.11,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.089,
+          "equivalent_savings_rate": 0.050618499517440796,
+          "matched_difference_vs_aco": -0.089
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.095,
+          "equivalent_savings_rate": 0.03139808773994446,
+          "matched_difference_vs_aco": -0.092
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.082,
+          "equivalent_savings_rate": 0.046785563230514526,
+          "matched_difference_vs_aco": -0.107
+        }
+      },
+      "replicate": 19
+    },
+    {
+      "benchmark_ruin": 0.096,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.064,
+          "equivalent_savings_rate": 0.064424067735672,
+          "matched_difference_vs_aco": -0.046
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.073,
+          "equivalent_savings_rate": 0.04438874125480652,
+          "matched_difference_vs_aco": -0.055
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.054,
+          "equivalent_savings_rate": 0.05469462275505066,
+          "matched_difference_vs_aco": -0.082
+        }
+      },
+      "replicate": 20
+    },
+    {
+      "benchmark_ruin": 0.086,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.052,
+          "equivalent_savings_rate": 0.06989756226539612,
+          "matched_difference_vs_aco": -0.03699999999999999
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.053,
+          "equivalent_savings_rate": 0.054628580808639526,
+          "matched_difference_vs_aco": -0.03699999999999999
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.052,
+          "equivalent_savings_rate": 0.052872806787490845,
+          "matched_difference_vs_aco": -0.071
+        }
+      },
+      "replicate": 21
+    },
+    {
+      "benchmark_ruin": 0.066,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.04,
+          "equivalent_savings_rate": 0.06982067227363586,
+          "matched_difference_vs_aco": -0.019000000000000003
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.042,
+          "equivalent_savings_rate": 0.05381438136100769,
+          "matched_difference_vs_aco": -0.015000000000000006
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.047,
+          "equivalent_savings_rate": 0.056313008069992065,
+          "matched_difference_vs_aco": -0.057
+        }
+      },
+      "replicate": 22
+    },
+    {
+      "benchmark_ruin": 0.037,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.036,
+          "equivalent_savings_rate": 0.05778786540031433,
+          "matched_difference_vs_aco": -0.015999999999999997
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.037,
+          "equivalent_savings_rate": 0.026786118745803833,
+          "matched_difference_vs_aco": -0.036
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.034,
+          "equivalent_savings_rate": 0.04224076867103577,
+          "matched_difference_vs_aco": -0.037
+        }
+      },
+      "replicate": 23
+    },
+    {
+      "benchmark_ruin": 0.032,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.013,
+          "equivalent_savings_rate": 0.08200451731681824,
+          "matched_difference_vs_aco": -0.004
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.016,
+          "equivalent_savings_rate": 0.05590406060218811,
+          "matched_difference_vs_aco": -0.016
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.017,
+          "equivalent_savings_rate": 0.057786136865615845,
+          "matched_difference_vs_aco": -0.025
+        }
+      },
+      "replicate": 24
+    },
+    {
+      "benchmark_ruin": 0.135,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.129,
+          "equivalent_savings_rate": 0.05228278040885925,
+          "matched_difference_vs_aco": -0.10500000000000001
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.131,
+          "equivalent_savings_rate": 0.03237834572792053,
+          "matched_difference_vs_aco": -0.117
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.123,
+          "equivalent_savings_rate": 0.03693428635597229,
+          "matched_difference_vs_aco": -0.133
+        }
+      },
+      "replicate": 25
+    },
+    {
+      "benchmark_ruin": 0.043,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.018,
+          "equivalent_savings_rate": 0.060089558362960815,
+          "matched_difference_vs_aco": -0.027999999999999997
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.023,
+          "equivalent_savings_rate": 0.04265686869621277,
+          "matched_difference_vs_aco": -0.036
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.017,
+          "equivalent_savings_rate": 0.06049731373786926,
+          "matched_difference_vs_aco": -0.030999999999999996
+        }
+      },
+      "replicate": 26
+    },
+    {
+      "benchmark_ruin": 0.073,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.067,
+          "equivalent_savings_rate": 0.0619414746761322,
+          "matched_difference_vs_aco": -0.026999999999999996
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.069,
+          "equivalent_savings_rate": 0.045733124017715454,
+          "matched_difference_vs_aco": -0.023999999999999994
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.064,
+          "equivalent_savings_rate": 0.04677310585975647,
+          "matched_difference_vs_aco": -0.073
+        }
+      },
+      "replicate": 27
+    },
+    {
+      "benchmark_ruin": 0.152,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.128,
+          "equivalent_savings_rate": 0.04660096764564514,
+          "matched_difference_vs_aco": -0.122
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.13,
+          "equivalent_savings_rate": 0.026615887880325317,
+          "matched_difference_vs_aco": -0.13899999999999998
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.111,
+          "equivalent_savings_rate": 0.040734440088272095,
+          "matched_difference_vs_aco": -0.142
+        }
+      },
+      "replicate": 28
+    },
+    {
+      "benchmark_ruin": 0.104,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.053,
+          "equivalent_savings_rate": 0.06977292895317078,
+          "matched_difference_vs_aco": -0.052
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.064,
+          "equivalent_savings_rate": 0.048548609018325806,
+          "matched_difference_vs_aco": -0.074
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.056,
+          "equivalent_savings_rate": 0.052518993616104126,
+          "matched_difference_vs_aco": -0.09
+        }
+      },
+      "replicate": 29
+    },
+    {
+      "benchmark_ruin": 0.08,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.016,
+          "equivalent_savings_rate": 0.09884956479072571,
+          "matched_difference_vs_aco": 0.015
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.018,
+          "equivalent_savings_rate": 0.08407148718833923,
+          "matched_difference_vs_aco": 0.011999999999999997
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.036,
+          "equivalent_savings_rate": 0.05730500817298889,
+          "matched_difference_vs_aco": -0.06
+        }
+      },
+      "replicate": 30
+    },
+    {
+      "benchmark_ruin": 0.123,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.07,
+          "equivalent_savings_rate": 0.07592913508415222,
+          "matched_difference_vs_aco": 0.007000000000000006
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.068,
+          "equivalent_savings_rate": 0.060948461294174194,
+          "matched_difference_vs_aco": -0.0050000000000000044
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.076,
+          "equivalent_savings_rate": 0.048892587423324585,
+          "matched_difference_vs_aco": -0.108
+        }
+      },
+      "replicate": 31
+    },
+    {
+      "benchmark_ruin": 0.075,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.05,
+          "equivalent_savings_rate": 0.06654909253120422,
+          "matched_difference_vs_aco": -0.020999999999999998
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.054,
+          "equivalent_savings_rate": 0.04420033097267151,
+          "matched_difference_vs_aco": -0.045
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.054,
+          "equivalent_savings_rate": 0.04878196120262146,
+          "matched_difference_vs_aco": -0.064
+        }
+      },
+      "replicate": 32
+    },
+    {
+      "benchmark_ruin": 0.053,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.026,
+          "equivalent_savings_rate": 0.070535808801651,
+          "matched_difference_vs_aco": -0.024999999999999998
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.032,
+          "equivalent_savings_rate": 0.04936233162879944,
+          "matched_difference_vs_aco": -0.023999999999999997
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.025,
+          "equivalent_savings_rate": 0.06320211291313171,
+          "matched_difference_vs_aco": -0.04
+        }
+      },
+      "replicate": 33
+    },
+    {
+      "benchmark_ruin": 0.065,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.051,
+          "equivalent_savings_rate": 0.054596394300460815,
+          "matched_difference_vs_aco": -0.049
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.056,
+          "equivalent_savings_rate": 0.0276964008808136,
+          "matched_difference_vs_aco": -0.055
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.048,
+          "equivalent_savings_rate": 0.04776129126548767,
+          "matched_difference_vs_aco": -0.062
+        }
+      },
+      "replicate": 34
+    },
+    {
+      "benchmark_ruin": 0.103,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.085,
+          "equivalent_savings_rate": 0.06449529528617859,
+          "matched_difference_vs_aco": -0.047999999999999994
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.088,
+          "equivalent_savings_rate": 0.04271021485328674,
+          "matched_difference_vs_aco": -0.073
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.082,
+          "equivalent_savings_rate": 0.041863828897476196,
+          "matched_difference_vs_aco": -0.09699999999999999
+        }
+      },
+      "replicate": 35
+    },
+    {
+      "benchmark_ruin": 0.041,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.022,
+          "equivalent_savings_rate": 0.06847521662712097,
+          "matched_difference_vs_aco": -0.028000000000000004
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.025,
+          "equivalent_savings_rate": 0.04535207152366638,
+          "matched_difference_vs_aco": -0.030000000000000002
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.024,
+          "equivalent_savings_rate": 0.06392613053321838,
+          "matched_difference_vs_aco": -0.032
+        }
+      },
+      "replicate": 36
+    },
+    {
+      "benchmark_ruin": 0.032,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.025,
+          "equivalent_savings_rate": 0.06826558709144592,
+          "matched_difference_vs_aco": -0.011
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.024,
+          "equivalent_savings_rate": 0.05688938498497009,
+          "matched_difference_vs_aco": 0.010000000000000002
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.023,
+          "equivalent_savings_rate": 0.06528005003929138,
+          "matched_difference_vs_aco": -0.025
+        }
+      },
+      "replicate": 37
+    },
+    {
+      "benchmark_ruin": 0.15,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.108,
+          "equivalent_savings_rate": 0.053019553422927856,
+          "matched_difference_vs_aco": -0.12
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.128,
+          "equivalent_savings_rate": 0.028213709592819214,
+          "matched_difference_vs_aco": -0.13999999999999999
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.105,
+          "equivalent_savings_rate": 0.047239750623703,
+          "matched_difference_vs_aco": -0.13599999999999998
+        }
+      },
+      "replicate": 38
+    },
+    {
+      "benchmark_ruin": 0.103,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.082,
+          "equivalent_savings_rate": 0.0577186644077301,
+          "matched_difference_vs_aco": -0.077
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.085,
+          "equivalent_savings_rate": 0.03912433981895447,
+          "matched_difference_vs_aco": -0.07799999999999999
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.081,
+          "equivalent_savings_rate": 0.04898563027381897,
+          "matched_difference_vs_aco": -0.095
+        }
+      },
+      "replicate": 39
+    },
+    {
+      "benchmark_ruin": 0.104,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.057,
+          "equivalent_savings_rate": 0.06443068385124207,
+          "matched_difference_vs_aco": -0.03499999999999999
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.072,
+          "equivalent_savings_rate": 0.03680434823036194,
+          "matched_difference_vs_aco": -0.076
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.062,
+          "equivalent_savings_rate": 0.042859286069869995,
+          "matched_difference_vs_aco": -0.093
+        }
+      },
+      "replicate": 40
+    },
+    {
+      "benchmark_ruin": 0.116,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.096,
+          "equivalent_savings_rate": 0.05026504397392273,
+          "matched_difference_vs_aco": -0.09000000000000001
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.099,
+          "equivalent_savings_rate": 0.029523998498916626,
+          "matched_difference_vs_aco": -0.101
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.094,
+          "equivalent_savings_rate": 0.04497668147087097,
+          "matched_difference_vs_aco": -0.11
+        }
+      },
+      "replicate": 41
+    },
+    {
+      "benchmark_ruin": 0.095,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.046,
+          "equivalent_savings_rate": 0.0817544162273407,
+          "matched_difference_vs_aco": 0.026999999999999996
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.045,
+          "equivalent_savings_rate": 0.06854501366615295,
+          "matched_difference_vs_aco": 0.026999999999999996
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.065,
+          "equivalent_savings_rate": 0.047285109758377075,
+          "matched_difference_vs_aco": -0.082
+        }
+      },
+      "replicate": 42
+    },
+    {
+      "benchmark_ruin": 0.051,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.021,
+          "equivalent_savings_rate": 0.07900014519691467,
+          "matched_difference_vs_aco": -0.016999999999999994
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.021,
+          "equivalent_savings_rate": 0.05496993660926819,
+          "matched_difference_vs_aco": -0.033
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.029,
+          "equivalent_savings_rate": 0.058238714933395386,
+          "matched_difference_vs_aco": -0.044
+        }
+      },
+      "replicate": 43
+    },
+    {
+      "benchmark_ruin": 0.033,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.032,
+          "equivalent_savings_rate": 0.06852713227272034,
+          "matched_difference_vs_aco": -0.006000000000000002
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.032,
+          "equivalent_savings_rate": 0.04690703749656677,
+          "matched_difference_vs_aco": -0.007000000000000003
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.031,
+          "equivalent_savings_rate": 0.05397304892539978,
+          "matched_difference_vs_aco": -0.033
+        }
+      },
+      "replicate": 44
+    },
+    {
+      "benchmark_ruin": 0.044,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.032,
+          "equivalent_savings_rate": 0.06276151537895203,
+          "matched_difference_vs_aco": -0.026
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.034,
+          "equivalent_savings_rate": 0.038135677576065063,
+          "matched_difference_vs_aco": -0.033
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.031,
+          "equivalent_savings_rate": 0.050854891538619995,
+          "matched_difference_vs_aco": -0.040999999999999995
+        }
+      },
+      "replicate": 45
+    },
+    {
+      "benchmark_ruin": 0.106,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.104,
+          "equivalent_savings_rate": 0.03891691565513611,
+          "matched_difference_vs_aco": -0.106
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.106,
+          "equivalent_savings_rate": 0.01913878321647644,
+          "matched_difference_vs_aco": -0.105
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.091,
+          "equivalent_savings_rate": 0.050538450479507446,
+          "matched_difference_vs_aco": -0.104
+        }
+      },
+      "replicate": 46
+    },
+    {
+      "benchmark_ruin": 0.017,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.015,
+          "equivalent_savings_rate": 0.07527133822441101,
+          "matched_difference_vs_aco": 0.0019999999999999983
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.017,
+          "equivalent_savings_rate": 0.04147663712501526,
+          "matched_difference_vs_aco": -0.015000000000000001
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.012,
+          "equivalent_savings_rate": 0.05461135506629944,
+          "matched_difference_vs_aco": -0.016
+        }
+      },
+      "replicate": 47
+    },
+    {
+      "benchmark_ruin": 0.104,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.055,
+          "equivalent_savings_rate": 0.07731226086616516,
+          "matched_difference_vs_aco": -0.02099999999999999
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.06,
+          "equivalent_savings_rate": 0.05544957518577576,
+          "matched_difference_vs_aco": -0.040999999999999995
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.062,
+          "equivalent_savings_rate": 0.04870489239692688,
+          "matched_difference_vs_aco": -0.087
+        }
+      },
+      "replicate": 48
+    },
+    {
+      "benchmark_ruin": 0.106,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.064,
+          "equivalent_savings_rate": 0.0676409900188446,
+          "matched_difference_vs_aco": -0.046
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.053,
+          "equivalent_savings_rate": 0.05643847584724426,
+          "matched_difference_vs_aco": -0.03
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.071,
+          "equivalent_savings_rate": 0.055925577878952026,
+          "matched_difference_vs_aco": -0.098
+        }
+      },
+      "replicate": 49
+    },
+    {
+      "benchmark_ruin": 0.069,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.033,
+          "equivalent_savings_rate": 0.06507149338722229,
+          "matched_difference_vs_aco": -0.046000000000000006
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.037,
+          "equivalent_savings_rate": 0.04750177264213562,
+          "matched_difference_vs_aco": -0.052000000000000005
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.038,
+          "equivalent_savings_rate": 0.06325563788414001,
+          "matched_difference_vs_aco": -0.05600000000000001
+        }
+      },
+      "replicate": 50
+    },
+    {
+      "benchmark_ruin": 0.079,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.067,
+          "equivalent_savings_rate": 0.051629453897476196,
+          "matched_difference_vs_aco": -0.075
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.061,
+          "equivalent_savings_rate": 0.03483065962791443,
+          "matched_difference_vs_aco": -0.074
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.057,
+          "equivalent_savings_rate": 0.06340000033378601,
+          "matched_difference_vs_aco": -0.073
+        }
+      },
+      "replicate": 51
+    },
+    {
+      "benchmark_ruin": 0.056,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.039,
+          "equivalent_savings_rate": 0.0587826669216156,
+          "matched_difference_vs_aco": -0.046
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.043,
+          "equivalent_savings_rate": 0.03818044066429138,
+          "matched_difference_vs_aco": -0.046
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.04,
+          "equivalent_savings_rate": 0.052245110273361206,
+          "matched_difference_vs_aco": -0.049
+        }
+      },
+      "replicate": 52
+    },
+    {
+      "benchmark_ruin": 0.076,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.037,
+          "equivalent_savings_rate": 0.07261011004447937,
+          "matched_difference_vs_aco": -0.034999999999999996
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.038,
+          "equivalent_savings_rate": 0.060358017683029175,
+          "matched_difference_vs_aco": -0.025
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.03,
+          "equivalent_savings_rate": 0.06960031390190125,
+          "matched_difference_vs_aco": -0.053
+        }
+      },
+      "replicate": 53
+    },
+    {
+      "benchmark_ruin": 0.06,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.016,
+          "equivalent_savings_rate": 0.09074875712394714,
+          "matched_difference_vs_aco": 0.027999999999999997
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.02,
+          "equivalent_savings_rate": 0.07282081246376038,
+          "matched_difference_vs_aco": -0.0010000000000000009
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.025,
+          "equivalent_savings_rate": 0.06489917635917664,
+          "matched_difference_vs_aco": -0.040999999999999995
+        }
+      },
+      "replicate": 54
+    },
+    {
+      "benchmark_ruin": 0.105,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.074,
+          "equivalent_savings_rate": 0.05470249056816101,
+          "matched_difference_vs_aco": -0.069
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.085,
+          "equivalent_savings_rate": 0.03250095248222351,
+          "matched_difference_vs_aco": -0.087
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.072,
+          "equivalent_savings_rate": 0.04473409056663513,
+          "matched_difference_vs_aco": -0.097
+        }
+      },
+      "replicate": 55
+    },
+    {
+      "benchmark_ruin": 0.122,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.058,
+          "equivalent_savings_rate": 0.08029547333717346,
+          "matched_difference_vs_aco": -0.034
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.045,
+          "equivalent_savings_rate": 0.07237723469734192,
+          "matched_difference_vs_aco": -0.006999999999999992
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.073,
+          "equivalent_savings_rate": 0.057495683431625366,
+          "matched_difference_vs_aco": -0.095
+        }
+      },
+      "replicate": 56
+    },
+    {
+      "benchmark_ruin": 0.06,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.036,
+          "equivalent_savings_rate": 0.06780371069908142,
+          "matched_difference_vs_aco": -0.023
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.032,
+          "equivalent_savings_rate": 0.05399850010871887,
+          "matched_difference_vs_aco": -0.0029999999999999957
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.038,
+          "equivalent_savings_rate": 0.05321875214576721,
+          "matched_difference_vs_aco": -0.047
+        }
+      },
+      "replicate": 57
+    },
+    {
+      "benchmark_ruin": 0.077,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.043,
+          "equivalent_savings_rate": 0.07753947377204895,
+          "matched_difference_vs_aco": -0.009999999999999995
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.044,
+          "equivalent_savings_rate": 0.06032940745353699,
+          "matched_difference_vs_aco": -0.011999999999999997
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.055,
+          "equivalent_savings_rate": 0.05733349919319153,
+          "matched_difference_vs_aco": -0.064
+        }
+      },
+      "replicate": 58
+    },
+    {
+      "benchmark_ruin": 0.077,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.043,
+          "equivalent_savings_rate": 0.06310924887657166,
+          "matched_difference_vs_aco": -0.053
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.052,
+          "equivalent_savings_rate": 0.05151525139808655,
+          "matched_difference_vs_aco": -0.052
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.044,
+          "equivalent_savings_rate": 0.0577370822429657,
+          "matched_difference_vs_aco": -0.063
+        }
+      },
+      "replicate": 59
+    },
+    {
+      "benchmark_ruin": 0.101,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.059,
+          "equivalent_savings_rate": 0.060207217931747437,
+          "matched_difference_vs_aco": -0.060000000000000005
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.07,
+          "equivalent_savings_rate": 0.03436771035194397,
+          "matched_difference_vs_aco": -0.093
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.071,
+          "equivalent_savings_rate": 0.03992375731468201,
+          "matched_difference_vs_aco": -0.095
+        }
+      },
+      "replicate": 60
+    },
+    {
+      "benchmark_ruin": 0.037,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.011,
+          "equivalent_savings_rate": 0.09427216649055481,
+          "matched_difference_vs_aco": 0.033999999999999996
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.016,
+          "equivalent_savings_rate": 0.074392169713974,
+          "matched_difference_vs_aco": 0.052
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.018,
+          "equivalent_savings_rate": 0.06209126114845276,
+          "matched_difference_vs_aco": -0.027999999999999997
+        }
+      },
+      "replicate": 61
+    },
+    {
+      "benchmark_ruin": 0.032,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.029,
+          "equivalent_savings_rate": 0.05379942059516907,
+          "matched_difference_vs_aco": -0.03
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.031,
+          "equivalent_savings_rate": 0.027260810136795044,
+          "matched_difference_vs_aco": -0.032
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.025,
+          "equivalent_savings_rate": 0.05648830533027649,
+          "matched_difference_vs_aco": -0.032
+        }
+      },
+      "replicate": 62
+    },
+    {
+      "benchmark_ruin": 0.1,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.056,
+          "equivalent_savings_rate": 0.06470516324043274,
+          "matched_difference_vs_aco": -0.05
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.058,
+          "equivalent_savings_rate": 0.04646393656730652,
+          "matched_difference_vs_aco": -0.058
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.058,
+          "equivalent_savings_rate": 0.05396321415901184,
+          "matched_difference_vs_aco": -0.07500000000000001
+        }
+      },
+      "replicate": 63
+    },
+    {
+      "benchmark_ruin": 0.07,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.051,
+          "equivalent_savings_rate": 0.06301441788673401,
+          "matched_difference_vs_aco": -0.03400000000000001
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.051,
+          "equivalent_savings_rate": 0.0402010977268219,
+          "matched_difference_vs_aco": -0.04800000000000001
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.046,
+          "equivalent_savings_rate": 0.0530453622341156,
+          "matched_difference_vs_aco": -0.05700000000000001
+        }
+      },
+      "replicate": 64
+    },
+    {
+      "benchmark_ruin": 0.124,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.084,
+          "equivalent_savings_rate": 0.04755845665931702,
+          "matched_difference_vs_aco": -0.093
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.088,
+          "equivalent_savings_rate": 0.02875182032585144,
+          "matched_difference_vs_aco": -0.107
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.08,
+          "equivalent_savings_rate": 0.043078869581222534,
+          "matched_difference_vs_aco": -0.104
+        }
+      },
+      "replicate": 65
+    },
+    {
+      "benchmark_ruin": 0.056,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.011,
+          "equivalent_savings_rate": 0.10290232300758362,
+          "matched_difference_vs_aco": 0.058
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.014,
+          "equivalent_savings_rate": 0.07618877291679382,
+          "matched_difference_vs_aco": 0.012000000000000004
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.026,
+          "equivalent_savings_rate": 0.05696144700050354,
+          "matched_difference_vs_aco": -0.039
+        }
+      },
+      "replicate": 66
+    },
+    {
+      "benchmark_ruin": 0.069,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.045,
+          "equivalent_savings_rate": 0.07286122441291809,
+          "matched_difference_vs_aco": -0.014000000000000005
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.038,
+          "equivalent_savings_rate": 0.05598005652427673,
+          "matched_difference_vs_aco": 0.0010000000000000009
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.051,
+          "equivalent_savings_rate": 0.054621607065200806,
+          "matched_difference_vs_aco": -0.068
+        }
+      },
+      "replicate": 67
+    },
+    {
+      "benchmark_ruin": 0.119,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.087,
+          "equivalent_savings_rate": 0.056602686643600464,
+          "matched_difference_vs_aco": -0.07999999999999999
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.093,
+          "equivalent_savings_rate": 0.04170045256614685,
+          "matched_difference_vs_aco": -0.08099999999999999
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.083,
+          "equivalent_savings_rate": 0.04993942379951477,
+          "matched_difference_vs_aco": -0.103
+        }
+      },
+      "replicate": 68
+    },
+    {
+      "benchmark_ruin": 0.028,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.027,
+          "equivalent_savings_rate": 0.0629453957080841,
+          "matched_difference_vs_aco": -0.02
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.027,
+          "equivalent_savings_rate": 0.04261764883995056,
+          "matched_difference_vs_aco": -0.018000000000000002
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.023,
+          "equivalent_savings_rate": 0.06152203679084778,
+          "matched_difference_vs_aco": -0.028
+        }
+      },
+      "replicate": 69
+    },
+    {
+      "benchmark_ruin": 0.089,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.071,
+          "equivalent_savings_rate": 0.06054261326789856,
+          "matched_difference_vs_aco": -0.041999999999999996
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.078,
+          "equivalent_savings_rate": 0.04404684901237488,
+          "matched_difference_vs_aco": -0.048999999999999995
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.054,
+          "equivalent_savings_rate": 0.05132129788398743,
+          "matched_difference_vs_aco": -0.08499999999999999
+        }
+      },
+      "replicate": 70
+    },
+    {
+      "benchmark_ruin": 0.105,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.065,
+          "equivalent_savings_rate": 0.0629023015499115,
+          "matched_difference_vs_aco": -0.055999999999999994
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.075,
+          "equivalent_savings_rate": 0.041870325803756714,
+          "matched_difference_vs_aco": -0.08099999999999999
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.068,
+          "equivalent_savings_rate": 0.04713943600654602,
+          "matched_difference_vs_aco": -0.094
+        }
+      },
+      "replicate": 71
+    },
+    {
+      "benchmark_ruin": 0.03,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.027,
+          "equivalent_savings_rate": 0.09268590807914734,
+          "matched_difference_vs_aco": 0.10200000000000001
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.025,
+          "equivalent_savings_rate": 0.06982651352882385,
+          "matched_difference_vs_aco": 0.07
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.027,
+          "equivalent_savings_rate": 0.05340054631233215,
+          "matched_difference_vs_aco": -0.028999999999999998
+        }
+      },
+      "replicate": 72
+    },
+    {
+      "benchmark_ruin": 0.05,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.018,
+          "equivalent_savings_rate": 0.0984862744808197,
+          "matched_difference_vs_aco": 0.115
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.01,
+          "equivalent_savings_rate": 0.08310601115226746,
+          "matched_difference_vs_aco": 0.108
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.03,
+          "equivalent_savings_rate": 0.05705878138542175,
+          "matched_difference_vs_aco": -0.044000000000000004
+        }
+      },
+      "replicate": 73
+    },
+    {
+      "benchmark_ruin": 0.071,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.026,
+          "equivalent_savings_rate": 0.0910501778125763,
+          "matched_difference_vs_aco": 0.009000000000000008
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.041,
+          "equivalent_savings_rate": 0.0868818461894989,
+          "matched_difference_vs_aco": 0.074
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.02,
+          "equivalent_savings_rate": 0.08201137185096741,
+          "matched_difference_vs_aco": -0.03599999999999999
+        }
+      },
+      "replicate": 74
+    },
+    {
+      "benchmark_ruin": 0.154,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.05,
+          "equivalent_savings_rate": 0.08158889412879944,
+          "matched_difference_vs_aco": -0.021999999999999992
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.059,
+          "equivalent_savings_rate": 0.06279304623603821,
+          "matched_difference_vs_aco": -0.051000000000000004
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.071,
+          "equivalent_savings_rate": 0.05658307671546936,
+          "matched_difference_vs_aco": -0.11199999999999999
+        }
+      },
+      "replicate": 75
+    },
+    {
+      "benchmark_ruin": 0.083,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.024,
+          "equivalent_savings_rate": 0.07194080948829651,
+          "matched_difference_vs_aco": -0.022000000000000006
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.026,
+          "equivalent_savings_rate": 0.05727854371070862,
+          "matched_difference_vs_aco": -0.020000000000000004
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.031,
+          "equivalent_savings_rate": 0.05827382206916809,
+          "matched_difference_vs_aco": -0.05700000000000001
+        }
+      },
+      "replicate": 76
+    },
+    {
+      "benchmark_ruin": 0.169,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.075,
+          "equivalent_savings_rate": 0.05742904543876648,
+          "matched_difference_vs_aco": -0.10400000000000001
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.089,
+          "equivalent_savings_rate": 0.037881821393966675,
+          "matched_difference_vs_aco": -0.11500000000000002
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.074,
+          "equivalent_savings_rate": 0.05274513363838196,
+          "matched_difference_vs_aco": -0.12000000000000001
+        }
+      },
+      "replicate": 77
+    },
+    {
+      "benchmark_ruin": 0.094,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.026,
+          "equivalent_savings_rate": 0.09079703688621521,
+          "matched_difference_vs_aco": -0.018000000000000002
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.023,
+          "equivalent_savings_rate": 0.08009389042854309,
+          "matched_difference_vs_aco": -0.007000000000000006
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.03,
+          "equivalent_savings_rate": 0.07502689957618713,
+          "matched_difference_vs_aco": -0.055
+        }
+      },
+      "replicate": 78
+    },
+    {
+      "benchmark_ruin": 0.041,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.029,
+          "equivalent_savings_rate": 0.04816582798957825,
+          "matched_difference_vs_aco": -0.035
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.032,
+          "equivalent_savings_rate": 0.030504435300827026,
+          "matched_difference_vs_aco": -0.037000000000000005
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.026,
+          "equivalent_savings_rate": 0.06184318661689758,
+          "matched_difference_vs_aco": -0.036000000000000004
+        }
+      },
+      "replicate": 79
+    },
+    {
+      "benchmark_ruin": 0.061,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.014,
+          "equivalent_savings_rate": 0.08012709021568298,
+          "matched_difference_vs_aco": -0.005999999999999998
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.017,
+          "equivalent_savings_rate": 0.06492277979850769,
+          "matched_difference_vs_aco": -0.017
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.016,
+          "equivalent_savings_rate": 0.0634143054485321,
+          "matched_difference_vs_aco": -0.040999999999999995
+        }
+      },
+      "replicate": 80
+    },
+    {
+      "benchmark_ruin": 0.047,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.021,
+          "equivalent_savings_rate": 0.0874188244342804,
+          "matched_difference_vs_aco": 0.003999999999999997
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.023,
+          "equivalent_savings_rate": 0.07303199172019958,
+          "matched_difference_vs_aco": 0.011999999999999997
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.032,
+          "equivalent_savings_rate": 0.062247902154922485,
+          "matched_difference_vs_aco": -0.038
+        }
+      },
+      "replicate": 81
+    },
+    {
+      "benchmark_ruin": 0.131,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.092,
+          "equivalent_savings_rate": 0.05714365839958191,
+          "matched_difference_vs_aco": -0.1
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.103,
+          "equivalent_savings_rate": 0.034985631704330444,
+          "matched_difference_vs_aco": -0.123
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.085,
+          "equivalent_savings_rate": 0.053580254316329956,
+          "matched_difference_vs_aco": -0.114
+        }
+      },
+      "replicate": 82
+    },
+    {
+      "benchmark_ruin": 0.082,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.038,
+          "equivalent_savings_rate": 0.07213965058326721,
+          "matched_difference_vs_aco": -0.031000000000000007
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.042,
+          "equivalent_savings_rate": 0.052364200353622437,
+          "matched_difference_vs_aco": -0.036000000000000004
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.045,
+          "equivalent_savings_rate": 0.053773432970047,
+          "matched_difference_vs_aco": -0.064
+        }
+      },
+      "replicate": 83
+    },
+    {
+      "benchmark_ruin": 0.139,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.131,
+          "equivalent_savings_rate": 0.040581315755844116,
+          "matched_difference_vs_aco": -0.11800000000000001
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.137,
+          "equivalent_savings_rate": 0.024517923593521118,
+          "matched_difference_vs_aco": -0.11300000000000002
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.121,
+          "equivalent_savings_rate": 0.03835150599479675,
+          "matched_difference_vs_aco": -0.137
+        }
+      },
+      "replicate": 84
+    },
+    {
+      "benchmark_ruin": 0.085,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.075,
+          "equivalent_savings_rate": 0.0430852472782135,
+          "matched_difference_vs_aco": -0.084
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.083,
+          "equivalent_savings_rate": 0.022860974073410034,
+          "matched_difference_vs_aco": -0.085
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.058,
+          "equivalent_savings_rate": 0.05263081192970276,
+          "matched_difference_vs_aco": -0.08
+        }
+      },
+      "replicate": 85
+    },
+    {
+      "benchmark_ruin": 0.066,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.041,
+          "equivalent_savings_rate": 0.07216104865074158,
+          "matched_difference_vs_aco": -0.012000000000000004
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.042,
+          "equivalent_savings_rate": 0.05361679196357727,
+          "matched_difference_vs_aco": -0.020000000000000004
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.047,
+          "equivalent_savings_rate": 0.05104157328605652,
+          "matched_difference_vs_aco": -0.056
+        }
+      },
+      "replicate": 86
+    },
+    {
+      "benchmark_ruin": 0.042,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.042,
+          "equivalent_savings_rate": 0.061821430921554565,
+          "matched_difference_vs_aco": -0.028000000000000004
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.042,
+          "equivalent_savings_rate": 0.04444381594657898,
+          "matched_difference_vs_aco": -0.029000000000000005
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.033,
+          "equivalent_savings_rate": 0.06395676732063293,
+          "matched_difference_vs_aco": -0.041
+        }
+      },
+      "replicate": 87
+    },
+    {
+      "benchmark_ruin": 0.099,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.054,
+          "equivalent_savings_rate": 0.059266477823257446,
+          "matched_difference_vs_aco": -0.07300000000000001
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.066,
+          "equivalent_savings_rate": 0.031151503324508667,
+          "matched_difference_vs_aco": -0.08800000000000001
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.051,
+          "equivalent_savings_rate": 0.053809016942977905,
+          "matched_difference_vs_aco": -0.078
+        }
+      },
+      "replicate": 88
+    },
+    {
+      "benchmark_ruin": 0.075,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.04,
+          "equivalent_savings_rate": 0.0641888678073883,
+          "matched_difference_vs_aco": -0.038
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.047,
+          "equivalent_savings_rate": 0.04150709509849548,
+          "matched_difference_vs_aco": -0.053
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.045,
+          "equivalent_savings_rate": 0.05350354313850403,
+          "matched_difference_vs_aco": -0.057999999999999996
+        }
+      },
+      "replicate": 89
+    },
+    {
+      "benchmark_ruin": 0.153,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.138,
+          "equivalent_savings_rate": 0.04489085078239441,
+          "matched_difference_vs_aco": -0.13999999999999999
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.152,
+          "equivalent_savings_rate": 0.022429853677749634,
+          "matched_difference_vs_aco": -0.15
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.119,
+          "equivalent_savings_rate": 0.03721335530281067,
+          "matched_difference_vs_aco": -0.153
+        }
+      },
+      "replicate": 90
+    },
+    {
+      "benchmark_ruin": 0.091,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.048,
+          "equivalent_savings_rate": 0.0825524628162384,
+          "matched_difference_vs_aco": 0.04300000000000001
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.036,
+          "equivalent_savings_rate": 0.06775632500648499,
+          "matched_difference_vs_aco": 0.04100000000000001
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.062,
+          "equivalent_savings_rate": 0.04854169487953186,
+          "matched_difference_vs_aco": -0.079
+        }
+      },
+      "replicate": 91
+    },
+    {
+      "benchmark_ruin": 0.115,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.085,
+          "equivalent_savings_rate": 0.05959472060203552,
+          "matched_difference_vs_aco": -0.07300000000000001
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.092,
+          "equivalent_savings_rate": 0.0439591109752655,
+          "matched_difference_vs_aco": -0.07200000000000001
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.087,
+          "equivalent_savings_rate": 0.05279001593589783,
+          "matched_difference_vs_aco": -0.10500000000000001
+        }
+      },
+      "replicate": 92
+    },
+    {
+      "benchmark_ruin": 0.062,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.056,
+          "equivalent_savings_rate": 0.054288655519485474,
+          "matched_difference_vs_aco": -0.046
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.059,
+          "equivalent_savings_rate": 0.03139778971672058,
+          "matched_difference_vs_aco": -0.057
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.052,
+          "equivalent_savings_rate": 0.054012149572372437,
+          "matched_difference_vs_aco": -0.062
+        }
+      },
+      "replicate": 93
+    },
+    {
+      "benchmark_ruin": 0.095,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.07,
+          "equivalent_savings_rate": 0.04665890336036682,
+          "matched_difference_vs_aco": -0.076
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.082,
+          "equivalent_savings_rate": 0.021114081144332886,
+          "matched_difference_vs_aco": -0.09
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.066,
+          "equivalent_savings_rate": 0.04112407565116882,
+          "matched_difference_vs_aco": -0.087
+        }
+      },
+      "replicate": 94
+    },
+    {
+      "benchmark_ruin": 0.108,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.105,
+          "equivalent_savings_rate": 0.043772727251052856,
+          "matched_difference_vs_aco": -0.105
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.108,
+          "equivalent_savings_rate": 0.023757189512252808,
+          "matched_difference_vs_aco": -0.108
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.096,
+          "equivalent_savings_rate": 0.04150089621543884,
+          "matched_difference_vs_aco": -0.108
+        }
+      },
+      "replicate": 95
+    },
+    {
+      "benchmark_ruin": 0.121,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.104,
+          "equivalent_savings_rate": 0.054285138845443726,
+          "matched_difference_vs_aco": -0.091
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.116,
+          "equivalent_savings_rate": 0.03340807557106018,
+          "matched_difference_vs_aco": -0.105
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.099,
+          "equivalent_savings_rate": 0.04316803812980652,
+          "matched_difference_vs_aco": -0.119
+        }
+      },
+      "replicate": 96
+    },
+    {
+      "benchmark_ruin": 0.09,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.028,
+          "equivalent_savings_rate": 0.0971975028514862,
+          "matched_difference_vs_aco": 0.05399999999999999
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.033,
+          "equivalent_savings_rate": 0.0858856737613678,
+          "matched_difference_vs_aco": 0.093
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.031,
+          "equivalent_savings_rate": 0.0715271532535553,
+          "matched_difference_vs_aco": -0.053
+        }
+      },
+      "replicate": 97
+    },
+    {
+      "benchmark_ruin": 0.046,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.039,
+          "equivalent_savings_rate": 0.06498405337333679,
+          "matched_difference_vs_aco": -0.013999999999999999
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.039,
+          "equivalent_savings_rate": 0.037882000207901,
+          "matched_difference_vs_aco": -0.028999999999999998
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.045,
+          "equivalent_savings_rate": 0.049989134073257446,
+          "matched_difference_vs_aco": -0.046
+        }
+      },
+      "replicate": 98
+    },
+    {
+      "benchmark_ruin": 0.106,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.069,
+          "equivalent_savings_rate": 0.06703701615333557,
+          "matched_difference_vs_aco": -0.009999999999999995
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.07,
+          "equivalent_savings_rate": 0.05329844355583191,
+          "matched_difference_vs_aco": -0.023999999999999994
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.068,
+          "equivalent_savings_rate": 0.04384371638298035,
+          "matched_difference_vs_aco": -0.09
+        }
+      },
+      "replicate": 99
+    },
+    {
+      "benchmark_ruin": 0.111,
+      "strategies": {
+        "Proportional equal volatility": {
+          "ruin_difference_vs_aco": -0.089,
+          "equivalent_savings_rate": 0.04231312870979309,
+          "matched_difference_vs_aco": -0.1
+        },
+        "Risk parity equal volatility": {
+          "ruin_difference_vs_aco": -0.093,
+          "equivalent_savings_rate": 0.022734612226486206,
+          "matched_difference_vs_aco": -0.107
+        },
+        "Stocks and MF equal volatility": {
+          "ruin_difference_vs_aco": -0.084,
+          "equivalent_savings_rate": 0.04519173502922058,
+          "matched_difference_vs_aco": -0.101
+        }
+      },
+      "replicate": 100
+    }
+  ]
+}

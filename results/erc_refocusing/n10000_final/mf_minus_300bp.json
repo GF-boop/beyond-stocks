@@ -1,0 +1,225 @@
+{
+  "label": "mf_minus_300bp",
+  "runs": 10000,
+  "seed": 20260827,
+  "observations": 1561,
+  "period": [
+    1927,
+    2025
+  ],
+  "spread": 0.003,
+  "mf_haircut": 0.03,
+  "weights_reestimated": false,
+  "results": [
+    {
+      "strategy": "ACO 175%",
+      "family": "ACO",
+      "gross_percent": 175,
+      "weights": [
+        1.75,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "removed": null,
+      "ruin_probability": 0.1481,
+      "equivalent_savings_rate": 0.09640106558799744,
+      "annual_volatility": 0.43986678541364876,
+      "mean_return": 0.13783112857331276,
+      "nonpositive_gross_rows": 0,
+      "paired_ruin_vs_aco": {
+        "difference": 0.0783,
+        "ci95": [
+          0.07250629013455104,
+          0.08409370986544895
+        ]
+      },
+      "common_income": {
+        "shortfall_probability_all_paths": 0.0625,
+        "shortfall_count": 625,
+        "eligible_path_count": 9832,
+        "retired_path_share": 0.9832,
+        "implicit_withdrawal_rate_positive_capital": {
+          "median": 0.022219797329632238,
+          "p90": 0.046739848464115316,
+          "share_above_4pct": 0.15235964198535396,
+          "share_above_6pct": 0.04424328722538649,
+          "share_above_8pct": 0.014849471114727422
+        },
+        "zero_capital_share_among_retired": 0.0,
+        "shortfall_probability": 0.06356794141578519,
+        "mean_financial_funding_ratio": 0.9760133170582252,
+        "median_financial_funding_ratio": 1.0,
+        "mean_shortfall_share": 0.023986682941774733,
+        "mean_shortfall_years_conditional": 11.4336,
+        "median_shortfall_dollars_conditional": 207307.44891076343
+      },
+      "paired_common_vs_aco": {
+        "difference": -0.0073,
+        "ci95": [
+          -0.012517201743559789,
+          -0.0020827982564402105
+        ]
+      },
+      "own_target_event_mismatches": 0
+    },
+    {
+      "strategy": "Proportional 175%",
+      "family": "Proportional",
+      "gross_percent": 175,
+      "weights": [
+        0.7,
+        0.4666666666666666,
+        0.29166666666666663,
+        0.29166666666666663
+      ],
+      "removed": null,
+      "ruin_probability": 0.0301,
+      "equivalent_savings_rate": 0.07466396689414978,
+      "annual_volatility": 0.26578017528854353,
+      "mean_return": 0.08604199580366778,
+      "nonpositive_gross_rows": 0,
+      "paired_ruin_vs_aco": {
+        "difference": -0.0397,
+        "ci95": [
+          -0.04407957615921146,
+          -0.03532042384078854
+        ]
+      },
+      "common_income": {
+        "shortfall_probability_all_paths": 0.0635,
+        "shortfall_count": 635,
+        "eligible_path_count": 9832,
+        "retired_path_share": 0.9832,
+        "implicit_withdrawal_rate_positive_capital": {
+          "median": 0.03334702602070412,
+          "p90": 0.05813599482217152,
+          "share_above_4pct": 0.3386899918633035,
+          "share_above_6pct": 0.08614727420667209,
+          "share_above_8pct": 0.01596826688364524
+        },
+        "zero_capital_share_among_retired": 0.0,
+        "shortfall_probability": 0.06458502847843775,
+        "mean_financial_funding_ratio": 0.9785825918935424,
+        "median_financial_funding_ratio": 1.0,
+        "mean_shortfall_share": 0.021417408106457626,
+        "mean_shortfall_years_conditional": 10.368503937007874,
+        "median_shortfall_dollars_conditional": 449757.87444261444
+      },
+      "paired_common_vs_aco": {
+        "difference": -0.0063,
+        "ci95": [
+          -0.011811337965886091,
+          -0.0007886620341139095
+        ]
+      },
+      "own_target_event_mismatches": 0
+    },
+    {
+      "strategy": "ERC 175%",
+      "family": "ERC",
+      "gross_percent": 175,
+      "weights": [
+        0.2542253901174114,
+        0.8306793738934216,
+        0.2109449193131088,
+        0.45415031667605804
+      ],
+      "removed": null,
+      "ruin_probability": 0.0686,
+      "equivalent_savings_rate": 0.12248089909553528,
+      "annual_volatility": 0.17131466724454172,
+      "mean_return": 0.06079707528506212,
+      "nonpositive_gross_rows": 0,
+      "paired_ruin_vs_aco": {
+        "difference": -0.0012,
+        "ci95": [
+          -0.006894365055819559,
+          0.00449436505581956
+        ]
+      },
+      "common_income": {
+        "shortfall_probability_all_paths": 0.3074,
+        "shortfall_count": 3074,
+        "eligible_path_count": 9832,
+        "retired_path_share": 0.9832,
+        "implicit_withdrawal_rate_positive_capital": {
+          "median": 0.04955474807402609,
+          "p90": 0.11268082845456753,
+          "share_above_4pct": 0.6411716842961758,
+          "share_above_6pct": 0.3780512611879577,
+          "share_above_8pct": 0.22914971521562247
+        },
+        "zero_capital_share_among_retired": 0.0,
+        "shortfall_probability": 0.31265256305939787,
+        "mean_financial_funding_ratio": 0.8586269164662835,
+        "median_financial_funding_ratio": 0.9999999999999998,
+        "mean_shortfall_share": 0.14137308353371658,
+        "mean_shortfall_years_conditional": 13.251789199739752,
+        "median_shortfall_dollars_conditional": 562336.484073242
+      },
+      "paired_common_vs_aco": {
+        "difference": 0.2376,
+        "ci95": [
+          0.2282376592189298,
+          0.2469623407810702
+        ]
+      },
+      "own_target_event_mismatches": 0
+    },
+    {
+      "strategy": "ACO 33/67",
+      "family": "ACO",
+      "gross_percent": 100,
+      "weights": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "removed": null,
+      "ruin_probability": 0.0698,
+      "equivalent_savings_rate": 0.09999999403953552,
+      "annual_volatility": 0.25282649424998765,
+      "mean_return": 0.08115151109382267,
+      "nonpositive_gross_rows": 0,
+      "paired_ruin_vs_aco": {
+        "difference": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "common_income": {
+        "shortfall_probability_all_paths": 0.0698,
+        "shortfall_count": 698,
+        "eligible_path_count": 9832,
+        "retired_path_share": 0.9832,
+        "implicit_withdrawal_rate_positive_capital": {
+          "median": 0.04,
+          "p90": 0.04,
+          "share_above_4pct": 0.0,
+          "share_above_6pct": 0.0,
+          "share_above_8pct": 0.0
+        },
+        "zero_capital_share_among_retired": 0.0,
+        "shortfall_probability": 0.0709926769731489,
+        "mean_financial_funding_ratio": 0.9802097654352692,
+        "median_financial_funding_ratio": 1.0,
+        "mean_shortfall_share": 0.019790234564730762,
+        "mean_shortfall_years_conditional": 9.053008595988539,
+        "median_shortfall_dollars_conditional": 252402.45375311183
+      },
+      "paired_common_vs_aco": {
+        "difference": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "own_target_event_mismatches": 0
+    }
+  ],
+  "baseline_reproduction": {},
+  "elapsed_seconds": 11.004511902000104
+}

@@ -24,7 +24,7 @@ Variantes :
 * ``1m``          : signal rapide seul, l'autre extreme ;
 * ``1_6_12_2fee`` : version retenue avec commission de gestion doublee a 1,70 %.
 
-Sorties autonomes pour main.tex :
+Sorties autonomes pour le manuscrit :
 
 * ``figures/mf_variants.json`` : audit complet ;
 * ``figures/mf_variants.tex``  : tabular inclus par l'annexe B.
@@ -203,7 +203,7 @@ def main() -> None:
   with open(OUT_TEX, "w", encoding="utf-8") as f:
     f.write("% Genere par build/mf_variants.py -- ne pas editer.\n")
     f.write("\\begin{tabular}{lrrrrrr}\n\\toprule\n")
-    f.write("Variant & Mean & SD & Sharpe$_0$ & Skew & 5th pctl & "
+    f.write("Variant & Mean & SD & Mean/SD & Skew & 5th pctl & "
             "Corr.\\ baseline \\\\\n\\midrule\n")
     for r in results:
       marker = "$^{\\dagger}$" if r["key"] == REFERENCE_KEY else ""
