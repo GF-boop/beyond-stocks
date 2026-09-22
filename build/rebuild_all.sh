@@ -27,8 +27,7 @@ python3 build/panel_managed_futures.py         # -> data/managed-futures-annual-
 python3 build/panel_replication_tendance.py    # -> data/replication-panel-trend.csv
 
 echo "== 2. Exclusions de source (alimente le cas ERC --full) =="
-python3 build/source_exclusion_diagnostics.py --runs 10000 --seed $SEED \
-  --output-dir results/method_review/source_exclusions
+python3 build/source_exclusion_diagnostics.py   # panneau Italie 1942
 
 echo "== 3. Experience principale ERC (10 000 traj.) =="
 # erc_refocusing.py refuse d'ecraser un dossier existant : on repart du final.
@@ -91,6 +90,10 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 build/mf_variant_lifecycle.py
 for b in 5 10 20; do
   OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 build/historical_panel_bootstrap_eqvol.py --outer-mean-block $b
 done
+# Controles d'audit (22 septembre 2026) : coherence des deflateurs, frais
+# obligataires et rendements MF coherents avec des futures. Hors papier.
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 build/deflator_fee_check.py
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 build/mf_excess_return_check.py
 
 echo "== 8. Rendu des figures =="
 python3 build/render_sleeve_properties.py >/dev/null

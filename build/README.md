@@ -79,7 +79,6 @@ reproducible from a cleaned checkout.
   counts, frozen-run fingerprints, preference/bootstrap/margin provenance,
   rendered figures, manuscript inputs).
 
-Ordered rebuild: [`rebuild_all.sh`](rebuild_all.sh); alias
-[`replicate_all.sh`](replicate_all.sh). The manuscript-side data producers
+Ordered rebuild: [`rebuild_all.sh`](rebuild_all.sh). The manuscript-side data producers
 `paper/build_appendix_data.py`, `paper/build_mf_benchmark_data.py` and
 `paper/build_mf_pack_matrix.py` live under `paper/`.

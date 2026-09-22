@@ -2,9 +2,8 @@
 
 This records the ERC delivery before the subsequent household-value text
 integration. Its numerical checks remain applicable; the PDF page count and
-hash below refer to that earlier edition. See
-`paper/new_paper/utility-framework-integration-2026-09-06.md` for the later
-analytical/editorial change, which does not alter simulation outputs.
+hash below refer to that earlier edition. Later editorial changes do not alter
+simulation outputs.
 
 - Final run: `n10000_final/completion.json`, all eight cases complete.
 - 49 policy-case results have finite utility-equivalent saving estimates.

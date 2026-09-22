@@ -42,11 +42,8 @@ Changes made after an internal review, keeping the paper within its previous siz
   paragraphs; abstract states results only. Exhibits follow the text; set
   `\submissiontrue` in `main-styled.tex` to move them after the references.
 
-Source numbers: `../../results/revision_2026-09-22/`. The folder state before
-the revision is archived in
-`../../results/revision_2026-09-22/new_paper-before-revision.tar.gz`
-(its three regenerated tables, `sleeves`, `central` and `sensitivity`, are
-already the revised versions; the PDF is the original).
+Source numbers: `../../results/revision_2026-09-22/`. Earlier states of the
+manuscript are in the git history.
 
 ## Files
 
@@ -56,10 +53,7 @@ already the revised versions; the PDF is the original).
   A–D) with its own reference list.
 - `build.sh` — compiles both documents in the order cross-references need.
 
-`utility-framework.tex`, no longer included, was removed; its content lives in
-Section B.4 of the internet appendix and in the archived snapshots. The notes
-`refocusing-erc-2026-09-06.md`, `utility-framework-integration-2026-09-06.md`
-and `appendix-restoration-review.md` document earlier revisions.
+The utility framework lives in Section B.4 of the internet appendix.
 
 ## Evidence and rebuild
 

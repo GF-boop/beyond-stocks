@@ -44,23 +44,11 @@ sources and JSON inputs. The source-event panel hash is recorded separately in
 `calibration_sensitivities.json`. The reconstruction provenance is in
 `results/method_review/source_exclusions/provenance.json`.
 
-## Audit and retained attempts
+## Run
 
-- `n100/`: smoke test, not performance evidence. One small-sample utility target
-  cannot be reached within the saving bracket; its NaN is not a production result.
-- `n10000/`: incomplete first attempt, stopped by an archive field-name mismatch
-  after baseline calculations. It is not a completed result source.
-- `n10000_verified/`: superseded. Its Italy source diagnostic removed the source
-  from global baskets but initially omitted the separate resident-row screen.
-  Baseline/cost/post-1970 outcomes are unaffected; do not cite its source-event
-  calibration or simulation as the full source-exclusion check.
-- `n10000_final/`: fixes that screen, keeps 1,560 observations for the source
-  case, and preserves every baseline allocation, cost and seed. The regression
-  test explicitly retains other Italian years. No outcome-based tuning.
-
-`new_paper-before-erc.tar.gz` preserves the complete pre-edit manuscript folder.
-SHA256: `eb7fca9762bdf6e39c62cd2c97f0445bb78d83242d6ae49c62fd85ac9e97d397`.
-The fixed-design manifest and equal-capital results remain unchanged by this
-campaign. The abandoned theory-first and beyond-stocks manuscripts and the ES
-experiments have since been removed from the repository.
+`n10000_final/` is the only retained run. Its Italy 1942 case removes the source
+event from the global baskets and from the resident rows (1,560 observations);
+the regression test retains the other Italian years. Allocations, costs and
+seed are fixed in advance; there is no outcome-based tuning. Smoke tests and
+superseded attempts are in the git history.
 Source code and outputs are research artifacts, not personal investment advice.

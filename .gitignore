@@ -35,3 +35,8 @@ data/benchmarks-externes/**
 
 # PDF publiés sous droit d'auteur — citer les DOI, ne pas redistribuer
 papers/
+
+# Journaux d'execution et sorties locales
+results/**/*.log
+results/**/log*.txt
+build/managed_futures/output/

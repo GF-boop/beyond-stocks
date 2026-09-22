@@ -1,12 +1,11 @@
 {
-  "research_contract": {
-    "question": "Do lifecycle rankings depend on the specified Italian and French source events or on Italy as a source country?",
-    "baseline": "full 1927--2025 panel, fixed-notional hedge, ACO block continuation, fixed portfolio rules",
-    "metrics": "annual volatility, retirement ruin, utility-equivalent saving, and paired Monte Carlo interval",
-    "limitation": "exclusions are influence diagnostics, not evidence that source observations are errors or historically uninvestable"
+  "inputs": {
+    "data/replication-panel-trend.csv": "84470636614a7d89d25e549af766d006328b941ae645eff281c5a6c0c590a3c1",
+    "build/source_exclusion_diagnostics.py": "ef79b82eeca63f55e12ba680c50a3290e75c8612476efb6e0ed92b7d7fbdd303",
+    "build/international_equity.py": "a12e4f4f6c6d92be59028046e979315f03616f8dbb1aaacc7d44c0b3efb2171d",
+    "build/build_replication_panel.py": "98b8938d239cd2ec0a4e26a90030d99448b0a25b1acae51dca00350df0c5af88",
+    "build/panel_replication_tendance.py": "a2d9745e5b1000103e78296312849426d23dd5fee30ecc3174cf05dea49b6492"
   },
-  "runs": 10000,
-  "seed": 20260827,
   "scenarios": {
     "source_event_italy_1942": {
       "definition": {
@@ -15,39 +14,7 @@
         ],
         "country_exclusion": null
       },
-      "observations": 1560,
-      "result": "/home/guillaume/Desktop/Articles_Cayas/Cederburg_lifecycle/results/method_review/source_exclusions/source_event_italy_1942/ladders_n10000.json",
-      "result_sha256": "3f9f25c8b627f9cf0e168d463127e84f8c365d6e4de711d0a86b658e21ecc375"
-    },
-    "source_events_italy_1942_france_1946": {
-      "definition": {
-        "event_exclusions": [
-          "Italy:1942",
-          "France:1946"
-        ],
-        "country_exclusion": null
-      },
-      "observations": 1559,
-      "result": "/home/guillaume/Desktop/Articles_Cayas/Cederburg_lifecycle/results/method_review/source_exclusions/source_events_italy_1942_france_1946/ladders_n10000.json",
-      "result_sha256": "901197b21addd6152eb2601174cb11bc961b531dc0f83ec2f0fb9241ea336701"
-    },
-    "source_country_italy_all_years": {
-      "definition": {
-        "event_exclusions": [],
-        "country_exclusion": "Italy"
-      },
-      "observations": 1462,
-      "result": "/home/guillaume/Desktop/Articles_Cayas/Cederburg_lifecycle/results/method_review/source_exclusions/source_country_italy_all_years/ladders_n10000.json",
-      "result_sha256": "e38c15afe8ed9daf31b14c2725ea04b5602724fc8c87b72e37f94dacd7f16cc8"
+      "panel_sha256": "5b3551a11573345ccdef257e77e542e286ab6e11a5ad2f832d5e5d863c35fd86"
     }
-  },
-  "inputs": {
-    "data/replication-panel-trend.csv": "84470636614a7d89d25e549af766d006328b941ae645eff281c5a6c0c590a3c1",
-    "build/source_exclusion_diagnostics.py": "ba2d76ac524c094f70fea8d2405cfc33ba8cdb46fcb30a4c7220301c8ad655b2",
-    "build/international_equity.py": "a12e4f4f6c6d92be59028046e979315f03616f8dbb1aaacc7d44c0b3efb2171d",
-    "build/build_replication_panel.py": "98b8938d239cd2ec0a4e26a90030d99448b0a25b1acae51dca00350df0c5af88",
-    "build/panel_replication_tendance.py": "56285bfd7486c02b7a5581aa234d3ca42bc7138f730e35bc935c7a887013bbfe",
-    "build/compare_fixed_stacked_utility.py": "803b02a798369f122b614bed7e0028c827810c6f0dd753be1a7ec2d3be9dd2db",
-    "build/replicate_extended.py": "0d5a79b4f36d814d7daa12cccd6fffafe18195c9fdda7ff64a17989f5fc3bfc4"
   }
 }
