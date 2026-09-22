@@ -39,8 +39,7 @@ hors ligne.
 | `snapshot-manifest.csv` | Taille, période et SHA-256 de chaque fichier |
 | `VALIDATION.txt` | Résumé des contrôles et comparaisons |
 
-Les données OECD et NBER sont soumises à citation/copyright ; `data/` reste un
-snapshot local non destiné à être redistribué sans vérification des licences.
+Les données OECD et NBER sont publiques et doivent être citées.
 
 ## Choix de construction
 

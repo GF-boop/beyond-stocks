@@ -163,8 +163,8 @@ snapshot `all-assets-monthly.csv`, the lagged cash returns
 `cash-returns-monthly.csv` and the USD spot changes `fx-spot-returns-monthly.csv`,
 with their metadata. `build/managed_futures/build_canonical_assets.py` documents
 how the snapshot was assembled; it is kept for audit and is not run by
-`rebuild_all.sh`. The snapshot contains OECD and NBER data subject to citation and
-copyright terms: check the licences before redistributing `data/mf-inputs/`.
+`rebuild_all.sh`. The snapshot is built from public OECD and NBER data, which
+should be cited.
 
 ## 8. Monthly U.S. CPI — `cpi-monthly.csv`
 
