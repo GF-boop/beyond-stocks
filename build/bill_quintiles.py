@@ -10,7 +10,7 @@ from compare_fixed_stacked_utility import FIXED_EXPOSURES, read_panel, return_fu
 from panel_managed_futures import fill_isolated_gaps, read_cpi, previous_month
 
 ROOT = Path(__file__).resolve().parent.parent
-OUT = ROOT / 'results/method_review/bill_volatility'
+OUT = ROOT / 'results/robustness/bill_quintiles'
 FIG = ROOT / 'paper/new_paper/figures'
 
 

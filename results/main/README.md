@@ -42,7 +42,7 @@ reviewing and changing that source, not silently overwriting the reference.
 The manifest fingerprints the input panel, protocol, existing build Python
 sources and JSON inputs. The source-event panel hash is recorded separately in
 `calibration_sensitivities.json`. The reconstruction provenance is in
-`results/method_review/source_exclusions/provenance.json`.
+`results/robustness/source_exclusions/provenance.json`.
 
 ## Run
 

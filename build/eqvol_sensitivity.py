@@ -25,9 +25,9 @@ from historical_uncertainty import scenarios_for
 from replicate_extended import read_panel
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / 'results/revision_2026-09-22/eqvol'
-REVISION = ROOT / 'results/revision_2026-09-22/revision_checks.json'
-SOURCE = ROOT / 'results/method_review/source_exclusions/source_event_italy_1942/replication-panel-trend.csv'
+OUT = ROOT / 'results/equal_volatility/sensitivity'
+REVISION = ROOT / 'results/equal_volatility/revision_checks.json'
+SOURCE = ROOT / 'results/robustness/source_exclusions/source_event_italy_1942/replication-panel-trend.csv'
 RUNS = 10000
 
 CASES = {

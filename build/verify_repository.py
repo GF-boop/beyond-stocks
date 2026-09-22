@@ -19,7 +19,7 @@ DATA = ROOT / "data"
 RESULTS = ROOT / "results"
 FIGURES = ROOT / "paper" / "figures"
 PAPER = ROOT / "paper" / "new_paper"
-ERC = RESULTS / "erc_refocusing" / "n10000_final"
+ERC = RESULTS / "main" / "n10000_final"
 
 
 def read_csv(name: str) -> list[dict[str, str]]:
@@ -93,7 +93,7 @@ def main() -> None:
     require(sha256(source) == expected, f"ERC: empreinte obsolete pour {name}")
   sensitivities = read_json(ERC / "calibration_sensitivities.json")
   require(sensitivities["source_panel_sha256"]
-          == sha256(RESULTS / "method_review" / "source_exclusions"
+          == sha256(RESULTS / "robustness" / "source_exclusions"
                     / "source_event_italy_1942" / "replication-panel-trend.csv"),
           "ERC: panneau source Italy-1942 obsolete")
 
@@ -105,7 +105,7 @@ def main() -> None:
           "gamma_fixed_theta_n10000.json absent")
 
   for block in (5, 10, 20):
-    payload = read_json(RESULTS / "method_review" / "historical_panel_bootstrap"
+    payload = read_json(RESULTS / "robustness" / "histories"
                         / f"calendar_blocks_{block}y_outer100_inner1000.json")
     require(payload["outer_replicates"] == 100 and payload["inner_runs"] == 1_000
             and payload["outer_mean_block_years"] == block,
@@ -139,9 +139,9 @@ def main() -> None:
     for token in tokens:
       require(token in text, f"{doc} n'importe plus {token}")
   for name in ("revision_checks.json", "revision_checks_mf_minus_300bp.json",
-               "mf_variant_lifecycle.json", "eqvol/baseline.json",
-               "history_eqvol/calendar_blocks_10y_outer100_inner1000.json"):
-    require((ROOT / "results" / "revision_2026-09-22" / name).exists(),
+               "mf_variant_lifecycle.json", "sensitivity/baseline.json",
+               "histories/calendar_blocks_10y_outer100_inner1000.json"):
+    require((ROOT / "results" / "equal_volatility" / name).exists(),
             f"resultat de revision manquant: {name}")
 
   print("Verification du depot: OK")

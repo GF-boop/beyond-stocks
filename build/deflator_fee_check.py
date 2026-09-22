@@ -33,8 +33,8 @@ import panel_replication_tendance as prt
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / 'data'
-OUT = ROOT / 'results/revision_2026-09-22/deflator_fee_check.json'
-REVISION = ROOT / 'results/revision_2026-09-22/revision_checks.json'
+OUT = ROOT / 'results/audit/deflator_fee_check.json'
+REVISION = ROOT / 'results/equal_volatility/revision_checks.json'
 RUNS = 10000
 GOLD_CUSTODY = .004
 

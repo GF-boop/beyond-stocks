@@ -42,7 +42,7 @@ Changes made after an internal review, keeping the paper within its previous siz
   paragraphs; abstract states results only. Exhibits follow the text; set
   `\submissiontrue` in `main-styled.tex` to move them after the references.
 
-Source numbers: `../../results/revision_2026-09-22/`. Earlier states of the
+Source numbers: `../../results/equal_volatility/`. Earlier states of the
 manuscript are in the git history.
 
 ## Files
@@ -57,8 +57,8 @@ The utility framework lives in Section B.4 of the internet appendix.
 
 ## Evidence and rebuild
 
-Authoritative run: `../../results/erc_refocusing/n10000_final/` (protocol in
-`../../results/erc_refocusing/PROTOCOL.md`). Revision checks:
+Authoritative run: `../../results/main/n10000_final/` (protocol in
+`../../results/main/PROTOCOL.md`). Revision checks:
 `build/revision_checks.py`, which reuses seed 20260827 and asserts that the
 published baseline is reproduced exactly.
 

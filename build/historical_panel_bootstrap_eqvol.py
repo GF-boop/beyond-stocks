@@ -4,7 +4,7 @@
 Same outer resampling, seeds and inner simulation as
 ``historical_panel_bootstrap.py``, but evaluates the proportional, risk parity
 and stocks-plus-MF strategies at their baseline equal-volatility exposures
-(``results/revision_2026-09-22/revision_checks.json``), held fixed across
+(``results/equal_volatility/revision_checks.json``), held fixed across
 histories, and also records the path-matched income failure.
 
 Usage: python3 build/historical_panel_bootstrap_eqvol.py --outer-mean-block 10
@@ -32,8 +32,8 @@ from historical_uncertainty import scenarios_for
 from replicate_extended import read_panel
 
 ROOT = Path(__file__).resolve().parents[1]
-REVISION = ROOT / 'results/revision_2026-09-22/revision_checks.json'
-OUT = ROOT / 'results/revision_2026-09-22/history_eqvol'
+REVISION = ROOT / 'results/equal_volatility/revision_checks.json'
+OUT = ROOT / 'results/equal_volatility/histories'
 NAMES = ('Proportional equal volatility', 'Risk parity equal volatility', 'Stocks and MF equal volatility')
 
 

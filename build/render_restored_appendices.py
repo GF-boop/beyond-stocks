@@ -89,7 +89,7 @@ def main():
           '10,000 bootstrap simulations.')
     rows=[]
     for length in (5,10,20):
-        obj=read(f'results/method_review/historical_panel_bootstrap/calendar_blocks_{length}y_outer100_inner1000.json')
+        obj=read(f'results/robustness/histories/calendar_blocks_{length}y_outer100_inner1000.json')
         assert obj['source_observations']==1561
         s=obj['summary']['70/46.67/29.17/29.17 ACO']
         d=s['ruin_difference_vs_aco'];e=s['equivalent_savings_rate']

@@ -28,7 +28,7 @@ python3 build/compare_fixed_stacked_utility.py --runs 10000 --portfolio-set core
 python3 build/compare_fixed_stacked_utility.py --runs 10000 --portfolio-set ladders \
   --include-suspect-data --output-json results/main_ladders_n10000.json
 # erc_refocusing.py refuse d'ecraser un dossier existant : on repart du final.
-rm -rf results/erc_refocusing/n10000_final
+rm -rf results/main/n10000_final
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 \
   python3 build/erc_refocusing.py --runs 10000 --full --tag final
 
@@ -45,7 +45,7 @@ python3 build/policy_sensitivity.py
 for block in 5 10 20; do
   python3 build/historical_panel_bootstrap.py --outer-replicates 100 --inner-runs 1000 \
     --outer-mean-block "$block" \
-    --output-json "results/method_review/historical_panel_bootstrap/calendar_blocks_${block}y_outer100_inner1000.json"
+    --output-json "results/robustness/histories/calendar_blocks_${block}y_outer100_inner1000.json"
 done
 python3 build/margin_call_experiment.py
 python3 build/bill_quintiles.py                 # Table des quintiles de taux reels

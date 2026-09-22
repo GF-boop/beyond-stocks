@@ -38,7 +38,7 @@ from compare_fixed_stacked_utility import BENCHMARK_NAME
 from compare_gold_trend_equal_vol import DEFAULT_TREND_FEE
 
 INPUTS = ROOT / 'data/mf-inputs'
-OUT = ROOT / 'results/revision_2026-09-22/mf_excess_return_check.json'
+OUT = ROOT / 'results/audit/mf_excess_return_check.json'
 
 
 def dividends():

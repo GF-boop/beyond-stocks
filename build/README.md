@@ -29,7 +29,7 @@ optional, non-redistributed files under `data/benchmarks-externes/`.
 ## Producers (one published output each)
 
 - `erc_refocusing.py` — main ERC experiment, ablations and sensitivity cases
-  (writes `results/erc_refocusing/<tag>/`).
+  (writes `results/main/<tag>/`).
 - `composition_value.py` — value of composition across the historical panel.
 - `source_exclusion_diagnostics.py` — source-event exclusion panels.
 - `gamma_sensitivity.py` — joint preference calibration and fixed-bequest
@@ -49,7 +49,7 @@ optional, non-redistributed files under `data/benchmarks-externes/`.
   (`results/main_core_n10000.json`); `--portfolio-set ladders` — exposure
   ladders used as a reproduction check (`results/main_ladders_n10000.json`).
 - `bill_quintiles.py` — returns of leverage by real-bill quintile
-  (`results/method_review/bill_volatility/`, `figures/bill_quintiles.tex`).
+  (`results/robustness/bill_quintiles/`, `figures/bill_quintiles.tex`).
 - `historical_availability.py` — gold and managed-futures markets added as they
   opened (`results/historical_availability/`).
 - `fetch_mf_fund_data.py` — optional fetch of external fund price files.
@@ -72,7 +72,7 @@ optional, non-redistributed files under `data/benchmarks-externes/`.
 | File | Output |
 |---|---|
 | `render_sleeve_properties.py` | `paper/new_paper/figures/erc/sleeves.tex` (Table I, including excess-return Sharpe ratios) |
-| `render_erc_refocusing.py` | `paper/new_paper/figures/erc/{central,common,ablations,sensitivity,calibration}.tex`, `ladders.{pdf,png}`, `provenance.json`; Panels D–E of Tables II and VI read `results/revision_2026-09-22/` |
+| `render_erc_refocusing.py` | `paper/new_paper/figures/erc/{central,common,ablations,sensitivity,calibration}.tex`, `ladders.{pdf,png}`, `provenance.json`; Panels D–E of Tables II and VI read `results/equal_volatility/` |
 | `render_composition_value.py` | `paper/new_paper/figures/erc/{composition_value,exposure_value}.tex` |
 | `render_restored_appendices.py` | `paper/new_paper/figures/restored/{bills,history,margin,monthly,policy,preferences}.tex` |
 | `render_panel_margin_ablation.py` | `paper/new_paper/figures/margin_monthly.tex` |

@@ -13,7 +13,7 @@ new strategy is paired with the published baseline:
 * the proxy versus commercial trend indexes, when the licensed files exist.
 
 The baseline ACO and proportional outcomes are checked against
-``results/erc_refocusing/n10000_final/baseline.json`` before anything is written.
+``results/main/n10000_final/baseline.json`` before anything is written.
 """
 from pathlib import Path
 import json
@@ -32,8 +32,8 @@ from historical_uncertainty import scenarios_for
 from replicate_extended import read_panel
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / 'results/revision_2026-09-22'
-BASELINE = ROOT / 'results/erc_refocusing/n10000_final/baseline.json'
+OUT = ROOT / 'results/equal_volatility'
+BASELINE = ROOT / 'results/main/n10000_final/baseline.json'
 RUNS = 10000
 SPREAD = .003
 

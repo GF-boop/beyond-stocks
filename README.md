@@ -19,7 +19,7 @@ managed futures, each levered to the volatility of unlevered equities. Results
 are reported on three separate measures: the utility-equivalent savings rate,
 the probability of ruin, and the failure to fund the all-equity income along
 the same path. The design of the main experiment is fixed in
-[`results/erc_refocusing/PROTOCOL.md`](results/erc_refocusing/PROTOCOL.md).
+[`results/main/PROTOCOL.md`](results/main/PROTOCOL.md).
 
 Returns are currency-consistent: every foreign asset is converted into the
 currency of the country of residence and deflated by that country's inflation.
@@ -32,9 +32,12 @@ currency of the country of residence and deflated by that country's inflation.
 | `build/managed_futures/` | Managed-futures engine (monthly trend-following proxy) |
 | `data/` | Source data and reconstructed panels ([`data/SOURCES.md`](data/SOURCES.md)) |
 | `data/mf-inputs/` | Monthly futures-equivalent returns read by the managed-futures engine |
-| `results/erc_refocusing/n10000_final/` | Frozen main run (10,000 lifecycles per strategy) |
-| `results/revision_2026-09-22/` | Equal-volatility results, sensitivities and audit checks |
-| `results/` (other) | Composition value, margin, bootstrap and availability outputs |
+| `results/main/` | Main run (`n10000_final/`, 10,000 lifecycles per strategy), its protocol and checks |
+| `results/equal_volatility/` | Equal-volatility exposures, sensitivity cases (`sensitivity/`), resampled histories (`histories/`), MF variants |
+| `results/robustness/` | Resampled histories at 175%, Italy 1942 exclusion panel, bill-rate quintiles |
+| `results/audit/` | Deflator, bond-fee and futures-consistent MF checks (not in the paper) |
+| `results/historical_availability/` | Gold and MF markets added as they opened |
+| `results/` (files) | ACO replication, exposure ladders, composition value, preferences, margin tests |
 | `paper/new_paper/` | Manuscript, internet appendix, exhibits and [build guide](paper/new_paper/README.md) |
 | `paper/figures/` | Shared tables included by the internet appendix |
 

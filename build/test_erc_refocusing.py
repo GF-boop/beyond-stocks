@@ -21,7 +21,7 @@ def test_invalid_covariance():
     with pytest.raises(ValueError): erc_weights(np.array([[1.,2.],[2.,1.]]))
 
 def test_source_exclusion_also_removes_resident_row():
-    path=Path(__file__).resolve().parents[1]/'results/method_review/source_exclusions/source_event_italy_1942/replication-panel-trend.csv'
+    path=Path(__file__).resolve().parents[1]/'results/robustness/source_exclusions/source_event_italy_1942/replication-panel-trend.csv'
     rows=source_exclusion_rows(path)
     assert len(rows)==1560
     assert not any(r['country']=='Italy' and r['year']==1942 for r in rows)

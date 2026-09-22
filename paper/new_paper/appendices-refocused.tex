@@ -547,13 +547,13 @@ numerical results, and code to rebuild all exhibits. The
 proprietary SG and BarclayHedge indexes are used only in Section~\ref{app:mf-external}, and their
 redistribution is subject to the providers' terms.
 
-The \gitlink{results/erc_refocusing/PROTOCOL.md}{experimental protocol} specifies the risk parity
+The \gitlink{results/main/PROTOCOL.md}{experimental protocol} specifies the risk parity
 estimation, the exposure grid, and the sensitivity analyses. The
-\gitdirlink{results/erc_refocusing/n10000_final/}{result files} contain the risk parity weights, covariance
+\gitdirlink{results/main/n10000_final/}{result files} contain the risk parity weights, covariance
 matrix, input checksums, and the complete results for each specification. The simulations use 10,000
 paths, seed 20260827, and an average block length of ten years. Each alternative sample recomputes the
 utility reference of the unlevered all-equity strategy. The
-\gitlink{results/erc_refocusing/VALIDATION.md}{validation checks} confirm, among other identities, that
+\gitlink{results/main/VALIDATION.md}{validation checks} confirm, among other identities, that
 the path-matched income calculation reproduces the baseline ruin indicators exactly when each strategy is
 assigned its own 4\% withdrawal. The bond-free strategies, the comparison at equal volatility, its sensitivity analyses
 (\gitlink{build/eqvol_sensitivity.py}{eqvol\_sensitivity.py}), resampled histories

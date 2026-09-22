@@ -51,7 +51,7 @@ def main() -> None:
   parser.add_argument("--scenario", choices=tuple(SCENARIOS), action="append",
                       help="repeat to select scenarios; default: Italy 1942 only")
   parser.add_argument("--output-dir",
-                      default="results/method_review/source_exclusions")
+                      default="results/robustness/source_exclusions")
   args = parser.parse_args()
   selected = args.scenario or list(DEFAULT)
 

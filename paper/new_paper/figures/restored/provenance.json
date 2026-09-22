@@ -5,13 +5,13 @@
     "paper/figures/gamma_sensitivity.json": "171e363b65e32a81dab34014eea6f5923d690ea14b4d4d7dde922bdf43ca6b64",
     "results/gamma_fixed_theta_n10000.json": "e69b8ca0c723f969eb918b26353c0fdc1ce22dcbcf5cba098d1a816217afec6c",
     "paper/figures/policy_sensitivity.json": "980180baa4ec5a3eacb49c4918ea7c318118b3dc8c00b4e3c92f2a351ecc8e63",
-    "results/method_review/historical_panel_bootstrap/calendar_blocks_5y_outer100_inner1000.json": "06ed8517a0c87ee7406b11ff48a70962e6fa5b3a8c03a3fc367e49f7d7ca0db9",
-    "results/method_review/historical_panel_bootstrap/calendar_blocks_10y_outer100_inner1000.json": "629c05b440e0947bf4ffbe5b2f780a2011e6a421145a797eeebd106e9d39315d",
-    "results/method_review/historical_panel_bootstrap/calendar_blocks_20y_outer100_inner1000.json": "5916d191bc91e50c374602d712bb801431462fff3d955d9179bc98a19e1fee44",
+    "results/robustness/histories/calendar_blocks_5y_outer100_inner1000.json": "06ed8517a0c87ee7406b11ff48a70962e6fa5b3a8c03a3fc367e49f7d7ca0db9",
+    "results/robustness/histories/calendar_blocks_10y_outer100_inner1000.json": "629c05b440e0947bf4ffbe5b2f780a2011e6a421145a797eeebd106e9d39315d",
+    "results/robustness/histories/calendar_blocks_20y_outer100_inner1000.json": "5916d191bc91e50c374602d712bb801431462fff3d955d9179bc98a19e1fee44",
     "results/margin_call_n10000.json": "507753e7eb30d8ce73b379d7f24e142584a1a976fbf48fc7825afc8743f24988",
     "paper/new_paper/figures/margin_monthly.tex": "60a30598c662788b021cbc5b1d4903da51e9a6dd6cc594e3432f34e8da3f6f7f",
     "paper/new_paper/figures/bill_quintiles.tex": "ed13e1ea1aaade1493d51407c47c9c1a17d59a0800733beafb64c54fe261ac36"
   },
   "selection": "Retained ACO and proportional columns only; no equal-capital or inferred ERC results.",
-  "renderer_sha256": "e2af418ce458dd64c5645e98516ae0f5af4212defc47186d7c745da4d16acfbb"
+  "renderer_sha256": "ac989940c5fcd47e9d8bcf553244b272c6499a0a26b9d5568de32ea38b713899"
 }

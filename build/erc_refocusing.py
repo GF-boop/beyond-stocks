@@ -19,7 +19,7 @@ from historical_uncertainty import scenarios_for
 from replicate_extended import read_panel
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / 'results/erc_refocusing'
+OUT = ROOT / 'results/main'
 PANEL = ROOT / 'data/replication-panel-trend.csv'
 PROP = np.array([.4, 4/15, 1/6, 1/6])
 LEVELS = (100,125,150,175,200)
@@ -174,7 +174,7 @@ def main():
         cases += [(f'mf_minus_{bp}bp',rows,dict(levels=(175,),haircut=bp/10000)) for bp in (300,600)]
         later=[r for r in rows if r['year']>=1970]
         cases.append(('post1970',later,dict(levels=(175,))))
-        source=ROOT/'results/method_review/source_exclusions/source_event_italy_1942/replication-panel-trend.csv'
+        source=ROOT/'results/robustness/source_exclusions/source_event_italy_1942/replication-panel-trend.csv'
         if not source.exists(): raise FileNotFoundError(source)
         excluded=source_exclusion_rows(source)
         cases.append(('source_italy1942',excluded,dict(levels=(175,))))

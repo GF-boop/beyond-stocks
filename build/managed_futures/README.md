@@ -127,4 +127,4 @@ produite par `paper/build_mf_benchmark_data.py` et `paper/build_mf_pack_matrix.p
 cohérents avec des futures (actions dividendes inclus et en excès du cash
 local, commodities en excès du cash USD) : l'écart annuel moyen est de
 −0,05 point et les résultats du papier bougent de quelques dixièmes de point
-au plus (`results/revision_2026-09-22/mf_excess_return_check.json`).
+au plus (`results/audit/mf_excess_return_check.json`).

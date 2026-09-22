@@ -9,8 +9,8 @@ import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 
 ROOT=Path(__file__).resolve().parents[1]
-SOURCE=ROOT/'results/erc_refocusing/n10000_final'
-REVISION=ROOT/'results/revision_2026-09-22'
+SOURCE=ROOT/'results/main/n10000_final'
+REVISION=ROOT/'results/equal_volatility'
 FIG=ROOT/'paper/new_paper/figures/erc'
 
 def percent(v): return f'{100*v:.2f}'
@@ -165,7 +165,7 @@ def main():
           +common_note+'Path-matched income failure is the probability of failing to fund 4\\% of the retirement wealth of '
           'the all-equity strategy at 100\\% exposure. The sample is 1927 to 2025.')
     # Table VI: robustness at equal volatility (revision of September 22, 2026).
-    eqdir=REVISION/'eqvol'
+    eqdir=REVISION/'sensitivity'
     variants=json.loads((REVISION/'mf_variant_lifecycle.json').read_text())['variants']
     fams=('Proportional equal volatility','Risk parity equal volatility','Stocks and MF equal volatility')
     def num(v): return f'{100*v:.2f}'
@@ -226,7 +226,7 @@ def main():
           'that the all-equity strategy saving 10\\% accumulates on the same path, when the strategy saves 10\\% or its own '
           'equivalent savings rate. Each measure is based on the same 10,000 simulations.',align='lrrrr',float_spec='htbp')
     # Table IV: resampled calendar histories at equal volatility.
-    hdir=REVISION/'history_eqvol'
+    hdir=REVISION/'histories'
     hrows=[]
     for k,(f,label) in enumerate(zip(fams,('Proportional','Risk parity','Stocks and MF'))):
         hrows.append(panel_row(f'Panel {"ABC"[k]}: {label} at {100*g[label if label!="Stocks and MF" else "Stocks and MF"]:.0f}\\% exposure',5))
@@ -311,7 +311,7 @@ def main():
     plt.close(fig)
     # Full numerical rows alongside typeset exhibits.
     (FIG/'provenance.json').write_text(json.dumps({
-        'sources':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted([*SOURCE.glob('*.json'),*REVISION.glob('revision_checks*.json'),*REVISION.glob('mf_variant_lifecycle.json'),*(REVISION/'eqvol').glob('*.json'),*(REVISION/'history_eqvol').glob('*.json')])},
+        'sources':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted([*SOURCE.glob('*.json'),*REVISION.glob('revision_checks*.json'),*REVISION.glob('mf_variant_lifecycle.json'),*(REVISION/'sensitivity').glob('*.json'),*(REVISION/'histories').glob('*.json')])},
         'renderer_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest()},indent=2)+'\n')
 
 if __name__=='__main__':main()

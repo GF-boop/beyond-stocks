@@ -30,8 +30,8 @@ import panel_replication_tendance as prt
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / 'data'
-OUT = ROOT / 'results/revision_2026-09-22/mf_variant_lifecycle.json'
-REVISION = ROOT / 'results/revision_2026-09-22/revision_checks.json'
+OUT = ROOT / 'results/equal_volatility/mf_variant_lifecycle.json'
+REVISION = ROOT / 'results/equal_volatility/revision_checks.json'
 SEED, RUNS, SPREAD = 20260827, 10000, .003
 
 VARIANTS = [
