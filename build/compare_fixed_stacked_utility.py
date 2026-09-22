@@ -1,29 +1,28 @@
-"""Panels de portefeuilles empiles fixes, sans calibrage retrospectif.
+"""Fixed stacked portfolios, with no retrospective calibration.
 
-Les expositions sont definies avant lecture du panel et ne dependent d'aucune
-volatilite estimee. Toutes les extensions conservent la meme poche actions que
-le benchmark ACO : 33 % d'actions domestiques et 67 % d'actions
-internationales du resident. Les autres briques sont les obligations
-souveraines mondiales, l'or et le managed futures. L'exposition brute est
-bornee a 200 % du capital. Les obligations et le managed futures sont couverts
-dans la monnaie du resident avec carry ; une friction de couverture explicite
-est retranchee. Le financement au-dela de 100 % coute le taux court du resident
-plus le spread passe en argument.
+Exposures are set before the panel is read and depend on no estimated
+volatility. Every extension keeps the same equity sleeve as the ACO benchmark:
+33% domestic and 67% international stocks of the resident. The other building
+blocks are global sovereign bonds, gold and managed futures. Gross exposure is
+capped at 200% of capital. Bonds and managed futures are hedged into the
+resident's currency with carry; an explicit hedging friction is deducted.
+Financing above 100% costs the resident's short rate plus the spread given as
+argument.
 
-Les quatre propositions principales sont :
+The four main proposals are:
 
-* 2/3 d'un 90/60 et 1/3 de tendance : 60/40/33,33, brut 133,33 % ;
-* 2/3 d'un 90/60 et 1/3 d'or : 60/40/33,33, brut 133,33 % ;
-* 60 % d'un 90/60, 20 % tendance et 20 % or : 54/36/20/20, brut 130 % ;
-* 90/60/25/25 : brut 200 %, soit le plafond de levier.
+* 2/3 of a 90/60 and 1/3 trend: 60/40/33.33, gross 133.33%;
+* 2/3 of a 90/60 and 1/3 gold: 60/40/33.33, gross 133.33%;
+* 60% of a 90/60, 20% trend and 20% gold: 54/36/20/20, gross 130%;
+* 90/60/25/25: gross 200%, the leverage cap.
 
-Deux echelles complementaires ajoutent des poids simples aux expositions
-brutes 100 %, 125 %, 150 %, 175 % et 200 % : une famille proportionnelle a
-60/40/25/25 et une famille equiponderee actions/obligations/or/tendance.
-Elles sont fixes avant l'evaluation et ne ciblent aucune volatilite realisee.
+Two additional ladders apply simple weights at gross exposures of 100%, 125%,
+150%, 175% and 200%: a proportional family at 60/40/25/25 and an equal-weight
+stocks/bonds/gold/trend family. They are fixed before evaluation and target no
+realised volatility.
 
-Le script rapporte les moments historiques uniquement comme resultats. Ils ne
-servent jamais a fixer les poids, le levier ou un multiplicateur de risque.
+The script reports historical moments as results only. They are never used to
+set weights, leverage or a risk multiplier.
 """
 
 from __future__ import annotations
@@ -76,6 +75,7 @@ DEFAULT_FX_HEDGE_COST = 0.001
 DESIGN_PATH = os.path.join(HERE, "..", "data", "fixed-stacked-design.json")
 BENCHMARK_NAME = "ACO 33/67"
 ACO_LEVERAGE_NAMES = tuple(f"ACO 33/67 {level}%" for level in (125, 150, 175, 200))
+# These frozen strategy names are protocol identifiers used in archived outputs.
 CORE_EXPOSURE_NAMES = {
   "60/40 ACO/couvert",
   "60/40 ACO + 33.33 MF",
@@ -86,27 +86,27 @@ CORE_EXPOSURE_NAMES = {
 
 
 def load_fixed_exposures() -> dict[str, tuple[float, float, float, float]]:
-  """Charge l'unique manifeste gele, sans option de recalibrage."""
+  """Load the single frozen manifest, with no recalibration option."""
   with open(DESIGN_PATH, encoding="utf-8") as handle:
     design = json.load(handle)
   if design.get("calibrated_from_returns") is not False:
-    raise ValueError("Le manifeste doit interdire le calibrage sur rendements")
+    raise ValueError("The manifest must forbid calibration on returns")
   if design.get("exposure_order") != [
       "aco_33_67_equity", "world_bond", "gold", "managed_futures"]:
-    raise ValueError("Toutes les extensions doivent conserver les actions ACO 33/67")
+    raise ValueError("Every extension must keep the ACO 33/67 equity sleeve")
   if not math.isclose(float(design["max_gross_exposure"]),
                       MAX_GROSS_EXPOSURE):
-    raise ValueError("Le plafond du manifeste doit rester fixe a 2x")
+    raise ValueError("The manifest cap must stay fixed at 2x")
   exposures = {}
   for portfolio in design["portfolios"]:
     values = tuple(float(value) for value in portfolio["exposures"])
     if len(values) != 4:
-      raise ValueError("Chaque portefeuille doit avoir quatre expositions")
+      raise ValueError("Each portfolio must have four exposures")
     exposures[str(portfolio["name"])] = values
   return exposures
 
 
-# L'ordre du manifeste est celui des panels et constitue le design gele.
+# The manifest order is the panel order and defines the frozen design.
 FIXED_EXPOSURES = load_fixed_exposures()
 
 
@@ -117,11 +117,11 @@ def validate_design() -> None:
     gross = sum(exposures)
     if gross > MAX_GROSS_EXPOSURE + 1e-12:
       raise ValueError(
-        f"{name} depasse le plafond de {MAX_GROSS_EXPOSURE:.0f}x : {gross:.3f}x")
+        f"{name} exceeds the cap of {MAX_GROSS_EXPOSURE:.0f}x : {gross:.3f}x")
 
 
 def empirical_quantile(values: list[float], probability: float) -> float:
-  """Quantile lineaire, sans dependance externe."""
+  """Linear quantile without external dependencies."""
   ordered = sorted(values)
   position = probability * (len(ordered) - 1)
   lower = int(math.floor(position))
@@ -140,7 +140,7 @@ def return_functions(rows: list[dict[str, float]], spread: float,
                     include_constant_real_fx: bool = True,
                     hedge_mode: str = "fixed_notional",
                     ) -> dict[str, ReturnFunction]:
-  """Construit les rendements sans estimer aucun poids ni levier."""
+  """Build the returns without estimating any weight or leverage."""
   if hedge_mode not in {"ideal", "fixed_notional"}:
     raise ValueError("hedge_mode must be ideal or fixed_notional")
   bond_key = "world_bond" if hedge_mode == "ideal" else "world_bond_fixed_notional"
@@ -162,22 +162,22 @@ def return_functions(rows: list[dict[str, float]], spread: float,
     "Balanced/I": lambda row: (
       0.3 * row["domestic"] + 0.3 * row["international"]
       + 0.4 * row["bond"]),
-    # Comparateur fixe et non optimise : la branche actions reprend exactement
-    # le 33/67 d'ACO ; obligations et financement restent ceux du resident.
+    # Fixed, non-optimised comparator: the equity leg is exactly ACO's 33/67;
+    # bonds and financing remain those of the resident.
     "90/60 local fixe": lambda row: (
       0.9 * (0.33 * row["domestic"] + 0.67 * row["international"])
       + 0.6 * row["bond"] - 0.5 * row["bill"] - 0.5 * spread),
-    # Test d'identification : meme poche actions et memes poids que le
-    # comparateur local ; seuls les obligations couvertes sont mondialisees.
+    # Identification test: same equity sleeve and weights as the local
+    # comparator; only the hedged bonds become global.
     "90/60 oblig. mondiales": lambda row: (
       0.9 * (0.33 * row["domestic"] + 0.67 * row["international"])
       + 0.6 * row[bond_key] - 0.5 * row["world_bill"] - 0.5 * spread
       - 0.6 * fx_hedge_cost),
   }
 
-  # Le contrefactuel de change reel constant n'est defini que lorsque chaque
-  # ligne est deja dans le numeraire de son resident. Il n'a pas de sens apres
-  # conversion des memes etats dans un dollar fixe.
+  # The constant-real-exchange-rate counterfactual is defined only when each
+  # row is already in its resident's numeraire. It has no meaning once the
+  # same states are converted into a fixed dollar.
   if include_constant_real_fx:
     functions["ACO 33/67, change reel cst"] = lambda row: (
       0.33 * row["domestic"]
@@ -189,8 +189,8 @@ def return_functions(rows: list[dict[str, float]], spread: float,
         + (1.0 - gross) * row['bill'] - (gross - 1.0) * spread)
 
   if include_unhedged_control:
-    # Controle secondaire : meme test, mais au change spot ex post. Il ne
-    # definit ni le cas principal ni les portefeuilles multi-actifs.
+    # Secondary check: same test, at the ex post spot exchange rate. It
+    # defines neither the main case nor the multi-asset portfolios.
     functions["90/60 oblig. non couvert"] = lambda row: (
       0.9 * (0.33 * row["domestic"] + 0.67 * row["international"])
       + 0.6 * row["world_bond_unhedged"]
@@ -199,25 +199,24 @@ def return_functions(rows: list[dict[str, float]], spread: float,
   for name, exposures in FIXED_EXPOSURES.items():
     equity, bond, gold, trend = exposures
     gross = sum(exposures)
-    # Les rendements obligataires et tendance sont couverts avec carry. Le
-    # poids cash negatif retire le taux court du resident sur le notionnel
-    # empile avant d'ajouter le spread ; la friction de change est facturee sur
-    # les seules poches couvertes. L'or et les actions restent non couverts.
+    # Bond and trend returns are hedged with carry. The negative cash weight
+    # removes the resident's short rate on the stacked notional before the
+    # spread is added; the hedging friction is charged on the hedged sleeves
+    # only. Gold and stocks remain unhedged.
     cash_weight = 1.0 - gross
     borrowing = max(0.0, gross - 1.0)
 
     def calculate(row: dict[str, float], *, e=equity, b=bond, g=gold,
                   t=trend, cash=cash_weight, debt=borrowing,
                   cutoff=gold_reallocation_from_year) -> float:
-      # Avant 1968, le prix de l'or est administre. Dans la variante
-      # d'indisponibilite, son notionnel est redistribue a parts egales entre
-      # les sleeves non-or deja presents dans la recette. Le levier total et
-      # le financement sont ainsi inchanges, sans introduire une nouvelle
-      # classe d'actifs dans un portefeuille qui ne la detenait pas.
+      # Before 1968 the gold price is administered. In the unavailability
+      # variant, its notional is spread equally over the non-gold sleeves
+      # already in the recipe. Total leverage and financing are unchanged, and
+      # no new asset class enters a portfolio that did not hold it.
       if g > 0.0 and cutoff is not None and row["year"] < cutoff:
         active_non_gold = sum(weight > 0.0 for weight in (e, b, t))
         if active_non_gold == 0:
-          raise ValueError("Une poche or doit avoir au moins un sleeve actif")
+          raise ValueError("A gold sleeve needs at least one active sleeve")
         reallocated = g / active_non_gold
         effective_equity = e + (reallocated if e > 0.0 else 0.0)
         effective_bond = b + (reallocated if b > 0.0 else 0.0)
@@ -246,12 +245,12 @@ def _fixed_numeraire_unhedged_return(
     source_xrusd_previous: float, source_xrusd_current: float,
     target_xrusd_previous: float, target_xrusd_current: float,
     inflation_target: float) -> float:
-  """Convertit un rendement reel source en rendement reel du pays cible.
+  """Convert a real return of the source country into a real return of the target.
 
-  ``xrusd`` est le nombre d'unites de devise par dollar. Le facteur de change
-  d'une position en devise source, vu depuis la devise cible, est donc
-  ``(x_cible,t / x_source,t) / (x_cible,t-1 / x_source,t-1)``. Cette fonction
-  est employee pour les poches non couvertes seulement.
+  ``xrusd`` is the number of currency units per dollar. The exchange-rate
+  factor of a position in the source currency, seen from the target currency,
+  is therefore ``(x_target,t / x_source,t) / (x_target,t-1 / x_source,t-1)``.
+  This function is used for unhedged sleeves only.
   """
   return ((1.0 + return_source) * (1.0 + inflation_source)
           * (target_xrusd_current / source_xrusd_current)
@@ -261,27 +260,27 @@ def _fixed_numeraire_unhedged_return(
 
 def _fixed_numeraire_covered_return(return_source: float, source_bill: float,
                                     target_bill: float) -> float:
-  """Remplace le bill source par celui du pays cible dans une poche couverte."""
+  """Replace the source bill with the target country's bill in a hedged sleeve."""
   return ((1.0 + target_bill) * (1.0 + return_source)
           / (1.0 + source_bill) - 1.0)
 
 
 def fixed_numeraire_rows(rows: list[dict[str, float]],
                          target_country: str) -> list[dict[str, float]]:
-  """Conserve les etats pays-annee mais impose le numeraire d'un pays cible.
+  """Keep the country-year states but impose the numeraire of a target country.
 
-  Le pays source continue de definir les blocs et les actifs dits ``domestic``
-  et ``international``. Le controle ne represente donc pas un portefeuille
-  domestique litteral dans le pays cible : il isole le changement de numeraire
-  dans le bootstrap ACO. Les poches couvertes conservent leur rendement en
-  exces, mais sont recombinees avec le bill cible; les poches non couvertes sont
-  converties au comptant puis deflatees par le CPI cible.
+  The source country still defines the blocks and the ``domestic`` and
+  ``international`` assets. The check is therefore not a literal domestic
+  portfolio in the target country: it isolates the change of numeraire in the
+  ACO bootstrap. Hedged sleeves keep their excess return but are recombined
+  with the target bill; unhedged sleeves are converted at spot and deflated by
+  the target CPI.
   """
   target_by_year = {
     row["year"]: row for row in rows if row["country"] == target_country
   }
   if not target_by_year:
-    raise ValueError(f"Pays de numeraire absent du panel : {target_country}")
+    raise ValueError(f"Numeraire country missing from panel: {target_country}")
   by_country_year = {(row["country"], row["year"]): row for row in rows}
   converted = []
   for row in rows:
@@ -328,7 +327,7 @@ def fixed_numeraire_rows(rows: list[dict[str, float]],
 
 
 def usd_numeraire_rows(rows: list[dict[str, float]]) -> list[dict[str, float]]:
-  """Alias de compatibilite pour le controle a numeraire USD fixe."""
+  """Compatibility alias for the fixed-USD-numeraire check."""
   return fixed_numeraire_rows(rows, "USA")
 
 
@@ -362,47 +361,45 @@ def main() -> None:
                       help="diagnostic only: remove a resident country-year from the bootstrap panel")
   parser.add_argument(
     "--portfolio-set", choices=("all", "core", "ladders"), default="all",
-    help=("all (defaut) evalue toutes les recettes ; core produit les tableaux "
-          "principaux ; ladders produit seulement les deux echelles de levier"))
+    help=("all (default) evaluates every recipe; core produces the main "
+          "tables; ladders produces only the two exposure ladders"))
   parser.add_argument(
     "--sample-mode", choices=("investable", "usa", "full"),
     default="full",
-    help=("full (defaut) conserve le panel historique integral ; investable "
-          "applique le filtre de negociabilite ; usa "
-          "simule uniquement un resident americain ; full conserve tout le "
-          "panel"))
+    help=("full (default) keeps the whole historical panel; investable "
+          "applies the tradability filter; usa simulates a US resident only"))
   parser.add_argument("--usd-numeraire", action="store_true",
-                      help=("conserve les blocs internationaux mais convertit "
-                            "toutes les poches dans le dollar reel et finance "
-                            "au bill americain"))
+                      help=("keep the international blocks but convert "
+                            "every sleeve into real dollars and finance at the "
+                            "US bill"))
   parser.add_argument("--usd-common-sample", action="store_true",
-                      help=("restreint le panel resident au sous-echantillon "
-                            "convertible en dollars reels, pour une comparaison "
-                            "appariee avec --usd-numeraire"))
+                      help=("restrict the resident panel to the subsample "
+                            "convertible into real dollars, for a comparison "
+                            "paired with --usd-numeraire"))
   parser.add_argument("--exclude-war-years", action="store_true",
-                      help="retire les conflits et ruptures monetaires "
-                           "documentes, pays par pays")
+                      help="remove documented wars and monetary breaks, "
+                           "country by country")
   parser.add_argument("--include-suspect-data", action="store_true",
-                      help="alias historique de --sample-mode full")
+                      help="historical alias of --sample-mode full")
   parser.add_argument("--include-unhedged-control", action="store_true",
-                      help="ajoute le controle obligations et cash etrangers "
-                      "nus ; robustesse uniquement")
+                      help="add the unhedged foreign bonds and cash check; "
+                      "robustness only")
   parser.add_argument(
     "--reallocate-administered-gold-from", type=int,
-    help=("a partir de cette annee, l'or redevient disponible ; avant cette "
-          "date, sa poche est repartie egalement entre les sleeves non-or "
-          "actifs (variante d'indisponibilite)"))
+    help=("from this year, gold becomes available again; before it, its "
+          "sleeve is spread equally over the active non-gold sleeves "
+          "(unavailability variant)"))
   parser.add_argument("--output-json",
-                      help="sortie machine-readable optionnelle")
+                      help="optional machine-readable output")
   args = parser.parse_args()
   if args.runs <= 0:
-    raise ValueError("--runs doit etre strictement positif")
+    raise ValueError("--runs must be strictly positive")
   if args.spread < 0.0:
-    raise ValueError("--spread ne peut pas etre negatif")
+    raise ValueError("--spread cannot be negative")
   if args.fx_hedge_cost < 0.0:
-    raise ValueError("--fx-hedge-cost ne peut pas etre negatif")
+    raise ValueError("--fx-hedge-cost cannot be negative")
   if (args.usd_numeraire or args.usd_common_sample) and args.sample_mode == "usa":
-    raise ValueError("Le controle USD est redondant avec --sample-mode usa")
+    raise ValueError("The USD check is redundant with --sample-mode usa")
   validate_design()
 
   rows = read_panel(args.panel)
@@ -460,7 +457,7 @@ def main() -> None:
       rows = [row for row in rows
               if (row["country"], row["year"]) in converted_keys]
   if len(rows) < 2:
-    raise ValueError("La fenetre demandee ne contient pas assez de donnees")
+    raise ValueError("The requested window does not contain enough data")
   included_keys = {(row["country"], row["year"]) for row in rows}
   quality_flags = [
     flag for flag in quality_flags
@@ -485,24 +482,24 @@ def main() -> None:
     functions = {name: function for name, function in functions.items()
                  if name in allowed}
 
-  print("PANEL A -- DESIGN FIXE EX ANTE (aucun ciblage de volatilite)")
+  print("PANEL A -- FIXED EX ANTE DESIGN (no volatility targeting)")
   if sample_mode == "investable":
-    print("Echantillon central investissable : "
-          f"{len(investability_exclusions)} pays-annees exclus selon des "
-          "criteres documentes.")
+    print("Investable core sample: "
+          f"{len(investability_exclusions)} country-years excluded on "
+          "documented criteria.")
   elif sample_mode == "usa":
-    print("Controle coherent : resident USA, rendements et flux en dollars reels.")
+    print("Consistent check: US resident, returns and flows in real dollars.")
   else:
-    print("Stress historique integral : aucune exclusion d'investissabilite.")
+    print("Full historical stress: no investability exclusion.")
   if args.usd_numeraire:
-    print("Controle de numeraire : memes blocs pays-annee, toutes les poches "
-          "en dollars reels; bill americain. "
-          f"{len(rows)}/{source_observations} observations convertibles.")
+    print("Numeraire check: same country-year blocks, every sleeve "
+          "in real dollars; US bill. "
+          f"{len(rows)}/{source_observations} convertible observations.")
   elif args.usd_common_sample:
-    print("Echantillon apparie au controle de numeraire USD : "
-          f"{len(rows)}/{source_observations} observations convertibles.")
-  print(f"{'strategie':<24}{'actions':>10}{'oblig.':>10}{'or':>9}"
-        f"{'MF':>9}{'brut':>9}{'emprunt':>10}")
+    print("Sample matched to the USD numeraire check: "
+          f"{len(rows)}/{source_observations} convertible observations.")
+  print(f"{'strategy':<24}{'stocks':>10}{'bonds':>10}{'gold':>9}"
+        f"{'MF':>9}{'gross':>9}{'borrow':>10}")
   print("-" * 81)
   print(f"{'ACO 33/67':<24}{'100%*':>10}{'0.0%':>10}{'0.0%':>9}"
         f"{'0.0%':>9}{'100.0%':>9}{'0.0%':>10}")
@@ -511,31 +508,31 @@ def main() -> None:
           f"{0.0:>9.1%}{level:>9.1%}{level-1:>10.1%}")
   print(f"{'Stocks/I 50/50':<24}{'100%*':>10}{'0.0%':>10}{'0.0%':>9}"
         f"{'0.0%':>9}{'100.0%':>9}{'0.0%':>10}")
-  print(f"{'Actions domestiques':<24}{'100%**':>10}{'0.0%':>10}{'0.0%':>9}"
+  print(f"{'Domestic stocks':<24}{'100%**':>10}{'0.0%':>10}{'0.0%':>9}"
         f"{'0.0%':>9}{'100.0%':>9}{'0.0%':>10}")
   if not args.usd_numeraire:
-    print(f"{'ACO 33/67, change cst':<24}{'100%****':>10}{'0.0%':>10}{'0.0%':>9}"
+    print(f"{'ACO 33/67, const. FX':<24}{'100%****':>10}{'0.0%':>10}{'0.0%':>9}"
           f"{'0.0%':>9}{'100.0%':>9}{'0.0%':>10}")
-  print(f"{'90/60 local fixe':<24}{'90%*':>10}{'60%**':>10}{'0.0%':>9}"
+  print(f"{'90/60 local fixed':<24}{'90%*':>10}{'60%**':>10}{'0.0%':>9}"
         f"{'0.0%':>9}{'150.0%':>9}{'50.0%':>10}")
-  print(f"{'90/60 oblig. mondiales':<24}{'90%*':>10}{'60%***':>10}{'0.0%':>9}"
+  print(f"{'90/60 global bonds':<24}{'90%*':>10}{'60%***':>10}{'0.0%':>9}"
         f"{'0.0%':>9}{'150.0%':>9}{'50.0%':>10}")
   if args.include_unhedged_control:
-    print(f"{'90/60 oblig. non cvt':<24}{'90%*':>10}{'60%*****':>10}{'0.0%':>9}"
+    print(f"{'90/60 unhedged bonds':<24}{'90%*':>10}{'60%*****':>10}{'0.0%':>9}"
           f"{'0.0%':>9}{'150.0%':>9}{'50.0%':>10}")
   for name, (equity, bond, gold, trend) in FIXED_EXPOSURES.items():
     gross = equity + bond + gold + trend
     print(f"{name:<24}{equity:>10.1%}{bond:>10.1%}{gold:>9.1%}"
           f"{trend:>9.1%}{gross:>9.1%}{max(0.0, gross - 1.0):>10.1%}")
-  print("* ACO 33/67 est le portefeuille fixe optimal de la revision 2025 ;")
-  print("  toutes les extensions conservent cette meme poche actions.")
-  print("  Stocks/I conserve la convention historique 50/50 comme controle.")
-  print("** Exposition domestique au pays de residence de la trajectoire.")
-  print("*** Obligations mondiales couvertes ; bill du resident ; actions inchangees.")
+  print("* ACO 33/67 is the optimal fixed portfolio of the 2025 revision;")
+  print("  every extension keeps this same equity sleeve.")
+  print("  Stocks/I keeps the historical 50/50 convention as a check.")
+  print("** Domestic exposure to the path's country of residence.")
+  print("*** Hedged global bonds; resident's bill; stocks unchanged.")
   if not args.usd_numeraire:
-    print("**** 33/67 domestique/international, change reel neutralise ; contrefactuel.")
+    print("**** 33/67 domestic/international, real exchange rate neutralised; counterfactual.")
   if args.include_unhedged_control:
-    print("***** Controle secondaire au change spot, non couvert.")
+    print("***** Secondary check at the spot exchange rate, unhedged.")
   print()
 
   pooled = {name: [function(row) for row in rows]
@@ -552,9 +549,9 @@ def main() -> None:
       "worst_country": worst_row["country"],
       "worst_calendar_year": worst_row["year"],
     }
-  print("PANEL B -- MOMENTS REALISES (evaluation, jamais calibrage)")
-  print(f"{'strategie':<24}{'rendement':>12}{'volatilite':>13}"
-        f"{'pct. 1 %':>12}{'minimum (pays-annee)':>27}")
+  print("PANEL B -- REALISED MOMENTS (evaluation, never calibration)")
+  print(f"{'strategy':<24}{'return':>12}{'volatility':>13}"
+        f"{'1st pct.':>12}{'minimum (country-year)':>27}")
   print("-" * 88)
   for name, values in pooled.items():
     moment = moment_by_name[name]
@@ -587,25 +584,25 @@ def main() -> None:
   target_utility = expected_utility(
     scenarios, BENCHMARK_NAME, BASE_SAVINGS_RATE, args.gamma,
     args.withdrawal_rate)
-  print("PANEL C -- CYCLE DE VIE, CRRA ET EPARGNE EQUIVALENTE")
-  print(f"{args.runs} trajectoires appariees ; blocs {args.mean_block:g} ans ; "
-        f"spread {args.spread:.2%} ; gamma {args.gamma:g}")
-  print(f"MF nets de frais {args.trend_fee:.2%}, couts {args.trend_cost:.2%} "
-        f"et haircut {args.trend_haircut:.2%}")
-  print(f"Obligations et MF couverts ; friction de change "
+  print("PANEL C -- LIFECYCLE, CRRA AND EQUIVALENT SAVING")
+  print(f"{args.runs} paired paths; {args.mean_block:g}-year blocks; "
+        f"spread {args.spread:.2%}; gamma {args.gamma:g}")
+  print(f"MF net of fees {args.trend_fee:.2%}, costs {args.trend_cost:.2%} "
+        f"and haircut {args.trend_haircut:.2%}")
+  print(f"Bonds and MF hedged; FX friction "
         f"{args.fx_hedge_cost:.2%}")
   if args.reallocate_administered_gold_from is not None:
-    print("Or indisponible avant "
-          f"{args.reallocate_administered_gold_from} : notionnel reparti "
-          "egalement entre sleeves non-or actifs.")
-  print(f"Controle revenu median : age 25 "
+    print("Gold unavailable before "
+          f"{args.reallocate_administered_gold_from}: notional spread "
+          "equally over active non-gold sleeves.")
+  print(f"Median income check: age 25 "
         f"{statistics.median(income_at_25):,.0f}, age 47 "
         f"{statistics.median(income_at_47):,.0f}".replace(",", " "))
   print()
-  print(f"Reference d'utilite : {BENCHMARK_NAME} avec 10 % d'epargne.")
-  print(f"{'strategie':<27}{'epargne eq.':>12}{'richesse med.':>16}"
-        f"{'conso moy.':>13}{'ruine':>9}  {'delta [IC95]':>22}"
-        f"{'legs med.':>14}")
+  print(f"Utility reference: {BENCHMARK_NAME} saving 10%.")
+  print(f"{'strategy':<27}{'eq. saving':>12}{'median wealth':>16}"
+        f"{'mean cons.':>13}{'ruin':>9}  {'delta [CI95]':>22}"
+        f"{'median bequest':>14}")
   print("-" * 113)
   outcomes_by_name = {
     name: evaluate_batch(scenarios, name, BASE_SAVINGS_RATE,

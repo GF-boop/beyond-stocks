@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Ablation des poches des portefeuilles diversifies a exposition constante.
+"""Ablation of the sleeves of the diversified portfolios at constant exposure.
 
-Chaque experience retire une poche (obligations mondiales, or ou managed
-futures) et realloue son notionnel entre les trois autres au prorata de leurs
-poids. L'exposition brute, le financement, la couverture fixe et les couts
-restent donc identiques a ceux de la recette complete.
+Each experiment removes one sleeve (global bonds, gold or managed futures) and
+reallocates its notional to the other three in proportion to their weights.
+Gross exposure, financing, the fixed hedge and costs therefore stay identical
+to those of the full recipe.
 """
 
 from __future__ import annotations

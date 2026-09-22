@@ -1,9 +1,9 @@
-"""Reproduit un proxy managed futures mensuel 1/6/12 mois.
+"""Reproduce a monthly 1/6/12-month managed-futures proxy.
 
-Le script lit uniquement le snapshot canonique local. Il ne telecharge rien et
-ne reconstruit aucune donnee de marche. Par defaut, les signaux du mois t sont
-arretes au mois t-2 : le mois t-1 est saute afin de neutraliser le chevauchement
-des prix sources qui sont souvent des moyennes mensuelles.
+The script reads only the local frozen snapshot. It downloads nothing and
+rebuilds no market data. By default, the signals of month t stop at month t-2:
+month t-1 is skipped to neutralise the overlap of source prices that are often
+monthly averages.
 """
 
 from __future__ import annotations
@@ -39,34 +39,33 @@ VARIANTS = {
     "signal_3m": (3,),
     "signal_6m": (6,),
     "signal_12m": (12,),
-    # Combinaison publiee par Hurst, Ooi et Pedersen (2017).
+    # Blend published by Hurst, Ooi and Pedersen (2017).
     "mf_1_3_12": (1, 3, 12),
     # Variante de recherche propre a ce projet.
     "mf_1_6_12": (1, 6, 12),
 }
 
 UNIVERSE_PROFILES = {
-    # KMLM est construit sur commodities, devises et obligations globales;
-    # cette composition est aussi la plus fidele aux instruments availables
-    # localement, contrairement aux 18 indices actions cash nationaux.
+    # KMLM is built on commodities, currencies and global bonds; this composition
+    # is also the closest to the instruments available locally, unlike the 18 national
+    # cash equity indexes.
     "futures_core": {"bond", "commodity", "currency"},
-    # Reproduction exacte du proxy historique, conservee pour sensibilite.
+    # Exact reproduction of the historical proxy, kept for sensitivity.
     "legacy_three_sector": {"equity", "bond", "commodity"},
-    # Version SG-like : quatre secteurs, mais actions cash toujours imparfaites.
+    # SG-like version: four sectors, although cash equity indexes remain imperfect.
     "all_four_sectors": {"equity", "bond", "commodity", "currency"},
-    # Avant les devises convertibles, les actions nationales apportent le
-    # troisieme secteur disponible. Elles sont retirees lorsque les cinq
-    # devises H.10 deviennent disponibles, afin de ne pas degrader l'univers
-    # CTA moderne par des indices actions cash.
+    # Before convertible currencies, national equities provide the third available
+    # sector. They are removed once the five H.10 currencies become available, so as
+    # not to degrade the modern CTA universe with cash equity indexes.
     "historical_equity_transition": {"equity", "bond", "commodity", "currency"},
 }
 
 EQUITY_TRANSITION_END = "1970-12"
 
-# Les rendements locaux ne sont convertis en USD que lorsque le spot USD de
-# leur devise est effectivement disponible dans le snapshot. Les pays de la
-# zone euro n'emploient donc EUR qu'a partir de 1999; avant, leurs P&L locaux
-# sont exclus plutot que traites implicitement comme des P&L USD.
+# Local returns are converted into USD only when the USD spot rate of their
+# currency is actually available in the snapshot. Euro-area countries therefore
+# use EUR only from 1999; before, their local P&L is excluded rather than treated
+# implicitly as USD P&L.
 COUNTRY_FX_ASSET = {
     "AUS": "FX_AUD", "CAN": "FX_CAD", "CHE": "FX_CHF",
     "GBR": "FX_GBP", "JPN": "FX_JPY",
@@ -103,16 +102,16 @@ def load_markets(path: Path) -> tuple[list[str], dict[str, Market]]:
         continue
       asset = row["asset_id"]
       raw[asset][row["month"]] = float(row["return"])
-      # Or et argent appartiennent au secteur commodities pour ne pas creer un
-      # pseudo-secteur de deux marches surpondere a un tiers du CTA.
+      # Gold and silver belong to the commodity sector, so as not to create a
+      # two-market pseudo-sector weighing a third of the CTA.
       classes[asset] = "commodity" if asset_class == "precious_metal" else asset_class
       return_kinds[asset] = row["return_kind"]
 
   markets = {
       asset: Market(
           asset, classes[asset], values,
-          # Les prix mensuels moyens ne peuvent pas utiliser t-1 sans
-          # chevauchement. Les devises H.10 sont au contraire des closings EOM.
+          # Monthly average prices cannot use t-1 without overlap. H.10 currencies, by
+          # contrast, are end-of-month closes.
           0 if return_kinds[asset] in {
               "spot_eom_price_return", "forward_excess_return",
           } else 1,
@@ -127,7 +126,7 @@ def load_markets(path: Path) -> tuple[list[str], dict[str, Market]]:
 
 
 def load_fx_spot_returns(path: Path) -> dict[str, dict[str, float]]:
-  """Lit les variations spot USD, distinctes des rendements de forwards FX."""
+  """Read USD spot changes, distinct from the returns of FX forwards."""
   values: dict[str, dict[str, float]] = defaultdict(dict)
   with path.open(newline="", encoding="utf-8") as handle:
     for row in csv.DictReader(handle):
@@ -136,7 +135,7 @@ def load_fx_spot_returns(path: Path) -> dict[str, dict[str, float]]:
         if asset != "month" and value:
           values[asset][month] = float(value)
   if not values:
-    raise ValueError(f"fichier spot FX vide: {path}")
+    raise ValueError(f"empty FX spot file: {path}")
   return dict(values)
 
 
@@ -152,11 +151,11 @@ def normalize_local_pnl_to_usd(
     markets: dict[str, Market], fx_spot: dict[str, dict[str, float]],
     futures_pnl_fx: bool,
 ) -> dict[str, Market]:
-  """Convertit les retours locaux en USD au spot EOM.
+  """Convert local returns into USD at the end-of-month spot rate.
 
-  Les actions portent un principal FX. Les obligations sont des P&L
-  synthetiques en exces de cash: sous ``futures_pnl_fx``, seul ce P&L est
-  converti, afin qu'un P&L local nul reste nul comme pour un futures collatéral.
+  Equities carry an FX principal. Bonds are synthetic P&L in excess of cash:
+  under ``futures_pnl_fx``, only this P&L is converted, so that a zero local P&L
+  stays zero, as for a collateralised future.
   """
   normalized: dict[str, Market] = {}
   for asset, market in markets.items():
@@ -181,7 +180,7 @@ def normalize_local_pnl_to_usd(
           market.return_kind,
       )
   if not normalized:
-    raise ValueError("normalisation USD: aucun marche exploitable")
+    raise ValueError("USD normalization: no usable market")
   return normalized
 
 
@@ -206,11 +205,11 @@ def select_universe(markets: dict[str, Market], profile: str) -> dict[str, Marke
 
 
 def load_usd_collateral(path: Path) -> dict[str, float]:
-  """Lit le rendement cash USD deja decale d'un mois dans le snapshot."""
+  """Read the USD cash return, already lagged by one month in the snapshot."""
   with path.open(newline="", encoding="utf-8") as handle:
     reader = csv.DictReader(handle)
     if "USA" not in (reader.fieldnames or []):
-      raise ValueError(f"colonne USA absente du collateral: {path}")
+      raise ValueError(f"USA column missing from collateral: {path}")
     return {
         row["month"]: float(row["USA"])
         for row in reader if row.get("USA")
@@ -253,12 +252,12 @@ def sector_allocation(
     sectors: dict[str, float], historical_sectors: dict[str, dict[str, float]],
     history: list[str], method: str,
 ) -> dict[str, float]:
-  """Alloue les secteurs avec les seules informations disponibles avant t.
+  """Allocate the sectors with only the information available before t.
 
-  ``inverse_vol`` est une risk-parity diagonale volontairement robuste : il ne
-  tente pas d'inverser une matrice de covariance instable quand l'univers
-  historique s'elargit. Tant que tous les secteurs actifs n'ont pas 24 mois
-  d'observations, il retombe explicitement sur l'equiponderation.
+  ``inverse_vol`` is a deliberately robust diagonal risk parity: it does not try
+  to invert an unstable covariance matrix as the historical universe widens.
+  Until every active sector has 24 months of observations, it explicitly falls
+  back to equal weights.
   """
   if method == "equal":
     return {sector: 1.0 / len(sectors) for sector in sectors}
@@ -426,8 +425,8 @@ def target_and_cost(
     transaction_cost = turnover * transaction_bps / 10_000.0
     excess_pnl = scalar * raw_returns[month]
     collateral = usd_collateral.get(month, 0.0) if add_usd_collateral else 0.0
-    # Le P&L des contrats (obligations/FX en exces de cash, commodities a
-    # roll nul) est reinvesti avec le collateral USD du NAV.
+    # The P&L of the contracts (bonds/FX in excess of cash, commodities with zero
+    # roll) is reinvested with the USD collateral of the NAV.
     gross = (1.0 + collateral) * (1.0 + excess_pnl) - 1.0
     net = gross - transaction_cost - monthly_fee
     result[month] = {
@@ -511,7 +510,7 @@ def write_rows(path: Path, rows: list[dict], fields: list[str]) -> None:
 def build_annual_rows(
     targeted: dict[str, dict[str, dict[str, float]]],
 ) -> tuple[list[dict[str, str]], list[str]]:
-  """Compose les douze mois; les annees calendaires partielles sont exclues."""
+  """Compound the twelve months; partial calendar years are excluded."""
   fields = ["year"]
   for variant in VARIANTS:
     fields.extend((f"{variant}_gross_return", f"{variant}_net_return"))
@@ -545,36 +544,36 @@ def main() -> None:
   parser.add_argument("--transaction-bps", type=float, default=3.0)
   parser.add_argument(
       "--add-usd-collateral", action=argparse.BooleanOptionalAction, default=True,
-      help="ajoute le rendement cash USD du NAV aux P&L futures (defaut: oui)",
+      help="add the USD cash return of the NAV to the futures P&L (default: yes)",
   )
   parser.add_argument(
       "--normalize-local-pnl-to-usd", action=argparse.BooleanOptionalAction,
       default=True,
-      help=("convertit actions et obligations locales au spot USD; les marches "
-            "sans spot sont exclus (defaut: oui)"),
+      help=("convert local equities and bonds at the USD spot rate; markets "
+            "without a spot rate are excluded (default: yes)"),
   )
   parser.add_argument(
       "--futures-pnl-fx", action=argparse.BooleanOptionalAction, default=True,
-      help=("convertit les P&L obligataires synthetiques en exces de cash sans "
-            "exposer leur principal au change; convention centrale, defaut: oui"),
+      help=("convert synthetic bond P&L in excess of cash without exposing its "
+            "principal to FX; main convention, default: yes"),
   )
   parser.add_argument(
       "--universe-profile", choices=sorted(UNIVERSE_PROFILES),
       default="all_four_sectors",
-      help=("univers de marche; all_four_sectors (actions, obligations, "
-            "commodities, devises) est le profil canonique : il conserve "
-            "quatre secteurs sur tout l'echantillon, la ou futures_core "
-            "tombe a deux secteurs avant 1971"),
+      help=("market universe; all_four_sectors (equities, bonds, "
+            "commodities, currencies) is the canonical profile: it keeps four "
+            "sectors over the whole sample, whereas futures_core drops to two "
+            "sectors before 1971"),
   )
   parser.add_argument(
       "--sector-weighting", choices=SECTOR_WEIGHTINGS, default="inverse_vol",
-      help=("ponderation des secteurs : equal, ou inverse_vol pour une "
-            "risk-parity sectorielle retardee"),
+      help=("sector weighting: equal, or inverse_vol for a lagged sector "
+            "risk parity"),
   )
   parser.add_argument(
       "--signal-skip-months", type=int, default=1,
-      help=("mois complets sautes entre la fin du signal et le mois investi; "
-            "1 par defaut pour les prix sources en moyenne mensuelle"),
+      help=("full months skipped between the end of the signal and the "
+            "invested month; 1 by default for monthly-average source prices"),
   )
   args = parser.parse_args()
   if args.signal_skip_months < 0:
@@ -665,7 +664,7 @@ def main() -> None:
        "active_currency", "active_sectors"],
   )
 
-  # Ajoute aux positions le scalar final de la variante combinee.
+  # Add the final scalar of the combined variant to the positions.
   position_rows = []
   for row in position_audit:
     target = targeted["mf_1_6_12"].get(row["month"])
@@ -691,8 +690,8 @@ def main() -> None:
   ]
   write_rows(args.output / "managed-futures-summary.csv", summaries, summary_fields)
 
-  # Le comparatif sans mois saute quantifie l'artefact de chevauchement produit
-  # par les observations en moyenne mensuelle. Ce n'est pas la serie canonique.
+  # The comparison without a skipped month quantifies the overlap artefact
+  # produced by monthly-average observations. It is not the canonical series.
   diagnostic_targeted = {args.signal_skip_months: targeted}
   if args.signal_skip_months != 0:
     (raw_no_skip, weights_no_skip, _sectors_no_skip, _signals_no_skip,
@@ -765,34 +764,34 @@ def main() -> None:
                   and row["variant"] == "mf_1_6_12"), None)
   report = [
       "PROXY MANAGED FUTURES 1/6/12",
-      f"Donnees : {args.input}",
-      f"Collateral USD : {args.collateral_input} ({'ajoute au NAV' if args.add_usd_collateral else 'non ajoute'}).",
-      ("P&L obligations convertis sans principal FX : oui"
-       if args.futures_pnl_fx else "P&L actions/obligations convertis au spot USD : oui"
-       if args.normalize_local_pnl_to_usd else "P&L locaux conserves : sensibilite non normalisee"),
-      f"Periode ciblee : {combined_months[0]} -> {combined_months[-1]} ({len(combined_months)} mois)",
-      f"Univers : {args.universe_profile} ({', '.join(sorted(UNIVERSE_PROFILES[args.universe_profile]))}).",
-      *((f"Transition actions : sorties apres {EQUITY_TRANSITION_END} lorsque les devises H.10 sont disponibles.",)
+      f"Data: {args.input}",
+      f"USD collateral: {args.collateral_input} ({'added to the NAV' if args.add_usd_collateral else 'not added'}).",
+      ("Bond P&L converted without FX principal: yes"
+       if args.futures_pnl_fx else "Equity/bond P&L converted at USD spot: yes"
+       if args.normalize_local_pnl_to_usd else "Local P&L kept: unnormalised sensitivity"),
+      f"Targeted period: {combined_months[0]} -> {combined_months[-1]} ({len(combined_months)} months)",
+      f"Universe: {args.universe_profile} ({', '.join(sorted(UNIVERSE_PROFILES[args.universe_profile]))}).",
+      *((f"Equity transition: removed after {EQUITY_TRANSITION_END} once the H.10 currencies are available.",)
         if args.universe_profile == "historical_equity_transition" else ()),
-      f"Ponderation sectorielle : {args.sector_weighting}.",
-      ("Signal : moyenne egale des signes du momentum compose 1, 6 et 12 mois; "
-       f"{args.signal_skip_months} mois complet(s) saute(s) pour les prix mensuels moyens; "
-       "les devises H.10 de fin de mois utilisent t-1."),
-      f"Volatilite : {VOL_WINDOW} mois, minimum {MIN_VOL_OBSERVATIONS}; cible marche {ASSET_VOL_TARGET:.0%}, portefeuille {PORTFOLIO_VOL_TARGET:.0%}.",
-      f"Caps : levier marche {MAX_ASSET_LEVERAGE:.1f}x, scalar portefeuille {MAX_PORTFOLIO_SCALAR:.1f}x.",
-      f"Couts nets : frais {args.annual_fee:.2%}/an + {args.transaction_bps:.1f} pb par unite de turnover.",
+      f"Sector weighting: {args.sector_weighting}.",
+      ("Signal: equal mean of the signs of compounded 1-, 6- and 12-month momentum; "
+       f"{args.signal_skip_months} full month(s) skipped for monthly-average prices; "
+       "end-of-month H.10 currencies use t-1."),
+      f"Volatility: {VOL_WINDOW} months, minimum {MIN_VOL_OBSERVATIONS}; market target {ASSET_VOL_TARGET:.0%}, portfolio {PORTFOLIO_VOL_TARGET:.0%}.",
+      f"Caps: market leverage {MAX_ASSET_LEVERAGE:.1f}x, portfolio scalar {MAX_PORTFOLIO_SCALAR:.1f}x.",
+      f"Net costs: fee {args.annual_fee:.2%}/yr + {args.transaction_bps:.1f} bp per unit of turnover.",
       "",
-      f"Combine brut : CAGR {float(full_gross['cagr']):.2%}, vol {float(full_gross['annualized_vol']):.2%}, Sharpe(0) {float(full_gross['sharpe_zero_cash']):.2f}, max DD {float(full_gross['max_drawdown']):.2%}.",
-      f"Combine net  : CAGR {float(full_net['cagr']):.2%}, vol {float(full_net['annualized_vol']):.2%}, Sharpe(0) {float(full_net['sharpe_zero_cash']):.2f}, max DD {float(full_net['max_drawdown']):.2%}.",
-      f"Depuis 2000 brut : CAGR {float(since_2000['cagr']):.2%}, vol {float(since_2000['annualized_vol']):.2%}, Sharpe(0) {float(since_2000['sharpe_zero_cash']):.2f}.",
-      f"Depuis 2010 brut : CAGR {float(since_2010['cagr']):.2%}, vol {float(since_2010['annualized_vol']):.2%}, Sharpe(0) {float(since_2010['sharpe_zero_cash']):.2f}.",
-      f"Turnover annualise moyen {avg_turnover:.2f}x; exposition brute moyenne {avg_exposure:.2f}x; cout de transaction moyen {avg_cost:.2%}/an.",
-      *((f"Diagnostic sans mois saute : Sharpe(0) brut {float(no_skip['sharpe_zero_cash']):.2f}; ne pas utiliser comme resultat.",) if no_skip else ()),
+      f"Combined gross: CAGR {float(full_gross['cagr']):.2%}, vol {float(full_gross['annualized_vol']):.2%}, Sharpe(0) {float(full_gross['sharpe_zero_cash']):.2f}, max DD {float(full_gross['max_drawdown']):.2%}.",
+      f"Combined net  : CAGR {float(full_net['cagr']):.2%}, vol {float(full_net['annualized_vol']):.2%}, Sharpe(0) {float(full_net['sharpe_zero_cash']):.2f}, max DD {float(full_net['max_drawdown']):.2%}.",
+      f"Since 2000 gross: CAGR {float(since_2000['cagr']):.2%}, vol {float(since_2000['annualized_vol']):.2%}, Sharpe(0) {float(since_2000['sharpe_zero_cash']):.2f}.",
+      f"Since 2010 gross: CAGR {float(since_2010['cagr']):.2%}, vol {float(since_2010['annualized_vol']):.2%}, Sharpe(0) {float(since_2010['sharpe_zero_cash']):.2f}.",
+      f"Mean annualised turnover {avg_turnover:.2f}x; mean gross exposure {avg_exposure:.2f}x; mean transaction cost {avg_cost:.2%}/yr.",
+      *((f"Diagnostic without skipped month: gross Sharpe(0) {float(no_skip['sharpe_zero_cash']):.2f}; do not use as a result.",) if no_skip else ()),
       "",
-      "Le Sharpe(0) n'est pas un Sharpe d'exces: il mesure le rendement total, collateral USD inclus le cas echeant.",
-      "Obligations et devises sont des P&L en exces de cash; les commodities sont des P&L spot avec roll explicitement suppose nul.",
-      "Le roll futures des commodities demeure inconnu hors segments a contrats observes: aucune courbe n'est inventee.",
-      "Le fichier signal-lag-diagnostic.csv publie le comparatif sans mois saute, contamine par le chevauchement des moyennes mensuelles.",
+      "Sharpe(0) is not an excess Sharpe ratio: it measures the total return, including USD collateral where applicable.",
+      "Bonds and currencies are P&L in excess of cash; commodities are spot P&L with roll explicitly assumed to be zero.",
+      "The futures roll of commodities remains unknown outside segments with observed contracts: no curve is invented.",
+      "The file signal-lag-diagnostic.csv publishes the comparison without a skipped month, contaminated by the overlap of monthly averages.",
   ]
   (args.output / "VALIDATION.txt").write_text("\n".join(report) + "\n", encoding="utf-8")
 

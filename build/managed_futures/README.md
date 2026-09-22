@@ -1,130 +1,122 @@
-# Proxy managed futures mensuel — variantes MOP, AQR et 1/6/12
+# Monthly managed-futures proxy: MOP, AQR, and 1/6/12 variants
 
-Cette stratégie lit directement le snapshot figé de `data/mf-inputs/`. Elle ne
-télécharge aucune donnée et ne reconstruit aucune série de marché. Le moteur
-vient du projet voisin `CTO_vs_PEA` et régénère à l'octet près
-`data/managed-futures-monthly.csv`.
+This strategy reads the frozen snapshot in `data/mf-inputs/` directly.
+It downloads no data and reconstructs no market series. The engine came
+from the sibling `CTO_vs_PEA` project and regenerates
+`data/managed-futures-monthly.csv` byte for byte.
 
 ```bash
 python3 build/managed_futures/run_managed_futures.py
 ```
 
-Les résultats sont écrits sous `build/managed_futures/output/` (non versionné ;
-`rebuild_all.sh` en copie la série mensuelle dans `data/`) : rendements mensuels,
-rendements annuels composés, contributions sectorielles, positions par marché,
-statistiques par période et empreintes SHA-256. Le fichier annuel ne conserve
-que les années calendaires possédant douze rendements mensuels, afin d'être
-directement raccordable à un panel annuel sans fabriquer d'année partielle.
+Outputs go to the unversioned `build/managed_futures/output/` directory.
+`rebuild_all.sh` copies the monthly series into `data/`. Outputs include
+monthly returns, compounded annual returns, sector contributions, market
+positions, period statistics, and SHA-256 hashes. The annual file includes
+only calendar years with twelve monthly returns, so it can join an annual
+panel without inventing a partial year.
 
 ## Signal
 
-Pour chaque marché et chaque mois `t` :
+For each market and month `t`:
 
-1. calcul des rendements composés sur 1, 3, 6 et 12 mois ; les prix mensuels
-   moyens s'arrêtent en `t-2`, les devises H.10 de fin de mois en `t-1` ;
-2. transformation de chaque momentum en `-1`, `0` ou `+1` ;
-3. publication de deux combinaisons fixes : 1/3/12, utilisée par AQR dans sa
-   reconstruction historique, et 1/6/12, la variante initiale de ce projet ;
-   leurs signaux sont des moyennes égales des signes ;
-4. estimation de la volatilité avec les 36 mois précédents, 24 observations
-   au minimum ;
-5. exposition inversement proportionnelle à cette volatilité, cible 15 % par
-   marché et plafond de levier 4×.
+1. Compute compounded returns over 1, 3, 6, and 12 months. Monthly-average
+   prices stop at `t-2`; month-end H.10 currency prices stop at `t-1`.
+2. Map each momentum return to `-1`, `0`, or `+1`.
+3. Publish two fixed blends: 1/3/12, used by AQR in its historical
+   reconstruction, and 1/6/12, the project's original variant. Each
+   blend averages its signal signs equally.
+4. Estimate volatility from the preceding 36 months, requiring at least
+   24 observations.
+5. Scale inversely with volatility, targeting 15% per market with a
+   maximum leverage multiplier of 4.
 
-Le profil par défaut, `all_four_sectors`, conserve les actions nationales,
-obligations, commodities et devises dès que chaque marché est disponible et
-convertible proprement en USD. Les secteurs sont pondérés par inverse de leur
-volatilité retardée, plutôt que mécaniquement équipondérés. Ce choix maintient
-les actions historiques dans l'univers, au prix assumé qu'elles sont des
-indices cash de prix et non des contrats futures. L'or et l'argent appartiennent
-aux commodities : ils ne forment pas artificiellement un cinquième secteur
-pesant 20 %.
+The default `all_four_sectors` profile retains national equities, bonds,
+commodities, and currencies whenever each market is available and can be
+converted properly into USD. Sectors receive inverse-volatility weights
+using lagged estimates rather than equal weights. Historical equities
+therefore remain in the universe even though they are cash price indexes,
+not observed futures. Gold and silver belong to commodities; they do not
+form an artificial fifth sector with a 20% weight.
 
-`--universe-profile legacy_three_sector` reproduit l'ancien univers
-actions–obligations–commodities ; `all_four_sectors` lui ajoute les devises
-pour une sensibilité de type SG Trend Indicator.
+`--universe-profile legacy_three_sector` reproduces the earlier
+equity-bond-commodity universe. `all_four_sectors` adds currencies for
+an SG Trend Indicator-style sensitivity. `historical_equity_transition`
+is another sensitivity, dropping equities after December 1970 when H.10
+currencies become available. The default `--sector-weighting inverse_vol`
+uses sector volatilities over the previous 36 months and falls back to
+equal weights when too little history is available.
 
-`historical_equity_transition` reste disponible comme sensibilité : il retire
-les actions après décembre 1970, lorsque les devises H.10 deviennent
-disponibles. `--sector-weighting inverse_vol` est la convention par défaut :
-les secteurs reçoivent des poids inversement proportionnels à leur volatilité
-observée sur les 36 mois précédents ; la règle retombe sur l'équipondération
-tant que l'historique est insuffisant.
+The gross portfolio targets 10% volatility based on its lagged 36-month
+estimate, with a leverage multiplier capped at 3.
 
-Enfin, le portefeuille brut est ciblé à 10 % de volatilité avec sa volatilité
-retardée de 36 mois et un multiplicateur plafonné à 3×.
+Month `t-1` is deliberately skipped for monthly-average prices. Using
+the average of `t-1` to predict the average of `t` creates temporal
+overlap and greatly inflates the short signal. The diagnostic option
+`--signal-skip-months 0` reproduces that naive convention; the comparison
+is in `signal-lag-diagnostic.csv`.
 
-Le mois `t-1` est volontairement sauté. Une grande partie des prix anciens est
-une **moyenne mensuelle**, et non une clôture de fin de mois. Utiliser la moyenne
-de `t-1` pour prévoir la moyenne de `t` crée un chevauchement temporel et gonfle
-très fortement le signal court. Le paramètre `--signal-skip-months 0` permet de
-reproduire cette convention naïve uniquement à des fins de diagnostic. Le
-comparatif est publié dans `signal-lag-diagnostic.csv`.
+## Gross and net returns
 
-## Rendements brut et net
+`managed-futures-monthly.csv` reports separate 1-, 3-, 6-, and 12-month
+strategies and the 1/3/12 and 1/6/12 blends. Each has:
 
-Le fichier `managed-futures-monthly.csv` publie séparément les stratégies 1,
-3, 6 et 12 mois, ainsi que les combinaisons 1/3/12 et 1/6/12. Pour chacune :
+- `gross_return`: return before fees;
+- `net_return`: gross return less a 0.85% annual fee and 3 basis points
+  per unit of turnover;
+- `cash_collateral_return`, `gross_exposure`, `turnover`, and the
+  volatility-targeting multiplier.
 
-- `gross_return` : rendement avant frais ;
-- `net_return` : rendement brut diminué de 0,85 % par an et de 3 pb par unité
-  de turnover ;
-- `cash_collateral_return`, `gross_exposure`, `turnover` et multiplicateur de
-  ciblage de volatilité.
+Bond and currency contract P&L is expressed in excess of cash. The engine
+adds USD cash income once to NAV as collateral; `--no-add-usd-collateral`
+removes it for a sensitivity check. The local, versioned collateral series
+is `data/mf-inputs/cash-returns-monthly.csv`.
 
-Le P&L des contrats est exprimé en excès de cash pour les obligations et les
-devises. Le moteur ajoute une fois le rendement cash USD au NAV afin de
-représenter le collateral ; `--no-add-usd-collateral` permet une sensibilité
-sans cette composante. Le fichier de collateral est local et versionné dans
-`data/mf-inputs/cash-returns-monthly.csv`.
+By default, local-currency equity returns are converted to USD using
+month-end spot rates. Bonds are synthetic cash-excess P&L: only their P&L
+is converted at spot, without exposing principal to exchange rates. This
+matches a USD-collateralized future: zero local P&L remains zero when the
+currency moves. Spot rates come from
+`data/mf-inputs/fx-spot-returns-monthly.csv`, separately from the
+currency-sector forward returns. A foreign market is excluded in any month
+without an available USD spot rate. `--no-futures-pnl-fx` restores the
+earlier convention that exposed synthetic principal; it is retained only
+as a sensitivity check.
 
-Par défaut, les rendements d'actions en devise locale sont convertis en USD
-avec le spot de fin de mois. Les obligations sont des P&L synthétiques en
-excès du cash : seul leur P&L est converti au spot, sans exposition du
-principal au change. Cette convention correspond à un contrat futures
-collatéralisé en USD; un P&L local nul reste nul lorsque la devise bouge.
-Le spot est lu dans `data/mf-inputs/fx-spot-returns-monthly.csv`.
-Il est distinct du rendement des forwards qui constituent le secteur devises.
-Lorsqu'un spot USD n'est pas disponible, le marché étranger est exclu de ce
-mois : il n'est jamais traité par défaut comme un rendement USD.
-`--no-futures-pnl-fx` rétablit l'ancienne convention qui exposait aussi le
-principal synthétique; elle est conservée seulement comme sensibilité.
+Costs can be changed with `--annual-fee` and `--transaction-bps`.
 
-Les paramètres de coût sont modifiables avec `--annual-fee` et
-`--transaction-bps`.
+## Important limitations
 
-## Limites importantes
+- Six currencies are synthetic forwards from month-end H.10 spot and
+  short-rate differentials.
+- USD conversion limits foreign equities and bonds to periods with
+  available H.10 spot rates, reducing early coverage.
+- National equities are price returns without dividends.
+- Commodities and metals are spot returns without observed roll or basis;
+  their assumed futures roll is zero, so their return level is not an
+  observed futures index.
+- Bonds are synthetic ten-year excess cash P&L.
+- The universe expands with data availability; monthly active-market
+  counts are published.
+- Risk scaling is revised monthly using a 36-month window, not the daily
+  deleveraging of a CTA.
+- The published Sharpe ratio uses zero as its reference rate, so it is
+  not an excess-return Sharpe even though USD collateral is included.
 
-- six devises sont modélisées comme forwards synthétiques (spot H.10 de fin de
-  mois + différentiel de taux courts) ;
-- la conversion USD limite les actions et obligations étrangères à la
-  disponibilité du spot H.10 : elle réduit donc volontairement l'univers avant
-  1971 et pour les devises non encore couvertes ;
-- actions nationales en price return, sans dividendes ;
-- commodities et métaux en spot return, sans roll, basis ou collateral ;
-- obligations en P&L synthétique dix ans, en excès de cash ;
-- commodities et métaux ont un roll explicitement supposé nul : il ne faut pas
-  interpréter leur niveau de rendement comme un indice futures observé ;
-- l'univers s'élargit avec l'histoire des données. Les nombres de marchés
-  actifs sont publiés chaque mois ;
-- le ciblage de risque n'est révisé que mensuellement avec une fenêtre de 36
-  mois. Il ne reproduit pas le désendettement quotidien d'un CTA ;
-- le Sharpe publié utilise zéro comme taux de référence : ce n'est donc pas un
-  Sharpe d'excès, même si le collateral USD est inclus dans le rendement total.
+These limitations make the series useful for testing trend mechanics and
+diversification, while limiting claims about the historical performance
+of an investable futures product.
 
-Ces limites rendent le résultat approprié pour tester la mécanique et la
-diversification du trend, pas encore pour annoncer la performance historique
-d'un produit futures investissable.
+## External validation
 
-## Validation externe
+`paper/build_mf_benchmark_data.py` and
+`paper/build_mf_pack_matrix.py` produce comparisons with SG CTA,
+SG Trend, BTOP50, and listed funds for the paper's internet appendix.
+For 2000–2025, the monthly correlation of the 1/6/12 blend is about
+0.51 with SG CTA, 0.49 with SG Trend, and 0.53 with BTOP50.
 
-La comparaison aux indices SG CTA, SG Trend et BTOP50 et aux fonds cotés est
-produite par `paper/build_mf_benchmark_data.py` et `paper/build_mf_pack_matrix.py`
-(annexe B du papier). Sur 2000-2025, la corrélation mensuelle de la combinaison
-1/6/12 vaut environ 0,51 avec SG CTA, 0,49 avec SG Trend et 0,53 avec BTOP50.
-
-`build/mf_excess_return_check.py` reconstruit la série avec des rendements
-cohérents avec des futures (actions dividendes inclus et en excès du cash
-local, commodities en excès du cash USD) : l'écart annuel moyen est de
-−0,05 point et les résultats du papier bougent de quelques dixièmes de point
-au plus (`results/audit/mf_excess_return_check.json`).
+`build/mf_excess_return_check.py` rebuilds the series using
+futures-consistent returns (equities with dividends and less local cash,
+commodities less USD cash). The average annual difference is -0.05
+percentage points; the paper's results change by at most a few tenths
+of a point (`results/audit/mf_excess_return_check.json`).

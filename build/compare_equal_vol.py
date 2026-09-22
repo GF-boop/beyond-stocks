@@ -1,17 +1,17 @@
-"""Compare Stocks/I a un 60/40 mondial avec et sans ciblage de volatilite.
+"""Compare Stocks/I with a global 60/40, with and without volatility targeting.
 
-Le benchmark conserve exactement la convention de Cederburg : 50 % d'actions
-du pays tire et 50 % d'actions internationales. Les portefeuilles diversifies
-utilisent, eux, les series mondiales du panel : indice actions pondere par
-capitalisation, panier d'obligations souveraines et taux court de financement.
+The benchmark keeps Cederburg's convention exactly: 50% stocks of the drawn
+country and 50% international stocks. The diversified portfolios use the
+panel's world series instead: a capitalisation-weighted equity index, a basket
+of sovereign bonds and the short rate as the financing rate.
 
-Le levier du portefeuille a volatilite ciblee est estime une seule fois sur le
-panel passe en argument. Il resout :
+The leverage of the volatility-targeted portfolio is estimated once on the
+panel given as argument. It solves:
 
-  vol[bill + L * (60 % actions + 40 % obligations - bill)] = vol[Stocks/I]
+  vol[bill + L * (60% stocks + 40% bonds - bill)] = vol[Stocks/I]
 
-Le spread de financement est un cout constant annuel sur L - 1 ; il modifie le
-rendement mais pas la volatilite historique utilisee pour le calibrage.
+The financing spread is a constant annual cost on L - 1; it changes the return
+but not the historical volatility used for the calibration.
 """
 
 from __future__ import annotations
@@ -44,7 +44,7 @@ ReturnFunction = Callable[[dict[str, float]], float]
 
 def covariance(left: list[float], right: list[float]) -> float:
   if len(left) != len(right) or len(left) < 2:
-    raise ValueError("La covariance demande deux series alignees")
+    raise ValueError("Covariance requires two aligned series")
   left_mean = statistics.fmean(left)
   right_mean = statistics.fmean(right)
   return sum((x - left_mean) * (y - right_mean)
@@ -53,19 +53,19 @@ def covariance(left: list[float], right: list[float]) -> float:
 
 def solve_leverage(target: list[float], bills: list[float],
                    excess: list[float]) -> float:
-  """Levier positif qui egale la volatilite d'une serie cible."""
-  # Var(b + Lx) = Var(cible), soit une equation quadratique en L.
+  """Positive leverage that matches the volatility of a target series."""
+  # Var(b + Lx) = Var(target), a quadratic equation in L.
   a = statistics.variance(excess)
   b = 2.0 * covariance(bills, excess)
   c = statistics.variance(bills) - statistics.variance(target)
   discriminant = b * b - 4.0 * a * c
   if a <= 0.0 or discriminant < 0.0:
-    raise ValueError("Impossible de calibrer un levier reel positif")
+    raise ValueError("Cannot calibrate a positive real leverage")
   roots = ((-b + math.sqrt(discriminant)) / (2.0 * a),
            (-b - math.sqrt(discriminant)) / (2.0 * a))
   positive = [root for root in roots if root > 0.0]
   if not positive:
-    raise ValueError("Le calibrage ne produit aucun levier positif")
+    raise ValueError("The calibration gives no positive leverage")
   return max(positive)
 
 
@@ -150,7 +150,7 @@ def simulate(path: list[dict[str, float]], last_death: int,
 
 
 def probability_interval(successes: int, total: int) -> tuple[float, float]:
-  """Intervalle de Wilson a 95 % pour une proportion."""
+  """95% Wilson interval for a proportion."""
   z = 1.959963984540054
   proportion = successes / total
   denominator = 1.0 + z * z / total
@@ -169,7 +169,7 @@ def main() -> None:
   parser.add_argument("--seed", type=int, default=20260827)
   parser.add_argument("--mean-block", type=float, default=1.0)
   parser.add_argument("--spread", type=float, default=0.003,
-                      help="spread annuel au-dessus du taux court")
+                      help="annual spread above the short rate")
   parser.add_argument("--withdrawal-rate", type=float, default=0.04)
   parser.add_argument("--year-from", type=int)
   parser.add_argument("--year-to", type=int)
@@ -181,7 +181,7 @@ def main() -> None:
   if args.year_to is not None:
     rows = [row for row in rows if row["year"] <= args.year_to]
   if len(rows) < 2:
-    raise ValueError("La fenetre demandee ne contient pas assez de donnees")
+    raise ValueError("The requested window does not contain enough data")
 
   target = [0.5 * (row["domestic"] + row["international"]) for row in rows]
   local_bills = [row["bill"] for row in rows]
@@ -200,18 +200,18 @@ def main() -> None:
   pooled = {name: [function(row) for row in rows]
             for name, function in functions.items()}
 
-  print(f"Panel : {len(rows)} pays-annees ({min(r['year'] for r in rows)}-"
+  print(f"Panel : {len(rows)} country-years ({min(r['year'] for r in rows)}-"
         f"{max(r['year'] for r in rows)})")
   print(f"Bootstrap : blocs moyens de {args.mean_block:g} an(s), "
         f"{args.runs} trajectoires, spread {args.spread:.2%}")
   print(f"Vol-cible locale   : {local_matched:.3f}x = "
-        f"{0.6 * local_matched:.1%} actions + "
-        f"{0.4 * local_matched:.1%} obligations")
+        f"{0.6 * local_matched:.1%} equities + "
+        f"{0.4 * local_matched:.1%} bonds")
   print(f"Vol-cible mondiale : {world_matched:.3f}x = "
-        f"{0.6 * world_matched:.1%} actions + "
-        f"{0.4 * world_matched:.1%} obligations")
+        f"{0.6 * world_matched:.1%} equities + "
+        f"{0.4 * world_matched:.1%} bonds")
   print()
-  print(f"{'strategie':<18}{'rendement':>12}{'volatilite':>13}")
+  print(f"{'strategy':<18}{'return':>12}{'volatility':>13}")
   print("-" * 43)
   for name, values in pooled.items():
     print(f"{name:<18}{statistics.fmean(values):>12.2%}"
@@ -234,8 +234,8 @@ def main() -> None:
       results[name].append(simulate(path, last_death, function,
                                     args.withdrawal_rate))
 
-  print(f"{'strategie':<18}{'richesse med.':>16}{'heritage med.':>16}"
-        f"{'ruine':>9}{'vol med.':>11}")
+  print(f"{'strategy':<18}{'median wealth':>16}{'median bequest':>16}"
+        f"{'ruin':>9}{'median vol.':>11}")
   print("-" * 70)
   for name, values in results.items():
     retirement = statistics.median(
@@ -250,7 +250,7 @@ def main() -> None:
 
   benchmark = results["Stocks/I"]
   print("Victoires appariees face a Stocks/I (intervalle de Wilson a 95 %) :")
-  print(f"{'strategie':<18}{'a 65 ans':>24}{'heritage':>24}")
+  print(f"{'strategy':<18}{'at age 65':>24}{'bequest':>24}")
   print("-" * 66)
   for name in ("World", "90/60 local", "60/40 local VC",
                "90/60 mondial", "60/40 mondial VC"):

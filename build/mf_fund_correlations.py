@@ -1,29 +1,29 @@
-"""Corrélations des fonds managed futures cotés entre eux et avec le proxy.
+"""Correlations of listed managed-futures funds with each other and with the proxy.
 
-Entrées :
+Inputs:
 
-* ``data/managed-futures-monthly.csv`` — proxy maison, colonne
-  ``mf_1_6_12_net_return`` (1926-03 → 2025-12) ;
-* ``data/benchmarks-externes/funds/<TICKER>.csv`` — séries quotidiennes
-  ``date, close, adj_close`` produites par ``build/fetch_mf_fund_data.py``
-  (Yahoo Finance). ``adj_close`` donne le rendement total net de frais ;
-  composition mensuelle par produit, premier mois civil retiré (mois
-  incomplet, même convention que pour les séries testfol du dépôt).
+* ``data/managed-futures-monthly.csv`` — in-house proxy, column
+  ``mf_1_6_12_net_return`` (1926-03 to 2025-12);
+* ``data/benchmarks-externes/funds/<TICKER>.csv`` — daily series
+  ``date, close, adj_close`` produced by ``build/fetch_mf_fund_data.py``
+  (Yahoo Finance). ``adj_close`` gives the total return net of fees; monthly
+  compounding by product, first calendar month dropped (incomplete month, same
+  convention as the testfol series of the repository).
 
-Sortie : ``results/mf_fund_correlations.json`` et résumé console. Trois
-fenêtres communes pour le test « peloton » :
+Output: ``results/mf_fund_correlations.json`` and a console summary. Three
+common windows for the "peer group" test:
 
-* ``2015-2025`` : WTMF, QMHIX, AHLIX (les trois fonds avec plus de dix ans
-  d'historique), plus le proxy ;
-* ``2024-2025`` : ajoute AQR Apex UCITS (2022) et AHL Trend ETF (2023) ;
-* ``2025``     : les sept fonds, avril → décembre 2025 seulement (IMF et ISMF
-  lancés en mars 2025) — échantillon court, à lire avec prudence.
+* ``2015-2025``: WTMF, QMHIX, AHLIX (the three funds with more than ten years
+  of history), plus the proxy;
+* ``2024-2025``: adds AQR Apex UCITS (2022) and AHL Trend ETF (2023);
+* ``2025``: the seven funds, April to December 2025 only (IMF and ISMF
+  launched in March 2025) — a short sample, to be read with care.
 
-Pour chaque fenêtre : corrélations proxy/fonds, moyenne des corrélations
-paire-à-paire des fonds, et corrélation de chaque acteur avec le « centroïde »
-du peloton (moyenne équipondérée des fonds, hors soi-même pour les membres).
-Si le proxy se comporte comme un membre du peloton, sa corrélation au
-centroïde doit se situer dans la fourchette de celles des fonds eux-mêmes.
+For each window: proxy/fund correlations, mean pairwise correlation of the
+funds, and correlation of each member with the peer-group "centroid"
+(equal-weighted mean of the funds, excluding itself for members). If the proxy
+behaves like a member of the group, its correlation with the centroid should
+lie within the range of the funds' own.
 """
 
 from __future__ import annotations
@@ -51,7 +51,7 @@ FUNDS = [
     ("AHLT", "American Beacon AHL Trend ETF (2023)"),
     ("IMF", "Invesco Managed Futures Strategy ETF (2025)"),
     ("ISMF", "iShares Managed Futures Active ETF (2025)"),
-    ("APEX", "AQR Apex UCITS Fund RA USD Acc (multi-stratégies, 2022)"),
+    ("APEX", "AQR Apex UCITS Fund RA USD Acc (multi-strategy, 2022)"),
 ]
 TICKER_FILE = {"APEX": "0P0001BD8S.csv"}
 
@@ -111,10 +111,10 @@ def correlation(a: dict[str, float], b: dict[str, float]) -> tuple[float, int, s
 
 
 def regression(x: list[float], y: list[float]) -> dict:
-    """OLS ``y = alpha + beta x`` avec erreurs-types classiques (homoscédastiques).
+    """OLS ``y = alpha + beta x`` with classical (homoscedastic) standard errors.
 
-    Renvoie ``n, alpha, beta, r2, t_alpha, t_beta``. Utilisé pour la
-    décomposition ``R_fund = alpha + beta R_proxy + eps`` de l'annexe B.
+    Returns ``n, alpha, beta, r2, t_alpha, t_beta``. Used for the decomposition
+    ``R_fund = alpha + beta R_proxy + eps`` of Appendix B.
     """
     n = len(x)
     mx, my = statistics.fmean(x), statistics.fmean(y)
@@ -255,9 +255,9 @@ def main() -> None:
     missing = [symbol for symbol, _desc in FUNDS if not os.path.exists(
         os.path.join(FUNDS_DIR, TICKER_FILE.get(symbol, f"{symbol}.csv")))]
     if missing:
-        print(f"mf_fund_correlations : séries de fonds absentes de {FUNDS_DIR} "
-              f"({', '.join(missing)}) ; corrélations non régénérées. "
-              "Lancer d'abord build/fetch_mf_fund_data.py. Voir "
+        print(f"mf_fund_correlations: fund series missing from {FUNDS_DIR} "
+              f"({', '.join(missing)}); correlations not regenerated. "
+              "Run build/fetch_mf_fund_data.py first. See "
               "data/benchmarks-externes/README.md.")
         return
     proxy = load_proxy()
@@ -307,7 +307,7 @@ def main() -> None:
     for row in proxy_vs_funds:
         print(f"  {row['fund']:<6} {row['corr']:>6.2f}   "
               f"{row['first']}..{row['last']} ({row['n_months']} mo.)   {row['description']}")
-    print("\n== Fonds entre eux, recouvrement maximal par paire ==")
+    print("\n== Funds with each other, maximal overlap per pair ==")
     print("       " + "".join(f"{b:>7}" for b, _d in FUNDS))
     for a, _da in FUNDS:
         cells = []
@@ -318,32 +318,32 @@ def main() -> None:
                 match = next(p for p in pairwise_full if {p["a"], p["b"]} == {a, b})
                 cells.append(f"{match['corr']:>7.2f}")
         print(f"{a:<7}" + "".join(cells))
-    print("\n== Matrice complète (PROXY inclus), recouvrement maximal par paire ==")
+    print("\n== Full matrix (PROXY included), maximal overlap per pair ==")
     print(format_matrix(matrix_full))
     ranking = sorted(matrix_full["mean_corr_vs_others"].items(), key=lambda kv: -kv[1])
-    print("  corrélation moyenne avec les autres : "
+    print("  mean correlation with the others: "
           + ", ".join(f"{k} {v:.2f}" for k, v in ranking))
     print("  clusters (lien moyen, corr. min. 0,50) : "
           + " | ".join("+".join(g) for g in clusters_full))
     for name, report in reports.items():
         lo, hi = report["window"]
-        print(f"\n== Fenêtre commune {name} ({lo}..{hi}, {report['n_months']} mo.) ==")
+        print(f"\n== Common window {name} ({lo}..{hi}, {report['n_months']} mo.) ==")
         print(format_matrix(report["matrix"]))
         ranking = sorted(report["matrix"]["mean_corr_vs_others"].items(), key=lambda kv: -kv[1])
-        print("  corrélation moyenne avec les autres : "
+        print("  mean correlation with the others: "
               + ", ".join(f"{k} {v:.2f}" for k, v in ranking))
         print("  clusters (lien moyen, corr. min. 0,50) : "
               + " | ".join("+".join(g) for g in report["clusters"]))
         print("  proxy vs fonds : "
               + ", ".join(f"{k} {v['corr']:.2f}" for k, v in report["proxy_vs_funds"].items()))
-        print(f"  moyenne paire-à-paire des fonds : {report['mean_pairwise_corr']:.2f}")
-        print("  fonds vs centroïde (hors soi-même) : "
+        print(f"  mean pairwise correlation of funds: {report['mean_pairwise_corr']:.2f}")
+        print("  funds vs centroid (excluding self): "
               + ", ".join(f"{k} {v:.2f}" for k, v in report["funds_vs_centroid"].items()))
         pc = report["proxy_vs_centroid"]["corr"]
         vals = list(report["funds_vs_centroid"].values())
-        print(f"  proxy vs centroïde : {pc:.2f}"
+        print(f"  proxy vs centroid : {pc:.2f}"
               f"   [fonds : {min(vals):.2f}..{max(vals):.2f}]")
-        print("  vol. annualisée : "
+        print("  annualised vol.: "
               + ", ".join(f"{k} {v:.0%}" if False else f"{k} {v:.2f}"
                           for k, v in report["annualised_vol"].items()))
     print(f"\nOK : {os.path.relpath(OUT_JSON, ROOT)}")

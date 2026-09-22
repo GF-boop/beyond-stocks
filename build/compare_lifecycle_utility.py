@@ -1,16 +1,16 @@
-"""Utilite de cycle de vie et taux d'epargne equivalents a risque egal.
+"""Lifecycle utility and equivalent savings rates at equal risk.
 
-Ce script ajoute les trois briques manquantes a la replication publique :
+This script adds the three building blocks missing from the public replication:
 
-* deux revenus stochastiques GKOS, avec seuil individuel de contribution ;
-* utilite CRRA de la consommation de retraite et motif de legs ;
-* taux d'epargne equivalent face a Stocks/I, sur tirages apparies.
+* two stochastic GKOS incomes, with an individual contribution threshold;
+* CRRA utility of retirement consumption and a bequest motive;
+* the equivalent savings rate against the benchmark, on paired draws.
 
-Les rendements et la mortalite restent annuels, car le panel public ne permet
-pas la replication mensuelle sur 38 pays de Cederburg et al. (2025). Pour le
-seul agregateur d'utilite, une consommation uniforme dans l'annee permet de
-supprimer le facteur positif commun 12**gamma sans changer les classements.
-Les trajectoires de richesse restent, elles, une approximation annuelle.
+Returns and mortality stay annual, because the public panel does not allow the
+monthly replication over the 38 countries of Cederburg et al. (2025). For the
+utility aggregator only, uniform consumption within the year removes the common
+positive factor 12**gamma without changing the rankings. Wealth paths remain an
+annual approximation.
 """
 
 from __future__ import annotations
@@ -66,7 +66,7 @@ STRATEGIES = (
 
 @dataclass(slots=True)
 class Scenario:
-  """Tous les chocs communs a une comparaison de strategies."""
+  """All the shocks shared by one comparison of strategies."""
 
   first_death: int
   last_death: int
@@ -87,12 +87,12 @@ class Outcome:
 
 @dataclass(slots=True)
 class UtilityBatch:
-  """Representation vectorisee d'un ensemble fixe de scenarios.
+  """Vectorised representation of a fixed set of scenarios.
 
-  La recherche du taux d'epargne equivalent evalue la meme collection de
-  scenarios des dizaines de fois. Cette structure ne change ni les tirages ni
-  les equations : elle evite seulement de re-parcourir les objets Python a
-  chaque point de la dichotomie.
+  The search for the equivalent savings rate evaluates the same collection of
+  scenarios dozens of times. This structure changes neither the draws nor the
+  equations: it only avoids walking through the Python objects again at each
+  bisection step.
   """
 
   retirement_wealth_unit: np.ndarray
@@ -105,7 +105,7 @@ class UtilityBatch:
 
 @dataclass(slots=True)
 class BatchOutcome:
-  """Sorties par trajectoire de l'evaluation vectorisee."""
+  """Per-path outputs of the vectorised evaluation."""
 
   utility: np.ndarray
   retirement_wealth: np.ndarray
@@ -118,7 +118,7 @@ _UTILITY_BATCHES: dict[tuple[int, str], tuple[list[Scenario], UtilityBatch]] = {
 
 
 def _utility_batch(scenarios: list[Scenario], strategy: str) -> UtilityBatch:
-  """Prepare les donnees fixes utilisees par l'utilite vectorisee."""
+  """Prepare the fixed data used by the vectorised utility."""
   key = (id(scenarios), strategy)
   cached = _UTILITY_BATCHES.get(key)
   if cached is not None and cached[0] is scenarios:
@@ -149,14 +149,14 @@ def _utility_batch(scenarios: list[Scenario], strategy: str) -> UtilityBatch:
         SSI_COUPLE if size == 2.0 else SSI_SINGLE)
   batch = UtilityBatch(wealth, returns, active, household_size,
                        social_security, ssi)
-  # Conserver le proprietaire empeche qu'un id de liste soit recycle pour un
-  # autre jeu de trajectoires pendant un meme processus.
+  # Keeping the owner prevents a list id from being recycled for another set
+  # of paths within the same process.
   _UTILITY_BATCHES[key] = (scenarios, batch)
   return batch
 
 
 def clear_utility_batches() -> None:
-  """Libere explicitement les caches entre deux jeux temporaires de scenarios."""
+  """Explicitly release the caches between two temporary sets of scenarios."""
   _UTILITY_BATCHES.clear()
 
 
@@ -171,7 +171,7 @@ def draw_death_age(survival: dict[int, float], rng: random.Random) -> int:
 
 def crra(value: float, gamma: float = GAMMA) -> float:
   if value <= 0.0:
-    raise ValueError("L'utilite CRRA exige une consommation positive")
+    raise ValueError("CRRA utility requires positive consumption")
   if math.isclose(gamma, 1.0):
     return math.log(value)
   return value ** (1.0 - gamma) / (1.0 - gamma)
@@ -182,7 +182,7 @@ def build_scenario(path: list[dict[str, float]],
                    female_death: int, male_death: int,
                    female_income: list[float], male_income: list[float],
                    ) -> Scenario:
-  """Transforme un tirage commun en etat suffisant pour tous les taux."""
+  """Turn a common draw into a state that is sufficient for every rate."""
   first_death = min(female_death, male_death)
   last_death = max(female_death, male_death)
 
@@ -204,8 +204,8 @@ def build_scenario(path: list[dict[str, float]],
   retirement_returns: dict[str, tuple[float, ...]] = {}
   for name, function in functions.items():
     wealth = 0.0
-    # Si les deux conjoints decedent avant 65 ans, le portefeuille s'arrete au
-    # dernier deces et devient immediatement un legs.
+    # If both spouses die before 65, the portfolio stops at the last death
+    # and immediately becomes a bequest.
     working_end = min(RETIRE_AGE, last_death + 1)
     for index, age in enumerate(range(START_AGE, working_end)):
       wealth += contribution_base[index]
@@ -233,7 +233,7 @@ def build_scenario(path: list[dict[str, float]],
 def evaluate(scenario: Scenario, strategy: str, savings_rate: float,
              withdrawal_rate: float = WITHDRAWAL_RATE,
              gamma: float = GAMMA) -> Outcome:
-  """Evalue un taux d'epargne sans retirer de nouveaux chocs aleatoires."""
+  """Evaluate a savings rate without drawing new random shocks."""
   wealth = savings_rate * scenario.retirement_unit_wealth[strategy]
   retirement_wealth = wealth if scenario.last_death >= RETIRE_AGE else 0.0
   withdrawal = retirement_wealth * withdrawal_rate
@@ -275,12 +275,12 @@ def evaluate(scenario: Scenario, strategy: str, savings_rate: float,
 def expected_utility(scenarios: list[Scenario], strategy: str,
                      savings_rate: float, gamma: float = GAMMA,
                      withdrawal_rate: float = WITHDRAWAL_RATE) -> float:
-  """Utilite moyenne, exactement comme ``evaluate`` mais par lots.
+  """Mean utility, exactly as ``evaluate`` but in batches.
 
-  Le retrait reste un montant reel fixe egal a ``withdrawal_rate`` fois la
-  richesse de retraite initiale ; les flux SSI et Social Security restent hors
-  du portefeuille. Cette version est identique a la boucle scalaire et rend
-  praticables les tableaux a 20 000 trajectoires.
+  The withdrawal remains a fixed real amount equal to ``withdrawal_rate`` times
+  initial retirement wealth; SSI and Social Security flows stay outside the
+  portfolio. This version is identical to the scalar loop and makes tables with
+  20,000 paths practical.
   """
   return float(np.mean(evaluate_batch(
     scenarios, strategy, savings_rate, withdrawal_rate, gamma).utility))
@@ -290,9 +290,9 @@ def evaluate_batch(scenarios: list[Scenario], strategy: str,
                    savings_rate: float,
                    withdrawal_rate: float = WITHDRAWAL_RATE,
                    gamma: float = GAMMA) -> BatchOutcome:
-  """Version par lots de ``evaluate`` pour un taux d'epargne donne."""
+  """Batch version of ``evaluate`` for a given savings rate."""
   if not scenarios:
-    raise ValueError("Au moins un scenario est requis")
+    raise ValueError("At least one scenario is required")
   batch = _utility_batch(scenarios, strategy)
   wealth = savings_rate * batch.retirement_wealth_unit.copy()
   has_retirement = np.any(batch.active, axis=0)
@@ -309,9 +309,9 @@ def evaluate_batch(scenarios: list[Scenario], strategy: str,
     consumption = np.maximum(
       served + batch.social_security[offset], batch.ssi[offset])
     scaled = consumption / np.sqrt(batch.household_size[offset])
-    # Les colonnes inactives (deces avant retraite) ne contribuent pas au
-    # flux. Leur attribuer une valeur neutre evite une puissance de zero dans
-    # les calculs vectorises, sans modifier l'utilite agregée.
+    # Inactive columns (death before retirement) do not contribute to the
+    # flow. Giving them a neutral value avoids a power of zero in the
+    # vectorised computation, without changing the aggregate utility.
     scaled[~active] = 1.0
     if math.isclose(gamma, 1.0):
       flow_utility = np.log(scaled)
@@ -343,7 +343,7 @@ def equivalent_savings_rate(scenarios: list[Scenario], strategy: str,
                             target_utility: float,
                             gamma: float = GAMMA,
                             withdrawal_rate: float = WITHDRAWAL_RATE) -> float:
-  """Taux de la strategie qui egale l'utilite cible, par dichotomie."""
+  """Savings rate of the strategy that matches the target utility, by bisection."""
   low, high = 0.0, 1.0
   low_utility = expected_utility(
     scenarios, strategy, low, gamma, withdrawal_rate)
@@ -353,8 +353,8 @@ def equivalent_savings_rate(scenarios: list[Scenario], strategy: str,
     return low
   if target_utility > high_utility:
     return math.nan
-  # 24 iterations donnent une precision inferieure a 0,01 point de taux tout
-  # en gardant praticable un panel de nombreuses strategies fixes.
+  # 24 iterations give a precision below 0.01 percentage point while keeping
+  # a panel of many fixed strategies practical.
   for _ in range(24):
     middle = (low + high) / 2.0
     if expected_utility(
@@ -373,7 +373,7 @@ def main() -> None:
   parser.add_argument("--seed", type=int, default=20260827)
   parser.add_argument("--mean-block", type=float, default=10.0)
   parser.add_argument("--spread", type=float, default=DEFAULT_SPREAD,
-                      help="cout annuel au-dessus du taux court (defaut 0.003)")
+                      help="annual cost above the short rate (default 0.003)")
   parser.add_argument("--withdrawal-rate", type=float,
                       default=WITHDRAWAL_RATE)
   parser.add_argument("--gamma", type=float, default=GAMMA)
@@ -389,7 +389,7 @@ def main() -> None:
   if args.year_to is not None:
     rows = [row for row in rows if row["year"] <= args.year_to]
   if len(rows) < 2:
-    raise ValueError("La fenetre demandee ne contient pas assez de donnees")
+    raise ValueError("The requested window does not contain enough data")
 
   stocks_i = [0.5 * (row["domestic"] + row["international"])
               for row in rows]
@@ -424,26 +424,26 @@ def main() -> None:
       path, functions, female_death, male_death,
       female_income, male_income))
 
-  print(f"Panel public : {len(rows)} pays-annees "
+  print(f"Panel public : {len(rows)} country-years "
         f"({min(row['year'] for row in rows)}-"
         f"{max(row['year'] for row in rows)})")
   print(f"Simulation : {args.runs} trajectoires appariees, blocs moyens "
         f"de {args.mean_block:g} an(s), spread {args.spread:.2%}")
   print(f"CRRA gamma={args.gamma:g}, legs theta={BEQUEST_STRENGTH:g}, "
-        f"k={BEQUEST_SHIFT:,.0f}, retrait={args.withdrawal_rate:.1%}"
+        f"k={BEQUEST_SHIFT:,.0f}, withdrawal={args.withdrawal_rate:.1%}"
         .replace(",", " "))
-  print(f"Validation revenus : mediane menage age 25 = "
+  print(f"Income check: median household at age 25 = "
         f"{statistics.median(income_at_25):,.0f}, age 47 = "
         f"{statistics.median(income_at_47):,.0f}".replace(",", " "))
-  print(f"Leviers : local {local_leverage:.3f}x ; mondial "
+  print(f"Leverage: local {local_leverage:.3f}x; global "
         f"{world_leverage:.3f}x")
   print()
 
   target_utility = expected_utility(
     scenarios, "Stocks/I", BASE_SAVINGS_RATE, args.gamma,
     args.withdrawal_rate)
-  print(f"{'strategie':<20}{'E[U] x 1e16':>15}{'epargne eq.':>14}"
-        f"{'richesse med.':>17}{'conso moy.':>14}{'ruine':>9}"
+  print(f"{'strategy':<20}{'E[U] x 1e16':>15}{'equiv. saving':>14}"
+        f"{'median wealth':>17}{'mean cons.':>14}{'ruin':>9}"
         f"{'legs med.':>14}")
   print("-" * 103)
   for name in STRATEGIES:

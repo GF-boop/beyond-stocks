@@ -1,30 +1,27 @@
 #!/usr/bin/env python3
-"""Expérience appel de marge pour la stratégie du papier.
+"""Margin-call experiment for the strategies of the paper.
 
-Le compte sur marge personnel porte exactement les poids figés des familles à
-levier (deux familles 200 % et échelle couverte 150 %) et suit la même
-discipline que le moteur principal : rééquilibrage ANNUEL vers l'exposition
-brute cible. La marge de maintenance (25 % des actifs) est testée en fin
-d'année — la granularité des données annuelles — avant le rééquilibrage qui
-restaure le coussin de marge. Mêmes chemins bootstrap que les tables
-(10 000, seed 20260827).
+The personal margin account holds exactly the frozen weights of the levered
+families (two families at 200% and the hedged ladder at 150%) and follows the
+same discipline as the main engine: ANNUAL rebalancing to the target gross
+exposure. The maintenance margin (25% of assets) is tested at year-end — the
+granularity of the annual data — before the rebalancing that restores the
+margin cushion. Same bootstrap paths as the tables (10,000, seed 20260827).
 
-CONSÉQUENCE MÉCANIQUE : le rééquilibrage annuel remet le compte à 50 % de
-capitaux propres (brut 2×) ou 67 % (brut 1,5×) à chaque début d'année. Un
-appel en fin d'année exige donc une perte SUR UNE SEULE ANNÉE au-delà du seuil
-déduit du taux nominal : environ −31 % à brut 2×, −54 % à brut 1,5×. Le
-cumul d'un drawdown pluriannuel — qui pilote un compte buy-and-hold non
-rééquilibré — est effacé par le rééquilibrage et ne peut pas déclencher
-d'appel ici.
+MECHANICAL CONSEQUENCE: annual rebalancing resets the account to 50% equity
+(2x gross) or 67% (1.5x gross) at the start of every year. A year-end call
+therefore requires a loss WITHIN A SINGLE YEAR beyond the threshold implied by
+the nominal rate: about -31% at 2x gross, -54% at 1.5x gross. A cumulative
+multi-year drawdown — which drives an unrebalanced buy-and-hold account — is
+erased by rebalancing and cannot trigger a call here.
 
-CONVENTION NOMINALE : un compte sur marge est un contrat nominal — le broker
-compare la valeur nominale des actifs à la dette nominale. Les rendements du
-panel étant réels-résidents, on reconstruit les nominaux exacts :
-R_nom = (1+R_réel_par_actif)×(1+π_résident)−1, où R_réel_par_actif est le
-rendement réel du livret d'actifs par dollar d'actifs, et bill nominal idem.
-L'inflation érode la dette nominale : les épisodes hyperinflationnistes ne
-déclenchent pas d'appel, contrairement à ce qu'un test en réel suggérerait
-à tort.
+NOMINAL CONVENTION: a margin account is a nominal contract — the broker
+compares the nominal value of the assets with the nominal debt. Since the
+panel's returns are real for the resident, exact nominal returns are rebuilt:
+R_nom = (1+R_real_per_asset)x(1+pi_resident)-1, where R_real_per_asset is the
+real return of the asset book per dollar of assets, and likewise for the
+nominal bill. Inflation erodes the nominal debt: hyperinflation episodes do not
+trigger calls, contrary to what a test in real terms would wrongly suggest.
 """
 
 import json
@@ -53,9 +50,9 @@ RUNS = 10000
 SEED = 20260827
 SPREAD = 0.003
 MAINTENANCE = 0.25
-# (nom moteur, label, exposition brute). Les deux familles 200 % viennent du
-# manifeste gele ; l'echelle couverte 150 % est la lambda "90/60 oblig.
-# mondiales" (90 % actions ACO + 60 % obligations mondiales couvertes).
+# (engine name, label, gross exposure). The two 200% families come from the
+# frozen manifest; the hedged 150% ladder is the "90/60 oblig. mondiales"
+# lambda (90% ACO stocks + 60% hedged global bonds).
 LEVERED = (("80/53.33/33.33/33.33 ACO", "proportional_200", 2.0),
            ("ACO 33/67 175%", "aco_175", 1.75),
            ("ACO 33/67 200%", "aco_200", 2.0),
@@ -76,8 +73,8 @@ def main():
   horizon = MAX_AGE - START_AGE + 1
   rng = random.Random(SEED)
 
-  # Facture nominale mediane du financement, pour chiffrer le seuil de perte
-  # annuelle qui declencherait un appel.
+  # Median nominal financing bill, to size the annual loss that would trigger
+  # a call.
   bills = sorted(nominal(row["world_bill"], row["inflation"]) for row in rows)
   median_bill = bills[len(bills) // 2]
 
@@ -95,20 +92,19 @@ def main():
       for row in path:
         pi = row["inflation"]
         bill_nom = nominal(row["world_bill"], pi)
-        # Rendement du livret d'actifs par dollar d'actifs : le moteur
-        # remunere la richesse (capitaux propres), on rajoute la facture de
-        # financement (G-1)x(bill+spread) puis on divise par l'exposition
-        # brute. Les nominaux sont reconstruits PAR ACTIF : nominaliser le
-        # rendement leve produirait des nominaux impossibles des que
-        # G x R < -100 %.
+        # Return of the asset book per dollar of assets: the engine pays the wealth
+        # (equity), we add back the financing bill (G-1)x(bill+spread) and divide by the
+        # gross exposure. Nominal returns are rebuilt PER ASSET: nominalising the
+        # levered return would give impossible nominal values as soon as
+        # G x R < -100%.
         per_asset = (fn(row) + (gross - 1.0)
                      * (row["world_bill"] + SPREAD)) / gross
         gross_nom = nominal(per_asset, pi)
         st["worst_asset_book_year"] = min(st["worst_asset_book_year"],
                                           gross_nom)
-        # Debut d'annee : compte remis a l'exposition cible (G actifs,
-        # G-1 de dette, par dollar de capitaux propres), puis une annee de
-        # rendements sans rebalancement intra-annuel.
+        # Start of year: account reset to the target exposure (G of assets, G-1 of
+        # debt, per dollar of equity), then one year of returns without intra-year
+        # rebalancing.
         assets = gross * equity * (1.0 + gross_nom)
         debt = (gross - 1.0) * equity * (1.0 + bill_nom + SPREAD * (1.0 + pi))
         eq = assets - debt
@@ -137,9 +133,9 @@ def main():
          "horizon": horizon, "spread_real": SPREAD,
          "panel_sha256": hashlib.sha256(open(os.path.join(HERE, '..', 'data',
                                     'replication-panel-trend.csv'), 'rb').read()).hexdigest(),
-         "design": ("compte aux poids de la strategie, rebalance chaque "
-                    "annee vers l'exposition cible ; marge testee en fin "
-                    "d'annee ; nominaux reconstruits par actif"),
+         "design": ("account with strategy weights, rebalanced each "
+                    "year to target exposure; margin checked at "
+                    "year-end; notionals reconstructed by asset"),
          "families": {}}
   for name, label, gross in LEVERED:
     st = stats[label]
@@ -150,9 +146,9 @@ def main():
     st["gross_exposure"] = gross
     st["single_year_loss_threshold"] = round(threshold, 4)
     out["families"][label] = st
-    print(label, f"brut {gross:.0%}",
+    print(label, f"gross {gross:.0%}",
           {k: v for k, v in st.items() if k != "path_years"},
-          f"| annees-compte: {st['path_years']:,}")
+          f"| account-years: {st['path_years']:,}")
   out["median_nominal_bill"] = round(median_bill, 4)
   print(f"bill nominal median: {median_bill:.3%}")
   path = os.path.join(HERE, "..", "results", "margin_call_n10000.json")

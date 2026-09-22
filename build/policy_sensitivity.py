@@ -1,36 +1,33 @@
-"""Sensibilite des deux familles diversifiees aux parametres de politique.
+"""Sensitivity of the two diversified families to policy parameters.
 
-Le corps du papier reproche a ACO de ne rapporter la robustesse de leur
-resultat qu'au niveau de la *composition* optimale, jamais au niveau des
-*magnitudes* de bien-etre. Le sweep sur gamma (Annexe F) applique ce test au
-coefficient d'aversion. Ce script fait de meme pour deux parametres de
-politique du menage qu'ACO faisait varier lui aussi (Table VII) mais sans
-publier l'effet sur les magnitudes :
+ACO report the robustness of their result only for the optimal *composition*,
+never for the *magnitudes* of welfare. The gamma sweep applies this test to
+risk aversion. This script does the same for two household policy parameters
+that ACO also varied (Table VII) without publishing the effect on magnitudes:
 
-* le taux de contribution pendant la vie active, r_c dans {5, 10, 15} % ;
-* le taux de retrait reel a la retraite, r_w dans {3, 4, 5} %.
+* the contribution rate during working life, r_c in {5, 10, 15}%;
+* the real withdrawal rate in retirement, r_w in {3, 4, 5}%.
 
-Points de methode :
+Method:
 
-* Les poids et le levier restent les definitions figees du manifeste. Aucun
-  poids, levier ou actif n'est re-optimise dans une ligne.
-* Axe r_c : le taux de reference d'ACO 33/67 est *aussi* fixe a r_c dans
-  chaque ligne, et l'utilite cible est recalculee a ce r_c. La question est
-  donc : dans un monde ou tout le monde epargne r_c %, la diversification
-  reduit-elle encore le taux requis et la ruine d'un montant comparable ? Un
-  ancrage a 10 % fixe rendrait l'ecart mecaniquement proportionnel a r_c et
-  n'apprendrait rien.
-* Axe r_w : le taux d'epargne de reference reste 10 % (comme partout ailleurs
-  dans le papier) et seul le retrait varie. La ruine etant l'epuisement du
-  compte financier, elle est mecaniquement tres sensible a r_w.
-* La ligne r_c = 10 % de l'axe contribution et la ligne r_w = 4 % de l'axe
-  retrait sont le cas de reference et doivent coincider.
+* Weights and leverage stay the frozen definitions of the manifest. No weight,
+  leverage or asset is re-optimised in any row.
+* r_c axis: the reference rate of ACO 33/67 is *also* set to r_c in each row,
+  and the target utility is recomputed at that r_c. The question is therefore:
+  in a world where everyone saves r_c%, does diversification still lower the
+  required rate and ruin by a comparable amount? Anchoring at a fixed 10% would
+  make the difference mechanically proportional to r_c and teach nothing.
+* r_w axis: the reference savings rate stays 10% (as everywhere else in the
+  paper) and only the withdrawal varies. Since ruin is the exhaustion of the
+  financial account, it is mechanically very sensitive to r_w.
+* The r_c = 10% row of the contribution axis and the r_w = 4% row of the
+  withdrawal axis are the reference case and must coincide.
 
-Sorties autonomes pour le manuscrit :
+Outputs:
 
-* ``figures/policy_sensitivity.json`` : audit complet ;
-* ``figures/policy_sensitivity.tex`` : tabular a deux panneaux inclus par
-  l'annexe.
+* ``figures/policy_sensitivity.json``: full audit, read by
+  ``render_restored_appendices.py``;
+* ``--output-tex``: optional two-panel LaTeX table.
 """
 
 from __future__ import annotations
@@ -80,8 +77,8 @@ WITHDRAWAL_RATES = (0.03, 0.04, 0.05)
 
 def _row(rows, base_rate, withdrawal_rate, runs, seed, spread, fx_hedge_cost,
          trend_fee, trend_cost, scenarios=None):
-  """Un point du sweep : ACO 33/67 epargne ``base_rate`` et retire
-  ``withdrawal_rate``, les deux familles sont evaluees aux memes tirages."""
+  """One point of the sweep: ACO 33/67 saves ``base_rate`` and withdraws
+  ``withdrawal_rate``; the two families are evaluated on the same draws."""
   if scenarios is None:
     functions_all = return_functions(
         rows, spread, trend_fee, trend_cost, 0.0, fx_hedge_cost)
@@ -101,8 +98,8 @@ def _row(rows, base_rate, withdrawal_rate, runs, seed, spread, fx_hedge_cost,
       "benchmark_ruin": benchmark_ruin,
       "portfolios": {},
   }
-  # Taux d'epargne de reference d'ACO sur cette ligne : c'est ``base_rate`` (5,
-  # 10 ou 15 % sur l'axe contribution), pas 10 % en dur.
+  # ACO's reference savings rate in this row: it is ``base_rate`` (5, 10 or
+  # 15% on the contribution axis), not a hard-coded 10%.
   entry["benchmark_savings_rate"] = base_rate
   for name in PORTFOLIOS:
     outcomes = evaluate_batch(
@@ -114,8 +111,8 @@ def _row(rows, base_rate, withdrawal_rate, runs, seed, spread, fx_hedge_cost,
         "ruin": ruin,
         "equivalent_savings_rate": equivalent,
         "ruin_reduction_vs_aco": benchmark_ruin - ruin,
-        # L'ecart d'epargne est mesure contre le taux de reference de cette
-        # ligne, pas contre 10 % en dur.
+        # The saving difference is measured against this row's reference rate,
+        # not against a hard-coded 10%.
         "saving_reduction_vs_aco": base_rate - equivalent,
     }
   clear_utility_batches()
@@ -151,10 +148,10 @@ def pct(value: float) -> str:
 
 
 def write_tex(path: str, contribution, withdrawal, runs: int) -> None:
-  # Rendu en NIVEAUX : chaque famille se lit directement contre les deux
-  # colonnes de reference ACO (ruine et epargne), sans interpreter le signe
-  # d'un ecart. Sur l'axe contribution l'epargne de reference d'ACO est r_c,
-  # pas 10 %, ce que la colonne ``ACO sav'' rend explicite ligne par ligne.
+  # Rendered in LEVELS: each family reads directly against the two ACO
+  # reference columns (ruin and saving), without interpreting the sign of a
+  # difference. On the contribution axis ACO's reference saving is r_c, not 10%,
+  # which the ``ACO sav'' column makes explicit row by row.
   def body(entry, axis_value_pct):
     proportional = entry["portfolios"][PROPORTIONAL]
     equal_weight = entry["portfolios"][EQUAL_WEIGHT]
@@ -166,7 +163,7 @@ def write_tex(path: str, contribution, withdrawal, runs: int) -> None:
             f"{pct(equal_weight['equivalent_savings_rate'])} \\\\\n")
 
   with open(path, "w", encoding="utf-8") as handle:
-    handle.write("% Genere par build/policy_sensitivity.py -- ne pas editer.\n")
+    handle.write("% Generated by build/policy_sensitivity.py -- do not edit.\n")
     handle.write("\\begin{table}[H]\n\\centering\n")
     handle.write("\\caption{Contribution- and withdrawal-rate sensitivity of "
                  "the fixed diversified families}\n")

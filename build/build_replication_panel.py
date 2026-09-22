@@ -1,19 +1,19 @@
-"""Assemble le panel a quatre classes d'actifs pour la replication fidele.
+"""Assemble the four-asset-class panel for the replication.
 
-Anarkulova, Cederburg et O'Doherty comparent des strategies qui melangent
-jusqu'a quatre classes d'actifs : actions domestiques, actions internationales,
-obligations, bills. JST ne fournit nativement que les trois premieres (sous les
-noms eq_tr, bond_tr, bill_rate) plus le CPI ; la serie d'actions internationales
-est reconstruite dans international_equity.py, selon leur propre definition
-(moyenne ponderee par capitalisation historique des marches etrangers lorsque
-la couverture est suffisante, PIB comparable en repli, ajustee du change et
-deflatee par l'inflation locale).
+Anarkulova, Cederburg and O'Doherty compare strategies that mix up to four
+asset classes: domestic stocks, international stocks, bonds and bills. JST
+provides only the first three natively (eq_tr, bond_tr, bill_rate) plus the
+CPI; the international-stock series is rebuilt in international_equity.py
+following their definition (weighted by historical market capitalisation of
+the foreign markets when coverage is sufficient, by GDP otherwise, converted
+at market exchange rates and deflated by local inflation).
 
-Le panel conserve egalement le contrefactuel a change reel constant produit
-par ``international_equity.py``. Il permet de comparer le benefice geographique
-du panier etranger avant d'ajouter le canal change-inflation.
+The panel also keeps the constant-real-exchange-rate counterfactual produced by
+``international_equity.py``. It isolates the geographic benefit of the foreign
+basket before the exchange-rate and inflation channel is added.
 
-Ce module les assemble en un seul CSV par pays-annee, pret pour le bootstrap.
+This module assembles them into one CSV by country-year, ready for the
+bootstrap.
 """
 
 from __future__ import annotations
@@ -55,9 +55,9 @@ def build(dta_path: str, international_path: str,
         "xrusd": float(row["resident_xrusd"]),
       }
 
-  # Les annees posterieures a JST viennent du panel prolonge, qui porte deja
-  # les rendements reels d'actions, d'obligations et de taux court pour
-  # 2021-2025. Les bills y sont le taux court.
+  # Years after JST come from the extended panel, which already carries the
+  # real returns of stocks, bonds and short rates for 2021-2025. Bills are the
+  # short rate there.
   if extended_path and os.path.exists(extended_path):
     with open(extended_path, newline="", encoding="utf-8") as handle:
       for row in csv.DictReader(handle):
@@ -100,8 +100,8 @@ def main() -> None:
     here, "..", "data", "JSTdatasetR6.dta"))
   parser.add_argument("--extended", default=os.path.join(
     here, "..", "data", "jst-real-returns-2025.csv"),
-    help="panel prolonge 2021-2025, pour les classes autres qu'actions "
-         "internationales")
+    help="extended 2021-2025 panel, for classes other than international "
+         "stocks")
   parser.add_argument("--international", default=os.path.join(
     here, "..", "data", "international-equity.csv"))
   parser.add_argument("--out", default=os.path.join(
@@ -111,7 +111,7 @@ def main() -> None:
   rows = build(args.dta, args.international, args.extended)
   countries = {r["country"] for r in rows}
   years = {r["year"] for r in rows}
-  print(f"{len(rows)} pays-annees, {len(countries)} pays, "
+  print(f"{len(rows)} country-years, {len(countries)} countries, "
        f"{min(years)}-{max(years)}")
 
   with open(args.out, "w", newline="", encoding="utf-8") as handle:
@@ -122,7 +122,7 @@ def main() -> None:
       "bill_real", "inflation"])
     writer.writeheader()
     writer.writerows(rows)
-  print(f"Ecrit dans {os.path.normpath(args.out)}")
+  print(f"Written to {os.path.normpath(args.out)}")
 
 
 if __name__ == "__main__":

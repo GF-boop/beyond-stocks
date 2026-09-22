@@ -1,16 +1,18 @@
-"""Construit le snapshot mensuel canonique utilise par les simulations MF.
+"""Build the canonical monthly snapshot used by the MF simulations.
 
-Ce script d'audit ne contacte jamais le reseau. Les simulations n'ont pas a
-l'executer : elles lisent directement les CSV figes sous ``canonical/data``.
+This audit script never goes online. The simulations do not need to run it:
+they read the frozen CSV files directly (``data/mf-inputs/`` in this
+repository).
 
-Principes :
-- rendements nominaux mensuels, aucune inflation, aucuns frais ;
-- aucune interpolation ;
-- aucun rendement calcule au travers d'un changement de source, sauf mention ;
-- indices actions nationaux en prix, benchmarks Testfol total-return separes ;
-- obligations converties en rendements de portage/prix, jamais traitees comme
-  de simples variations de taux ;
-- commodities et metaux fondes sur le spot : ce ne sont pas des rolls futures.
+Principles:
+- nominal monthly returns, no inflation, no fees;
+- no interpolation;
+- no return computed across a change of source, unless stated;
+- national equity indexes in price terms, Testfol total-return benchmarks kept
+  separate;
+- bonds converted into carry/price returns, never treated as mere yield
+  changes;
+- commodities and metals based on spot prices: these are not futures rolls.
 """
 
 from __future__ import annotations
@@ -34,12 +36,12 @@ START_MONTH = "1921-01"
 END_MONTH = "2025-12"
 
 COUNTRIES = (
-    ("AUS", "Australie"), ("BEL", "Belgique"), ("CAN", "Canada"),
-    ("CHE", "Suisse"), ("DEU", "Allemagne"), ("DNK", "Danemark"),
-    ("ESP", "Espagne"), ("FIN", "Finlande"), ("FRA", "France"),
-    ("GBR", "Royaume-Uni"), ("IRL", "Irlande"), ("ITA", "Italie"),
-    ("JPN", "Japon"), ("NLD", "Pays-Bas"), ("NOR", "Norvege"),
-    ("PRT", "Portugal"), ("SWE", "Suede"), ("USA", "Etats-Unis"),
+    ("AUS", "Australia"), ("BEL", "Belgium"), ("CAN", "Canada"),
+    ("CHE", "Switzerland"), ("DEU", "Germany"), ("DNK", "Denmark"),
+    ("ESP", "Spain"), ("FIN", "Finland"), ("FRA", "France"),
+    ("GBR", "United Kingdom"), ("IRL", "Ireland"), ("ITA", "Italy"),
+    ("JPN", "Japan"), ("NLD", "Netherlands"), ("NOR", "Norway"),
+    ("PRT", "Portugal"), ("SWE", "Sweden"), ("USA", "United States"),
 )
 
 OECD_CODE = {
@@ -115,7 +117,7 @@ def price_returns(values: dict[str, float]) -> dict[str, float]:
 
 
 def fixed_coupon_returns(values: dict[str, float], coupon: float) -> dict[str, float]:
-  """Prix par 100 de nominal, coupon annuel lisse sur douze mois."""
+  """Price per 100 of face value, annual coupon smoothed over twelve months."""
   ordered = sorted(values)
   result: dict[str, float] = {}
   for previous, current in zip(ordered, ordered[1:]):
@@ -128,18 +130,18 @@ def fixed_coupon_returns(values: dict[str, float], coupon: float) -> dict[str, f
 
 
 def par_bond_monthly_return(yield_previous: float, yield_current: float) -> float:
-  """Rendement exact d'un proxy par dix ans, coupons semestriels.
+  """Exact return of a ten-year proxy bond with semi-annual coupons.
 
-  Les taux sont en pourcentage. Le coupon du titre achete a t-1 est egal au
-  taux de t-1, ce qui le place au pair. Un mois plus tard, les vingt flux sont
-  actualises au nouveau taux aux echeances 5, 11, ..., 119 mois. La formule
-  reste definie avec les taux negatifs observes en Europe.
+  Yields are in percent. The coupon of the bond bought at t-1 equals the yield
+  at t-1, which prices it at par. One month later, the twenty cash flows are
+  discounted at the new yield at maturities of 5, 11, ..., 119 months. The
+  formula stays defined with the negative yields observed in Europe.
   """
   coupon = yield_previous / 100.0
   discount_yield = yield_current / 100.0
   base = 1.0 + discount_yield / 2.0
   if base <= 0:
-    raise ValueError(f"taux incompatible avec l'actualisation: {yield_current}")
+    raise ValueError(f"yield incompatible with discounting: {yield_current}")
   exponents = [(5 + 6 * index) / 6 for index in range(20)]
   price = sum((coupon / 2.0) * base ** (-exponent)
               for exponent in exponents[:-1])
@@ -158,7 +160,7 @@ def par_bond_returns(values: dict[str, float]) -> dict[str, float]:
 
 
 def consol_returns(values: dict[str, float]) -> dict[str, float]:
-  """Proxy total return d'une perpetuite depuis son taux courant."""
+  """Total-return proxy of a perpetuity from its current yield."""
   ordered = sorted(values)
   result: dict[str, float] = {}
   for previous, current in zip(ordered, ordered[1:]):
@@ -167,13 +169,13 @@ def consol_returns(values: dict[str, float]) -> dict[str, float]:
     old_yield = values[previous] / 100.0
     new_yield = values[current] / 100.0
     if old_yield <= 0 or new_yield <= 0:
-      raise ValueError("un Consol exige des taux strictement positifs")
+      raise ValueError("a Consol requires strictly positive yields")
     result[current] = old_yield / new_yield - 1.0 + old_yield / 12.0
   return result
 
 
 def lagged_monthly_cash_from_rate(values: dict[str, float]) -> dict[str, float]:
-  """Transforme un taux annualise en rendement mensuel connu au mois precedent."""
+  """Turn an annualised rate into a monthly return known the month before."""
   ordered = sorted(values)
   result: dict[str, float] = {}
   for previous, current in zip(ordered, ordered[1:]):
@@ -181,19 +183,18 @@ def lagged_monthly_cash_from_rate(values: dict[str, float]) -> dict[str, float]:
       continue
     annualized = values[previous] / 100.0
     if annualized <= -1.0:
-      raise ValueError(f"taux court incompatible: {previous}={annualized}")
+      raise ValueError(f"incompatible short rate: {previous}={annualized}")
     result[current] = (1.0 + annualized) ** (1.0 / 12.0) - 1.0
   return result
 
 
 def jst_annual_cash_fallback(path: Path) -> dict[str, dict[str, float]]:
-  """Fallback mensuel, sans look-ahead, depuis le taux court annuel JST/GMD.
+  """Monthly fallback, without look-ahead, from the annual JST/GMD short rate.
 
-  Le taux nominal annuel est reconstitue depuis rendement reel et inflation.
-  Sa valeur de l'annee y est appliquee mensuellement a y+1 : l'information ne
-  traverse donc jamais une publication annuelle future. Ce fallback est moins
-  precis qu'un fixing mensuel et sera toujours remplace par OECD/FRED lorsque
-  disponible.
+  The annual nominal rate is rebuilt from the real return and inflation. Its
+  value for year y is applied monthly to y+1: information therefore never
+  crosses a future annual release. This fallback is less precise than a monthly
+  fixing and is always replaced by OECD/FRED when available.
   """
   names = {
       "Australia": "AUS", "Belgium": "BEL", "Canada": "CAN",
@@ -259,7 +260,7 @@ def transform(values: dict[str, float], segment: Segment) -> dict[str, float]:
     return consol_returns(selected)
   if segment.transformation == "already_monthly_return":
     return selected
-  raise ValueError(f"transformation inconnue: {segment.transformation}")
+  raise ValueError(f"unknown transformation: {segment.transformation}")
 
 
 def add_segment(
@@ -275,7 +276,7 @@ def add_segment(
   sources = source_by_asset.setdefault(segment.asset_id, {})
   overlap = set(destination) & set(generated)
   if overlap:
-    raise ValueError(f"{segment.asset_id}: segments superposes {sorted(overlap)[:3]}")
+    raise ValueError(f"{segment.asset_id}: overlapping segments {sorted(overlap)[:3]}")
   destination.update(generated)
   sources.update({month: segment.segment_id for month in generated})
   segment_rows.append({
@@ -359,19 +360,19 @@ def main() -> None:
   infos: dict[str, AssetInfo] = {}
   segment_rows: list[dict[str, str | int]] = []
 
-  # Actions : uniquement des indices prix dans l'univers par defaut.
+  # Equities: only price indexes in the default universe.
   for iso, name in COUNTRIES:
     asset = f"EQ_{iso}"
     infos[asset] = AssetInfo(
         asset, "equity", name, "price_return", True, "local",
-        "Dividendes absents; proxy de prix, pas rendement total.",
+        "Dividends excluded; price proxy, not total return.",
     )
     if iso not in {"DEU", "FRA", "GBR", "USA"}:
       add_segment(returns, sources, segment_rows, Segment(
           asset, f"{asset}_OECD", "OECD via FRED",
           f"SPASTT01{OECD_CODE[iso]}M661N", "price_return",
           START_MONTH, END_MONTH,
-          "Indice de cours national mensuel."), oecd_equity[iso])
+          "Monthly national price index."), oecd_equity[iso])
 
   equity_segments = (
       ("EQ_GBR", "EQ_GBR_NBER_B", "NBER Macrohistory", "m11012b", "1921-01", "1924-12", nber_equity["m11012b"]),
@@ -388,15 +389,15 @@ def main() -> None:
   for asset, segment_id, provider, source_id, start, end, values in equity_segments:
     add_segment(returns, sources, segment_rows, Segment(
         asset, segment_id, provider, source_id, "price_return", start, end,
-        "Rendements calcules uniquement a l'interieur de ce segment."), values)
+        "Returns computed only within this segment."), values)
 
-  # Obligations : proxy total return dix ans depuis les taux. Trois marches
-  # disposent d'un segment historique supplementaire avant les taux OECD.
+  # Bonds: ten-year total-return proxy from yields. Three markets have an
+  # additional historical segment before the OECD yields.
   for iso, name in COUNTRIES:
     asset = f"BOND_{iso}_10Y"
     infos[asset] = AssetInfo(
         asset, "bond", name, "synthetic_excess_return", True, "local",
-        "Proxy obligataire en exces de cash; ni indice observe ni future roule.",
+        "Bond proxy in excess of cash; neither an observed index nor a rolled future.",
     )
     start = START_MONTH
     if iso == "USA":
@@ -409,44 +410,44 @@ def main() -> None:
         asset, f"{asset}_OECD", "OECD via FRED",
         f"IRLTLT01{OECD_CODE[iso]}M156N",
         "par_10y_total_return", start, END_MONTH,
-        "Coupon fixe au taux du mois precedent; maturite initiale dix ans."),
+        "Coupon fixed at the preceding month's yield; initial maturity ten years."),
         oecd_yield[iso])
 
-  # Etats-Unis : deux vintages NBER puis OECD, avec reset a chaque couture.
+  # United States: two NBER vintages then OECD, with a reset at each seam.
   add_segment(returns, sources, segment_rows, Segment(
       "BOND_USA_10Y", "BOND_USA_NBER_A", "NBER Macrohistory", "m13033a",
       "par_10y_total_return", START_MONTH, "1941-09",
-      "Taux longs partiellement tax-exempt; maturite/callabilite variable."),
+      "Long yields partly tax-exempt; varying maturity and callability."),
       nber_bond_yield["m13033a"])
   add_segment(returns, sources, segment_rows, Segment(
       "BOND_USA_10Y", "BOND_USA_NBER_B", "NBER Macrohistory", "m13033b",
       "par_10y_total_return", "1941-10", "1953-03",
-      "Taux longs NBER convertis avec une maturite proxy de dix ans."),
+      "NBER long yields converted using a ten-year proxy maturity."),
       nber_bond_yield["m13033b"])
 
-  # Royaume-Uni : Consol jusqu'en 1934, puis vrai taux dix ans.
+  # United Kingdom: Consol through 1934, then a ten-year yield series.
   add_segment(returns, sources, segment_rows, Segment(
       "BOND_GBR_10Y", "BOND_GBR_CONSOL", "Bank of England via FRED", "YCLTUK",
       "consol_total_return", START_MONTH, "1934-12",
-      "Perpetuite longue; changement de duration explicite avant 1935."),
+      "Long perpetuity; explicit duration change before 1935."),
       uk_yield["YCLTUK"])
   add_segment(returns, sources, segment_rows, Segment(
       "BOND_GBR_10Y", "BOND_GBR_BOE_10Y", "Bank of England via FRED", "MTGB10UKM",
       "par_10y_total_return", "1935-01", "1959-12",
-      "Serie dix ans BoE; reset entre Consol et dix ans."),
+      "BoE ten-year series; reset between Consol and ten-year series."),
       uk_yield["MTGB10UKM"])
 
-  # France : rendement observe de la rente 3 %, puis proxy dix ans OECD.
+  # France: observed return of the 3% rente, then OECD ten-year proxy.
   add_segment(returns, sources, segment_rows, Segment(
       "BOND_FRA_10Y", "BOND_FRA_RENTE_3", "NBER Macrohistory", "m11021",
       "fixed_coupon_total_return", START_MONTH, "1940-04",
-      "Rente perpetuelle 3 %, coupon annualise uniformement par mois.", 0.03),
+      "Perpetual 3% rente; annual coupon spread evenly by month.", 0.03),
       nber_bond_price["m11021"])
 
-  # Un future obligataire produit l'exces de rendement du titre par rapport au
-  # cash de sa devise. Le taux court mensuel OECD est privilegie; avant sa
-  # disponibilite, le taux annuel JST/GMD de l'annee precedente est applique
-  # uniformement, sans utiliser une information future.
+  # A bond future earns the bond's excess return over cash in its currency. The
+  # monthly OECD short rate is preferred; before it is available, the previous
+  # year's annual JST/GMD rate is applied uniformly, without using future
+  # information.
   for iso, _name in COUNTRIES:
     asset = f"BOND_{iso}_10Y"
     for month in list(returns[asset]):
@@ -460,19 +461,19 @@ def main() -> None:
     if str(row["asset_id"]).startswith("BOND_"):
       row["transformation"] = "par_10y_excess_return"
       row["notes"] = (
-          f"{row['notes']} Cash trois mois soustrait (OECD mensuel ou fallback JST/GMD annuel)."
+          f"{row['notes']} Three-month cash return subtracted (monthly OECD or annual JST/GMD fallback)."
       )
 
-  # Commodities spot. Les quatre longues series changent de source en 1960 ;
-  # le premier rendement de chaque nouveau segment est laisse vide.
+  # Spot commodities. The four long series change source in 1960; the first
+  # return of each new segment is left empty.
   commodity_names = {
-      "aluminum": "Aluminium", "barley": "Orge", "coal": "Charbon",
-      "cocoa": "Cacao", "coffee": "Cafe", "copper": "Cuivre",
-      "corn": "Mais", "crude_oil": "Petrole brut", "lead": "Plomb",
-      "natural_gas": "Gaz naturel", "nickel": "Nickel",
-      "palm_oil": "Huile de palme", "pig_iron": "Fonte",
-      "soybeans": "Soja", "sugar": "Sucre", "tea": "The",
-      "tin": "Etain", "wheat": "Ble", "zinc": "Zinc",
+      "aluminum": "Aluminum", "barley": "Barley", "coal": "Coal",
+      "cocoa": "Cocoa", "coffee": "Coffee", "copper": "Copper",
+      "corn": "Corn", "crude_oil": "Crude oil", "lead": "Lead",
+      "natural_gas": "Natural gas", "nickel": "Nickel",
+      "palm_oil": "Palm oil", "pig_iron": "Pig iron",
+      "soybeans": "Soybeans", "sugar": "Sugar", "tea": "Tea",
+      "tin": "Tin", "wheat": "Wheat", "zinc": "Zinc",
   }
   old_to_wb = {
       "copper": ("copper", "copper_wb"),
@@ -489,65 +490,65 @@ def main() -> None:
     asset = f"CMD_{key.upper()}"
     infos[asset] = AssetInfo(
         asset, "commodity", label, "spot_price_return", True, "USD/source unit",
-        "Prix spot/cash; carry, collateral et roll futures absents.",
+        "Spot/cash price; futures carry, collateral, and roll returns absent.",
     )
     if key in old_to_wb:
       old_name, wb_name = old_to_wb[key]
       add_segment(returns, sources, segment_rows, Segment(
           asset, f"{asset}_NBER", "NBER/BLS via FRED", old_name,
           "price_return", START_MONTH, "1959-12",
-          "Longue serie historique; aucun rendement au raccord 1960."),
+          "Long historical series; no return across the 1960 source seam."),
           old_commodities[old_name])
       add_segment(returns, sources, segment_rows, Segment(
           asset, f"{asset}_WB", "World Bank Pink Sheet", wb_name,
           "price_return", "1960-01", END_MONTH,
-          "Prix mensuel de marche; premier mois du segment sans rendement."),
+          "Monthly market price; first month of segment has no return."),
           wb_commodities[wb_name])
     elif key == "pig_iron":
       add_segment(returns, sources, segment_rows, Segment(
           asset, f"{asset}_NBER", "NBER via FRED", "pig_iron",
           "price_return", START_MONTH, "1958-04",
-          "Serie historique terminee; aucun prolongement artificiel."),
+          "Historical series ended; no artificial extension."),
           old_commodities["pig_iron"])
     elif key in wb_only:
       add_segment(returns, sources, segment_rows, Segment(
           asset, f"{asset}_WB", "World Bank Pink Sheet", key,
           "price_return", "1960-01", END_MONTH,
-          "Prix mensuel spot/cash."), wb_commodities[key])
+          "Monthly spot/cash price."), wb_commodities[key])
 
-  # Metaux precieux : l'or officiel mensuellement constant avant 1960, puis
-  # prix mensuel World Bank. Aucun frais de garde n'est applique aux donnees.
+  # Precious metals: the official gold price, constant monthly before 1960, then
+  # the monthly World Bank price. No custody fee is applied to the data.
   gold_asset = "METAL_GOLD"
   silver_asset = "METAL_SILVER"
   infos[gold_asset] = AssetInfo(
-      gold_asset, "precious_metal", "Or", "spot_price_return", True, "USD",
-      "Prix officiel US avant 1960; spot ensuite; aucun frais de garde.")
+      gold_asset, "precious_metal", "Gold", "spot_price_return", True, "USD",
+      "Official US price before 1960, then spot; no custody fee.")
   infos[silver_asset] = AssetInfo(
-      silver_asset, "precious_metal", "Argent", "spot_price_return", True, "USD",
-      "Spot World Bank depuis 1960; aucun roll futures.")
+      silver_asset, "precious_metal", "Silver", "spot_price_return", True, "USD",
+      "World Bank spot price from 1960; no futures roll return.")
   add_segment(returns, sources, segment_rows, Segment(
       gold_asset, "METAL_GOLD_OFFICIAL", "MeasuringWorth", "us_price",
       "price_return", START_MONTH, "1959-12",
-      "Prix officiel annuel repete par mois; hausse de 1934 placee en janvier."),
+      "Official annual price repeated monthly; the 1934 rise is placed in January."),
       measuringworth_gold_monthly(
           TREND_DIR.parent / "gold" / "measuringworth_gold.csv"))
   add_segment(returns, sources, segment_rows, Segment(
       gold_asset, "METAL_GOLD_WB", "World Bank Pink Sheet", "gold",
       "price_return", "1960-01", END_MONTH,
-      "Prix mensuel USD/once; inclut integralement la liberalisation de 1968."),
+      "Monthly USD/ounce price; fully includes the 1968 liberalization."),
       wb_commodities["gold"])
   add_segment(returns, sources, segment_rows, Segment(
       silver_asset, "METAL_SILVER_WB", "World Bank Pink Sheet", "silver",
       "price_return", "1960-01", END_MONTH,
-      "Prix mensuel USD/once."), wb_commodities["silver"])
+      "Monthly USD/ounce price."), wb_commodities["silver"])
 
-  # Devises : dernier fixing H.10 effectivement disponible dans le mois.
-  # Ces niveaux sont traites a part des prix mensuels moyens : leur signal peut
-  # employer t-1 sans creer le chevauchement qui affecte les autres sources.
+  # Currencies: last H.10 fixing actually available in the month. These levels
+  # are treated separately from monthly average prices: their signal can use t-1
+  # without creating the overlap that affects the other sources.
   fx_names = {
-      "FX_AUD": "Dollar australien", "FX_CAD": "Dollar canadien",
-      "FX_EUR": "Euro", "FX_JPY": "Yen japonais",
-      "FX_CHF": "Franc suisse", "FX_GBP": "Livre sterling",
+      "FX_AUD": "Australian dollar", "FX_CAD": "Canadian dollar",
+      "FX_EUR": "Euro", "FX_JPY": "Japanese yen",
+      "FX_CHF": "Swiss franc", "FX_GBP": "Pound sterling",
   }
   fx_source_ids = {
       "FX_AUD": "DEXUSAL", "FX_CAD": "DEXCAUS", "FX_EUR": "DEXUSEU",
@@ -556,13 +557,13 @@ def main() -> None:
   for asset, label in fx_names.items():
     infos[asset] = AssetInfo(
         asset, "currency", label, "forward_excess_return", True,
-        "USD par unite etrangere",
-        "Forward synthetique: spot H.10 fin de mois + differentiel de taux trois mois.",
+        "USD per foreign-currency unit",
+        "Synthetic forward: month-end H.10 spot plus three-month rate differential.",
     )
     add_segment(returns, sources, segment_rows, Segment(
         asset, f"{asset}_FRED_H10", "Board of Governors H.10 via FRED", fx_source_ids[asset],
         "price_return", START_MONTH, END_MONTH,
-        "Derniere cotation quotidienne disponible de chaque mois, USD par unite."),
+        "Last available daily fixing each month, USD per unit."),
         fx_spot_eom[asset])
 
   fx_cash_country = {
@@ -586,15 +587,15 @@ def main() -> None:
     if str(row["asset_id"]).startswith("FX_"):
       row["transformation"] = "synthetic_forward_excess_return"
       row["notes"] = (
-          f"{row['notes']} Differentiel de taux trois mois ajoute, connu au mois precedent."
+          f"{row['notes']} Three-month rate differential added, known in the previous month."
       )
 
-  # Benchmarks Testfol, exclus de l'univers par defaut afin d'eviter le double
-  # comptage avec les marches nationaux et entre maturites US.
+  # Testfol benchmarks, excluded from the default universe to avoid double
+  # counting with the national markets and across US maturities.
   benchmark_map = {
       "SPYSIM": ("equity_benchmark", "S&P 500 TR"),
-      "VTISIM": ("equity_benchmark", "Marche US total TR"),
-      "VXUSSIM": ("equity_benchmark", "Actions hors US TR"),
+      "VTISIM": ("equity_benchmark", "US total-market TR"),
+      "VXUSSIM": ("equity_benchmark", "Ex-US equities TR"),
       "URTHSIM": ("equity_benchmark", "MSCI World TR"),
       "VTSIM": ("equity_benchmark", "Monde total TR"),
       "SHYSIM": ("bond_benchmark", "Treasuries US 1-3 ans"),
@@ -606,25 +607,25 @@ def main() -> None:
     asset = f"BM_{ticker}"
     infos[asset] = AssetInfo(
         asset, asset_class, label, "reconstructed_total_return", False, "USD",
-        "Benchmark reconstruit et recouvrant; exclu de l'univers MF par defaut.")
+        "Reconstructed, overlapping benchmark; excluded from the default MF universe.")
     add_segment(returns, sources, segment_rows, Segment(
         asset, f"{asset}_TESTFOL", "Testfol", ticker,
         "already_monthly_return", START_MONTH, END_MONTH,
-        "Rendement total SIM; controle/sensibilite uniquement."), testfol[ticker])
+        "SIM total return; checks and sensitivities only."), testfol[ticker])
 
-  # Validation numerique avant toute ecriture.
+  # Validate numbers before writing files.
   for asset, values in returns.items():
     for month, value in values.items():
       if not START_MONTH <= month <= END_MONTH:
-        raise ValueError(f"{asset}: mois hors snapshot {month}")
+        raise ValueError(f"{asset}: month outside snapshot {month}")
       if not math.isfinite(value) or value <= -1.0:
-        raise ValueError(f"{asset}: rendement invalide {month}={value}")
+        raise ValueError(f"{asset}: invalid return {month}={value}")
       if infos[asset].asset_class == "bond" and abs(value) > 1.0:
-        raise ValueError(f"{asset}: rendement obligataire aberrant {month}={value}")
+        raise ValueError(f"{asset}: implausible bond return {month}={value}")
 
-  # Le rendement spot FX est conserve separement du rendement forward : il
-  # sert a convertir les P&L locaux des actions et obligations vers le USD,
-  # sans reutiliser le P&L du secteur devises comme taux de change.
+  # The FX spot return is kept separate from the forward return: it converts the
+  # local P&L of equities and bonds into USD, without reusing the P&L of the
+  # currency sector as an exchange rate.
   fx_spot_returns = {
       asset: price_returns(values)
       for asset, values in fx_spot_eom.items()
@@ -649,9 +650,9 @@ def main() -> None:
                     if info.asset_class == asset_class)
     write_wide(DATA_DIR / filename, assets, returns)
 
-  # Le collateral est une serie explicite et versionnee, plutot qu'une
-  # hypothese cachee dans le moteur managed futures. Les taux y sont deja
-  # retardes d'un mois dans ``combine_cash_returns``.
+  # The collateral is an explicit, versioned series rather than an assumption
+  # hidden in the managed-futures engine. Its rates are already lagged by one
+  # month in ``combine_cash_returns``.
   write_wide(DATA_DIR / "cash-returns-monthly.csv", sorted(cash_returns), cash_returns)
   cash_source_rows = [
       {
@@ -668,7 +669,7 @@ def main() -> None:
       ["month", "currency", "cash_return", "source"],
   )
 
-  # Format long universel : un seul fichier suffit a une future implementation.
+  # Universal long format: a single file is enough for a future implementation.
   long_rows: list[dict[str, str]] = []
   for month in month_range():
     for asset in sorted(returns):
@@ -719,7 +720,7 @@ def main() -> None:
        "return_observations", "reset_at_start", "notes"],
   )
 
-  # Valeurs extremes conservees mais rendues visibles pour la revue humaine.
+  # Extreme values kept but made visible for human review.
   thresholds = {"equity": 0.40, "bond": 0.15,
                 "commodity": 0.50, "precious_metal": 0.50, "currency": 0.25}
   outlier_rows: list[dict[str, str]] = []
@@ -745,7 +746,7 @@ def main() -> None:
        "source_segment", "action"],
   )
 
-  # Diagnostics utiles avant de figer la version.
+  # Diagnostics before freezing the version.
   common = sorted(set(returns["BOND_USA_10Y"]) & set(testfol["IEFSIM"]))
   left = [returns["BOND_USA_10Y"][month] for month in common]
   right = [testfol["IEFSIM"][month] for month in common]
@@ -769,28 +770,28 @@ def main() -> None:
         for asset_class in ("equity", "bond", "commodity", "precious_metal", "currency")
     }
     coverage_lines.append(
-        f"Couverture {month}: actions={counts['equity']}, obligations={counts['bond']}, "
-        f"commodities={counts['commodity']}, metaux={counts['precious_metal']}, "
-        f"devises={counts['currency']}."
+        f"Coverage {month}: equities={counts['equity']}, bonds={counts['bond']}, "
+        f"commodities={counts['commodity']}, metals={counts['precious_metal']}, "
+        f"currencies={counts['currency']}."
     )
 
   report = [
-      "SNAPSHOT CANONIQUE MF",
-      f"Periode fixe : {START_MONTH} -> {END_MONTH} ({len(month_range())} mois)",
-      f"Series : {len(infos)} dont {sum(i.default_universe for i in infos.values())} dans l'univers par defaut",
-      f"Rendements non manquants : {len(long_rows):,}",
+      "CANONICAL MF SNAPSHOT",
+      f"Fixed period: {START_MONTH} -> {END_MONTH} ({len(month_range())} months)",
+      f"Series: {len(infos)}, of which {sum(i.default_universe for i in infos.values())} in the default universe",
+      f"Non-missing returns: {len(long_rows):,}",
       "",
-      "Controles passes : cles uniques, rendements finis et > -100 %,",
-      "aucun rendement calcule a travers une couture de sources, aucune interpolation.",
-      f"Proxy USA 10 ans vs IEFSIM ({common[0]}->{common[-1]}): corr={bond_corr:.3f}, vol={bond_vol:.2%} vs {ief_vol:.2%}.",
-      f"Rendement spot or 1968 conserve : {gold_1968:+.2%}.",
+      "Checks passed: unique keys, finite returns > -100%,",
+      "no return computed across a source seam, no interpolation.",
+      f"USA 10-year proxy vs IEFSIM ({common[0]}->{common[-1]}): corr={bond_corr:.3f}, vol={bond_vol:.2%} vs {ief_vol:.2%}.",
+      f"Gold spot return 1968 kept: {gold_1968:+.2%}.",
       *coverage_lines,
-      f"Mouvements extremes signales, non supprimes : {len(outlier_rows)} (flagged-outliers.csv).",
+      f"Extreme moves flagged, not removed: {len(outlier_rows)} (flagged-outliers.csv).",
       "",
-      "Attention : actions nationales = price return; commodities/metaux = spot return;",
-      "devises = forward synthetique (spot EOM + differentiel de taux);",
-      "obligations = proxy dix ans en exces de cash. Aucun de ces fichiers ne contient",
-      "les rolls futures des commodities, les frais, les spreads ou un signal de tendance.",
+      "Warning: national equities = price return; commodities/metals = spot return;",
+      "currencies = synthetic forward (EOM spot + rate differential);",
+      "bonds = ten-year proxy in excess of cash. None of these files contains",
+      "commodity futures rolls, fees, spreads or a trend signal.",
   ]
   (DATA_DIR / "VALIDATION.txt").write_text("\n".join(report) + "\n", encoding="utf-8")
 

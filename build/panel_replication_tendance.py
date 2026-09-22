@@ -1,24 +1,23 @@
-"""Complete le panel de replication dans le numeraire de chaque resident.
+"""Complete the replication panel in the numeraire of each resident.
 
-Toutes les poches d'une ligne pays-annee mesurent la variation du pouvoir
-d'achat d'un menage qui reside dans ce pays. L'ancienne version attachait a
-chaque pays des rendements mondiaux deflates par le CPI americain ou par le CPI
-propre a chaque emetteur et melangeait donc des numeraires.
+Every sleeve of a country-year row measures the change in purchasing power of a
+household that lives in that country. The former version attached to each
+country world returns deflated by US CPI or by each issuer's own CPI, and so
+mixed numeraires.
 
-Les actions mondiales et l'or restent non couverts : leur rendement nominal est
-converti dans la monnaie du resident, puis deflate par son inflation. Le cas
-principal couvre en revanche les obligations mondiales et le managed futures.
-Sous parite couverte des taux, il conserve l'exces de rendement de l'actif sur
-son cash effectivement embarque dans la serie source et lui substitue le bill
-reel du resident. Pour les obligations, ce cash est le bill de l'emetteur ;
-pour le managed futures, c'est le collateral U.S. observe dans la serie source.
-Le carry est donc explicite et le change spot ex post n'entre pas dans le cas
-principal. Les versions non couvertes sont conservees dans des colonnes
-separees pour sensibilite.
+World stocks and gold stay unhedged: their nominal return is converted into the
+resident's currency, then deflated by the resident's inflation. The main case
+hedges global bonds and managed futures instead. Under covered interest parity,
+it keeps the asset's excess return over the cash actually embedded in the
+source series and replaces it with the resident's real bill. For bonds, this
+cash is the issuer's bill; for managed futures, it is the US collateral
+observed in the source series. The carry is therefore explicit and the ex post
+spot exchange rate does not enter the main case. Unhedged versions are kept in
+separate columns for sensitivity analysis.
 
-Le panier obligataire exige huit emetteurs au minimum. Sur la fenetre
-1927--2025 ce plancher ne retire aucune observation : le panier effectivement
-produit contient 13 a 16 souverains, dont 16 dans la grande majorite du panel.
+The bond basket requires at least eight issuers. Over 1927--2025 this floor
+removes no observation: the basket actually produced contains 13 to 16
+sovereigns, 16 in most of the panel.
 """
 
 from __future__ import annotations
@@ -29,20 +28,18 @@ import os
 import argparse
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-# Tous les souverains du panel entrent dans le panier, y compris celui du
-# resident : un indice obligataire mondial reel contient bien la dette du pays
-# de l'investisseur, et le panier reste alors identique pour tous les
-# residents, ce que la parite couverte des taux impose. Un panier restreint aux
-# quatre grands emetteurs porterait mal son nom et concentrerait la
-# diversification sur une poignee d'histoires souveraines.
+# Every sovereign of the panel enters the basket, including the resident's
+# own: a real global bond index does contain the debt of the investor's country,
+# and the basket is then identical for all residents, as covered interest parity
+# requires. A basket restricted to the four largest issuers would be misnamed and
+# concentrate diversification on a handful of sovereign histories.
 BOND_ISSUERS = (
   "Australia", "Belgium", "Denmark", "Finland", "France", "Germany",
   "Italy", "Japan", "Netherlands", "Norway", "Portugal", "Spain",
   "Sweden", "Switzerland", "UK", "USA",
 )
-# Huit emetteurs au minimum pour qu'une annee compte comme mondiale. Sur la
-# fenetre 1927-2025 ce plancher ne coute aucune observation : les seules
-# annees ecartees sont anterieures a 1882.
+# At least eight issuers for a year to count as global. Over 1927-2025 this
+# floor costs no observation: the only years dropped are before 1882.
 MIN_BOND_ISSUERS = 8
 BOND_FEE = 0.001
 EQUITY_FEE_BEFORE_1970 = 0.002
@@ -63,7 +60,7 @@ def convert_local_real_return(
     resident_fx: float,
     resident_previous_fx: float,
     ) -> float:
-  """Convertit un rendement reel local en rendement reel du resident."""
+  """Convert a local real return into the resident's real return."""
   nominal_local = (1.0 + local_real) * (1.0 + issuer_inflation) - 1.0
   currency = ((resident_fx / issuer_fx)
               / (resident_previous_fx / issuer_previous_fx))
@@ -77,7 +74,7 @@ def convert_us_real_return(
     resident_fx: float,
     resident_previous_fx: float,
     ) -> float:
-  """Convertit un rendement reel USD en rendement reel du resident."""
+  """Convert a real USD return into the resident's real return."""
   nominal_us = (1.0 + us_real) * (1.0 + us_inflation) - 1.0
   usd_currency_return = resident_fx / resident_previous_fx
   return ((1.0 + nominal_us) * usd_currency_return
@@ -86,9 +83,9 @@ def convert_us_real_return(
 
 def covered_real_return(asset_real: float, foreign_bill_real: float,
                         resident_bill_real: float) -> float:
-  """Rendement reel couvert, carry inclus, sous parite couverte des taux."""
+  """Hedged real return, carry included, under covered interest parity."""
   if foreign_bill_real <= -1.0:
-    raise ValueError("Le rendement du bill etranger doit etre superieur a -100 %")
+    raise ValueError("The foreign bill return must be above -100%")
   return ((1.0 + resident_bill_real)
           * (1.0 + asset_real) / (1.0 + foreign_bill_real) - 1.0)
 
@@ -99,14 +96,14 @@ def fixed_notional_hedged_real_return(
     foreign_fx: float, foreign_previous_fx: float,
     resident_fx: float, resident_previous_fx: float,
     ) -> float:
-  """Rendement reel d'un actif etranger avec forward sur le notionnel initial.
+  """Real return of a foreign asset with a forward on the initial notional.
 
-  La convention ``covered_real_return`` suppose implicitement que la valeur
-  terminale de l'actif entier est couverte. Un fonds couvre plus usuellement le
-  notionnel connu au debut de la periode, puis renouvelle le forward. Cette
-  fonction ajoute donc le payoff du forward sur une unite de devise etrangere
-  au rendement local realise. Le forward est valorise sous CIP a partir des
-  bills nominaux observes; le reste de la valeur terminale garde un risque FX.
+  The ``covered_real_return`` convention implicitly assumes that the terminal
+  value of the whole asset is hedged. A fund more usually hedges the notional
+  known at the start of the period, then rolls the forward. This function
+  therefore adds the payoff of the forward on one unit of foreign currency to
+  the realised local return. The forward is priced under CIP from the observed
+  nominal bills; the rest of the terminal value keeps an FX exposure.
   """
   foreign_bill_nominal = ((1.0 + foreign_bill_real)
                           * (1.0 + foreign_inflation))
@@ -131,12 +128,11 @@ def build(
     excluded_bond_issuer_years: frozenset[tuple[str, int]] = frozenset(),
     source_inflation: dict[str, dict[int, float]] | None = None,
     ) -> list[dict[str, str | float]]:
-  """``source_inflation`` donne, pour ``"gold"`` et ``"trend"``, l'inflation
-  americaine qui a servi a deflater chaque serie source (CPI decembre sur
-  decembre). Elle sert a retrouver exactement le rendement nominal en USD avant
-  la conversion dans la monnaie du resident. Sans elle, la conversion
-  re-nominalise avec l'inflation americaine du panel JST, qui n'est pas celle
-  du deflateur source."""
+  """``source_inflation`` gives, for ``"gold"`` and ``"trend"``, the US
+  inflation used to deflate each source series (December-to-December CPI). It
+  recovers the exact nominal USD return before conversion into the resident's
+  currency. Without it, the conversion re-nominalises with the US inflation of
+  the JST panel, which is not the source deflator."""
   by_country_year = {
     (row["country"], int(row["year"])): row for row in panel
   }
@@ -325,7 +321,7 @@ def main() -> None:
 
   years = [int(row["year"]) for row in rows]
   issuers = sorted({int(row["world_bond_issuers"]) for row in rows})
-  print(f"{len(rows)} pays-annees ({min(years)}-{max(years)}), "
+  print(f"{len(rows)} country-years ({min(years)}-{max(years)}), "
         f"emetteurs obligataires {issuers} "
         f"-> {os.path.normpath(out)}")
 

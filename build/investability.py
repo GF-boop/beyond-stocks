@@ -1,64 +1,61 @@
-"""Filtre ex ante des pays-annees non investissables du panel annuel.
+"""Ex ante filter of non-investable country-years in the annual panel.
 
-Le filtre ne retire pas une observation parce que son rendement est mauvais.
-Il retire les lignes pour lesquelles une observation annuelle synchronisee ne
-peut pas representer simultanement un marche negociable, une monnaie
-convertible et une couverture renouvelable.
+The filter never removes an observation because its return is bad. It removes
+the rows for which a synchronised annual observation cannot simultaneously
+represent a tradable market, a convertible currency and a rollable hedge.
 
-Deux criteres publics et reproductibles sont utilises :
+Two public and reproducible criteria are used:
 
-1. les fermetures ou restrictions prolongees de marche de la table A.III
-   d'Anarkulova, Cederburg et O'Doherty (2025), en ne gardant que les pays de
-   notre panel et les evenements posterieurs a 1926 ;
-2. une variation annuelle du CPI d'au moins +50 % ou d'au plus -20 %, seuil
-   mecanique qui signale un regime dans lequel taux officiel, reforme
-   monetaire et pouvoir d'achat ne peuvent pas etre raccordes proprement dans
-   notre panel annuel.
+1. the long market closures or restrictions of Table A.III of Anarkulova,
+   Cederburg and O'Doherty (2025), keeping only the countries of our panel and
+   the events after 1926;
+2. an annual CPI change of at least +50% or at most -20%, a mechanical
+   threshold that flags a regime in which the official rate, the monetary
+   reform and purchasing power cannot be cleanly spliced in our annual panel.
 
-Les donnees brutes ne sont jamais modifiees. Le panel integral reste disponible
-comme stress historique et le filtre doit etre lu comme une convention
-d'investissabilite, non comme une negation du cout economique des guerres.
+Raw data are never modified. The full panel remains available as a historical
+stress test, and the filter should be read as an investability convention, not
+as a denial of the economic cost of wars.
 """
 
 from __future__ import annotations
 
 
-# Periodes calendaires recouvertes par les observations multi-mois de la table
-# A.III d'ACO (2025). Les bornes sont inclusives. Les evenements de deux mois
-# sont conserves : notre frequence annuelle ne permet pas de les synchroniser
-# proprement avec les autres classes d'actifs.
+# Calendar periods covered by the multi-month observations of Table A.III of
+# ACO (2025). Bounds are inclusive. Two-month events are kept: our annual
+# frequency cannot synchronise them cleanly with the other asset classes.
 ACO_MARKET_DISRUPTIONS: dict[str, tuple[tuple[int, int, str], ...]] = {
   "Belgium": (
-    (1940, 1940, "fermeture ou restriction de marche ACO A.III"),
-    (1944, 1945, "fermeture ou restriction de marche ACO A.III"),
+    (1940, 1940, "market closure or restriction ACO A.III"),
+    (1944, 1945, "market closure or restriction ACO A.III"),
   ),
   "Denmark": (
-    (1940, 1940, "fermeture ou restriction de marche ACO A.III"),
+    (1940, 1940, "market closure or restriction ACO A.III"),
   ),
   "France": (
-    (1939, 1941, "fermeture ou restriction de marche ACO A.III"),
-    (1974, 1974, "restriction de marche ACO A.III"),
-    (1979, 1979, "restriction de marche ACO A.III"),
+    (1939, 1941, "market closure or restriction ACO A.III"),
+    (1974, 1974, "market restriction ACO A.III"),
+    (1979, 1979, "market restriction ACO A.III"),
   ),
   "Germany": (
-    (1931, 1932, "crise bancaire et restriction de marche ACO A.III"),
-    (1943, 1948, "fermeture de marche et reforme monetaire ACO A.III"),
+    (1931, 1932, "banking crisis and market restriction ACO A.III"),
+    (1943, 1948, "market closure and currency reform ACO A.III"),
   ),
   "Japan": (
-    (1945, 1949, "fermeture de marche ACO A.III"),
+    (1945, 1949, "market closure ACO A.III"),
   ),
   "Netherlands": (
-    (1940, 1940, "fermeture ou restriction de marche ACO A.III"),
-    (1944, 1946, "fermeture ou restriction de marche ACO A.III"),
+    (1940, 1940, "market closure or restriction ACO A.III"),
+    (1944, 1946, "market closure or restriction ACO A.III"),
   ),
   "Norway": (
-    (1940, 1940, "fermeture ou restriction de marche ACO A.III"),
+    (1940, 1940, "market closure or restriction ACO A.III"),
   ),
   "Portugal": (
-    (1974, 1977, "fermeture ou restriction de marche ACO A.III"),
+    (1974, 1977, "market closure or restriction ACO A.III"),
   ),
   "Switzerland": (
-    (1940, 1940, "restriction de marche ACO A.III"),
+    (1940, 1940, "market restriction ACO A.III"),
   ),
 }
 
@@ -68,7 +65,7 @@ MAX_DEFLATION = -0.20
 
 def exclusion_reasons(country: str, year: int,
                       inflation: float) -> tuple[str, ...]:
-  """Retourne les criteres d'exclusion applicables a une ligne."""
+  """Return the exclusion criteria that apply to a row."""
   reasons: list[str] = []
   for first, last, reason in ACO_MARKET_DISRUPTIONS.get(country, ()):
     if first <= year <= last:

@@ -1,20 +1,19 @@
-"""Revenus stochastiques de cycle de vie utilises par Cederburg et al.
+"""Stochastic lifecycle incomes used by Cederburg et al.
 
-Le processus est le modele 6 de Guvenen, Karahan, Ozkan et Song (2021), avec
-les parametres publies retranscrits dans une implementation publique. Comme
-dans le cas central de Cederburg et al. (2025), les deux conjoints ont les types
-permanents
-medians ``alpha = beta = z0 = 0``. Restent aleatoires :
+The process is model 6 of Guvenen, Karahan, Ozkan and Song (2021), with the
+published parameters as transcribed in a public implementation. As in the main
+case of Cederburg et al. (2025), both spouses have the median permanent types
+``alpha = beta = z0 = 0``. What remains random:
 
-* les innovations persistantes et transitoires, melanges de deux normales ;
-* la probabilite et la duree du non-emploi, dependantes de l'age et du revenu.
+* persistent and transitory innovations, mixtures of two normals;
+* the probability and duration of non-employment, depending on age and income.
 
-Une unite du modele vaut 1 000 dollars 2022. Ce facteur reproduit directement
-la Figure 2 de Cederburg : environ 28 500 dollars de revenu median du menage a
-25 ans et 69 000 dollars au sommet du profil. Les montants sont reels.
+One model unit is worth 1,000 dollars of 2022. This factor directly reproduces
+Cederburg's Figure 2: about 28,500 dollars of median household income at 25
+and 69,000 dollars at the peak of the profile. Amounts are real.
 
-Sources amont : DOI 10.3982/ECTA14603 et fichier
-``DiscretizeEarningsDynamicsModel.m`` du depot public
+Upstream sources: DOI 10.3982/ECTA14603 and the file
+``DiscretizeEarningsDynamicsModel.m`` of the public repository
 https://github.com/robertdkirkby/DiscretizedEarningsDynamics.
 """
 
@@ -56,9 +55,9 @@ def _mixture_normal(rng: random.Random, probability: float,
 
 
 def deterministic_log_income(age: int) -> float:
-  """Profil quadratique ``g(t)`` du modele 6, age 25 a 64 ans."""
+  """Quadratic profile ``g(t)`` of model 6, ages 25 to 64."""
   if not START_AGE <= age < RETIRE_AGE:
-    raise ValueError("Le profil de revenu est defini de 25 a 64 ans")
+    raise ValueError("The income profile is defined from age 25 to 64")
   t = (age - 24) / 10.0
   return 2.581 + 0.812 * t - 0.185 * t * t
 
@@ -67,7 +66,7 @@ def nonemployment_probability(age: int, persistent_income: float) -> float:
   t = (age - 24) / 10.0
   a, b, c, d = NONEMPLOYMENT
   xi = a + b * t + c * persistent_income + d * t * persistent_income
-  # Forme stable de la fonction logistique dans les queues du processus.
+  # Stable form of the logistic function in the tails of the process.
   if xi >= 0.0:
     return 1.0 / (1.0 + math.exp(-min(xi, 700.0)))
   exponential = math.exp(max(xi, -700.0))
@@ -75,11 +74,11 @@ def nonemployment_probability(age: int, persistent_income: float) -> float:
 
 
 def draw_individual_income(rng: random.Random) -> list[float]:
-  """Tire une carriere annuelle en dollars reels 2022.
+  """Draw an annual career in real 2022 dollars.
 
-  Cederburg fixe ``z0`` a zero ; la premiere innovation persistante est donc
-  tiree entre z0 et le revenu observe a 25 ans. En cas de choc de non-emploi,
-  la fraction d'annee perdue est une exponentielle tronquee a un an.
+  Cederburg sets ``z0`` to zero; the first persistent innovation is therefore
+  drawn between z0 and the income observed at 25. After a non-employment
+  shock, the fraction of the year lost is an exponential truncated at one year.
   """
   income: list[float] = []
   persistent = 0.0
@@ -102,7 +101,7 @@ def draw_individual_income(rng: random.Random) -> list[float]:
 
 def draw_household_income(
     rng: random.Random) -> tuple[list[float], list[float], list[float]]:
-  """Deux carrieres independantes et leur somme, appariees aux strategies."""
+  """Two independent careers and their sum, paired across strategies."""
   first = draw_individual_income(rng)
   second = draw_individual_income(rng)
   return first, second, [left + right for left, right in zip(first, second)]
@@ -113,7 +112,7 @@ if __name__ == "__main__":
 
   generator = random.Random(20260827)
   draws = [draw_household_income(generator)[2] for _ in range(20_000)]
-  print(f"{'age':>4}{'p10':>12}{'mediane':>12}{'moyenne':>12}{'p90':>12}")
+  print(f"{'age':>4}{'p10':>12}{'median':>12}{'mean':>12}{'p90':>12}")
   for age in (25, 30, 35, 40, 45, 50, 55, 60, 64):
     values = [draw[age - START_AGE] for draw in draws]
     deciles = statistics.quantiles(values, n=10)

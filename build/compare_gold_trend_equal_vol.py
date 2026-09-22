@@ -1,16 +1,16 @@
-"""Ajoute or et managed futures au 60/40, a volatilite egale a Stocks/I.
+"""Add gold and managed futures to the 60/40, at the volatility of Stocks/I.
 
-Les quatre formes de portefeuille risqué totalisent 100 % avant calibrage :
+The four risky portfolio shapes sum to 100% before calibration:
 
-- 60 % actions / 40 % obligations ;
-- 60 % actions / 30 % obligations / 10 % or ;
-- 60 % actions / 30 % obligations / 10 % managed futures ;
-- 60 % actions / 20 % obligations / 10 % or / 10 % managed futures.
+- 60% stocks / 40% bonds;
+- 60% stocks / 30% bonds / 10% gold;
+- 60% stocks / 30% bonds / 10% managed futures;
+- 60% stocks / 20% bonds / 10% gold / 10% managed futures.
 
-Chaque forme est ensuite multipliee par le levier qui egale exactement la
-volatilite historique du panier Cederburg 50 % local / 50 % international.
-L'or est deja net de ses frais de garde dans le panel. La tendance est rendue
-nette des frais, couts de transaction et d'un haircut prospectif optionnel.
+Each shape is then multiplied by the leverage that exactly matches the
+historical volatility of the Cederburg basket, 50% local / 50% international.
+Gold is already net of custody costs in the panel. Trend returns are net of
+fees, transaction costs and an optional forward-looking haircut.
 """
 
 from __future__ import annotations
@@ -24,8 +24,8 @@ from collections.abc import Callable
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-# Frais et cout de transaction du proxy MF : le cout est derive du turnover
-# mesure sur la serie mensuelle, jamais recopie en dur (voir trend_costs.py).
+# Fees and transaction cost of the MF proxy: the cost is derived from the
+# turnover measured on the monthly series, never hard-coded (see trend_costs.py).
 from trend_costs import (  # noqa: E402
   DEFAULT_TREND_COST, DEFAULT_TREND_FEE,
 )
@@ -92,7 +92,7 @@ def main() -> None:
     "Stocks/I": lambda row: 0.5 * (row["domestic"] + row["international"]),
   }
 
-  # Le rendement de tendance stresse est indexe par l'identite de la ligne.
+  # The stressed trend return is indexed by the identity of the row.
   trend_by_row = {id(row): value for row, value in zip(rows, trends)}
   for name, (equity, bond, gold, trend) in SHAPES.items():
     risky = [
@@ -115,14 +115,14 @@ def main() -> None:
 
     functions[name] = calculate
 
-  print(f"Panel : {len(rows)} pays-annees ({rows[0]['year']}-{rows[-1]['year']})")
+  print(f"Panel : {len(rows)} country-years ({rows[0]['year']}-{rows[-1]['year']})")
   print(f"Bootstrap : blocs moyens de {args.mean_block:g} an(s), "
         f"{args.runs} trajectoires, spread {args.spread:.2%}")
-  print(f"Managed futures : frais {args.trend_fee:.2%}, couts "
+  print(f"Managed futures: fee {args.trend_fee:.2%}, costs "
         f"{args.trend_cost:.2%}, haircut {args.trend_haircut:.2%}, "
         f"vol x{args.trend_vol_multiplier:.2f}")
   print()
-  print(f"{'strategie':<20}{'levier':>8}{'expositions a vol egale':>42}")
+  print(f"{'strategy':<20}{'leverage':>8}{'equal-vol exposures':>42}")
   print("-" * 70)
   for name, weights in SHAPES.items():
     level = leverages[name]
@@ -135,7 +135,7 @@ def main() -> None:
 
   pooled = {name: [function(row) for row in rows]
             for name, function in functions.items()}
-  print(f"{'strategie':<20}{'rendement':>12}{'volatilite':>13}")
+  print(f"{'strategy':<20}{'return':>12}{'volatility':>13}")
   print("-" * 45)
   for name, values in pooled.items():
     print(f"{name:<20}{statistics.fmean(values):>12.2%}"
@@ -156,8 +156,8 @@ def main() -> None:
       results[name].append(simulate(path, last_death, function,
                                     args.withdrawal_rate))
 
-  print(f"{'strategie':<20}{'richesse med.':>16}{'heritage med.':>16}"
-        f"{'ruine':>9}{'gagne a 65':>13}{'gagne heritage':>16}")
+  print(f"{'strategy':<20}{'median wealth':>16}{'median bequest':>16}"
+        f"{'ruin':>9}{'wins at 65':>13}{'wins bequest':>16}")
   print("-" * 90)
   benchmark = results["Stocks/I"]
   for name, values in results.items():
@@ -180,14 +180,14 @@ def main() -> None:
       bequest_ci = probability_interval(bequest_wins, args.runs)
       wealth_text = f"{wealth_wins / args.runs:.1%}"
       bequest_text = f"{bequest_wins / args.runs:.1%}"
-      # Les intervalles sont imprimes sous la table pour ne pas l'elargir.
+      # Intervals are printed below the table so that it stays narrow.
       print_ci = (name, wealth_ci, bequest_ci)
     print(f"{name:<20}{retirement:>16,.0f}{bequest:>16,.0f}{ruin:>9.2%}"
           f"{wealth_text:>13}{bequest_text:>16}".replace(",", " "))
     if name != "Stocks/I":
       _, wealth_ci, bequest_ci = print_ci
       print(f"  IC95 victoires : retraite [{wealth_ci[0]:.1%}; {wealth_ci[1]:.1%}], "
-            f"heritage [{bequest_ci[0]:.1%}; {bequest_ci[1]:.1%}]")
+            f"bequest [{bequest_ci[0]:.1%}; {bequest_ci[1]:.1%}]")
 
 
 if __name__ == "__main__":

@@ -1,29 +1,29 @@
-"""Télécharge les séries quotidiennes de fonds managed futures cotés (ETF/OPCVM).
+"""Download the daily series of listed managed-futures funds (ETFs, mutual funds).
 
-Source : Yahoo Finance, endpoint ``chart/v8`` —
-<https://query1.finance.yahoo.com/v8/finance/chart/<SYMBOL>>. Un fichier CSV
-par ticker dans ``data/benchmarks-externes/funds/`` : ``date, close, adj_close``.
-La colonne ``adj_close`` intègre distributions et splits ; la composition
-mensuelle aval (``build/mf_fund_correlations.py``) fournit donc le rendement
-total net de frais du fonds.
+Source: Yahoo Finance, ``chart/v8`` endpoint —
+<https://query1.finance.yahoo.com/v8/finance/chart/<SYMBOL>>. One CSV file per
+ticker in ``data/benchmarks-externes/funds/``: ``date, close, adj_close``. The
+``adj_close`` column includes distributions and splits; the downstream monthly
+compounding (``build/mf_fund_correlations.py``) therefore gives the fund's
+total return net of fees.
 
-Panier :
+Basket:
 
 * ``WTMF``  WisdomTree Managed Futures Strategy Fund (ETF, 2011)
-* ``QMHIX`` AQR Managed Futures Strategy HV Fund, classe I (OPCVM, 2013)
-* ``AHLIX`` American Beacon AHL Managed Futures Fund, classe R5 (OPCVM, 2014)
-* ``AHLT``  American Beacon AHL Trend ETF (2023) — l'« AHL Trend » ; le ticker
-  AHLIX souvent cité à tort pour ce fonds désigne l'OPCVM AHL Managed Futures
+* ``QMHIX`` AQR Managed Futures Strategy HV Fund, class I (mutual fund, 2013)
+* ``AHLIX`` American Beacon AHL Managed Futures Fund, class R5 (mutual fund, 2014)
+* ``AHLT``  American Beacon AHL Trend ETF (2023) — the "AHL Trend"; the ticker
+  AHLIX often cited for this fund is the AHL Managed Futures mutual fund
 * ``IMF``   Invesco Managed Futures Strategy ETF (2025)
 * ``ISMF``  iShares Managed Futures Active ETF (2025)
-* ``0P0001BD8S`` AQR Apex UCITS Fund, classe RA USD (ISIN LU1662495974) —
-  fonds multi-stratégies d'AQR dont le trend following est une composante ;
-  sous ce symbol Yahoo ne remonte que l'historique depuis mars 2022.
+* ``0P0001BD8S`` AQR Apex UCITS Fund, class RA USD (ISIN LU1662495974) —
+  AQR multi-strategy fund of which trend following is one component; under
+  this symbol Yahoo returns history only from March 2022.
 
-Ces données proviennent d'un fournisseur tiers dont les conditions d'usage ne
-permettent pas la redistribution : le dossier est sous ``data/benchmarks-externes/``
-(gitignore, mêmes termes que les indices SG/Barclay et les séries testfol).
-Le script écrit aussi un ``README.md`` retraçant provenance et couverture.
+These data come from a third-party provider whose terms do not permit
+redistribution: the folder is under ``data/benchmarks-externes/`` (gitignored,
+same terms as the SG/Barclay indexes and the testfol series). The script also
+writes a ``README.md`` recording provenance and coverage.
 """
 
 from __future__ import annotations
@@ -48,12 +48,12 @@ INTER_REQUEST_SLEEP_S = 2.0
 
 FUNDS = [
     ("WTMF", "WisdomTree Managed Futures Strategy Fund"),
-    ("QMHIX", "AQR Managed Futures Strategy HV Fund, classe I"),
-    ("AHLIX", "American Beacon AHL Managed Futures Fund, classe R5"),
+    ("QMHIX", "AQR Managed Futures Strategy HV Fund, class I"),
+    ("AHLIX", "American Beacon AHL Managed Futures Fund, class R5"),
     ("AHLT", "American Beacon AHL Trend ETF"),
     ("IMF", "Invesco Managed Futures Strategy ETF"),
     ("ISMF", "iShares Managed Futures Active ETF"),
-    ("0P0001BD8S", "AQR Apex UCITS Fund, classe RA USD (ISIN LU1662495974)"),
+    ("0P0001BD8S", "AQR Apex UCITS Fund, class RA USD (ISIN LU1662495974)"),
 ]
 
 
@@ -67,7 +67,7 @@ def http_get_json(url: str) -> dict:
         except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as exc:
             last_error = exc
             time.sleep(BACKOFF_S * (attempt + 1))
-    raise RuntimeError(f"echec apres {RETRIES} tentatives : {url}") from last_error
+    raise RuntimeError(f"failed after {RETRIES} attempts: {url}") from last_error
 
 
 def fetch_daily(symbol: str) -> tuple[list[tuple[str, float, float]], dict]:
@@ -110,19 +110,19 @@ def write_csv(symbol: str, rows: list[tuple[str, float, float]]) -> None:
 
 def write_readme(records: list[dict]) -> None:
     lines = [
-        "# Séries quotidiennes de fonds managed futures (ETF/OPCVM)",
+        "# Daily series of listed managed-futures funds (ETFs/mutual funds)",
         "",
-        "Téléchargées par `build/fetch_mf_fund_data.py` depuis l'endpoint",
-        "chart/v8 de Yahoo Finance (https://query1.finance.yahoo.com).",
-        f"Dernier téléchargement : {datetime.date.today().isoformat()}.",
+        "Downloaded by `build/fetch_mf_fund_data.py` from the Yahoo Finance chart/v8",
+        "endpoint (https://query1.finance.yahoo.com).",
+        f"Last download: {datetime.date.today().isoformat()}.",
         "",
-        "Un fichier par ticker : `date, close, adj_close` (USD). `adj_close`",
-        "intègre distributions et splits ; c'est lui qui sert au rendement total",
-        "net de frais dans `build/mf_fund_correlations.py`. Les conditions",
-        "d'usage du fournisseur ne permettent pas la redistribution : dossier",
-        "gitignore, mêmes termes que les indices SG/Barclay et les séries testfol.",
+        "One file per ticker: `date, close, adj_close` (USD). `adj_close`",
+        "incorporates distributions and splits; it is the input used for the total",
+        "return net of fees in `build/mf_fund_correlations.py`. The provider's terms",
+        "of use do not permit redistribution: gitignored folder, same terms as the",
+        "SG/Barclay indexes and the testfol series.",
         "",
-        "| Ticker | Fonds | Type Yahoo | Début | Fin | Jours |",
+        "| Ticker | Fund | Yahoo type | Start | End | Days |",
         "|---|---|---|---|---|---|",
     ]
     for record in records:
@@ -133,11 +133,11 @@ def write_readme(records: list[dict]) -> None:
         )
     lines += [
         "",
-        "Notes. `AHLIX` est l'OPCVM American Beacon AHL Managed Futures (R5) ;",
-        "l'ETF AHL Trend a pour ticker `AHLT`. `0P0001BD8S` est le symbol Yahoo",
-        "de la classe RA USD du fonds AQR Apex UCITS (ISIN LU1662495974),",
-        "multi-stratégies dont le trend following est une composante. IMF et",
-        "ISMF n'ont été lancés qu'en mars 2025 ; AHLT en août 2023.",
+        "Notes. `AHLIX` is the American Beacon AHL Managed Futures (R5) mutual fund;",
+        "the AHL Trend ETF trades under ticker `AHLT`. `0P0001BD8S` is the Yahoo",
+        "symbol of the RA USD class of the AQR Apex UCITS fund (ISIN LU1662495974), a",
+        "multi-strategy fund of which trend following is one component. IMF and ISMF",
+        "were launched only in March 2025; AHLT in August 2023.",
         "",
     ]
     with open(os.path.join(OUT_DIR, "README.md"), "w", encoding="utf-8") as handle:
@@ -151,11 +151,11 @@ def main() -> None:
         rows, info = fetch_daily(symbol)
         write_csv(symbol, rows)
         records.append({"symbol": symbol, "fund": fund, **info})
-        print(f"{symbol:<12} {info['n_days']:>5} jours  {info['first']} -> {info['last']}"
+        print(f"{symbol:<12} {info['n_days']:>5} days  {info['first']} -> {info['last']}"
               f"  [{info['yahoo_name']}]")
         time.sleep(INTER_REQUEST_SLEEP_S)
     write_readme(records)
-    print(f"OK : {len(records)} series dans {os.path.relpath(OUT_DIR)}")
+    print(f"OK: {len(records)} series in {os.path.relpath(OUT_DIR)}")
 
 
 if __name__ == "__main__":

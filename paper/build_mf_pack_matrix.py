@@ -1,46 +1,45 @@
-"""Matrice de corrélations et régressions proxy / indices / fonds (annexe B).
+"""Correlation matrix and regressions of the proxy, indexes and funds (Appendix B).
 
-Réunit dans une même analyse les séries de la validation externe
-(``build_mf_benchmark_data.py``) et les fonds investissables
-(``mf_fund_correlations.py``) :
+Brings together in one analysis the series of the external validation
+(``build_mf_benchmark_data.py``) and the investable funds
+(``mf_fund_correlations.py``):
 
-* indices commerciaux : SG CTA, SG Trend, Barclay BTOP50
-  (``data/benchmarks-externes/official-index-returns-monthly.csv``) ;
-* séries testfol : KMLMSIM (simulation), DBMF et KMLM (ETF cotés,
-  ``data/benchmarks-externes/testfol/``) ;
-* sept fonds investissables téléchargés de Yahoo Finance
-  (``build/fetch_mf_fund_data.py``) : WTMF, QMHIX, AHLIX, AHLT, IMF, ISMF,
+* commercial indexes: SG CTA, SG Trend, Barclay BTOP50
+  (``data/benchmarks-externes/official-index-returns-monthly.csv``);
+* testfol series: KMLMSIM (simulation), DBMF and KMLM (listed ETFs,
+  ``data/benchmarks-externes/testfol/``);
+* seven investable funds downloaded from Yahoo Finance
+  (``build/fetch_mf_fund_data.py``): WTMF, QMHIX, AHLIX, AHLT, IMF, ISMF,
   APEX.
 
-Produit trois tableaux (toutes les séries sont cadrées sur 2000-01 → 2025-12,
-fenêtre de la figure et de la table de validation externe ; chaque paire est
-évaluée sur le recouvrement de ses deux historiques dans ce cadre) :
+Produces three tables (all series are framed on 2000-01 to 2025-12, the window
+of the external-validation figure and table; each pair is evaluated on the
+overlap of its two histories within that frame):
 
-* ``figures/mf_pack_corr.tex`` : matrice de corrélation complète 14×14, proxy
-  inclus. Les cellules sont ombrées selon la force de la corrélation pour
-  faire ressortir la structure de blocs : indices et fonds purs de trend
-  sombres, WTMF (timing actions multi-actifs) et APEX (multi-stratégies)
-  clairs ;
-* ``figures/mf_pack_long_corr.tex`` : matrice restreinte aux séries d'au
-  moins dix ans d'historique (proxy, SG CTA, SG Trend, BTOP50, KMLMSIM,
-  WTMF, QMHIX, AHLIX), toutes les paires évaluées sur la même fenêtre commune
-  2014-09 → 2025-12 (136 mois), pour une comparaison à échantillon identique ;
-* ``figures/mf_pack_regressions.tex`` : pour chaque série, régression
-  ``R_serie = alpha + beta R_proxy + eps`` sur son recouvrement dans le cadre
-  2000-2025 : alpha (% par mois, t de Student), beta (t), R², volatilité
-  relative sigma_serie / sigma_proxy et tracking error annualisée (écart-type
-  de ``R_serie − R_proxy``, ×√12, en %).
+* ``figures/mf_pack_corr.tex``: full 14x14 correlation matrix, proxy included.
+  Cells are shaded by the strength of the correlation to bring out the block
+  structure: indexes and pure trend funds dark, WTMF (multi-asset equity
+  timing) and APEX (multi-strategy) light;
+* ``figures/mf_pack_long_corr.tex``: matrix restricted to the series with at
+  least ten years of history (proxy, SG CTA, SG Trend, BTOP50, KMLMSIM, WTMF,
+  QMHIX, AHLIX), all pairs evaluated on the same common window 2014-09 to
+  2025-12 (136 months), for a comparison on an identical sample;
+* ``figures/mf_pack_regressions.tex``: for each series, the regression
+  ``R_series = alpha + beta R_proxy + eps`` on its overlap within 2000-2025:
+  alpha (% per month, t-statistic), beta (t), R², relative volatility
+  sigma_series / sigma_proxy and annualised tracking error (standard deviation
+  of ``R_series - R_proxy``, x sqrt(12), in %).
 
-Le script imprime enfin les moyennes de corrélations non pondérées et
-pondérées par le nombre de mois de recouvrement : les fonds lancés en 2025
-(neuf mois de données) ne doivent pas peser autant que ceux de 2011-2014 dans
-une moyenne de corrélations. Les corrélations proxy contre les six séries
-externes doivent reproduire celles de la table ``tab:mf-benchmark-corr``.
+The script finally prints unweighted correlation means and means weighted by
+the number of overlapping months: funds launched in 2025 (nine months of data)
+should not weigh as much as those of 2011-2014 in a mean of correlations. The
+proxy correlations with the six external series must reproduce those of table
+``tab:mf-benchmark-corr``.
 
-Sources : ``data/managed-futures-monthly.csv`` et ``data/benchmarks-externes/``
-(séries non redistribuées, cf. ``build/fetch_mf_fund_data.py`` et le README du
-dossier). Sans les fichiers d'indices, le script s'arrête : cf.
-``build_mf_benchmark_data.py`` pour la même convention.
+Sources: ``data/managed-futures-monthly.csv`` and ``data/benchmarks-externes/``
+(series not redistributed, see ``build/fetch_mf_fund_data.py`` and the README of
+the folder). Without the index files, the script stops: see
+``build_mf_benchmark_data.py`` for the same convention.
 """
 
 from __future__ import annotations
@@ -78,8 +77,8 @@ HEADERS = {PROXY: "Proxy", "SGCTA": "SG CTA", "SGTREND": "SG Trend",
            "BTOP50": "BTOP50", "KMLMSIM": "KMLMSIM", "DBMF": "DBMF",
            "KMLM": "KMLM", "WTMF": "WTMF", "QMHIX": "QMHIX", "AHLIX": "AHLIX",
            "AHLT": "AHLT", "IMF": "IMF", "ISMF": "ISMF", "APEX": "APEX"}
-# Fenêtre longue : séries d'au moins dix ans d'historique. DBMF (79 mois) et
-# KMLM (60 mois) n'y entrent pas ; la fenêtre commune reste pilotée par AHLIX.
+# Long window: series with at least ten years of history. DBMF (79 months) and
+# KMLM (60 months) do not enter; the common window is still driven by AHLIX.
 LONG_NAMES = [PROXY] + BENCHMARK_NAMES + ["WTMF", "QMHIX", "AHLIX"]
 LONG_START, LONG_END = "2014-09", "2025-12"
 SAMPLE_START, SAMPLE_END = "2000-01", "2025-12"
@@ -109,10 +108,10 @@ def read_month_map(path: str, column: str) -> dict[str, float]:
 
 
 def testfol_monthly(name: str, drop_first: bool = False) -> dict[str, float]:
-    """Composition mensuelle des rendements quotidiens testfol.
+    """Monthly compounding of the daily testfol returns.
 
-    Même convention que ``build_mf_benchmark_data.py`` : ``drop_first`` retire
-    le premier mois civil, incomplet pour les tickers cotés.
+    Same convention as ``build_mf_benchmark_data.py``: ``drop_first`` drops the
+    first calendar month, incomplete for listed tickers.
     """
     level: dict[str, float] = defaultdict(lambda: 1.0)
     with open(os.path.join(TESTFOL, name + ".csv"), encoding="utf-8") as handle:
@@ -127,8 +126,8 @@ def testfol_monthly(name: str, drop_first: bool = False) -> dict[str, float]:
 def load_series() -> dict[str, dict[str, float]]:
     if not (os.path.exists(OFFICIAL) and os.path.isdir(TESTFOL)):
         raise SystemExit(
-            "indices propriétaires absents de data/benchmarks-externes/ ; "
-            "cf. README et build_mf_benchmark_data.py (même convention)")
+            "proprietary indexes missing from data/benchmarks-externes/; "
+            "see README and build_mf_benchmark_data.py (same convention)")
     series = {PROXY: load_proxy()}
     series["SGCTA"] = read_month_map(OFFICIAL, "sg_cta")
     series["SGTREND"] = read_month_map(OFFICIAL, "sg_trend")
@@ -143,10 +142,9 @@ def load_series() -> dict[str, dict[str, float]]:
 
 def write_matrix(path: str, names: list[str], corr: dict,
                  rule_after: str | None, compact: bool = False) -> None:
-    lines = ["% Généré par build_mf_pack_matrix.py — ne pas éditer à la main."]
+    lines = ["% Generated by build_mf_pack_matrix.py -- do not edit by hand."]
     if compact:
-        # Matrice 14×14 : réduction de la taille et de l'espacement pour
-        # tenir dans \textwidth.
+        # 14x14 matrix: smaller size and spacing to fit within \textwidth.
         lines += ["\\scriptsize", "\\setlength{\\tabcolsep}{1.5pt}"]
     lines += ["\\begin{tabular}{l" + "r" * (len(names) - 1) + "}",
               "\\toprule"]
@@ -172,7 +170,7 @@ def write_matrix(path: str, names: list[str], corr: dict,
 
 
 def write_regressions(path: str, series: dict[str, dict[str, float]]) -> None:
-    lines = ["% Généré par build_mf_pack_matrix.py — ne pas éditer à la main.",
+    lines = ["% Generated by build_mf_pack_matrix.py -- do not edit by hand.",
              "\\begin{tabular}{lrrrrrr}",
              "\\toprule",
              "Series & $n$ & $\\alpha$ (\\%/mo.) & $\\beta$ & $R^2$ & "
@@ -205,17 +203,17 @@ def block_stats(label: str, members: list[str], corr: dict, spans: dict,
     pairs = [(corr[(a, b)], spans[(a, b)][0]) for a in members for b in against
              if a != b]
     values = [c for c, _n in pairs]
-    print(f"{label:<28} médiane {statistics.median(values):.2f}, "
-          f"moyenne {statistics.fmean(values):.2f}, "
-          f"pondérée {weighted_mean(pairs):.2f}, "
-          f"étendue {min(values):.2f}--{max(values):.2f}")
+    print(f"{label:<28} median {statistics.median(values):.2f}, "
+          f"mean {statistics.fmean(values):.2f}, "
+          f"weighted {weighted_mean(pairs):.2f}, "
+          f"range {min(values):.2f}--{max(values):.2f}")
 
 
 def main() -> None:
     series = load_series()
     for name in NAMES:
         months = sorted(series[name])
-        print(f"{HEADERS[name]:<8} {months[0]} -> {months[-1]}  ({len(months)} mois)")
+        print(f"{HEADERS[name]:<8} {months[0]} -> {months[-1]}  ({len(months)} months)")
 
     corr: dict = {}
     spans: dict = {}
@@ -228,7 +226,7 @@ def main() -> None:
     os.makedirs(OUT_DIR, exist_ok=True)
     write_matrix(OUT_TEX, NAMES, corr, rule_after="KMLMSIM", compact=True)
 
-    # Fenêtre commune aux séries longues (>= 10 ans d'historique).
+    # Common window of the long series (>= 10 years of history).
     long_series = {t: window(series[t], LONG_START, LONG_END) for t in LONG_NAMES}
     long_corr: dict = {}
     long_n = 0
@@ -241,26 +239,26 @@ def main() -> None:
 
     write_regressions(OUT_REG, series)
 
-    print("\n== Contrôle : doit reproduire tab:mf-benchmark-corr ==")
+    print("\n== Check: must reproduce tab:mf-benchmark-corr ==")
     for b in BENCHMARK_NAMES + ["DBMF", "KMLM"]:
         c = corr[(PROXY, b)]
         n, first, _ = spans[(PROXY, b)]
-        print(f"proxy vs {HEADERS[b]:<8} {c:.2f}  ({n} mois, {first}--{SAMPLE_END})")
+        print(f"proxy vs {HEADERS[b]:<8} {c:.2f}  ({n} months, {first}--{SAMPLE_END})")
 
-    print("\n== Recouvrement maximal, corrélations par bloc ==")
-    block_stats("proxy vs indices", BENCHMARK_NAMES, corr, spans, [PROXY])
-    block_stats("proxy vs fonds de trend", TREND_FUNDS, corr, spans, [PROXY])
+    print("\n== Maximal overlap, correlations by block ==")
+    block_stats("proxy vs indexes", BENCHMARK_NAMES, corr, spans, [PROXY])
+    block_stats("proxy vs trend funds", TREND_FUNDS, corr, spans, [PROXY])
     block_stats("proxy vs WTMF/APEX", OUTLIERS, corr, spans, [PROXY])
-    block_stats("indices entre eux", BENCHMARK_NAMES, corr, spans, BENCHMARK_NAMES)
-    block_stats("fonds de trend entre eux", TREND_FUNDS, corr, spans, TREND_FUNDS)
-    block_stats("WTMF vs fonds de trend", ["WTMF"], corr, spans, TREND_FUNDS)
-    block_stats("APEX vs fonds de trend", ["APEX"], corr, spans, TREND_FUNDS)
+    block_stats("indexes with each other", BENCHMARK_NAMES, corr, spans, BENCHMARK_NAMES)
+    block_stats("trend funds with each other", TREND_FUNDS, corr, spans, TREND_FUNDS)
+    block_stats("WTMF vs trend funds", ["WTMF"], corr, spans, TREND_FUNDS)
+    block_stats("APEX vs trend funds", ["APEX"], corr, spans, TREND_FUNDS)
 
-    print(f"\n== Fenêtre commune {LONG_START}..{LONG_END} ({long_n} mois) ==")
+    print(f"\n== Common window {LONG_START}..{LONG_END} ({long_n} months) ==")
     for b in LONG_NAMES[1:]:
         print(f"proxy vs {HEADERS[b]:<8} {long_corr[(PROXY, b)]:.2f}")
 
-    print("\n== Régressions R_serie = alpha + beta R_proxy (cadre 2000-2025) ==")
+    print("\n== Regressions R_series = alpha + beta R_proxy (2000-2025 frame) ==")
     for name in NAMES[1:]:
         months = sorted(set(series[PROXY]) & set(series[name]))
         xs = [series[PROXY][m] for m in months]

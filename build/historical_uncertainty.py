@@ -1,20 +1,20 @@
-"""Sensibilite historique des deux familles diversifiees a ACO.
+"""Historical sensitivity of the two diversified families relative to ACO.
 
-Les intervalles de Monte Carlo habituels conditionnent sur le panel historique
-observe : ils repondent a ``combien de trajectoires faut-il ?'', non a ``que se
-passerait-il si l'histoire disponible etait differente ?''. Ce script produit
-trois perturbations transparentes de cette histoire :
+The usual Monte Carlo intervals condition on the observed historical panel:
+they answer "how many paths are needed?", not "what would happen if the
+available history were different?". This script produces transparent
+perturbations of that history:
 
-* blocs stationnaires de longueur moyenne 5, 10 et 20 ans ;
-* fenetres commencant en 1927, 1950 et 1970 ;
-* filtre ex ante d'investissabilite ;
-* leave-one-country-out sur les seize pays du panel.
+* stationary blocks with a mean length of 5, 10 and 20 years;
+* windows starting in 1927, 1950 and 1970;
+* an ex ante investability filter;
+* leave-one-country-out over the sixteen countries of the panel.
 
-Les portefeuilles restent strictement les definitions figees du manifeste. En
-particulier, aucun poids, levier ou actif n'est re-estime dans une variante.
-Les resultats sont des diagnostics de sensibilite historique, et non des
-intervalles de confiance frequentistes : les variantes se recouvrent fortement
-et les dates de coupure sont des choix economiques explicites.
+Portfolios stay strictly the frozen definitions of the manifest. In
+particular, no weight, leverage or asset is re-estimated in any variant. The
+results are historical sensitivity diagnostics, not frequentist confidence
+intervals: the variants overlap heavily and the cut-off dates are explicit
+economic choices.
 """
 
 from __future__ import annotations
@@ -148,8 +148,8 @@ def evaluate_specification(rows: list[dict[str, float]], spec: Specification,
     result["portfolios"][name] = {
         "ruin": ruin,
         "equivalent_savings_rate": equivalent,
-        # Des signes positifs ont volontairement la meme lecture economique :
-        # baisse de ruine et baisse de l'epargne requise relativement a ACO.
+        # Positive signs deliberately have the same economic reading: lower
+        # ruin and lower required saving relative to ACO.
         "ruin_reduction_vs_aco": benchmark_ruin - ruin,
         "saving_reduction_vs_aco": BASE_SAVINGS_RATE - equivalent,
         "volatility": volatility,
@@ -164,7 +164,7 @@ def quantile(values: list[float], probability: float) -> float:
 
 
 def result_cells(result: dict) -> tuple[float, float, float, float]:
-  """Ecarts a ACO, gardes pour l'audit console et le test de non-inversion."""
+  """Differences from ACO, kept for the console audit and the no-reversal test."""
   proportional = result["portfolios"][PROPORTIONAL]
   equal_weight = result["portfolios"][EQUAL_WEIGHT]
   return (
@@ -176,7 +176,7 @@ def result_cells(result: dict) -> tuple[float, float, float, float]:
 
 
 def level_cells(result: dict) -> tuple[float, float, float, float]:
-  """Niveaux affiches : ruine et epargne equivalente des deux familles."""
+  """Displayed levels: ruin and equivalent saving of the two families."""
   proportional = result["portfolios"][PROPORTIONAL]
   equal_weight = result["portfolios"][EQUAL_WEIGHT]
   return (
@@ -193,10 +193,10 @@ def pct(value: float) -> str:
 
 def write_summary_tex(path: str, base: list[dict], leave_one_out: list[dict],
                       runs: int) -> None:
-  # Rendu en NIVEAUX : chaque famille se lit directement contre la colonne
-  # ``ACO ruin'', sans interpreter le signe d'un ecart. L'epargne de reference
-  # d'ACO est 10 % partout. Pour les lignes LOO, on prend le quantile cellule
-  # par cellule des niveaux, coherent avec les lignes de base.
+  # Rendered in LEVELS: each family reads directly against the ``ACO ruin''
+  # column, without interpreting the sign of a difference. ACO's reference
+  # saving is 10% throughout. For the LOO rows, the quantile is taken cell by
+  # cell on the levels, consistently with the base rows.
   rows: list[tuple[str, str, float, tuple[float, float, float, float]]] = []
   for result in base:
     label = result["specification"]["label"]
@@ -226,8 +226,8 @@ def write_summary_tex(path: str, base: list[dict], leave_one_out: list[dict],
     handle.write(" & & & Ruin & Equiv.\\ saving & Ruin & Equiv.\\ saving \\\\\n")
     handle.write("\\multicolumn{7}{l}{\\emph{lower is better, ACO equivalent saving is $10\\%$ throughout}} \\\\\n\\midrule\n")
     for label, observations, aco_ruin, cells in rows:
-      # Seul le comptage d'observations recoit le groupement {,} ; les virgules
-      # des libelles restent des virgules ordinaires.
+      # Only the observation count gets the {,} grouping; commas in the
+      # labels stay ordinary commas.
       grouped = observations.replace(",", "{,}")
       handle.write(
           f"{label} & {grouped} & \\emph{{{100 * aco_ruin:.2f}\\%}} & "
@@ -314,9 +314,9 @@ def main() -> None:
   outputs: list[dict] = []
   print(f"Historical sensitivity: {len(all_specs)} specifications x "
         f"{args.runs:,} paired paths".replace(",", " "))
-  # Meme graine pour toutes les lignes : chaque ligne perturbe le panel, pas
-  # le tirage, donc un flux commun isole l'effet du changement d'echantillon et
-  # fait coincider la ligne panel-complet 10 ans avec les tables principales.
+  # Same seed for every row: each row perturbs the panel, not the draw, so a
+  # common stream isolates the effect of the change in sample and makes the
+  # full-panel 10-year row coincide with the main tables.
   for index, spec in enumerate(all_specs, start=1):
     output = evaluate_specification(
         rows, spec, args.runs, args.seed, args.spread,

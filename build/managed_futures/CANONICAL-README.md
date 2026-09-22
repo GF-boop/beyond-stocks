@@ -1,139 +1,124 @@
-# Snapshot mensuel canonique pour les managed futures
+# Canonical monthly snapshot for managed futures
 
-> Copie du README du projet `CTO_vs_PEA`. Ce dépôt ne contient que les
-> fichiers lus par le moteur, dans `data/mf-inputs/` :
+> Adapted from the README of the sibling `CTO_vs_PEA` project. This repository
+> contains only the files read by the simulation engine under `data/mf-inputs/`:
 > `all-assets-monthly.csv`, `cash-returns-monthly.csv`,
-> `fx-spot-returns-monthly.csv`, `series-metadata.csv`, `source-segments.csv`
-> et `snapshot-manifest.csv`. Les autres fichiers cités ci-dessous restent dans
-> `CTO_vs_PEA`.
+> `fx-spot-returns-monthly.csv`, `series-metadata.csv`,
+> `source-segments.csv`, and `snapshot-manifest.csv`. Other files mentioned
+> below remain in `CTO_vs_PEA`.
 
-Le répertoire local `data/` contient les séries mensuelles directement
-consommables par les simulations. **Aucun téléchargement et aucune pipeline ne
-sont nécessaires à l'usage** : le fichier principal est
-`data/all-assets-monthly.csv`.
+The local data directory contains monthly series ready for the simulations.
+No download or reconstruction pipeline is needed to use them; the main input
+is `data/mf-inputs/all-assets-monthly.csv`. `build_canonical_assets.py` is retained
+only to audit the construction and produce a future version. It runs offline.
 
-Le script `build_canonical_assets.py` est conservé uniquement pour l'audit de
-la construction et la production d'une future version. Il est intégralement
-hors ligne.
+## Frozen scope
 
-## Périmètre figé
+- Monthly nominal returns in decimal form (`0.01` means 1%), January 1921 to
+  December 2025.
+- No inflation adjustment, fees, or interpolation.
+- The first return of each new source segment is missing, so a signal cannot
+  silently cross a source seam.
 
-- fréquence : mensuelle ;
-- période : janvier 1921 à décembre 2025 ;
-- valeurs : rendements nominaux décimaux (`0.01` = 1 %) ;
-- aucune inflation, aucun frais et aucune interpolation ;
-- le premier rendement de chaque nouveau segment de source est manquant : un
-  signal ne peut donc jamais traverser silencieusement une couture.
+## Files
 
-## Fichiers prêts à lire
-
-| Fichier | Contenu |
+| File | Contents |
 |---|---|
-| `all-assets-monthly.csv` | Format long universel avec classe, marché, nature du rendement, segment source et appartenance à l'univers par défaut |
-| `equity-returns-monthly.csv` | 18 indices actions nationaux en **price return**, donc sans dividendes |
-| `bond-returns-monthly.csv` | 18 proxys souverains dix ans en excès de cash, avec portage et variation de prix |
-| `commodity-returns-monthly.csv` | 19 séries spot/cash de matières premières |
-| `precious-metals-returns-monthly.csv` | Or depuis 1921 et argent depuis 1960 |
-| `currency-returns-monthly.csv` | Six forwards synthétiques : spot H.10 fin de mois et différentiel de taux courts |
-| `cash-returns-monthly.csv` | Rendements mensuels de cash par devise/pays, déjà décalés d'un mois |
-| `cash-return-sources-monthly.csv` | Source de chaque observation de cash (OECD mensuel ou fallback JST/GMD) |
-| `fx-spot-returns-monthly.csv` | Variations spot USD des six devises H.10, reservees a la conversion de P&L locaux |
-| `equity-benchmarks-monthly.csv` | SPYSIM, VTISIM, VXUSSIM, URTHSIM et VTSIM, exclus par défaut car recouvrants |
-| `bond-benchmarks-monthly.csv` | SHYSIM, IEISIM, IEFSIM et TLTSIM, exclus par défaut |
-| `series-metadata.csv` | Dictionnaire des séries et limites essentielles |
-| `source-segments.csv` | Provenance et transformation de chaque segment |
-| `flagged-outliers.csv` | Mouvements extrêmes conservés mais signalés pour les sensibilités |
-| `snapshot-manifest.csv` | Taille, période et SHA-256 de chaque fichier |
-| `VALIDATION.txt` | Résumé des contrôles et comparaisons |
+| `all-assets-monthly.csv` | Long format: asset class, market, return type, source segment, and default-universe membership |
+| `equity-returns-monthly.csv` | 18 national price indexes, excluding dividends |
+| `bond-returns-monthly.csv` | 18 sovereign ten-year excess-return proxies with carry and price changes |
+| `commodity-returns-monthly.csv` | 19 spot/cash commodity series |
+| `precious-metals-returns-monthly.csv` | Gold from 1921 and silver from 1960 |
+| `currency-returns-monthly.csv` | Six synthetic forwards from month-end H.10 spot rates and short-rate differentials |
+| `cash-returns-monthly.csv` | Monthly cash returns by country/currency, already lagged one month |
+| `cash-return-sources-monthly.csv` | Source of each cash observation (monthly OECD or annual JST/GMD fallback) |
+| `fx-spot-returns-monthly.csv` | USD spot changes for six H.10 currencies, used only to convert local P&L |
+| `equity-benchmarks-monthly.csv` | SPYSIM, VTISIM, VXUSSIM, URTHSIM, and VTSIM; excluded from the default universe because they overlap |
+| `bond-benchmarks-monthly.csv` | SHYSIM, IEISIM, IEFSIM, and TLTSIM; excluded from the default universe |
+| `series-metadata.csv` | Series dictionary and principal limitations |
+| `source-segments.csv` | Provenance and transformation of each segment |
+| `flagged-outliers.csv` | Extreme moves retained but flagged for sensitivity checks |
+| `snapshot-manifest.csv` | File sizes, periods, and SHA-256 hashes |
+| `VALIDATION.txt` | Summary of checks and comparisons |
 
-Les données OECD et NBER sont publiques et doivent être citées.
+The public OECD and NBER data must be cited. The committed snapshot is a
+frozen research input: its original market labels and descriptive notes are
+preserved byte for byte to retain the recorded SHA-256 hashes. The builder
+uses English labels for any future snapshot.
 
-## Choix de construction
+## Construction choices
 
-### Actions
+### Equities
 
-L'univers par défaut ne contient que les 18 pays du panel JST. Pour les
-États-Unis, le Royaume-Uni, l'Allemagne et la France, des indices NBER
-prolongent l'histoire avant les séries OECD. Tous sont traités en **indices de
-cours** : ajouter SPYSIM comme dix-neuvième marché introduirait à la fois les
-dividendes et un double comptage des États-Unis.
+The default universe contains only the 18 JST-panel countries. NBER indexes
+extend the US, UK, German, and French histories before OECD coverage. All are
+price indexes: adding SPYSIM as a nineteenth market would both introduce
+dividends and count the US twice. Testfol total-return benchmarks remain
+available for checks with `default_universe=no`.
 
-Les benchmarks Testfol total-return restent disponibles pour les contrôles et
-les sensibilités, avec `default_universe=no`.
+Coverage is thin before 1960. At the end of 1921, the snapshot has three
+equity markets, three bond markets, four commodities, and gold. The volatility
+of a three-market historical sector should not be compared mechanically with
+that of a modern eighteen-market sector without an explicit scaling rule.
 
-La couverture demeure mince avant 1960 : fin 1921, le snapshot contient trois
-marchés actions, trois obligations, quatre matières premières et l'or. Il ne
-faut donc pas comparer mécaniquement la volatilité d'un « secteur » de trois
-marchés à celle d'un secteur moderne de dix-huit marchés sans règle de
-normalisation explicite.
+### Bonds
 
-### Obligations
+A yield is never used directly as a return. Sovereign yields are converted
+into the return of a par bond initially maturing in ten years. Its coupon is
+the preceding month's yield; one month later, the remaining twenty
+semiannual cash flows are discounted at the new yield. The formula admits
+the negative yields observed in Europe.
 
-Un taux n'est jamais utilisé comme un rendement. Les taux souverains sont
-transformés en rendement d'un titre au pair de maturité initiale dix ans : le
-coupon est le taux du mois précédent, puis les vingt flux semestriels restant
-après un mois sont actualisés au nouveau taux. Cette formule accepte les taux
-négatifs européens.
+Before OECD coverage, the US uses NBER long rates from 1919 with a ten-year
+proxy maturity; the UK uses Consol through 1934, followed by the Bank of
+England ten-year series; and France uses the observed price of the perpetual
+3% rente through 1940. These segments add history but are neither uniform
+observed bond indexes nor observed futures histories.
 
-Avant les séries OECD :
+The currency's three-month cash return is then subtracted to represent a
+bond future. Monthly OECD/FRED fixings take priority. Before they exist,
+the annual JST/GMD nominal short rate is applied in the following year, so
+future annual releases cannot enter current-month returns.
+`cash-return-sources-monthly.csv` records this choice for each observation.
 
-- États-Unis : taux longs NBER depuis 1919, modélisés avec une maturité proxy
-  de dix ans ;
-- Royaume-Uni : Consol jusqu'en 1934, puis série dix ans Bank of England ;
-- France : prix observé de la rente perpétuelle 3 % jusqu'en 1940.
+### Currency convention
 
-Ces segments apportent de la profondeur, mais ne sont ni des indices
-obligataires observés homogènes ni des historiques de futures.
+National equity and bond returns remain in local currency in
+`all-assets-monthly.csv`. The separate `fx-spot-returns-monthly.csv` holds
+USD spot changes for H.10 currencies, distinct from the forward returns of
+the currency sector. The managed-futures engine uses these rates to convert
+available local P&L into USD. It drops a foreign market when its USD spot
+rate is unavailable rather than implicitly treating its P&L as USD.
 
-Pour représenter un contrat obligataire, le rendement cash trois mois de la
-devise est ensuite soustrait. Les fixings mensuels OECD/FRED ont priorité ;
-avant leur disponibilité, le taux court nominal annuel JST/GMD est appliqué au
-cours de l'année suivante, de sorte qu'aucune publication annuelle future ne
-sert au mois courant. `cash-return-sources-monthly.csv` rend ce choix
-auditable, observation par observation.
+### Commodities and metals
 
-### Convention de devise
+The long NBER/BLS series join the World Bank Pink Sheet without a return
+across the source seam. Obvious duplicates (corn/maize, wheat, sugar, copper)
+count as one market each. Gold uses the monthly repeated official US price
+through 1959 and the World Bank monthly price thereafter, retaining the
+1968 free-market rise. No custody fee is included.
 
-Les actions et obligations nationales restent des rendements en devise locale
-dans `all-assets-monthly.csv`. Le fichier `fx-spot-returns-monthly.csv` isole
-la variation spot USD des devises H.10, distincte du rendement de forward du
-secteur devises. Le moteur managed futures l'utilise pour convertir les P&L
-locaux disponibles en USD ; il retire un marche etranger lorsque son spot USD
-est indisponible, plutot que de le traiter implicitement comme un P&L USD.
+These are spot/cash prices. They can support a trend proxy but cannot
+recover the carry, basis, or rolls of futures contracts that did not exist
+or whose prices were not archived.
 
-### Matières premières et métaux
+### Currencies and collateral
 
-Les longues séries NBER/BLS sont relayées, sans rendement au mois de couture,
-par le Pink Sheet de la Banque mondiale. Les doublons évidents sont fusionnés :
-corn/maize, wheat, sugar et copper ne comptent chacun que pour un marché.
+The six AUD, CAD, EUR, JPY, CHF, and GBP markets use Federal Reserve H.10
+daily fixings, taking the last available fixing in each month and converting
+it to USD per foreign-currency unit. Their signals can therefore use
+`t-1` without the overlap present in monthly-average prices. Synthetic
+long-forward P&L combines the spot return, foreign cash return, and negative
+USD cash return, all based on information known in the previous month.
+EUR uses the euro-area fixing; predecessor currencies are not reconstructed.
 
-L'or emploie le prix officiel américain répété mensuellement jusqu'en 1959,
-puis le prix mensuel de la Banque mondiale. La hausse libre de 1968 est donc
-préservée. Aucun frais de garde n'est incorporé.
+The engine can add the USD cash return from `cash-returns-monthly.csv`
+once to portfolio NAV as collateral income. It does not add it again to
+contracts already expressed as excess returns.
 
-Limite fondamentale : ces séries sont des prix spot/cash. Elles permettent de
-construire un **proxy** de tendance, pas de récupérer rétroactivement le carry,
-la base et les rolls de contrats futures inexistants ou non archivés.
+## Choices left to the managed-futures signal
 
-### Devises et collateral
-
-Les six marchés AUD, CAD, EUR, JPY, CHF et GBP proviennent des fixings H.10
-quotidiens de la Réserve fédérale, agrégés par **dernière observation publiée
-du mois** et convertis en USD par unité de devise étrangère. Ils peuvent donc
-former leur signal à `t-1`, sans le chevauchement des indices en moyenne
-mensuelle. Le P&L est celui d'un forward synthétique long : rendement spot,
-plus rendement cash étranger, moins cash USD. Les trois taux sont tous connus
-au mois précédent. Pour la devise EUR, le fixing euro-zone est employé ; les
-anciennes devises européennes ne sont pas rétro-construites.
-
-Le moteur MF peut ajouter le cash USD de `cash-returns-monthly.csv` au NAV,
-ce qui représente le collateral du portefeuille. Il ne l'ajoute pas une
-seconde fois aux contrats, qui sont déjà exprimés en excès de cash.
-
-## Ce qui restera à décider pour le signal MF
-
-Ce snapshot ne contient volontairement aucune règle de stratégie. La prochaine
-étape devra fixer le lookback, le retard du signal, l'estimateur de volatilité,
-le plafond de levier, le poids sectoriel, le traitement des historiques courts
-et les coûts. Les benchmarks recouvrants devront rester exclus de tout comptage
-automatique du nombre de marchés.
+The snapshot deliberately contains no strategy rule. A future implementation
+must set the lookback, signal lag, volatility estimator, leverage cap, sector
+weights, treatment of short histories, and costs. Overlapping benchmarks
+must stay out of automatic market counts.

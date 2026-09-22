@@ -1,24 +1,24 @@
-"""Validation externe du proxy managed futures contre les indices CTA.
+"""External validation of the managed-futures proxy against CTA indexes.
 
-Produit deux fichiers autonomes inclus par le manuscrit :
+Produces two stand-alone files included by the internet appendix:
 
-* ``figures/mf_vs_benchmarks.tex`` : tikzpicture, cumul d'un dollar 2000-2025
-  du proxy net (variante canonique 1/6/12), des indices SG CTA, SG Trend et
-  Barclay BTOP50, et de KMLMSIM, en echelle log ;
-* ``figures/mf_benchmark_corr.tex`` : tabular des correlations mensuelles
-  contemporaines du proxy avec les indices SG/Barclay, KMLMSIM et les ETF
-  cotes DBMF/KMLM.
+* ``figures/mf_vs_benchmarks.tex``: tikzpicture, growth of one dollar over
+  2000-2025 for the net proxy (canonical 1/6/12 variant), the SG CTA, SG Trend
+  and Barclay BTOP50 indexes, and KMLMSIM, on a log scale;
+* ``figures/mf_benchmark_corr.tex``: table of contemporaneous monthly
+  correlations of the proxy with the SG/Barclay indexes, KMLMSIM and the listed
+  ETFs DBMF/KMLM.
 
-Sources :
-  data/managed-futures-monthly.csv                       -- proxy, colonnes *_net_return
+Sources:
+  data/managed-futures-monthly.csv                       -- proxy, *_net_return columns
   data/benchmarks-externes/official-index-returns-monthly.csv  -- SG CTA, SG Trend, BTOP50
-  data/benchmarks-externes/testfol/{KMLMSIM,DBMF,KMLM}.csv     -- rendements quotidiens
+  data/benchmarks-externes/testfol/{KMLMSIM,DBMF,KMLM}.csv     -- daily returns
 
-Les indices SG et BarclayHedge sont proprietaires : ils ne sont pas
-redistribues avec ce depot. Ils sont lus, si presents, depuis
-data/benchmarks-externes/, aux termes de la licence detenue pour cette
-recherche, et seuls des statistiques derivees (cumul, correlation) sont
-reproduites. Sans eux, la figure et la table restent celles du PDF distribue.
+The SG and BarclayHedge indexes are proprietary: they are not redistributed
+with this repository. They are read, if present, from data/benchmarks-externes/,
+under the licence held for this research, and only derived statistics (growth,
+correlation) are reproduced. Without them, the figure and table stay those of
+the distributed PDF.
 """
 
 from __future__ import annotations
@@ -33,12 +33,12 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(HERE, "..", "data")
 MF_MONTHLY = os.path.join(DATA, "managed-futures-monthly.csv")
 
-# Validation externe sur indices proprietaires (SG CTA, SG Trend, Barclay
-# BTOP50) et series testfol.io. Ces fichiers ne sont pas redistribuables et ne
-# figurent donc pas dans ce depot : ils sont lus, si presents, depuis
-# data/benchmarks-externes/. Sans eux, ce script s'arrete proprement et la
-# Figure "mf_vs_benchmarks" et la Table "mf_benchmark_corr" restent celles du
-# PDF distribue, non reconstructibles publiquement (cf. README).
+# External validation on proprietary indexes (SG CTA, SG Trend, Barclay
+# BTOP50) and testfol.io series. These files cannot be redistributed and are
+# therefore not in this repository: they are read, if present, from
+# data/benchmarks-externes/. Without them, this script stops cleanly and the
+# "mf_vs_benchmarks" figure and "mf_benchmark_corr" table stay those of the
+# distributed PDF, not publicly rebuildable (see README).
 BENCHMARKS = os.path.join(DATA, "benchmarks-externes")
 OFFICIAL = os.path.join(BENCHMARKS, "official-index-returns-monthly.csv")
 TESTFOL = os.path.join(BENCHMARKS, "testfol")
@@ -50,13 +50,13 @@ OUT_TAB = os.path.join(OUT_DIR, "mf_benchmark_corr.tex")
 PROXY_COL = "mf_1_6_12_net_return"
 WIN0, WIN1 = "2000-01", "2025-12"
 
-# Cadre du graphe.
+# Plot frame.
 LOG_MIN, LOG_MAX = 0.0, math.log10(6.0)
 W_CM, H_CM = 12.0, 7.2
 Y_TICKS = [1, 1.5, 2, 3, 4, 6]
 X_TICKS = [2000, 2005, 2010, 2015, 2020, 2025]
 
-# (cle, libelle, couleur tikz, epaisseur)
+# (key, label, TikZ color, line width)
 FIG_SERIES = [
     ("proxy", "Proxy 1/6/12 (net)", "red!65!black", "very thick"),
     ("sgcta", "SG CTA Index", "blue!55!black", "thick"),
@@ -77,10 +77,10 @@ def read_month_map(path: str, column: str, key: str = "month") -> dict[str, floa
 
 
 def testfol_monthly(name: str, drop_first: bool = False) -> dict[str, float]:
-    """Compose les rendements quotidiens testfol en rendements mensuels.
+    """Compound the daily testfol returns into monthly returns.
 
-    ``drop_first`` retire le premier mois civil, incomplet pour les tickers
-    cotes (cf. README du dossier ``data/benchmarks-externes``).
+    ``drop_first`` drops the first calendar month, which is incomplete for
+    listed tickers (see the README of ``data/benchmarks-externes``).
     """
     level = defaultdict(lambda: 1.0)
     with open(os.path.join(TESTFOL, name + ".csv"), encoding="utf-8") as handle:
@@ -121,9 +121,9 @@ def month_fraction(month: str) -> float:
 
 def main() -> None:
     if not (os.path.exists(OFFICIAL) and os.path.isdir(TESTFOL)):
-        print("build_mf_benchmark_data : indices proprietaires absents de "
-              f"{BENCHMARKS} ; figure et table de validation externe non "
-              "regenerees (versions du PDF conservees). Voir README.")
+        print("build_mf_benchmark_data: proprietary indexes missing from "
+              f"{BENCHMARKS}; external-validation figure and table not "
+              "regenerated (versioned versions kept). See README.")
         return
     proxy = read_month_map(MF_MONTHLY, PROXY_COL)
     official = OFFICIAL
@@ -157,7 +157,7 @@ def main() -> None:
             paths[key].append((frac, levels[key]))
 
     with open(OUT_FIG, "w", encoding="utf-8") as f:
-        f.write("% Généré par build_mf_benchmark_data.py — ne pas éditer à la main.\n")
+        f.write("% Generated by build_mf_benchmark_data.py -- do not edit by hand.\n")
         f.write("\\begin{tikzpicture}[x=1cm, y=1cm]\n")
         for tick in Y_TICKS:
             y = sy(tick)
@@ -194,7 +194,7 @@ def main() -> None:
         ("KMLM ETF (live)", kmlm),
     ]
     with open(OUT_TAB, "w", encoding="utf-8") as f:
-        f.write("% Généré par build_mf_benchmark_data.py — ne pas éditer à la main.\n")
+        f.write("% Generated by build_mf_benchmark_data.py -- do not edit by hand.\n")
         f.write("\\setlength{\\tabcolsep}{6pt}\n")
         f.write("\\begin{tabular}{lrl}\n\\toprule\n")
         f.write("Benchmark & Corr. & Common window \\\\\n\\midrule\n")
@@ -221,10 +221,10 @@ def main() -> None:
         f.write("\\bottomrule\n\\end{tabular}\n")
 
     # --- console ----------------------------------------------------------
-    print(f"{OUT_FIG} : {common[0]}..{common[-1]} ({len(common)} mois)")
+    print(f"{OUT_FIG}: {common[0]}..{common[-1]} ({len(common)} months)")
     for key, label, *_ in FIG_SERIES:
-        print(f"  {label:<22} fin ${levels[key]:.2f}")
-    print(f"{OUT_TAB} :")
+        print(f"  {label:<22} end ${levels[key]:.2f}")
+    print(f"{OUT_TAB}:")
     for label, other in rows_out:
         c, n, first, last = correlation(proxy_win if "live" not in label else proxy, other)
         print(f"  {label:<26} {c:.3f}  {first}..{last}  n={n}")

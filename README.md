@@ -24,6 +24,11 @@ the same path. The design of the main experiment is fixed in
 Returns are currency-consistent: every foreign asset is converted into the
 currency of the country of residence and deflated by that country's inflation.
 
+Source code, documentation, figures, and new diagnostic messages use English.
+A few legacy strategy identifiers and labels inside frozen input and result
+snapshots retain their original spelling so that published hashes and
+replication checks remain valid. They are identifiers, not current prose.
+
 ## Repository layout
 
 | Path | Contents |

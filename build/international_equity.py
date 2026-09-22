@@ -1,33 +1,32 @@
-"""Construit la serie 'actions internationales' au sens d'Anarkulova, Cederburg
-et O'Doherty (2023), reprise par Anarkulova-Cederburg-O'Doherty (2023, "Beyond
+"""Build the international-stock series as defined by Anarkulova, Cederburg
+and O'Doherty (2023), also used in Anarkulova-Cederburg-O'Doherty ("Beyond
 the Status Quo").
 
-Definition du papier (section 3, p.369-370) : pour un pays donne, le rendement
-international nominal est la moyenne ponderee par capitalisation boursiere des
-rendements nominaux de TOUS les autres marches du panel, ajustee des variations
-de change, puis converti en reel par l'inflation locale.
+Definition of the paper (section 3, pp. 369-370): for a given country, the
+nominal international return is the market-capitalisation-weighted mean of the
+nominal returns of ALL the other markets of the panel, adjusted for exchange-rate
+changes, then converted into real terms with local inflation.
 
-Le CSV contient aussi :
+The CSV also contains:
 
-- un indice mondial incluant le marche du pays de residence, exprime dans la
-  monnaie et le pouvoir d'achat de ce pays ;
-- le taux de change du pays contre le dollar, necessaire pour convertir les
-  autres poches mondiales dans le meme numeraire ;
-- un contrefactuel
-``international_equity_real_constant_real_fx`` : le meme panier, avec les memes
-marches et les memes poids, mais en neutralisant la variation du taux de change
-reel (change nominal plus ecart d'inflation). Figer le seul change nominal
-creerait des rendements absurdes lors des hyperinflations etrangeres. Ce n'est
-pas le rendement d'une couverture a terme (son carry et ses couts ne sont pas
-modelises) ; cette serie sert uniquement a isoler le canal de change reel.
+- a world index that includes the market of the country of residence,
+  expressed in that country's currency and purchasing power;
+- the country's exchange rate against the dollar, needed to convert the other
+  world sleeves into the same numeraire;
+- a counterfactual
+``international_equity_real_constant_real_fx``: the same basket, with the same
+markets and weights, but with the change in the real exchange rate (nominal
+exchange rate plus inflation differential) neutralised. Freezing only the
+nominal exchange rate would create absurd returns during foreign
+hyperinflations. This is not the return of a forward hedge (its carry and costs
+are not modelled); the series only isolates the real-exchange-rate channel.
 
-La ponderation canonique utilise la capitalisation historique de Kuvshinov et
-Zimmermann, estimee comme le PIB comparable multiplie par leur ratio
-capitalisation/PIB. Le PIB reel de Maddison ne sert de repli que pour les
-annees dont la couverture en capitalisation est insuffisante. La conversion de
-change utilise `xrusd`, le taux de change de chaque pays contre le dollar
-fourni par JST, ce qui permet de passer d'un marche etranger a la devise
-domestique via le dollar comme pivot.
+The canonical weighting uses the historical market capitalisation of Kuvshinov
+and Zimmermann, estimated as comparable GDP times their capitalisation/GDP
+ratio. Maddison real GDP is a fallback only for years whose capitalisation
+coverage is insufficient. The currency conversion uses `xrusd`, each country's
+exchange rate against the dollar from JST, with the dollar as the pivot between
+a foreign market and the domestic currency.
 """
 
 from __future__ import annotations
@@ -37,30 +36,27 @@ import csv
 import math
 import os
 
-# Le rendement d'un marche etranger et sa variation de change doivent rester
-# couples : pendant l'hyperinflation allemande de 1923, le marche local gagne
-# des milliards de pour cent nominaux et le mark en perd autant, les deux
-# s'annulant presque. Neutraliser l'un sans l'autre produit des rendements
-# absurdes.
+# A foreign market's return and its exchange-rate change must stay coupled:
+# during the German hyperinflation of 1923, the local market gains billions of
+# percent in nominal terms and the mark loses as much, the two almost cancelling
+# out. Neutralising one without the other produces absurd returns.
 #
-# Le filtre porte donc sur le resultat converti, marche par marche : au-dela de
-# ce seuil, la contribution du marche est ecartee et les poids sont
-# renormalises sur les marches restants. Le papier signale des ajustements
-# analogues autour des grandes ruptures (fermeture du NYSE en 1914, defaut grec
-# de 2012).
-# Des ruptures de prix ou de change restent dans le panel. Les supprimer sur
-# la base du rendement realise utiliserait une information de fin de periode et
-# modifierait retrospectivement le panier de l'investisseur. Les controles de
-# qualite documentent les observations suspectes sans les filtrer ici.
+# The filter therefore applies to the converted result, market by market: above
+# this threshold, the market's contribution is dropped and the weights are
+# renormalised over the remaining markets. The paper reports similar adjustments
+# around major breaks (closure of the NYSE in 1914, Greek default of 2012).
+# Price or exchange-rate breaks remain in the panel. Removing them on the basis
+# of the realised return would use end-of-period information and change the
+# investor's basket in hindsight. The quality checks document suspicious
+# observations without filtering them here.
 MAX_CONVERTED_RETURN: float | None = None
 
-# Les taux de change JST traversent la reforme Reichsmark--Deutsche Mark de
-# 1948-49. Combiner ce saut de parite avec le rendement actions annuel de 1949
-# reviendrait a attribuer a un investisseur etranger un rendement negociable
-# continu au cours d'une fermeture et d'une conversion obligatoire. ACO (2025,
-# Table A.III) documente la fermeture allemande jusqu'en 1948; notre frequence
-# annuelle ne peut pas isoler proprement la reouverture de 1949. Cette
-# exclusion est fondee sur la disponibilite du marche, jamais sur le rendement.
+# JST exchange rates cross the Reichsmark--Deutsche Mark reform of 1948-49.
+# Combining this parity jump with the 1949 annual equity return would give a
+# foreign investor a continuously tradable return across a closure and a forced
+# conversion. ACO (2025, Table A.III) document the German closure until 1948;
+# our annual frequency cannot cleanly isolate the 1949 reopening. This exclusion
+# rests on market availability, never on the return.
 UNINVESTABLE_FOREIGN_MARKET_YEARS = {("Germany", 1949)}
 MIN_CAP_COVERAGE = 0.75
 
@@ -76,17 +72,16 @@ GMD_NAMES = {"Australia": "Australia", "Belgium": "Belgium",
 
 def extend_recent(by_country: dict[str, dict[int, dict[str, float]]],
                   equity_path: str, gmd_path: str) -> None:
-  """Prolonge le panel au-dela de JST avec les series 2021-2025.
+  """Extend the panel beyond JST with the 2021-2025 series.
 
-  Les rendements actions viennent des indices de rendement total et des
-  trackers cotes localement (``data/equity-tr-recent.csv``), l'inflation et les
-  taux de change de la Global Macro Database (``data/gmd-cpi-fx.csv``).
+  Equity returns come from total-return indexes and locally listed trackers
+  (``data/equity-tr-recent.csv``), inflation and exchange rates from the Global
+  Macro Database (``data/gmd-cpi-fx.csv``).
 
-  Les deux sources ne mesurent pas le change de la meme facon : JST publie un
-  taux de fin d'annee, GMD une moyenne annuelle, avec des ecarts qui atteignent
-  douze pour cent. Raccorder les niveaux fabriquerait donc un mouvement de
-  change fictif en 2021. Seules les VARIATIONS de GMD sont reprises, appliquees
-  au dernier taux JST connu.
+  The two sources do not measure exchange rates the same way: JST publishes an
+  end-of-year rate, GMD an annual average, with gaps of up to twelve percent.
+  Splicing the levels would therefore create a fictitious currency move in
+  2021. Only the CHANGES in GMD are used, applied to the last known JST rate.
   """
   if not (os.path.exists(equity_path) and os.path.exists(gmd_path)):
     return
@@ -124,7 +119,7 @@ def extend_recent(by_country: dict[str, dict[int, dict[str, float]]],
       current = macro[(country, year)]
       if not previous:
         break
-      # Variation relative reprise de GMD, appliquee au niveau JST.
+      # Relative change taken from GMD, applied to the JST level.
       anchor_fx *= current["fx"] / previous["fx"]
       anchor_cpi *= current["cpi"] / previous["cpi"]
       years[year] = {"eq_tr": equity[(country, year)],
@@ -159,9 +154,8 @@ def read_gdp_weights(dta_path: str) -> dict[tuple[str, int], float]:
 
 def extend_weights(weights: dict[tuple[str, int], float],
                    gmd_path: str) -> None:
-  """Prolonge les poids de taille de marche au-dela de Maddison, via le PIB
-  reel de la Global Macro Database, raccorde par pays sur la derniere annee
-  commune."""
+  """Extend the market-size weights beyond Maddison with the real GDP of the
+  Global Macro Database, spliced country by country on the last common year."""
   if not os.path.exists(gmd_path):
     return
 
@@ -195,7 +189,7 @@ def extend_weights(weights: dict[tuple[str, int], float],
 
 
 def read_mcap_ratios(path: str) -> dict[tuple[str, int], float]:
-  """Ratios capitalisation/PIB issus du fichier Big Bang mis en cache."""
+  """Capitalisation/GDP ratios from the cached Big Bang file."""
   ratios: dict[tuple[str, int], float] = {}
   if not path or not os.path.exists(path):
     return ratios
@@ -227,8 +221,8 @@ def build(by_country: dict[str, dict[int, dict[str, float]]],
           excluded_markets: frozenset[str] = frozenset(),
           excluded_market_years: frozenset[tuple[str, int]] = frozenset(),
           ) -> list[dict[str, float | str]]:
-  """Pour chaque pays-annee, calcule le rendement reel des actions
-  internationales telles que les verrait un investisseur de ce pays."""
+  """For each country-year, compute the real return of international stocks
+  as seen by an investor of that country."""
   # Keep excluded countries as possible residents so that shared macro inputs
   # (notably U.S. CPI for the MF sleeve) remain available. They are removed
   # from every investable international/world basket below; callers that test
@@ -240,18 +234,17 @@ def build(by_country: dict[str, dict[int, dict[str, float]]],
 
   for domestic in countries:
     for year, entry in sorted(by_country[domestic].items()):
-      # Les poids connus a la fin de l'annee precedente financent le rendement
-      # de l'annee courante. Cela evite une ponderation qui connait deja la
-      # performance mesuree. Une annee est entierement ponderee par
-      # capitalisation ou entierement par PIB : les deux methodes ne sont
-      # jamais melangees au sein d'un meme panier.
+      # Weights known at the end of the previous year fund the current year's
+      # return. This avoids a weighting that already knows the measured performance.
+      # A year is weighted entirely by capitalisation or entirely by GDP: the two
+      # methods are never mixed within one basket.
       weight_year = year - 1
       candidates = [c for c in investable_countries
                     if year in by_country[c] and year - 1 in by_country[c]]
-      # Le panel de rendements commence parfois avant la premiere observation
-      # de PIB de l'annee precedente. Pour cette seule bordure, conserver la
-      # premiere annee avec les poids contemporains est preferable a supprimer
-      # toute l'observation ; toutes les annees suivantes restent retardees.
+      # The returns panel sometimes starts before the first GDP observation of
+      # the previous year. For this edge only, keeping the first year with
+      # contemporaneous weights is better than dropping the whole observation; every
+      # later year stays lagged.
       if sum((c, weight_year) in gdp_weights for c in candidates) < 5:
         weight_year = year
       cap_coverage = sum((c, weight_year) in cap_weights for c in candidates)
@@ -274,12 +267,12 @@ def build(by_country: dict[str, dict[int, dict[str, float]]],
         continue
       shares = [w / total_weight for w in shares_raw]
 
-      domestic_fx = by_country[domestic][year]["xrusd"]  # devise domestique / USD
+      domestic_fx = by_country[domestic][year]["xrusd"]  # domestic currency per USD
       if not domestic_fx:
         continue
 
-      # Rendement nominal de chaque marche etranger, converti en devise
-      # domestique via le dollar comme pivot commun.
+      # Nominal return of each foreign market, converted into domestic currency
+      # with the dollar as the common pivot.
       nominal_international = 0.0
       real_international_constant_real_fx = 0.0
       retained_weight = 0.0
@@ -291,11 +284,11 @@ def build(by_country: dict[str, dict[int, dict[str, float]]],
         foreign_fx = foreign["xrusd"]
         if not foreign_fx:
           continue
-        # 1 unite de devise etrangere vaut (fx_domestique / fx_etranger) en
-        # devise domestique. La variation de ce taux sur l'annee capture le
-        # gain ou la perte de change ajoute au rendement local du marche.
-        # Comme JST ne publie qu'un taux de fin de periode, l'annee precedente
-        # sert de reference pour mesurer la variation.
+        # One unit of foreign currency is worth (fx_domestic / fx_foreign) in
+        # domestic currency. The change in this rate over the year captures the
+        # currency gain or loss added to the market's local return. Because JST
+        # publishes only an end-of-period rate, the previous year serves as the
+        # reference for the change.
         previous = by_country[domestic].get(year - 1, {})
         previous_foreign = by_country[country].get(year - 1, {})
         if not previous or not previous_foreign:
@@ -306,26 +299,26 @@ def build(by_country: dict[str, dict[int, dict[str, float]]],
         fx_change = ((domestic_fx / foreign_fx)
                     / (previous["xrusd"] / previous_foreign["xrusd"])) - 1.0
         local_return = foreign["eq_tr"]
-        # Rendement total pour l'investisseur domestique : le marche
-        # etranger, compose avec la variation de change.
+        # Total return for the domestic investor: the foreign market compounded
+        # with the exchange-rate change.
         converted = (1.0 + local_return) * (1.0 + fx_change) - 1.0
         if (not math.isfinite(converted)
             or (MAX_CONVERTED_RETURN is not None
                 and abs(converted) > MAX_CONVERTED_RETURN)):
           continue
         nominal_international += share * converted
-        # Meme marche, meme poids et meme filtre que dans le panier observe.
-        # Le rendement reel local est ce que verrait l'investisseur si le taux
-        # de change reel restait constant. Neutraliser seulement le change
-        # nominal laisserait les hyperinflations etrangeres dans la serie.
+        # Same market, same weight and same filter as in the observed basket. The
+        # local real return is what the investor would see if the real exchange rate
+        # stayed constant. Neutralising only the nominal rate would leave foreign
+        # hyperinflations in the series.
         local_real_return = (
           (1.0 + local_return) / (1.0 + foreign_inflation) - 1.0
         )
         real_international_constant_real_fx += share * local_real_return
         retained_weight += share
 
-      # Sans assez de marches exploitables, l'annee ne represente plus un
-      # panier international.
+      # Without enough usable markets, the year no longer represents an
+      # international basket.
       if retained_weight < 0.5:
         continue
       nominal_international /= retained_weight
@@ -341,11 +334,11 @@ def build(by_country: dict[str, dict[int, dict[str, float]]],
 
       real_international = (1.0 + nominal_international) / (1.0 + inflation) - 1.0
 
-      # Indice mondial vu par le meme resident. Contrairement a l'ancienne
-      # serie commune en dollars reels, chaque marche est d'abord converti
-      # dans la monnaie du pays de residence puis deflate par son inflation.
-      # Toutes les poches d'une ligne pays-annee partagent ainsi le meme
-      # numeraire. Le marche domestique est inclus dans cet agregat.
+      # World index seen by the same resident. Unlike the former common series in
+      # real dollars, each market is first converted into the currency of the country
+      # of residence, then deflated by its inflation. Every sleeve of a country-year
+      # row thus shares the same numeraire. The domestic market is included in this
+      # aggregate.
       world_candidates = [
         c for c in candidates if (c, weight_year) in weights
       ]
@@ -442,14 +435,14 @@ def main() -> None:
   rows = build(by_country, gdp_weights, cap_weights,
                frozenset(args.exclude_market), frozenset(excluded_market_years))
 
-  print(f"{len(rows)} observations, {len({r['country'] for r in rows})} pays")
-  print(f"marches moyens par observation : "
+  print(f"{len(rows)} observations, {len({r['country'] for r in rows})} countries")
+  print(f"mean markets per observation: "
        f"{sum(r['markets'] for r in rows) / len(rows):.1f}")
   sources: dict[str, int] = {}
   for row in rows:
     source = str(row["weight_source"])
     sources[source] = sources.get(source, 0) + 1
-  print("ponderations : " + ", ".join(
+  print("weighting: " + ", ".join(
     f"{source}={count}" for source, count in sorted(sources.items())))
 
   with open(args.out, "w", newline="", encoding="utf-8") as handle:
@@ -460,7 +453,7 @@ def main() -> None:
       "world_markets", "weight_source"])
     writer.writeheader()
     writer.writerows(rows)
-  print(f"Ecrit dans {os.path.normpath(args.out)}")
+  print(f"Written to {os.path.normpath(args.out)}")
 
 
 if __name__ == "__main__":

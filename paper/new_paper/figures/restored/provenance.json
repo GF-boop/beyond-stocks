@@ -1,7 +1,7 @@
 {
   "sources_sha256": {
-    "paper/figures/mf_pack_corr.tex": "89c62455c7548e7e4c2226a6e9f974f9574fc33175751e477bf6555ee95ade8c",
-    "paper/figures/mf_pack_regressions.tex": "e0841a871345e7fef62c705a0246d93c8e8f1a63f4a26e05f58c638e28b63c11",
+    "paper/figures/mf_pack_corr.tex": "aee2690af09c4138c1eacee79089dbf94ee49d17a1501fed1490396b34bd86c9",
+    "paper/figures/mf_pack_regressions.tex": "f18a5122c24d443bb9febd5358f51488f0d44f51c698bb0c15368b0ebdeb896b",
     "paper/figures/gamma_sensitivity.json": "171e363b65e32a81dab34014eea6f5923d690ea14b4d4d7dde922bdf43ca6b64",
     "results/gamma_fixed_theta_n10000.json": "e69b8ca0c723f969eb918b26353c0fdc1ce22dcbcf5cba098d1a816217afec6c",
     "paper/figures/policy_sensitivity.json": "980180baa4ec5a3eacb49c4918ea7c318118b3dc8c00b4e3c92f2a351ecc8e63",

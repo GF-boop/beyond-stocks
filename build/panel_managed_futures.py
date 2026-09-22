@@ -1,29 +1,28 @@
-"""Convertit le proxy managed futures mensuel en serie annuelle reelle.
+"""Convert the monthly managed-futures proxy into a real annual series.
 
-Le moteur `managed_futures/run_managed_futures.py` publie des rendements
-**nominaux en USD** : son collateral est du cash USD et les P&L locaux sont
-convertis au spot USD. Le panel des simulations, lui, raisonne entierement en
-**reel**. Brancher l'un sur l'autre sans deflater injecterait un siecle
-d'inflation americaine dans la poche de tendance.
+The engine `managed_futures/run_managed_futures.py` publishes **nominal USD**
+returns: its collateral is USD cash and local P&L is converted at the USD spot
+rate. The simulation panel works entirely in **real** terms. Plugging one into
+the other without deflating would inject a century of US inflation into the
+trend sleeve.
 
-Le deflateur retenu est donc le CPI **americain** mensuel, et non l'inflation
-mondiale du panel NTSG : c'est la devise dans laquelle la poche est libellee
-qui commande, pas la composition geographique de l'indice actions.
+The deflator is therefore the monthly **US** CPI, not the world inflation of
+the NTSG panel: the currency in which the sleeve is denominated decides, not
+the geographic composition of the equity index.
 
-La deflation est faite **mois par mois avant composition**. Avec douze mois
-complets et les memes bornes de CPI, elle est algebriquement equivalente a
-la deflation du rendement nominal annuel compose par le ratio annuel de CPI.
+Deflation is done **month by month before compounding**. With twelve complete
+months and the same CPI endpoints, it is algebraically equivalent to deflating
+the compounded annual nominal return by the annual CPI ratio.
 
-La serie retenue est `mf_1_6_12_gross_return`, en **brut** : les frais et les
-couts de transaction sont appliques en aval par les scripts de simulation (voir
-`trend_costs.py`), ce qui evite un double comptage et garde `--trend-fee`
-pilotable.
+The series used is `mf_1_6_12_gross_return`, **gross**: fees and transaction
+costs are applied downstream by the simulation scripts (see `trend_costs.py`),
+which avoids double counting and keeps `--trend-fee` adjustable.
 
-Entree : `data/managed-futures-monthly.csv` et `data/cpi-monthly.csv`.
-Sortie : `data/managed-futures-annual-real.csv`.
+Input: `data/managed-futures-monthly.csv` and `data/cpi-monthly.csv`.
+Output: `data/managed-futures-annual-real.csv`.
 
-Une annee n'est conservee que si ses douze mois sont presents. Aucune annee
-partielle n'est fabriquee.
+A year is kept only if its twelve months are present. No partial year is
+created.
 """
 
 from __future__ import annotations
@@ -41,22 +40,22 @@ VARIANT = "mf_1_6_12_gross_return"
 
 
 def read_cpi(path: str) -> dict[str, float]:
-  """Indice des prix mensuel americain, pour deflater les rendements USD."""
+  """Monthly US price index, to deflate USD returns."""
   with open(path, encoding="utf-8") as handle:
     return {row["month"]: float(row["cpi"])
             for row in csv.DictReader(handle) if row.get("cpi")}
 
 
 def fill_isolated_gaps(cpi: dict[str, float]) -> tuple[dict[str, float], list[str]]:
-  """Comble un mois de CPI isole par moyenne geometrique de ses voisins.
+  """Fill an isolated missing CPI month with the geometric mean of its neighbours.
 
-  Le BLS n'a pas publie octobre 2025 (interruption budgetaire) : sans ce seul
-  mois, toute l'annee 2025 serait perdue alors que ses douze rendements MF
-  existent. Seul un trou d'exactement un mois est comble, et jamais une borne
-  de la serie : une lacune plus longue reste une lacune, et l'annee tombe.
+  The BLS did not publish October 2025 (government shutdown): without that
+  single month, the whole year 2025 would be lost although its twelve MF
+  returns exist. Only a gap of exactly one month is filled, and never an
+  endpoint of the series: a longer gap stays a gap, and the year is dropped.
 
-  L'interpolation porte sur le deflateur, pas sur les donnees de marche : le
-  snapshot canonique reste, lui, strictement sans interpolation.
+  The interpolation applies to the deflator, not to market data: the canonical
+  snapshot itself stays strictly free of interpolation.
   """
   filled = dict(cpi)
   patched: list[str] = []
@@ -137,13 +136,13 @@ def main() -> None:
   values = [annual[year] for year in years]
   mean = statistics.fmean(values)
   volatility = statistics.stdev(values)
-  print(f"{len(years)} annees ({years[0]}-{years[-1]}), "
-        f"rendement reel {mean:.2%}, vol {volatility:.2%}, "
+  print(f"{len(years)} years ({years[0]}-{years[-1]}), "
+        f"real return {mean:.2%}, vol {volatility:.2%}, "
         f"Sharpe {mean / volatility:.2f}")
   if patched:
-    print(f"CPI comble par interpolation ({len(patched)}) : "
+    print(f"CPI filled by interpolation ({len(patched)}): "
           f"{', '.join(patched)}")
-  print(f"Ecrit dans {os.path.normpath(out)}")
+  print(f"Written to {os.path.normpath(out)}")
 
 
 if __name__ == "__main__":
